@@ -1,0 +1,2 @@
+titleraw @s[scores={mk14=1..21}] actionbar {"rawtext":[{"score":{"name":"@s","objective":"mk14"}},{"text":"/20 \n"},{"translate":"krep:ammo.name.308win"}]}
+titleraw @s[scores={mk14=0}] actionbar {"rawtext":[{"translate":"krep:hud.no_ammunition.name"},{"text":"\n"},{"translate":"krep:ammo.name.308win"}]}

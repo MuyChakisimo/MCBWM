@@ -1,0 +1,2 @@
+titleraw @s actionbar {"rawtext":[{"score":{"name":"@s","objective":"win308"}},{"text":" - "},{"score":{"name":"@s","objective":"minigunoverheat"}},{"text":"%"},{"text":"\n"},{"translate":"krep:box.ammobox.name"}]}
+titleraw @s[scores={win308=0}] actionbar {"rawtext":[{"translate":"krep:hud.overheat.name"},{"text":"\n"},{"translate":"krep:box.ammobox.name"}]}
