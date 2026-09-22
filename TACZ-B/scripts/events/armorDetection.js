@@ -1,1 +1,69 @@
-const _0x5a6995=_0x2917;(function(_0x115964,_0x7fc125){const _0x9d7359=_0x2917,_0x4fa610=_0x115964();while(!![]){try{const _0x1a45f2=parseInt(_0x9d7359(0x111,'PHlf'))/0x1*(-parseInt(_0x9d7359(0x121,'iu1U'))/0x2)+-parseInt(_0x9d7359(0x132,'OtB)'))/0x3+parseInt(_0x9d7359(0x133,'RV5p'))/0x4+-parseInt(_0x9d7359(0x105,'X8A7'))/0x5*(-parseInt(_0x9d7359(0x12b,'C^Im'))/0x6)+-parseInt(_0x9d7359(0x115,'Y*]0'))/0x7*(parseInt(_0x9d7359(0x142,'Cu7i'))/0x8)+-parseInt(_0x9d7359(0x130,'g5@5'))/0x9+-parseInt(_0x9d7359(0x146,'30[N'))/0xa*(-parseInt(_0x9d7359(0x119,')RxS'))/0xb);if(_0x1a45f2===_0x7fc125)break;else _0x4fa610['push'](_0x4fa610['shift']());}catch(_0x39e06b){_0x4fa610['push'](_0x4fa610['shift']());}}}(_0xae1f,0x3d090));import{system,world}from'@minecraft/server';function _0xae1f(){const _0x144a55=['b8oSW6NdQHPSuSkWW6VcLCkhbq','W4tdGYdcT8kqmSo0gq','W41Cea','dtVdILj5W4aci8knE0yNq8kWfSk0tCk2W6lcQWxcSmk9nSocWRZcIs8','iCorW78Peu3cLuNdGfhcUglcImk6WQ4','W5KjWRFcKSkJWR7cMCohWPVcR8kHW57dOc/dGMy','v35YW7XuWRv0W6pdH8onWRzuW6JdGmonW47cOwy','W4CwWP5DWQ0/gmoiatHsWRddPaG','W6GRaGSsWP44BJK7W7xdKCkhW47cPW','W47cH1FdTttcQttdOq','WO/cLYNcMSoybSoJe39RW7hcT3quWPi','W48AWP5eWQO0dSoicZjrWQNdSG','DmkJW44BexJcI8kG','jgVcOSkEW48MubClimoP','WRBdI8kZWO4nW6rVW49ire9aW4ZcUmoXDbldVq','fxj0W6eUW5zibNS','W7eYW4VcG8oBEYu0W4n9WPnlr8oibJe','W7eYW4VcG8oBEYu0W4n9WPDltmoccIVcHX4','jCoPoMZcKZFdG8oyWQFcN8ks','WQbJWPJdK8kdjc4yW61mWPvd','W4iyW7xcM8oGy8oiv8oHW6b0W68rW4uX','W4axWP5zWQW8hCo+bqjDWRxdPa8YWOfJsSk4WOy','W7u1W4BcJSoqEbS+W4DhWOHAw8ojaJhcHq','k8o0owBcQthdUCoCWQ/cLSklhCo2','WRn5nKacbKiQWRfnESo0W7q','sNDPW6aFWQzVW7RdJCoGW7rzW6RdHSoa','x8k+uCoriHddMYhcOSkgW77dVCom','bqqOiqpdRhqLWRqkW4HqWRe','qYWMW5S2W4LckhPIW4BcPmkHxa','hmorhSkuWO3cSmoodmoje8kYWReoeJ8','nCosW7W5wKlcUeJdIKtdSwFcG8k6WQ4','WRdcScxcSSkrWPlcKCkyuLtdK8kTcG','WQqAW7ddGSk3pSk1CSk4WOOks8ow','WRdcPmkEW4ZcOceQW70ZiConW67dR3xcUW','W5ddMWiHzmkCzCoaWQxcJdldQqySW5y8W70/W5DD','W5yBW7BcI8kRBmoLvSoRW7u9W64AW4mM','pCkoW7ZdJSkhWQuepNLBW6tdJYG','dGPwWOKcWQH1rupdSgegW6lcKfy','D8o1WOmOW7m','WRpcUsdcVCkqWPBdI8kEF3ZdRSkq','WPGufmoHlSodkgZcICkRmI8HW77dJbS','iSo+iwRcQs3dJ8oaWQ/cPCkef8oTWRDz','j8kuW5PuWOhcJKZcO8kSW7i0','W4xdRWSlWOb7F8orWOb+fWddJCkzb8kZb8kD','WQa0WPHQpZrUWPhcNqi3WOBdHqDVdmkSWRO','nCosW7W5wKlcUeJdIKtdSw3cG8k4WQK','WPTobuxdUColw8oNWQJdSLyCyW','W6GXWPzKms5JWQhcKfC','kNBcOCkuW7uGAHGoimoUfmoWtqiDrW','W4qBqXRcR8koaSo/WRNdNM41B8orBSofWRqG','WQO4WO1VnsHJWRRcMZuXWP3dLar3hCk0WR7dU1a','uf94Ff3cTIq9WRCxW4fbWP/dSs0o','WOZdQtFcPSkfWRfZW7BdHaVcNLhcRMytdW','WPvmaLrNW63cRmoEW5CVicBcKhZdO3RcVSos','lHS1W5BcRqhdV3u','WOeJWP/dU8krz3NcQ0Gt','W7zaWQdcM8oOz8oGxmk7WQ0hvCo0bSoWemkXWO9AtW','iSoxW7iGg03cRNRdHL7cUNJcKSkTWRhdSaCY','cmoybCkKW4RcVmozd8ovcmoZWRm','WO/cLYNcMSoybSoJe39RW7hcS3qsWOu','WQHYibrwWPCnsG','rvRcKCkOWQ8MBJZdSq','icVcISom','W6zeWQ7cHSkOA8oZwmk4WObkw8o0emoW','W5atWPbeW6WWdSo6bI8qWR7dQrK1WOu','W41UWOPIW6qQW6vzW7C','WPS9WP/dOCoGzgtcQvmsot4JqGO','WRyOWPDepZDNWQ/cKa4','qbZdLSopW4LDf8kyW6BcPCoO','vSkDW7CMW7O9c8k5tLlcKwRdNWddMmk8','WQNdGSk9WO5lW6bVW71exGrqW5dcRCoUyq','ySolWOyxWPNcNgFcL8kkW5z+vCkPWOtcOW','W4pcK8kOn8kHmmk6sCk6WPddIW','WPBdGu/dUdlcQtxdHCodW7ldUgRdHG','cY/dGZfwW4G0nSkABW','W4X9WPT4W7y3W75bW7BdO8kFxSoNnNC','W7zQW4PqjYTKWR/cLW','W5CEWPG','W5FdJbKNxSkcACotWQFcUJ/dPHa'];_0xae1f=function(){return _0x144a55;};return _0xae1f();}export const armorProtection={'leather':{'helmet':0x1,'chestplate':0x3,'leggings':0x2,'boots':0x1},'chainmail':{'helmet':0x2,'chestplate':0x5,'leggings':0x4,'boots':0x1},'iron':{'helmet':0x2,'chestplate':0x6,'leggings':0x5,'boots':0x2},'diamond':{'helmet':0x3,'chestplate':0x8,'leggings':0x6,'boots':0x3},'netherite':{'helmet':0x3,'chestplate':0x8,'leggings':0x6,'boots':0x3},'golden':{'helmet':0x2,'chestplate':0x5,'leggings':0x3,'boots':0x1}};const armorTags=[{'item':_0x5a6995(0x11d,'iUJN'),'tag':'netherite_helmet','slot':_0x5a6995(0x131,'UV5h')},{'item':_0x5a6995(0x13a,'3NAl'),'tag':_0x5a6995(0x14a,'Y*]0'),'slot':_0x5a6995(0x10f,'NSxT')},{'item':_0x5a6995(0x149,'30[N'),'tag':_0x5a6995(0x11e,'UV5h'),'slot':_0x5a6995(0x136,'M)iq')},{'item':_0x5a6995(0x141,'Qmbx'),'tag':_0x5a6995(0x114,'BW2T'),'slot':_0x5a6995(0x110,'Cu7i')},{'item':_0x5a6995(0x11f,'$e%v'),'tag':_0x5a6995(0x134,'vsdZ'),'slot':'slot.armor.head'},{'item':_0x5a6995(0x144,'Y*]0'),'tag':_0x5a6995(0x102,'M)iq'),'slot':_0x5a6995(0x109,'$e%v')},{'item':'diamond_leggings','tag':_0x5a6995(0x14b,'RV5p'),'slot':_0x5a6995(0x120,'X8A7')},{'item':'diamond_boots','tag':'diamond_boots','slot':_0x5a6995(0x108,'*oBV')},{'item':_0x5a6995(0x12a,'Qmbx'),'tag':_0x5a6995(0x125,'xX8c'),'slot':_0x5a6995(0x10b,'1KlA')},{'item':'iron_chestplate','tag':_0x5a6995(0x139,'*(jc'),'slot':'slot.armor.chest'},{'item':_0x5a6995(0x112,'iu1U'),'tag':_0x5a6995(0x117,'3NAl'),'slot':_0x5a6995(0x122,')RxS')},{'item':_0x5a6995(0x100,'1KlA'),'tag':_0x5a6995(0x100,'1KlA'),'slot':_0x5a6995(0x13d,'YcNv')},{'item':'chainmail_helmet','tag':_0x5a6995(0x128,'C^Im'),'slot':_0x5a6995(0x104,')RxS')},{'item':_0x5a6995(0x101,'*oBV'),'tag':_0x5a6995(0x12d,'$e%v'),'slot':_0x5a6995(0x14c,'^Gm&')},{'item':'chainmail_leggings','tag':_0x5a6995(0x129,'C^Im'),'slot':'slot.armor.legs'},{'item':'chainmail_boots','tag':'chainmail_boots','slot':_0x5a6995(0x108,'*oBV')},{'item':'leather_helmet','tag':'leather_helmet','slot':_0x5a6995(0x12c,'FMVh')},{'item':_0x5a6995(0x143,'EyTp'),'tag':_0x5a6995(0x126,'NSxT'),'slot':_0x5a6995(0x109,'$e%v')},{'item':_0x5a6995(0x140,'a2Lp'),'tag':_0x5a6995(0x10e,'pa0D'),'slot':_0x5a6995(0x135,'d[@F')},{'item':_0x5a6995(0x123,'$e%v'),'tag':'leather_boots','slot':_0x5a6995(0x145,'M)iq')},{'item':_0x5a6995(0x13c,'os3z'),'tag':_0x5a6995(0x12f,'Qmbx'),'slot':'slot.armor.head'},{'item':_0x5a6995(0x12e,'C^Im'),'tag':_0x5a6995(0x148,'xX8c'),'slot':'slot.armor.chest'},{'item':_0x5a6995(0x13b,'FMVh'),'tag':_0x5a6995(0x11c,'M)iq'),'slot':'slot.armor.legs'},{'item':_0x5a6995(0x118,'0@Yy'),'tag':'golden_boots','slot':'slot.armor.feet'}];function _0x2917(_0x224ae4,_0x5f740d){_0x224ae4=_0x224ae4-0xff;const _0xae1fa2=_0xae1f();let _0x2917f0=_0xae1fa2[_0x224ae4];if(_0x2917['ygoeGn']===undefined){var _0x108ce3=function(_0x16e530){const _0x3c977e='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x572909='',_0x57ee3c='';for(let _0x1d53e3=0x0,_0x1a68da,_0x533808,_0xdcf678=0x0;_0x533808=_0x16e530['charAt'](_0xdcf678++);~_0x533808&&(_0x1a68da=_0x1d53e3%0x4?_0x1a68da*0x40+_0x533808:_0x533808,_0x1d53e3++%0x4)?_0x572909+=String['fromCharCode'](0xff&_0x1a68da>>(-0x2*_0x1d53e3&0x6)):0x0){_0x533808=_0x3c977e['indexOf'](_0x533808);}for(let _0x3775e6=0x0,_0x11775d=_0x572909['length'];_0x3775e6<_0x11775d;_0x3775e6++){_0x57ee3c+='%'+('00'+_0x572909['charCodeAt'](_0x3775e6)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x57ee3c);};const _0x8f89a3=function(_0x38babd,_0x1e26f9){let _0x21c59e=[],_0x237abc=0x0,_0x51a8ba,_0x543c02='';_0x38babd=_0x108ce3(_0x38babd);let _0x18ff47;for(_0x18ff47=0x0;_0x18ff47<0x100;_0x18ff47++){_0x21c59e[_0x18ff47]=_0x18ff47;}for(_0x18ff47=0x0;_0x18ff47<0x100;_0x18ff47++){_0x237abc=(_0x237abc+_0x21c59e[_0x18ff47]+_0x1e26f9['charCodeAt'](_0x18ff47%_0x1e26f9['length']))%0x100,_0x51a8ba=_0x21c59e[_0x18ff47],_0x21c59e[_0x18ff47]=_0x21c59e[_0x237abc],_0x21c59e[_0x237abc]=_0x51a8ba;}_0x18ff47=0x0,_0x237abc=0x0;for(let _0xe1c94=0x0;_0xe1c94<_0x38babd['length'];_0xe1c94++){_0x18ff47=(_0x18ff47+0x1)%0x100,_0x237abc=(_0x237abc+_0x21c59e[_0x18ff47])%0x100,_0x51a8ba=_0x21c59e[_0x18ff47],_0x21c59e[_0x18ff47]=_0x21c59e[_0x237abc],_0x21c59e[_0x237abc]=_0x51a8ba,_0x543c02+=String['fromCharCode'](_0x38babd['charCodeAt'](_0xe1c94)^_0x21c59e[(_0x21c59e[_0x18ff47]+_0x21c59e[_0x237abc])%0x100]);}return _0x543c02;};_0x2917['urxznm']=_0x8f89a3,_0x2917['wtdyBT']={},_0x2917['ygoeGn']=!![];}const _0xf5221a=_0xae1fa2[0x0],_0x1f43ee=_0x224ae4+_0xf5221a,_0x42e204=_0x2917['wtdyBT'][_0x1f43ee];return!_0x42e204?(_0x2917['xMyvlN']===undefined&&(_0x2917['xMyvlN']=!![]),_0x2917f0=_0x2917['urxznm'](_0x2917f0,_0x5f740d),_0x2917['wtdyBT'][_0x1f43ee]=_0x2917f0):_0x2917f0=_0x42e204,_0x2917f0;}system['runInterval'](()=>{const _0x306462=_0x5a6995,_0x5792f9={'fRjKD':_0x306462(0x106,'q3Gg')};for(const _0x520afc of armorTags){world['getDimension'](_0x306462(0x10a,'BW2T'))[_0x306462(0x113,'9ASr')](_0x306462(0x11b,'9ASr')+_0x520afc[_0x306462(0x11a,'o]4y')]);}for(const _0x42cf20 of armorTags){try{world[_0x306462(0x103,'d[@F')](_0x5792f9[_0x306462(0x13e,'Cu7i')])[_0x306462(0x10c,'Y*]0')]('tag\x20@e[type=!player,hasitem={item=minecraft:'+_0x42cf20['item']+_0x306462(0x147,'Y*]0')+_0x42cf20[_0x306462(0x107,'1v(^')]+_0x306462(0x14d,'o]4y')+_0x42cf20[_0x306462(0x116,'$e%v')]);}catch(_0x2dcbed){}}},0x14);
+import { EquipmentSlot } from "@minecraft/server";
+
+export const armorProtection = {
+  leather: { helmet: 1, chestplate: 3, leggings: 2, boots: 1 },
+  chainmail: { helmet: 2, chestplate: 5, leggings: 4, boots: 1 },
+  iron: { helmet: 2, chestplate: 6, leggings: 5, boots: 2 },
+  diamond: { helmet: 3, chestplate: 8, leggings: 6, boots: 3 },
+  netherite: { helmet: 3, chestplate: 8, leggings: 6, boots: 3 },
+  golden: { helmet: 2, chestplate: 5, leggings: 3, boots: 1 },
+};
+
+const armorSlots = [
+  { slot: EquipmentSlot.Head, part: "helmet" },
+  { slot: EquipmentSlot.Chest, part: "chestplate" },
+  { slot: EquipmentSlot.Legs, part: "leggings" },
+  { slot: EquipmentSlot.Feet, part: "boots" },
+];
+
+const armorMaterials = [
+  "leather",
+  "chainmail",
+  "iron",
+  "diamond",
+  "netherite",
+  "golden",
+];
+
+function getArmorMaterial(typeId) {
+  const itemId = typeId.replace("minecraft:", "").toLowerCase();
+
+  for (const material of armorMaterials) {
+    if (itemId.startsWith(material + "_")) {
+      return material;
+    }
+  }
+
+  return null;
+}
+
+export function getEntityArmorProtection(entity) {
+  let total = 0;
+  let helmet = 0;
+
+  const equippable = entity.getComponent("minecraft:equippable");
+
+  if (!equippable) {
+    return { total, helmet };
+  }
+
+  for (const { slot, part } of armorSlots) {
+    const item = equippable.getEquipment(slot);
+
+    if (!item?.typeId) continue;
+
+    const material = getArmorMaterial(item.typeId);
+
+    if (!material) continue;
+
+    const protection = armorProtection[material]?.[part] ?? 0;
+
+    total += protection;
+
+    if (part === "helmet") {
+      helmet = protection;
+    }
+  }
+
+  return { total, helmet };
+}
