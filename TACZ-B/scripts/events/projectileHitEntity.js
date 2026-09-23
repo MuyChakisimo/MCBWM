@@ -234,9 +234,11 @@ function _0x1989() {
     "kauuW6BdMW",
     "E2y/fSkz",
   ];
+
   _0x1989 = function () {
     return _0x24863d;
   };
+
   return _0x1989();
 }
 
@@ -270,9 +272,12 @@ const _0x7e036a = _0xb2c0;
 import { world, Player, GameMode, EquipmentSlot } from "@minecraft/server";
 import { armorProtection, getEntityArmorProtection } from "./armorDetection.js";
 
-world[_0x7e036a(0x1d3, "^&9k")][_0x7e036a(0x167, "JSQG")][
-  _0x7e036a(0x1ee, "QE0r")
-]((_0x5602d3) => {
+export function processGunHit({
+  source: _0xe543a7,
+  target: _0x357e52,
+  hitLocation: _0x1a3fa2,
+  weaponId: _0x3c38ba,
+}) {
   const _0x3f78bc = _0x7e036a,
     _0x58a84e = {
       wrBpO: function (_0xc1d15a) {
@@ -370,13 +375,7 @@ world[_0x7e036a(0x1d3, "^&9k")][_0x7e036a(0x167, "JSQG")][
         return _0x1fb8e9 - _0x1caa82;
       },
       bwLOw: _0x3f78bc(0x1a7, "t(PM"),
-    },
-    {
-      projectile: _0x4f6b46,
-      source: _0xe543a7,
-      location: _0x1a3fa2,
-    } = _0x5602d3,
-    _0x357e52 = _0x5602d3["getEntityHit"]()["entity"];
+    };
 
   if (
     !_0x357e52 ||
@@ -413,10 +412,7 @@ world[_0x7e036a(0x1d3, "^&9k")][_0x7e036a(0x167, "JSQG")][
     else return;
   }
 
-  const _0x3c38ba = _0x4f6b46[_0x3f78bc(0x217, "fv9N")][
-      _0x3f78bc(0x1c1, "i)w1")
-    ](_0x58a84e[_0x3f78bc(0x15f, "(5J]")], ""),
-    _0x44cedb = Indoarsenal[_0x3f78bc(0x1e9, "*Pa6")][_0x3c38ba];
+  const _0x44cedb = Indoarsenal[_0x3f78bc(0x1e9, "*Pa6")][_0x3c38ba];
 
   if (!_0x44cedb) return;
 
@@ -559,6 +555,7 @@ world[_0x7e036a(0x1d3, "^&9k")][_0x7e036a(0x167, "JSQG")][
   }
 
   const _0x55fcf0 = _0x44cedb["penetration"] || 0.3;
+
   let _0x1f76bc = _0x44cedb[_0x3f78bc(0x176, "[@J0")];
 
   if (_0x135c83) {
@@ -674,11 +671,36 @@ world[_0x7e036a(0x1d3, "^&9k")][_0x7e036a(0x167, "JSQG")][
   ),
     _0x32317d[_0x3f78bc(0x17f, "n1BO")] <= 0x0 &&
       _0xe543a7[_0x3f78bc(0x1ef, "jmac")](_0x3f78bc(0x230, "Bc4P")));
+}
+
+world[_0x7e036a(0x1d3, "^&9k")][_0x7e036a(0x167, "JSQG")][
+  _0x7e036a(0x1ee, "QE0r")
+]((_0x5602d3) => {
+  const _0x3f78bc = _0x7e036a,
+    {
+      projectile: _0x4f6b46,
+      source: _0xe543a7,
+      location: _0x1a3fa2,
+    } = _0x5602d3,
+    _0x357e52 = _0x5602d3["getEntityHit"]()["entity"],
+    _0x3c38ba = _0x4f6b46[_0x3f78bc(0x217, "fv9N")][_0x3f78bc(0x1c1, "i)w1")](
+      _0x3f78bc(0x159, "JR%J"),
+      "",
+    );
+
+  processGunHit({
+    source: _0xe543a7,
+    target: _0x357e52,
+    hitLocation: _0x1a3fa2,
+    weaponId: _0x3c38ba,
+  });
 });
 
 function _0xb2c0(_0x2fcc9b, _0x273d99) {
   _0x2fcc9b = _0x2fcc9b - 0x14d;
+
   const _0x1989cc = _0x1989();
+
   let _0xb2c0a2 = _0x1989cc[_0x2fcc9b];
 
   if (_0xb2c0["XvRAAF"] === undefined) {
