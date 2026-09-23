@@ -1,49 +1,36 @@
-import { system, world } from "@minecraft/server";
+import { world } from "@minecraft/server";
+import { WEAPONS, LEGACY_WEAPON_ALIASES } from "../config/weapons.js";
 
 world.sendMessage("§a[TACZ] Global.js LOADED");
 console.warn("[TACZ] Global.js initialized");
 
-globalThis.Indoarsenal = Object.freeze({
-  bullets: {
-    deagle: { damage: 16, penetration: 0.5 },
-    t50: { damage: 16, penetration: 0.5 },
-    deagleg: { damage: 12, penetration: 0.7 },
-    cp: { damage: 12, penetration: 0.7 },
-    g17: { damage: 6, penetration: 0.5 },
-    g93: { damage: 4, penetration: 0.4 },
-    g18: { damage: 3, penetration: 0.3 },
-    m16: { damage: 6, penetration: 0.6 },
-    m16a1: { damage: 6, penetration: 0.6 },
-    g36: { damage: 7, penetration: 0.65 },
-    p90: { damage: 4, penetration: 0.7 },
-    mp7: { damage: 4, penetration: 0.7 },
-    vector: { damage: 6, penetration: 0.4 },
-    m1911: { damage: 11, penetration: 0.3 },
-    p320: { damage: 10, penetration: 0.3 },
-    scarh: { damage: 9, penetration: 0.7 },
-    mk14: { damage: 13, penetration: 0.7 },
-    akm: { damage: 9, penetration: 0.65 },
-    type81: { damage: 9, penetration: 0.65 },
-    sks: { damage: 11, penetration: 0.65 },
-    m4a1: { damage: 8, penetration: 0.65 },
-    m249: { damage: 7, penetration: 0.65 },
-    minigun: { damage: 8, penetration: 0.5 },
-    ump: { damage: 6.7, penetration: 0.4 },
-    mp5: { damage: 6.5, penetration: 0.45 },
-    qbz95: { damage: 7, penetration: 0.7 },
-    qbz191: { damage: 7, penetration: 0.7 },
-    uzi: { damage: 5, penetration: 0.3 },
-    hk416: { damage: 5, penetration: 0.6 },
-    aa12: { damage: 2, penetration: 0.1 },
-    saiga12: { damage: 2, penetration: 0.3 },
-    m870: { damage: 3, penetration: 0.5 },
-    m1014: { damage: 3, penetration: 0.4 },
-    db: { damage: 3, penetration: 0.3 },
-    rpg: { damage: 100, penetration: 1.0 },
-    g3: { damage: 9, penetration: 0.7 },
-    evolys: { damage: 10, penetration: 0.6 },
-    fal: { damage: 9, penetration: 0.7 },
-    awp: { damage: 42, penetration: 0.9 },
-    scar1: { damage: 7, penetration: 0.65 }
+// Build the legacy Indoarsenal damage registry from the centralized
+// weapon configuration. processGunHit() still reads this object, so
+// legacy projectile weapons and new hitscan weapons share one source
+// of damage/penetration values during the migration.
+const bullets = {};
+
+for (const [weaponId, weapon] of Object.entries(WEAPONS)) {
+  if (
+    typeof weapon.damage !== "number" ||
+    typeof weapon.penetration !== "number"
+  ) {
+    continue;
   }
+
+  bullets[weaponId] = Object.freeze({
+    damage: weapon.damage,
+    penetration: weapon.penetration,
+  });
+}
+
+// Temporary compatibility aliases for the two original registry typos.
+for (const [legacyId, normalizedId] of Object.entries(LEGACY_WEAPON_ALIASES)) {
+  if (bullets[normalizedId]) {
+    bullets[legacyId] = bullets[normalizedId];
+  }
+}
+
+globalThis.Indoarsenal = Object.freeze({
+  bullets: Object.freeze(bullets),
 });

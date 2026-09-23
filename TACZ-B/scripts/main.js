@@ -1,5 +1,5 @@
 import "./events/projectileHitEntity";
-import "./events/assaultRifleHitscan";
+import "./weapons/hitscan";
 import "./events/ShamelessStealer";
 import "./events/ImagineStealingTS";
 import "./events/MeWhenUmmCodeStealingILikeCodeStealing";
