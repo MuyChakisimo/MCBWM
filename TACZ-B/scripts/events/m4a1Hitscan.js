@@ -1,4 +1,4 @@
-import { system, Player } from "@minecraft/server";
+import { system, Player, MolangVariableMap } from "@minecraft/server";
 
 import { processGunHit } from "./projectileHitEntity.js";
 
@@ -7,14 +7,27 @@ import { processGunHit } from "./projectileHitEntity.js";
 //
 // CHANGE #10E
 //
-// Uses a short glowing model beam for the tracer,
-// based on TACZ's existing laser attachment rendering.
+// Yellow particle tracer.
 //
 // Preserved:
 // - Instant hitscan damage
 // - Solid block collision
 // - Existing impact flame
-// - Existing recoil / ammo / reload / sounds
+// - Existing recoil
+// - Existing ammo / reload / sounds
+// - ADS / hip-fire muzzle alignment
+//
+// Tracer:
+// - Uses vanilla colored flame particles
+// - Bright yellow / gold
+// - Stops at entities
+// - Stops at solid blocks
+// - Travels toward max range on a complete miss
+//
+// Still NOT included:
+// - Hip-fire spread
+// - ADS spread
+// - Glass penetration
 //
 // =====================================================
 
@@ -22,7 +35,79 @@ const M4A1_HITSCAN_EVENT = "tacz:m4a1_hitscan";
 
 const M4A1_MAX_DISTANCE = 128;
 
-const M4A1_TRACER_PROPERTY = "krep:m4a1tracer";
+// Distance between visual tracer particles.
+//
+// Smaller number = denser tracer.
+const M4A1_TRACER_SPACING = 0.65;
+
+// Hard cap to protect automatic-fire performance.
+const M4A1_TRACER_MAX_PARTICLES = 24;
+
+// =====================================================
+// VECTOR HELPERS
+// =====================================================
+
+function add(a, b) {
+  return {
+    x: a.x + b.x,
+    y: a.y + b.y,
+    z: a.z + b.z,
+  };
+}
+
+function subtract(a, b) {
+  return {
+    x: a.x - b.x,
+    y: a.y - b.y,
+    z: a.z - b.z,
+  };
+}
+
+function multiply(vector, scalar) {
+  return {
+    x: vector.x * scalar,
+
+    y: vector.y * scalar,
+
+    z: vector.z * scalar,
+  };
+}
+
+function vectorLength(vector) {
+  return Math.sqrt(
+    vector.x * vector.x + vector.y * vector.y + vector.z * vector.z,
+  );
+}
+
+function normalize(vector) {
+  const length = vectorLength(vector);
+
+  if (length <= 0.000001) {
+    return {
+      x: 0,
+      y: 0,
+      z: 1,
+    };
+  }
+
+  return {
+    x: vector.x / length,
+
+    y: vector.y / length,
+
+    z: vector.z / length,
+  };
+}
+
+function cross(a, b) {
+  return {
+    x: a.y * b.z - a.z * b.y,
+
+    y: a.z * b.x - a.x * b.z,
+
+    z: a.x * b.y - a.y * b.x,
+  };
+}
 
 // =====================================================
 // ENTITY HIT LOCATION
@@ -35,7 +120,9 @@ function getHitLocation(shooter, distance) {
 
   return {
     x: origin.x + direction.x * distance,
+
     y: origin.y + direction.y * distance,
+
     z: origin.z + direction.z * distance,
   };
 }
@@ -48,7 +135,8 @@ function getFirstTarget(shooter) {
   const hits = shooter.getEntitiesFromViewDirection({
     maxDistance: M4A1_MAX_DISTANCE,
 
-    // Solid blocks stop the shot.
+    // Change #10B:
+    // Solid blocks stop the ray.
     ignoreBlockCollision: false,
   });
 
@@ -65,15 +153,19 @@ function getFirstTarget(shooter) {
       continue;
     }
 
+    // Never hit the shooter.
     if (entity.id === shooter.id) {
       continue;
     }
 
-    // Ignore remaining TACZ projectile entities.
+    // Ignore TACZ projectile entities from
+    // weapons that still use the old system.
     if (entity.typeId?.startsWith("bullet:")) {
       continue;
     }
 
+    // processGunHit requires an entity
+    // with a health component.
     if (!entity.getComponent("minecraft:health")) {
       continue;
     }
@@ -85,48 +177,215 @@ function getFirstTarget(shooter) {
 }
 
 // =====================================================
-// TRACER FLASH
+// BLOCK HIT LOCATION
 //
-// The tracer is now geometry attached directly to the
-// M4A1 model.
+// Used to make the VISUAL tracer stop on the surface
+// of a solid block.
 //
-// Turning this property on makes that glowing geometry
-// visible briefly.
+// Damage block collision is still handled separately
+// by getEntitiesFromViewDirection().
 //
-// We keep it enabled for 3 ticks so the client has enough
-// time to receive and render the client-synced property.
-// This is intentionally a little generous for this visual test.
 // =====================================================
 
-function flashTracer(shooter) {
-  try {
-    shooter.setProperty(M4A1_TRACER_PROPERTY, 1);
-  } catch (error) {
-    console.error("[TACZ M4A1 Hitscan] Failed to enable tracer:", error);
+function getBlockHitLocation(shooter) {
+  const blockHit = shooter.getBlockFromViewDirection({
+    maxDistance: M4A1_MAX_DISTANCE,
 
+    includeLiquidBlocks: false,
+
+    includePassableBlocks: false,
+  });
+
+  if (!blockHit) {
+    return undefined;
+  }
+
+  const blockLocation = blockHit.block.location;
+
+  const faceLocation = blockHit.faceLocation;
+
+  return {
+    x: blockLocation.x + faceLocation.x,
+
+    y: blockLocation.y + faceLocation.y,
+
+    z: blockLocation.z + faceLocation.z,
+  };
+}
+
+// =====================================================
+// TRACER START
+//
+// Preserve the muzzle alignment that already passed
+// during the flame-particle test.
+//
+// ADS:
+// +0.16 horizontal offset
+//
+// HIP:
+// -0.16 horizontal offset
+//
+// This affects ONLY the visual tracer.
+//
+// Actual damage still follows the player's view ray.
+//
+// =====================================================
+
+function getTracerStart(shooter, direction, mode) {
+  const head = shooter.getHeadLocation();
+
+  const up = {
+    x: 0,
+    y: 1,
+    z: 0,
+  };
+
+  let right = cross(up, direction);
+
+  if (vectorLength(right) <= 0.000001) {
+    right = {
+      x: 1,
+      y: 0,
+      z: 0,
+    };
+  } else {
+    right = normalize(right);
+  }
+
+  const sideOffset = mode === "hip" ? -0.16 : 0.16;
+
+  return {
+    x: head.x + direction.x * 0.55 + right.x * sideOffset,
+
+    y: head.y + direction.y * 0.55 - 0.12,
+
+    z: head.z + direction.z * 0.55 + right.z * sideOffset,
+  };
+}
+
+// =====================================================
+// TRACER END
+//
+// Entity hit:
+//   muzzle -> entity
+//
+// Block hit:
+//   muzzle -> block surface
+//
+// Complete miss:
+//   muzzle -> max range
+//
+// =====================================================
+
+function getTracerEnd(shooter, direction, entityHitLocation) {
+  // Entity was hit.
+  if (entityHitLocation) {
+    return entityHitLocation;
+  }
+
+  // No entity hit.
+  // Check whether a block stopped the shot.
+  const blockHitLocation = getBlockHitLocation(shooter);
+
+  if (blockHitLocation) {
+    return blockHitLocation;
+  }
+
+  // Complete miss.
+  const head = shooter.getHeadLocation();
+
+  return add(head, multiply(direction, M4A1_MAX_DISTANCE));
+}
+
+// =====================================================
+// YELLOW TRACER
+//
+// Uses Minecraft's colored flame particle.
+//
+// Several closely spaced particles are spawned along
+// the already-proven tracer path.
+//
+// This is cosmetic only.
+// Damage remains instantaneous.
+//
+// =====================================================
+
+function spawnTracer(shooter, endLocation, mode) {
+  const direction = normalize(shooter.getViewDirection());
+
+  const startLocation = getTracerStart(shooter, direction, mode);
+
+  const delta = subtract(endLocation, startLocation);
+
+  const distance = vectorLength(delta);
+
+  if (distance <= 0.05) {
     return;
   }
 
-  system.runTimeout(() => {
+  const particleCount = Math.min(
+    M4A1_TRACER_MAX_PARTICLES,
+
+    Math.max(
+      2,
+
+      Math.ceil(distance / M4A1_TRACER_SPACING),
+    ),
+  );
+
+  const variables = new MolangVariableMap();
+
+  // Bright yellow / gold tracer.
+  variables.setColorRGB("variable.color", {
+    red: 1.0,
+    green: 0.72,
+    blue: 0.08,
+  });
+
+  for (let i = 1; i <= particleCount; i++) {
+    const t = i / (particleCount + 1);
+
+    const location = {
+      x: startLocation.x + delta.x * t,
+
+      y: startLocation.y + delta.y * t,
+
+      z: startLocation.z + delta.z * t,
+    };
+
     try {
-      shooter.setProperty(M4A1_TRACER_PROPERTY, 0);
+      shooter.dimension.spawnParticle(
+        "minecraft:colored_flame_particle",
+        location,
+        variables,
+      );
     } catch (error) {
-      console.error("[TACZ M4A1 Hitscan] Failed to disable tracer:", error);
+      console.error(
+        "[TACZ M4A1 Hitscan] " + "Failed to spawn yellow tracer:",
+        error,
+      );
     }
-  }, 3);
+  }
 }
 
 // =====================================================
 // HIT FEEDBACK
 //
-// Existing Change #10C flame impact.
+// Change #10C.
+//
+// Keep the existing regular flame particle only at the
+// actual entity impact location.
+//
 // =====================================================
 
 function showHitFeedback(dimension, hitLocation) {
   try {
     dimension.spawnParticle("minecraft:basic_flame_particle", hitLocation);
   } catch (error) {
-    console.error("[TACZ M4A1 Hitscan] Failed to spawn hit particle:", error);
+    console.error(
+      "[TACZ M4A1 Hitscan] " + "Failed to spawn hit particle:",
+      error,
+    );
   }
 }
 
@@ -150,28 +409,66 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
     return;
   }
 
-  try {
-    // Cosmetic tracer flash.
-    flashTracer(shooter);
+  // plalyer.json sends:
+  //
+  // tacz:m4a1_hitscan ads
+  //
+  // or:
+  //
+  // tacz:m4a1_hitscan hip
+  const mode = (event.message ?? "").trim().toLowerCase();
 
-    // Existing hitscan target detection.
+  try {
+    const direction = normalize(shooter.getViewDirection());
+
+    // =================================================
+    // ENTITY HIT
+    // =================================================
+
     const hit = getFirstTarget(shooter);
 
-    if (!hit) {
+    const hitLocation = hit ? getHitLocation(shooter, hit.distance) : undefined;
+
+    // =================================================
+    // VISUAL TRACER
+    //
+    // Entity:
+    // stops at entity.
+    //
+    // Wall:
+    // stops at wall.
+    //
+    // Miss:
+    // travels toward max distance.
+    // =================================================
+
+    const tracerEnd = getTracerEnd(shooter, direction, hitLocation);
+
+    spawnTracer(shooter, tracerEnd, mode);
+
+    // Nothing with health was hit.
+    if (!hit || !hitLocation) {
       return;
     }
 
-    const hitLocation = getHitLocation(shooter, hit.distance);
+    // =================================================
+    // EXISTING TACZ DAMAGE
+    // =================================================
 
-    // Existing TACZ damage.
     processGunHit({
       source: shooter,
+
       target: hit.entity,
-      hitLocation,
+
+      hitLocation: hitLocation,
+
       weaponId: "m4a1",
     });
 
-    // Existing impact confirmation.
+    // =================================================
+    // EXISTING IMPACT FEEDBACK
+    // =================================================
+
     showHitFeedback(shooter.dimension, hitLocation);
   } catch (error) {
     console.error("[TACZ M4A1 Hitscan] Error:", error);
