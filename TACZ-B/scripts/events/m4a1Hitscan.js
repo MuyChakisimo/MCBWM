@@ -1,14 +1,16 @@
-import { system, Player, MolangVariableMap } from "@minecraft/server";
+import { system, Player } from "@minecraft/server";
 
 import { processGunHit } from "./projectileHitEntity.js";
 
 // =====================================================
 // M4A1 HITSCAN
 //
-// CHANGE #10D
+// CHANGE #10D.2
+//
+// Diagnostic tracer test.
 //
 // Added:
-// - Moving visual tracer
+// - Vanilla flame particles drawn along the shot path
 //
 // Preserved:
 // - Instant hitscan damage
@@ -22,21 +24,13 @@ import { processGunHit } from "./projectileHitEntity.js";
 // - ADS spread
 // - Glass penetration
 //
+// Custom tracer particle is NOT used in this test.
+//
 // =====================================================
 
 const M4A1_HITSCAN_EVENT = "tacz:m4a1_hitscan";
 
 const M4A1_MAX_DISTANCE = 128;
-
-const TRACER_PARTICLE = "krep:m4a1_tracer";
-
-const TRACER_BASE_SPEED = 160;
-
-// Ensures very close shots are still visible.
-const TRACER_MIN_LIFETIME = 0.04;
-
-// Prevents very long shots from looking slow.
-const TRACER_MAX_LIFETIME = 0.16;
 
 // =====================================================
 // VECTOR HELPERS
@@ -85,9 +79,7 @@ function normalize(vector) {
 
   return {
     x: vector.x / length,
-
     y: vector.y / length,
-
     z: vector.z / length,
   };
 }
@@ -95,9 +87,7 @@ function normalize(vector) {
 function cross(a, b) {
   return {
     x: a.y * b.z - a.z * b.y,
-
     y: a.z * b.x - a.x * b.z,
-
     z: a.x * b.y - a.y * b.x,
   };
 }
@@ -113,9 +103,7 @@ function getHitLocation(shooter, distance) {
 
   return {
     x: origin.x + direction.x * distance,
-
     y: origin.y + direction.y * distance,
-
     z: origin.z + direction.z * distance,
   };
 }
@@ -129,7 +117,7 @@ function getFirstTarget(shooter) {
     maxDistance: M4A1_MAX_DISTANCE,
 
     // Change #10B:
-    // blocks stop the ray.
+    // Solid blocks stop the ray.
     ignoreBlockCollision: false,
   });
 
@@ -146,16 +134,18 @@ function getFirstTarget(shooter) {
       continue;
     }
 
+    // Never hit the shooter.
     if (entity.id === shooter.id) {
       continue;
     }
 
     // Ignore projectiles from guns
-    // that still use the old system.
+    // that still use the old projectile system.
     if (entity.typeId?.startsWith("bullet:")) {
       continue;
     }
 
+    // processGunHit requires a health component.
     if (!entity.getComponent("minecraft:health")) {
       continue;
     }
@@ -169,9 +159,10 @@ function getFirstTarget(shooter) {
 // =====================================================
 // BLOCK HIT LOCATION
 //
-// Used only for tracer visuals.
+// Used only to determine where the diagnostic tracer
+// should stop when no entity is hit.
 //
-// Damage block collision is still handled by
+// Actual hitscan block collision is still handled by
 // getEntitiesFromViewDirection().
 //
 // =====================================================
@@ -195,9 +186,7 @@ function getBlockHitLocation(shooter) {
 
   return {
     x: blockLocation.x + faceLocation.x,
-
     y: blockLocation.y + faceLocation.y,
-
     z: blockLocation.z + faceLocation.z,
   };
 }
@@ -205,16 +194,16 @@ function getBlockHitLocation(shooter) {
 // =====================================================
 // APPROXIMATE MUZZLE LOCATION
 //
-// We don't currently have the actual animated gun muzzle
-// position available to server script.
+// Server script does not currently know the exact
+// animated gun-barrel position.
 //
-// This starts the tracer slightly:
+// Start slightly:
 // - forward
-// - down
-// - to the player's right
+// - downward
+// - toward the player's right
 //
-// so it appears much closer to the weapon barrel than
-// spawning directly from the player's eyes.
+// This gives us an approximate first-person muzzle
+// location for the diagnostic tracer.
 //
 // =====================================================
 
@@ -258,8 +247,7 @@ function getTracerEnd(shooter, direction, entityHitLocation) {
     return entityHitLocation;
   }
 
-  // No entity hit, but a block
-  // stopped the shot.
+  // No entity hit, but a block stopped the shot.
   const blockHitLocation = getBlockHitLocation(shooter);
 
   if (blockHitLocation) {
@@ -273,7 +261,25 @@ function getTracerEnd(shooter, direction, entityHitLocation) {
 }
 
 // =====================================================
-// TRACER
+// DIAGNOSTIC TRACER
+//
+// CHANGE #10D.2
+//
+// Instead of using the custom krep:m4a1_tracer
+// particle, draw several known-working vanilla flame
+// particles along the shot path.
+//
+// This is intentionally temporary.
+//
+// If these appear correctly, then we know:
+//
+// - tracer start is correct
+// - tracer end is correct
+// - shot path calculation is correct
+// - particle spawning works
+//
+// and the old custom particle definition was the issue.
+//
 // =====================================================
 
 function spawnTracer(shooter, endLocation) {
@@ -289,41 +295,37 @@ function spawnTracer(shooter, endLocation) {
     return;
   }
 
-  const travelDirection = normalize(delta);
-
-  // Normally this uses the configured tracer speed.
+  // Approximately one particle every 3 blocks.
   //
-  // Close shots are given a minimum lifetime so the
-  // tracer remains visible for at least a short moment.
+  // Minimum: 2
+  // Maximum: 10
   //
-  // Long shots are capped so the tracer never looks
-  // unusually slow.
-  const naturalLifetime = distance / TRACER_BASE_SPEED;
+  // The cap keeps automatic fire from producing
+  // excessive numbers of particles.
+  const particleCount = Math.min(10, Math.max(2, Math.ceil(distance / 3)));
 
-  const lifetime = Math.min(
-    TRACER_MAX_LIFETIME,
+  for (let i = 1; i <= particleCount; i++) {
+    const t = i / (particleCount + 1);
 
-    Math.max(TRACER_MIN_LIFETIME, naturalLifetime),
-  );
+    const location = {
+      x: startLocation.x + delta.x * t,
 
-  // Adjust speed so the particle reaches the actual
-  // endpoint exactly when its lifetime expires.
-  const speed = distance / lifetime;
+      y: startLocation.y + delta.y * t,
 
-  const variables = new MolangVariableMap();
+      z: startLocation.z + delta.z * t,
+    };
 
-  variables.setSpeedAndDirection(
-    "variable.tacz_tracer",
-    speed,
-    travelDirection,
-  );
-
-  variables.setFloat("variable.tacz_lifetime", lifetime);
-
-  try {
-    shooter.dimension.spawnParticle(TRACER_PARTICLE, startLocation, variables);
-  } catch (error) {
-    console.error("[TACZ M4A1 Hitscan] " + "Failed to spawn tracer:", error);
+    try {
+      shooter.dimension.spawnParticle(
+        "minecraft:basic_flame_particle",
+        location,
+      );
+    } catch (error) {
+      console.error(
+        "[TACZ M4A1 Hitscan] " + "Failed to spawn tracer particle:",
+        error,
+      );
+    }
   }
 }
 
@@ -331,6 +333,7 @@ function spawnTracer(shooter, endLocation) {
 // HIT FEEDBACK
 //
 // Change #10C.
+//
 // Keep exactly as tested.
 //
 // =====================================================
@@ -374,15 +377,20 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
     const hitLocation = hit ? getHitLocation(shooter, hit.distance) : undefined;
 
     // =================================================
-    // CHANGE #10D
+    // CHANGE #10D.2
     //
-    // Spawn tracer for EVERY shot:
+    // Draw diagnostic particles for every shot:
     //
-    // entity hit  -> tracer stops at entity
-    // block hit   -> tracer stops at block
-    // miss        -> tracer travels to max range
+    // Entity hit:
+    // muzzle -> entity
     //
-    // Damage remains immediate.
+    // Block hit:
+    // muzzle -> block
+    //
+    // Complete miss:
+    // muzzle -> max range
+    //
+    // Damage is still instantaneous.
     // =================================================
 
     const tracerEnd = getTracerEnd(shooter, direction, hitLocation);
@@ -405,7 +413,8 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
       weaponId: "m4a1",
     });
 
-    // Change #10C impact feedback.
+    // Change #10C:
+    // Existing impact confirmation.
     showHitFeedback(shooter.dimension, hitLocation);
   } catch (error) {
     console.error("[TACZ M4A1 Hitscan] Error:", error);
