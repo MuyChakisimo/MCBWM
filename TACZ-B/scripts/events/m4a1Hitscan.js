@@ -91,11 +91,11 @@ function getFirstTarget(shooter) {
 // M4A1 model.
 //
 // Turning this property on makes that glowing geometry
-// visible for one tick.
+// visible briefly.
 //
-// Entity property changes are applied on the next tick,
-// so setting 1 now and resetting on the following tick
-// produces a short visible flash.
+// We keep it enabled for 3 ticks so the client has enough
+// time to receive and render the client-synced property.
+// This is intentionally a little generous for this visual test.
 // =====================================================
 
 function flashTracer(shooter) {
@@ -113,7 +113,7 @@ function flashTracer(shooter) {
     } catch (error) {
       console.error("[TACZ M4A1 Hitscan] Failed to disable tracer:", error);
     }
-  }, 1);
+  }, 3);
 }
 
 // =====================================================
