@@ -1,14 +1,13 @@
-import { system, Player } from "@minecraft/server";
+import { system, Player, MolangVariableMap } from "@minecraft/server";
 
 import { processGunHit } from "./projectileHitEntity.js";
 
 // =====================================================
 // M4A1 HITSCAN
 //
-// CHANGE #10D.3
+// CHANGE #10E
 //
-// Diagnostic flame tracer with separate ADS / hip-fire
-// visual origin alignment.
+// Proper visual tracer segments.
 //
 // Preserved:
 // - Instant hitscan damage
@@ -16,21 +15,28 @@ import { processGunHit } from "./projectileHitEntity.js";
 // - Existing hit flame
 // - Existing recoil
 // - Existing ammo / reload / sounds
+// - ADS / hip-fire muzzle alignment
 //
-// Added:
-// - ADS / hip-fire tracer origin distinction
+// Changed:
+// - Temporary vanilla flame tracer path
+//   replaced with custom elongated tracer segments
 //
 // Still NOT included:
 // - Hip-fire spread
 // - ADS spread
 // - Glass penetration
-// - Final bullet-line tracer appearance
 //
 // =====================================================
 
 const M4A1_HITSCAN_EVENT = "tacz:m4a1_hitscan";
 
 const M4A1_MAX_DISTANCE = 128;
+
+const M4A1_TRACER_PARTICLE = "krep:m4a1_tracer";
+
+const M4A1_TRACER_MAX_SEGMENTS = 10;
+
+const M4A1_TRACER_SEGMENT_SPACING = 3;
 
 // =====================================================
 // VECTOR HELPERS
@@ -143,8 +149,8 @@ function getFirstTarget(shooter) {
       continue;
     }
 
-    // Ignore projectiles from guns
-    // that still use the old projectile system.
+    // Ignore projectiles from weapons that still use
+    // the old entity-projectile system.
     if (entity.typeId?.startsWith("bullet:")) {
       continue;
     }
@@ -164,8 +170,8 @@ function getFirstTarget(shooter) {
 // =====================================================
 // BLOCK HIT LOCATION
 //
-// Used only to determine where the tracer should stop
-// when no entity is hit.
+// Used only to determine where the cosmetic tracer
+// should stop when no entity is hit.
 //
 // Actual damage block collision is still handled by
 // getEntitiesFromViewDirection().
@@ -201,16 +207,14 @@ function getBlockHitLocation(shooter) {
 // =====================================================
 // APPROXIMATE MUZZLE LOCATION
 //
-// ADS is already visually aligned correctly.
+// ADS alignment was confirmed visually.
 //
-// Hip fire uses a mirrored horizontal offset because
-// the first-person barrel appears on the opposite side
-// from the previous tracer origin.
+// Hip-fire uses the mirrored horizontal offset that was
+// confirmed to line up much better with the barrel.
 //
 // This affects ONLY the cosmetic tracer.
 //
-// Actual hitscan still fires from the player's
-// view direction.
+// Actual hitscan direction remains the player's view ray.
 //
 // =====================================================
 
@@ -235,11 +239,6 @@ function getTracerStart(shooter, direction, mode) {
     right = normalize(right);
   }
 
-  // ADS:
-  // Keep the alignment that already looked correct.
-  //
-  // HIP:
-  // Mirror the horizontal offset.
   const sideOffset = mode === "hip" ? -0.16 : 0.16;
 
   return {
@@ -276,23 +275,33 @@ function getTracerEnd(shooter, direction, entityHitLocation) {
 }
 
 // =====================================================
-// DIAGNOSTIC TRACER
+// VISUAL TRACER
 //
-// Uses vanilla flame particles because these have
-// already been confirmed to render correctly.
+// CHANGE #10E
 //
-// This is still temporary.
+// The proven tracer path is preserved.
 //
-// Once ADS and hip-fire alignment are confirmed,
-// these flame particles can be replaced with the
-// proper bullet-line tracer.
+// Instead of vanilla flame dots, each point now spawns
+// one elongated custom particle aligned with the shot.
+//
+// The particle receives:
+// - shot direction
+// - segment length
+//
+// The Resource Pack particle uses a tiny velocity only
+// to give Bedrock a direction for billboard alignment.
+//
+// It does NOT visually travel downrange.
+//
+// Particle count stays capped at 10, matching the prior
+// diagnostic tracer cap.
 //
 // =====================================================
 
 function spawnTracer(shooter, endLocation, mode) {
-  const direction = normalize(shooter.getViewDirection());
+  const viewDirection = normalize(shooter.getViewDirection());
 
-  const startLocation = getTracerStart(shooter, direction, mode);
+  const startLocation = getTracerStart(shooter, viewDirection, mode);
 
   const delta = subtract(endLocation, startLocation);
 
@@ -302,20 +311,35 @@ function spawnTracer(shooter, endLocation, mode) {
     return;
   }
 
-  // Approximately one particle every 3 blocks.
-  //
-  // Minimum:
-  // 2 particles
-  //
-  // Maximum:
-  // 10 particles
-  //
-  // This cap prevents automatic fire from producing
-  // excessive particle counts.
-  const particleCount = Math.min(10, Math.max(2, Math.ceil(distance / 3)));
+  const tracerDirection = normalize(delta);
 
-  for (let i = 1; i <= particleCount; i++) {
-    const t = i / (particleCount + 1);
+  const segmentCount = Math.min(
+    M4A1_TRACER_MAX_SEGMENTS,
+
+    Math.max(
+      2,
+
+      Math.ceil(distance / M4A1_TRACER_SEGMENT_SPACING),
+    ),
+  );
+
+  const distancePerSegment = distance / segmentCount;
+
+  // Make each streak occupy most of its portion
+  // of the ray while leaving a slight visual break.
+  //
+  // The maximum prevents long-distance misses from
+  // creating enormous individual billboards.
+  const segmentLength = Math.min(
+    3.0,
+
+    Math.max(0.45, distancePerSegment * 0.72),
+  );
+
+  for (let i = 0; i < segmentCount; i++) {
+    // Center each tracer segment inside
+    // its section of the ray.
+    const t = (i + 0.5) / segmentCount;
 
     const location = {
       x: startLocation.x + delta.x * t,
@@ -325,14 +349,21 @@ function spawnTracer(shooter, endLocation, mode) {
       z: startLocation.z + delta.z * t,
     };
 
+    const variables = new MolangVariableMap();
+
+    variables.setVector3("variable.tacz_direction", tracerDirection);
+
+    variables.setFloat("variable.tacz_segment_length", segmentLength);
+
     try {
       shooter.dimension.spawnParticle(
-        "minecraft:basic_flame_particle",
+        M4A1_TRACER_PARTICLE,
         location,
+        variables,
       );
     } catch (error) {
       console.error(
-        "[TACZ M4A1 Hitscan] " + "Failed to spawn tracer particle:",
+        "[TACZ M4A1 Hitscan] " + "Failed to spawn tracer segment:",
         error,
       );
     }
@@ -344,7 +375,7 @@ function spawnTracer(shooter, endLocation, mode) {
 //
 // Change #10C.
 //
-// Existing successful hit confirmation.
+// Existing successful hit confirmation stays unchanged.
 //
 // =====================================================
 
@@ -379,7 +410,7 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
     return;
   }
 
-  // plalyer.json sends:
+  // plalyer.json sends either:
   //
   // tacz:m4a1_hitscan ads
   //
@@ -395,23 +426,7 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
 
     const hitLocation = hit ? getHitLocation(shooter, hit.distance) : undefined;
 
-    // =================================================
-    // TRACER
-    //
-    // Entity hit:
-    // muzzle -> entity
-    //
-    // Block hit:
-    // muzzle -> block
-    //
-    // Complete miss:
-    // muzzle -> maximum range
-    //
-    // This is cosmetic only.
-    //
-    // Damage remains instantaneous.
-    // =================================================
-
+    // Cosmetic tracer endpoint.
     const tracerEnd = getTracerEnd(shooter, direction, hitLocation);
 
     spawnTracer(shooter, tracerEnd, mode);
