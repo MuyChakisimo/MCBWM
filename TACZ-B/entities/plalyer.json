@@ -122,6 +122,12 @@
           "type": "int",
           "client_sync": true
         },
+        "krep:m4a1tracer": {
+          "range": [0, 1],
+          "default": 0,
+          "type": "int",
+          "client_sync": true
+        },
         "krep:m4a1scope": {
           "values": ["nothing", "elcan", "acog", "coyote", "t2", "holo"],
           "default": "nothing",

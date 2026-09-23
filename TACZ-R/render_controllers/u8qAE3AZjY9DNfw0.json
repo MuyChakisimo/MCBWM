@@ -11,6 +11,9 @@
           "laserbeam_1": "material.glow"
         },
         {
+          "m4a1_tracer": "material.glow"
+        },
+        {
           "t2_reticle": "material.glow"
         },
         {
@@ -35,6 +38,9 @@
         },
         {
           "laserbeam_1": "q.property('krep:laser') == 1"
+        },
+        {
+          "m4a1_tracer": "q.property('krep:m4a1tracer') == 1"
         },
         {
           "stock_1": "q.property('krep:stock') == 1"
@@ -184,9 +190,7 @@
           "552_reticle": "q.property('krep:m4a1scope')=='holo'"
         }
       ],
-      "textures": [
-        "texture.m4a1"
-      ],
+      "textures": ["texture.m4a1"],
       "is_hurt_color": {
         "r": 0.0,
         "g": 0.0,
