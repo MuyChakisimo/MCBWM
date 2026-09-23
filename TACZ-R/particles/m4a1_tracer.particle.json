@@ -38,7 +38,7 @@
       },
 
       "minecraft:particle_appearance_billboard": {
-        "size": [0.025, "variable.tacz_length"],
+        "size": [0.09, "variable.tacz_length"],
 
         "facing_camera_mode": "direction_y",
 

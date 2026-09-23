@@ -47,17 +47,16 @@ const M4A1_MAX_DISTANCE = 128;
 // entity / block / maximum-range endpoint.
 // =====================================================
 
-// Visual travel speed in blocks per second.
-//
-// This is intentionally extremely fast.
-// It should look like a rifle tracer, not a projectile.
-const M4A1_TRACER_SPEED = 600;
+// Fast enough to look like a bullet tracer,
+// but slow enough that Bedrock can actually render it.
+const M4A1_TRACER_SPEED = 180;
 
-// Length of the visible streak itself.
-//
-// This is NOT the total shot distance.
-// It is the length of the tiny moving tracer.
-const M4A1_TRACER_LENGTH = 0.9;
+// Visible streak length.
+const M4A1_TRACER_LENGTH = 1.15;
+
+// Never allow the tracer to disappear before
+// the client has a chance to render it.
+const M4A1_TRACER_MIN_LIFETIME = 0.08;
 
 // =====================================================
 // VECTOR HELPERS
@@ -354,7 +353,10 @@ function spawnTracer(shooter, endLocation, mode) {
   // so the cosmetic tracer expires approximately when
   // it reaches the endpoint instead of continuing
   // through a wall or target.
-  const tracerLifetime = distance / M4A1_TRACER_SPEED;
+  const tracerLifetime = Math.max(
+    M4A1_TRACER_MIN_LIFETIME,
+    distance / M4A1_TRACER_SPEED,
+  );
 
   const variables = new MolangVariableMap();
 
