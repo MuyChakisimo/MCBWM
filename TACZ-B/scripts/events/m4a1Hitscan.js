@@ -5,26 +5,26 @@ import { processGunHit } from "./projectileHitEntity.js";
 // =====================================================
 // M4A1 HITSCAN
 //
-// CHANGE #10D.2
+// CHANGE #10D.3
 //
-// Diagnostic tracer test.
-//
-// Added:
-// - Vanilla flame particles drawn along the shot path
+// Diagnostic flame tracer with separate ADS / hip-fire
+// visual origin alignment.
 //
 // Preserved:
 // - Instant hitscan damage
-// - Block collision
-// - Existing impact flame
+// - Solid block collision
+// - Existing hit flame
 // - Existing recoil
 // - Existing ammo / reload / sounds
+//
+// Added:
+// - ADS / hip-fire tracer origin distinction
 //
 // Still NOT included:
 // - Hip-fire spread
 // - ADS spread
 // - Glass penetration
-//
-// Custom tracer particle is NOT used in this test.
+// - Final bullet-line tracer appearance
 //
 // =====================================================
 
@@ -87,7 +87,9 @@ function normalize(vector) {
 function cross(a, b) {
   return {
     x: a.y * b.z - a.z * b.y,
+
     y: a.z * b.x - a.x * b.z,
+
     z: a.x * b.y - a.y * b.x,
   };
 }
@@ -103,7 +105,9 @@ function getHitLocation(shooter, distance) {
 
   return {
     x: origin.x + direction.x * distance,
+
     y: origin.y + direction.y * distance,
+
     z: origin.z + direction.z * distance,
   };
 }
@@ -145,7 +149,8 @@ function getFirstTarget(shooter) {
       continue;
     }
 
-    // processGunHit requires a health component.
+    // processGunHit requires
+    // an entity with health.
     if (!entity.getComponent("minecraft:health")) {
       continue;
     }
@@ -159,10 +164,10 @@ function getFirstTarget(shooter) {
 // =====================================================
 // BLOCK HIT LOCATION
 //
-// Used only to determine where the diagnostic tracer
-// should stop when no entity is hit.
+// Used only to determine where the tracer should stop
+// when no entity is hit.
 //
-// Actual hitscan block collision is still handled by
+// Actual damage block collision is still handled by
 // getEntitiesFromViewDirection().
 //
 // =====================================================
@@ -186,7 +191,9 @@ function getBlockHitLocation(shooter) {
 
   return {
     x: blockLocation.x + faceLocation.x,
+
     y: blockLocation.y + faceLocation.y,
+
     z: blockLocation.z + faceLocation.z,
   };
 }
@@ -194,16 +201,16 @@ function getBlockHitLocation(shooter) {
 // =====================================================
 // APPROXIMATE MUZZLE LOCATION
 //
-// Server script does not currently know the exact
-// animated gun-barrel position.
+// ADS is already visually aligned correctly.
 //
-// Start slightly:
-// - forward
-// - downward
-// - toward the player's right
+// Hip fire uses a mirrored horizontal offset because
+// the first-person barrel appears on the opposite side
+// from the previous tracer origin.
 //
-// This gives us an approximate first-person muzzle
-// location for the diagnostic tracer.
+// This affects ONLY the cosmetic tracer.
+//
+// Actual hitscan still fires from the player's
+// view direction.
 //
 // =====================================================
 
@@ -228,11 +235,11 @@ function getTracerStart(shooter, direction, mode) {
     right = normalize(right);
   }
 
-  // ADS is already visually aligned correctly.
+  // ADS:
+  // Keep the alignment that already looked correct.
   //
-  // Hip fire uses the mirrored horizontal offset because
-  // the first-person M4A1 barrel sits on the opposite
-  // side of the screen.
+  // HIP:
+  // Mirror the horizontal offset.
   const sideOffset = mode === "hip" ? -0.16 : 0.16;
 
   return {
@@ -254,7 +261,8 @@ function getTracerEnd(shooter, direction, entityHitLocation) {
     return entityHitLocation;
   }
 
-  // No entity hit, but a block stopped the shot.
+  // No entity hit, but a block
+  // stopped the shot.
   const blockHitLocation = getBlockHitLocation(shooter);
 
   if (blockHitLocation) {
@@ -270,22 +278,14 @@ function getTracerEnd(shooter, direction, entityHitLocation) {
 // =====================================================
 // DIAGNOSTIC TRACER
 //
-// CHANGE #10D.2
+// Uses vanilla flame particles because these have
+// already been confirmed to render correctly.
 //
-// Instead of using the custom krep:m4a1_tracer
-// particle, draw several known-working vanilla flame
-// particles along the shot path.
+// This is still temporary.
 //
-// This is intentionally temporary.
-//
-// If these appear correctly, then we know:
-//
-// - tracer start is correct
-// - tracer end is correct
-// - shot path calculation is correct
-// - particle spawning works
-//
-// and the old custom particle definition was the issue.
+// Once ADS and hip-fire alignment are confirmed,
+// these flame particles can be replaced with the
+// proper bullet-line tracer.
 //
 // =====================================================
 
@@ -298,19 +298,20 @@ function spawnTracer(shooter, endLocation, mode) {
 
   const distance = vectorLength(delta);
 
-  const mode = event.message.trim().toLowerCase();
-
   if (distance <= 0.05) {
     return;
   }
 
   // Approximately one particle every 3 blocks.
   //
-  // Minimum: 2
-  // Maximum: 10
+  // Minimum:
+  // 2 particles
   //
-  // The cap keeps automatic fire from producing
-  // excessive numbers of particles.
+  // Maximum:
+  // 10 particles
+  //
+  // This cap prevents automatic fire from producing
+  // excessive particle counts.
   const particleCount = Math.min(10, Math.max(2, Math.ceil(distance / 3)));
 
   for (let i = 1; i <= particleCount; i++) {
@@ -343,7 +344,7 @@ function spawnTracer(shooter, endLocation, mode) {
 //
 // Change #10C.
 //
-// Keep exactly as tested.
+// Existing successful hit confirmation.
 //
 // =====================================================
 
@@ -378,6 +379,15 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
     return;
   }
 
+  // plalyer.json sends:
+  //
+  // tacz:m4a1_hitscan ads
+  //
+  // or:
+  //
+  // tacz:m4a1_hitscan hip
+  const mode = (event.message ?? "").trim().toLowerCase();
+
   try {
     const direction = normalize(shooter.getViewDirection());
 
@@ -386,9 +396,7 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
     const hitLocation = hit ? getHitLocation(shooter, hit.distance) : undefined;
 
     // =================================================
-    // CHANGE #10D.2
-    //
-    // Draw diagnostic particles for every shot:
+    // TRACER
     //
     // Entity hit:
     // muzzle -> entity
@@ -397,9 +405,11 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
     // muzzle -> block
     //
     // Complete miss:
-    // muzzle -> max range
+    // muzzle -> maximum range
     //
-    // Damage is still instantaneous.
+    // This is cosmetic only.
+    //
+    // Damage remains instantaneous.
     // =================================================
 
     const tracerEnd = getTracerEnd(shooter, direction, hitLocation);
@@ -422,8 +432,8 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
       weaponId: "m4a1",
     });
 
-    // Change #10C:
-    // Existing impact confirmation.
+    // Existing Change #10C
+    // impact confirmation.
     showHitFeedback(shooter.dimension, hitLocation);
   } catch (error) {
     console.error("[TACZ M4A1 Hitscan] Error:", error);
