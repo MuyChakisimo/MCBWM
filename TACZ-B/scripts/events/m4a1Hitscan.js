@@ -2,21 +2,18 @@ import { system, Player } from "@minecraft/server";
 import { processGunHit } from "./projectileHitEntity.js";
 
 // =====================================================
-// M4A1 HITSCAN TEST
+// M4A1 HITSCAN
 //
-// CHANGE #10B
+// CHANGE #10C
 //
-// PURPOSE:
+// Added:
+// - Visible hit confirmation particle
 //
-// Continue the basic M4A1 hitscan test from Change #10A,
-// but now solid blocks stop the shot.
-//
-// This version intentionally still has:
-//
-// - No tracer
-// - No spread
-// - No glass breaking
-// - No penetration through blocks
+// Still intentionally NOT included:
+// - Tracer
+// - Hip-fire spread
+// - ADS spread
+// - Glass penetration
 //
 // =====================================================
 
@@ -50,9 +47,8 @@ function getFirstTarget(shooter) {
   const hits = shooter.getEntitiesFromViewDirection({
     maxDistance: M4A1_MAX_DISTANCE,
 
-    // CHANGE #10B:
-    //
-    // Solid blocks now stop the raycast.
+    // Change #10B:
+    // Solid blocks stop the shot.
     ignoreBlockCollision: false,
   });
 
@@ -60,7 +56,6 @@ function getFirstTarget(shooter) {
     return undefined;
   }
 
-  // Do not assume Bedrock returns the array sorted.
   hits.sort((a, b) => a.distance - b.distance);
 
   for (const hit of hits) {
@@ -70,19 +65,14 @@ function getFirstTarget(shooter) {
       continue;
     }
 
-    // Never hit the shooter.
     if (entity.id === shooter.id) {
       continue;
     }
 
-    // Ignore TACZ projectile entities
-    // from weapons that still use projectiles.
     if (entity.typeId && entity.typeId.startsWith("bullet:")) {
       continue;
     }
 
-    // processGunHit requires an entity
-    // with a health component.
     const health = entity.getComponent("minecraft:health");
 
     if (!health) {
@@ -93,6 +83,21 @@ function getFirstTarget(shooter) {
   }
 
   return undefined;
+}
+
+// =====================================================
+// HIT FEEDBACK
+// =====================================================
+
+function showHitFeedback(dimension, hitLocation) {
+  try {
+    dimension.spawnParticle("minecraft:basic_flame_particle", hitLocation);
+  } catch (error) {
+    console.error(
+      "[TACZ M4A1 Hitscan] " + "Failed to spawn hit particle:",
+      error,
+    );
+  }
 }
 
 // =====================================================
@@ -118,14 +123,13 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
   try {
     const hit = getFirstTarget(shooter);
 
-    // Crosshair did not intersect
-    // a valid entity.
     if (!hit) {
       return;
     }
 
     const hitLocation = getHitLocation(shooter, hit.distance);
 
+    // Existing TACZ damage system.
     processGunHit({
       source: shooter,
 
@@ -135,6 +139,10 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
 
       weaponId: "m4a1",
     });
+
+    // Change #10C:
+    // Visual confirmation only.
+    showHitFeedback(shooter.dimension, hitLocation);
   } catch (error) {
     console.error("[TACZ M4A1 Hitscan] Error:", error);
   }
