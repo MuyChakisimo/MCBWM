@@ -35,28 +35,13 @@ const M4A1_HITSCAN_EVENT = "tacz:m4a1_hitscan";
 
 const M4A1_MAX_DISTANCE = 128;
 
-// =====================================================
-// VISUAL TRACER SETTINGS
+// Distance between visual tracer particles.
 //
-// Damage is still instantaneous hitscan.
-//
-// This only controls the cosmetic bullet streak.
-//
-// One particle is created per shot and travels rapidly
-// from the visual muzzle position toward the actual
-// entity / block / maximum-range endpoint.
-// =====================================================
+// Smaller number = denser tracer.
+const M4A1_TRACER_SPACING = 0.65;
 
-// Fast enough to look like a bullet tracer,
-// but slow enough that Bedrock can actually render it.
-const M4A1_TRACER_SPEED = 180;
-
-// Visible streak length.
-const M4A1_TRACER_LENGTH = 1.15;
-
-// Never allow the tracer to disappear before
-// the client has a chance to render it.
-const M4A1_TRACER_MIN_LIFETIME = 0.08;
+// Hard cap to protect automatic-fire performance.
+const M4A1_TRACER_MAX_PARTICLES = 24;
 
 // =====================================================
 // VECTOR HELPERS
@@ -326,16 +311,10 @@ function getTracerEnd(shooter, direction, entityHitLocation) {
 // =====================================================
 
 function spawnTracer(shooter, endLocation, mode) {
-  const viewDirection = normalize(shooter.getViewDirection());
+  const direction = normalize(shooter.getViewDirection());
 
-  const startLocation = getTracerStart(shooter, viewDirection, mode);
+  const startLocation = getTracerStart(shooter, direction, mode);
 
-  // Travel from the VISUAL muzzle position directly
-  // toward the actual hit / block / miss endpoint.
-  //
-  // This is slightly different from simply using the
-  // player's view direction because the visual muzzle
-  // is intentionally offset for ADS / hip fire.
   const delta = subtract(endLocation, startLocation);
 
   const distance = vectorLength(delta);
@@ -344,38 +323,48 @@ function spawnTracer(shooter, endLocation, mode) {
     return;
   }
 
-  const tracerDirection = normalize(delta);
+  const particleCount = Math.min(
+    M4A1_TRACER_MAX_PARTICLES,
 
-  // Particle lifetime is calculated from:
-  //
-  // distance / visual speed
-  //
-  // so the cosmetic tracer expires approximately when
-  // it reaches the endpoint instead of continuing
-  // through a wall or target.
-  const tracerLifetime = Math.max(
-    M4A1_TRACER_MIN_LIFETIME,
-    distance / M4A1_TRACER_SPEED,
+    Math.max(
+      2,
+
+      Math.ceil(distance / M4A1_TRACER_SPACING),
+    ),
   );
 
   const variables = new MolangVariableMap();
 
-  variables.setVector3("variable.tacz_direction", tracerDirection);
+  // Bright yellow / gold tracer.
+  variables.setColorRGB("variable.color", {
+    red: 1.0,
+    green: 0.72,
+    blue: 0.08,
+  });
 
-  variables.setFloat("variable.tacz_speed", M4A1_TRACER_SPEED);
+  for (let i = 1; i <= particleCount; i++) {
+    const t = i / (particleCount + 1);
 
-  variables.setFloat("variable.tacz_lifetime", tracerLifetime);
+    const location = {
+      x: startLocation.x + delta.x * t,
 
-  variables.setFloat("variable.tacz_length", M4A1_TRACER_LENGTH);
+      y: startLocation.y + delta.y * t,
 
-  try {
-    shooter.dimension.spawnParticle(
-      "krep:m4a1_tracer",
-      startLocation,
-      variables,
-    );
-  } catch (error) {
-    console.error("[TACZ M4A1 Hitscan] Failed to spawn tracer:", error);
+      z: startLocation.z + delta.z * t,
+    };
+
+    try {
+      shooter.dimension.spawnParticle(
+        "minecraft:colored_flame_particle",
+        location,
+        variables,
+      );
+    } catch (error) {
+      console.error(
+        "[TACZ M4A1 Hitscan] " + "Failed to spawn yellow tracer:",
+        error,
+      );
+    }
   }
 }
 

@@ -2007,13 +2007,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:m16a1_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.m16a1.shoot shoot",
-                "camerashake add @s[r=0.5] 0.015 0.27 rotational"
+                "camerashake add @s[r=0.5] 0.015 0.27 rotational",
+                "scriptevent tacz:assault_rifle_hitscan m16a1 ads"
               ]
             }
           },
@@ -2023,13 +2021,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:m16a1_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.m16a1.shoot shoot",
-                "camerashake add @s[r=0.5] 0.022 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.022 0.28 rotational",
+                "scriptevent tacz:assault_rifle_hitscan m16a1 hip"
               ]
             }
           }
@@ -2151,13 +2147,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:qbz95_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.qbz95.shoot.sight shoot",
-                "camerashake add @s[r=0.5] 0.015 0.27 rotational"
+                "camerashake add @s[r=0.5] 0.015 0.27 rotational",
+                "scriptevent tacz:assault_rifle_hitscan qbz95 ads"
               ]
             }
           },
@@ -2167,13 +2161,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:qbz95_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.qbz95.shoot.nsight shoot",
-                "camerashake add @s[r=0.5] 0.022 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.022 0.28 rotational",
+                "scriptevent tacz:assault_rifle_hitscan qbz95 hip"
               ]
             }
           }
@@ -2187,13 +2179,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:qbz191_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.qbz191.shoot.sight shoot",
-                "camerashake add @s[r=0.5] 0.015 0.27 rotational"
+                "camerashake add @s[r=0.5] 0.015 0.27 rotational",
+                "scriptevent tacz:assault_rifle_hitscan qbz191 ads"
               ]
             }
           },
@@ -2203,13 +2193,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:qbz191_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.qbz191.shoot.nsight shoot",
-                "camerashake add @s[r=0.5] 0.022 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.022 0.28 rotational",
+                "scriptevent tacz:assault_rifle_hitscan qbz191 hip"
               ]
             }
           }
@@ -2331,13 +2319,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:m16_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.m16.shoot shoot",
-                "camerashake add @s[r=0.5] 0.015 0.27 rotational"
+                "camerashake add @s[r=0.5] 0.015 0.27 rotational",
+                "scriptevent tacz:assault_rifle_hitscan m16 ads"
               ]
             }
           },
@@ -2347,13 +2333,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:m16_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.m16.shoot shoot",
-                "camerashake add @s[r=0.5] 0.022 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.022 0.28 rotational",
+                "scriptevent tacz:assault_rifle_hitscan m16 hip"
               ]
             }
           }
@@ -2367,13 +2351,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:g36_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.g36.shoot.sight shoot",
-                "camerashake add @s[r=0.5] 0.02 0.27 rotational"
+                "camerashake add @s[r=0.5] 0.02 0.27 rotational",
+                "scriptevent tacz:assault_rifle_hitscan g36 ads"
               ]
             }
           },
@@ -2383,13 +2365,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:g36_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.g36.shoot.nsight shoot",
-                "camerashake add @s[r=0.5] 0.025 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.025 0.28 rotational",
+                "scriptevent tacz:assault_rifle_hitscan g36 hip"
               ]
             }
           }
@@ -20383,13 +20363,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:hk416_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.hk416.shoot.sight shoot",
-                "scriptevent recoil:ads"
+                "scriptevent recoil:ads",
+                "scriptevent tacz:assault_rifle_hitscan hk416 ads"
               ]
             }
           },
@@ -20399,13 +20377,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:hk416_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.hk416.shoot.nsight shoot",
-                "scriptevent recoil:ads"
+                "scriptevent recoil:ads",
+                "scriptevent tacz:assault_rifle_hitscan hk416 hip"
               ]
             }
           }
@@ -20455,13 +20431,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:scarh_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.scarh.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.28 rotational",
+                "scriptevent tacz:assault_rifle_hitscan scarh ads"
               ]
             }
           },
@@ -20471,13 +20445,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:scarh_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.scarh.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.3 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.3 rotational",
+                "scriptevent tacz:assault_rifle_hitscan scarh hip"
               ]
             }
           }
@@ -20491,13 +20463,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:akm_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.akm.shoot.sight shoot",
-                "scriptevent recoil:ads"
+                "scriptevent recoil:ads",
+                "scriptevent tacz:assault_rifle_hitscan akm ads"
               ]
             }
           },
@@ -20507,13 +20477,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:akm_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.akm.shoot.nsight shoot",
-                "scriptevent recoil:hip"
+                "scriptevent recoil:hip",
+                "scriptevent tacz:assault_rifle_hitscan akm hip"
               ]
             }
           }
@@ -23223,7 +23191,7 @@
               "command": [
                 "playanimation @s[r=0.5] animation.m4a1.shoot.sight shoot",
                 "scriptevent recoil:ads",
-                "scriptevent tacz:m4a1_hitscan ads"
+                "scriptevent tacz:assault_rifle_hitscan m4a1 ads"
               ]
             }
           },
@@ -23237,7 +23205,7 @@
               "command": [
                 "playanimation @s[r=0.5] animation.m4a1.shoot.nsight shoot",
                 "scriptevent recoil:hip",
-                "scriptevent tacz:m4a1_hitscan hip"
+                "scriptevent tacz:assault_rifle_hitscan m4a1 hip"
               ]
             }
           }
@@ -23251,13 +23219,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:scarl_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.scarl.shoot shoot",
-                "camerashake add @s[r=0.5] 0.023 0.2 rotational"
+                "camerashake add @s[r=0.5] 0.023 0.2 rotational",
+                "scriptevent tacz:assault_rifle_hitscan scarl ads"
               ]
             }
           },
@@ -23267,13 +23233,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:scarl_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.scarl.shoot shoot",
-                "camerashake add @s[r=0.5] 0.027 0.25 rotational"
+                "camerashake add @s[r=0.5] 0.027 0.25 rotational",
+                "scriptevent tacz:assault_rifle_hitscan scarl hip"
               ]
             }
           }
@@ -23287,13 +23251,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:g3_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.g3.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.28 rotational",
+                "scriptevent tacz:assault_rifle_hitscan g3 ads"
               ]
             }
           },
@@ -23303,13 +23265,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:g3_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.g3.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.3 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.3 rotational",
+                "scriptevent tacz:assault_rifle_hitscan g3 hip"
               ]
             }
           }
@@ -23323,13 +23283,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:fal_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.fal.shoot.sight shoot",
-                "scriptevent recoil:ads"
+                "scriptevent recoil:ads",
+                "scriptevent tacz:assault_rifle_hitscan fal ads"
               ]
             }
           },
@@ -23339,13 +23297,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:fal_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.fal.shoot.nsight shoot",
-                "scriptevent recoil:hip"
+                "scriptevent recoil:hip",
+                "scriptevent tacz:assault_rifle_hitscan fal hip"
               ]
             }
           }
@@ -34376,13 +34332,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:type81_fires"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.type81.shoot.sight shoot",
-                "camerashake add @s[r=0.5] 0.047 0.17 rotational"
+                "camerashake add @s[r=0.5] 0.047 0.17 rotational",
+                "scriptevent tacz:assault_rifle_hitscan type81 ads"
               ]
             }
           },
@@ -34392,13 +34346,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": ["krep:type81_firest"]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.type81.shoot.nsight shoot",
-                "camerashake add @s[r=0.5] 0.06 0.2 rotational"
+                "camerashake add @s[r=0.5] 0.06 0.2 rotational",
+                "scriptevent tacz:assault_rifle_hitscan type81 hip"
               ]
             }
           }
