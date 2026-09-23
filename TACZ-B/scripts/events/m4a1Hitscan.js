@@ -207,7 +207,7 @@ function getBlockHitLocation(shooter) {
 //
 // =====================================================
 
-function getTracerStart(shooter, direction) {
+function getTracerStart(shooter, direction, mode) {
   const head = shooter.getHeadLocation();
 
   const up = {
@@ -228,12 +228,19 @@ function getTracerStart(shooter, direction) {
     right = normalize(right);
   }
 
+  // ADS is already visually aligned correctly.
+  //
+  // Hip fire uses the mirrored horizontal offset because
+  // the first-person M4A1 barrel sits on the opposite
+  // side of the screen.
+  const sideOffset = mode === "hip" ? -0.16 : 0.16;
+
   return {
-    x: head.x + direction.x * 0.55 + right.x * 0.16,
+    x: head.x + direction.x * 0.55 + right.x * sideOffset,
 
     y: head.y + direction.y * 0.55 - 0.12,
 
-    z: head.z + direction.z * 0.55 + right.z * 0.16,
+    z: head.z + direction.z * 0.55 + right.z * sideOffset,
   };
 }
 
@@ -282,14 +289,16 @@ function getTracerEnd(shooter, direction, entityHitLocation) {
 //
 // =====================================================
 
-function spawnTracer(shooter, endLocation) {
+function spawnTracer(shooter, endLocation, mode) {
   const direction = normalize(shooter.getViewDirection());
 
-  const startLocation = getTracerStart(shooter, direction);
+  const startLocation = getTracerStart(shooter, direction, mode);
 
   const delta = subtract(endLocation, startLocation);
 
   const distance = vectorLength(delta);
+
+  const mode = event.message.trim().toLowerCase();
 
   if (distance <= 0.05) {
     return;
@@ -395,7 +404,7 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
 
     const tracerEnd = getTracerEnd(shooter, direction, hitLocation);
 
-    spawnTracer(shooter, tracerEnd);
+    spawnTracer(shooter, tracerEnd, mode);
 
     // No entity was hit.
     if (!hit || !hitLocation) {

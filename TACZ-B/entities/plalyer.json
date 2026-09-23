@@ -23217,7 +23217,7 @@
               "command": [
                 "playanimation @s[r=0.5] animation.m4a1.shoot.sight shoot",
                 "scriptevent recoil:ads",
-                "scriptevent tacz:m4a1_hitscan fire"
+                "scriptevent tacz:m4a1_hitscan ads"
               ]
             }
           },
@@ -23231,7 +23231,7 @@
               "command": [
                 "playanimation @s[r=0.5] animation.m4a1.shoot.nsight shoot",
                 "scriptevent recoil:hip",
-                "scriptevent tacz:m4a1_hitscan fire"
+                "scriptevent tacz:m4a1_hitscan hip"
               ]
             }
           }
