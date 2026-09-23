@@ -54,7 +54,23 @@
         "evolys": "textures/gun/evolys",
         "m249": "textures/gun/m249",
         "type81": "textures/gun/type81",
-        "m107": "textures/gun/m107"
+        "m107": "textures/gun/m107",
+        "aug": "textures/java_import/guns/aug",
+        "cz75": "textures/java_import/guns/cz75",
+        "mk23": "textures/java_import/guns/mk23",
+        "kar98": "textures/java_import/guns/kar98",
+        "lonetrail": "textures/java_import/guns/lonetrail",
+        "m320": "textures/java_import/guns/m320",
+        "m700": "textures/java_import/guns/m700",
+        "m95": "textures/java_import/guns/m95",
+        "m9a4": "textures/java_import/guns/m9a4",
+        "rhino357": "textures/java_import/guns/rhino357",
+        "rpk": "textures/java_import/guns/rpk",
+        "spas12": "textures/java_import/guns/spas12",
+        "spr15hb": "textures/java_import/guns/spr15hb",
+        "springfield1873": "textures/java_import/guns/springfield1873",
+        "taurus500": "textures/java_import/guns/taurus500",
+        "taurus943": "textures/java_import/guns/taurus943"
       },
       "geometry": {
         "default": "geometry.humanoid.custom",
@@ -135,7 +151,23 @@
         "evolys": "geometry.evolys",
         "m249": "geometry.m249",
         "type81": "geometry.type81",
-        "m107": "geometry.m107"
+        "m107": "geometry.m107",
+        "aug": "geometry.aug",
+        "cz75": "geometry.cz75",
+        "mk23": "geometry.mk23",
+        "kar98": "geometry.kar98",
+        "lonetrail": "geometry.lonetrail",
+        "m320": "geometry.m320",
+        "m700": "geometry.m700",
+        "m95": "geometry.m95",
+        "m9a4": "geometry.m9a4",
+        "rhino357": "geometry.rhino357",
+        "rpk": "geometry.rpk",
+        "spas12": "geometry.spas12",
+        "spr15hb": "geometry.spr15hb",
+        "springfield1873": "geometry.springfield1873",
+        "taurus500": "geometry.taurus500",
+        "taurus943": "geometry.taurus943"
       },
       "scripts": {
         "scale": "0.9375",
@@ -214,7 +246,7 @@
           "v.tp_melee_spear_attack_arm_rotation_x = t.melee_spear_attack_raise_scale * 90.0 + t.melee_spear_attack_thrust_scale * -120.0 + t.melee_spear_attack_recover_scale * 30.0;",
           "v.tp_melee_spear_attack_item_rotation_x = t.melee_spear_attack_thrust_scale * 60.0 + t.melee_spear_attack_recover_scale * -60.0;",
           "v.tp_melee_spear_attack_attachable_position_z = (t.melee_spear_attack_thrust_scale * -0.15 + t.melee_spear_attack_recover_scale * 0.15) * v.melee_spear_java_to_bedrock_scale;",
-          "variable.holding_all_guns = query.get_equipped_item_name=='type81' || query.get_equipped_item_name=='type81_emp' || query.get_equipped_item_name=='m249' || query.get_equipped_item_name=='m249_emp' || query.get_equipped_item_name=='evolys' || query.get_equipped_item_name=='evolys_emp' || query.get_equipped_item_name=='mk14' || query.get_equipped_item_name=='mk14_emp' || query.get_equipped_item_name=='p320' || query.get_equipped_item_name=='p320_emp' || query.get_equipped_item_name=='qbz191' || query.get_equipped_item_name=='qbz191_emp' || query.get_equipped_item_name=='cp' || query.get_equipped_item_name=='cp_emp' || query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp' || query.get_equipped_item_name=='t50' || query.get_equipped_item_name=='t50_emp' || query.get_equipped_item_name=='fal' || query.get_equipped_item_name=='fal_emp' || query.get_equipped_item_name=='sks' || query.get_equipped_item_name=='sks_emp' || query.get_equipped_item_name=='b93' || query.get_equipped_item_name=='b93_emp' || query.get_equipped_item_name=='qbz95' || query.get_equipped_item_name=='qbz95_emp' || query.get_equipped_item_name=='ump' || query.get_equipped_item_name=='ump_emp' || query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp' || query.get_equipped_item_name=='m16' || query.get_equipped_item_name=='m16_emp' || query.get_equipped_item_name=='vector' || query.get_equipped_item_name=='vector_emp' || query.get_equipped_item_name=='p90' || query.get_equipped_item_name=='p90_emp' || query.get_equipped_item_name=='g3' || query.get_equipped_item_name=='g3_emp' || query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp' || query.get_equipped_item_name=='deagle' || query.get_equipped_item_name=='deagle_emp' || query.get_equipped_item_name=='scarh' || query.get_equipped_item_name=='scarh_emp' || query.get_equipped_item_name=='mp5' || query.get_equipped_item_name=='mp5_emp' || query.get_equipped_item_name=='rpg' || query.get_equipped_item_name=='rpg_emp' || query.get_equipped_item_name=='aa12' || query.get_equipped_item_name=='aa12_emp' || q.get_equipped_item_name=='awp' || q.get_equipped_item_name=='awp_emp' || q.get_equipped_item_name=='g17' || q.get_equipped_item_name=='g17_emp' || q.get_equipped_item_name=='m870' || q.get_equipped_item_name=='m870_emp' || q.get_equipped_item_name=='scarl' || q.get_equipped_item_name=='scarl_emp' || q.get_equipped_item_name=='akm' || q.get_equipped_item_name=='akm_emp' || query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp' || query.get_equipped_item_name=='m1911' || query.get_equipped_item_name=='m1911_emp' || q.get_equipped_item_name=='minigun' || q.get_equipped_item_name=='minigun_emp' || query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp' || query.get_equipped_item_name=='mp7' || query.get_equipped_item_name=='mp7_emp' || query.get_equipped_item_name=='deagleg' || query.get_equipped_item_name=='deagleg_emp' || query.get_equipped_item_name=='uzi' || query.get_equipped_item_name=='uzi_emp' || query.get_equipped_item_name=='db' || query.get_equipped_item_name=='db_emp' || q.get_equipped_item_name=='g18' || q.get_equipped_item_name=='g18_emp' || q.get_equipped_item_name=='saiga12' || q.get_equipped_item_name=='saiga12_emp' || query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp';",
+          "variable.holding_all_guns = query.get_equipped_item_name=='type81' || query.get_equipped_item_name=='type81_emp' || query.get_equipped_item_name=='m249' || query.get_equipped_item_name=='m249_emp' || query.get_equipped_item_name=='evolys' || query.get_equipped_item_name=='evolys_emp' || query.get_equipped_item_name=='mk14' || query.get_equipped_item_name=='mk14_emp' || query.get_equipped_item_name=='p320' || query.get_equipped_item_name=='p320_emp' || query.get_equipped_item_name=='qbz191' || query.get_equipped_item_name=='qbz191_emp' || query.get_equipped_item_name=='cp' || query.get_equipped_item_name=='cp_emp' || query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp' || query.get_equipped_item_name=='t50' || query.get_equipped_item_name=='t50_emp' || query.get_equipped_item_name=='fal' || query.get_equipped_item_name=='fal_emp' || query.get_equipped_item_name=='sks' || query.get_equipped_item_name=='sks_emp' || query.get_equipped_item_name=='b93' || query.get_equipped_item_name=='b93_emp' || query.get_equipped_item_name=='qbz95' || query.get_equipped_item_name=='qbz95_emp' || query.get_equipped_item_name=='ump' || query.get_equipped_item_name=='ump_emp' || query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp' || query.get_equipped_item_name=='m16' || query.get_equipped_item_name=='m16_emp' || query.get_equipped_item_name=='vector' || query.get_equipped_item_name=='vector_emp' || query.get_equipped_item_name=='p90' || query.get_equipped_item_name=='p90_emp' || query.get_equipped_item_name=='g3' || query.get_equipped_item_name=='g3_emp' || query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp' || query.get_equipped_item_name=='deagle' || query.get_equipped_item_name=='deagle_emp' || query.get_equipped_item_name=='scarh' || query.get_equipped_item_name=='scarh_emp' || query.get_equipped_item_name=='mp5' || query.get_equipped_item_name=='mp5_emp' || query.get_equipped_item_name=='rpg' || query.get_equipped_item_name=='rpg_emp' || query.get_equipped_item_name=='aa12' || query.get_equipped_item_name=='aa12_emp' || q.get_equipped_item_name=='awp' || q.get_equipped_item_name=='awp_emp' || q.get_equipped_item_name=='g17' || q.get_equipped_item_name=='g17_emp' || q.get_equipped_item_name=='m870' || q.get_equipped_item_name=='m870_emp' || q.get_equipped_item_name=='scarl' || q.get_equipped_item_name=='scarl_emp' || q.get_equipped_item_name=='akm' || q.get_equipped_item_name=='akm_emp' || query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp' || query.get_equipped_item_name=='m1911' || query.get_equipped_item_name=='m1911_emp' || q.get_equipped_item_name=='minigun' || q.get_equipped_item_name=='minigun_emp' || query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp' || query.get_equipped_item_name=='mp7' || query.get_equipped_item_name=='mp7_emp' || query.get_equipped_item_name=='deagleg' || query.get_equipped_item_name=='deagleg_emp' || query.get_equipped_item_name=='uzi' || query.get_equipped_item_name=='uzi_emp' || query.get_equipped_item_name=='db' || query.get_equipped_item_name=='db_emp' || q.get_equipped_item_name=='g18' || q.get_equipped_item_name=='g18_emp' || q.get_equipped_item_name=='saiga12' || q.get_equipped_item_name=='saiga12_emp' || query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp' || query.get_equipped_item_name=='aug' || query.get_equipped_item_name=='cz75' || query.get_equipped_item_name=='mk23' || query.get_equipped_item_name=='kar98' || query.get_equipped_item_name=='lonetrail' || query.get_equipped_item_name=='m320' || query.get_equipped_item_name=='m700' || query.get_equipped_item_name=='m95' || query.get_equipped_item_name=='m9a4' || query.get_equipped_item_name=='rhino357' || query.get_equipped_item_name=='rpk' || query.get_equipped_item_name=='spas12' || query.get_equipped_item_name=='spr15hb' || query.get_equipped_item_name=='springfield1873' || query.get_equipped_item_name=='taurus500' || query.get_equipped_item_name=='taurus943';",
           "variable.is_third_person = !variable.is_first_person && !variable.map_face_icon;",
           "variable.dbb = query.get_equipped_item_name=='db';",
           "variable.m16a1 = query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp';",
@@ -339,7 +371,23 @@
           "variable.type81emp = query.get_equipped_item_name=='type81_emp';",
           "variable.m107 = query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp';",
           "variable.m107b = query.get_equipped_item_name=='m107';",
-          "variable.m107emp = query.get_equipped_item_name=='m107_emp';"
+          "variable.m107emp = query.get_equipped_item_name=='m107_emp';",
+          "variable.aug = query.get_equipped_item_name=='aug';",
+          "variable.cz75 = query.get_equipped_item_name=='cz75';",
+          "variable.mk23 = query.get_equipped_item_name=='mk23';",
+          "variable.kar98 = query.get_equipped_item_name=='kar98';",
+          "variable.lonetrail = query.get_equipped_item_name=='lonetrail';",
+          "variable.m320 = query.get_equipped_item_name=='m320';",
+          "variable.m700 = query.get_equipped_item_name=='m700';",
+          "variable.m95 = query.get_equipped_item_name=='m95';",
+          "variable.m9a4 = query.get_equipped_item_name=='m9a4';",
+          "variable.rhino357 = query.get_equipped_item_name=='rhino357';",
+          "variable.rpk = query.get_equipped_item_name=='rpk';",
+          "variable.spas12 = query.get_equipped_item_name=='spas12';",
+          "variable.spr15hb = query.get_equipped_item_name=='spr15hb';",
+          "variable.springfield1873 = query.get_equipped_item_name=='springfield1873';",
+          "variable.taurus500 = query.get_equipped_item_name=='taurus500';",
+          "variable.taurus943 = query.get_equipped_item_name=='taurus943';"
         ],
         "animate": [
           "root",
@@ -714,6 +762,102 @@
           },
           {
             "m107_fp_sight": "variable.is_first_person && variable.m107 && query.is_sneaking"
+          },
+          {
+            "java_aug_hold": "variable.is_first_person && variable.aug"
+          },
+          {
+            "m4a1_tp_hold": "!variable.is_first_person && variable.aug"
+          },
+          {
+            "java_cz75_hold": "variable.is_first_person && variable.cz75"
+          },
+          {
+            "g17_tp_hold": "!variable.is_first_person && variable.cz75"
+          },
+          {
+            "java_mk23_hold": "variable.is_first_person && variable.mk23"
+          },
+          {
+            "g17_tp_hold": "!variable.is_first_person && variable.mk23"
+          },
+          {
+            "java_kar98_hold": "variable.is_first_person && variable.kar98"
+          },
+          {
+            "awp_tp_hold": "!variable.is_first_person && variable.kar98"
+          },
+          {
+            "java_lonetrail_hold": "variable.is_first_person && variable.lonetrail"
+          },
+          {
+            "g17_tp_hold": "!variable.is_first_person && variable.lonetrail"
+          },
+          {
+            "java_m320_hold": "variable.is_first_person && variable.m320"
+          },
+          {
+            "rpg_tp_hold": "!variable.is_first_person && variable.m320"
+          },
+          {
+            "java_m700_hold": "variable.is_first_person && variable.m700"
+          },
+          {
+            "awp_tp_hold": "!variable.is_first_person && variable.m700"
+          },
+          {
+            "java_m95_hold": "variable.is_first_person && variable.m95"
+          },
+          {
+            "awp_tp_hold": "!variable.is_first_person && variable.m95"
+          },
+          {
+            "java_m9a4_hold": "variable.is_first_person && variable.m9a4"
+          },
+          {
+            "g17_tp_hold": "!variable.is_first_person && variable.m9a4"
+          },
+          {
+            "java_rhino357_hold": "variable.is_first_person && variable.rhino357"
+          },
+          {
+            "g17_tp_hold": "!variable.is_first_person && variable.rhino357"
+          },
+          {
+            "java_rpk_hold": "variable.is_first_person && variable.rpk"
+          },
+          {
+            "m4a1_tp_hold": "!variable.is_first_person && variable.rpk"
+          },
+          {
+            "java_spas12_hold": "variable.is_first_person && variable.spas12"
+          },
+          {
+            "m870_tp_hold": "!variable.is_first_person && variable.spas12"
+          },
+          {
+            "java_spr15hb_hold": "variable.is_first_person && variable.spr15hb"
+          },
+          {
+            "m4a1_tp_hold": "!variable.is_first_person && variable.spr15hb"
+          },
+          {
+            "java_springfield1873_hold": "variable.is_first_person && variable.springfield1873"
+          },
+          {
+            "m4a1_tp_hold": "!variable.is_first_person && variable.springfield1873"
+          },
+          {
+            "java_taurus500_hold": "variable.is_first_person && variable.taurus500"
+          },
+          {
+            "g17_tp_hold": "!variable.is_first_person && variable.taurus500"
+          },
+          {
+            "java_taurus943_hold": "variable.is_first_person && variable.taurus943"
+          },
+          {
+            "g17_tp_hold": "!variable.is_first_person && variable.taurus943"
           }
         ],
         "should_update_effects_offscreen": "1.0"
@@ -1376,7 +1520,23 @@
         "m107_fp_sight_coyote": "animation.m107.fp.sight.coyote",
         "m107_fp_sight_elcan": "animation.m107.fp.sight.elcan",
         "m107_fp_sight_acog": "animation.m107.fp.sight.acog",
-        "m107_fp_sight_standard_8": "animation.m107.fp.sight.standard_8"
+        "m107_fp_sight_standard_8": "animation.m107.fp.sight.standard_8",
+        "java_aug_hold": "animation.tacz.aug.static_idle",
+        "java_cz75_hold": "animation.tacz.cz75.static_idle",
+        "java_mk23_hold": "animation.tacz.mk23.static_idle",
+        "java_kar98_hold": "animation.tacz.kar98.static_idle",
+        "java_lonetrail_hold": "animation.tacz.lonetrail.static_idle",
+        "java_m320_hold": "animation.tacz.m320.static_idle",
+        "java_m700_hold": "animation.tacz.m700.static_idle",
+        "java_m95_hold": "animation.tacz.m95.static_idle",
+        "java_m9a4_hold": "animation.tacz.m9a4.static_idle",
+        "java_rhino357_hold": "animation.tacz.rhino357.static_idle",
+        "java_rpk_hold": "animation.tacz.rpk.static_idle",
+        "java_spas12_hold": "animation.tacz.spas12.static_idle",
+        "java_spr15hb_hold": "animation.tacz.spr15hb.static_idle",
+        "java_springfield1873_hold": "animation.tacz.springfield1873.static_idle",
+        "java_taurus500_hold": "animation.tacz.taurus500.static_idle",
+        "java_taurus943_hold": "animation.tacz.taurus943.static_idle"
       },
       "sound_effects": {
         "bruenmk9_raise": "bruenmk9_raise",
@@ -2278,6 +2438,54 @@
         },
         {
           "controller.render.m107": "variable.m107"
+        },
+        {
+          "controller.render.java_aug": "variable.aug"
+        },
+        {
+          "controller.render.java_cz75": "variable.cz75"
+        },
+        {
+          "controller.render.java_mk23": "variable.mk23"
+        },
+        {
+          "controller.render.java_kar98": "variable.kar98"
+        },
+        {
+          "controller.render.java_lonetrail": "variable.lonetrail"
+        },
+        {
+          "controller.render.java_m320": "variable.m320"
+        },
+        {
+          "controller.render.java_m700": "variable.m700"
+        },
+        {
+          "controller.render.java_m95": "variable.m95"
+        },
+        {
+          "controller.render.java_m9a4": "variable.m9a4"
+        },
+        {
+          "controller.render.java_rhino357": "variable.rhino357"
+        },
+        {
+          "controller.render.java_rpk": "variable.rpk"
+        },
+        {
+          "controller.render.java_spas12": "variable.spas12"
+        },
+        {
+          "controller.render.java_spr15hb": "variable.spr15hb"
+        },
+        {
+          "controller.render.java_springfield1873": "variable.springfield1873"
+        },
+        {
+          "controller.render.java_taurus500": "variable.taurus500"
+        },
+        {
+          "controller.render.java_taurus943": "variable.taurus943"
         }
       ],
       "enable_attachables": true

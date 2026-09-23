@@ -7,6 +7,7 @@ import "./core/profiler.js";
 
 // Weapon/combat engine
 import "./weapons/hitscan.js";
+import "./weapons/weaponEngine.js";
 import "./weapons/projectileBridge.js";
 import "./weapons/projectileCleanup.js";
 
@@ -17,6 +18,7 @@ import "./events/MeWhenUmmCodeStealingILikeCodeStealing.js";
 import "./events/AriSiaNanaonanDidieuMonyet.js";
 import "./events/Win308.js";
 import "./attachments/state.js";
+import "./attachments/modular.js";
 import "./events/kodePembesarPensilSejawirTimur.js";
 import "./weapons/recoil.js";
 import "./events/horegJatimKocak.js";

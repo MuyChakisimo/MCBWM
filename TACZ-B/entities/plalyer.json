@@ -418,7 +418,8 @@
           {
             "m107": "query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp'"
           },
-          "m107reloading"
+          "m107reloading",
+          "tacz_modular_reload"
         ]
       },
       "animations": {
@@ -664,7 +665,8 @@
         "m107reloading": "controller.animation.m107.reload",
         "m107shoot": "animation.m107.shoot",
         "m107reload": "animation.m107.reload",
-        "m107reloadtac": "animation.m107.reload.tac"
+        "m107reloadtac": "animation.m107.reload.tac",
+        "tacz_modular_reload": "controller.animation.tacz.modular_reload"
       }
     },
     "component_groups": {

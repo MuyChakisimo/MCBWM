@@ -239,3 +239,17 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
     );
   }
 });
+
+
+// Direct modular entry point used by newly imported Java weapons.
+export function fireConfiguredWeapon(shooter, weapon, mode = "hip") {
+  const weaponId = weapon.id ?? weapon.javaSourceId;
+  if (!weapon?.hitscan) return false;
+  profileCount("shots");
+  if ((weapon.pellets ?? 1) > 1) {
+    fireShotgunHitscan({ shooter, weaponId, weapon, mode });
+  } else {
+    fireSingleHitscan({ shooter, weaponId, weapon, mode });
+  }
+  return true;
+}

@@ -1,3 +1,5 @@
+import { JAVA_IMPORTED_WEAPONS } from "./javaImportedWeapons.js";
+import { JAVA_WEAPON_METADATA } from "./javaWeaponMetadata.js";
 // =====================================================
 // TACZ WEAPON CONFIGURATION
 //
@@ -23,6 +25,7 @@ export const WEAPON_DEFAULTS = Object.freeze({
 });
 
 function defineWeapon(config) {
+  const javaMetadata = JAVA_WEAPON_METADATA[config.id] ?? {};
   return Object.freeze({
     hitscan: true,
     pellets: 1,
@@ -32,6 +35,7 @@ function defineWeapon(config) {
     impactParticle: WEAPON_DEFAULTS.impactParticle,
     headshotMultiplier: WEAPON_DEFAULTS.headshotMultiplier,
     breakFragileBlocks: WEAPON_DEFAULTS.breakFragileBlocks,
+    ...javaMetadata,
     spread: Object.freeze({ hip: 0, ads: 0 }),
     ...config,
     spread: Object.freeze({
@@ -43,6 +47,7 @@ function defineWeapon(config) {
 
 export const WEAPONS = Object.freeze({
   akm: defineWeapon({
+    id: "akm",
     name: "AKM",
     category: "assault_rifle",
     damage: 9,
@@ -50,6 +55,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   m4a1: defineWeapon({
+    id: "m4a1",
     name: "M4A1",
     category: "assault_rifle",
     damage: 8,
@@ -57,6 +63,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   hk416: defineWeapon({
+    id: "hk416",
     name: "HK416",
     category: "assault_rifle",
     damage: 5,
@@ -64,6 +71,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   qbz95: defineWeapon({
+    id: "qbz95",
     name: "QBZ95",
     category: "assault_rifle",
     damage: 7,
@@ -71,6 +79,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   qbz191: defineWeapon({
+    id: "qbz191",
     name: "QBZ191",
     category: "assault_rifle",
     damage: 7,
@@ -78,6 +87,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   fal: defineWeapon({
+    id: "fal",
     name: "FAL",
     category: "assault_rifle",
     damage: 9,
@@ -85,6 +95,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   scarl: defineWeapon({
+    id: "scarl",
     name: "SCAR-L",
     category: "assault_rifle",
     damage: 7,
@@ -92,6 +103,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   scarh: defineWeapon({
+    id: "scarh",
     name: "SCAR-H",
     category: "assault_rifle",
     damage: 9,
@@ -99,6 +111,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   g36: defineWeapon({
+    id: "g36",
     name: "G36",
     category: "assault_rifle",
     damage: 7,
@@ -106,6 +119,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   m16: defineWeapon({
+    id: "m16",
     name: "M16",
     category: "assault_rifle",
     damage: 6,
@@ -113,6 +127,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   m16a1: defineWeapon({
+    id: "m16a1",
     name: "M16A1",
     category: "assault_rifle",
     damage: 6,
@@ -120,6 +135,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   g3: defineWeapon({
+    id: "g3",
     name: "G3",
     category: "assault_rifle",
     damage: 9,
@@ -127,6 +143,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   type81: defineWeapon({
+    id: "type81",
     name: "Type 81",
     category: "assault_rifle",
     damage: 9,
@@ -134,6 +151,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   g17: defineWeapon({
+    id: "g17",
     name: "G17",
     category: "pistol",
     damage: 6,
@@ -141,6 +159,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   g18: defineWeapon({
+    id: "g18",
     name: "G18",
     category: "pistol",
     damage: 3,
@@ -148,6 +167,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   b93: defineWeapon({
+    id: "b93",
     name: "B93",
     category: "pistol",
     damage: 4,
@@ -155,6 +175,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   m1911: defineWeapon({
+    id: "m1911",
     name: "M1911",
     category: "pistol",
     damage: 11,
@@ -162,6 +183,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   p320: defineWeapon({
+    id: "p320",
     name: "P320",
     category: "pistol",
     damage: 10,
@@ -169,6 +191,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   deagle: defineWeapon({
+    id: "deagle",
     name: "Desert Eagle",
     category: "pistol",
     damage: 16,
@@ -176,6 +199,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   deagleg: defineWeapon({
+    id: "deagleg",
     name: "Desert Eagle Gold",
     category: "pistol",
     damage: 12,
@@ -183,6 +207,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   t50: defineWeapon({
+    id: "t50",
     name: "T50",
     category: "pistol",
     damage: 16,
@@ -190,6 +215,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   cp: defineWeapon({
+    id: "cp",
     name: "CP",
     category: "pistol",
     damage: 12,
@@ -197,6 +223,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   mp5: defineWeapon({
+    id: "mp5",
     name: "MP5",
     category: "smg",
     damage: 6.5,
@@ -204,6 +231,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   mp7: defineWeapon({
+    id: "mp7",
     name: "MP7",
     category: "smg",
     damage: 4,
@@ -211,6 +239,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   p90: defineWeapon({
+    id: "p90",
     name: "P90",
     category: "smg",
     damage: 4,
@@ -218,6 +247,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   vector: defineWeapon({
+    id: "vector",
     name: "Vector",
     category: "smg",
     damage: 6,
@@ -225,6 +255,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   ump: defineWeapon({
+    id: "ump",
     name: "UMP",
     category: "smg",
     damage: 6.7,
@@ -232,6 +263,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   uzi: defineWeapon({
+    id: "uzi",
     name: "Uzi",
     category: "smg",
     damage: 5,
@@ -239,6 +271,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   sks: defineWeapon({
+    id: "sks",
     name: "SKS",
     category: "dmr",
     damage: 11,
@@ -246,6 +279,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   mk14: defineWeapon({
+    id: "mk14",
     name: "MK14",
     category: "dmr",
     damage: 13,
@@ -253,6 +287,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   awp: defineWeapon({
+    id: "awp",
     name: "AWP",
     category: "sniper",
     damage: 42,
@@ -264,18 +299,27 @@ export const WEAPONS = Object.freeze({
   // bullet entity or damage-table entry, so these combat values are new
   // balance defaults and are meant to be tuned here.
   m107: defineWeapon({
+    id: "m107",
     name: "M107",
     category: "sniper",
     caliber: ".50 BMG",
+    ammoId: "50bmg",
+    ammoItem: "krep:50bmg",
     damage: 55,
-    penetration: 1.0,
-    range: 128,
-    magazineSize: 5,
+    penetration: 0.5,
+    headshotMultiplier: 1.5,
+    range: 256,
+    magazineSize: 10,
+    rpm: 400,
+    fireModes: ["semi"],
     fireMode: "semi",
-    legacyAmmoItem: "krep:lapua338",
+    reload: Object.freeze({ empty: 4.3, tactical: 3.28 }),
+    projectileSpeed: 400,
+    allowedAttachmentTypes: ["scope", "extended_mag", "muzzle"],
   }),
 
   m249: defineWeapon({
+    id: "m249",
     name: "M249",
     category: "lmg",
     damage: 7,
@@ -283,6 +327,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   evolys: defineWeapon({
+    id: "evolys",
     name: "Evolys",
     category: "lmg",
     damage: 10,
@@ -290,6 +335,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   minigun: defineWeapon({
+    id: "minigun",
     name: "Minigun",
     category: "machine_gun",
     damage: 8,
@@ -300,6 +346,7 @@ export const WEAPONS = Object.freeze({
   // numbers. They are now treated as cone half-angles in degrees and are
   // intentionally centralized here so they can be calibrated in-game.
   aa12: defineWeapon({
+    id: "aa12",
     name: "AA-12",
     category: "shotgun",
     damage: 2,
@@ -312,6 +359,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   saiga12: defineWeapon({
+    id: "saiga12",
     name: "Saiga-12",
     category: "shotgun",
     damage: 2,
@@ -324,6 +372,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   m870: defineWeapon({
+    id: "m870",
     name: "M870",
     category: "shotgun",
     damage: 3,
@@ -336,6 +385,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   m1014: defineWeapon({
+    id: "m1014",
     name: "M1014",
     category: "shotgun",
     damage: 3,
@@ -348,6 +398,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   db: defineWeapon({
+    id: "db",
     name: "Double Barrel",
     category: "shotgun",
     damage: 3,
@@ -360,6 +411,7 @@ export const WEAPONS = Object.freeze({
   }),
 
   rpg: defineWeapon({
+    id: "rpg",
     name: "RPG",
     category: "launcher",
     damage: 100,
@@ -370,6 +422,8 @@ export const WEAPONS = Object.freeze({
       cleanupTicks: 10,
     }),
   }),
+
+  ...JAVA_IMPORTED_WEAPONS,
 
 });
 

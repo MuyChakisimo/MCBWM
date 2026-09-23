@@ -223,3 +223,57 @@ krep:hud.no_rocket.name=§cНемає ракети
 krep:hud.need_ammo_box.name=§cПотрібна \nкоробка з набоями!
 krep:gun.m107.name=M107
 krep:gun.m107_emp.name=M107 (Empty)
+
+krep:ammo.ammo_22wmr.name=.22 WMR
+
+krep:ammo.ammo_30_06.name=.30-06 Springfield
+
+krep:ammo.ammo_40mm.name=40mm Grenade
+
+krep:ammo.ammo_45_70.name=.45-70 Government
+
+krep:ammo.ammo_500mag.name=.500 Magnum
+
+krep:ammo.50bmg.name=.50 BMG
+
+krep:ammo.ammo_545x39.name=5.45×39mm
+
+krep:ammo.ammo_68x51fury.name=6.8×51mm Fury
+
+krep:ammo.ammo_762x25.name=7.62×25mm
+
+krep:ammo.ammo_762x54.name=7.62×54R
+
+krep:ammo.ammo_792x57.name=7.92×57mm
+
+krep:gun.aug.name=AUG
+
+krep:gun.cz75.name=CZ 75
+
+krep:gun.mk23.name=MK23 Offensive Pistol
+
+krep:gun.kar98.name=Mauser Kar98k Rifle
+
+krep:gun.lonetrail.name=.30-06 Lonetrail Hand Cannon
+
+krep:gun.m320.name=M320 Grenade Launcher
+
+krep:gun.m700.name=M700 Sniper Rifle
+
+krep:gun.m95.name=M95 .50 Cal Antimaterial
+
+krep:gun.m9a4.name=M9A4
+
+krep:gun.rhino357.name=.357 Rhino Revolver
+
+krep:gun.rpk.name=RPK
+
+krep:gun.spas12.name=SPAS-12 Multi-purpose Shotgun
+
+krep:gun.spr15hb.name=SPR-15 HB "Sagittarius"
+
+krep:gun.springfield1873.name=Springfield 1873 Trapdoor Rifle
+
+krep:gun.taurus500.name=Taurus "Raging Hunter" Hand Cannon
+
+krep:gun.taurus943.name=.22 Modle 943 Revolver

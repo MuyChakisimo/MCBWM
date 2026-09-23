@@ -4578,5 +4578,377 @@
     "sounds": [
       "sounds/m107/m107_settle"
     ]
+  },
+  "sound_definitions": {
+    "tacz.java.aug.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/aug/aug_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.aug.reload_empty": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/aug/aug_reload_empty_boltclose",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.aug.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/aug/aug_reload_empty_boltclose",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.cz75.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/cz75/cz75_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.cz75.reload_empty": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/cz75/cz75_reload_empty_fast_end",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.cz75.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/cz75/cz75_reload_empty_fast_end",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.kar98.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/kar98/kar98_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.kar98.reload_empty": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/kar98/kar98_reload_empty_shell_impact",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.kar98.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/kar98/kar98_reload_bolt_in",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.lonetrail.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/lonetrail/breach_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.lonetrail.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/lonetrail/breach_reload_eject",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m320.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m320/m320_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m320.reload_empty": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m320/m320_reload_empty",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m320.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m320/m320_reload_empty",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m700.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m700/m700_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m700.reload_empty": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m700/m700_reload_empty_rotate",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m700.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m700/m700_reload_empty_rotate",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m95.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m95/m95_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m95.reload_empty": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m95/m95_reload_empty_drop",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m95.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m95/m95_reload_arm",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m9a4.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m9a4/m9a4_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.m9a4.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/m9a4/m9a4_reload_charge",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.rhino357.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/rhino357/rhino_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.rhino357.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/rhino357/rhino_reload_bulletin",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.rpk.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/rpk/rpk_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.rpk.reload_empty": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/rpk/rpk_reload_empty",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.rpk.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/rpk/rpk_reload_empty",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.spas12.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/spas12/spas12_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.spr15hb.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/spr15hb/spr15hb_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.spr15hb.reload_empty": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/spr15hb/spr15hb_reload_empty_charge",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.spr15hb.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/spr15hb/spr15hb_reload_empty_charge",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.springfield1873.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/springfield1873/springfield1873_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.springfield1873.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/springfield1873/springfield1873_reload_boltopen",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.taurus500.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/taurus500/taurus500_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.taurus500.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/taurus500/taurus500_reload_bullet_eject",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.taurus943.shoot": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/taurus943/taurus943_shoot",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "tacz.java.taurus943.reload_tactical": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "sounds/java_import/taurus943/943_reload_bullet_eject",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    }
   }
 }
