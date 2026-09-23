@@ -221,3 +221,5 @@ krep:box.ammoboxc.lore=§fContains all ammo except RPG-7 rockets
 krep:hud.no_ammunition.name=§cNo Ammo
 krep:hud.no_rocket.name=§cNo Rocket
 krep:hud.need_ammo_box.name=§cNeed \nAmmo Box!
+krep:gun.m107.name=M107
+krep:gun.m107_emp.name=M107 (Empty)

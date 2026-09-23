@@ -221,3 +221,5 @@ krep:box.ammoboxc.lore=§fTutaj jest każda amunicja oprócz rakiet RPG-7
 krep:hud.no_ammunition.name=§cBrak amunicji
 krep:hud.no_rocket.name=§cBrak rakiety
 krep:hud.need_ammo_box.name=§cPotrzebna \nskrzynka z amunicją!
+krep:gun.m107.name=M107
+krep:gun.m107_emp.name=M107 (Empty)

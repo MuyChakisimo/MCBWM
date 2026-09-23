@@ -12,6 +12,9 @@
         "4.1": [
           "/function m107reload",
           "/event entity @s krep:m107_reload"
+        ],
+        "0.0": [
+          "/playanimation @s animation.m107.fp.tac m107_reload_visual"
         ]
       }
     }

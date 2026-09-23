@@ -1,3 +1,12 @@
+import { profileCount } from "../core/profiler.js";
+
+import {
+  cross,
+  length,
+  normalize,
+  subtract,
+} from "../utils/vector.js";
+
 // =====================================================
 // TACZ SHOT EFFECTS
 //
@@ -11,47 +20,13 @@ const TRACER_VERTICAL_OFFSET = -0.12;
 const TRACER_ADS_SIDE_OFFSET = 0.16;
 const TRACER_HIP_SIDE_OFFSET = -0.16;
 
-function subtract(a, b) {
-  return { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z };
-}
-
-function vectorLength(vector) {
-  return Math.sqrt(
-    vector.x * vector.x +
-    vector.y * vector.y +
-    vector.z * vector.z
-  );
-}
-
-function normalize(vector) {
-  const length = vectorLength(vector);
-
-  if (length <= 0.000001) {
-    return { x: 0, y: 0, z: 1 };
-  }
-
-  return {
-    x: vector.x / length,
-    y: vector.y / length,
-    z: vector.z / length,
-  };
-}
-
-function cross(a, b) {
-  return {
-    x: a.y * b.z - a.z * b.y,
-    y: a.z * b.x - a.x * b.z,
-    z: a.x * b.y - a.y * b.x,
-  };
-}
-
 function getTracerStart(shooter, direction, mode) {
   const head = shooter.getHeadLocation();
   const up = { x: 0, y: 1, z: 0 };
 
   let right = cross(up, direction);
 
-  if (vectorLength(right) <= 0.000001) {
+  if (length(right) <= 0.000001) {
     right = { x: 1, y: 0, z: 0 };
   } else {
     right = normalize(right);
@@ -78,29 +53,28 @@ function getTracerStart(shooter, direction, mode) {
   };
 }
 
-export function spawnSmokeTracer({
+export function spawnTracer({
   shooter,
   endLocation,
   mode,
   particleCount = 5,
+  particleId = "minecraft:basic_smoke_particle",
 }) {
-  if (particleCount <= 0) {
+  if (!endLocation || particleCount <= 0) {
     return;
   }
 
   const direction = normalize(shooter.getViewDirection());
   const startLocation = getTracerStart(shooter, direction, mode);
   const delta = subtract(endLocation, startLocation);
-  const distance = vectorLength(delta);
+  const tracerDistance = length(delta);
 
-  if (distance <= TRACER_MIN_DISTANCE) {
+  if (tracerDistance <= TRACER_MIN_DISTANCE) {
     return;
   }
 
-  // Fixed count per visible tracer. Five puffs gives the line-like
-  // smoke trail that tested well without returning to the old 24
-  // particles-per-shot flame chain.
   const count = Math.max(1, Math.floor(particleCount));
+  profileCount("tracerParticles", count);
 
   for (let i = 1; i <= count; i++) {
     const t = i / (count + 1);
@@ -113,12 +87,12 @@ export function spawnSmokeTracer({
 
     try {
       shooter.dimension.spawnParticle(
-        "minecraft:basic_smoke_particle",
+        particleId,
         location,
       );
     } catch (error) {
       console.error(
-        "[TACZ Effects] Smoke tracer particle failed:",
+        "[TACZ Effects] Tracer particle failed:",
         error,
       );
     }
@@ -133,6 +107,8 @@ export function spawnImpactEffect({
   if (!location) {
     return;
   }
+
+  profileCount("impactParticles");
 
   try {
     dimension.spawnParticle(particleId, location);

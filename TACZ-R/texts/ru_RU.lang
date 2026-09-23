@@ -221,3 +221,5 @@ krep:box.ammoboxc.lore=§fЗдесь есть все патроны кроме �
 krep:hud.no_ammunition.name=§cНет патронов
 krep:hud.no_rocket.name=§cНет ракеты
 krep:hud.need_ammo_box.name=§cНужна \nкоробка с патронами!
+krep:gun.m107.name=M107
+krep:gun.m107_emp.name=M107 (Empty)

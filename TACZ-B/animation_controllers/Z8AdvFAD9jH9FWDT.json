@@ -20,7 +20,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function m16a1quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -37,7 +37,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function m16a1quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -124,7 +124,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function t50quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -141,7 +141,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function t50quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -228,7 +228,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function sksquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -245,7 +245,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function sksquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -332,7 +332,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function b93quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -349,7 +349,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function b93quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -436,7 +436,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function qbz95quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -453,7 +453,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function qbz95quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -540,7 +540,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function umpquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -557,7 +557,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function umpquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -644,7 +644,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function dbquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -661,7 +661,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function dbquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -772,7 +772,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function uziquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -789,7 +789,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function uziquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -876,7 +876,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function g36quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -893,7 +893,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function g36quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -980,7 +980,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function scarlquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -997,7 +997,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function scarlquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1084,7 +1084,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function m4a1quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1101,7 +1101,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function m4a1quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1188,7 +1188,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function akmquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1205,7 +1205,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function akmquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1292,7 +1292,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function m16quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1309,7 +1309,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function m16quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1414,7 +1414,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function vectorquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1431,7 +1431,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function vectorquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1448,7 +1448,7 @@
         "trigger.tac1": {
           "on_entry": [
             "/function vectorquantity1",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1465,7 +1465,7 @@
         "trigger.reload1": {
           "on_entry": [
             "/function vectorquantity1",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1482,7 +1482,7 @@
         "trigger.tac2": {
           "on_entry": [
             "/function vectorquantity2",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1499,7 +1499,7 @@
         "trigger.reload2": {
           "on_entry": [
             "/function vectorquantity2",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1516,7 +1516,7 @@
         "trigger.tac3": {
           "on_entry": [
             "/function vectorquantity3",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1533,7 +1533,7 @@
         "trigger.reload3": {
           "on_entry": [
             "/function vectorquantity3",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1621,7 +1621,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function m870quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1638,7 +1638,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function m870quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1763,7 +1763,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function m1014quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1780,7 +1780,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function m1014quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1886,7 +1886,6 @@
         }
       }
     },
-
     "controller.animation.awp.reload": {
       "initial_state": "setup",
       "states": {
@@ -1906,7 +1905,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function awpquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -1923,7 +1922,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function awpquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2011,7 +2010,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function g18quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2028,7 +2027,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function g18quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2116,7 +2115,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function g17quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2133,7 +2132,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function g17quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2221,7 +2220,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function m1911quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2238,7 +2237,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function m1911quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2326,7 +2325,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function deaglequantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2343,7 +2342,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function deaglequantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2412,111 +2411,6 @@
         }
       }
     },
-    "controller.animation.m107.reload": {
-      "initial_state": "setup",
-      "states": {
-        "setup": {
-          "on_entry": [
-            "@s krep:noreload"
-          ],
-          "transitions": [
-            {
-              "trigger.reload": "query.get_equipped_item_name=='m107_emp' && variable.attack_time == 0.0 && q.is_using_item"
-            },
-            {
-              "trigger.tac": "(query.get_equipped_item_name=='m107' && variable.attack_time > 0.0f && query.scoreboard('m107') <= 4 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='m107')"
-            }
-          ]
-        },
-        "trigger.tac": {
-          "on_entry": [
-            "/function m107quantity",
-"@s krep:noreload"
-          ],
-          "transitions": [
-            {
-              "setup": "query.get_equipped_item_name=='m107' && q.property('krep:ammoreload') == 750"
-            },
-            {
-              "reload.tac": "query.get_equipped_item_name=='m107' && q.property('krep:ammoreload') >= 751"
-            },
-            {
-              "setup": "query.get_equipped_item_name!='m107'"
-            }
-          ]
-        },
-        "trigger.reload": {
-          "on_entry": [
-            "/function m107quantity",
-"@s krep:noreload"
-          ],
-          "transitions": [
-            {
-              "setup": "query.get_equipped_item_name=='m107_emp' && q.property('krep:ammoreload') == 750"
-            },
-            {
-              "reload": "query.get_equipped_item_name=='m107_emp' && q.property('krep:ammoreload') >= 751"
-            },
-            {
-              "setup": "query.get_equipped_item_name!='m107'"
-            }
-          ]
-        },
-        "reload": {
-          "animations": [
-            {
-              "m107reload": "query.get_equipped_item_name('main_hand')=='m107_emp' || query.get_equipped_item_name('main_hand')=='m107'"
-            }
-          ],
-          "on_entry": [
-            "@s krep:reload"
-          ],
-          "on_exit": [
-            "@s krep:noreload"
-          ],
-          "transitions": [
-            {
-              "setup": "query.get_equipped_item_name!='m107_emp'"
-            },
-            {
-              "reloadfinish": "query.all_animations_finished"
-            }
-          ]
-        },
-        "reload.tac": {
-          "animations": [
-            {
-              "m107reloadtac": "query.get_equipped_item_name('main_hand')=='m107_emp' || query.get_equipped_item_name('main_hand')=='m107'"
-            }
-          ],
-          "on_entry": [
-            "@s krep:reloadtac"
-          ],
-          "on_exit": [
-            "@s krep:noreload"
-          ],
-          "transitions": [
-            {
-              "setup": "query.get_equipped_item_name!='m107'"
-            },
-            {
-              "reloadfinish": "query.all_animations_finished"
-            }
-          ]
-        },
-        "reloadfinish": {
-          "on_entry": [
-            "/function m107",
-            "@s krep:noreload"
-          ],
-          "transitions": [
-            {
-              "setup": "query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp'"
-            }
-          ]
-        }
-      }
-    },
     "controller.animation.deagleg.reload": {
       "initial_state": "setup",
       "states": {
@@ -2554,7 +2448,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function deaglegquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2571,7 +2465,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function deaglegquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2588,7 +2482,7 @@
         "trigger.tac1": {
           "on_entry": [
             "/function deaglegquantity1",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2605,7 +2499,7 @@
         "trigger.reload1": {
           "on_entry": [
             "/function deaglegquantity1",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2622,7 +2516,7 @@
         "trigger.tac2": {
           "on_entry": [
             "/function deaglegquantity2",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2639,7 +2533,7 @@
         "trigger.reload2": {
           "on_entry": [
             "/function deaglegquantity2",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2656,7 +2550,7 @@
         "trigger.tac3": {
           "on_entry": [
             "/function deaglegquantity3",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2673,7 +2567,7 @@
         "trigger.reload3": {
           "on_entry": [
             "/function deaglegquantity3",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2779,7 +2673,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function hk416quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2796,7 +2690,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function hk416quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2884,7 +2778,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function g3quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2901,7 +2795,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function g3quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -2989,7 +2883,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function falquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3006,7 +2900,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function falquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3094,7 +2988,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function saiga12quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3111,7 +3005,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function saiga12quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3199,7 +3093,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function aa12quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3216,7 +3110,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function aa12quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3369,7 +3263,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function p90quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3386,7 +3280,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function p90quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3474,7 +3368,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function scarhquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3491,7 +3385,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function scarhquantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3579,7 +3473,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function mp7quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3596,7 +3490,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function mp7quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3684,7 +3578,7 @@
         "trigger.tac": {
           "on_entry": [
             "/function mp5quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3701,7 +3595,7 @@
         "trigger.reload": {
           "on_entry": [
             "/function mp5quantity",
-"@s krep:noreload"
+            "@s krep:noreload"
           ],
           "transitions": [
             {
@@ -3765,6 +3659,111 @@
           "transitions": [
             {
               "setup": "query.get_equipped_item_name=='mp5' || query.get_equipped_item_name=='mp5_emp'"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.m107.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": [
+            "@s krep:noreload"
+          ],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='m107_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='m107' && variable.attack_time > 0.0f && query.scoreboard('m107') <= 4 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='m107')"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": [
+            "/function m107quantity",
+            "@s krep:noreload"
+          ],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='m107' && q.property('krep:ammoreload') == 750"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='m107' && q.property('krep:ammoreload') >= 751"
+            },
+            {
+              "setup": "query.get_equipped_item_name!='m107'"
+            }
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": [
+            "/function m107quantity",
+            "@s krep:noreload"
+          ],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='m107_emp' && q.property('krep:ammoreload') == 750"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='m107_emp' && q.property('krep:ammoreload') >= 751"
+            },
+            {
+              "setup": "query.get_equipped_item_name!='m107'"
+            }
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "m107reload": "query.get_equipped_item_name('main_hand')=='m107_emp' || query.get_equipped_item_name('main_hand')=='m107'"
+            }
+          ],
+          "on_entry": [
+            "@s krep:reload"
+          ],
+          "on_exit": [
+            "@s krep:noreload"
+          ],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name!='m107_emp'"
+            },
+            {
+              "reloadfinish": "query.all_animations_finished"
+            }
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "m107reloadtac": "query.get_equipped_item_name('main_hand')=='m107_emp' || query.get_equipped_item_name('main_hand')=='m107'"
+            }
+          ],
+          "on_entry": [
+            "@s krep:reloadtac"
+          ],
+          "on_exit": [
+            "@s krep:noreload"
+          ],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name!='m107'"
+            },
+            {
+              "reloadfinish": "query.all_animations_finished"
+            }
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": [
+            "/function m107",
+            "@s krep:noreload"
+          ],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp'"
             }
           ]
         }
