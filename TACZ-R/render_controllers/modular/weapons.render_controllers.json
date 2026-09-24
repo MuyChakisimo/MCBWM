@@ -1,0 +1,185 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.modular_weapon": {
+      "arrays": {
+        "geometries": {
+          "Array.modular_weapon_geometry": [
+            "Geometry.m107",
+            "Geometry.aug",
+            "Geometry.cz75",
+            "Geometry.mk23",
+            "Geometry.kar98",
+            "Geometry.lonetrail",
+            "Geometry.m320",
+            "Geometry.m700",
+            "Geometry.m95",
+            "Geometry.m9a4",
+            "Geometry.rhino357",
+            "Geometry.rpk",
+            "Geometry.spas12",
+            "Geometry.spr15hb",
+            "Geometry.springfield1873",
+            "Geometry.taurus500",
+            "Geometry.taurus943"
+          ]
+        },
+        "textures": {
+          "Array.modular_weapon_texture": [
+            "Texture.m107",
+            "Texture.aug",
+            "Texture.cz75",
+            "Texture.mk23",
+            "Texture.kar98",
+            "Texture.lonetrail",
+            "Texture.m320",
+            "Texture.m700",
+            "Texture.m95",
+            "Texture.m9a4",
+            "Texture.rhino357",
+            "Texture.rpk",
+            "Texture.spas12",
+            "Texture.spr15hb",
+            "Texture.springfield1873",
+            "Texture.taurus500",
+            "Texture.taurus943"
+          ]
+        }
+      },
+      "geometry": "Array.modular_weapon_geometry[v.modular_weapon_render_index]",
+      "materials": [
+        {
+          "*": "Material.guns"
+        }
+      ],
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "mag_standard": "!v.m107 || q.property('krep:magazine') == 0"
+        },
+        {
+          "mag_extended": "!v.m107 || q.property('krep:magazine') >= 1"
+        },
+        {
+          "scope1": "!v.m107 || (q.property('krep:m107scope')!='nothing' && q.property('krep:m107scope')!='coyote')"
+        },
+        {
+          "scope2": "!v.m107 || (q.property('krep:m107scope')!='nothing' && q.property('krep:m107scope')!='coyote')"
+        },
+        {
+          "scope3": "!v.m107 || (q.property('krep:m107scope')!='nothing' && q.property('krep:m107scope')!='coyote')"
+        },
+        {
+          "foresightfold": "!v.m107 || q.property('krep:m107scope')!='nothing'"
+        },
+        {
+          "foresight": "!v.m107 || q.property('krep:m107scope')=='nothing'"
+        },
+        {
+          "rearsightfold": "!v.m107 || q.property('krep:m107scope')!='nothing'"
+        },
+        {
+          "rearsight": "!v.m107 || q.property('krep:m107scope')=='nothing'"
+        },
+        {
+          "standard_8": "!v.m107 || q.property('krep:m107scope')=='standard_8'"
+        },
+        {
+          "standard_8_lens": "!v.m107 || q.property('krep:m107scope')=='standard_8'"
+        },
+        {
+          "standard_8_reticle": "!v.m107 || q.property('krep:m107scope')=='standard_8'"
+        },
+        {
+          "standard_8_base": "!v.m107 || q.property('krep:m107scope')=='standard_8'"
+        },
+        {
+          "standard_8_part": "!v.m107 || q.property('krep:m107scope')=='standard_8'"
+        },
+        {
+          "standard_8_mount": "!v.m107 || q.property('krep:m107scope')=='standard_8'"
+        },
+        {
+          "standard_8_hide_when_ads": "!v.m107 || q.property('krep:m107scope')=='standard_8'"
+        },
+        {
+          "standard_8_ring": "!v.m107 || q.property('krep:m107scope')=='standard_8'"
+        },
+        {
+          "acog": "!v.m107 || q.property('krep:m107scope')=='acog'"
+        },
+        {
+          "acog_lens": "!v.m107 || q.property('krep:m107scope')=='acog'"
+        },
+        {
+          "acog_lens2": "!v.m107 || q.property('krep:m107scope')=='acog'"
+        },
+        {
+          "acog_back": "!v.m107 || q.property('krep:m107scope')=='acog'"
+        },
+        {
+          "acog_reticle": "!v.m107 || q.property('krep:m107scope')=='acog'"
+        },
+        {
+          "acog_scope": "!v.m107 || q.property('krep:m107scope')=='acog'"
+        },
+        {
+          "acog_other": "!v.m107 || q.property('krep:m107scope')=='acog'"
+        },
+        {
+          "elcan": "!v.m107 || q.property('krep:m107scope')=='elcan'"
+        },
+        {
+          "elcan_lens": "!v.m107 || q.property('krep:m107scope')=='elcan'"
+        },
+        {
+          "elcan_lens2": "!v.m107 || q.property('krep:m107scope')=='elcan'"
+        },
+        {
+          "elcan_reticle": "!v.m107 || q.property('krep:m107scope')=='elcan'"
+        },
+        {
+          "elcan_ring": "!v.m107 || q.property('krep:m107scope')=='elcan'"
+        },
+        {
+          "elcan_ring2": "!v.m107 || q.property('krep:m107scope')=='elcan'"
+        },
+        {
+          "elcan_body": "!v.m107 || q.property('krep:m107scope')=='elcan'"
+        },
+        {
+          "elcan_knob": "!v.m107 || q.property('krep:m107scope')=='elcan'"
+        },
+        {
+          "elcan_part2": "!v.m107 || q.property('krep:m107scope')=='elcan'"
+        },
+        {
+          "elcan_part": "!v.m107 || q.property('krep:m107scope')=='elcan'"
+        },
+        {
+          "coyote": "!v.m107 || q.property('krep:m107scope')=='coyote'"
+        },
+        {
+          "coyote_reticle": "!v.m107 || q.property('krep:m107scope')=='coyote'"
+        }
+      ],
+      "textures": [
+        "Array.modular_weapon_texture[v.modular_weapon_render_index]"
+      ],
+      "is_hurt_color": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "on_fire_color": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      }
+    }
+  }
+}
