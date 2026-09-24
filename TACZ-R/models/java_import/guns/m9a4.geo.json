@@ -19,13 +19,49 @@
           "name": "root",
           "pivot": [
             0,
-            8,
-            3.25
+            0,
+            0
           ]
         },
         {
-          "name": "gun_and_righthand",
+          "name": "waist",
           "parent": "root",
+          "pivot": [
+            0,
+            12,
+            0
+          ]
+        },
+        {
+          "name": "Joints",
+          "parent": "waist",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "rot",
+          "parent": "Joints",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "weapon_root",
+          "pivot": [
+            0,
+            8,
+            3.25
+          ],
+          "parent": "rot"
+        },
+        {
+          "name": "gun_and_righthand",
+          "parent": "weapon_root",
           "pivot": [
             0,
             6,
@@ -20779,7 +20815,7 @@
         },
         {
           "name": "mag_and_lefthand",
-          "parent": "root",
+          "parent": "weapon_root",
           "pivot": [
             0,
             3.75,
@@ -25705,7 +25741,7 @@
         },
         {
           "name": "additional_magazine",
-          "parent": "root",
+          "parent": "weapon_root",
           "pivot": [
             0,
             4,

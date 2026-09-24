@@ -179,7 +179,7 @@
             0.35
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -440,7 +440,7 @@
             0.35
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -664,7 +664,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -862,7 +862,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -1155,7 +1155,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -2147,7 +2147,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -3139,7 +3139,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -4144,7 +4144,7 @@
             0.35
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -5198,7 +5198,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -6340,7 +6340,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -7526,7 +7526,7 @@
             0.35
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -8642,7 +8642,7 @@
             0.35
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -9818,7 +9818,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -10803,7 +10803,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -11591,7 +11591,7 @@
       "loop": true,
       "animation_length": 0.8667,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [

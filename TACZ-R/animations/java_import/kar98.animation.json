@@ -64,7 +64,7 @@
     "animation.tacz.kar98.reload_empty_clip": {
       "animation_length": 3.45,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -2141,7 +2141,7 @@
             }
           }
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -2684,7 +2684,7 @@
             }
           }
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -3218,7 +3218,7 @@
             }
           }
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -3804,7 +3804,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -4297,7 +4297,7 @@
     "animation.tacz.kar98.inspect": {
       "animation_length": 7.6333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -6623,7 +6623,7 @@
     "animation.tacz.kar98.inspect_empty": {
       "animation_length": 5.9333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -7815,7 +7815,7 @@
     "animation.tacz.kar98.shoot": {
       "animation_length": 1.1833,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -8222,7 +8222,7 @@
     "animation.tacz.kar98.shoot_scope": {
       "animation_length": 1.1833,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -8785,7 +8785,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -9680,7 +9680,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -10481,7 +10481,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -10702,7 +10702,7 @@
     "animation.tacz.kar98.put_away": {
       "animation_length": 0.75,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               0,

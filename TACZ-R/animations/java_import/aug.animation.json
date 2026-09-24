@@ -114,7 +114,7 @@
             0.2
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0417": [
               23.94,
@@ -383,7 +383,7 @@
             0.2
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0417": [
               0,
@@ -757,7 +757,7 @@
             0.2
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0417": {
               "pre": [
@@ -2163,7 +2163,7 @@
             0.2
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0417": {
               "pre": [
@@ -4025,7 +4025,7 @@
             ]
           }
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -4347,7 +4347,7 @@
     "animation.tacz.aug.inspect": {
       "animation_length": 5.1,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -5880,7 +5880,7 @@
     "animation.tacz.aug.inspect_empty": {
       "animation_length": 6.6,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [

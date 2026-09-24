@@ -18,14 +18,50 @@
         {
           "name": "root",
           "pivot": [
-            -0.1164,
-            4.2914,
-            4.1272
+            0,
+            0,
+            0
           ]
         },
         {
-          "name": "lh_and_gun",
+          "name": "waist",
           "parent": "root",
+          "pivot": [
+            0,
+            12,
+            0
+          ]
+        },
+        {
+          "name": "Joints",
+          "parent": "waist",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "rot",
+          "parent": "Joints",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "weapon_root",
+          "pivot": [
+            -0.1164,
+            4.2914,
+            4.1272
+          ],
+          "parent": "rot"
+        },
+        {
+          "name": "lh_and_gun",
+          "parent": "weapon_root",
           "pivot": [
             -0.1164,
             5.9914,
@@ -21560,7 +21596,7 @@
         },
         {
           "name": "rh_and_bullet_inspect",
-          "parent": "root",
+          "parent": "weapon_root",
           "pivot": [
             -2,
             4.7063,

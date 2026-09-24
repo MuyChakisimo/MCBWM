@@ -4,7 +4,7 @@
     "animation.tacz.m320.static_idle": {
       "animation_length": 0.04,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": [
             0,
             0,
@@ -173,7 +173,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               -80,
@@ -544,7 +544,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               0,
@@ -883,7 +883,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               0,
@@ -1102,7 +1102,7 @@
     "animation.tacz.m320.reload_empty": {
       "animation_length": 3.04,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               0,
@@ -2150,7 +2150,7 @@
     "animation.tacz.m320.inspect": {
       "animation_length": 5.875,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               0,
@@ -3222,7 +3222,7 @@
     "animation.tacz.m320.inspect_empty": {
       "animation_length": 5.875,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               0,
@@ -4294,7 +4294,7 @@
     "animation.tacz.m320.shoot": {
       "animation_length": 0.5833,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [

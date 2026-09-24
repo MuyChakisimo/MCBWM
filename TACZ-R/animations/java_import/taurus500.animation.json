@@ -253,7 +253,7 @@
         "round_inspect": {
           "scale": 0
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -415,7 +415,7 @@
         "round_inspect": {
           "scale": 0
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -1380,7 +1380,7 @@
             }
           }
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -3142,7 +3142,7 @@
             }
           }
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -4834,7 +4834,7 @@
         "loader_and_round": {
           "scale": 0
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -6997,7 +6997,7 @@
         "loader_and_round": {
           "scale": 0
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -7831,7 +7831,7 @@
     "animation.tacz.taurus500.shoot": {
       "animation_length": 0.8167,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -8333,7 +8333,7 @@
         "loader_and_round": {
           "scale": 0
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [

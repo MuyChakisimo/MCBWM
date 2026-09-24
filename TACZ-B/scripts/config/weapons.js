@@ -26,6 +26,18 @@ export const WEAPON_DEFAULTS = Object.freeze({
   breakFragileBlocks: true,
 });
 
+const VALID_FIRE_MODES = Object.freeze(new Set(["single", "double", "triple", "auto"]));
+
+function validateModularFireMode(weaponId, fireMode) {
+  if (!VALID_FIRE_MODES.has(fireMode)) {
+    throw new Error(
+      `[TACZ][WeaponRegistry] Invalid fire mode "${fireMode}" for weapon "${weaponId}". ` +
+      `Expected one of: single, double, triple, auto.`,
+    );
+  }
+  return fireMode;
+}
+
 function defineWeapon(config) {
   const javaMetadata = JAVA_WEAPON_METADATA[config.id] ?? {};
   const merged = {
@@ -41,6 +53,14 @@ function defineWeapon(config) {
     ...config,
   };
 
+  // Multiple selectable Java fire-mode lists are intentionally not part of
+  // the Bedrock modular runtime. Imported weapons have exactly one canonical
+  // fireMode in javaImportedWeapons.js.
+  const { fireModes: _legacyFireModes, ...withoutLegacyFireModes } = merged;
+  const fireMode = config.modularInput
+    ? validateModularFireMode(config.id, config.fireMode)
+    : withoutLegacyFireModes.fireMode;
+
   // Preserve the already-tested Bedrock spread unless a weapon explicitly
   // defines its own spread. Imported modular weapons carry their Java spread
   // directly in config, so no existing Bedrock balance is changed here.
@@ -51,13 +71,14 @@ function defineWeapon(config) {
 
   // Resolve ammunition through the caliber registry whenever possible.
   // Explicit weapon values still win, which keeps legacy compatibility.
-  const caliber = getCaliber(merged.ammoId);
-  const visual = getWeaponVisualConfig(merged.id);
+  const caliber = getCaliber(withoutLegacyFireModes.ammoId);
+  const visual = getWeaponVisualConfig(withoutLegacyFireModes.id);
 
   return Object.freeze({
-    ...merged,
-    caliber: merged.caliber ?? caliber?.name,
-    ammoItem: merged.ammoItem ?? caliber?.itemId,
+    ...withoutLegacyFireModes,
+    fireMode,
+    caliber: withoutLegacyFireModes.caliber ?? caliber?.name,
+    ammoItem: withoutLegacyFireModes.ammoItem ?? caliber?.itemId,
     spread,
     animations: visual.animations,
     sounds: visual.sounds,
@@ -339,8 +360,7 @@ export const WEAPONS = Object.freeze({
     range: 256,
     magazineSize: 10,
     rpm: 400,
-    fireModes: ["semi"],
-    fireMode: "semi",
+    fireMode: "single",
     reload: Object.freeze({ empty: 4.3, tactical: 3.28 }),
     projectileSpeed: 400,
     allowedAttachmentTypes: ["scope", "extended_mag", "muzzle"],
@@ -454,6 +474,53 @@ export const WEAPONS = Object.freeze({
   ...IMPORTED_WEAPONS,
 
 });
+
+function validateWeaponRegistry() {
+  const seenIds = new Set();
+
+  for (const [registryId, weapon] of Object.entries(WEAPONS)) {
+    if (!weapon?.id) {
+      console.error(`[TACZ][WeaponRegistry] Weapon entry "${registryId}" is missing id.`);
+      continue;
+    }
+
+    if (seenIds.has(weapon.id)) {
+      console.error(`[TACZ][WeaponRegistry] Duplicate weapon id "${weapon.id}".`);
+    }
+    seenIds.add(weapon.id);
+
+    if (registryId !== weapon.id) {
+      console.error(
+        `[TACZ][WeaponRegistry] Registry key "${registryId}" does not match weapon id "${weapon.id}".`,
+      );
+    }
+
+    if (!weapon.modularInput) continue;
+
+    if (!weapon.ammoItem) {
+      console.error(`[TACZ][WeaponRegistry] Missing ammo config for weapon "${weapon.id}".`);
+    }
+    if (!(weapon.magazineSize > 0)) {
+      console.error(`[TACZ][WeaponRegistry] Invalid magazine size for weapon "${weapon.id}".`);
+    }
+    if (!(weapon.rpm > 0)) {
+      console.error(`[TACZ][WeaponRegistry] Invalid RPM for weapon "${weapon.id}".`);
+    }
+    if (!VALID_FIRE_MODES.has(weapon.fireMode)) {
+      console.error(
+        `[TACZ][WeaponRegistry] Invalid fire mode "${weapon.fireMode}" for weapon "${weapon.id}".`,
+      );
+    }
+    if (!weapon.animations?.shoot) {
+      console.error(`[TACZ][WeaponRegistry] Missing shoot animation for weapon "${weapon.id}".`);
+    }
+    if (!weapon.sounds?.shoot) {
+      console.error(`[TACZ][WeaponRegistry] Missing shoot sound for weapon "${weapon.id}".`);
+    }
+  }
+}
+
+validateWeaponRegistry();
 
 export function getWeaponConfig(weaponId) {
   return WEAPONS[weaponId];

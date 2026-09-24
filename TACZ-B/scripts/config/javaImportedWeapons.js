@@ -17,10 +17,6 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       50
     ],
     "rpm": 710,
-    "fireModes": [
-      "auto",
-      "semi"
-    ],
     "fireMode": "auto",
     "reload": {
       "empty": 2.63,
@@ -129,9 +125,6 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       27
     ],
     "rpm": 900,
-    "fireModes": [
-      "auto"
-    ],
     "fireMode": "auto",
     "reload": {
       "empty": 1.75,
@@ -243,11 +236,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       24
     ],
     "rpm": 50,
-    "fireModes": [
-      "semi",
-      "burst"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 1.96,
       "tactical": 1.16
@@ -360,10 +349,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       4
     ],
     "rpm": 250,
-    "fireModes": [
-      "semi"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 3.5,
       "tactical": 2.85
@@ -509,10 +495,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       1
     ],
     "rpm": 90,
-    "fireModes": [
-      "semi"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 1.5,
       "tactical": 1.5
@@ -662,10 +645,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
     "magazineSize": 1,
     "extendedMagSizes": [],
     "rpm": 150,
-    "fireModes": [
-      "semi"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 1.78,
       "tactical": 1.78
@@ -773,10 +753,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       10
     ],
     "rpm": 180,
-    "fireModes": [
-      "semi"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 2.85,
       "tactical": 1.75
@@ -916,10 +893,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       10
     ],
     "rpm": 151,
-    "fireModes": [
-      "semi"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 4.93,
       "tactical": 2.8
@@ -1073,10 +1047,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       30
     ],
     "rpm": 400,
-    "fireModes": [
-      "semi"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 1.58,
       "tactical": 1.13
@@ -1182,10 +1153,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       6
     ],
     "rpm": 200,
-    "fireModes": [
-      "semi"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 3.35,
       "tactical": 2.65
@@ -1318,10 +1286,6 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       75
     ],
     "rpm": 630,
-    "fireModes": [
-      "auto",
-      "semi"
-    ],
     "fireMode": "auto",
     "reload": {
       "empty": 2.95,
@@ -1428,11 +1392,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       8
     ],
     "rpm": 200,
-    "fireModes": [
-      "semi",
-      "burst"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 2.13,
       "tactical": 0.67
@@ -1594,11 +1554,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       30
     ],
     "rpm": 700,
-    "fireModes": [
-      "semi",
-      "burst"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 2,
       "tactical": 1.17
@@ -1719,10 +1675,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       1
     ],
     "rpm": 90,
-    "fireModes": [
-      "semi"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 2.1,
       "tactical": 2.1
@@ -1875,10 +1828,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       5
     ],
     "rpm": 120,
-    "fireModes": [
-      "semi"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 2.28,
       "tactical": 2.28
@@ -2011,10 +1961,7 @@ export const JAVA_IMPORTED_WEAPONS = Object.freeze({
       8
     ],
     "rpm": 180,
-    "fireModes": [
-      "semi"
-    ],
-    "fireMode": "semi",
+    "fireMode": "single",
     "reload": {
       "empty": 6.8,
       "tactical": 6.8

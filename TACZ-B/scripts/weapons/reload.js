@@ -7,6 +7,18 @@ import {
 } from "./ammo.js";
 import { getPlayerState } from "../players/playerState.js";
 
+function equippedWeaponId(player) {
+  try {
+    const item = player
+      .getComponent("minecraft:equippable")
+      ?.getEquipment("Mainhand");
+    if (!item?.typeId?.startsWith("krep:")) return undefined;
+    return item.typeId.slice(5).replace(/_emp$/, "");
+  } catch {
+    return undefined;
+  }
+}
+
 function tryPlayAnimation(player, animationId) {
   if (!animationId) return;
   try {
@@ -21,9 +33,19 @@ function tryPlaySound(player, soundId) {
   } catch {}
 }
 
+export function cancelReload(player) {
+  const state = getPlayerState(player);
+  if (!state.reloading) return false;
+  state.reloading = false;
+  state.reloadWeaponId = undefined;
+  state.reloadToken++;
+  return true;
+}
+
 export function startReload(player, weapon) {
   const state = getPlayerState(player);
   if (state.reloading) return false;
+  if (equippedWeaponId(player) !== weapon.id) return false;
 
   const currentMagazine = getMagazineAmmo(player, weapon);
   const magazineCapacity = weapon.magazineSize ?? 0;
@@ -40,9 +62,12 @@ export function startReload(player, weapon) {
     : (weapon.reload?.empty ?? 1);
   const ticks = Math.max(1, Math.round(seconds * 20));
 
+  state.weaponId = weapon.id;
   state.reloading = true;
+  state.reloadWeaponId = weapon.id;
   state.firing = false;
   state.fireToken++;
+  const reloadToken = ++state.reloadToken;
 
   tryPlayAnimation(
     player,
@@ -59,6 +84,22 @@ export function startReload(player, weapon) {
   );
 
   system.runTimeout(() => {
+    const currentState = getPlayerState(player);
+    const stillValid =
+      currentState.reloading &&
+      currentState.reloadToken === reloadToken &&
+      currentState.reloadWeaponId === weapon.id &&
+      currentState.weaponId === weapon.id &&
+      equippedWeaponId(player) === weapon.id;
+
+    if (!stillValid) {
+      if (currentState.reloadToken === reloadToken) {
+        currentState.reloading = false;
+        currentState.reloadWeaponId = undefined;
+      }
+      return;
+    }
+
     try {
       const now = getMagazineAmmo(player, weapon);
       const needed = Math.max(0, magazineCapacity - now);
@@ -68,7 +109,10 @@ export function startReload(player, weapon) {
 
       setMagazineAmmo(player, weapon, now + consumed);
     } finally {
-      state.reloading = false;
+      if (currentState.reloadToken === reloadToken) {
+        currentState.reloading = false;
+        currentState.reloadWeaponId = undefined;
+      }
     }
   }, ticks);
 

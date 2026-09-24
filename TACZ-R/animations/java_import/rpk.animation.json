@@ -56,7 +56,7 @@
       "loop": "hold_on_last_frame",
       "animation_length": 0.4333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -261,7 +261,7 @@
     "animation.tacz.rpk.crawl": {
       "animation_length": 0.0333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -334,7 +334,7 @@
     "animation.tacz.rpk.crawl_end": {
       "animation_length": 0.4333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -547,7 +547,7 @@
     "animation.tacz.rpk.crawl_handdown": {
       "animation_length": 0.2667,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -642,7 +642,7 @@
     "animation.tacz.rpk.crawl_handup": {
       "animation_length": 0.3333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -807,7 +807,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               22.5,
@@ -1153,7 +1153,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -1412,7 +1412,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -2679,7 +2679,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -4183,7 +4183,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -5937,7 +5937,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -7526,7 +7526,7 @@
     "animation.tacz.rpk.inspect": {
       "animation_length": 8.3,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               0,
@@ -10103,7 +10103,7 @@
     "animation.tacz.rpk.inspect_xmag": {
       "animation_length": 9.5333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               0,
@@ -12774,7 +12774,7 @@
     "animation.tacz.rpk.shoot": {
       "animation_length": 0.8333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -13145,7 +13145,7 @@
     "animation.tacz.rpk.inspect_empty": {
       "animation_length": 8.3,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               0,

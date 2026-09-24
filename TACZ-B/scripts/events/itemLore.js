@@ -100,8 +100,7 @@ function buildWeaponLore(typeId) {
     );
   }
 
-  const fireModes = weapon.fireModes?.length ? weapon.fireModes : (weapon.fireMode ? [weapon.fireMode] : []);
-  if (fireModes.length) lore.push(`§fFire Mode: ${fireModes.join(" / ")}`);
+  if (weapon.fireMode) lore.push(`§fFire Mode: ${weapon.fireMode}`);
   if (weapon.rpm) lore.push(`§fRate of Fire: ${formatNumber(weapon.rpm)} RPM`);
   if (weapon.reload?.empty) lore.push(`§fReload: ${formatNumber(weapon.reload.empty)}s empty / ${formatNumber(weapon.reload.tactical ?? weapon.reload.empty)}s tactical`);
 

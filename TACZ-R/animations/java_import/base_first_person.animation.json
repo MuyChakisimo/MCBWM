@@ -4,6 +4,13 @@
     "animation.tacz.java_import.fp_base": {
       "loop": true,
       "bones": {
+        "Joints": {
+          "position": [
+            -4,
+            13,
+            -22
+          ]
+        },
         "root": {
           "rotation": [
             0,

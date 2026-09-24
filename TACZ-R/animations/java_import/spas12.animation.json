@@ -263,7 +263,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -663,7 +663,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -1137,7 +1137,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -1512,7 +1512,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -1960,7 +1960,7 @@
     "animation.tacz.spas12.shoot": {
       "animation_length": 0.8,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -2264,7 +2264,7 @@
     "animation.tacz.spas12.shoot_semi": {
       "animation_length": 0.8,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -2584,7 +2584,7 @@
     "animation.tacz.spas12.shoot_semi_last": {
       "animation_length": 0.8,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -2886,7 +2886,7 @@
       "loop": "hold_on_last_frame",
       "animation_length": 0.6,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -3058,7 +3058,7 @@
       "loop": "hold_on_last_frame",
       "animation_length": 0.6,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -3241,7 +3241,7 @@
       "loop": "hold_on_last_frame",
       "animation_length": 0.6,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -3431,7 +3431,7 @@
       "loop": true,
       "animation_length": 0.6,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -3932,7 +3932,7 @@
       "loop": "hold_on_last_frame",
       "animation_length": 9.4667,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -6173,7 +6173,7 @@
       "loop": "hold_on_last_frame",
       "animation_length": 8.9333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -8161,7 +8161,7 @@
     "animation.tacz.spas12.inspect_empty": {
       "animation_length": 6.9333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -9379,7 +9379,7 @@
       "loop": "hold_on_last_frame",
       "animation_length": 8.7,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -11321,7 +11321,7 @@
       "loop": "hold_on_last_frame",
       "animation_length": 9.0333,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -13307,7 +13307,7 @@
     "animation.tacz.spas12.inspect_empty_semi": {
       "animation_length": 6.1667,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -14290,7 +14290,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -14540,7 +14540,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -14797,7 +14797,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -15113,7 +15113,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -15379,7 +15379,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -15746,7 +15746,7 @@
             }
           }
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -16310,7 +16310,7 @@
             }
           }
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -16843,7 +16843,7 @@
             }
           }
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -17213,7 +17213,7 @@
             }
           }
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -17823,7 +17823,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -19165,7 +19165,7 @@
             1
           ]
         },
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [

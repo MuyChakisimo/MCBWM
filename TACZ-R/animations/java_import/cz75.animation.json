@@ -5,7 +5,7 @@
       "loop": true,
       "animation_length": 0.1,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": [
             0,
             0,
@@ -105,7 +105,7 @@
     "animation.tacz.cz75.draw": {
       "animation_length": 0.55,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -331,7 +331,7 @@
     "animation.tacz.cz75.put_away": {
       "animation_length": 0.3,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": [
               0,
@@ -550,7 +550,7 @@
     "animation.tacz.cz75.reload_tactical": {
       "animation_length": 1.8,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -1499,7 +1499,7 @@
     "animation.tacz.cz75.reload_empty": {
       "animation_length": 2.45,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.05": {
               "pre": [
@@ -2625,7 +2625,7 @@
     "animation.tacz.cz75.inspect": {
       "animation_length": 6.65,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -4138,7 +4138,7 @@
     "animation.tacz.cz75.inspect_empty": {
       "animation_length": 6.65,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
@@ -5464,7 +5464,7 @@
       "loop": true,
       "animation_length": 0.5833,
       "bones": {
-        "root": {
+        "weapon_root": {
           "rotation": {
             "0.0": {
               "post": [
