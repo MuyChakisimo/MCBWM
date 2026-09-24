@@ -387,7 +387,8 @@
           "variable.spr15hb = query.get_equipped_item_name=='spr15hb';",
           "variable.springfield1873 = query.get_equipped_item_name=='springfield1873';",
           "variable.taurus500 = query.get_equipped_item_name=='taurus500';",
-          "variable.taurus943 = query.get_equipped_item_name=='taurus943';"
+          "variable.taurus943 = query.get_equipped_item_name=='taurus943';",
+          "variable.java_import_weapon = variable.aug || variable.cz75 || variable.mk23 || variable.kar98 || variable.lonetrail || variable.m320 || variable.m700 || variable.m95 || variable.m9a4 || variable.rhino357 || variable.rpk || variable.spas12 || variable.spr15hb || variable.springfield1873 || variable.taurus500 || variable.taurus943;"
         ],
         "animate": [
           "root",
@@ -762,6 +763,9 @@
           },
           {
             "m107_fp_sight": "variable.is_first_person && variable.m107 && query.is_sneaking"
+          },
+          {
+            "java_import_fp_base": "variable.is_first_person && variable.java_import_weapon"
           },
           {
             "java_aug_hold": "variable.is_first_person && variable.aug"
@@ -1530,7 +1534,8 @@
         "java_spr15hb_hold": "animation.tacz.spr15hb.static_idle",
         "java_springfield1873_hold": "animation.tacz.springfield1873.static_idle",
         "java_taurus500_hold": "animation.tacz.taurus500.static_idle",
-        "java_taurus943_hold": "animation.tacz.taurus943.static_idle"
+        "java_taurus943_hold": "animation.tacz.taurus943.static_idle",
+        "java_import_fp_base": "animation.tacz.java_import.fp_base"
       },
       "sound_effects": {
         "bruenmk9_raise": "bruenmk9_raise",

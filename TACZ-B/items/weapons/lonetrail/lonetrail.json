@@ -24,7 +24,7 @@
         "texture": "lonetrail"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.lonetrail.name"
+        "value": ".30-06 Lonetrail Hand Cannon"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

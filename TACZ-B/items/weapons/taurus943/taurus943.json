@@ -24,7 +24,7 @@
         "texture": "taurus943"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.taurus943.name"
+        "value": ".22 Modle 943 Revolver"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

@@ -24,7 +24,7 @@
         "texture": "m700"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.m700.name"
+        "value": "M700 Sniper Rifle"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

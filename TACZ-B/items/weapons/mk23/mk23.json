@@ -24,7 +24,7 @@
         "texture": "mk23"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.mk23.name"
+        "value": "MK23 Offensive Pistol"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

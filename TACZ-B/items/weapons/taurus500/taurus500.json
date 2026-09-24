@@ -24,7 +24,7 @@
         "texture": "taurus500"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.taurus500.name"
+        "value": "Taurus \\"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

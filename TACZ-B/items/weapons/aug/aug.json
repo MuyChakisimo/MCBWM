@@ -24,7 +24,7 @@
         "texture": "aug"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.aug.name"
+        "value": "AUG"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

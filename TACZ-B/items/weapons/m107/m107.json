@@ -30,7 +30,7 @@
         "movement_modifier": 0.72
       },
       "minecraft:display_name": {
-        "value": "krep:gun.m107.name"
+        "value": "M107"
       }
     }
   }

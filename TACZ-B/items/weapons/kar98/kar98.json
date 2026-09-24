@@ -24,7 +24,7 @@
         "texture": "kar98"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.kar98.name"
+        "value": "Mauser Kar98k Rifle"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

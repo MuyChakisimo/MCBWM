@@ -24,7 +24,7 @@
         "texture": "spr15hb"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.spr15hb.name"
+        "value": "SPR-15 HB \\"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

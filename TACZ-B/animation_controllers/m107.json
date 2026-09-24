@@ -11,7 +11,7 @@
             }
           ],
           "on_entry": [
-            "/scoreboard players set @s m107 5",
+            "/scoreboard players set @s m107 10",
             "@s[hasitem={item=krep:m107, location=slot.weapon.mainhand}] krep:noreload"
           ]
         },
@@ -52,8 +52,8 @@
           ],
           "on_entry": [
             "@s krep:m107_fire",
-            "/scoreboard players remove @s[scores={m107=1..6}] m107 1",
-            "/scoreboard players set @s[scores={m107=7..}] m107 6",
+            "/scoreboard players remove @s[scores={m107=1..10}] m107 1",
+            "/scoreboard players set @s[scores={m107=11..}] m107 10",
             "/playsound m107.shoot @a[r=120]",
             "/replaceitem entity @s[scores={m107=0}] slot.weapon.mainhand 1 krep:m107_emp 1 0",
             "/title @s[scores={m107=0}] actionbar No Ammunition"

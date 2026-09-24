@@ -24,7 +24,7 @@
         "texture": "rhino357"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.rhino357.name"
+        "value": ".357 Rhino Revolver"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

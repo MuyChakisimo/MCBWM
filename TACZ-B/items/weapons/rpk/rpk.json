@@ -24,7 +24,7 @@
         "texture": "rpk"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.rpk.name"
+        "value": "RPK"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

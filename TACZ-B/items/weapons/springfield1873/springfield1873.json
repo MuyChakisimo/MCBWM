@@ -24,7 +24,7 @@
         "texture": "springfield1873"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.springfield1873.name"
+        "value": "Springfield 1873 Trapdoor Rifle"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

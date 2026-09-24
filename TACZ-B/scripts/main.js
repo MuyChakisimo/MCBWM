@@ -17,6 +17,7 @@ import "./attachments/state.js";
 import "./attachments/modular.js";
 
 // Inventory / ammo presentation
+import "./ui/ammoHud.js";
 import "./events/itemLore.js";
 import "./events/bulletCache.js";
 import "./events/scoreboardInit.js";

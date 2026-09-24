@@ -24,7 +24,7 @@
         "texture": "cz75"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.cz75.name"
+        "value": "CZ 75"
       },
       "minecraft:creative_category": {
         "parent": "equipment"

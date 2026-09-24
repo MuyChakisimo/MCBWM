@@ -24,7 +24,7 @@
         "texture": "spas12"
       },
       "minecraft:display_name": {
-        "value": "krep:gun.spas12.name"
+        "value": "SPAS-12 Multi-purpose Shotgun"
       },
       "minecraft:creative_category": {
         "parent": "equipment"
