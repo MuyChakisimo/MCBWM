@@ -1212,26 +1212,6 @@
             ]
           }
         }
-      },
-      "sound_effects": {
-        "0.2667": {
-          "effect": "tacz:lonetrail/breach_reload_gate_on"
-        },
-        "0.3333": {
-          "effect": "tacz:lonetrail/breach_reload_eject"
-        },
-        "0.5667": {
-          "effect": "tacz:lonetrail/breach_reload_shell_impact"
-        },
-        "0.8667": {
-          "effect": "tacz:lonetrail/breach_reload_insert"
-        },
-        "1.4333": {
-          "effect": "tacz:lonetrail/breach_reload_gate_close"
-        },
-        "1.8333": {
-          "effect": "tacz:lonetrail/breach_reload_reset"
-        }
       }
     },
     "animation.tacz.lonetrail.shoot": {
@@ -3321,26 +3301,6 @@
               0.2
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.2667": {
-          "effect": "tacz:lonetrail/breach_reload_gate_on"
-        },
-        "0.3333": {
-          "effect": "tacz:lonetrail/breach_reload_eject"
-        },
-        "0.5667": {
-          "effect": "tacz:lonetrail/breach_reload_shell_impact"
-        },
-        "0.8667": {
-          "effect": "tacz:lonetrail/breach_reload_insert"
-        },
-        "1.4333": {
-          "effect": "tacz:lonetrail/breach_reload_gate_close"
-        },
-        "1.8333": {
-          "effect": "tacz:lonetrail/breach_reload_reset"
         }
       }
     },
@@ -5768,41 +5728,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.2": {
-          "effect": "tacz:lonetrail/breach_inspect_start"
-        },
-        "2.8667": {
-          "effect": "tacz:lonetrail/breach_inspect_raise"
-        },
-        "4.8333": {
-          "effect": "tacz:lonetrail/breach_inspect_rattle_light"
-        },
-        "6.6333": {
-          "effect": "tacz:lonetrail/breach_inspect_down"
-        },
-        "7.4333": {
-          "effect": "tacz:lonetrail/breach_reload_gate_on"
-        },
-        "7.5333": {
-          "effect": "tacz:lonetrail/breach_reload_eject"
-        },
-        "7.8667": {
-          "effect": "tacz:lonetrail/breach_inspect_eject"
-        },
-        "11.4667": {
-          "effect": "tacz:lonetrail/breach_inspect_catch"
-        },
-        "12.4333": {
-          "effect": "tacz:lonetrail/breach_reload_insert"
-        },
-        "12.9": {
-          "effect": "tacz:lonetrail/breach_reload_gate_close"
-        },
-        "13.2667": {
-          "effect": "tacz:lonetrail/breach_inspect_end"
-        }
       }
     },
     "animation.tacz.lonetrail.inspect_empty": {
@@ -7198,32 +7123,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.2": {
-          "effect": "tacz:lonetrail/breach_reload_insert"
-        },
-        "0.5": {
-          "effect": "tacz:lonetrail/breach_inspect_start"
-        },
-        "2.8667": {
-          "effect": "tacz:lonetrail/breach_inspect_raise"
-        },
-        "4.3667": {
-          "effect": "tacz:lonetrail/breach_inspect_rattle_light"
-        },
-        "6.2": {
-          "effect": "tacz:lonetrail/breach_inspect_down"
-        },
-        "7.1": {
-          "effect": "tacz:lonetrail/breach_reload_gate_on"
-        },
-        "8.5": {
-          "effect": "tacz:lonetrail/breach_reload_gate_close"
-        },
-        "8.8333": {
-          "effect": "tacz:lonetrail/breach_inspect_end"
         }
       }
     }

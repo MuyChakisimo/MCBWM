@@ -1769,26 +1769,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:aug/aug_reload_raise"
-        },
-        "0.3333": {
-          "effect": "tacz:aug/aug_inspect_maggrab"
-        },
-        "0.5": {
-          "effect": "tacz:aug/aug_reload_magout"
-        },
-        "1.3333": {
-          "effect": "tacz:aug/aug_reload_magin"
-        },
-        "1.7083": {
-          "effect": "tacz:aug/aug_reload_end"
-        },
-        "1.7917": {
-          "effect": "tacz:aug/aug_reload_maghitwell"
-        }
       }
     },
     "animation.tacz.aug.reload_empty": {
@@ -4000,41 +3980,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:aug/aug_reload_empty_raise"
-        },
-        "0.25": {
-          "effect": "tacz:aug/aug_reload_empty_boltlock"
-        },
-        "0.6667": {
-          "effect": "tacz:aug/aug_reload_empty_raise"
-        },
-        "0.75": {
-          "effect": "tacz:aug/aug_inspect_maggrab"
-        },
-        "0.8333": {
-          "effect": "tacz:aug/aug_reload_empty_magout"
-        },
-        "1.375": {
-          "effect": "tacz:mag_drop_sound/mag_drop_ar_poly_dirt"
-        },
-        "1.5417": {
-          "effect": "tacz:aug/aug_reload_empty_maghit"
-        },
-        "1.7083": {
-          "effect": "tacz:aug/aug_reload_empty_magin"
-        },
-        "2.125": {
-          "effect": "tacz:aug/aug_reload_maghitwell"
-        },
-        "2.5": {
-          "effect": "tacz:aug/aug_reload_empty_boltclose"
-        },
-        "2.75": {
-          "effect": "tacz:aug/aug_reload_empty_end"
-        }
       }
     },
     "animation.tacz.aug.shoot": {
@@ -5929,41 +5874,6 @@
         },
         "bullet": {
           "scale": 0
-        }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:aug/aug_reload_raise"
-        },
-        "0.3667": {
-          "effect": "tacz:aug/aug_inspect_maggrab"
-        },
-        "0.5333": {
-          "effect": "tacz:aug/aug_reload_magout"
-        },
-        "0.6667": {
-          "effect": "tacz:aug/aug_inspect_maggrab"
-        },
-        "1.2667": {
-          "effect": "tacz:aug/aug_inspect_armin"
-        },
-        "2.2": {
-          "effect": "tacz:aug/aug_inspect_raise"
-        },
-        "2.5333": {
-          "effect": "tacz:aug/aug_inspect_maggrab"
-        },
-        "2.6333": {
-          "effect": "tacz:aug/aug_reload_magin"
-        },
-        "3.4": {
-          "effect": "tacz:aug/aug_reload_empty_boltlock"
-        },
-        "3.7667": {
-          "effect": "tacz:aug/aug_reload_empty_boltclose"
-        },
-        "4.2": {
-          "effect": "tacz:aug/aug_reload_end"
         }
       }
     },
@@ -8242,56 +8152,6 @@
         },
         "bullet": {
           "scale": 0
-        }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:aug/aug_reload_raise"
-        },
-        "0.3667": {
-          "effect": "tacz:aug/aug_inspect_maggrab"
-        },
-        "0.5333": {
-          "effect": "tacz:aug/aug_reload_magout"
-        },
-        "0.6667": {
-          "effect": "tacz:aug/aug_inspect_maggrab"
-        },
-        "1.1667": {
-          "effect": "tacz:aug/aug_inspect_armin"
-        },
-        "2.2": {
-          "effect": "tacz:aug/aug_inspect_raise"
-        },
-        "2.4333": {
-          "effect": "tacz:aug/aug_reload_empty_boltlock"
-        },
-        "2.5333": {
-          "effect": "tacz:aug/aug_reload_empty_boltclose"
-        },
-        "2.8": {
-          "effect": "tacz:aug/aug_inspect_boltlock_fast"
-        },
-        "2.9333": {
-          "effect": "tacz:aug/aug_inspect_boltclose_fast"
-        },
-        "2.9667": {
-          "effect": "tacz:aug/aug_reload_empty_boltlock"
-        },
-        "3.5333": {
-          "effect": "tacz:aug/aug_reload_empty_boltclose"
-        },
-        "4.5667": {
-          "effect": "tacz:aug/aug_inspect_maggrab"
-        },
-        "4.6667": {
-          "effect": "tacz:aug/aug_reload_magin"
-        },
-        "5.2": {
-          "effect": "tacz:aug/aug_reload_empty_boltlock"
-        },
-        "5.8333": {
-          "effect": "tacz:aug/aug_inspect_end"
         }
       }
     }

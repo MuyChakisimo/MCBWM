@@ -485,11 +485,6 @@
             0.15
           ]
         }
-      },
-      "sound_effects": {
-        "0.0417": {
-          "effect": "tacz:spas_12/spas12_pumpoff_light"
-        }
       }
     },
     "animation.tacz.spas12.switch_semi_empty": {
@@ -1058,14 +1053,6 @@
             0.15
           ]
         }
-      },
-      "sound_effects": {
-        "0.2083": {
-          "effect": "tacz:spas_12/spas12_pumpoff_light"
-        },
-        "0.7083": {
-          "effect": "tacz:spas_12/spas12_bolthandleon"
-        }
       }
     },
     "animation.tacz.spas12.switch_pump": {
@@ -1366,11 +1353,6 @@
             0.15,
             0.15
           ]
-        }
-      },
-      "sound_effects": {
-        "0.1667": {
-          "effect": "tacz:spas_12/spas12_pumpon_light"
         }
       }
     },
@@ -1972,14 +1954,6 @@
             0.15,
             0.15
           ]
-        }
-      },
-      "sound_effects": {
-        "0.2083": {
-          "effect": "tacz:spas_12/spas12_pumpon_light"
-        },
-        "0.7917": {
-          "effect": "tacz:spas_12/spas12_bolthandleoff"
         }
       }
     },
@@ -2605,11 +2579,6 @@
             ]
           }
         }
-      },
-      "sound_effects": {
-        "0.5": {
-          "effect": "tacz:spas_12/spas12_shellimpact"
-        }
       }
     },
     "animation.tacz.spas12.shoot_semi_last": {
@@ -2910,11 +2879,6 @@
               0
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.5": {
-          "effect": "tacz:spas_12/spas12_shellimpact"
         }
       }
     },
@@ -3961,14 +3925,6 @@
               0
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.0667": {
-          "effect": "p38_sh_spapa12_pump_back_04"
-        },
-        "0.3": {
-          "effect": "p38_sh_spapa12_pump_forward_04"
         }
       }
     },
@@ -6211,38 +6167,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "2.6333": {
-          "effect": "tacz:spas_12/spas12_move_3"
-        },
-        "4.2667": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "4.9667": {
-          "effect": "tacz:spas_12/spas12_pumpoff"
-        },
-        "5.2": {
-          "effect": "tacz:spas_12/spas12_bulletgrab"
-        },
-        "5.8667": {
-          "effect": "tacz:spas_12/cloth_move_4"
-        },
-        "6.7333": {
-          "effect": "tacz:spas_12/cloth_move_3"
-        },
-        "7.3667": {
-          "effect": "tacz:spas_12/spas12_bolthandleon"
-        },
-        "7.9333": {
-          "effect": "tacz:spas_12/spas12_bulletin"
-        },
-        "8.7333": {
-          "effect": "tacz:spas_12/spas12_move_2"
-        }
       }
     },
     "animation.tacz.spas12.inspect_1": {
@@ -8232,38 +8156,6 @@
             ]
           }
         }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "2.6333": {
-          "effect": "tacz:spas_12/spas12_move_3"
-        },
-        "4.2667": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "4.9667": {
-          "effect": "tacz:spas_12/spas12_pumpoff"
-        },
-        "5.2": {
-          "effect": "tacz:spas_12/spas12_bulletgrab"
-        },
-        "5.8667": {
-          "effect": "tacz:spas_12/cloth_move_4"
-        },
-        "6.7333": {
-          "effect": "tacz:spas_12/cloth_move_3"
-        },
-        "7.3667": {
-          "effect": "tacz:spas_12/spas12_bulletin"
-        },
-        "7.9333": {
-          "effect": "tacz:spas_12/spas12_bolthandleon"
-        },
-        "8.2667": {
-          "effect": "tacz:spas_12/spas12_move_2"
-        }
       }
     },
     "animation.tacz.spas12.inspect_empty": {
@@ -9480,29 +9372,6 @@
         },
         "bullet": {
           "scale": 0
-        }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "2.6333": {
-          "effect": "tacz:spas_12/spas12_move_3"
-        },
-        "4.2667": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "4.9667": {
-          "effect": "tacz:spas_12/spas12_pumpoff"
-        },
-        "5.8667": {
-          "effect": "tacz:spas_12/cloth_move_4"
-        },
-        "6.0": {
-          "effect": "tacz:spas_12/spas12_bolthandleon"
-        },
-        "6.5333": {
-          "effect": "tacz:spas_12/spas12_move_2"
         }
       }
     },
@@ -11445,35 +11314,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "2.6333": {
-          "effect": "tacz:spas_12/spas12_move_3"
-        },
-        "4.2667": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "4.8667": {
-          "effect": "tacz:spas_12/spas12_bolthandleoff"
-        },
-        "5.2": {
-          "effect": "tacz:spas_12/spas12_bulletgrab"
-        },
-        "5.8667": {
-          "effect": "tacz:spas_12/cloth_move_4"
-        },
-        "6.7333": {
-          "effect": "tacz:spas_12/cloth_move_3"
-        },
-        "7.1": {
-          "effect": "tacz:spas_12/spas12_bulletin"
-        },
-        "7.9333": {
-          "effect": "tacz:spas_12/spas12_move_2"
         }
       }
     },
@@ -13462,38 +13302,6 @@
             ]
           }
         }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "2.6333": {
-          "effect": "tacz:spas_12/spas12_move_3"
-        },
-        "4.2667": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "4.8667": {
-          "effect": "tacz:spas_12/spas12_pumpoff"
-        },
-        "5.2": {
-          "effect": "tacz:spas_12/spas12_bulletgrab"
-        },
-        "5.8667": {
-          "effect": "tacz:spas_12/cloth_move_4"
-        },
-        "6.7333": {
-          "effect": "tacz:spas_12/cloth_move_3"
-        },
-        "7.2": {
-          "effect": "tacz:spas_12/spas12_bulletinbore"
-        },
-        "7.8667": {
-          "effect": "tacz:spas_12/spas12_pumpoff"
-        },
-        "8.3667": {
-          "effect": "tacz:spas_12/spas12_move_3"
-        }
       }
     },
     "animation.tacz.spas12.inspect_empty_semi": {
@@ -14441,20 +14249,6 @@
         },
         "bullet": {
           "scale": 0
-        }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "2.6333": {
-          "effect": "tacz:spas_12/spas12_move_3"
-        },
-        "4.2667": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        },
-        "5.4667": {
-          "effect": "tacz:spas_12/spas12_move_2"
         }
       }
     },
@@ -15493,11 +15287,6 @@
             0.1
           ]
         }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        }
       }
     },
     "animation.tacz.spas12.reload_intro_semi": {
@@ -15770,11 +15559,6 @@
             0.1,
             0.1
           ]
-        }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:spas_12/spas12_move_1"
         }
       }
     },
@@ -16339,14 +16123,6 @@
             0.1,
             0.1
           ]
-        }
-      },
-      "sound_effects": {
-        "0.0167": {
-          "effect": "tacz:spas_12/cloth_move_3"
-        },
-        "0.2167": {
-          "effect": "tacz:spas_12/spas12_bulletin"
         }
       }
     },
@@ -16919,14 +16695,6 @@
             0.1
           ]
         }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:spas_12/cloth_move_3"
-        },
-        "0.2333": {
-          "effect": "tacz:spas_12/spas12_bulletin"
-        }
       }
     },
     "animation.tacz.spas12.reload_end": {
@@ -17296,11 +17064,6 @@
             0.1,
             0.1
           ]
-        }
-      },
-      "sound_effects": {
-        "0.0667": {
-          "effect": "tacz:spas_12/spas12_move_4"
         }
       }
     },
@@ -17678,11 +17441,6 @@
             0.1,
             0.1
           ]
-        }
-      },
-      "sound_effects": {
-        "0.0667": {
-          "effect": "tacz:spas_12/spas12_move_4"
         }
       }
     },
@@ -19130,29 +18888,6 @@
             0.1
           ]
         }
-      },
-      "sound_effects": {
-        "0.1333": {
-          "effect": "tacz:spas_12/spas12_pumpon"
-        },
-        "0.4333": {
-          "effect": "tacz:spas_12/spas12_shellimpact"
-        },
-        "0.5333": {
-          "effect": "tacz:spas_12/spas12_move_4"
-        },
-        "0.7333": {
-          "effect": "tacz:spas_12/spas12_bulletinbore"
-        },
-        "1.3": {
-          "effect": "tacz:spas_12/spas12_bolthandleoff"
-        },
-        "1.7333": {
-          "effect": "tacz:spas_12/spas12_pumpoff"
-        },
-        "2.0": {
-          "effect": "tacz:spas_12/spas12_move_1"
-        }
       }
     },
     "animation.tacz.spas12.reload_empty_intro_semi": {
@@ -20032,23 +19767,6 @@
             0.1,
             0.1
           ]
-        }
-      },
-      "sound_effects": {
-        "0.1": {
-          "effect": "tacz:spas_12/spas12_pumpon"
-        },
-        "0.4333": {
-          "effect": "tacz:spas_12/spas12_move_4"
-        },
-        "0.5333": {
-          "effect": "tacz:spas_12/spas12_bulletinbore"
-        },
-        "0.95": {
-          "effect": "tacz:spas_12/spas12_bolthandleoff"
-        },
-        "1.4": {
-          "effect": "tacz:spas_12/spas12_move_1"
         }
       }
     }

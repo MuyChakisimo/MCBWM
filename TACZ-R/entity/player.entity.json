@@ -931,14 +931,9 @@
         "tooting_goat_horn": "animation.humanoid.tooting_goat_horn",
         "holding_brush": "animation.humanoid.holding_brush",
         "brushing": "animation.humanoid.brushing",
-        "delay_shoot": "animation.delay.shoot",
         "shootdelay": "animation.shootdelay",
         "draw": "controller.animation.draw",
         "recoil_hip": "animation.recoil.hip",
-        "m16a1_recoil": "animation.m16a1.fp.dredet",
-        "hk416_recoil": "animation.hk416.fp.dredet",
-        "g3_recoil": "animation.g3.fp.dredet",
-        "tabuk_recoil": "animation.tabuk.fp.dredet",
         "recoil_sight": "animation.recoil.sight",
         "slide": "animation.humanoid.slide",
         "universal_walk": "animation.m16a1.fp.walk",
@@ -1173,7 +1168,6 @@
         "hk416_tp_sprint": "animation.hk416.tp.sprint",
         "hk416_tp_sight": "animation.hk416.tp.sight",
         "hk416_fp": "controller.animation.hk416.fp",
-        "hk416_recoil_fp": "controller.animation.hk416.recoil",
         "hk416_walk_ac": "controller.animation.hk416.walk",
         "hk416_draw": "animation.hk416.draw",
         "hk416_fp_attachment": "animation.hk416.fp.attach",
@@ -2183,13 +2177,11 @@
         "m107_settle": "m107_settle"
       },
       "particle_effects": {
-        "krep.shell": "krep:shell",
         "krep.muzzlesmoke": "krep:nothin",
         "krep.muzzleflash": "krep:taczmuzzleflash",
         "krep.556shell": "krep:556shell",
         "krep.762shell": "krep:762shell",
         "krep.12shell": "krep:12shell",
-        "krep.g3shell": "krep:g3shell",
         "krep.bullettrace": "krep:bullettrace"
       },
       "render_controllers": [

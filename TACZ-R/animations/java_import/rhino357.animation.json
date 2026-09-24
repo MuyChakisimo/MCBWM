@@ -3198,50 +3198,6 @@
             ]
           }
         }
-      },
-      "sound_effects": {
-        "0.0667": {
-          "effect": "tacz:rhino357/rhino_inspect_start"
-        },
-        "0.5333": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_1"
-        },
-        "1.2333": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_2"
-        },
-        "1.7667": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_3"
-        },
-        "3.0667": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_end"
-        },
-        "6.0667": {
-          "effect": "tacz:rhino357/rhino_reload_raise"
-        },
-        "8.0667": {
-          "effect": "tacz:rhino357/rhino_inspect_rift"
-        },
-        "9.6667": {
-          "effect": "tacz:rhino357/rhino_reload_cylinder_turn"
-        },
-        "11.3667": {
-          "effect": "tacz:rhino357/rhino_reload_cylinder_close"
-        },
-        "11.5": {
-          "effect": "tacz:rhino357/rhino_inspect_start"
-        },
-        "11.8667": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_1"
-        },
-        "12.5": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_4"
-        },
-        "12.6667": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_end"
-        },
-        "13.0333": {
-          "effect": "tacz:rhino357/rhino_inspect_reset"
-        }
       }
     },
     "animation.tacz.rhino357.inspect_empty": {
@@ -5993,50 +5949,6 @@
             ]
           }
         }
-      },
-      "sound_effects": {
-        "0.0667": {
-          "effect": "tacz:rhino357/rhino_inspect_start"
-        },
-        "0.5333": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_1"
-        },
-        "1.2333": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_2"
-        },
-        "1.7667": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_3"
-        },
-        "3.0667": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_end"
-        },
-        "6.0667": {
-          "effect": "tacz:rhino357/rhino_reload_raise"
-        },
-        "8.0667": {
-          "effect": "tacz:rhino357/rhino_inspect_rift"
-        },
-        "9.6667": {
-          "effect": "tacz:rhino357/rhino_reload_cylinder_turn"
-        },
-        "11.3667": {
-          "effect": "tacz:rhino357/rhino_reload_cylinder_close"
-        },
-        "11.5": {
-          "effect": "tacz:rhino357/rhino_inspect_start"
-        },
-        "11.8667": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_1"
-        },
-        "12.5": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_4"
-        },
-        "12.6667": {
-          "effect": "tacz:rhino357/rhino_inspect_rotate_end"
-        },
-        "13.0333": {
-          "effect": "tacz:rhino357/rhino_inspect_reset"
-        }
       }
     },
     "animation.tacz.rhino357.static_bolt_caught": {
@@ -6488,11 +6400,6 @@
               0
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:rhino357/rhino_cocked"
         }
       }
     },
@@ -8684,29 +8591,6 @@
               0
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:rhino357/rhino_reload_raise"
-        },
-        "0.3667": {
-          "effect": "tacz:rhino357/rhino_reload_cylinder_turn"
-        },
-        "1.0333": {
-          "effect": "tacz:rhino357/rhino_reload_eject"
-        },
-        "1.3667": {
-          "effect": "tacz:rhino357/rhino_reload_shell"
-        },
-        "2.0": {
-          "effect": "tacz:rhino357/rhino_reload_bulletin"
-        },
-        "2.6333": {
-          "effect": "tacz:rhino357/rhino_reload_cylinder_close"
-        },
-        "2.9": {
-          "effect": "tacz:rhino357/rhino_reload_reset"
         }
       }
     },
@@ -11056,32 +10940,6 @@
               0
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.0333": {
-          "effect": "tacz:rhino357/rhino_reload_raise"
-        },
-        "0.3667": {
-          "effect": "tacz:rhino357/rhino_reload_cylinder_turn"
-        },
-        "1.0333": {
-          "effect": "tacz:rhino357/rhino_reload_eject"
-        },
-        "1.3667": {
-          "effect": "tacz:rhino357/rhino_reload_shell"
-        },
-        "2.0": {
-          "effect": "tacz:rhino357/rhino_reload_bulletin"
-        },
-        "2.8333": {
-          "effect": "tacz:rhino357/rhino_cylinder_spin"
-        },
-        "3.3": {
-          "effect": "tacz:rhino357/rhino_reload_cylinder_close"
-        },
-        "3.5667": {
-          "effect": "tacz:rhino357/rhino_reload_reset"
         }
       }
     }

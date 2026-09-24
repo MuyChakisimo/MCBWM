@@ -331,11 +331,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:taurus500/taurus500_cocked"
-        }
       }
     },
     "animation.tacz.taurus500.charge_out": {
@@ -2318,26 +2313,6 @@
             ]
           }
         }
-      },
-      "sound_effects": {
-        "0.1": {
-          "effect": "tacz:taurus500/taurus500_reload_cylinder_turn"
-        },
-        "0.75": {
-          "effect": "tacz:taurus500/taurus500_reload_bullet_eject"
-        },
-        "1.2333": {
-          "effect": "tacz:taurus500/taurus500_reload_shell"
-        },
-        "1.6833": {
-          "effect": "tacz:taurus500/taurus500_reload_bullet_in"
-        },
-        "2.3": {
-          "effect": "tacz:taurus500/taurus500_reload_cylinder_off"
-        },
-        "2.6167": {
-          "effect": "tacz:taurus500/taurus500_reload_end"
-        }
       }
     },
     "animation.tacz.taurus500.reload_empty": {
@@ -4099,26 +4074,6 @@
               0.2
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.1": {
-          "effect": "tacz:taurus500/taurus500_reload_cylinder_turn"
-        },
-        "0.75": {
-          "effect": "tacz:taurus500/taurus500_reload_bullet_eject"
-        },
-        "1.2333": {
-          "effect": "tacz:taurus500/taurus500_reload_shell"
-        },
-        "1.6833": {
-          "effect": "tacz:taurus500/taurus500_reload_bullet_in"
-        },
-        "2.3": {
-          "effect": "tacz:taurus500/taurus500_reload_cylinder_off"
-        },
-        "2.6167": {
-          "effect": "tacz:taurus500/taurus500_reload_end"
         }
       }
     },
@@ -6482,35 +6437,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.1": {
-          "effect": "tacz:taurus500/taurus500_inspect_rotate_1"
-        },
-        "1.7167": {
-          "effect": "tacz:taurus500/taurus500_inspect_rotate_2"
-        },
-        "2.9167": {
-          "effect": "tacz:taurus500/taurus500_inspect_mvt1"
-        },
-        "4.3333": {
-          "effect": "tacz:taurus500/taurus500_inspect_mvt2"
-        },
-        "6.05": {
-          "effect": "tacz:taurus500/taurus500_inspect_mvt3"
-        },
-        "6.3": {
-          "effect": "tacz:taurus500/taurus500_inspect_bullet"
-        },
-        "7.3": {
-          "effect": "tacz:taurus500/taurus500_inspect_bullet_close"
-        },
-        "8.3": {
-          "effect": "tacz:taurus500/taurus500_inspect_bullet_down"
-        },
-        "8.5667": {
-          "effect": "tacz:taurus500/taurus500_inspect_end"
-        }
       }
     },
     "animation.tacz.taurus500.inspect_empty": {
@@ -7900,23 +7826,6 @@
         "round_inspect": {
           "scale": 0
         }
-      },
-      "sound_effects": {
-        "0.1": {
-          "effect": "tacz:taurus500/taurus500_inspect_rotate_1"
-        },
-        "1.7167": {
-          "effect": "tacz:taurus500/taurus500_inspect_rotate_2"
-        },
-        "2.9167": {
-          "effect": "tacz:taurus500/taurus500_inspect_mvt1"
-        },
-        "4.3333": {
-          "effect": "tacz:taurus500/taurus500_inspect_mvt2"
-        },
-        "6.0667": {
-          "effect": "tacz:taurus500/taurus500_inspect_end"
-        }
       }
     },
     "animation.tacz.taurus500.shoot": {
@@ -8496,11 +8405,6 @@
         },
         "round_inspect": {
           "scale": 0
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:taurus500/taurus500_cocked"
         }
       }
     }

@@ -326,11 +326,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.05": {
-          "effect": "tacz:cz75/cz75_raise"
-        }
       }
     },
     "animation.tacz.cz75.put_away": {
@@ -549,11 +544,6 @@
               0
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:cz75/cz75_drop"
         }
       }
     },
@@ -1503,23 +1493,6 @@
         },
         "bullet": {
           "scale": 1
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:cz75/cz75_reload_raise"
-        },
-        "0.5": {
-          "effect": "tacz:cz75/cz75_reload_magout"
-        },
-        "0.85": {
-          "effect": "tacz:cz75/cz75_reload_maghit"
-        },
-        "0.95": {
-          "effect": "tacz:cz75/cz75_reload_magin"
-        },
-        "1.3": {
-          "effect": "tacz:cz75/cz75_reload_fast_end"
         }
       }
     },
@@ -2646,29 +2619,6 @@
         },
         "bullet": {
           "scale": 1
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:cz75/cz75_reload_empty_raise"
-        },
-        "0.15": {
-          "effect": "tacz:cz75/cz75_reload_empty_magout"
-        },
-        "0.8": {
-          "effect": "tacz:mag_drop_sound/mag_drop_pi_metal_dirt"
-        },
-        "1.1": {
-          "effect": "tacz:cz75/cz75_reload_empty_maghit"
-        },
-        "1.3": {
-          "effect": "tacz:cz75/cz75_reload_empty_magin"
-        },
-        "1.65": {
-          "effect": "tacz:cz75/cz75_reload_empty_fast_xmag_charge"
-        },
-        "2.05": {
-          "effect": "tacz:cz75/cz75_reload_empty_fast_end"
         }
       }
     },
@@ -4183,32 +4133,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:cz75/cz75_inspect_raise"
-        },
-        "1.75": {
-          "effect": "tacz:cz75/cz75_inspect_magout"
-        },
-        "3.95": {
-          "effect": "tacz:cz75/cz75_inspect_magin"
-        },
-        "4.05": {
-          "effect": "tacz:cz75/cz75_inspect_maghit"
-        },
-        "4.45": {
-          "effect": "tacz:cz75/cz75_inspect_empty_flip"
-        },
-        "4.75": {
-          "effect": "tacz:cz75/cz75_inspect_slidepull"
-        },
-        "5.5": {
-          "effect": "tacz:cz75/cz75_inspect_sliderelease"
-        },
-        "5.75": {
-          "effect": "tacz:cz75/cz75_inspect_empty_end"
-        }
       }
     },
     "animation.tacz.cz75.inspect_empty": {
@@ -5533,26 +5457,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:cz75/cz75_inspect_raise"
-        },
-        "1.75": {
-          "effect": "tacz:cz75/cz75_inspect_magout"
-        },
-        "3.95": {
-          "effect": "tacz:cz75/cz75_inspect_magin"
-        },
-        "4.05": {
-          "effect": "tacz:cz75/cz75_inspect_maghit"
-        },
-        "4.45": {
-          "effect": "tacz:cz75/cz75_inspect_empty_flip"
-        },
-        "5.75": {
-          "effect": "tacz:cz75/cz75_inspect_empty_end"
         }
       }
     },

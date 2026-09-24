@@ -1072,11 +1072,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0667": {
-          "effect": "p04_lm_rkilo_raise_first_end"
-        }
       }
     },
     "animation.tacz.rpk.put_away": {
@@ -1303,11 +1298,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "p04_lm_rkilo_drop_rattle"
         }
       }
     },
@@ -2503,26 +2493,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "ak47_drum_reload_twist"
-        },
-        "0.4667": {
-          "effect": "p37_lm_dblmg_reload_fast_boltcharge"
-        },
-        "0.6667": {
-          "effect": "ak47_drum_reload_grabmag"
-        },
-        "1.7": {
-          "effect": "ar_akilo_reload_xmag_empty_maghit"
-        },
-        "1.8667": {
-          "effect": "ak47_reload_magin_01"
-        },
-        "2.1667": {
-          "effect": "ak47_drum_reload_end"
         }
       }
     },
@@ -3932,23 +3902,6 @@
               0
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "ak47_drum_reload_twist"
-        },
-        "0.4": {
-          "effect": "ak47_drum_reload_grabmag"
-        },
-        "0.6333": {
-          "effect": "p37_lm_dblmg_reload_fast_boltcharge"
-        },
-        "1.7667": {
-          "effect": "ak47_reload_magin_01"
-        },
-        "2.5333": {
-          "effect": "ak47_drum_reload_end"
         }
       }
     },
@@ -5688,29 +5641,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "p04_lm_rkilo_reload_empty_raise"
-        },
-        "0.1333": {
-          "effect": "p04_lm_rkilo_reload_empty_magout"
-        },
-        "1.2333": {
-          "effect": "iw8_phys_mag_drop_large_drum_dirt_02"
-        },
-        "1.7333": {
-          "effect": "p04_lm_rkilo_reload_empty_raise"
-        },
-        "1.7667": {
-          "effect": "p04_lm_rkilo_reload_empty_rattle"
-        },
-        "2.6667": {
-          "effect": "p04_lm_rkilo_reload_empty_boltcharge"
-        },
-        "2.8333": {
-          "effect": "p04_lm_rkilo_reload_empty_end_end"
         }
       }
     },
@@ -7590,29 +7520,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "p04_lm_rkilo_reload_empty_raise"
-        },
-        "0.3333": {
-          "effect": "p04_lm_rkilo_reload_empty_magout"
-        },
-        "1.2333": {
-          "effect": "iw8_phys_mag_drop_large_drum_dirt_02"
-        },
-        "1.9": {
-          "effect": "p04_lm_rkilo_reload_empty_raise"
-        },
-        "2.2333": {
-          "effect": "p04_lm_rkilo_reload_empty_rattle"
-        },
-        "3.1667": {
-          "effect": "p04_lm_rkilo_reload_empty_boltcharge"
-        },
-        "3.4": {
-          "effect": "p04_lm_rkilo_reload_empty_end_end"
         }
       }
     },
@@ -10190,38 +10097,6 @@
               0
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "ar_akilo_inspect_up"
-        },
-        "2.0333": {
-          "effect": "ar_akilo_raise_grab"
-        },
-        "2.1333": {
-          "effect": "ar_akilo_inspect_magout"
-        },
-        "2.9667": {
-          "effect": "p04_ar_akilo_inspect_mvt"
-        },
-        "4.4333": {
-          "effect": "ar_akilo_inspect_magbump"
-        },
-        "4.7667": {
-          "effect": "ar_akilo_inspect_magin"
-        },
-        "5.0667": {
-          "effect": "ar_akilo_inspect_turn"
-        },
-        "5.6333": {
-          "effect": "ar_akilo_inspect_pull"
-        },
-        "6.7667": {
-          "effect": "ar_akilo_inspect_release"
-        },
-        "7.3667": {
-          "effect": "ar_akilo_inspect_over"
         }
       }
     },
@@ -12893,44 +12768,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "ar_akilo_inspect_up"
-        },
-        "1.1": {
-          "effect": "ak47_drum_raise_quick"
-        },
-        "2.0": {
-          "effect": "p04_lm_rkilo_inspect_drummaglrg_magout"
-        },
-        "2.1333": {
-          "effect": "ar_akilo_inspect_magout"
-        },
-        "4.3333": {
-          "effect": "p04_lm_rkilo_inspect_empty_magin"
-        },
-        "4.5333": {
-          "effect": "ar_akilo_inspect_magin"
-        },
-        "4.8333": {
-          "effect": "ar_akilo_inspect_magin"
-        },
-        "5.3": {
-          "effect": "ar_akilo_inspect_turn"
-        },
-        "5.7667": {
-          "effect": "ak47_drum_reload_empty_fast_rotate"
-        },
-        "6.6667": {
-          "effect": "p04_lm_rkilo_inspect_boltback"
-        },
-        "7.8": {
-          "effect": "p04_lm_rkilo_inspect_drummaglrg_boltback"
-        },
-        "8.4": {
-          "effect": "ar_akilo_inspect_over"
         }
       }
     },
@@ -15879,38 +15716,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "ar_akilo_inspect_up"
-        },
-        "2.0333": {
-          "effect": "ar_akilo_raise_grab"
-        },
-        "2.1333": {
-          "effect": "ar_akilo_inspect_magout"
-        },
-        "2.9667": {
-          "effect": "p04_ar_akilo_inspect_mvt"
-        },
-        "4.4333": {
-          "effect": "ar_akilo_inspect_magbump"
-        },
-        "4.7667": {
-          "effect": "ar_akilo_inspect_magin"
-        },
-        "5.0667": {
-          "effect": "ar_akilo_inspect_turn"
-        },
-        "5.6333": {
-          "effect": "ar_akilo_inspect_pull"
-        },
-        "6.7667": {
-          "effect": "ar_akilo_inspect_release"
-        },
-        "7.3667": {
-          "effect": "ar_akilo_inspect_over"
         }
       }
     }

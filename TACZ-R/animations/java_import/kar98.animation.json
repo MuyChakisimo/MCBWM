@@ -1982,29 +1982,6 @@
             ]
           }
         }
-      },
-      "sound_effects": {
-        "0.2": {
-          "effect": "tacz:kar98/kar98_bolt_out"
-        },
-        "1.05": {
-          "effect": "tacz:kar98/kar98_bullet_impact"
-        },
-        "1.2333": {
-          "effect": "tacz:kar98/kar98_reload_clip_insert"
-        },
-        "1.45": {
-          "effect": "tacz:kar98/kar98_reload_clip_bullet"
-        },
-        "1.9333": {
-          "effect": "tacz:kar98/kar98_reload_press"
-        },
-        "2.5833": {
-          "effect": "tacz:kar98/kar98_reload_bolt_in"
-        },
-        "2.9333": {
-          "effect": "tacz:kar98/kar98_reload_end"
-        }
       }
     },
     "animation.tacz.kar98.reload_intro_empty": {
@@ -2465,14 +2442,6 @@
         },
         "bullet_in_bolt": {
           "scale": 0
-        }
-      },
-      "sound_effects": {
-        "0.15": {
-          "effect": "tacz:kar98/kar98_bolt_out"
-        },
-        "0.45": {
-          "effect": "tacz:kar98/kar98_reload_empty_shell_impact"
         }
       }
     },
@@ -3068,11 +3037,6 @@
               0
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.15": {
-          "effect": "tacz:kar98/kar98_reload_bolt_out"
         }
       }
     },
@@ -3739,14 +3703,6 @@
             0.05
           ]
         }
-      },
-      "sound_effects": {
-        "0.3667": {
-          "effect": "tacz:kar98/kar98_reload_bullet_insert"
-        },
-        "0.55": {
-          "effect": "tacz:kar98/kar98_reload_cloth_move"
-        }
       }
     },
     "animation.tacz.kar98.reload_end": {
@@ -4335,11 +4291,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.05": {
-          "effect": "tacz:kar98/kar98_bolt_in"
         }
       }
     },
@@ -6667,35 +6618,6 @@
         "bullet_in_bolt": {
           "scale": 0
         }
-      },
-      "sound_effects": {
-        "0.0167": {
-          "effect": "tacz:kar98/kar98_inspect_start"
-        },
-        "2.0833": {
-          "effect": "tacz:kar98/kar98_inspect_rotate"
-        },
-        "2.9667": {
-          "effect": "tacz:kar98/kar98_inspect_bolt_out_fast"
-        },
-        "3.3667": {
-          "effect": "tacz:kar98/kar98_inspect_bullet_catch"
-        },
-        "4.05": {
-          "effect": "tacz:kar98/kar98_reload_move"
-        },
-        "6.0167": {
-          "effect": "tacz:kar98/kar98_reload_press"
-        },
-        "6.0833": {
-          "effect": "tacz:kar98/kar98_reload_bullet_insert"
-        },
-        "6.7667": {
-          "effect": "tacz:kar98/kar98_bolt_in"
-        },
-        "7.1167": {
-          "effect": "tacz:kar98/kar98_inspect_end"
-        }
       }
     },
     "animation.tacz.kar98.inspect_empty": {
@@ -7887,23 +7809,6 @@
         },
         "bullet_8": {
           "scale": 0
-        }
-      },
-      "sound_effects": {
-        "0.0167": {
-          "effect": "tacz:kar98/kar98_inspect_start"
-        },
-        "2.0833": {
-          "effect": "tacz:kar98/kar98_inspect_rotate"
-        },
-        "2.9167": {
-          "effect": "tacz:kar98/kar98_reload_bolt_out"
-        },
-        "4.5": {
-          "effect": "tacz:kar98/kar98_bolt_in"
-        },
-        "4.95": {
-          "effect": "tacz:kar98/kar98_inspect_end"
         }
       }
     },
@@ -9624,17 +9529,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0833": {
-          "effect": "tacz:kar98/kar98_bolt_out"
-        },
-        "0.5333": {
-          "effect": "tacz:kar98/kar98_bolt_in"
-        },
-        "0.9833": {
-          "effect": "tacz:kar98/kar98_bullet_impact"
-        }
       }
     },
     "animation.tacz.kar98.bolt_scope": {
@@ -10529,17 +10423,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0833": {
-          "effect": "tacz:kar98/kar98_bolt_out"
-        },
-        "0.5333": {
-          "effect": "tacz:kar98/kar98_bolt_in"
-        },
-        "0.9833": {
-          "effect": "tacz:kar98/kar98_bullet_impact"
         }
       }
     },

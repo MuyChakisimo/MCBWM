@@ -397,17 +397,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:m95/m95_raise_arm"
-        },
-        "0.3": {
-          "effect": "tacz:m95/m95_raise_01"
-        },
-        "0.3333": {
-          "effect": "tacz:m95/m95_raise_end"
-        }
       }
     },
     "animation.tacz.m95.put_away": {
@@ -688,11 +677,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:m95/m95_put_away"
         }
       }
     },
@@ -2611,29 +2595,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:m95/m95_reload_raise"
-        },
-        "0.8": {
-          "effect": "tacz:m95/m95_reload_magrelease"
-        },
-        "1.0667": {
-          "effect": "tacz:m95/m95_reload_magout"
-        },
-        "1.8": {
-          "effect": "tacz:m95/m95_reload_arm"
-        },
-        "2.6": {
-          "effect": "tacz:m95/m95_reload_magin"
-        },
-        "3.0": {
-          "effect": "tacz:m95/m95_reload_rotate"
-        },
-        "3.4667": {
-          "effect": "tacz:m95/m95_reload_end"
         }
       }
     },
@@ -5177,41 +5138,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0667": {
-          "effect": "tacz:m95/m95_boltback_shell"
-        },
-        "0.8667": {
-          "effect": "tacz:m95/m95_reload_magrelease"
-        },
-        "1.1333": {
-          "effect": "tacz:m95/m95_reload_empty_magout"
-        },
-        "1.7333": {
-          "effect": "tacz:m95/mag_drup_large_drum_dirt"
-        },
-        "1.9": {
-          "effect": "tacz:m95/m95_reload_empty_lift"
-        },
-        "3.0": {
-          "effect": "tacz:m95/m95_reload_empty_maghit"
-        },
-        "3.2333": {
-          "effect": "tacz:m95/m95_reload_empty_magin"
-        },
-        "3.7": {
-          "effect": "tacz:m95/m95_reload_empty_drop"
-        },
-        "3.7667": {
-          "effect": "tacz:m95/m95_reload_empty_drop_end"
-        },
-        "4.5": {
-          "effect": "tacz:m95/m95_boltclose"
-        },
-        "5.0": {
-          "effect": "tacz:m95/m95_reload_empty_end"
-        }
       }
     },
     "animation.tacz.m95.bolt": {
@@ -6133,17 +6059,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.2667": {
-          "effect": "tacz:m95/m95_boltback_shell"
-        },
-        "0.8333": {
-          "effect": "tacz:m95/m95_boltclose"
-        },
-        "1.2667": {
-          "effect": "tacz:m95/m95_bolt_end"
         }
       }
     },
@@ -7953,32 +7868,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0667": {
-          "effect": "tacz:m95/m95_inspect_raise"
-        },
-        "1.8333": {
-          "effect": "tacz:m95/m95_inspect_rattle"
-        },
-        "2.8": {
-          "effect": "tacz:m95/m95_inspect_rotate"
-        },
-        "3.2667": {
-          "effect": "tacz:m95/m95_inspect_shoulder"
-        },
-        "4.0333": {
-          "effect": "tacz:m95/m95_boltback"
-        },
-        "5.0333": {
-          "effect": "tacz:m95/m95_inspect_boltclose"
-        },
-        "5.4667": {
-          "effect": "tacz:m95/m95_inspect_lower"
-        },
-        "6.3": {
-          "effect": "tacz:m95/m95_inspect_end"
-        }
       }
     },
     "animation.tacz.m95.inspect_empty": {
@@ -9491,32 +9380,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0667": {
-          "effect": "tacz:m95/m95_inspect_raise"
-        },
-        "1.8333": {
-          "effect": "tacz:m95/m95_inspect_rattle"
-        },
-        "2.8": {
-          "effect": "tacz:m95/m95_inspect_rotate"
-        },
-        "3.2667": {
-          "effect": "tacz:m95/m95_inspect_shoulder"
-        },
-        "4.0333": {
-          "effect": "tacz:m95/m95_boltback"
-        },
-        "5.0333": {
-          "effect": "tacz:m95/m95_inspect_boltclose"
-        },
-        "5.4667": {
-          "effect": "tacz:m95/m95_inspect_lower"
-        },
-        "6.3": {
-          "effect": "tacz:m95/m95_inspect_end"
         }
       }
     }

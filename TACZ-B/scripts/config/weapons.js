@@ -1,5 +1,7 @@
 import { JAVA_IMPORTED_WEAPONS } from "./javaImportedWeapons.js";
 import { JAVA_WEAPON_METADATA } from "./javaWeaponMetadata.js";
+import { getCaliber } from "./calibers.js";
+import { getWeaponVisualConfig } from "./weaponVisuals.js";
 // =====================================================
 // TACZ WEAPON CONFIGURATION
 //
@@ -26,7 +28,7 @@ export const WEAPON_DEFAULTS = Object.freeze({
 
 function defineWeapon(config) {
   const javaMetadata = JAVA_WEAPON_METADATA[config.id] ?? {};
-  return Object.freeze({
+  const merged = {
     hitscan: true,
     pellets: 1,
     range: WEAPON_DEFAULTS.hitscanRange,
@@ -36,14 +38,40 @@ function defineWeapon(config) {
     headshotMultiplier: WEAPON_DEFAULTS.headshotMultiplier,
     breakFragileBlocks: WEAPON_DEFAULTS.breakFragileBlocks,
     ...javaMetadata,
-    spread: Object.freeze({ hip: 0, ads: 0 }),
     ...config,
-    spread: Object.freeze({
-      hip: config.spread?.hip ?? 0,
-      ads: config.spread?.ads ?? 0,
-    }),
+  };
+
+  // Preserve the already-tested Bedrock spread unless a weapon explicitly
+  // defines its own spread. Imported modular weapons carry their Java spread
+  // directly in config, so no existing Bedrock balance is changed here.
+  const spread = Object.freeze({
+    hip: config.spread?.hip ?? 0,
+    ads: config.spread?.ads ?? 0,
+  });
+
+  // Resolve ammunition through the caliber registry whenever possible.
+  // Explicit weapon values still win, which keeps legacy compatibility.
+  const caliber = getCaliber(merged.ammoId);
+  const visual = getWeaponVisualConfig(merged.id);
+
+  return Object.freeze({
+    ...merged,
+    caliber: merged.caliber ?? caliber?.name,
+    ammoItem: merged.ammoItem ?? caliber?.itemId,
+    spread,
+    animations: visual.animations,
+    sounds: visual.sounds,
   });
 }
+
+const IMPORTED_WEAPONS = Object.freeze(
+  Object.fromEntries(
+    Object.entries(JAVA_IMPORTED_WEAPONS).map(([weaponId, config]) => [
+      weaponId,
+      defineWeapon(config),
+    ]),
+  ),
+);
 
 export const WEAPONS = Object.freeze({
   akm: defineWeapon({
@@ -423,7 +451,7 @@ export const WEAPONS = Object.freeze({
     }),
   }),
 
-  ...JAVA_IMPORTED_WEAPONS,
+  ...IMPORTED_WEAPONS,
 
 });
 

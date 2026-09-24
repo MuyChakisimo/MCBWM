@@ -498,11 +498,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:taurus943/943_cocked"
-        }
       }
     },
     "animation.tacz.taurus943.charge_out": {
@@ -4309,68 +4304,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.2833": {
-          "effect": "tacz:taurus943/943_reload_cylinder_turn"
-        },
-        "0.7833": {
-          "effect": "tacz:taurus943/943_reload_bullet_eject"
-        },
-        "1.1833": {
-          "effect": "tacz:taurus943/943_reload_shell"
-        },
-        "1.7": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_1"
-        },
-        "1.9167": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "2.3167": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_2"
-        },
-        "2.5333": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "2.9333": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_3"
-        },
-        "3.15": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "3.5833": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_4"
-        },
-        "3.8": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "4.2167": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_2"
-        },
-        "4.4333": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "4.85": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_1"
-        },
-        "5.0667": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "5.4833": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_3"
-        },
-        "5.7": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "6.1167": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_4"
-        },
-        "6.7": {
-          "effect": "tacz:taurus943/943_reload_cylinder_close"
-        },
-        "7.0333": {
-          "effect": "tacz:taurus943/943_reload_reset"
-        }
       }
     },
     "animation.tacz.taurus943.inspect": {
@@ -5718,29 +5651,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.3": {
-          "effect": "tacz:taurus943/943_inspect_rotate_1"
-        },
-        "0.9": {
-          "effect": "tacz:taurus943/943_inspect_rotate_end"
-        },
-        "1.9": {
-          "effect": "tacz:taurus943/943_inspect_rotate_2"
-        },
-        "2.8333": {
-          "effect": "tacz:taurus943/943_inspect_rotate_end"
-        },
-        "4.8667": {
-          "effect": "tacz:taurus943/943_inspect_move"
-        },
-        "6.3": {
-          "effect": "tacz:taurus943/943_inspect_move_2"
-        },
-        "7.5667": {
-          "effect": "tacz:taurus943/943_inspect_reset"
         }
       }
     },
@@ -7493,29 +7403,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.3": {
-          "effect": "tacz:taurus943/943_inspect_rotate_1"
-        },
-        "0.9": {
-          "effect": "tacz:taurus943/943_inspect_rotate_end"
-        },
-        "1.9": {
-          "effect": "tacz:taurus943/943_inspect_rotate_2"
-        },
-        "2.8333": {
-          "effect": "tacz:taurus943/943_inspect_rotate_end"
-        },
-        "4.8667": {
-          "effect": "tacz:taurus943/943_inspect_move"
-        },
-        "6.3": {
-          "effect": "tacz:taurus943/943_inspect_move_2"
-        },
-        "7.5667": {
-          "effect": "tacz:taurus943/943_inspect_reset"
-        }
       }
     },
     "animation.tacz.taurus943.charging": {
@@ -7555,11 +7442,6 @@
               ]
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:taurus943/943_cocked"
         }
       }
     },
@@ -11484,68 +11366,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.2833": {
-          "effect": "tacz:taurus943/943_reload_cylinder_turn"
-        },
-        "0.7833": {
-          "effect": "tacz:taurus943/943_reload_bullet_eject"
-        },
-        "1.1833": {
-          "effect": "tacz:taurus943/943_reload_shell"
-        },
-        "1.7": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_1"
-        },
-        "1.9167": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "2.3167": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_2"
-        },
-        "2.5333": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "2.9333": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_3"
-        },
-        "3.15": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "3.5833": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_4"
-        },
-        "3.8": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "4.2167": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_2"
-        },
-        "4.4333": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "4.85": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_1"
-        },
-        "5.0667": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "5.4833": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_3"
-        },
-        "5.7": {
-          "effect": "tacz:taurus943/943_reload_cylinder_spin"
-        },
-        "6.1167": {
-          "effect": "tacz:taurus943/943_reload_bullet_insert_4"
-        },
-        "6.7": {
-          "effect": "tacz:taurus943/943_reload_cylinder_close"
-        },
-        "7.0333": {
-          "effect": "tacz:taurus943/943_reload_reset"
         }
       }
     }

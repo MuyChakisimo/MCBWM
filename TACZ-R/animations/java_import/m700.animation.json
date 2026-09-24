@@ -1108,20 +1108,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:m700/m700_reload_raise"
-        },
-        "0.45": {
-          "effect": "tacz:m700/m700_reload_magout"
-        },
-        "1.45": {
-          "effect": "tacz:m700/m700_reload_magin"
-        },
-        "1.65": {
-          "effect": "tacz:m700/m700_reload_end"
-        }
       }
     },
     "animation.tacz.m700.reload_empty": {
@@ -2663,29 +2649,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:m700/m700_reload_raise"
-        },
-        "0.25": {
-          "effect": "tacz:m700/m700_bolt_out"
-        },
-        "0.6": {
-          "effect": "tacz:m700/m700_shell_drop"
-        },
-        "0.85": {
-          "effect": "tacz:m700/m700_reload_magout"
-        },
-        "1.95": {
-          "effect": "tacz:m700/m700_reload_magin"
-        },
-        "2.45": {
-          "effect": "tacz:m700/m700_bolt_in"
-        },
-        "2.8": {
-          "effect": "tacz:m700/m700_reload_end"
-        }
       }
     },
     "animation.tacz.m700.bolt": {
@@ -3207,17 +3170,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.05": {
-          "effect": "tacz:m700/m700_bolt_out"
-        },
-        "0.3": {
-          "effect": "tacz:m700/m700_bolt_in"
-        },
-        "0.6": {
-          "effect": "tacz:m700/m700_shell_drop"
-        }
       }
     },
     "animation.tacz.m700.draw": {
@@ -3506,14 +3458,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "spr208_inspect_xmags_up"
-        },
-        "0.45": {
-          "effect": "spr208_raise"
-        }
       }
     },
     "animation.tacz.m700.put_away": {
@@ -3717,11 +3661,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:sks/sks_drop"
         }
       }
     },
@@ -5452,26 +5391,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:m700/m700_reload_raise"
-        },
-        "0.65": {
-          "effect": "tacz:m700/m700_reload_magout"
-        },
-        "2.4": {
-          "effect": "tacz:m700/m700_reload_magin"
-        },
-        "3.25": {
-          "effect": "tacz:m700/m700_bolt_out"
-        },
-        "4.45": {
-          "effect": "tacz:m700/m700_bolt_in"
-        },
-        "4.8": {
-          "effect": "tacz:m700/m700_reload_end"
         }
       }
     },
@@ -7244,26 +7163,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:m700/m700_reload_raise"
-        },
-        "0.65": {
-          "effect": "tacz:m700/m700_reload_magout"
-        },
-        "2.4": {
-          "effect": "tacz:m700/m700_reload_magin"
-        },
-        "3.25": {
-          "effect": "tacz:m700/m700_bolt_out"
-        },
-        "4.45": {
-          "effect": "tacz:m700/m700_bolt_in"
-        },
-        "4.8": {
-          "effect": "tacz:m700/m700_reload_end"
         }
       }
     },

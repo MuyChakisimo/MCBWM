@@ -2012,23 +2012,6 @@
             ]
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:spr15hb/spr15hb_reload_rattle"
-        },
-        "0.375": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magout"
-        },
-        "0.7917": {
-          "effect": "tacz:spr15hb/spr15hb_reload_maghit"
-        },
-        "0.875": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magin"
-        },
-        "0.9583": {
-          "effect": "tacz:spr15hb/spr15hb_reload_end"
-        }
       }
     },
     "animation.tacz.spr15hb.reload_tactical_xmag_1": {
@@ -3020,23 +3003,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:spr15hb/spr15hb_reload_rattle"
-        },
-        "0.4583": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magout"
-        },
-        "0.9167": {
-          "effect": "tacz:spr15hb/spr15hb_reload_maghit"
-        },
-        "1.0": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magin"
-        },
-        "1.2083": {
-          "effect": "tacz:spr15hb/spr15hb_reload_end"
         }
       }
     },
@@ -4057,23 +4023,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:spr15hb/spr15hb_reload_rattle"
-        },
-        "0.625": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magout"
-        },
-        "1.0833": {
-          "effect": "tacz:spr15hb/spr15hb_reload_xmag_magin"
-        },
-        "1.3333": {
-          "effect": "spr15hb_reload_empty_maghit"
-        },
-        "1.4583": {
-          "effect": "tacz:spr15hb/spr15hb_reload_end"
-        }
       }
     },
     "animation.tacz.spr15hb.reload_tactical_xmag_3": {
@@ -5063,26 +5012,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:spr15hb/spr15hb_reload_rattle"
-        },
-        "0.5": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magout"
-        },
-        "0.9333": {
-          "effect": "tacz:spr15hb/spr15hb_reload_xmaglrg_rattle"
-        },
-        "1.6": {
-          "effect": "spr15hb_reload_empty_maghit"
-        },
-        "1.6667": {
-          "effect": "tacz:spr15hb/spr15hb_reload_xmag_magin"
-        },
-        "1.9667": {
-          "effect": "tacz:spr15hb/spr15hb_reload_end"
         }
       }
     },
@@ -6225,29 +6154,6 @@
               0
             ]
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_raise"
-        },
-        "0.3333": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_magout"
-        },
-        "0.875": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_mag_drop"
-        },
-        "1.2083": {
-          "effect": "tacz:spr15hb/spr15hb_reload_maghit"
-        },
-        "1.2917": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magin"
-        },
-        "1.4583": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_end"
-        },
-        "1.8333": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_charge"
         }
       }
     },
@@ -7401,29 +7307,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_raise"
-        },
-        "0.375": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_magout"
-        },
-        "0.9583": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_mag_drop"
-        },
-        "1.3333": {
-          "effect": "tacz:spr15hb/spr15hb_reload_maghit"
-        },
-        "1.4167": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magin"
-        },
-        "1.5833": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_end"
-        },
-        "1.9583": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_charge"
-        }
       }
     },
     "animation.tacz.spr15hb.reload_empty_xmag_2": {
@@ -8549,29 +8432,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_raise"
-        },
-        "0.3667": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magout"
-        },
-        "0.7": {
-          "effect": "tacz:spr15hb/spr15hb_reload_xmaglrg_rattle"
-        },
-        "1.3333": {
-          "effect": "tacz:spr15hb/spr15hb_reload_maghit"
-        },
-        "1.4333": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magin"
-        },
-        "1.6": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_end"
-        },
-        "1.9667": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_charge"
         }
       }
     },
@@ -9734,29 +9594,6 @@
             }
           }
         }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_raise"
-        },
-        "0.3667": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magout"
-        },
-        "0.7": {
-          "effect": "tacz:spr15hb/spr15hb_reload_xmaglrg_rattle"
-        },
-        "1.4": {
-          "effect": "tacz:spr15hb/spr15hb_reload_maghit"
-        },
-        "1.5": {
-          "effect": "tacz:spr15hb/spr15hb_reload_magin"
-        },
-        "1.9333": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_end"
-        },
-        "2.2333": {
-          "effect": "tacz:spr15hb/spr15hb_reload_empty_charge"
-        }
       }
     },
     "animation.tacz.spr15hb.inspect": {
@@ -10741,26 +10578,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_raise"
-        },
-        "1.7083": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_rotate"
-        },
-        "4.0417": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_rotate2"
-        },
-        "5.5": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_rattle"
-        },
-        "6.0833": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_rattle2"
-        },
-        "6.8333": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_end"
         }
       }
     },
@@ -11767,26 +11584,6 @@
               "lerp_mode": "catmullrom"
             }
           }
-        }
-      },
-      "sound_effects": {
-        "0.0": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_raise"
-        },
-        "1.7083": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_rotate"
-        },
-        "4.0417": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_rotate2"
-        },
-        "5.5": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_rattle"
-        },
-        "6.0833": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_rattle2"
-        },
-        "6.8333": {
-          "effect": "tacz:spr15hb/spr15hb_inspect_end"
         }
       }
     },
