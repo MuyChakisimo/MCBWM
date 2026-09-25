@@ -25,6 +25,7 @@
         "fal": "textures/gun/fal",
         "p90": "textures/gun/p90",
         "scarh": "textures/gun/scarh",
+        "m107": "textures/gun/m107",
         "mp5": "textures/gun/mp5",
         "rpg": "textures/gun/rpg",
         "awp": "textures/gun/awp",
@@ -54,7 +55,6 @@
         "evolys": "textures/gun/evolys",
         "m249": "textures/gun/m249",
         "type81": "textures/gun/type81",
-        "m107": "textures/gun/m107",
         "aug": "textures/java_import/guns/aug",
         "cz75": "textures/java_import/guns/cz75",
         "mk23": "textures/java_import/guns/mk23",
@@ -151,7 +151,6 @@
         "evolys": "geometry.evolys",
         "m249": "geometry.m249",
         "type81": "geometry.type81",
-        "m107": "geometry.m107",
         "aug": "geometry.aug",
         "cz75": "geometry.cz75",
         "mk23": "geometry.mk23",
@@ -246,7 +245,7 @@
           "v.tp_melee_spear_attack_arm_rotation_x = t.melee_spear_attack_raise_scale * 90.0 + t.melee_spear_attack_thrust_scale * -120.0 + t.melee_spear_attack_recover_scale * 30.0;",
           "v.tp_melee_spear_attack_item_rotation_x = t.melee_spear_attack_thrust_scale * 60.0 + t.melee_spear_attack_recover_scale * -60.0;",
           "v.tp_melee_spear_attack_attachable_position_z = (t.melee_spear_attack_thrust_scale * -0.15 + t.melee_spear_attack_recover_scale * 0.15) * v.melee_spear_java_to_bedrock_scale;",
-          "variable.holding_all_guns = query.get_equipped_item_name=='type81' || query.get_equipped_item_name=='type81_emp' || query.get_equipped_item_name=='m249' || query.get_equipped_item_name=='m249_emp' || query.get_equipped_item_name=='evolys' || query.get_equipped_item_name=='evolys_emp' || query.get_equipped_item_name=='mk14' || query.get_equipped_item_name=='mk14_emp' || query.get_equipped_item_name=='p320' || query.get_equipped_item_name=='p320_emp' || query.get_equipped_item_name=='qbz191' || query.get_equipped_item_name=='qbz191_emp' || query.get_equipped_item_name=='cp' || query.get_equipped_item_name=='cp_emp' || query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp' || query.get_equipped_item_name=='t50' || query.get_equipped_item_name=='t50_emp' || query.get_equipped_item_name=='fal' || query.get_equipped_item_name=='fal_emp' || query.get_equipped_item_name=='sks' || query.get_equipped_item_name=='sks_emp' || query.get_equipped_item_name=='b93' || query.get_equipped_item_name=='b93_emp' || query.get_equipped_item_name=='qbz95' || query.get_equipped_item_name=='qbz95_emp' || query.get_equipped_item_name=='ump' || query.get_equipped_item_name=='ump_emp' || query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp' || query.get_equipped_item_name=='m16' || query.get_equipped_item_name=='m16_emp' || query.get_equipped_item_name=='vector' || query.get_equipped_item_name=='vector_emp' || query.get_equipped_item_name=='p90' || query.get_equipped_item_name=='p90_emp' || query.get_equipped_item_name=='g3' || query.get_equipped_item_name=='g3_emp' || query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp' || query.get_equipped_item_name=='deagle' || query.get_equipped_item_name=='deagle_emp' || query.get_equipped_item_name=='scarh' || query.get_equipped_item_name=='scarh_emp' || query.get_equipped_item_name=='mp5' || query.get_equipped_item_name=='mp5_emp' || query.get_equipped_item_name=='rpg' || query.get_equipped_item_name=='rpg_emp' || query.get_equipped_item_name=='aa12' || query.get_equipped_item_name=='aa12_emp' || q.get_equipped_item_name=='awp' || q.get_equipped_item_name=='awp_emp' || q.get_equipped_item_name=='g17' || q.get_equipped_item_name=='g17_emp' || q.get_equipped_item_name=='m870' || q.get_equipped_item_name=='m870_emp' || q.get_equipped_item_name=='scarl' || q.get_equipped_item_name=='scarl_emp' || q.get_equipped_item_name=='akm' || q.get_equipped_item_name=='akm_emp' || query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp' || query.get_equipped_item_name=='m1911' || query.get_equipped_item_name=='m1911_emp' || q.get_equipped_item_name=='minigun' || q.get_equipped_item_name=='minigun_emp' || query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp' || query.get_equipped_item_name=='mp7' || query.get_equipped_item_name=='mp7_emp' || query.get_equipped_item_name=='deagleg' || query.get_equipped_item_name=='deagleg_emp' || query.get_equipped_item_name=='uzi' || query.get_equipped_item_name=='uzi_emp' || query.get_equipped_item_name=='db' || query.get_equipped_item_name=='db_emp' || q.get_equipped_item_name=='g18' || q.get_equipped_item_name=='g18_emp' || q.get_equipped_item_name=='saiga12' || q.get_equipped_item_name=='saiga12_emp' || query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp';",
+          "variable.holding_all_guns = query.get_equipped_item_name=='type81' || query.get_equipped_item_name=='type81_emp' || query.get_equipped_item_name=='m249' || query.get_equipped_item_name=='m249_emp' || query.get_equipped_item_name=='evolys' || query.get_equipped_item_name=='evolys_emp' || query.get_equipped_item_name=='mk14' || query.get_equipped_item_name=='mk14_emp' || query.get_equipped_item_name=='p320' || query.get_equipped_item_name=='p320_emp' || query.get_equipped_item_name=='qbz191' || query.get_equipped_item_name=='qbz191_emp' || query.get_equipped_item_name=='cp' || query.get_equipped_item_name=='cp_emp' || query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp' || query.get_equipped_item_name=='t50' || query.get_equipped_item_name=='t50_emp' || query.get_equipped_item_name=='fal' || query.get_equipped_item_name=='fal_emp' || query.get_equipped_item_name=='sks' || query.get_equipped_item_name=='sks_emp' || query.get_equipped_item_name=='b93' || query.get_equipped_item_name=='b93_emp' || query.get_equipped_item_name=='qbz95' || query.get_equipped_item_name=='qbz95_emp' || query.get_equipped_item_name=='ump' || query.get_equipped_item_name=='ump_emp' || query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp' || query.get_equipped_item_name=='m16' || query.get_equipped_item_name=='m16_emp' || query.get_equipped_item_name=='vector' || query.get_equipped_item_name=='vector_emp' || query.get_equipped_item_name=='p90' || query.get_equipped_item_name=='p90_emp' || query.get_equipped_item_name=='g3' || query.get_equipped_item_name=='g3_emp' || query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp' || query.get_equipped_item_name=='deagle' || query.get_equipped_item_name=='deagle_emp' || query.get_equipped_item_name=='scarh' || query.get_equipped_item_name=='scarh_emp' || query.get_equipped_item_name=='mp5' || query.get_equipped_item_name=='mp5_emp' || query.get_equipped_item_name=='rpg' || query.get_equipped_item_name=='rpg_emp' || query.get_equipped_item_name=='aa12' || query.get_equipped_item_name=='aa12_emp' || q.get_equipped_item_name=='awp' || q.get_equipped_item_name=='awp_emp' || q.get_equipped_item_name=='g17' || q.get_equipped_item_name=='g17_emp' || q.get_equipped_item_name=='m870' || q.get_equipped_item_name=='m870_emp' || q.get_equipped_item_name=='scarl' || q.get_equipped_item_name=='scarl_emp' || q.get_equipped_item_name=='akm' || q.get_equipped_item_name=='akm_emp' || query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp' || query.get_equipped_item_name=='m1911' || query.get_equipped_item_name=='m1911_emp' || q.get_equipped_item_name=='minigun' || q.get_equipped_item_name=='minigun_emp' || query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp' || query.get_equipped_item_name=='mp7' || query.get_equipped_item_name=='mp7_emp' || query.get_equipped_item_name=='deagleg' || query.get_equipped_item_name=='deagleg_emp' || query.get_equipped_item_name=='uzi' || query.get_equipped_item_name=='uzi_emp' || query.get_equipped_item_name=='db' || query.get_equipped_item_name=='db_emp' || q.get_equipped_item_name=='g18' || q.get_equipped_item_name=='g18_emp' || q.get_equipped_item_name=='saiga12' || q.get_equipped_item_name=='saiga12_emp';",
           "variable.is_third_person = !variable.is_first_person && !variable.map_face_icon;",
           "variable.dbb = query.get_equipped_item_name=='db';",
           "variable.m16a1 = query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp';",
@@ -315,6 +314,9 @@
           "variable.scarh = query.get_equipped_item_name=='scarh' || query.get_equipped_item_name=='scarh_emp';",
           "variable.scarhb = query.get_equipped_item_name=='scarh';",
           "variable.scarhemp = query.get_equipped_item_name=='scarh_emp';",
+          "variable.m107 = query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp';",
+          "variable.m107b = query.get_equipped_item_name=='m107';",
+          "variable.m107emp = query.get_equipped_item_name=='m107_emp';",
           "variable.akm = query.get_equipped_item_name=='akm' || query.get_equipped_item_name=='akm_emp';",
           "variable.akmb = query.get_equipped_item_name=='akm';",
           "variable.akmemp = query.get_equipped_item_name=='akm_emp';",
@@ -369,9 +371,6 @@
           "variable.type81 = query.get_equipped_item_name=='type81' || query.get_equipped_item_name=='type81_emp';",
           "variable.type81b = query.get_equipped_item_name=='type81';",
           "variable.type81emp = query.get_equipped_item_name=='type81_emp';",
-          "variable.m107 = query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp';",
-          "variable.m107b = query.get_equipped_item_name=='m107';",
-          "variable.m107emp = query.get_equipped_item_name=='m107_emp';",
           "variable.aug = query.get_equipped_item_name=='aug';",
           "variable.cz75 = query.get_equipped_item_name=='cz75';",
           "variable.mk23 = query.get_equipped_item_name=='mk23';",
@@ -389,11 +388,7 @@
           "variable.taurus500 = query.get_equipped_item_name=='taurus500';",
           "variable.taurus943 = query.get_equipped_item_name=='taurus943';",
           "variable.java_import_weapon = variable.aug || variable.cz75 || variable.mk23 || variable.kar98 || variable.lonetrail || variable.m320 || variable.m700 || variable.m95 || variable.m9a4 || variable.rhino357 || variable.rpk || variable.spas12 || variable.spr15hb || variable.springfield1873 || variable.taurus500 || variable.taurus943;",
-          "variable.holding_all_guns = variable.holding_all_guns || variable.java_import_weapon;",
-          "v.modular_weapon_render_index = v.m107 ? 0 : v.aug ? 1 : v.cz75 ? 2 : v.mk23 ? 3 : v.kar98 ? 4 : v.lonetrail ? 5 : v.m320 ? 6 : v.m700 ? 7 : v.m95 ? 8 : v.m9a4 ? 9 : v.rhino357 ? 10 : v.rpk ? 11 : v.spas12 ? 12 : v.spr15hb ? 13 : v.springfield1873 ? 14 : v.taurus500 ? 15 : v.taurus943 ? 16 : 0;",
-          "v.legacy_weapon = v.m870 || v.scarl || v.uzi || v.db || v.akm || v.saiga12 || v.m4a1 || v.m1911 || v.g17 || v.g18 || v.m16a1 || v.m16 || v.mp7 || v.vector || v.aa12 || v.mp5 || v.rpg || v.deagle || v.deagleg || v.hk416 || v.g3 || v.fal || v.awp || v.p90 || v.scarh || v.g36 || v.minigun || v.ump || v.qbz95 || v.b93 || v.sks || v.t50 || v.m1014 || v.cp || v.qbz191 || v.p320 || v.mk14 || v.evolys || v.m249 || v.type81;",
-          "v.legacy_weapon_render_index = v.m870 ? 0 : v.scarl ? 1 : v.uzi ? 2 : v.db ? 3 : v.akm ? 4 : v.saiga12 ? 5 : v.m4a1 ? 6 : v.m1911 ? 7 : v.g17 ? 8 : v.g18 ? 9 : v.m16a1 ? 10 : v.m16 ? 11 : v.mp7 ? 12 : v.vector ? 13 : v.aa12 ? 14 : v.mp5 ? 15 : v.rpg ? 16 : v.deagle ? 17 : v.deagleg ? 18 : v.hk416 ? 19 : v.g3 ? 20 : v.fal ? 21 : v.awp ? 22 : v.p90 ? 23 : v.scarh ? 24 : v.g36 ? 25 : v.minigun ? 26 : v.ump ? 27 : v.qbz95 ? 28 : v.b93 ? 29 : v.sks ? 30 : v.t50 ? 31 : v.m1014 ? 32 : v.cp ? 33 : v.qbz191 ? 34 : v.p320 ? 35 : v.mk14 ? 36 : v.evolys ? 37 : v.m249 ? 38 : v.type81 ? 39 : 0;",
-          "v.compact_fp_render_index = v.t50 ? 0 : (v.cp ? 1 : 2);"
+          "v.java_import_weapon_render_index = v.aug ? 0 : v.cz75 ? 1 : v.mk23 ? 2 : v.kar98 ? 3 : v.lonetrail ? 4 : v.m320 ? 5 : v.m700 ? 6 : v.m95 ? 7 : v.m9a4 ? 8 : v.rhino357 ? 9 : v.rpk ? 10 : v.spas12 ? 11 : v.spr15hb ? 12 : v.springfield1873 ? 13 : v.taurus500 ? 14 : v.taurus943 ? 15 : 0;"
         ],
         "animate": [
           "root",
@@ -764,112 +759,55 @@
             "type81_fp": "v.is_first_person"
           },
           {
-            "m107_fp_hold": "variable.is_first_person && variable.m107"
-          },
-          {
-            "m107_fp_sight": "variable.is_first_person && variable.m107 && query.is_sneaking"
-          },
-          {
-            "awp_tp_hold": "!variable.is_first_person && variable.m107"
-          },
-          {
             "java_import_fp_base": "variable.is_first_person && variable.java_import_weapon"
           },
           {
             "java_aug_hold": "variable.is_first_person && variable.aug"
           },
           {
-            "m4a1_tp_hold": "!variable.is_first_person && variable.aug"
-          },
-          {
             "java_cz75_hold": "variable.is_first_person && variable.cz75"
-          },
-          {
-            "g17_tp_hold": "!variable.is_first_person && variable.cz75"
           },
           {
             "java_mk23_hold": "variable.is_first_person && variable.mk23"
           },
           {
-            "g17_tp_hold": "!variable.is_first_person && variable.mk23"
-          },
-          {
             "java_kar98_hold": "variable.is_first_person && variable.kar98"
-          },
-          {
-            "awp_tp_hold": "!variable.is_first_person && variable.kar98"
           },
           {
             "java_lonetrail_hold": "variable.is_first_person && variable.lonetrail"
           },
           {
-            "g17_tp_hold": "!variable.is_first_person && variable.lonetrail"
-          },
-          {
             "java_m320_hold": "variable.is_first_person && variable.m320"
-          },
-          {
-            "rpg_tp_hold": "!variable.is_first_person && variable.m320"
           },
           {
             "java_m700_hold": "variable.is_first_person && variable.m700"
           },
           {
-            "awp_tp_hold": "!variable.is_first_person && variable.m700"
-          },
-          {
             "java_m95_hold": "variable.is_first_person && variable.m95"
-          },
-          {
-            "awp_tp_hold": "!variable.is_first_person && variable.m95"
           },
           {
             "java_m9a4_hold": "variable.is_first_person && variable.m9a4"
           },
           {
-            "g17_tp_hold": "!variable.is_first_person && variable.m9a4"
-          },
-          {
             "java_rhino357_hold": "variable.is_first_person && variable.rhino357"
-          },
-          {
-            "g17_tp_hold": "!variable.is_first_person && variable.rhino357"
           },
           {
             "java_rpk_hold": "variable.is_first_person && variable.rpk"
           },
           {
-            "m4a1_tp_hold": "!variable.is_first_person && variable.rpk"
-          },
-          {
             "java_spas12_hold": "variable.is_first_person && variable.spas12"
-          },
-          {
-            "m870_tp_hold": "!variable.is_first_person && variable.spas12"
           },
           {
             "java_spr15hb_hold": "variable.is_first_person && variable.spr15hb"
           },
           {
-            "m4a1_tp_hold": "!variable.is_first_person && variable.spr15hb"
-          },
-          {
             "java_springfield1873_hold": "variable.is_first_person && variable.springfield1873"
-          },
-          {
-            "m4a1_tp_hold": "!variable.is_first_person && variable.springfield1873"
           },
           {
             "java_taurus500_hold": "variable.is_first_person && variable.taurus500"
           },
           {
-            "g17_tp_hold": "!variable.is_first_person && variable.taurus500"
-          },
-          {
             "java_taurus943_hold": "variable.is_first_person && variable.taurus943"
-          },
-          {
-            "g17_tp_hold": "!variable.is_first_person && variable.taurus943"
           }
         ],
         "should_update_effects_offscreen": "1.0"
@@ -943,9 +881,14 @@
         "tooting_goat_horn": "animation.humanoid.tooting_goat_horn",
         "holding_brush": "animation.humanoid.holding_brush",
         "brushing": "animation.humanoid.brushing",
+        "delay_shoot": "animation.delay.shoot",
         "shootdelay": "animation.shootdelay",
         "draw": "controller.animation.draw",
         "recoil_hip": "animation.recoil.hip",
+        "m16a1_recoil": "animation.m16a1.fp.dredet",
+        "hk416_recoil": "animation.hk416.fp.dredet",
+        "g3_recoil": "animation.g3.fp.dredet",
+        "tabuk_recoil": "animation.tabuk.fp.dredet",
         "recoil_sight": "animation.recoil.sight",
         "slide": "animation.humanoid.slide",
         "universal_walk": "animation.m16a1.fp.walk",
@@ -1180,6 +1123,7 @@
         "hk416_tp_sprint": "animation.hk416.tp.sprint",
         "hk416_tp_sight": "animation.hk416.tp.sight",
         "hk416_fp": "controller.animation.hk416.fp",
+        "hk416_recoil_fp": "controller.animation.hk416.recoil",
         "hk416_walk_ac": "controller.animation.hk416.walk",
         "hk416_draw": "animation.hk416.draw",
         "hk416_fp_attachment": "animation.hk416.fp.attach",
@@ -1251,6 +1195,23 @@
         "scarh_tp_hold": "animation.scarh.tp.hold",
         "scarh_tp_sprint": "animation.scarh.tp.sprint",
         "scarh_tp_sight": "animation.scarhh.tp.sight",
+        "m107_tp_sight": "animation.m107.tp.sight",
+        "m107_fp": "controller.animation.m107.fp",
+        "m107_tp": "controller.animation.m107.tp",
+        "m107_walk_ac": "controller.animation.m107.walk",
+        "m107_draw": "animation.m107.draw",
+        "m107_fp_hold": "animation.m107.fp.hold",
+        "m107_fp_inspect": "animation.m107.fp.inspect",
+        "m107_fp_sprint": "animation.m107.fp.sprint",
+        "m107_fp_reload": "animation.m107.fp.reload",
+        "m107_fp_reload_tac": "animation.m107.fp.tac",
+        "m107_fp_sight": "animation.m107.fp.sight",
+        "m107_tp_hold": "animation.m107.tp.hold",
+        "m107_tp_sprint": "animation.m107.tp.sprint",
+        "m107_fp_sight_coyote": "animation.m107.fp.sight.coyote",
+        "m107_fp_sight_elcan": "animation.m107.fp.sight.elcan",
+        "m107_fp_sight_acog": "animation.m107.fp.acog",
+        "m107_fp_sight_standard_8": "animation.m107.fp.sight.standard_8",
         "akm_fp": "controller.animation.akm.fp",
         "akm_tp": "controller.animation.akm.tp",
         "akm_walk_ac": "controller.animation.akm.walk",
@@ -1516,17 +1477,6 @@
         "type81_tp_hold": "animation.type81.tp.hold",
         "type81_tp_sprint": "animation.type81.tp.sprint",
         "type81_tp_sight": "animation.type81.tp.sight",
-        "m107_draw": "animation.m107.draw",
-        "m107_fp_hold": "animation.m107.fp.hold",
-        "m107_fp_inspect": "animation.m107.fp.inspect",
-        "m107_fp_sprint": "animation.m107.fp.sprint",
-        "m107_fp_reload": "animation.m107.fp.reload",
-        "m107_fp_reload_tac": "animation.m107.fp.tac",
-        "m107_fp_sight": "animation.m107.fp.sight",
-        "m107_fp_sight_coyote": "animation.m107.fp.sight.coyote",
-        "m107_fp_sight_elcan": "animation.m107.fp.sight.elcan",
-        "m107_fp_sight_acog": "animation.m107.fp.sight.acog",
-        "m107_fp_sight_standard_8": "animation.m107.fp.sight.standard_8",
         "java_aug_hold": "animation.tacz.aug.static_idle",
         "java_cz75_hold": "animation.tacz.cz75.static_idle",
         "java_mk23_hold": "animation.tacz.mk23.static_idle",
@@ -1668,6 +1618,34 @@
         "vector.rattle": "vector.rattle",
         "vector.rotateins": "vector.rotateins",
         "deagleg.bouncexmag": "deagleg.bouncexmag",
+        "m107.draw": "m107.draw",
+        "m107_inspect_01": "m107_inspect_01",
+        "m107_inspect_02": "m107_inspect_02",
+        "m107_inspect_03": "m107_inspect_03",
+        "m107_inspect_04": "m107_inspect_04",
+        "m107_inspect_05": "m107_inspect_05",
+        "m107_inspect_end": "m107_inspect_end",
+        "m107_inspect_grabrotate": "m107_inspect_grabrotate",
+        "m107_reload_arm": "m107_reload_arm",
+        "m107_reload_empty_armmag": "m107_reload_empty_armmag",
+        "m107_reload_empty_charge": "m107_reload_empty_charge",
+        "m107_reload_empty_end": "m107_reload_empty_end",
+        "m107_reload_empty_fast_magout": "m107_reload_empty_fast_magout",
+        "m107_reload_empty_fast_pullbolt": "m107_reload_empty_fast_pullbolt",
+        "m107_reload_empty_fast_rotate": "m107_reload_empty_fast_rotate",
+        "m107_reload_empty_magin_01": "m107_reload_empty_magin_01",
+        "m107_reload_empty_magin_02": "m107_reload_empty_magin_02",
+        "m107_reload_empty_magrelease": "m107_reload_empty_magrelease",
+        "m107_reload_end": "m107_reload_end",
+        "m107_reload_fast_shake": "m107_reload_fast_shake",
+        "m107_reload_fast_up": "m107_reload_fast_up",
+        "m107_reload_magin_01": "m107_reload_magin_01",
+        "m107_reload_magin_02": "m107_reload_magin_02",
+        "m107_reload_magout": "m107_reload_magout",
+        "m107_reload_magrelease": "m107_reload_magrelease",
+        "m107_reload_mvmnt": "m107_reload_mvmnt",
+        "m107_reload_up": "m107_reload_up",
+        "m107_settle": "m107_settle",
         "timeless50_inspect_charge": "timeless50_inspect_charge",
         "timeless50_inspect_decock": "timeless50_inspect_decock",
         "timeless50_inspect_end": "timeless50_inspect_end",
@@ -2159,42 +2137,16 @@
         "qbz191_raise": "qbz191_raise",
         "qbz191_reset": "qbz191_reset",
         "qbz_191_inspect_mid": "qbz_191_inspect_mid",
-        "qbz_191_reload_empty_fast_rotate": "qbz_191_reload_empty_fast_rotate",
-        "m107.draw": "m107.draw",
-        "m107_inspect_01": "m107_inspect_01",
-        "m107_inspect_02": "m107_inspect_02",
-        "m107_inspect_03": "m107_inspect_03",
-        "m107_inspect_04": "m107_inspect_04",
-        "m107_inspect_05": "m107_inspect_05",
-        "m107_inspect_end": "m107_inspect_end",
-        "m107_inspect_grabrotate": "m107_inspect_grabrotate",
-        "m107_reload_arm": "m107_reload_arm",
-        "m107_reload_empty_armmag": "m107_reload_empty_armmag",
-        "m107_reload_empty_charge": "m107_reload_empty_charge",
-        "m107_reload_empty_end": "m107_reload_empty_end",
-        "m107_reload_empty_fast_magout": "m107_reload_empty_fast_magout",
-        "m107_reload_empty_fast_pullbolt": "m107_reload_empty_fast_pullbolt",
-        "m107_reload_empty_fast_rotate": "m107_reload_empty_fast_rotate",
-        "m107_reload_empty_magin_01": "m107_reload_empty_magin_01",
-        "m107_reload_empty_magin_02": "m107_reload_empty_magin_02",
-        "m107_reload_empty_magrelease": "m107_reload_empty_magrelease",
-        "m107_reload_end": "m107_reload_end",
-        "m107_reload_fast_shake": "m107_reload_fast_shake",
-        "m107_reload_fast_up": "m107_reload_fast_up",
-        "m107_reload_magin_01": "m107_reload_magin_01",
-        "m107_reload_magin_02": "m107_reload_magin_02",
-        "m107_reload_magout": "m107_reload_magout",
-        "m107_reload_magrelease": "m107_reload_magrelease",
-        "m107_reload_mvmnt": "m107_reload_mvmnt",
-        "m107_reload_up": "m107_reload_up",
-        "m107_settle": "m107_settle"
+        "qbz_191_reload_empty_fast_rotate": "qbz_191_reload_empty_fast_rotate"
       },
       "particle_effects": {
+        "krep.shell": "krep:shell",
         "krep.muzzlesmoke": "krep:nothin",
         "krep.muzzleflash": "krep:taczmuzzleflash",
         "krep.556shell": "krep:556shell",
         "krep.762shell": "krep:762shell",
         "krep.12shell": "krep:12shell",
+        "krep.g3shell": "krep:g3shell",
         "krep.bullettrace": "krep:bullettrace"
       },
       "render_controllers": [
@@ -2289,7 +2241,13 @@
           "controller.render.player.universal26.first_person": "variable.is_first_person && variable.sks"
         },
         {
-          "controller.render.player.compact_weapons.first_person": "variable.is_first_person && (v.t50 || v.cp || v.type81)"
+          "controller.render.player.universal27.first_person": "variable.is_first_person && v.t50"
+        },
+        {
+          "controller.render.player.universal28.first_person": "variable.is_first_person && v.cp"
+        },
+        {
+          "controller.render.player.universal29.first_person": "variable.is_first_person && v.type81"
         },
         {
           "controller.render.player.universal30.first_person": "variable.is_first_person && v.p320"
@@ -2304,22 +2262,136 @@
           "controller.render.player.universal35.first_person": "variable.is_first_person && v.m1014"
         },
         {
+          "controller.render.m870": "variable.m870"
+        },
+        {
+          "controller.render.scarl": "variable.scarl"
+        },
+        {
+          "controller.render.uzi": "variable.uzi"
+        },
+        {
+          "controller.render.db": "variable.db"
+        },
+        {
+          "controller.render.akm": "variable.akm"
+        },
+        {
+          "controller.render.saiga12": "variable.saiga12"
+        },
+        {
+          "controller.render.m4a1": "variable.m4a1"
+        },
+        {
+          "controller.render.m1911": "variable.m1911"
+        },
+        {
+          "controller.render.g17": "variable.g17"
+        },
+        {
+          "controller.render.g18": "variable.g18"
+        },
+        {
+          "controller.render.m16a1": "variable.m16a1"
+        },
+        {
+          "controller.render.m16": "variable.m16"
+        },
+        {
+          "controller.render.mp7": "variable.mp7"
+        },
+        {
+          "controller.render.vector": "variable.vector"
+        },
+        {
+          "controller.render.aa12": "variable.aa12"
+        },
+        {
+          "controller.render.mp5": "variable.mp5"
+        },
+        {
+          "controller.render.rpg": "variable.rpg"
+        },
+        {
+          "controller.render.deagle": "variable.deagle"
+        },
+        {
+          "controller.render.deagleg": "variable.deagleg"
+        },
+        {
+          "controller.render.hk416": "variable.hk416"
+        },
+        {
+          "controller.render.g3": "variable.g3"
+        },
+        {
+          "controller.render.fal": "variable.fal"
+        },
+        {
+          "controller.render.awp": "variable.awp"
+        },
+        {
+          "controller.render.p90": "variable.p90"
+        },
+        {
+          "controller.render.scarh": "variable.scarh"
+        },
+        {
+          "controller.render.g36": "variable.g36"
+        },
+        {
+          "controller.render.minigun": "variable.minigun"
+        },
+        {
           "controller.render.player.map": "variable.map_face_icon"
+        },
+        {
+          "controller.render.ump": "variable.ump"
+        },
+        {
+          "controller.render.qbz95": "variable.qbz95"
+        },
+        {
+          "controller.render.b93": "variable.b93"
+        },
+        {
+          "controller.render.sks": "variable.sks"
+        },
+        {
+          "controller.render.t50": "variable.t50"
+        },
+        {
+          "controller.render.m1014": "variable.m1014"
+        },
+        {
+          "controller.render.cp": "variable.cp"
+        },
+        {
+          "controller.render.qbz191": "variable.qbz191"
+        },
+        {
+          "controller.render.p320": "variable.p320"
+        },
+        {
+          "controller.render.mk14": "variable.mk14"
         },
         {
           "controller.render.player.universal32.first_person": "variable.is_first_person && v.evolys"
         },
         {
+          "controller.render.evolys": "variable.evolys"
+        },
+        {
           "controller.render.player.universal33.first_person": "variable.is_first_person && v.m249"
         },
         {
-          "controller.render.player.universal22.first_person": "variable.is_first_person && variable.m107"
+          "controller.render.m249": "variable.m249"
         },
         {
-          "controller.render.legacy_weapon": "variable.legacy_weapon"
+          "controller.render.type81": "variable.type81"
         },
         {
-          "controller.render.modular_weapon": "variable.m107 || variable.java_import_weapon"
+          "controller.render.java_import_weapon": "variable.java_import_weapon"
         }
       ],
       "enable_attachables": true
