@@ -1,2 +1,0 @@
-titleraw @s[scores={evolys=1..76}] actionbar {"rawtext":[{"score":{"name":"@s","objective":"evolys"}},{"text":"/75 \n"},{"translate":"krep:ammo.name.308win"}]}
-titleraw @s[scores={evolys=0}] actionbar {"rawtext":[{"translate":"krep:hud.no_ammunition.name"},{"text":"\n"},{"translate":"krep:ammo.name.308win"}]}

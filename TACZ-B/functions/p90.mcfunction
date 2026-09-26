@@ -1,2 +1,0 @@
-titleraw @s[scores={p90=1..51}] actionbar {"rawtext":[{"score":{"name":"@s","objective":"p90"}},{"text":"/50 \n"},{"translate":"krep:ammo.name.5728mm"}]}
-titleraw @s[scores={p90=0}] actionbar {"rawtext":[{"translate":"krep:hud.no_ammunition.name"},{"text":"\n"},{"translate":"krep:ammo.name.5728mm"}]}
