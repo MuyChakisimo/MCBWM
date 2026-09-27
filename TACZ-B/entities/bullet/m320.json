@@ -1,0 +1,50 @@
+{
+  "format_version": "1.13",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "bullet:m320",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "runtime_identifier": "minecraft:snowball"
+    },
+    "component_groups": {
+      "tacz:explode": {
+        "minecraft:explode": {
+          "fuse_length": 0,
+          "fuse_lit": true,
+          "power": 4,
+          "causes_fire": false,
+          "fire_affected_by_griefing": false,
+          "destroy_affected_by_griefing": false,
+          "breaks_blocks": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:collision_box": { "width": 0.12, "height": 0.12 },
+      "minecraft:type_family": { "family": ["bullet", "grenade"] },
+      "minecraft:projectile": {
+        "on_hit": {
+          "impact_damage": { "damage": 10, "knockback": false },
+          "definition_event": {
+            "affect_projectile": true,
+            "event_trigger": { "event": "tacz:explode", "target": "self" }
+          }
+        },
+        "power": 3.0,
+        "should_bounce": false,
+        "gravity": 0.15
+      },
+      "minecraft:physics": {}
+    },
+    "events": {
+      "tacz:explode": {
+        "queue_command": {
+          "command": ["damage @e[r=6] 50 entity_explosion"]
+        },
+        "add": { "component_groups": ["tacz:explode"] }
+      }
+    }
+  }
+}

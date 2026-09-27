@@ -1,0 +1,20 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "krep:ammo_545x39",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 64,
+      "minecraft:icon": {
+        "texture": "ammo_545x39"
+      },
+      "minecraft:display_name": {
+        "value": "krep:ammo.ammo_545x39.name"
+      }
+    }
+  }
+}

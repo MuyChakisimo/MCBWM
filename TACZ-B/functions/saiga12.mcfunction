@@ -1,0 +1,2 @@
+titleraw @s[scores={saiga12=1..6}] actionbar {"rawtext":[{"score":{"name":"@s","objective":"saiga12"}},{"text":"/5 \n"},{"translate":"krep:ammo.name.12g"}]}
+titleraw @s[scores={saiga12=0}] actionbar {"rawtext":[{"translate":"krep:hud.no_ammunition.name"},{"text":"\n"},{"translate":"krep:ammo.name.12g"}]}
