@@ -44,7 +44,7 @@ scoreboard players set @s db 2
 scoreboard objectives add awp dummy awp
 scoreboard players set @s awp 6
 scoreboard objectives add m107 dummy m107
-scoreboard players set @s m107 6
+scoreboard players set @s m107 11
 scoreboard objectives add m870 dummy m870
 scoreboard players set @s m870 6
 scoreboard objectives add m1014 dummy m1014

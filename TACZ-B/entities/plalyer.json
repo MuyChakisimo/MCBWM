@@ -21466,15 +21466,11 @@
               "value": true,
               "subject": "self"
             },
-            "add": {
-              "component_groups": [
-                "krep:m107_fires"
-              ]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.m107.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.15 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.15 rotational",
+                "scriptevent tacz:weapon_hitscan m107 ads"
               ]
             }
           },
@@ -21484,15 +21480,11 @@
               "value": false,
               "subject": "self"
             },
-            "add": {
-              "component_groups": [
-                "krep:m107_firest"
-              ]
-            },
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.m107.shoot shoot",
-                "camerashake add @s[r=0.5] 0.045 0.17 rotational"
+                "camerashake add @s[r=0.5] 0.045 0.17 rotational",
+                "scriptevent tacz:weapon_hitscan m107 hip"
               ]
             }
           }

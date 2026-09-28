@@ -1547,7 +1547,7 @@
   "m107.draw": {
     "category": "hostile",
     "sounds": [
-      "sounds/m107/draw"
+      "sounds/m107/m107_draw"
     ]
   },
   "m107.shoot": {
@@ -1559,7 +1559,7 @@
   "m107.draw": {
     "category": "hostile",
     "sounds": [
-      "sounds/m107/draw"
+      "sounds/m107/m107_draw"
     ]
   },
   "m107_inspect_01": {

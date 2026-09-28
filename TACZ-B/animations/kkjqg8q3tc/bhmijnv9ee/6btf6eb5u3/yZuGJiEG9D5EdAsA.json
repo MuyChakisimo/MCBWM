@@ -6,7 +6,7 @@
       "animation_length": 4.3,
       "timeline": {
         "4.2": [
-          "/scoreboard players set @s[scores={m107=7..}] m107 6",
+          "/scoreboard players set @s[scores={m107=12..}] m107 11",
           "/function m107"
         ],
         "4.1": [

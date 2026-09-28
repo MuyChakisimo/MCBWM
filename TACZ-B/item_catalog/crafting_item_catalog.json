@@ -64,6 +64,7 @@
                   },
                   "items": [
                      "krep:awp",
+                     "krep:m107",
                      "krep:sks",
                      "krep:mk14"
                   ]
@@ -130,6 +131,7 @@
                      "krep:uzi_emp",
                      "krep:mp7_emp",
                      "krep:awp_emp",
+                     "krep:m107_emp",
                      "krep:minigun_emp",
                      "krep:m249_emp",
                      "krep:evolys_emp",
@@ -157,6 +159,7 @@
                      "krep:acp45",
                      "krep:ae50",
                      "krep:lapua338",
+                     "krep:bmg50",
                      "krep:win308",
                      "krep:mm5842",
                      "krep:rpgrocket"

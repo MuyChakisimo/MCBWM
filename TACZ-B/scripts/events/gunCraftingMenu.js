@@ -1,5 +1,6 @@
 import { world, system } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
+import { showCraftConfirm } from "./craftingHelpers.js";
 function craft(arg) {
   let form = new ActionFormData();
   (form.title("Gun Crafting"),
@@ -44,6 +45,7 @@ function craft(arg) {
     form.button("Colt Python", "textures/items/cp"),
     form.button("M1014", "textures/items/m1014"),
     form.button("P320", "textures/items/p320"),
+    form.button("M107", "textures/items/m107"),
     form.show(arg).then((response) => {
       if (response.canceled) return;
       switch (response.selection) {
@@ -166,6 +168,9 @@ function craft(arg) {
           break;
         case 39:
           p320c(arg);
+          break;
+        case 40:
+          m107c(arg);
           break;
         default:
           break;
@@ -1702,6 +1707,23 @@ function rpgc(arg) {
       else response.selection === 1 && craft(arg);
     }));
 }
+
+function m107c(player) {
+  showCraftConfirm(player, {
+    title: "M107 Crafting",
+    // Same as the Java TACZ gunsmith recipe.
+    ingredients: [
+      ["diamond", 18],
+      ["gold_ingot", 64],
+      ["netherite_ingot", 3],
+      ["iron_ingot", 320],
+      ["blaze_rod", 5],
+    ],
+    result: "krep:m107",
+    back: craft,
+  });
+}
+
 system.runInterval(() => {
   for (let player of world.getPlayers()) {
     (player.hasTag("jawir") &&

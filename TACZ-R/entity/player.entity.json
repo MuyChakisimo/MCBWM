@@ -103,6 +103,7 @@
         "mp5": "geometry.mp5",
         "rpg": "geometry.rpg",
         "deagle": "geometry.deagle",
+        "m107": "geometry.m107",
         "deagleg": "geometry.deagleg",
         "hk416": "geometry.hk416",
         "g3": "geometry.g3",
@@ -213,7 +214,7 @@
           "v.tp_melee_spear_attack_arm_rotation_x = t.melee_spear_attack_raise_scale * 90.0 + t.melee_spear_attack_thrust_scale * -120.0 + t.melee_spear_attack_recover_scale * 30.0;",
           "v.tp_melee_spear_attack_item_rotation_x = t.melee_spear_attack_thrust_scale * 60.0 + t.melee_spear_attack_recover_scale * -60.0;",
           "v.tp_melee_spear_attack_attachable_position_z = (t.melee_spear_attack_thrust_scale * -0.15 + t.melee_spear_attack_recover_scale * 0.15) * v.melee_spear_java_to_bedrock_scale;",
-          "variable.holding_all_guns = query.get_equipped_item_name=='type81' || query.get_equipped_item_name=='type81_emp' || query.get_equipped_item_name=='m249' || query.get_equipped_item_name=='m249_emp' || query.get_equipped_item_name=='evolys' || query.get_equipped_item_name=='evolys_emp' || query.get_equipped_item_name=='mk14' || query.get_equipped_item_name=='mk14_emp' || query.get_equipped_item_name=='p320' || query.get_equipped_item_name=='p320_emp' || query.get_equipped_item_name=='qbz191' || query.get_equipped_item_name=='qbz191_emp' || query.get_equipped_item_name=='cp' || query.get_equipped_item_name=='cp_emp' || query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp' || query.get_equipped_item_name=='t50' || query.get_equipped_item_name=='t50_emp' || query.get_equipped_item_name=='fal' || query.get_equipped_item_name=='fal_emp' || query.get_equipped_item_name=='sks' || query.get_equipped_item_name=='sks_emp' || query.get_equipped_item_name=='b93' || query.get_equipped_item_name=='b93_emp' || query.get_equipped_item_name=='qbz95' || query.get_equipped_item_name=='qbz95_emp' || query.get_equipped_item_name=='ump' || query.get_equipped_item_name=='ump_emp' || query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp' || query.get_equipped_item_name=='m16' || query.get_equipped_item_name=='m16_emp' || query.get_equipped_item_name=='vector' || query.get_equipped_item_name=='vector_emp' || query.get_equipped_item_name=='p90' || query.get_equipped_item_name=='p90_emp' || query.get_equipped_item_name=='g3' || query.get_equipped_item_name=='g3_emp' || query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp' || query.get_equipped_item_name=='deagle' || query.get_equipped_item_name=='deagle_emp' || query.get_equipped_item_name=='scarh' || query.get_equipped_item_name=='scarh_emp' || query.get_equipped_item_name=='mp5' || query.get_equipped_item_name=='mp5_emp' || query.get_equipped_item_name=='rpg' || query.get_equipped_item_name=='rpg_emp' || query.get_equipped_item_name=='aa12' || query.get_equipped_item_name=='aa12_emp' || q.get_equipped_item_name=='awp' || q.get_equipped_item_name=='awp_emp' || q.get_equipped_item_name=='g17' || q.get_equipped_item_name=='g17_emp' || q.get_equipped_item_name=='m870' || q.get_equipped_item_name=='m870_emp' || q.get_equipped_item_name=='scarl' || q.get_equipped_item_name=='scarl_emp' || q.get_equipped_item_name=='akm' || q.get_equipped_item_name=='akm_emp' || query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp' || query.get_equipped_item_name=='m1911' || query.get_equipped_item_name=='m1911_emp' || q.get_equipped_item_name=='minigun' || q.get_equipped_item_name=='minigun_emp' || query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp' || query.get_equipped_item_name=='mp7' || query.get_equipped_item_name=='mp7_emp' || query.get_equipped_item_name=='deagleg' || query.get_equipped_item_name=='deagleg_emp' || query.get_equipped_item_name=='uzi' || query.get_equipped_item_name=='uzi_emp' || query.get_equipped_item_name=='db' || query.get_equipped_item_name=='db_emp' || q.get_equipped_item_name=='g18' || q.get_equipped_item_name=='g18_emp' || q.get_equipped_item_name=='saiga12' || q.get_equipped_item_name=='saiga12_emp';",
+          "variable.holding_all_guns = query.get_equipped_item_name=='type81' || query.get_equipped_item_name=='type81_emp' || query.get_equipped_item_name=='m249' || query.get_equipped_item_name=='m249_emp' || query.get_equipped_item_name=='evolys' || query.get_equipped_item_name=='evolys_emp' || query.get_equipped_item_name=='mk14' || query.get_equipped_item_name=='mk14_emp' || query.get_equipped_item_name=='p320' || query.get_equipped_item_name=='p320_emp' || query.get_equipped_item_name=='qbz191' || query.get_equipped_item_name=='qbz191_emp' || query.get_equipped_item_name=='cp' || query.get_equipped_item_name=='cp_emp' || query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp' || query.get_equipped_item_name=='t50' || query.get_equipped_item_name=='t50_emp' || query.get_equipped_item_name=='fal' || query.get_equipped_item_name=='fal_emp' || query.get_equipped_item_name=='sks' || query.get_equipped_item_name=='sks_emp' || query.get_equipped_item_name=='b93' || query.get_equipped_item_name=='b93_emp' || query.get_equipped_item_name=='qbz95' || query.get_equipped_item_name=='qbz95_emp' || query.get_equipped_item_name=='ump' || query.get_equipped_item_name=='ump_emp' || query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp' || query.get_equipped_item_name=='m16' || query.get_equipped_item_name=='m16_emp' || query.get_equipped_item_name=='vector' || query.get_equipped_item_name=='vector_emp' || query.get_equipped_item_name=='p90' || query.get_equipped_item_name=='p90_emp' || query.get_equipped_item_name=='g3' || query.get_equipped_item_name=='g3_emp' || query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp' || query.get_equipped_item_name=='deagle' || query.get_equipped_item_name=='deagle_emp' || query.get_equipped_item_name=='scarh' || query.get_equipped_item_name=='scarh_emp' || query.get_equipped_item_name=='mp5' || query.get_equipped_item_name=='mp5_emp' || query.get_equipped_item_name=='rpg' || query.get_equipped_item_name=='rpg_emp' || query.get_equipped_item_name=='aa12' || query.get_equipped_item_name=='aa12_emp' || q.get_equipped_item_name=='awp' || q.get_equipped_item_name=='awp_emp' || q.get_equipped_item_name=='g17' || q.get_equipped_item_name=='g17_emp' || q.get_equipped_item_name=='m870' || q.get_equipped_item_name=='m870_emp' || q.get_equipped_item_name=='scarl' || q.get_equipped_item_name=='scarl_emp' || q.get_equipped_item_name=='akm' || q.get_equipped_item_name=='akm_emp' || query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp' || query.get_equipped_item_name=='m1911' || query.get_equipped_item_name=='m1911_emp' || q.get_equipped_item_name=='minigun' || q.get_equipped_item_name=='minigun_emp' || query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp' || query.get_equipped_item_name=='mp7' || query.get_equipped_item_name=='mp7_emp' || query.get_equipped_item_name=='deagleg' || query.get_equipped_item_name=='deagleg_emp' || query.get_equipped_item_name=='uzi' || query.get_equipped_item_name=='uzi_emp' || query.get_equipped_item_name=='db' || query.get_equipped_item_name=='db_emp' || q.get_equipped_item_name=='g18' || q.get_equipped_item_name=='g18_emp' || q.get_equipped_item_name=='saiga12' || q.get_equipped_item_name=='saiga12_emp' || query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp';",
           "variable.is_third_person = !variable.is_first_person && !variable.map_face_icon;",
           "variable.dbb = query.get_equipped_item_name=='db';",
           "variable.m16a1 = query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp';",
@@ -464,6 +465,15 @@
           },
           {
             "deagle_tp": "variable.deagle && variable.is_third_person"
+          },
+          {
+            "m107_fp": "variable.is_first_person && variable.m107"
+          },
+          {
+            "m107_walk_ac": "variable.is_first_person && variable.m107"
+          },
+          {
+            "m107_tp": "variable.m107 && variable.is_third_person"
           },
           {
             "deagleg_fp": "variable.is_first_person && variable.deagleg"
@@ -1109,7 +1119,7 @@
         "m107_tp_sprint": "animation.m107.tp.sprint",
         "m107_fp_sight_coyote": "animation.m107.fp.sight.coyote",
         "m107_fp_sight_elcan": "animation.m107.fp.sight.elcan",
-        "m107_fp_sight_acog": "animation.m107.fp.acog",
+        "m107_fp_sight_acog": "animation.m107.fp.sight.acog",
         "m107_fp_sight_standard_8": "animation.m107.fp.sight.standard_8",
         "akm_fp": "controller.animation.akm.fp",
         "akm_tp": "controller.animation.akm.tp",
@@ -2053,6 +2063,9 @@
           "controller.render.player.universal1.first_person": "variable.is_first_person && (variable.deagle || variable.deagleg)"
         },
         {
+          "controller.render.player.universal22.first_person": "variable.is_first_person && variable.m107"
+        },
+        {
           "controller.render.player.universal2.first_person": "variable.is_first_person && (variable.vector)"
         },
         {
@@ -2198,6 +2211,9 @@
         },
         {
           "controller.render.deagle": "variable.deagle"
+        },
+        {
+          "controller.render.m107": "variable.m107"
         },
         {
           "controller.render.deagleg": "variable.deagleg"

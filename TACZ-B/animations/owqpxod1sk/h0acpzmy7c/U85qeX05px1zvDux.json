@@ -7,7 +7,7 @@
       "timeline": {
         "5.1": [
           "/replaceitem entity @s slot.weapon.mainhand 1 krep:m107 1 0",
-          "/scoreboard players set @s[scores={m107=6..}] m107 5",
+          "/scoreboard players set @s[scores={m107=11..}] m107 10",
           "/function m107"
         ],
         "5.0": [

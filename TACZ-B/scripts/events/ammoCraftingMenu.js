@@ -1,5 +1,6 @@
 import { world, system } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
+import { showCraftConfirm } from "./craftingHelpers.js";
 function craftammo(arg) {
   let form = new ActionFormData();
   (form.title("Ammo Crafting"),
@@ -18,6 +19,7 @@ function craftammo(arg) {
     form.button(".357 Magnum", "textures/items/357mag"),
     form.button("5.8x42mm", "textures/items/5842mm"),
     form.button(".308 Winchester Ammo Box", "textures/items/308winbox"),
+    form.button(".50 BMG", "textures/items/50bmg"),
     form.show(arg).then((response) => {
       if (response.canceled) return;
       switch (response.selection) {
@@ -62,6 +64,9 @@ function craftammo(arg) {
           break;
         case 13:
           win308boxc(arg);
+          break;
+        case 14:
+          bmg50c(arg);
           break;
         default:
           break;
@@ -465,6 +470,22 @@ function lapua308c(arg) {
       else response.selection === 1 && craftammo(arg);
     }));
 }
+
+function bmg50c(player) {
+  showCraftConfirm(player, {
+    title: "Craft .50 BMG?",
+    // Same as the Java TACZ recipe.
+    ingredients: [
+      ["copper_ingot", 110],
+      ["gunpowder", 20],
+      ["lapis_lazuli", 12],
+      ["blaze_rod", 1],
+    ],
+    result: "krep:bmg50 24",
+    back: craftammo,
+  });
+}
+
 system.runInterval(() => {
   for (let player of world.getPlayers()) {
     (player.hasTag("laknatullah") &&

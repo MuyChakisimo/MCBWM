@@ -5,7 +5,7 @@
       "geometry": "geometry.m107",
       "materials": [
         {
-          "*": "material.invisible"
+          "*": "material.guns"
         },
         {
           "elcan_reticle": "material.guns"

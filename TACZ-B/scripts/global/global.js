@@ -44,6 +44,7 @@ globalThis.Indoarsenal = Object.freeze({
     evolys: { damage: 10, penetration: 0.6 },
     fal: { damage: 9, penetration: 0.7 },
     awp: { damage: 42, penetration: 0.9 },
+    m107: { damage: 55, penetration: 0.8 },
     scar1: { damage: 7, penetration: 0.65 },
   },
 });

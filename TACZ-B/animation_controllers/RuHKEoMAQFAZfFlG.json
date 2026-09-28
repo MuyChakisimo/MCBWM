@@ -236,6 +236,9 @@
               "trigger.inspect": "(query.get_equipped_item_name=='awp' && variable.attack_time > 0.0f && query.scoreboard('awp') >= 5 && q.mark_variant != 2)"
             },
             {
+              "trigger.inspect": "(query.get_equipped_item_name=='m107' && variable.attack_time > 0.0f && query.scoreboard('m107') >= 10 && q.mark_variant != 2)"
+            },
+            {
               "trigger.inspect": "(query.get_equipped_item_name=='deagle' && variable.attack_time > 0.0f && query.scoreboard('deagle') >= 7 && q.mark_variant != 2)"
             },
             {

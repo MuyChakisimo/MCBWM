@@ -6,7 +6,7 @@ import { spawnSmokeTracer, spawnImpactEffect } from "./shotEffects.js";
 //   scriptevent tacz:weapon_hitscan <weaponId> ads|hip
 // instead of spawning a physical bullet entity. The shot is resolved instantly with a ray from
 // the player's eyes; damage goes through the same processGunHit() as physical bullets.
-// Shotguns, RPG and M107 still fire physical bullets.
+// Shotguns and the RPG still fire physical bullets.
 
 const HITSCAN_EVENT = "tacz:weapon_hitscan";
 const RANGE = 128;
@@ -18,7 +18,7 @@ const HITSCAN_WEAPONS = new Set([
   // assault rifles
   "akm", "m4a1", "hk416", "qbz95", "qbz191", "g36", "m16", "m16a1", "scarl", "type81",
   // battle rifles / DMRs / snipers
-  "scarh", "g3", "fal", "sks", "mk14", "awp",
+  "scarh", "g3", "fal", "sks", "mk14", "awp", "m107",
   // SMGs
   "mp5", "mp7", "p90", "ump", "uzi", "vector", "b93", "evolys",
   // pistols
