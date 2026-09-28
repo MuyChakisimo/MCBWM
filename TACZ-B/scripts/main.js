@@ -1,10 +1,8 @@
 // Entry point (manifest "entry"). Each module registers its own events/intervals on import.
-// Weapon stats live in config/ (weapons.js, ammo.js, attachments.js, recoil.js).
+// Weapon stats live in config/ (weapons.js, combat.js, recoil.js, ammo.js, attachments.js).
 
 // Combat
 import "./combat/hitscan";
-import "./combat/armor";
-import "./combat/recoil";
 import "./combat/killTracking";
 
 // Crafting and attachment workbenches

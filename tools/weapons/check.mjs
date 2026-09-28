@@ -16,7 +16,7 @@ const cfg = (f) => import(pathToFileURL(path.join(root, "TACZ-B/scripts/config",
 const { WEAPONS } = await cfg("weapons.js");
 const { AMMO } = await cfg("ammo.js");
 const { ATTACHMENTS } = await cfg("attachments.js");
-const { RECOIL } = await cfg("recoil.js");
+const { RECOIL_ATTACHMENTS } = await cfg("recoil.js");
 
 const read = (f) => (fs.existsSync(path.join(root, f)) ? fs.readFileSync(path.join(root, f), "utf8") : null);
 const bpItems = new Set(), itemNames = new Map(), attachables = new Set();
@@ -74,6 +74,12 @@ for (const [id, w] of Object.entries(WEAPONS)) {
     const spawns = steps.some((s) => s.add?.component_groups?.length);
     if (!hitscan || spawns) bad(id, "fire event lacks the hitscan scriptevent or still adds a component group", "TACZ-B/entities/player.json");
   }
+  // Stats the scripts read.
+  const num = (v) => typeof v === "number" && Number.isFinite(v);
+  if (!num(w.damage) || w.damage <= 0) bad(id, "damage missing or not a positive number", "config/weapons.js");
+  if (!num(w.penetration) || w.penetration < 0 || w.penetration > 1) bad(id, "penetration must be 0..1", "config/weapons.js");
+  for (const mode of ["hip", "ads"]) if (!(w.recoil?.[mode]?.length === 2 && w.recoil[mode].every(num))) bad(id, `recoil.${mode} must be [power, duration]`, "config/weapons.js");
+  if (w.pellets > 1 && !(num(w.spread?.hip) && num(w.spread?.ads))) bad(id, "pellets without spread { hip, ads }", "config/weapons.js");
   for (const [item] of w.recipe ?? []) if (item !== "log" && !/^[a-z_]+$/.test(item)) bad(id, `odd recipe item ${item}`, "config/weapons.js");
 }
 
@@ -83,7 +89,7 @@ for (const [id, a] of Object.entries(AMMO)) {
   if (!fs.existsSync(path.join(root, "TACZ-R", a.icon + ".png"))) bad(id, `menu icon ${a.icon}.png not found`, "config/ammo.js");
 }
 for (const id of Object.keys(ATTACHMENTS)) if (!WEAPONS[id]) bad(id, "has attachments but is not in WEAPONS", "config/attachments.js");
-for (const id of Object.keys(RECOIL)) if (!WEAPONS[id]) bad(id, "has recoil but is not in WEAPONS", "config/recoil.js");
+for (const id of Object.keys(RECOIL_ATTACHMENTS)) if (!WEAPONS[id]) bad(id, "has attachment recoil but is not in WEAPONS", "config/recoil.js");
 for (const [id, gun] of Object.entries(ATTACHMENTS))
   for (const [label, icon] of [...(gun.sights ?? []), ...(gun.slots ?? []).flatMap((s) => [[s.label, s.icon], ...(s.options ?? []), ...(s.sights ?? [])])])
     if (icon && !fs.existsSync(path.join(root, "TACZ-R", icon + ".png"))) warn(id, `attachment icon ${icon}.png not found (${label})`, "config/attachments.js");

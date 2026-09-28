@@ -11,7 +11,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/deobfuscate/` | How the obfuscated original scripts were made readable (history) |
 | `*.zip` | Reference only (original release, Java TACZ, earlier attempt). Never shipped |
 
-**Pack version is `1.6.0`** for both packs. On a dedicated server set `"version": [1, 6, 0]` for both packs in the
+**Pack version is `1.7.0`** for both packs. On a dedicated server set `"version": [1, 7, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -21,12 +21,14 @@ Everything the scripts know about a gun is in **`TACZ-B/scripts/config/`**:
 
 | File | What |
 |---|---|
-| `weapons.js` | Every gun: name, category, damage, penetration, hitscan or projectile, gunsmith recipe, and (for reference) magazine size and ammo. Order = gunsmith menu order. The header explains every field and the damage formula |
+| `weapons.js` | Every gun: name, category, damage, penetration, recoil (hip/ADS camera shake), shotgun pellets/spread/tracers, RPG explosion, gunsmith recipe, and (for reference) magazine size and ammo. Order = gunsmith menu order. The header explains every field |
+| `combat.js` | Rules for all guns: `damageMultiplier` / `recoilMultiplier` (rebalance everything at once), headshot multiplier and radius, armor cap and minimum damage, armor points per material, hitscan range, tracers and breakable blocks |
+| `recoil.js` | How much fitted grips, stocks and muzzles reduce recoil (MP5, AKM, FAL, M4A1, HK416, Vector) |
 | `ammo.js` | Every ammo item: ammo-workbench recipe, output count, lore text key |
 | `attachments.js` | Attachment workbench: which guns take which grips, stocks, lasers, muzzles, magazines and sights |
-| `recoil.js` | Attachment-dependent recoil for the MP5, AKM, FAL, M4A1, HK416 and Vector |
 
-Damage, penetration, recipes, hitscan range/tracers, attachments and recoil take effect as soon as the world reloads.
+Damage, penetration, recoil, pellets, recipes, hitscan settings and attachments take effect as soon as the world
+reloads. `tools/weapons/check.mjs` also checks that every gun has valid damage, penetration and recoil.
 **Magazine size and ammo item** are defined by the behavior pack's JSON; the values in `weapons.js` are there so all
 stats are in one place, and `tools/weapons/check.mjs` reports any gun whose pack files disagree (and which file to
 edit).
@@ -36,11 +38,11 @@ edit).
 | File | What it does |
 |---|---|
 | `main.js` | Imports every module below |
-| `combat/hitscan.js` | Every gun: the fire event runs `scriptevent tacz:weapon_hitscan <gun> ads\|hip`; rays from the eyes (one per pellet) find the target, break glass, and explode for the RPG |
-| `combat/damage.js` | `applyGunHits()`: headshot (2x), armor reduction, damage summed per target, red hurt flash, hit/kill sounds |
+| `combat/hitscan.js` | Every gun: the fire event runs `scriptevent tacz:weapon_hitscan <gun> ads\|hip`; applies recoil, then rays from the eyes (one per pellet) find the target, break glass, and explode for the RPG |
+| `combat/damage.js` | `applyGunHits()`: headshot, armor reduction, damage summed per target, red hurt flash, hit/kill sounds (`config/combat.js`) |
 | `combat/shotEffects.js` | Hitscan smoke tracer and impact puff |
-| `combat/armor.js` | Armor points per material; tags mobs by the armor they wear |
-| `combat/recoil.js` | `scriptevent recoil:hip\|ads` → camera shake reduced by fitted attachments (`config/recoil.js`) |
+| `combat/armor.js` | `getArmor()`: armor a hit target wears (equipment, or `hasitem` tests on mobs, cached 2 s) |
+| `combat/recoil.js` | `applyRecoil()`: the gun's camera shake, reduced by fitted attachments (`config/recoil.js`) |
 | `combat/killTracking.js` | Kill marker tag `murderEntity` on the shooter for ~2 ticks |
 | `crafting/gunsmith.js`, `crafting/ammoWorkbench.js` | Crafting menus built from `config/weapons.js` / `config/ammo.js` |
 | `crafting/craftingHelpers.js` | Takes ingredients (only if all are present) and gives the result; `log` accepts any wood |
@@ -126,6 +128,9 @@ Reload sound effects are not wired up yet.
   closing brace, so it never loaded. Fixed and moved to `models/entity/shared/taczuniversal16.geo.json`.
 - 11 sounds pointed at files that didn't exist (and 5 sound names were defined twice, some copies pointing at missing
   files). They now use the matching file from `TACZ-JAVA.zip` or the existing copy in the pack.
+- Mob armor was detected by 48 `/tag @e` commands every second, in the Overworld only (mobs in the Nether and End
+  had no armor). It is now looked up on the target when it is hit.
+- The HK416's hip fire used its ADS recoil.
 - Removed: dead player events/component groups (old attachment modes, old recoil events, reload steps past the
   magazine size, bullet spawns for hitscan guns), 34 unused bullet entities, uncalled functions, `tick.json` /
   `testis.mcfunction`, animations/controllers/sounds for guns not in the pack (CAR-15, M9, L85, PKM, Tabuk), the
@@ -140,8 +145,7 @@ These all scale with players or entities. Change one at a time and test with sev
 
 1. `items/itemLore.js`: every second, `setItem` on **every slot of every player's inventory**. Only write when lore
    was actually missing.
-2. `combat/armor.js`: every second, 48 `/tag @e[...]` commands scanning all entities.
-3. `items/storedAmmoDisplay.js` (every tick) and `attachments/attachmentState.js` (every 2 ticks): `setProperty` on
+2. `items/storedAmmoDisplay.js` (every tick) and `attachments/attachmentState.js` (every 2 ticks): `setProperty` on
    every player holding a gun, even when the value hasn't changed. Cache the last value.
 
 ## Tools
