@@ -1,0 +1,155 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.qbz191.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='qbz191_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='qbz191' && variable.attack_time > 0.0f && query.scoreboard('qbz191') <= 28 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='qbz191')"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function qbz191quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='qbz191' && q.property('krep:ammoreload') == 3001"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='qbz191' && q.property('krep:ammoreload') >= 3001"
+            },
+            {"setup": "query.get_equipped_item_name!='qbz191'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function qbz191quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='qbz191_emp' && q.property('krep:ammoreload') == 3001"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='qbz191_emp' && q.property('krep:ammoreload') >= 3001"
+            },
+            {"setup": "query.get_equipped_item_name!='qbz191'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "qbz191reload": "query.get_equipped_item_name('main_hand')=='qbz191_emp' || query.get_equipped_item_name('main_hand')=='qbz191'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='qbz191_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "qbz191reloadtac": "query.get_equipped_item_name('main_hand')=='qbz191_emp' || query.get_equipped_item_name('main_hand')=='qbz191'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='qbz191'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function qbz191"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='qbz191' || query.get_equipped_item_name=='qbz191_emp'"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.qbz191": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='qbz191' && q.is_using_item) || query.get_equipped_item_name=='qbz191_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s qbz191 30",
+            "@s[hasitem={item=krep:qbz191, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "qbz191.30": "query.get_equipped_item_name=='qbz191' && query.is_using_item && query.scoreboard('qbz191') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "qbz191.31": "query.get_equipped_item_name=='qbz191' && query.is_using_item && query.scoreboard('qbz191') == 0"
+            }
+          ],
+          "on_entry": ["/function qbz191"]
+        },
+        "qbz191.31": {
+          "animations": ["qbz191shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={qbz191=0}] slot.weapon.mainhand 1 krep:qbz191_emp 1 0"]
+        },
+        "qbz191.30": {
+          "animations": ["qbz191shoot"],
+          "transitions": [
+            {
+              "delay.30": "query.get_equipped_item_name=='qbz191' && query.is_using_item && query.scoreboard('qbz191') >= 1 && q.mark_variant != 2 && q.all_animations_finished"
+            },
+            {"setup": "query.scoreboard('qbz191') == 0"}
+          ],
+          "on_entry": [
+            "@s krep:qbz191_fire",
+            "/function qbz191",
+            "/playsound qbz191.shoot @a[r=30]",
+            "/scoreboard players set @s[scores={qbz191=32..}] qbz191 31",
+            "/scoreboard players remove @s[scores={qbz191=1..31}] qbz191 1",
+            "/replaceitem entity @s[scores={qbz191=0}] slot.weapon.mainhand 1 krep:qbz191_emp 1 0",
+            "/title @s[scores={qbz191=0}] actionbar No Ammunition"
+          ]
+        },
+        "delay.30": {
+          "animations": ["qbz191shoot"],
+          "transitions": [
+            {
+              "qbz191.29": "query.get_equipped_item_name=='qbz191' && query.is_using_item && query.scoreboard('qbz191') >= 1 && q.mark_variant != 2 && q.all_animations_finished"
+            },
+            {"setup": "query.scoreboard('qbz191') == 0"}
+          ]
+        },
+        "qbz191.29": {
+          "transitions": [
+            {
+              "qbz191.30": "query.get_equipped_item_name=='qbz191' && query.is_using_item && query.scoreboard('qbz191') >= 1 && q.mark_variant != 2"
+            },
+            {"setup": "query.scoreboard('qbz191') == 0"}
+          ],
+          "on_entry": [
+            "@s krep:qbz191_fire",
+            "/function qbz191",
+            "/playsound qbz191.shoot @a[r=30]",
+            "/scoreboard players set @s[scores={qbz191=32..}] qbz191 31",
+            "/scoreboard players remove @s[scores={qbz191=1..31}] qbz191 1",
+            "/replaceitem entity @s[scores={qbz191=0}] slot.weapon.mainhand 1 krep:qbz191_emp 1 0",
+            "/title @s[scores={qbz191=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    }
+  }
+}

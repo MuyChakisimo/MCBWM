@@ -1,0 +1,121 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.qbz95": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='qbz95' && q.is_using_item) || query.get_equipped_item_name=='qbz95_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s qbz95 30",
+            "@s[hasitem={item=krep:qbz95, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "qbz95.30": "query.get_equipped_item_name=='qbz95' && query.is_using_item && query.scoreboard('qbz95') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "qbz95.31": "query.get_equipped_item_name=='qbz95' && query.is_using_item && query.scoreboard('qbz95') == 0"
+            }
+          ],
+          "on_entry": ["/function qbz95"]
+        },
+        "qbz95.31": {
+          "animations": ["qbz95shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={qbz95=0}] slot.weapon.mainhand 1 krep:qbz95_emp 1 0"]
+        },
+        "qbz95.30": {
+          "animations": ["qbz95shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:qbz95_fire",
+            "/scoreboard players set @s[scores={qbz95=32..}] qbz95 31",
+            "/scoreboard players remove @s[scores={qbz95=1..31}] qbz95 1",
+            "/playsound qbz95.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={qbz95=0}] slot.weapon.mainhand 1 krep:qbz95_emp 1 0",
+            "/title @s[scores={qbz95=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.qbz95.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='qbz95_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='qbz95' && variable.attack_time > 0.0f && query.scoreboard('qbz95') <= 28 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='qbz95')"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function qbz95quantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='qbz95' && q.property('krep:ammoreload') == 40"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='qbz95' && q.property('krep:ammoreload') >= 41"
+            },
+            {"setup": "query.get_equipped_item_name!='qbz95'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function qbz95quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='qbz95_emp' && q.property('krep:ammoreload') == 40"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='qbz95_emp' && q.property('krep:ammoreload') >= 41"
+            },
+            {"setup": "query.get_equipped_item_name!='qbz95'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "qbz95reload": "query.get_equipped_item_name('main_hand')=='qbz95_emp' || query.get_equipped_item_name('main_hand')=='qbz95'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='qbz95_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "qbz95reloadtac": "query.get_equipped_item_name('main_hand')=='qbz95_emp' || query.get_equipped_item_name('main_hand')=='qbz95'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='qbz95'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function qbz95"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='qbz95' || query.get_equipped_item_name=='qbz95_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

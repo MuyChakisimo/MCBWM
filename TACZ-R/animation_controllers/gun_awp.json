@@ -1,0 +1,100 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.awp.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.awp && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.awp"}, {"walk_delay_2": "v.awp"}],
+          "transitions": [
+            {"delay": "v.awp && q.is_sprinting"},
+            {"delay": "v.awp && q.is_sneaking"},
+            {"delay": "v.awp && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.awp"}],
+          "transitions": [{"setup": "v.awp && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.awp.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"awp_fp_hold": "v.awp"}],
+          "transitions": [
+            {"reload": "v.awpemp && q.mark_variant == 1"},
+            {"inspect": "v.awpb && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.awp && q.mark_variant == 2"},
+            {"sprint": "v.awp && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.awp && q.is_sneaking"},
+            {"bolt": "v.awpb && q.property('krep:ammoreload')==1"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"awp_fp_inspect": "v.awp"}],
+          "transitions": [
+            {
+              "hold": "(v.awp && q.any_animation_finished) || (v.awp && q.is_using_item) || (v.awp && q.is_sneaking)"
+            },
+            {"bolt": "v.awpb && q.property('krep:ammoreload')==1"}
+          ]
+        },
+        "bolt": {
+          "animations": [{"awp_fp_bolt": "v.awp"}],
+          "transitions": [{"hold": "(v.awp && q.property('krep:ammoreload')!=1)"}]
+        },
+        "sprint": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"awp_fp_sprint": "v.awp"}],
+          "transitions": [
+            {"hold": "v.awp && !q.is_sprinting"},
+            {"bolt": "v.awpb && q.property('krep:ammoreload')==1"},
+            {"bolt": "v.awp && q.is_using_item"},
+            {"reload": "v.awpemp && q.mark_variant == 1"},
+            {"reloadtac": "v.awp && q.mark_variant == 2"},
+            {"sight": "v.awp && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"awp_fp_reload": "v.awp"}],
+          "transitions": [{"hold": "v.awp && (q.any_animation_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"awp_fp_reload_tac": "v.awp"}],
+          "transitions": [{"hold": "v.awp && q.any_animation_finished"}, {"hold": "v.awp && q.mark_variant != 2"}]
+        },
+        "sight": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [
+            {"awp_fp_sight": "v.awp && q.property('krep:awpscope')=='nothing'"},
+            {"awp_fp_sight_coyote": "v.awp && q.property('krep:awpscope')=='coyote'"},
+            {"awp_fp_sight_elcan": "v.awp && q.property('krep:awpscope')=='elcan'"},
+            {"awp_fp_sight_acog": "v.awp && q.property('krep:awpscope')=='acog'"},
+            {"awp_fp_sight_standard_8": "v.awp && q.property('krep:awpscope')=='standard_8'"}
+          ],
+          "transitions": [
+            {"hold": "v.awp && !q.is_sneaking"},
+            {"bolt": "v.awpb && q.property('krep:ammoreload')==1"},
+            {"reloadtac": "v.awp && q.mark_variant == 2"},
+            {"reload": "v.awpemp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

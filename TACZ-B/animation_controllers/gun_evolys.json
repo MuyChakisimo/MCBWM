@@ -1,0 +1,153 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.evolys": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='evolys' && q.is_using_item) || query.get_equipped_item_name=='evolys_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s evolys 75",
+            "@s[hasitem={item=krep:evolys, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "evolys.30": "query.get_equipped_item_name=='evolys' && query.is_using_item && query.scoreboard('evolys') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "evolys.31": "query.get_equipped_item_name=='evolys' && query.is_using_item && query.scoreboard('evolys') == 0"
+            }
+          ],
+          "on_entry": ["/function evolys"]
+        },
+        "evolys.31": {
+          "animations": ["evolysshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={evolys=0}] slot.weapon.mainhand 1 krep:evolys_emp 1 0"]
+        },
+        "evolys.30": {
+          "animations": ["evolysshoot"],
+          "transitions": [
+            {
+              "delay.30": "query.get_equipped_item_name=='evolys' && query.is_using_item && query.scoreboard('evolys') >= 1 && q.mark_variant != 2 && q.all_animations_finished"
+            },
+            {"setup": "query.scoreboard('evolys') == 0"}
+          ],
+          "on_entry": [
+            "@s krep:evolys_fire",
+            "/function evolys",
+            "/playsound evolys.shoot @a[r=30]",
+            "/scoreboard players set @s[scores={evolys=76..}] evolys 75",
+            "/scoreboard players remove @s[scores={evolys=1..}] evolys 1",
+            "/replaceitem entity @s[scores={evolys=0}] slot.weapon.mainhand 1 krep:evolys_emp 1 0",
+            "/title @s[scores={evolys=0}] actionbar No Ammunition"
+          ]
+        },
+        "delay.30": {
+          "animations": ["evolysshoot"],
+          "transitions": [
+            {
+              "evolys.29": "query.get_equipped_item_name=='evolys' && query.is_using_item && query.scoreboard('evolys') >= 1 && q.mark_variant != 2 && q.all_animations_finished"
+            },
+            {"setup": "query.scoreboard('evolys') == 0"}
+          ]
+        },
+        "evolys.29": {
+          "transitions": [
+            {
+              "evolys.30": "query.get_equipped_item_name=='evolys' && query.is_using_item && query.scoreboard('evolys') >= 1 && q.mark_variant != 2"
+            },
+            {"setup": "query.scoreboard('evolys') == 0"}
+          ],
+          "on_entry": [
+            "@s krep:evolys_fire",
+            "/function evolys",
+            "/playsound evolys.shoot @a[r=30]",
+            "/scoreboard players set @s[scores={evolys=76..}] evolys 75",
+            "/scoreboard players remove @s[scores={evolys=1..}] evolys 1",
+            "/replaceitem entity @s[scores={evolys=0}] slot.weapon.mainhand 1 krep:evolys_emp 1 0",
+            "/title @s[scores={evolys=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.evolys.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload", "@s evolys:reset"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='evolys_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='evolys' && variable.attack_time > 0.0f && query.scoreboard('evolys') <= 74) || (query.get_equipped_item_name=='evolys' && q.mark_variant == 2)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function evolysquantity", "@s krep:noreload", "@s evolys:reset"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='evolys' && q.property('krep:ammoreload') == 0"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='evolys' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='evolys'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function evolysquantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='evolys_emp' && q.property('krep:ammoreload') == 0"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='evolys_emp' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='evolys'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "evolysreload": "query.get_equipped_item_name('main_hand')=='evolys_emp' || query.get_equipped_item_name('main_hand')=='evolys'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='evolys_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "evolysreloadtac": "query.get_equipped_item_name('main_hand')=='evolys_emp' || query.get_equipped_item_name('main_hand')=='evolys'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='evolys'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function evolys", "@s evolys:reset"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='evolys' || query.get_equipped_item_name=='evolys_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

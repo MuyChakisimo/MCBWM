@@ -6,105 +6,118 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 |---|---|
 | `TACZ-B/` | Behavior pack (scripts, items, entities, controllers, functions) |
 | `TACZ-R/` | Resource pack (player renderer, models, textures, animations, sounds) |
-| `tools/deobfuscate/` | Tool that turned the obfuscated original scripts into the readable ones |
-| `tools/trace/` | Behavior trace checker: proves two versions of the scripts make the same API calls |
+| `tools/weapons/` | `check.mjs` (config vs pack consistency), `verify-pack.cjs` (proves two pack trees are equivalent) |
+| `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
+| `tools/deobfuscate/` | How the obfuscated original scripts were made readable (history) |
 | `*.zip` | Reference only (original release, Java TACZ, earlier attempt). Never shipped |
 
-## Current state: original baseline + hitscan + M107
+**Pack version is `1.4.0`** for both packs. On a dedicated server set `"version": [1, 4, 0]` for both packs in the
+world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
+players and worlds keep using their cached copy.
 
-- **Resource pack (`TACZ-R/`) has identical content to the original** `TACZ mod V1.0.2 TRANSLATED EDITION [Original].zip`
-  (git commit `20cdafc`) apart from the manifest version and the M107 completion (see below).
-- **Behavior pack** is the original except:
-  - **Scripts** (`TACZ-B/scripts/`) are the original obfuscated scripts, deobfuscated mechanically:
-    encrypted strings replaced by the exact values the original decoder produced, obfuscator wrapper objects and
-    always-true/false junk branches removed, variables renamed. `tools/trace` confirms they make the identical
-    sequence of ~426k Minecraft API calls as the original across ~48k fired handlers.
-  - **Hitscan** (see below): `weapons/hitscan.js`, `weapons/shotEffects.js`, `processGunHit()` in
-    `events/projectileHitEntity.js`, and 35 fire events in `entities/plalyer.json`.
-  - **M107** completed (see below).
-- **Pack version is `1.3.0`** for both packs (original `1.0.2`; `1.1.0` plain-original baseline; `1.2.0` + hitscan;
-  `2.0.x` during the rewrite). **On a dedicated server, set `"version": [1, 3, 0]` for both packs in the world's
-  `world_behavior_packs.json` / `world_resource_packs.json`.** Bump the version again whenever you change a pack,
-  or players and worlds keep using their cached copy.
+## Changing weapon stats
 
-The previous rewrite (Java weapon import, modular scripts, its docs and validator) lives in git history at
-commit `d7cf6f3` if you want to salvage pieces of it.
+Everything the scripts know about a gun is in **`TACZ-B/scripts/config/`**:
 
-## Hitscan and tracers
-
-Ported from commit `8f227e0` ("hitscan convertion"). 34 guns hit instantly instead of firing a bullet entity:
-assault rifles, battle rifles/DMRs, AWP, SMGs, pistols, M249 and minigun. The M107 was added later (35 total).
-**Shotguns and the RPG still fire physical bullets.**
-
-1. The gun's fire event in `entities/plalyer.json` (`krep:<gun>_fire`) no longer adds the `krep:<gun>_fires` /
-   `_firest` component group (which spawned `bullet:<gun>`); it runs `scriptevent tacz:weapon_hitscan <gun> ads|hip`
-   instead (ads when sneaking). Animation, recoil and camera shake commands are unchanged.
-2. `weapons/hitscan.js` casts a 128-block ray from the eyes: nearest living entity (the ray stops at blocks),
-   otherwise the block hit.
-3. Damage goes through `processGunHit()`, the same headshot/armor/damage code physical bullets use, with the
-   gun's values from `global/global.js`.
-4. `weapons/shotEffects.js` draws the tracer: 5 vanilla smoke puffs from beside the muzzle to the impact, plus one
-   puff at the impact. No resource-pack assets are involved.
-
-To make another gun hitscan: add `"scriptevent tacz:weapon_hitscan <gun> ads"` / `"... hip"` to both entries of its
-fire event, remove the `add` of its `_fires`/`_firest` group, and add its id to `HITSCAN_WEAPONS` in `hitscan.js`.
-The line-tracer model bone, `krep:m4a1tracer` property, and `m4a1_tracer` particle from the tracer experiments were
-never used by `8f227e0` and were left out.
-
-## M107 (completed)
-
-The original shipped the M107's model, textures, sounds, first-person animations, fire/reload logic and scope
-parts, but not the pieces that make it usable. Stats and recipes are taken from the Java TACZ data
-(`TACZ-JAVA.zip`: `data/tacz/data/guns/m107_data.json`, `recipes/gun/m107.json`, `recipes/ammo/50bmg.json`). Added/fixed:
-
-| Where | What |
+| File | What |
 |---|---|
-| `TACZ-B/items/m107/` | `krep:m107` and `krep:m107_emp` items (copied from the AWP) |
-| `TACZ-B/items/4c0iqlTCnenh4pir/50bmg.json`, `TACZ-R/attachables/bmg50.json` | New `krep:bmg50` .50 BMG ammo, stacks to 30 (uses the existing `50bmg` texture) |
-| `TACZ-B/functions/m107*`, BP controllers/animations | 10-round magazine (was 5; the player entity already had reload events for 10); reload uses `.50 BMG` (was a `.338 Lapua` placeholder); HUD shows `/10` |
-| `TACZ-B/entities/plalyer.json` | `krep:m107_fire` is hitscan (there was never a `bullet:m107` entity) |
-| `TACZ-B/animation_controllers/RuHKEoMAQFAZfFlG.json` | Inspect animation trigger for the M107 |
-| `global/global.js`, `weapons/hitscan.js` | Damage 55 (Java base damage, like the port does for the AWP/Deagle), penetration 0.8 (Java ignores 50% of armor); registered as hitscan |
-| `events/gunCraftingMenu.js`, `events/ammoCraftingMenu.js` | Java recipes. Gunsmith: 18 diamond, 64 gold, 3 netherite ingot, 320 iron, 5 blaze rod. Ammo workbench: 110 copper, 20 gunpowder, 12 lapis, 1 blaze rod → 24 rounds. Both use `events/craftingHelpers.js` |
-| `events/itemLore.js`, `TACZ-R/texts/*.lang` | Names and lore in all 5 languages (tagline from Java: "Destroying them, politely."); items in the creative/crafting catalog |
-| `TACZ-R/entity/player.entity.json` | Registered `geometry.m107`; added its first-person, walk and third-person animation controllers and its gun + arms render controllers; added it to `holding_all_guns`; fixed the ACOG sight animation name |
-| `TACZ-R/render_controllers/R45pDZIigAcBTAGq.json` | Gun body used `material.invisible`; now `material.guns` like every other gun |
-| `TACZ-R/animation_controllers/vIjaiYyRvK1ajkQz.json` | Third-person aim used the first-person sight animations; now `m107_tp_sight` |
-| `TACZ-R/animations/m107_tp.animation.json` | New third-person hold/sprint/aim poses, taken from the G3 (closest model layout). May need tuning in game |
-| `TACZ-R/sounds/sound_definitions.json` | `m107.draw` pointed at a nonexistent `sounds/m107/draw`; now `m107_draw` |
+| `weapons.js` | Every gun: name, category, damage, penetration, hitscan or projectile, gunsmith recipe, and (for reference) magazine size and ammo. Order = gunsmith menu order. The header explains every field and the damage formula |
+| `ammo.js` | Every ammo item: ammo-workbench recipe, output count, lore text key |
+| `attachments.js` | Attachment workbench: which guns take which grips, stocks, lasers, muzzles, magazines and sights |
+| `recoil.js` | Attachment-dependent recoil for the MP5, AKM, FAL, M4A1, HK416 and Vector |
 
-Java's gun texture (`textures/gun/uv/m107.png`) was **not** used: it is laid out for the Java model, and the Bedrock
-`textures/gun/m107.png` already matches `geometry.m107`. The Java ammo/gun icons are the ones already in the pack.
-Java-only mechanics not ported: damage falloff with distance, 1.5x headshots (the port uses 2x for every gun), pierce.
+Damage, penetration, recipes, hitscan range/tracers, attachments and recoil take effect as soon as the world reloads.
+**Magazine size and ammo item** are defined by the behavior pack's JSON; the values in `weapons.js` are there so all
+stats are in one place, and `tools/weapons/check.mjs` reports any gun whose pack files disagree (and which file to
+edit).
 
-Not done: the attachment workbench has no M107 entry, so scopes can only be set with
-`/event entity @s m107:acog` (also `elcan`, `coyote`, `standard_8`, `ironsight`).
-
-## Script map
-
-Imported in this order by `TACZ-B/scripts/main.js` (`global.js` must stay before anything that reads `Indoarsenal`):
+## Script layout (`TACZ-B/scripts/`)
 
 | File | What it does |
 |---|---|
-| `global/global.js` | `globalThis.Indoarsenal.bullets`: damage and penetration per gun |
-| `events/projectileHitEntity.js` | `processGunHit()`: headshots, armor reduction, damage, hit/kill sounds, `murderEntity` tag. Used by physical bullets and hitscan |
-| `weapons/hitscan.js` | Hitscan shots for 35 guns (`scriptevent tacz:weapon_hitscan`) |
-| `weapons/shotEffects.js` | Hitscan smoke tracer and impact puff |
-| `events/armorDetection.js` | Armor values; tags mobs by worn armor (every 20 ticks) |
-| `events/bulletCleanup.js` | Kills bullet entities 10 ticks after spawn |
-| `events/recoil.js` | Recoil profiles per gun and attachment (`scriptevent` driven) |
-| `events/attachmentData.js` | Syncs the held gun's attachment dynamic property to `krep:stock/grip/laser/muzzle/magazine` |
-| `events/attachmentMenu.js` | Attachment workbench UI, per-gun attachment menus and preview |
-| `events/gunCraftingMenu.js` | Gunsmith crafting UI (`jawir` tag) |
-| `events/craftingHelpers.js` | Shared "check ingredients, take them, give result" for new recipes |
-| `events/ammoCraftingMenu.js` | Ammo workbench crafting UI (`laknatullah` tag) |
-| `events/gunsmithInteract.js`, `events/workbenchInteract.js` | Clicking a workbench block tags the player to open its UI |
-| `events/itemLore.js` | Adds lore text to TACZ items |
-| `events/bulletCache.js` | Shows stored ammo for evolys / m249 / m1014 via `krep:bulletcache` |
-| `events/win308AmmoBox.js` | Using `.308` ammo stores it in an ammo box |
+| `main.js` | Imports every module below |
+| `combat/hitscan.js` | Guns with `firing: "hitscan"`: the fire event runs `scriptevent tacz:weapon_hitscan <gun> ads\|hip`; a ray from the eyes finds the target |
+| `combat/damage.js` | `processGunHit()`: headshot (2x), armor reduction, damage, red hurt flash, hit/kill sounds |
+| `combat/projectiles.js` | Guns with `firing: "projectile"` (shotguns, RPG): bullet hits, bullet cleanup after 10 ticks |
+| `combat/shotEffects.js` | Hitscan smoke tracer and impact puff |
+| `combat/armor.js` | Armor points per material; tags mobs by the armor they wear |
+| `combat/recoil.js` | `scriptevent recoil:hip\|ads` → camera shake reduced by fitted attachments (`config/recoil.js`) |
+| `combat/killTracking.js` | Kill marker tag `murderEntity` on the shooter for ~2 ticks |
+| `crafting/gunsmith.js`, `crafting/ammoWorkbench.js` | Crafting menus built from `config/weapons.js` / `config/ammo.js` |
+| `crafting/craftingHelpers.js` | Takes ingredients (only if all are present) and gives the result; `log` accepts any wood |
+| `crafting/workbenchBlocks.js` | Using a workbench block opens its menu |
+| `attachments/attachmentMenu.js` | Attachment workbench menus built from `config/attachments.js` |
+| `attachments/attachmentState.js` | Per-player attachment storage; syncs the held gun's attachments to the model |
+| `items/itemLore.js` | Lore text on guns and ammo |
+| `items/storedAmmoDisplay.js` | Loaded rounds on the Evolys / M249 / M1014 models (`storedAmmoDisplay`) |
+| `items/ammoBox308.js` | Storing .308 rounds in an ammo box |
 
-Original bugs that were intentionally kept as-is: the `openui2` tag calls an undefined `wip()` (throws, harmless),
-and `itemLore.js` re-writes every inventory slot even when nothing changed.
+## Pack layout (per weapon)
+
+Every gun `<id>` (the item id without `krep:`) has its own files:
+
+| Pack file | What |
+|---|---|
+| `TACZ-B/items/guns/<id>/<id>.json`, `<id>_emp.json` | The gun item and its empty-magazine variant |
+| `TACZ-B/animation_controllers/gun_<id>.json` | Firing (ammo count, fire event, sound) and reload state machines |
+| `TACZ-B/animations/guns/<id>.json` | Shoot / reload timelines (reload functions, ammo scoreboard) |
+| `TACZ-B/functions/<id>.mcfunction`, `<id>quantity`, `<id>reload` | Ammo HUD, reload ammo check, ammo removal |
+| `TACZ-B/entities/bullet/<id>.json` | Bullet entity (only used by projectile guns) |
+| `TACZ-B/entities/player.json` | Shared player entity: every gun's `krep:<id>_fire` / reload / scope events |
+| `TACZ-R/models/entity/guns/<id>.geo.json` | Gun model |
+| `TACZ-R/render_controllers/gun_<id>.json` | Which gun parts/attachments are visible |
+| `TACZ-R/animation_controllers/gun_<id>.json` | First-/third-person animation state machines |
+| `TACZ-R/animations/guns/<id>.json` | First-/third-person animations |
+| `TACZ-R/attachables/gun_<id>.json`, `gun_<id>_emp.json` | Hides the vanilla item sprite (the gun is drawn by the player renderer) |
+| `TACZ-R/entity/player.entity.json` | Shared player renderer: registers each gun's model, animations and render controllers |
+| `TACZ-R/textures/gun/<id>.png`, `textures/items/<id>.png`, `sounds/<id>/` | Textures and sounds |
+
+Shared files are named `shared_*` / `shared/` (player arms `taczuniversal*`, scopes, walk cycles). Ammo is under
+`items/ammo/` and `attachables/ammo_*`.
+
+Four resource-pack animation files keep their original obfuscated paths on purpose: they each define
+`animation.acog.new` / `animation.elcan.new`, one copy differs, and which copy the game uses depends on load order.
+Moving them could change it. One broken model file (`models/entity/7sf3y8pgug/.../y7rwInQT2sq3l6gu.json`, which
+does not parse) is left untouched.
+
+### Adding a weapon
+
+1. Copy a similar gun's files from the table above (for example `m4a1` for a rifle) and rename `m4a1` inside them.
+2. Add its events to `entities/player.json` and its model/animations/render controllers to `player.entity.json`
+   (search for the gun you copied to find every spot; also add it to `variable.holding_all_guns`).
+3. Add its entry to `config/weapons.js` (and `attachments.js` / `recoil.js` if it has attachments).
+4. Add names and lore to `TACZ-R/texts/*.lang`, and the items to `item_catalog/crafting_item_catalog.json`.
+5. Run `tools/weapons/check.mjs` (below) and fix what it reports.
+
+Removing a weapon is the reverse: delete its entry and its files, and its spots in the two player files.
+
+## Hitscan, tracers and hit flash
+
+34 guns (plus the M107) hit instantly; shotguns and the RPG fire bullet entities. Each hitscan gun's fire event in
+`entities/player.json` runs `scriptevent tacz:weapon_hitscan <id> ads|hip` instead of spawning `bullet:<id>`.
+`combat/hitscan.js` finds the nearest living entity along the view ray (128 blocks, stopping at blocks), damage goes
+through `processGunHit()`, and `combat/shotEffects.js` draws 5 smoke puffs as a tracer. Script damage does not play the
+red hurt flash, so each non-lethal hit also applies 1 point of real damage first; health is then set to the exact
+result, so the damage dealt is unchanged.
+
+## M107
+
+Completed from the original's unused assets, with stats and recipes from the Java TACZ data (`TACZ-JAVA.zip`):
+55 damage, 0.8 penetration, 10-round magazine, `.50 BMG` ammo (`krep:bmg50`). The attachment workbench has no M107
+entry yet; set scopes with `/event entity @s m107:acog` (also `elcan`, `coyote`, `standard_8`, `ironsight`).
+Reload sound effects are not wired up yet.
+
+## Original bugs fixed during the reorganization
+
+- Gunsmith: the QBZ-95 recipe gave a B93R and the SKS recipe gave a UMP-45. Crafting
+  re-checked the whole recipe before taking each ingredient, so once one was taken the rest could be skipped;
+  recipes now check everything once, then take everything. `log` recipes accept any wood.
+- Ammo workbench: the ammo box recipe never took the chest.
+- Attachment workbench: the Vector's grip menu "Preview" equipped grip 9; the Double Barrel's "Preview" selected a
+  nonexistent barrel; the Vector/Golden Deagle magazine "Back" opened the preview. Menu texts were inconsistent.
+- The damage table used `g93` / `scar1`, so B93R / SCAR-L bullets did no damage (moot now that both are hitscan).
+- Removed: the `openui2` menu tag (called an undefined function), the `Indoarsenal` global, the chat message on
+  every world load, and the dead `TACZ-B/kanjut/` folder (not a Bedrock folder).
 
 ## Where the multiplayer lag most likely comes from (next steps)
 
@@ -112,26 +125,33 @@ These all scale with players or entities. Change one at a time and test with sev
 
 1. `functions/tick.json` runs 40 functions **every tick**. `testis.mcfunction` alone is 100 commands
    (re-adds ~50 scoreboard objectives each tick); the 39 per-gun functions redraw the ammo actionbar every tick.
-2. `events/itemLore.js`: every second, `setItem` on **every slot of every player's inventory**. Each write
-   re-syncs the slot to the client. Only write when lore was actually missing.
-3. `events/armorDetection.js`: every second, 48 `/tag @e[...]` commands scanning all entities.
-4. `events/bulletCache.js` (every tick) and `events/attachmentData.js` (every 2 ticks): `setProperty` on every
-   player holding a gun, even when the value hasn't changed. Cache the last value.
+2. `items/itemLore.js`: every second, `setItem` on **every slot of every player's inventory**. Only write when lore
+   was actually missing.
+3. `combat/armor.js`: every second, 48 `/tag @e[...]` commands scanning all entities.
+4. `items/storedAmmoDisplay.js` (every tick) and `attachments/attachmentState.js` (every 2 ticks): `setProperty` on
+   every player holding a gun, even when the value hasn't changed. Cache the last value.
 
-## Checking a change doesn't alter behavior
+## Tools
 
 Node isn't required; VS Code's bundled runtime works. From Git Bash in the repo root:
 
 ```bash
 export ELECTRON_RUN_AS_NODE=1
 NODE="$LOCALAPPDATA/Programs/Microsoft VS Code/Code.exe"
-T=$(mktemp -d); git archive HEAD TACZ-B/scripts | tar -x -C "$T"   # last committed scripts (use 20cdafc for the pure original)
+
+# Config vs pack files for every gun and ammo type (run after editing weapons or pack files):
+"$NODE" tools/weapons/check.mjs
+
+# Did a script change alter behavior? Trace the last commit and the working tree, then compare:
+T=$(mktemp -d); git archive HEAD TACZ-B/scripts | tar -x -C "$T"
 cd tools/trace
-"$NODE" --import ./register.mjs run.mjs "$T/TACZ-B/scripts" "$T/a.txt" ../../TACZ-B/scripts
-"$NODE" --import ./register.mjs run.mjs ../../TACZ-B/scripts "$T/b.txt" ../../TACZ-B/scripts
-cmp "$T/a.txt" "$T/b.txt" && echo "same behavior"
+"$NODE" --import ./register.mjs run.mjs "$T/TACZ-B/scripts" "$T/a.txt" "$T/TACZ-B/scripts"
+"$NODE" --import ./register.mjs run.mjs ../../TACZ-B/scripts "$T/b.txt" "$T/TACZ-B/scripts"
+"$NODE" compare.mjs "$T/a.txt" "$T/b.txt"     # lists handler runs that differ
+cd ../..
+
+# Did a pack-file reshuffle change anything the game loads? (A and B are two checkouts)
+"$NODE" tools/weapons/verify-pack.cjs <treeA> <treeB>
 ```
 
-For a deliberate behavior change (like the lag fixes above), `diff` the two traces and check the only
-differences are the ones you intended. The trace can't see rendering, animation controllers, or mcfunctions;
-test those in game.
+The trace can't see rendering, animation controllers or mcfunctions; test those in game.

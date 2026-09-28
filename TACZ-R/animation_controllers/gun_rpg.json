@@ -1,0 +1,75 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.rpg.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.rpg && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.rpg"}, {"walk_delay_2": "v.rpg"}],
+          "transitions": [
+            {"delay": "v.rpg && q.is_sprinting"},
+            {"delay": "v.rpg && q.is_sneaking"},
+            {"delay": "v.rpg && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.rpg"}],
+          "transitions": [{"setup": "v.rpg && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.rpg.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"rpg_tp_hold": "v.rpg"}],
+          "transitions": [{"sight": "v.rpg && q.is_sneaking"}, {"hold": "v.rpg && q.is_using_item"}]
+        },
+        "sight": {"animations": [{"rpg_tp_sight": "v.rpg"}], "transitions": [{"hold": "v.rpg && !q.is_sneaking"}]}
+      }
+    },
+    "controller.animation.rpg.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"rpg_fp_hold": "v.rpg"}],
+          "transitions": [
+            {"reload": "v.rpgemp && q.mark_variant == 1"},
+            {"inspect": "v.rpg && q.skin_id == 1 && !q.is_sneaking"},
+            {"sight": "v.rpg && q.is_sneaking"},
+            {"hold": "v.rpg && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"rpg_fp_inspect": "v.rpg"}],
+          "transitions": [
+            {
+              "hold": "(v.rpg && q.any_animation_finished) || (v.rpg && q.is_using_item) || (v.rpg && q.is_sneaking)"
+            }
+          ]
+        },
+        "reload": {
+          "animations": [{"rpg_fp_reload": "v.rpg"}],
+          "transitions": [{"hold": "v.rpg && (q.any_animation_finished || q.mark_variant != 1)"}]
+        },
+        "sight": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"rpg_fp_sight": "v.rpg"}],
+          "transitions": [{"hold": "v.rpg && !q.is_sneaking"}, {"reload": "v.rpgemp && q.mark_variant == 1"}]
+        }
+      }
+    }
+  }
+}

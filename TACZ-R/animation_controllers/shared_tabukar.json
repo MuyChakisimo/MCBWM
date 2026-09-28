@@ -1,0 +1,43 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.tabukar.recoil": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"shootdelay": "q.is_using_item && q.property('krep:l85reload') != 80"}],
+          "transitions": [
+            {
+              "shoot.hip": "v.tabukarb && q.is_using_item && q.mark_variant == 0 && !q.is_sneaking && q.all_animations_finished"
+            },
+            {
+              "shoot.sight": "v.tabukarb && q.is_using_item && q.mark_variant == 0 && q.is_sneaking && q.all_animations_finished"
+            }
+          ]
+        },
+        "shoot.hip": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "animations": [{"tabuk_recoil": "v.tabukar && q.property('krep:l85reload') != 80"}],
+          "transitions": [
+            {
+              "setup": "!v.tabukarb || !q.is_using_item || q.mark_variant != 0 || q.is_sneaking || q.property('krep:l85reload') == 80"
+            }
+          ]
+        },
+        "shoot.sight": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"recoil_sight": "v.tabukar && q.property('krep:l85reload') != 80"}],
+          "transitions": [
+            {
+              "setup": "!v.tabukarb || !q.is_using_item || q.mark_variant != 0 || !q.is_sneaking || q.property('krep:l85reload') == 80"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

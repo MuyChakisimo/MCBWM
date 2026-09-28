@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.minigun.delay": {"loop": false, "animation_length": 0.3, "timeline": {}},
+    "animation.minigun.shoot": {"loop": false, "animation_length": 0, "timeline": {}},
+    "animation.minigun.loop": {
+      "loop": true,
+      "animation_length": 0.1,
+      "timeline": {
+        "0.0": [
+          "/scoreboard players remove @s[scores={minigunoverheat=1..}] minigunoverheat 1",
+          "/function minigun"
+        ]
+      }
+    },
+    "animation.minigun.overheat": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.5,
+      "timeline": {
+        "2.4": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:minigun 1 0",
+          "/scoreboard players set @s minigunoverheat 75",
+          "/function minigun"
+        ]
+      }
+    }
+  }
+}

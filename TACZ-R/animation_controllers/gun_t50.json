@@ -1,0 +1,109 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.t50.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.t50 && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.t50"}, {"walk_delay_2": "v.t50"}],
+          "transitions": [
+            {"delay": "v.t50 && q.is_sprinting"},
+            {"delay": "v.t50 && q.is_sneaking"},
+            {"delay": "v.t50 && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.t50"}],
+          "transitions": [{"setup": "v.t50 && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.t50.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"t50_tp_hold": "v.t50"}],
+          "transitions": [
+            {"sprint": "v.t50 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.t50 && q.is_sneaking"},
+            {"hold": "v.t50 && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"t50_tp_sprint": "v.t50"}],
+          "transitions": [
+            {"hold": "v.t50 && !q.is_sprinting"},
+            {"hold": "v.t50 && q.is_using_item"},
+            {"sight": "v.t50 && q.is_sneaking"}
+          ]
+        },
+        "sight": {"animations": [{"t50_tp_sight": "v.t50"}], "transitions": [{"hold": "v.t50 && !q.is_sneaking"}]}
+      }
+    },
+    "controller.animation.t50.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"t50_fp_hold": "v.t50"}],
+          "transitions": [
+            {"reload": "v.t50emp && q.mark_variant == 1"},
+            {"inspect": "v.t50 && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.t50 && q.mark_variant == 2"},
+            {"sprint": "v.t50 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.t50 && q.is_sneaking"},
+            {"hold": "v.t50 && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"t50_fp_inspect": "v.t50b"}, {"t50_fp_inspect_emp": "v.t50emp"}],
+          "transitions": [
+            {
+              "hold": "(v.t50 && q.any_animation_finished) || (v.t50 && q.is_using_item) || (v.t50 && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"t50_fp_sprint": "v.t50"}],
+          "transitions": [
+            {"hold": "v.t50 && !q.is_sprinting"},
+            {"hold": "v.t50 && q.is_using_item"},
+            {"reload": "v.t50emp && q.mark_variant == 1"},
+            {"reloadtac": "v.t50 && q.mark_variant == 2"},
+            {"sight": "v.t50 && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"t50_fp_reload": "v.t50"}],
+          "transitions": [{"hold": "v.t50 && (q.all_animations_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"t50_fp_reload_tac": "v.t50"}],
+          "transitions": [{"hold": "v.t50 && q.all_animations_finished"}, {"hold": "v.t50b && q.mark_variant != 2"}]
+        },
+        "sight": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"t50_fp_sight": "v.t50"}],
+          "transitions": [
+            {"hold": "v.t50 && !q.is_sneaking"},
+            {"reloadtac": "v.t50 && q.mark_variant == 2"},
+            {"reload": "v.t50emp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

@@ -22,47 +22,23 @@
       }
     },
     "components": {
-      "minecraft:collision_box": {
-        "width": 0.1,
-        "height": 0.1
-      },
-      "minecraft:type_family": {
-        "family": [
-          "bullet"
-        ]
-      },
+      "minecraft:collision_box": {"width": 0.1, "height": 0.1},
+      "minecraft:type_family": {"family": ["bullet"]},
       "minecraft:projectile": {
         "on_hit": {
-          "impact_damage": {
-            "damage": 10,
-            "knockback": false
-          },
-          "definition_event": {
-            "affect_projectile": true,
-            "event_trigger": {
-              "event": "krep:explod",
-              "target": "self"
-            }
-          }
+          "impact_damage": {"damage": 10, "knockback": false},
+          "definition_event": {"affect_projectile": true, "event_trigger": {"event": "krep:explod", "target": "self"}}
         },
-        "power": 3.0,
+        "power": 3,
         "should_bounce": true,
-        "gravity": 0.0
+        "gravity": 0
       },
       "minecraft:physics": {}
     },
     "events": {
       "krep:explod": {
-        "queue_command": {
-          "command": [
-            "damage @e[r=5] 10 entity_explosion"
-          ]
-        },
-        "add": {
-          "component_groups": [
-            "krep:explod"
-          ]
-        }
+        "queue_command": {"command": ["damage @e[r=5] 10 entity_explosion"]},
+        "add": {"component_groups": ["krep:explod"]}
       }
     }
   }

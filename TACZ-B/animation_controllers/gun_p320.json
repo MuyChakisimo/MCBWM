@@ -1,0 +1,112 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.p320": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='p320' && q.is_using_item) || query.get_equipped_item_name=='p320_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s p320 12",
+            "@s[hasitem={item=krep:p320, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "p320.13": "query.get_equipped_item_name=='p320' && query.is_using_item && query.scoreboard('p320') >= 1 && q.mark_variant != 2"
+            }
+          ],
+          "on_entry": ["/function p320"]
+        },
+        "p320.13": {
+          "animations": ["p320shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:p320_fire",
+            "/scoreboard players remove @s[scores={p320=1..13}] p320 1",
+            "/playsound p320.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={p320=0}] slot.weapon.mainhand 1 krep:p320_emp 1 0",
+            "/title @s[scores={p320=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.p320.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='p320_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='p320' && variable.attack_time > 0.0f && query.scoreboard('p320') <= 11) || (query.get_equipped_item_name=='p320' && q.mark_variant == 2)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function p320quantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='p320' && q.property('krep:ammoreload') == 0"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='p320' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='p320'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function p320quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='p320_emp' && q.property('krep:ammoreload') == 0"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='p320_emp' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='p320'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "p320reload": "query.get_equipped_item_name('main_hand')=='p320_emp' || query.get_equipped_item_name('main_hand')=='p320'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='p320_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "p320reloadtac": "query.get_equipped_item_name('main_hand')=='p320_emp' || query.get_equipped_item_name('main_hand')=='p320'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='p320'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function p320"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='p320' || query.get_equipped_item_name=='p320_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

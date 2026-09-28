@@ -1,0 +1,174 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.akm.scope": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:normal"],
+          "transitions": [
+            {
+              "scope.elcan": "(query.get_equipped_item_name=='akm' || query.get_equipped_item_name=='akm_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:akmscope')=='elcan' && q.property('krep:ammoreload')!=1"
+            },
+            {
+              "scope.acog": "(query.get_equipped_item_name=='akm' || query.get_equipped_item_name=='akm_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:akmscope')=='acog' && q.property('krep:ammoreload')!=1"
+            }
+          ]
+        },
+        "scope.elcan": {
+          "on_entry": ["@s krep:scope4x"],
+          "transitions": [
+            {
+              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='akm' && query.get_equipped_item_name!='akm_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || (q.property('krep:akmscope')!='acog' && q.property('krep:akmscope')!='elcan')"
+            },
+            {
+              "scope.acog": "(query.get_equipped_item_name=='akm' || query.get_equipped_item_name=='akm_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:akmscope')=='acog'"
+            }
+          ]
+        },
+        "scope.acog": {
+          "on_entry": ["@s krep:scope4x"],
+          "transitions": [
+            {
+              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='akm' && query.get_equipped_item_name!='akm_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || (q.property('krep:akmscope')!='acog' && q.property('krep:akmscope')!='elcan')"
+            },
+            {
+              "scope.elcan": "(query.get_equipped_item_name=='akm' || query.get_equipped_item_name=='akm_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:akmscope')=='elcan'"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.akm": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='akm' && q.is_using_item) || query.get_equipped_item_name=='akm_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s akm 30",
+            "@s[hasitem={item=krep:akm, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "akm.30": "query.get_equipped_item_name=='akm' && query.is_using_item && query.scoreboard('akm') >= 1 && q.mark_variant != 2 && q.property('krep:muzzle')<=3"
+            },
+            {
+              "suppress.30": "query.get_equipped_item_name=='akm' && query.is_using_item && query.scoreboard('akm') >= 1 && q.mark_variant != 2 && q.property('krep:muzzle')>=4"
+            },
+            {
+              "akm.31": "query.get_equipped_item_name=='akm' && query.is_using_item && query.scoreboard('akm') == 0"
+            }
+          ],
+          "on_entry": ["/function akm"]
+        },
+        "akm.31": {
+          "animations": ["akmshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={akm=0}] slot.weapon.mainhand 1 krep:akm_emp 1 0"]
+        },
+        "akm.30": {
+          "animations": ["akmshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:akm_fire",
+            "/scoreboard players set @s[scores={akm=32..}] akm 31",
+            "/scoreboard players remove @s[scores={akm=1..31}] akm 1",
+            "/playsound akm.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={akm=0}] slot.weapon.mainhand 1 krep:akm_emp 1 0",
+            "/title @s[scores={akm=0}] actionbar No Ammunition"
+          ]
+        },
+        "suppress.30": {
+          "animations": ["akmshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:akm_fire",
+            "/scoreboard players set @s[scores={akm=32..}] akm 31",
+            "/scoreboard players remove @s[scores={akm=1..31}] akm 1",
+            "/playsound akm.suppress @a[r=20]",
+            "/replaceitem entity @s[scores={akm=0}] slot.weapon.mainhand 1 krep:akm_emp 1 0",
+            "/title @s[scores={akm=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.akm.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='akm_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='akm' && variable.attack_time > 0.0f && query.scoreboard('akm') <= 28 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='akm')"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function akmquantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='akm' && q.property('krep:ammoreload') == 420"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='akm' && q.property('krep:ammoreload') >= 421"
+            },
+            {"setup": "query.get_equipped_item_name!='akm'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function akmquantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='akm_emp' && q.property('krep:ammoreload') == 420"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='akm_emp' && q.property('krep:ammoreload') >= 421"
+            },
+            {"setup": "query.get_equipped_item_name!='akm'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "akmreload": "query.get_equipped_item_name('main_hand')=='akm_emp' || query.get_equipped_item_name('main_hand')=='akm'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='akm_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "akmreloadtac": "query.get_equipped_item_name('main_hand')=='akm_emp' || query.get_equipped_item_name('main_hand')=='akm'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='akm'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function akm"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='akm' || query.get_equipped_item_name=='akm_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

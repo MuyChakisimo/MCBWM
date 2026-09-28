@@ -45,7 +45,7 @@ function make(p) {
   });
 }
 const root = make("mc");
-export const world = root.world, system = root.system;
+export const world = root.world, system = root.system, TicksPerSecond = root.TicksPerSecond;
 const enumProxy = (n) => new Proxy({}, { get: (_, k) => (typeof k === "symbol" ? undefined : `${n}.${String(k)}`) });
 export const EquipmentSlot = enumProxy("EquipmentSlot"), EntityComponentTypes = enumProxy("ECT"),
   ItemComponentTypes = enumProxy("ICT"), GameMode = enumProxy("GameMode"), Direction = enumProxy("Direction"),

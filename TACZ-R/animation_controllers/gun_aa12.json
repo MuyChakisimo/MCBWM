@@ -1,0 +1,112 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.aa12.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.aa12 && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.aa12"}, {"walk_delay_2": "v.aa12"}],
+          "transitions": [
+            {"delay": "v.aa12 && q.is_sprinting"},
+            {"delay": "v.aa12 && q.is_sneaking"},
+            {"delay": "v.aa12 && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.aa12"}],
+          "transitions": [{"setup": "v.aa12 && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.aa12.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"aa12_tp_hold": "v.aa12"}],
+          "transitions": [
+            {"sprint": "v.aa12 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.aa12 && q.is_sneaking"},
+            {"hold": "v.aa12 && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"aa12_tp_sprint": "v.aa12"}],
+          "transitions": [
+            {"hold": "v.aa12 && !q.is_sprinting"},
+            {"hold": "v.aa12 && q.is_using_item"},
+            {"sight": "v.aa12 && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"aa12_tp_sight": "v.aa12"}],
+          "transitions": [{"hold": "v.aa12 && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.aa12.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"aa12_fp_hold": "v.aa12"}],
+          "transitions": [
+            {"reload": "v.aa12emp && q.mark_variant == 1"},
+            {"inspect": "v.aa12b && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.aa12 && q.mark_variant == 2"},
+            {"sprint": "v.aa12 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.aa12 && q.is_sneaking"},
+            {"hold": "v.aa12 && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"aa12_fp_inspect": "v.aa12"}],
+          "transitions": [
+            {
+              "hold": "(v.aa12 && q.any_animation_finished) || (v.aa12 && q.is_using_item) || (v.aa12 && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"aa12_fp_sprint": "v.aa12"}],
+          "transitions": [
+            {"hold": "v.aa12 && !q.is_sprinting"},
+            {"hold": "v.aa12 && q.is_using_item"},
+            {"reload": "v.aa12emp && q.mark_variant == 1"},
+            {"reloadtac": "v.aa12 && q.mark_variant == 2"},
+            {"sight": "v.aa12 && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"aa12_fp_reload": "v.aa12"}],
+          "transitions": [{"hold": "v.aa12 && (q.any_animation_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"aa12_fp_reload_tac": "v.aa12"}],
+          "transitions": [{"hold": "v.aa12 && q.any_animation_finished"}, {"hold": "v.aa12 && q.mark_variant != 2"}]
+        },
+        "sight": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"aa12_fp_sight": "v.aa12"}],
+          "transitions": [
+            {"hold": "v.aa12 && !q.is_sneaking"},
+            {"reloadtac": "v.aa12 && q.mark_variant == 2"},
+            {"reload": "v.aa12emp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

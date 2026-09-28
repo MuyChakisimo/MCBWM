@@ -1,0 +1,121 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.fal": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='fal' && q.is_using_item) || query.get_equipped_item_name=='fal_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s fal 20",
+            "@s[hasitem={item=krep:fal, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "fal.30": "query.get_equipped_item_name=='fal' && query.is_using_item && query.scoreboard('fal') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "fal.31": "query.get_equipped_item_name=='fal' && query.is_using_item && query.scoreboard('fal') == 0"
+            }
+          ],
+          "on_entry": ["/function fal"]
+        },
+        "fal.31": {
+          "animations": ["falshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={fal=0}] slot.weapon.mainhand 1 krep:fal_emp 1 0"]
+        },
+        "fal.30": {
+          "animations": ["falshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:fal_fire",
+            "/scoreboard players set @s[scores={fal=22..}] fal 21",
+            "/scoreboard players remove @s[scores={fal=1..21}] fal 1",
+            "/playsound fal.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={fal=0}] slot.weapon.mainhand 1 krep:fal_emp 1 0",
+            "/title @s[scores={fal=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.fal.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='fal_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='fal' && variable.attack_time > 0.0f && query.scoreboard('fal') <= 19 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='fal')"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function falquantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='fal' && q.property('krep:ammoreload') == 700"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='fal' && q.property('krep:ammoreload') >= 701"
+            },
+            {"setup": "query.get_equipped_item_name!='fal'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function falquantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='fal_emp' && q.property('krep:ammoreload') == 700"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='fal_emp' && q.property('krep:ammoreload') >= 701"
+            },
+            {"setup": "query.get_equipped_item_name!='fal'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "falreload": "query.get_equipped_item_name('main_hand')=='fal_emp' || query.get_equipped_item_name('main_hand')=='fal'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='fal_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "falreloadtac": "query.get_equipped_item_name('main_hand')=='fal_emp' || query.get_equipped_item_name('main_hand')=='fal'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='fal'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function fal", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='fal' || query.get_equipped_item_name=='fal_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

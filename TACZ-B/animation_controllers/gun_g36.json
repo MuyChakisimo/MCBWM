@@ -1,0 +1,153 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.g36": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='g36' && q.is_using_item) || query.get_equipped_item_name=='g36_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s g36 30",
+            "@s[hasitem={item=krep:g36, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "g36.30": "query.get_equipped_item_name=='g36' && query.is_using_item && query.scoreboard('g36') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "g36.31": "query.get_equipped_item_name=='g36' && query.is_using_item && query.scoreboard('g36') == 0"
+            }
+          ],
+          "on_entry": ["/function g36"]
+        },
+        "g36.31": {
+          "animations": ["g36shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={g36=0}] slot.weapon.mainhand 1 krep:g36_emp 1 0"]
+        },
+        "g36.30": {
+          "animations": ["g36shoot"],
+          "transitions": [
+            {
+              "delay.30": "query.get_equipped_item_name=='g36' && query.is_using_item && query.scoreboard('g36') >= 1 && q.mark_variant != 2 && q.all_animations_finished"
+            },
+            {"setup": "query.scoreboard('g36') == 0"}
+          ],
+          "on_entry": [
+            "@s krep:g36_fire",
+            "/function g36",
+            "/playsound g36.shoot @a[r=30]",
+            "/scoreboard players set @s[scores={g36=32..}] g36 31",
+            "/scoreboard players remove @s[scores={g36=1..31}] g36 1",
+            "/replaceitem entity @s[scores={g36=0}] slot.weapon.mainhand 1 krep:g36_emp 1 0",
+            "/title @s[scores={g36=0}] actionbar No Ammunition"
+          ]
+        },
+        "delay.30": {
+          "animations": ["g36shoot"],
+          "transitions": [
+            {
+              "g36.29": "query.get_equipped_item_name=='g36' && query.is_using_item && query.scoreboard('g36') >= 1 && q.mark_variant != 2 && q.all_animations_finished"
+            },
+            {"setup": "query.scoreboard('g36') == 0"}
+          ]
+        },
+        "g36.29": {
+          "transitions": [
+            {
+              "g36.30": "query.get_equipped_item_name=='g36' && query.is_using_item && query.scoreboard('g36') >= 1 && q.mark_variant != 2"
+            },
+            {"setup": "query.scoreboard('g36') == 0"}
+          ],
+          "on_entry": [
+            "@s krep:g36_fire",
+            "/function g36",
+            "/playsound g36.shoot @a[r=30]",
+            "/scoreboard players set @s[scores={g36=32..}] g36 31",
+            "/scoreboard players remove @s[scores={g36=1..31}] g36 1",
+            "/replaceitem entity @s[scores={g36=0}] slot.weapon.mainhand 1 krep:g36_emp 1 0",
+            "/title @s[scores={g36=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.g36.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='g36_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='g36' && variable.attack_time > 0.0f && query.scoreboard('g36') <= 28 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='g36')"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function g36quantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='g36' && q.property('krep:ammoreload') == 510"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='g36' && q.property('krep:ammoreload') >= 511"
+            },
+            {"setup": "query.get_equipped_item_name!='g36'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function g36quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='g36_emp' && q.property('krep:ammoreload') == 510"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='g36_emp' && q.property('krep:ammoreload') >= 511"
+            },
+            {"setup": "query.get_equipped_item_name!='g36'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "g36reload": "query.get_equipped_item_name('main_hand')=='g36_emp' || query.get_equipped_item_name('main_hand')=='g36'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='g36_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "g36reloadtac": "query.get_equipped_item_name('main_hand')=='g36_emp' || query.get_equipped_item_name('main_hand')=='g36'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='g36'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function g36"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

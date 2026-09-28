@@ -1,0 +1,7 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.walk.delay.2": {"loop": "hold_on_last_frame", "animation_length": 0.45},
+    "animation.walk.delay.1": {"loop": "hold_on_last_frame", "animation_length": 0.5}
+  }
+}

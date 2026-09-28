@@ -1,0 +1,160 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.m1014": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='m1014' && q.is_using_item) || query.get_equipped_item_name=='m1014_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s m1014 7",
+            "/replaceitem entity @s[scores={m1014=1..}] slot.weapon.mainhand 1 krep:m1014 1 0",
+            "@s[hasitem={item=krep:m1014, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "m1014.30": "query.get_equipped_item_name=='m1014' && query.is_using_item && query.scoreboard('m1014') >= 1 && q.mark_variant != 2 && q.mark_variant != 1"
+            },
+            {
+              "m1014.31": "query.get_equipped_item_name=='m1014' && query.is_using_item && query.scoreboard('m1014') == 0"
+            }
+          ],
+          "on_entry": ["/function m1014"]
+        },
+        "m1014.31": {
+          "animations": ["m1014shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={m1014=0}] slot.weapon.mainhand 1 krep:m1014_emp 1 0"]
+        },
+        "m1014.30": {
+          "animations": ["m1014shoot"],
+          "transitions": [{"setup": "query.all_animations_finished && !q.is_using_item"}],
+          "on_entry": [
+            "@s krep:m1014_fire",
+            "/scoreboard players remove @s[scores={m1014=1..8}] m1014 1",
+            "/scoreboard players set @s[scores={m1014=9..}] m1014 8",
+            "/playsound m1014.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={m1014=0}] slot.weapon.mainhand 1 krep:m1014_emp 1 0",
+            "/title @s[scores={m1014=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.m1014.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='m1014_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='m1014' && variable.attack_time > 0.0f && query.scoreboard('m1014') <= 6 && q.mark_variant != 3 && q.property('krep:ammoreload')!=3) || (q.mark_variant == 2 && query.get_equipped_item_name=='m1014' && q.property('krep:ammoreload')!=3)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function m1014quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='m1014' && q.property('krep:ammoreload') == 410"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='m1014' && q.property('krep:ammoreload') >= 411"
+            },
+            {"setup": "query.get_equipped_item_name!='m1014'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function m1014quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='m1014_emp' && q.property('krep:ammoreload') == 410"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='m1014_emp' && q.property('krep:ammoreload') >= 411"
+            },
+            {"setup": "query.get_equipped_item_name!='m1014'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "m1014reload": "query.get_equipped_item_name('main_hand')=='m1014_emp' || query.get_equipped_item_name('main_hand')=='m1014'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name!='m1014_emp' && query.get_equipped_item_name!='m1014'"
+            },
+            {
+              "reloadfinish1": "query.get_equipped_item_name=='m1014' && q.is_using_item && query.scoreboard('m1014') >= 1"
+            },
+            {
+              "reloadfinish1": "query.get_equipped_item_name=='m1014' && q.property('krep:ammoreload') == 410"
+            },
+            {
+              "reloadfinish1": "query.get_equipped_item_name=='m1014' && query.scoreboard('m1014') == 7"
+            }
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "m1014reloadtac": "query.get_equipped_item_name('main_hand')=='m1014_emp' || query.get_equipped_item_name('main_hand')=='m1014'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='m1014'"},
+            {
+              "reloadfinish": "query.get_equipped_item_name=='m1014' && query.scoreboard('m1014') == 8"
+            },
+            {
+              "reloadfinish": "query.get_equipped_item_name=='m1014' && q.property('krep:ammoreload') == 410"
+            },
+            {
+              "reloadfinish": "query.get_equipped_item_name=='m1014' && q.is_using_item && query.scoreboard('m1014') >= 1"
+            }
+          ]
+        },
+        "reloadfinish1": {
+          "animations": [
+            {
+              "m1014end": "query.get_equipped_item_name('main_hand')=='m1014_emp' || query.get_equipped_item_name('main_hand')=='m1014'"
+            }
+          ],
+          "on_entry": ["/function m1014", "@s krep:reload", "@s m1014:end"],
+          "on_exit": ["@s krep:noreload", "@s m1014:normal"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp'"
+            }
+          ]
+        },
+        "reloadfinish": {
+          "animations": [
+            {
+              "m1014end": "query.get_equipped_item_name('main_hand')=='m1014_emp' || query.get_equipped_item_name('main_hand')=='m1014'"
+            }
+          ],
+          "on_entry": ["/function m1014", "@s krep:reloadtac", "@s m1014:end"],
+          "on_exit": ["@s krep:noreload", "@s m1014:normal"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

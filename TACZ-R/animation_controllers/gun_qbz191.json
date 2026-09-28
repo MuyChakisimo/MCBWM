@@ -1,0 +1,126 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.qbz191.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.qbz191 && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.qbz191"}, {"walk_delay_2": "v.qbz191"}],
+          "transitions": [
+            {"delay": "v.qbz191 && q.is_sprinting"},
+            {"delay": "v.qbz191 && q.is_sneaking"},
+            {"delay": "v.qbz191 && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.qbz191"}],
+          "transitions": [{"setup": "v.qbz191 && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.qbz191.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"qbz191_tp_hold": "v.qbz191"}],
+          "transitions": [
+            {"sprint": "v.qbz191 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.qbz191 && q.is_sneaking"},
+            {"hold": "v.qbz191 && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"qbz191_tp_sprint": "v.qbz191"}],
+          "transitions": [
+            {"hold": "v.qbz191 && !q.is_sprinting"},
+            {"hold": "v.qbz191 && q.is_using_item"},
+            {"sight": "v.qbz191 && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"qbz191_tp_sight": "v.qbz191"}],
+          "transitions": [{"hold": "v.qbz191 && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.qbz191.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"qbz191_fp_hold": "v.qbz191"}],
+          "transitions": [
+            {"reload": "v.qbz191emp && q.mark_variant == 1"},
+            {"view": "v.qbz191b && q.skin_id == 2 && !q.is_sneaking"},
+            {"inspect": "v.qbz191 && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.qbz191 && q.mark_variant == 2"},
+            {"sprint": "v.qbz191 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.qbz191 && q.is_sneaking"},
+            {"hold": "v.qbz191 && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"qbz191_fp_inspect": "v.qbz191b"}, {"qbz191_fp_inspect_emp": "v.qbz191emp"}],
+          "transitions": [
+            {
+              "hold": "(v.qbz191 && q.any_animation_finished) || (v.qbz191 && q.is_using_item) || (v.qbz191 && q.is_sneaking)"
+            },
+            {"view": "v.qbz191b && q.skin_id == 2 && !q.is_sneaking"}
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"qbz191_fp_sprint": "v.qbz191"}],
+          "transitions": [
+            {"hold": "v.qbz191 && !q.is_sprinting"},
+            {"hold": "v.qbz191 && q.is_using_item"},
+            {"view": "v.qbz191b && q.skin_id == 2 && !q.is_sneaking"},
+            {"reload": "v.qbz191emp && q.mark_variant == 1"},
+            {"reloadtac": "v.qbz191 && q.mark_variant == 2"},
+            {"sight": "v.qbz191 && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"qbz191_fp_reload": "v.qbz191"}],
+          "transitions": [{"hold": "v.qbz191 && (q.all_animations_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"qbz191_fp_reload_tac": "v.qbz191"}],
+          "transitions": [
+            {"hold": "v.qbz191 && q.all_animations_finished"},
+            {"hold": "v.qbz191b && q.mark_variant != 2"}
+          ]
+        },
+        "view": {
+          "animations": [{"qbz191_fp_view": "v.qbz191"}],
+          "transitions": [{"hold": "(v.qbz191 && q.skin_id != 2)"}]
+        },
+        "sight": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [
+            {"qbz191_fp_sight": "v.qbz191 && q.property('krep:qbz191scope')=='nothing'"},
+            {"qbz191_fp_sight_coyote": "v.qbz191 && q.property('krep:qbz191scope')=='coyote'"}
+          ],
+          "transitions": [
+            {"hold": "v.qbz191 && !q.is_sneaking"},
+            {"view": "v.qbz191b && q.skin_id == 2 && !q.is_sneaking"},
+            {"reloadtac": "v.qbz191 && q.mark_variant == 2"},
+            {"reload": "v.qbz191emp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

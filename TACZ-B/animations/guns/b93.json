@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.b93.reload.tac": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 1.8,
+      "timeline": {
+        "1.7": ["/scoreboard players set @s[scores={b93=22..}] b93 21", "/function b93"],
+        "1.6": ["/function b93reload", "/event entity @s krep:b93_reload"]
+      }
+    },
+    "animation.b93.shoot": {"loop": false, "animation_length": 0.3, "timeline": {}},
+    "animation.b93.reload": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.15,
+      "timeline": {
+        "2.1": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:b93 1 0",
+          "/scoreboard players set @s[scores={b93=21..}] b93 20",
+          "/function b93"
+        ],
+        "1.9": ["/function b93reload", "/event entity @s krep:b93_reload"]
+      }
+    }
+  }
+}

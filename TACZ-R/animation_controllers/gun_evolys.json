@@ -1,0 +1,123 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.evolys.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.evolys && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.evolys"}, {"walk_delay_2": "v.evolys"}],
+          "transitions": [
+            {"delay": "v.evolys && q.is_sprinting"},
+            {"delay": "v.evolys && q.is_sneaking"},
+            {"delay": "v.evolys && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.evolys"}],
+          "transitions": [{"setup": "v.evolys && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.evolys.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"evolys_tp_hold": "v.evolys"}],
+          "transitions": [
+            {"sprint": "v.evolys && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.evolys && q.is_sneaking"},
+            {"hold": "v.evolys && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"evolys_tp_sprint": "v.evolys"}],
+          "transitions": [
+            {"hold": "v.evolys && !q.is_sprinting"},
+            {"hold": "v.evolys && q.is_using_item"},
+            {"sight": "v.evolys && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"evolys_tp_sight": "v.evolys"}],
+          "transitions": [{"hold": "v.evolys && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.evolys.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"evolys_fp_hold": "v.evolys"}],
+          "transitions": [
+            {"reload": "v.evolysemp && q.mark_variant == 1"},
+            {"inspect": "v.evolys && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.evolys && q.mark_variant == 2"},
+            {"sprint": "v.evolys && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.evolys && q.is_sneaking"},
+            {"hold": "v.evolys && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"evolys_fp_inspect": "v.evolysb"}, {"evolys_fp_inspect_emp": "v.evolysemp"}],
+          "transitions": [
+            {
+              "hold": "(v.evolys && q.any_animation_finished) || (v.evolys && q.is_using_item) || (v.evolys && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"evolys_fp_sprint": "v.evolys"}],
+          "transitions": [
+            {"hold": "v.evolys && !q.is_sprinting"},
+            {"hold": "v.evolys && q.is_using_item"},
+            {"reload": "v.evolysemp && q.mark_variant == 1"},
+            {"reloadtac": "v.evolys && q.mark_variant == 2"},
+            {"sight": "v.evolys && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "on_entry": ["v.anjingelongentotamatsih = math.random_integer(1, 2);"],
+          "animations": [
+            {"evolys_fp_reload": "v.evolys && v.anjingelongentotamatsih == 1"},
+            {"evolys_fp_reload_easter": "v.evolys && v.anjingelongentotamatsih == 2"}
+          ],
+          "transitions": [{"hold": "v.evolys && (q.any_animation_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "on_entry": ["v.anjingelongentotamatsih = math.random_integer(1, 2);"],
+          "animations": [
+            {"evolys_fp_reload_tac": "v.evolys && v.anjingelongentotamatsih == 1"},
+            {"evolys_fp_reload_tac_easter": "v.evolys && v.anjingelongentotamatsih == 2"}
+          ],
+          "transitions": [
+            {"hold": "v.evolys && q.any_animation_finished"},
+            {"hold": "v.evolysb && q.mark_variant != 2"}
+          ]
+        },
+        "sight": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"evolys_fp_sight": "v.evolys"}],
+          "transitions": [
+            {"hold": "v.evolys && !q.is_sneaking"},
+            {"reloadtac": "v.evolys && q.mark_variant == 2"},
+            {"reload": "v.evolysemp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

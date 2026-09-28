@@ -1,15 +1,21 @@
-import "./events/projectileHitEntity";
-import "./weapons/hitscan";
-import "./events/itemLore";
-import "./events/gunsmithInteract";
-import "./events/gunCraftingMenu";
-import "./global/global";
-import "./events/workbenchInteract";
-import "./events/win308AmmoBox";
-import "./events/attachmentData";
-import "./events/armorDetection";
-import "./events/attachmentMenu";
-import "./events/recoil";
-import "./events/bulletCleanup";
-import "./events/ammoCraftingMenu";
-import "./events/bulletCache";
+// Entry point (manifest "entry"). Each module registers its own events/intervals on import.
+// Weapon stats live in config/ (weapons.js, ammo.js, attachments.js, recoil.js).
+
+// Combat
+import "./combat/hitscan";
+import "./combat/projectiles";
+import "./combat/armor";
+import "./combat/recoil";
+import "./combat/killTracking";
+
+// Crafting and attachment workbenches
+import "./crafting/workbenchBlocks";
+import "./crafting/gunsmith";
+import "./crafting/ammoWorkbench";
+import "./attachments/attachmentState";
+import "./attachments/attachmentMenu";
+
+// Items
+import "./items/itemLore";
+import "./items/storedAmmoDisplay";
+import "./items/ammoBox308";

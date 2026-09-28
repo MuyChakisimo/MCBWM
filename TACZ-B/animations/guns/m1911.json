@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.m1911.reload.tac": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 1.9,
+      "timeline": {
+        "1.8": ["/scoreboard players set @s[scores={m1911=9..}] m1911 8", "/function m1911"],
+        "1.7": ["/function m1911reload", "/event entity @s krep:m1911_reload"]
+      }
+    },
+    "animation.m1911.shoot": {"loop": false, "animation_length": 0, "timeline": {}},
+    "animation.m1911.reload": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.4,
+      "timeline": {
+        "2.3": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:m1911 1 0",
+          "/scoreboard players set @s[scores={m1911=8..}] m1911 7",
+          "/function m1911"
+        ],
+        "2.2": ["/function m1911reload", "/event entity @s krep:m1911_reload"]
+      }
+    }
+  }
+}

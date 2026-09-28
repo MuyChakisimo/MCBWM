@@ -1,0 +1,115 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.saiga12.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.saiga12 && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.saiga12"}, {"walk_delay_2": "v.saiga12"}],
+          "transitions": [
+            {"delay": "v.saiga12 && q.is_sprinting"},
+            {"delay": "v.saiga12 && q.is_sneaking"},
+            {"delay": "v.saiga12 && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.saiga12"}],
+          "transitions": [{"setup": "v.saiga12 && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.saiga12.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"akm_tp_hold": "v.saiga12"}],
+          "transitions": [
+            {"sprint": "v.saiga12 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.saiga12 && q.is_sneaking"},
+            {"hold": "v.saiga12 && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"akm_tp_sprint": "v.saiga12"}],
+          "transitions": [
+            {"hold": "v.saiga12 && !q.is_sprinting"},
+            {"hold": "v.saiga12 && q.is_using_item"},
+            {"sight": "v.saiga12 && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"akm_tp_sight": "v.saiga12"}],
+          "transitions": [{"hold": "v.saiga12 && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.saiga12.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"saiga12_fp_hold": "v.saiga12"}],
+          "transitions": [
+            {"reload": "v.saiga12emp && q.mark_variant == 1"},
+            {"inspect": "v.saiga12b && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.saiga12 && q.mark_variant == 2"},
+            {"sprint": "v.saiga12 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.saiga12 && q.is_sneaking"},
+            {"hold": "v.saiga12 && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"saiga12_fp_inspect": "v.saiga12"}],
+          "transitions": [
+            {
+              "hold": "(v.saiga12 && q.any_animation_finished) || (v.saiga12 && q.is_using_item) || (v.saiga12 && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"saiga12_fp_sprint": "v.saiga12"}],
+          "transitions": [
+            {"hold": "v.saiga12 && !q.is_sprinting"},
+            {"hold": "v.saiga12 && q.is_using_item"},
+            {"reload": "v.saiga12emp && q.mark_variant == 1"},
+            {"reloadtac": "v.saiga12 && q.mark_variant == 2"},
+            {"sight": "v.saiga12 && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"saiga12_fp_reload": "v.saiga12"}],
+          "transitions": [{"hold": "v.saiga12 && (q.any_animation_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"saiga12_fp_reload_tac": "v.saiga12"}],
+          "transitions": [
+            {"hold": "v.saiga12 && q.any_animation_finished"},
+            {"hold": "v.saiga12 && q.mark_variant != 2"}
+          ]
+        },
+        "sight": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"saiga12_fp_sight": "v.saiga12"}],
+          "transitions": [
+            {"hold": "v.saiga12 && !q.is_sneaking"},
+            {"reloadtac": "v.saiga12 && q.mark_variant == 2"},
+            {"reload": "v.saiga12emp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

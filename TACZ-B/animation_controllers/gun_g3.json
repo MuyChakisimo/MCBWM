@@ -1,0 +1,117 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.g3": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='g3' && q.is_using_item) || query.get_equipped_item_name=='g3_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s g3 20",
+            "@s[hasitem={item=krep:g3, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "g3.30": "query.get_equipped_item_name=='g3' && query.is_using_item && query.scoreboard('g3') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "g3.31": "query.get_equipped_item_name=='g3' && query.is_using_item && query.scoreboard('g3') == 0"
+            }
+          ],
+          "on_entry": ["/function g3"]
+        },
+        "g3.31": {
+          "animations": ["g3shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={g3=0}] slot.weapon.mainhand 1 krep:g3_emp 1 0"]
+        },
+        "g3.30": {
+          "animations": ["g3shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:g3_fire",
+            "/scoreboard players set @s[scores={g3=22..}] g3 21",
+            "/scoreboard players remove @s[scores={g3=1..21}] g3 1",
+            "/playsound g3.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={g3=0}] slot.weapon.mainhand 1 krep:g3_emp 1 0",
+            "/title @s[scores={g3=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.g3.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='g3_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='g3' && variable.attack_time > 0.0f && query.scoreboard('g3') <= 19 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='g3')"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function g3quantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='g3' && q.property('krep:ammoreload') == 290"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='g3' && q.property('krep:ammoreload') >= 291"
+            },
+            {"setup": "query.get_equipped_item_name!='g3'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function g3quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='g3_emp' && q.property('krep:ammoreload') == 290"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='g3_emp' && q.property('krep:ammoreload') >= 291"
+            },
+            {"setup": "query.get_equipped_item_name!='g3'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "g3reload": "query.get_equipped_item_name('main_hand')=='g3_emp' || query.get_equipped_item_name('main_hand')=='g3'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='g3_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "g3reloadtac": "query.get_equipped_item_name('main_hand')=='g3_emp' || query.get_equipped_item_name('main_hand')=='g3'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='g3'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function g3", "@s krep:noreload"],
+          "transitions": [{"setup": "query.get_equipped_item_name=='g3' || query.get_equipped_item_name=='g3_emp'"}]
+        }
+      }
+    }
+  }
+}

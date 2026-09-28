@@ -1,0 +1,94 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.minigun.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.minigun && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.minigun"}, {"walk_delay_2": "v.minigun"}],
+          "transitions": [
+            {"delay": "v.minigun && q.is_sprinting"},
+            {"delay": "v.minigun && q.is_sneaking"},
+            {"delay": "v.minigun && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.minigun"}],
+          "transitions": [{"setup": "v.minigun && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.minigun.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"minigun_tp_hold": "v.minigun"}],
+          "transitions": [
+            {"sprint": "v.minigun && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.minigun && q.is_sneaking"},
+            {"hold": "v.minigun && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"minigun_tp_sprint": "v.minigun"}],
+          "transitions": [
+            {"hold": "v.minigun && !q.is_sprinting"},
+            {"hold": "v.minigun && q.is_using_item"},
+            {"sight": "v.minigun && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"minigun_tp_sight": "v.minigun"}],
+          "transitions": [{"hold": "v.minigun && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.minigun.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"minigun_fp_hold": "v.minigun"}],
+          "transitions": [
+            {"overheat": "v.minigunemp && q.mark_variant == 1"},
+            {"inspect": "v.minigunb && q.skin_id == 1 && !q.is_sneaking"},
+            {"sprint": "v.minigun && q.is_sprinting && !q.is_using_item"},
+            {"hold": "v.minigun && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"minigun_fp_inspect": "v.minigun"}],
+          "transitions": [
+            {
+              "hold": "(v.minigun && q.all_animations_finished) || (v.minigun && q.is_using_item) || (v.minigun && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"minigun_fp_sprint": "v.minigun"}],
+          "transitions": [
+            {"hold": "v.minigun && !q.is_sprinting"},
+            {"hold": "v.minigun && q.is_using_item"},
+            {"overheat": "v.minigunemp && q.mark_variant == 1"}
+          ]
+        },
+        "overheat": {
+          "animations": [{"minigun_fp_overheat": "v.minigun"}],
+          "transitions": [{"hold": "v.minigun && (q.all_animations_finished || q.mark_variant != 1)"}]
+        }
+      }
+    }
+  }
+}

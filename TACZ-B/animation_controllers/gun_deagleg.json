@@ -1,0 +1,243 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.deagleg": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='deagleg' && q.is_using_item) || query.get_equipped_item_name=='deagleg_emp'"
+            }
+          ],
+          "on_entry": ["@s[hasitem={item=krep:deagleg, location=slot.weapon.mainhand}] krep:noreload"]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "deagleg.30": "query.get_equipped_item_name=='deagleg' && query.is_using_item && query.scoreboard('deagleg') >= 1 && q.mark_variant != 2 && q.property('krep:muzzle')==0"
+            },
+            {
+              "deagleg.30s": "query.get_equipped_item_name=='deagleg' && query.is_using_item && query.scoreboard('deagleg') >= 1 && q.mark_variant != 2 && q.property('krep:muzzle')==1"
+            },
+            {
+              "deagleg.31": "query.get_equipped_item_name=='deagleg' && query.is_using_item && query.scoreboard('deagleg') == 0"
+            }
+          ],
+          "on_entry": ["/function deagleg"]
+        },
+        "deagleg.31": {
+          "animations": ["deaglegshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={deagleg=0}] slot.weapon.mainhand 1 krep:deagleg_emp 1 0"]
+        },
+        "deagleg.30": {
+          "animations": ["deaglegshoot"],
+          "transitions": [{"setup": "query.all_animations_finished && !q.is_using_item"}],
+          "on_entry": [
+            "@s krep:deagleg_fire",
+            "@s krep:deagleg_range",
+            "/scoreboard players remove @s[scores={deagleg=1..}] deagleg 1",
+            "/playsound deagle.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={deagleg=0}] slot.weapon.mainhand 1 krep:deagleg_emp 1 0",
+            "/title @s[scores={deagleg=0}] actionbar No Ammunition"
+          ]
+        },
+        "deagleg.30s": {
+          "animations": ["deaglegshoot"],
+          "transitions": [{"setup": "query.all_animations_finished && !q.is_using_item"}],
+          "on_entry": [
+            "@s krep:deagleg_fire",
+            "@s krep:deagleg_range",
+            "/scoreboard players remove @s[scores={deagleg=1..}] deagleg 1",
+            "/playsound deagle.suppress @a[r=15]",
+            "/replaceitem entity @s[scores={deagleg=0}] slot.weapon.mainhand 1 krep:deagleg_emp 1 0",
+            "/title @s[scores={deagleg=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.deagleg.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='deagleg_emp' && variable.attack_time == 0.0 && q.is_using_item && q.property('krep:magazine')==0"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='deagleg' && variable.attack_time > 0.0f && query.scoreboard('deagleg') <= 9 && q.mark_variant != 3 && q.property('krep:magazine')==0) || (q.mark_variant == 2 && query.get_equipped_item_name=='deagleg' && q.property('krep:magazine')==0)"
+            },
+            {
+              "trigger.reload1": "query.get_equipped_item_name=='deagleg_emp' && variable.attack_time == 0.0 && q.is_using_item && q.property('krep:magazine')==1"
+            },
+            {
+              "trigger.tac1": "(query.get_equipped_item_name=='deagleg' && variable.attack_time > 0.0f && query.scoreboard('deagleg') <= 11 && q.mark_variant != 3 && q.property('krep:magazine')==1) || (q.mark_variant == 2 && query.get_equipped_item_name=='deagleg' && q.property('krep:magazine')==1)"
+            },
+            {
+              "trigger.reload2": "query.get_equipped_item_name=='deagleg_emp' && variable.attack_time == 0.0 && q.is_using_item && q.property('krep:magazine')==2"
+            },
+            {
+              "trigger.tac2": "(query.get_equipped_item_name=='deagleg' && variable.attack_time > 0.0f && query.scoreboard('deagleg') <= 14 && q.mark_variant != 3 && q.property('krep:magazine')==2) || (q.mark_variant == 2 && query.get_equipped_item_name=='deagleg' && q.property('krep:magazine')==2)"
+            },
+            {
+              "trigger.reload3": "query.get_equipped_item_name=='deagleg_emp' && variable.attack_time == 0.0 && q.is_using_item && q.property('krep:magazine')==3"
+            },
+            {
+              "trigger.tac3": "(query.get_equipped_item_name=='deagleg' && variable.attack_time > 0.0f && query.scoreboard('deagleg') <= 16 && q.mark_variant != 3 && q.property('krep:magazine')==3) || (q.mark_variant == 2 && query.get_equipped_item_name=='deagleg' && q.property('krep:magazine')==3)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function deaglegquantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='deagleg' && q.property('krep:ammoreload') == 600"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='deagleg' && q.property('krep:ammoreload') >= 601"
+            },
+            {"setup": "query.get_equipped_item_name!='deagleg'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function deaglegquantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='deagleg_emp' && q.property('krep:ammoreload') == 600"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='deagleg_emp' && q.property('krep:ammoreload') >= 601"
+            },
+            {"setup": "query.get_equipped_item_name!='deagleg'"}
+          ]
+        },
+        "trigger.tac1": {
+          "on_entry": ["/function deaglegquantity1", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='deagleg' && q.property('krep:ammoreload') == 600"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='deagleg' && q.property('krep:ammoreload') >= 601"
+            },
+            {"setup": "query.get_equipped_item_name!='deagleg'"}
+          ]
+        },
+        "trigger.reload1": {
+          "on_entry": ["/function deaglegquantity1", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='deagleg_emp' && q.property('krep:ammoreload') == 600"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='deagleg_emp' && q.property('krep:ammoreload') >= 601"
+            },
+            {"setup": "query.get_equipped_item_name!='deagleg'"}
+          ]
+        },
+        "trigger.tac2": {
+          "on_entry": ["/function deaglegquantity2", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='deagleg' && q.property('krep:ammoreload') == 600"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='deagleg' && q.property('krep:ammoreload') >= 601"
+            },
+            {"setup": "query.get_equipped_item_name!='deagleg'"}
+          ]
+        },
+        "trigger.reload2": {
+          "on_entry": ["/function deaglegquantity2", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='deagleg_emp' && q.property('krep:ammoreload') == 600"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='deagleg_emp' && q.property('krep:ammoreload') >= 601"
+            },
+            {"setup": "query.get_equipped_item_name!='deagleg'"}
+          ]
+        },
+        "trigger.tac3": {
+          "on_entry": ["/function deaglegquantity3", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='deagleg' && q.property('krep:ammoreload') == 600"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='deagleg' && q.property('krep:ammoreload') >= 601"
+            },
+            {"setup": "query.get_equipped_item_name!='deagleg'"}
+          ]
+        },
+        "trigger.reload3": {
+          "on_entry": ["/function deaglegquantity3", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='deagleg_emp' && q.property('krep:ammoreload') == 600"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='deagleg_emp' && q.property('krep:ammoreload') >= 601"
+            },
+            {"setup": "query.get_equipped_item_name!='deagleg'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "deaglegreload": "(query.get_equipped_item_name('main_hand')=='deagleg_emp' || query.get_equipped_item_name('main_hand')=='deagleg') && q.property('krep:magazine')==0"
+            },
+            {
+              "deaglegreload1": "(query.get_equipped_item_name('main_hand')=='deagleg_emp' || query.get_equipped_item_name('main_hand')=='deagleg') && q.property('krep:magazine')==1"
+            },
+            {
+              "deaglegreload2": "(query.get_equipped_item_name('main_hand')=='deagleg_emp' || query.get_equipped_item_name('main_hand')=='deagleg') && q.property('krep:magazine')==2"
+            },
+            {
+              "deaglegreload3": "(query.get_equipped_item_name('main_hand')=='deagleg_emp' || query.get_equipped_item_name('main_hand')=='deagleg') && q.property('krep:magazine')==3"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='deagleg_emp'"},
+            {"reloadfinish": "query.any_animation_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "deaglegreloadtac": "(query.get_equipped_item_name('main_hand')=='deagleg_emp' || query.get_equipped_item_name('main_hand')=='deagleg') && q.property('krep:magazine')==0"
+            },
+            {
+              "deaglegreloadtac1": "(query.get_equipped_item_name('main_hand')=='deagleg_emp' || query.get_equipped_item_name('main_hand')=='deagleg') && q.property('krep:magazine')==1"
+            },
+            {
+              "deaglegreloadtac2": "(query.get_equipped_item_name('main_hand')=='deagleg_emp' || query.get_equipped_item_name('main_hand')=='deagleg') && q.property('krep:magazine')==2"
+            },
+            {
+              "deaglegreloadtac3": "(query.get_equipped_item_name('main_hand')=='deagleg_emp' || query.get_equipped_item_name('main_hand')=='deagleg') && q.property('krep:magazine')==3"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='deagleg'"},
+            {"reloadfinish": "query.any_animation_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function deagleg", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='deagleg' || query.get_equipped_item_name=='deagleg_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

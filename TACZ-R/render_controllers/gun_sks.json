@@ -1,0 +1,13 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sks": {
+      "geometry": "geometry.sks",
+      "materials": [{"*": "material.guns"}],
+      "part_visibility": [{"*": true}],
+      "textures": ["texture.sks"],
+      "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
+      "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
+    }
+  }
+}

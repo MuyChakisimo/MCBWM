@@ -29,7 +29,7 @@ for (const f of fs.readdirSync(strDir, { recursive: true }).filter((f) => f.ends
   }
 }
 
-try { await import(pathToFileURL(path.resolve(dir, "main.js")).href); } catch { log("LOAD THROW"); }
+try { await import(pathToFileURL(path.resolve(dir, "main.js")).href); } catch (e) { log("LOAD THROW"); process.stderr.write(`load error: ${e?.stack ?? e}\n`); }
 const roots = callbacks.splice(0);
 log("=== load done, root callbacks: " + roots.length);
 let fired = 0;

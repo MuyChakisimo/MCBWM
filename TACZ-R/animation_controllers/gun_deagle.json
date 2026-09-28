@@ -1,0 +1,127 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.deagle.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.deagle && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.deagle"}, {"walk_delay_2": "v.deagle"}],
+          "transitions": [
+            {"delay": "v.deagle && q.is_sprinting"},
+            {"delay": "v.deagle && q.is_sneaking"},
+            {"delay": "v.deagle && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.deagle"}],
+          "transitions": [{"setup": "v.deagle && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.deagle.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"deagle_tp_hold": "v.deagle"}],
+          "transitions": [
+            {"sprint": "v.deagle && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.deagle && q.is_sneaking"},
+            {"hold": "v.deagle && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"deagle_tp_sprint": "v.deagle"}],
+          "transitions": [
+            {"hold": "v.deagle && !q.is_sprinting"},
+            {"hold": "v.deagle && q.is_using_item"},
+            {"sight": "v.deagle && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"deagle_tp_sight": "v.deagle"}],
+          "transitions": [{"hold": "v.deagle && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.deagle.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"deagle_fp_hold": "v.deagle"}],
+          "transitions": [
+            {"reload": "v.deagleemp && q.mark_variant == 1"},
+            {"inspect": "v.deagleb && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.deagle && q.mark_variant == 2"},
+            {"sprint": "v.deagle && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.deagle && q.is_sneaking"},
+            {"hold": "v.deagle && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"deagle_fp_inspect": "v.deagle"}],
+          "transitions": [
+            {
+              "hold": "(v.deagle && q.any_animation_finished) || (v.deagle && q.is_using_item) || (v.deagle && q.is_sneaking)"
+            }
+          ]
+        },
+        "walk": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"deagle_fp_walk": "v.deagle"}],
+          "transitions": [
+            {"hold": "v.deagle && !q.is_moving && !q.is_sprinting"},
+            {"hold": "v.deagle && q.is_using_item"},
+            {"reload": "v.deagleemp && q.mark_variant == 1"},
+            {"reloadtac": "v.deagle && q.mark_variant == 2"},
+            {"sight": "v.deagle && q.is_sneaking"}
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"deagle_fp_sprint": "v.deagle"}],
+          "transitions": [
+            {"hold": "v.deagle && !q.is_sprinting"},
+            {"hold": "v.deagle && q.is_using_item"},
+            {"reload": "v.deagleemp && q.mark_variant == 1"},
+            {"reloadtac": "v.deagle && q.mark_variant == 2"},
+            {"sight": "v.deagle && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"deagle_fp_reload": "v.deagle"}],
+          "transitions": [{"hold": "v.deagle && (q.any_animation_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"deagle_fp_tac": "v.deagle"}],
+          "transitions": [
+            {"hold": "v.deagle && q.any_animation_finished"},
+            {"hold": "v.deagle && q.mark_variant != 2"}
+          ]
+        },
+        "sight": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"deagle_fp_sight": "v.deagle"}],
+          "transitions": [
+            {"hold": "v.deagle && !q.is_sneaking"},
+            {"reloadtac": "v.deagle && q.mark_variant == 2"},
+            {"reload": "v.deagleemp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

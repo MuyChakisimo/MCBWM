@@ -1,0 +1,13 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.b93": {
+      "geometry": "geometry.b93",
+      "materials": [{"*": "material.guns"}],
+      "part_visibility": [{"*": true}, {"mag_extended_1": false}, {"mag_extended_2": false}, {"mag_extended_3": false}],
+      "textures": ["texture.b93"],
+      "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
+      "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
+    }
+  }
+}

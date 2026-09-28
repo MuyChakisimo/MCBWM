@@ -1,0 +1,134 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.hk416.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.hk416 && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.hk416"}, {"walk_delay_2": "v.hk416"}],
+          "transitions": [
+            {"delay": "v.hk416 && q.is_sprinting"},
+            {"delay": "v.hk416 && q.is_sneaking"},
+            {"delay": "v.hk416 && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.hk416"}],
+          "transitions": [{"setup": "v.hk416 && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.hk416.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"hk416_tp_hold": "v.hk416"}],
+          "transitions": [
+            {"sprint": "v.hk416 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.hk416 && q.is_sneaking"},
+            {"hold": "v.hk416 && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"hk416_tp_sprint": "v.hk416"}],
+          "transitions": [
+            {"hold": "v.hk416 && !q.is_sprinting"},
+            {"hold": "v.hk416 && q.is_using_item"},
+            {"sight": "v.hk416 && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"hk416_tp_sight": "v.hk416"}],
+          "transitions": [{"hold": "v.hk416 && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.hk416.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"hk416_fp_hold": "v.hk416"}],
+          "transitions": [
+            {"reload": "v.hk416emp && q.mark_variant == 1"},
+            {"inspect": "v.hk416b && q.skin_id == 1 && !q.is_sneaking"},
+            {"view": "v.hk416b && q.skin_id == 2 && !q.is_sneaking"},
+            {"reloadtac": "v.hk416 && q.mark_variant == 2"},
+            {"sprint": "v.hk416 && q.is_sprinting && !q.is_using_item"},
+            {"view": "v.hk416b && q.skin_id == 2 && !q.is_sneaking"},
+            {"sight": "v.hk416 && q.is_sneaking"},
+            {"hold": "v.hk416 && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"hk416_fp_inspect": "v.hk416"}],
+          "transitions": [
+            {
+              "hold": "(v.hk416 && q.all_animations_finished) || (v.hk416 && q.is_using_item) || (v.hk416 && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"hk416_fp_sprint": "v.hk416"}],
+          "transitions": [
+            {"hold": "v.hk416 && !q.is_sprinting"},
+            {"hold": "v.hk416 && q.is_using_item"},
+            {"view": "v.hk416b && q.skin_id == 2 && !q.is_sneaking"},
+            {"reload": "v.hk416emp && q.mark_variant == 1"},
+            {"reloadtac": "v.hk416 && q.mark_variant == 2"},
+            {"sight": "v.hk416 && q.is_sneaking"}
+          ]
+        },
+        "view": {
+          "animations": [{"hk416_fp_view": "v.hk416"}],
+          "transitions": [{"hold": "(v.hk416 && q.skin_id != 2)"}]
+        },
+        "reload": {
+          "animations": [{"hk416_fp_reload": "v.hk416"}],
+          "transitions": [{"hold": "v.hk416 && (q.all_animations_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"hk416_fp_reload_tac": "v.hk416"}],
+          "transitions": [
+            {"hold": "v.hk416 && q.all_animations_finished"},
+            {"hold": "v.hk416b && q.mark_variant != 2"}
+          ]
+        },
+        "attachmentmode": {
+          "animations": [{"hk416_fp_attachment": "v.hk416"}],
+          "transitions": [{"hold": "v.hk416 && q.skin_id != 2"}]
+        },
+        "sight": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [
+            {"hk416_fp_sight": "v.hk416 && q.property('krep:hk416scope') == 'nothing'"},
+            {"hk416_fp_sight_coyote": "v.hk416 && q.property('krep:hk416scope') == 'coyote'"},
+            {"hk416_fp_sight_holo": "v.hk416 && q.property('krep:hk416scope') == 'holo'"},
+            {"hk416_fp_sight_t2": "v.hk416 && q.property('krep:hk416scope') == 't2'"},
+            {"hk416_fp_sight_acog": "v.hk416 && q.property('krep:hk416scope') == 'acog'"},
+            {"hk416_fp_sight_elcan": "v.hk416 && q.property('krep:hk416scope') == 'elcan'"}
+          ],
+          "transitions": [
+            {"hold": "v.hk416 && !q.is_sneaking"},
+            {"view": "v.hk416b && q.skin_id == 2 && !q.is_sneaking"},
+            {"reloadtac": "v.hk416 && q.mark_variant == 2"},
+            {"reload": "v.hk416emp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

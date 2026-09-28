@@ -1,0 +1,133 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.db": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='db' && q.is_using_item) || query.get_equipped_item_name=='db_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s db 2",
+            "@s[hasitem={item=krep:db, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "db.30": "query.get_equipped_item_name=='db' && query.is_using_item && query.scoreboard('db') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "db.31": "query.get_equipped_item_name=='db' && query.is_using_item && query.scoreboard('db') == 0"
+            }
+          ],
+          "on_entry": ["/function db"]
+        },
+        "db.31": {
+          "animations": ["dbshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={db=0}] slot.weapon.mainhand 1 krep:db_emp 1 0"]
+        },
+        "db.30": {
+          "animations": ["dbshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:db_fire",
+            "/scoreboard players set @s[scores={db=3..}] db 2",
+            "/scoreboard players remove @s[scores={db=1..}] db 1",
+            "/playsound db.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={db=0}] slot.weapon.mainhand 1 krep:db_emp 1 0",
+            "/title @s[scores={db=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.db.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='db_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='db' && variable.attack_time > 0.0f && query.scoreboard('db') <= 18 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='db')"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function dbquantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='db' && q.property('krep:ammoreload') == 640"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='db' && q.property('krep:ammoreload') >= 641"
+            },
+            {"setup": "query.get_equipped_item_name!='db'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function dbquantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='db_emp' && q.property('krep:ammoreload') == 640"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='db_emp' && q.property('krep:ammoreload') >= 642"
+            },
+            {
+              "reload1": "query.get_equipped_item_name=='db_emp' && q.property('krep:ammoreload') == 641"
+            },
+            {"setup": "query.get_equipped_item_name!='db'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "dbreload": "query.get_equipped_item_name('main_hand')=='db_emp' || query.get_equipped_item_name('main_hand')=='db'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='db_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload1": {
+          "animations": [
+            {
+              "dbreload1": "query.get_equipped_item_name('main_hand')=='db_emp' || query.get_equipped_item_name('main_hand')=='db'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='db_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "dbreloadtac": "query.get_equipped_item_name('main_hand')=='db_emp' || query.get_equipped_item_name('main_hand')=='db'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='db'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function db"],
+          "transitions": [{"setup": "query.get_equipped_item_name=='db' || query.get_equipped_item_name=='db_emp'"}]
+        }
+      }
+    }
+  }
+}
