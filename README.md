@@ -11,7 +11,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/deobfuscate/` | How the obfuscated original scripts were made readable (history) |
 | `*.zip` | Reference only (original release, Java TACZ, earlier attempt). Never shipped |
 
-**Pack version is `1.7.0`** for both packs. On a dedicated server set `"version": [1, 7, 0]` for both packs in the
+**Pack version is `1.8.0`** for both packs. On a dedicated server set `"version": [1, 8, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -139,14 +139,19 @@ Reload sound effects are not wired up yet.
 - Removed: the `openui2` menu tag (called an undefined function), the `Indoarsenal` global, the chat message on
   every world load, and the dead `TACZ-B/kanjut/` folder (not a Bedrock folder).
 
-## Where the multiplayer lag most likely comes from (next steps)
+## Performance (what runs repeatedly)
 
-These all scale with players or entities. Change one at a time and test with several players:
+Everything that runs on a timer only reads unless something changed, so it doesn't send updates to clients:
 
-1. `items/itemLore.js`: every second, `setItem` on **every slot of every player's inventory**. Only write when lore
-   was actually missing.
-2. `items/storedAmmoDisplay.js` (every tick) and `attachments/attachmentState.js` (every 2 ticks): `setProperty` on
-   every player holding a gun, even when the value hasn't changed. Cache the last value.
+| What | How often | Writes only when |
+|---|---|---|
+| `items/itemLore.js` | every second, every player's inventory | an item has no lore yet |
+| `items/storedAmmoDisplay.js` | every tick, players holding an Evolys / M249 / M1014 | the loaded-round count changed |
+| `attachments/attachmentState.js` | every 2 ticks, players holding a gun with attachments | a fitted attachment changed |
+
+Nothing runs from `tick.json`. Per shot: one `scriptevent` (recoil + hitscan); mob armor is looked up on hit and
+cached for 2 seconds. When adding timers, keep this rule: compare with the current value before calling
+`setProperty` / `setItem` / `setDynamicProperty`.
 
 ## Tools
 

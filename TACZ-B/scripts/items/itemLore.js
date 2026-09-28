@@ -15,22 +15,18 @@ const LORE_BY_ITEM = {
   ),
 };
 
-class ItemLoreManager {
-  constructor(player) {
-    this.player = player;
-    this.inventory = player.getComponent("inventory").container;
-  }
-  updateItemLore(item, slot) {
-    if (!item) return;
-    const lore = LORE_BY_ITEM[item.typeId];
-    if (lore && (!item.getLore() || item.getLore().length === 0)) item.setLore([{ translate: lore }]);
-    this.inventory.setItem(slot, item);
-  }
-  updateInventory() {
-    for (let slot = 0; slot < this.inventory.size; slot++) this.updateItemLore(this.inventory.getItem(slot), slot);
-  }
-}
-
+// Checked once a second; an item is only written back when it had no lore yet (every setItem
+// is synced to the client).
 system.runInterval(() => {
-  for (const player of world.getAllPlayers()) new ItemLoreManager(player).updateInventory();
+  for (const player of world.getAllPlayers()) {
+    const inventory = player.getComponent("inventory")?.container;
+    if (!inventory) continue;
+    for (let slot = 0; slot < inventory.size; slot++) {
+      const item = inventory.getItem(slot);
+      const lore = item && LORE_BY_ITEM[item.typeId];
+      if (!lore || item.getLore().length > 0) continue;
+      item.setLore([{ translate: lore }]);
+      inventory.setItem(slot, item);
+    }
+  }
 }, TicksPerSecond);

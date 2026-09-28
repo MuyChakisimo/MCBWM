@@ -44,7 +44,8 @@ export function setAttachments(player, typeId, changes = {}) {
   player.setDynamicProperty(key, next.join(","));
 }
 
-// Show the held gun's attachments on the model.
+// Show the held gun's attachments on the model. Properties are only written when they changed:
+// every setProperty is synced to all nearby clients.
 system.runInterval(() => {
   for (const player of world.getPlayers()) {
     const mainhandItem = player.getComponent("minecraft:equippable").getEquipment("Mainhand");
@@ -52,6 +53,8 @@ system.runInterval(() => {
     const key = getAttachmentKey(mainhandItem.typeId);
     if (!key) continue;
     const attachments = readAttachments(player, key);
-    for (const slot of SLOTS) player.setProperty("krep:" + slot, attachments[slot]);
+    for (const slot of SLOTS) {
+      if (player.getProperty("krep:" + slot) !== attachments[slot]) player.setProperty("krep:" + slot, attachments[slot]);
+    }
   }
 }, 2);
