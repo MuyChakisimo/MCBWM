@@ -236,27 +236,45 @@
         "reload": {
           "animations": [
             {
-              "vectorreload": "query.get_equipped_item_name('main_hand')=='vector_emp' || query.get_equipped_item_name('main_hand')=='vector'"
+              "vectorreload": "(query.get_equipped_item_name('main_hand')=='vector_emp' || query.get_equipped_item_name('main_hand')=='vector') && q.property('krep:magazine')==0"
+            },
+            {
+              "vectorreload1": "(query.get_equipped_item_name('main_hand')=='vector_emp' || query.get_equipped_item_name('main_hand')=='vector') && q.property('krep:magazine')==1"
+            },
+            {
+              "vectorreload2": "(query.get_equipped_item_name('main_hand')=='vector_emp' || query.get_equipped_item_name('main_hand')=='vector') && q.property('krep:magazine')==2"
+            },
+            {
+              "vectorreload3": "(query.get_equipped_item_name('main_hand')=='vector_emp' || query.get_equipped_item_name('main_hand')=='vector') && q.property('krep:magazine')==3"
             }
           ],
           "on_entry": ["@s krep:reload"],
           "on_exit": ["@s krep:noreload"],
           "transitions": [
             {"setup": "query.get_equipped_item_name!='vector_emp'"},
-            {"reloadfinish": "query.all_animations_finished"}
+            {"reloadfinish": "query.any_animation_finished"}
           ]
         },
         "reload.tac": {
           "animations": [
             {
-              "vectorreloadtac": "query.get_equipped_item_name('main_hand')=='vector_emp' || query.get_equipped_item_name('main_hand')=='vector'"
+              "vectorreloadtac": "(query.get_equipped_item_name('main_hand')=='vector_emp' || query.get_equipped_item_name('main_hand')=='vector') && q.property('krep:magazine')==0"
+            },
+            {
+              "vectorreloadtac1": "(query.get_equipped_item_name('main_hand')=='vector_emp' || query.get_equipped_item_name('main_hand')=='vector') && q.property('krep:magazine')==1"
+            },
+            {
+              "vectorreloadtac2": "(query.get_equipped_item_name('main_hand')=='vector_emp' || query.get_equipped_item_name('main_hand')=='vector') && q.property('krep:magazine')==2"
+            },
+            {
+              "vectorreloadtac3": "(query.get_equipped_item_name('main_hand')=='vector_emp' || query.get_equipped_item_name('main_hand')=='vector') && q.property('krep:magazine')==3"
             }
           ],
           "on_entry": ["@s krep:reloadtac"],
           "on_exit": ["@s krep:noreload"],
           "transitions": [
             {"setup": "query.get_equipped_item_name!='vector'"},
-            {"reloadfinish": "query.all_animations_finished"}
+            {"reloadfinish": "query.any_animation_finished"}
           ]
         },
         "reloadfinish": {

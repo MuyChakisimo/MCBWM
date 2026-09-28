@@ -1759,7 +1759,7 @@
           ]
         },
         "draw.mp7": {
-          "animations": [{"mp5_draw": "v.mp7"}],
+          "animations": [{"mp7_draw": "v.mp7"}],
           "transitions": [
             {
               "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"

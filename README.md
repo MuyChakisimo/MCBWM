@@ -11,7 +11,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/deobfuscate/` | How the obfuscated original scripts were made readable (history) |
 | `*.zip` | Reference only (original release, Java TACZ, earlier attempt). Never shipped |
 
-**Pack version is `1.8.0`** for both packs. On a dedicated server set `"version": [1, 8, 0]` for both packs in the
+**Pack version is `1.9.0`** for both packs. On a dedicated server set `"version": [1, 9, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -113,7 +113,7 @@ health is then set to the exact result, so the damage dealt is unchanged.
 Completed from the original's unused assets, with stats and recipes from the Java TACZ data (`TACZ-JAVA.zip`):
 55 damage, 0.8 penetration, 10-round magazine, `.50 BMG` ammo (`krep:bmg50`). The attachment workbench has no M107
 entry yet; set scopes with `/event entity @s m107:acog` (also `elcan`, `coyote`, `standard_8`, `ironsight`).
-Reload sound effects are not wired up yet.
+Its reload, tactical reload and inspect sounds use the Java TACZ names (`tacz:m107/...`) in `sound_definitions.json`.
 
 ## Original bugs fixed during the reorganization
 
@@ -131,6 +131,13 @@ Reload sound effects are not wired up yet.
 - Mob armor was detected by 48 `/tag @e` commands every second, in the Overworld only (mobs in the Nether and End
   had no armor). It is now looked up on the target when it is hit.
 - The HK416's hip fire used its ADS recoil.
+- Vector with an extended magazine (30/40/50): reloading used the 20-round ammo removal, so reloading from 20 or
+  more rounds took no ammo. The reload now plays a per-magazine animation (`animation.vector.reload1-3`,
+  `reload.tac1-3`) that calls `vectorreload1-3`, as the Golden Deagle does.
+- The UMP-45 and MP7 played the MP5's draw animation instead of their own.
+- Sounds that never played because their name had no sound definition: M107 reload/inspect (27), the AA-12, G17/G18,
+  SKS, Uzi and UMP draw, the RPG inspect, a T50 reload sound and the Vector's empty shake. Wired to the matching
+  pack file or TACZ-JAVA sound. Two RPG keyframes with no sound in either pack were removed.
 - Removed: dead player events/component groups (old attachment modes, old recoil events, reload steps past the
   magazine size, bullet spawns for hitscan guns), 34 unused bullet entities, uncalled functions, `tick.json` /
   `testis.mcfunction`, animations/controllers/sounds for guns not in the pack (CAR-15, M9, L85, PKM, Tabuk), the

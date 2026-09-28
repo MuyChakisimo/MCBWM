@@ -14,12 +14,72 @@
         "2.6": ["/function vectorreload", "/event entity @s krep:vector_reload"]
       }
     },
+    "animation.vector.reload1": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.7,
+      "timeline": {
+        "2.68": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:vector 1 0",
+          "@s krep:vector_rangeemp",
+          "/function vector"
+        ],
+        "2.6": ["/function vectorreload1", "/event entity @s krep:vector_reload"]
+      }
+    },
+    "animation.vector.reload2": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.7,
+      "timeline": {
+        "2.68": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:vector 1 0",
+          "@s krep:vector_rangeemp",
+          "/function vector"
+        ],
+        "2.6": ["/function vectorreload2", "/event entity @s krep:vector_reload"]
+      }
+    },
+    "animation.vector.reload3": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.7,
+      "timeline": {
+        "2.68": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:vector 1 0",
+          "@s krep:vector_rangeemp",
+          "/function vector"
+        ],
+        "2.6": ["/function vectorreload3", "/event entity @s krep:vector_reload"]
+      }
+    },
     "animation.vector.reload.tac": {
       "loop": "hold_on_last_frame",
       "animation_length": 2.5,
       "timeline": {
         "2.48": ["@s krep:vector_range", "/function vector"],
         "2.4": ["/function vectorreload", "/event entity @s krep:vector_reload"]
+      }
+    },
+    "animation.vector.reload.tac1": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.5,
+      "timeline": {
+        "2.48": ["@s krep:vector_range", "/function vector"],
+        "2.4": ["/function vectorreload1", "/event entity @s krep:vector_reload"]
+      }
+    },
+    "animation.vector.reload.tac2": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.5,
+      "timeline": {
+        "2.48": ["@s krep:vector_range", "/function vector"],
+        "2.4": ["/function vectorreload2", "/event entity @s krep:vector_reload"]
+      }
+    },
+    "animation.vector.reload.tac3": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.5,
+      "timeline": {
+        "2.48": ["@s krep:vector_range", "/function vector"],
+        "2.4": ["/function vectorreload3", "/event entity @s krep:vector_reload"]
       }
     }
   }

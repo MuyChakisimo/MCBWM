@@ -1202,7 +1202,7 @@
         "db_tp_sight": "animation.db.tp.sight",
         "ump_walk_ac": "controller.animation.ump.walk",
         "ump_fp": "controller.animation.ump.fp",
-        "ump_draw": "animation.mp5.draw",
+        "ump_draw": "animation.ump.draw",
         "ump_fp_hold": "animation.ump.fp.hold",
         "ump_fp_sprint": "animation.ump.fp.sprint",
         "ump_fp_inspect": "animation.ump.fp.inspect",

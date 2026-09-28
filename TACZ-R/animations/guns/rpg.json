@@ -1234,8 +1234,7 @@
         "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
         "Joints": {"position": [-4, 19, -7]},
         "rocket_head": {"scale": "v.rpgb ? 1 : 0"}
-      },
-      "sound_effects": {"0.0": {"effect": "rpg7_reload_lower"}}
+      }
     },
     "animation.rpg.fp.sight": {
       "loop": "hold_on_last_frame",
@@ -1297,8 +1296,7 @@
           "position": {"0.0": [-4, 19, -7], "0.6038": [-2.7, 19.4, -7]}
         },
         "rocket_head": {"scale": "v.rpgb ? 1 : 0"}
-      },
-      "sound_effects": {"0.0": {"effect": "rpg7_reload_lower"}}
+      }
     },
     "animation.rpg.fp.inspect": {
       "loop": "hold_on_last_frame",
@@ -1703,11 +1701,7 @@
         "Joints": {"position": [-4, 19, -7]},
         "rocket_head": {"scale": "v.rpgb ? 1 : 0"}
       },
-      "sound_effects": {
-        "0.0": {"effect": "p30_la_rpapa7_inspect_hip_raise"},
-        "1.7667": {"effect": "p30_la_rpapa7_inspect_hip_rotate"},
-        "4.4": {"effect": "p30_la_rpapa7_inspect_hip_end"}
-      }
+      "sound_effects": {"0.0": {"effect": "p30_la_rpapa7_inspect_hip_raise"}}
     },
     "animation.rpg.tp.hold": {
       "loop": true,
