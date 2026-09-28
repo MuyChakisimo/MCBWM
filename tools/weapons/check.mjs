@@ -3,7 +3,7 @@
 //
 // For each gun it checks: BP items krep:<id> / krep:<id>_emp, RP attachables, icon, name and
 // lore text, magazine size and ammo item (functions/<id>*.mcfunction), and that the fire event
-// in entities/player.json matches `firing` (hitscan scriptevent vs bullet:<id> spawn).
+// in entities/player.json runs the hitscan scriptevent (and spawns nothing).
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
@@ -19,7 +19,7 @@ const { ATTACHMENTS } = await cfg("attachments.js");
 const { RECOIL } = await cfg("recoil.js");
 
 const read = (f) => (fs.existsSync(path.join(root, f)) ? fs.readFileSync(path.join(root, f), "utf8") : null);
-const bpItems = new Set(), itemNames = new Map(), attachables = new Set(), entities = new Set();
+const bpItems = new Set(), itemNames = new Map(), attachables = new Set();
 for (const { json } of loadAll(path.join(root, "TACZ-B/items")).filter((x) => x.json))
   if (json["minecraft:item"]) {
     const id = json["minecraft:item"].description.identifier;
@@ -28,8 +28,6 @@ for (const { json } of loadAll(path.join(root, "TACZ-B/items")).filter((x) => x.
   }
 for (const { json } of loadAll(path.join(root, "TACZ-R/attachables")).filter((x) => x.json))
   if (json["minecraft:attachable"]) attachables.add(json["minecraft:attachable"].description.identifier);
-for (const { json } of loadAll(path.join(root, "TACZ-B/entities")).filter((x) => x.json))
-  if (json["minecraft:entity"]) entities.add(json["minecraft:entity"].description.identifier);
 const itemTextures = parse(read("TACZ-R/textures/item_texture.json")).texture_data;
 const lang = new Map(read("TACZ-R/texts/en_US.lang").split(/\r?\n/).map((l) => [l.split("=")[0], l.slice(l.indexOf("=") + 1)]));
 const player = parse(read("TACZ-B/entities/player.json"))["minecraft:entity"];
@@ -67,18 +65,14 @@ for (const [id, w] of Object.entries(WEAPONS)) {
   }
   if (!bpItems.has(w.ammo)) bad(id, `ammo item ${w.ammo} does not exist`, "config/weapons.js ammo");
 
-  // Fire event matches `firing`.
+  // Fire event runs the hitscan scriptevent.
   const fire = player.events[`krep:${id}_fire`];
   if (!fire) bad(id, "no fire event krep:" + id + "_fire", "TACZ-B/entities/player.json");
   else {
     const steps = fire.sequence ?? [fire];
     const hitscan = steps.every((s) => (s.queue_command?.command ?? []).some((c) => c.startsWith(`scriptevent tacz:weapon_hitscan ${id} `)));
     const spawns = steps.some((s) => s.add?.component_groups?.length);
-    if (w.firing === "hitscan" && (!hitscan || spawns)) bad(id, "firing is hitscan but the fire event still spawns a bullet / lacks the scriptevent", "TACZ-B/entities/player.json");
-    if (w.firing === "projectile") {
-      if (hitscan || !spawns) bad(id, "firing is projectile but the fire event does not spawn a bullet", "TACZ-B/entities/player.json");
-      if (!entities.has(`bullet:${id}`)) bad(id, `no bullet:${id} entity`, "TACZ-B/entities/bullet/");
-    }
+    if (!hitscan || spawns) bad(id, "fire event lacks the hitscan scriptevent or still adds a component group", "TACZ-B/entities/player.json");
   }
   for (const [item] of w.recipe ?? []) if (item !== "log" && !/^[a-z_]+$/.test(item)) bad(id, `odd recipe item ${item}`, "config/weapons.js");
 }

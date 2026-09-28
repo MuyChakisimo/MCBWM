@@ -456,19 +456,6 @@
       "krep:inspect": {"minecraft:skin_id": {"value": 1}},
       "krep:noinspect": {"minecraft:skin_id": {"value": 0}},
       "krep:attachmentmode": {"minecraft:skin_id": {"value": 2}},
-      "krep:rpg_fires": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:rpg",
-              "num_to_spawn": 1
-            }
-          ]
-        }
-      },
       "krep:scope4x": {
         "minecraft:spell_effects": {"add_effects": [{"effect": "slowness", "amplifier": 6, "duration": 9999999, "visible": false}]}
       },
@@ -476,146 +463,6 @@
         "minecraft:spell_effects": {"add_effects": [{"effect": "slowness", "amplifier": 14, "duration": 9999999, "visible": false}]}
       },
       "krep:normal": {"minecraft:spell_effects": {"remove_effects": "slowness"}},
-      "krep:aa12_firest": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:aa12",
-              "spawn_event": "aa12:nsight",
-              "num_to_spawn": 12
-            }
-          ]
-        }
-      },
-      "krep:m870_fires": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:m870",
-              "spawn_event": "m870:sight",
-              "num_to_spawn": 12
-            }
-          ]
-        }
-      },
-      "krep:m870_firest": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:m870",
-              "spawn_event": "m870:nsight",
-              "num_to_spawn": 12
-            }
-          ]
-        }
-      },
-      "krep:m1014_fires": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:m1014",
-              "spawn_event": "m1014:sight",
-              "num_to_spawn": 12
-            }
-          ]
-        }
-      },
-      "krep:m1014_firest": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:m1014",
-              "spawn_event": "m1014:nsight",
-              "num_to_spawn": 12
-            }
-          ]
-        }
-      },
-      "krep:aa12_fires": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:aa12",
-              "spawn_event": "aa12:sight",
-              "num_to_spawn": 12
-            }
-          ]
-        }
-      },
-      "krep:saiga12_fires": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:saiga12",
-              "spawn_event": "saiga12:sight",
-              "num_to_spawn": 12
-            }
-          ]
-        }
-      },
-      "krep:saiga12_firest": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:saiga12",
-              "spawn_event": "saiga12:nsight",
-              "num_to_spawn": 12
-            }
-          ]
-        }
-      },
-      "krep:db_fires": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:db",
-              "spawn_event": "db:sight",
-              "num_to_spawn": 12
-            }
-          ]
-        }
-      },
-      "krep:db_firest": {
-        "minecraft:spawn_entity": {
-          "entities": [
-            {
-              "min_wait_time": 0,
-              "max_wait_time": 0,
-              "single_use": true,
-              "spawn_entity": "bullet:db",
-              "spawn_event": "db:nsight",
-              "num_to_spawn": 12
-            }
-          ]
-        }
-      },
       "minecraft:add_raid_omen": {
         "minecraft:spell_effects": {
           "add_effects": [{"effect": "raid_omen", "duration": 30, "display_on_screen_animation": true}],
@@ -1408,21 +1255,21 @@
         "sequence": [
           {
             "filters": {"test": "is_sneaking", "value": true, "subject": "self"},
-            "add": {"component_groups": ["krep:aa12_fires"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.aa12.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.28 rotational",
+                "scriptevent tacz:weapon_hitscan aa12 ads"
               ]
             }
           },
           {
             "filters": {"test": "is_sneaking", "value": false, "subject": "self"},
-            "add": {"component_groups": ["krep:aa12_firest"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.aa12.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.3 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.3 rotational",
+                "scriptevent tacz:weapon_hitscan aa12 hip"
               ]
             }
           }
@@ -1432,21 +1279,21 @@
         "sequence": [
           {
             "filters": {"test": "is_sneaking", "value": true, "subject": "self"},
-            "add": {"component_groups": ["krep:saiga12_fires"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.saiga12.shoot.nsight shoot",
-                "camerashake add @s[r=0.5] 0.052 0.32 rotational"
+                "camerashake add @s[r=0.5] 0.052 0.32 rotational",
+                "scriptevent tacz:weapon_hitscan saiga12 ads"
               ]
             }
           },
           {
             "filters": {"test": "is_sneaking", "value": false, "subject": "self"},
-            "add": {"component_groups": ["krep:saiga12_firest"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.saiga12.shoot.nsight shoot",
-                "camerashake add @s[r=0.5] 0.042 0.35 rotational"
+                "camerashake add @s[r=0.5] 0.042 0.35 rotational",
+                "scriptevent tacz:weapon_hitscan saiga12 hip"
               ]
             }
           }
@@ -1456,21 +1303,21 @@
         "sequence": [
           {
             "filters": {"test": "is_sneaking", "value": true, "subject": "self"},
-            "add": {"component_groups": ["krep:db_fires"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.db.shoot.stock shoot",
-                "camerashake add @s[r=0.5] 0.032 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.28 rotational",
+                "scriptevent tacz:weapon_hitscan db ads"
               ]
             }
           },
           {
             "filters": {"test": "is_sneaking", "value": false, "subject": "self"},
-            "add": {"component_groups": ["krep:db_firest"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.db.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.3 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.3 rotational",
+                "scriptevent tacz:weapon_hitscan db hip"
               ]
             }
           }
@@ -1480,21 +1327,21 @@
         "sequence": [
           {
             "filters": {"test": "is_sneaking", "value": true, "subject": "self"},
-            "add": {"component_groups": ["krep:m870_fires"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.m870.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.28 rotational",
+                "scriptevent tacz:weapon_hitscan m870 ads"
               ]
             }
           },
           {
             "filters": {"test": "is_sneaking", "value": false, "subject": "self"},
-            "add": {"component_groups": ["krep:m870_firest"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.m870.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.3 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.3 rotational",
+                "scriptevent tacz:weapon_hitscan m870 hip"
               ]
             }
           }
@@ -1504,21 +1351,21 @@
         "sequence": [
           {
             "filters": {"test": "is_sneaking", "value": true, "subject": "self"},
-            "add": {"component_groups": ["krep:m1014_fires"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.m1014.shoot.sight shoot",
-                "camerashake add @s[r=0.5] 0.032 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.28 rotational",
+                "scriptevent tacz:weapon_hitscan m1014 ads"
               ]
             }
           },
           {
             "filters": {"test": "is_sneaking", "value": false, "subject": "self"},
-            "add": {"component_groups": ["krep:m1014_firest"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.m1014.shoot.nsight shoot",
-                "camerashake add @s[r=0.5] 0.032 0.3 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.3 rotational",
+                "scriptevent tacz:weapon_hitscan m1014 hip"
               ]
             }
           }
@@ -1528,21 +1375,21 @@
         "sequence": [
           {
             "filters": {"test": "is_sneaking", "value": true, "subject": "self"},
-            "add": {"component_groups": ["krep:rpg_fires"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.rpg.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.28 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.28 rotational",
+                "scriptevent tacz:weapon_hitscan rpg ads"
               ]
             }
           },
           {
             "filters": {"test": "is_sneaking", "value": false, "subject": "self"},
-            "add": {"component_groups": ["krep:rpg_fires"]},
             "queue_command": {
               "command": [
                 "playanimation @s[r=0.5] animation.rpg.shoot shoot",
-                "camerashake add @s[r=0.5] 0.032 0.3 rotational"
+                "camerashake add @s[r=0.5] 0.032 0.3 rotational",
+                "scriptevent tacz:weapon_hitscan rpg hip"
               ]
             }
           }

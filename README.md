@@ -11,7 +11,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/deobfuscate/` | How the obfuscated original scripts were made readable (history) |
 | `*.zip` | Reference only (original release, Java TACZ, earlier attempt). Never shipped |
 
-**Pack version is `1.5.0`** for both packs. On a dedicated server set `"version": [1, 5, 0]` for both packs in the
+**Pack version is `1.6.0`** for both packs. On a dedicated server set `"version": [1, 6, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -36,9 +36,8 @@ edit).
 | File | What it does |
 |---|---|
 | `main.js` | Imports every module below |
-| `combat/hitscan.js` | Guns with `firing: "hitscan"`: the fire event runs `scriptevent tacz:weapon_hitscan <gun> ads\|hip`; a ray from the eyes finds the target |
-| `combat/damage.js` | `processGunHit()`: headshot (2x), armor reduction, damage, red hurt flash, hit/kill sounds |
-| `combat/projectiles.js` | Guns with `firing: "projectile"` (shotguns, RPG): bullet hits, bullet cleanup after 10 ticks |
+| `combat/hitscan.js` | Every gun: the fire event runs `scriptevent tacz:weapon_hitscan <gun> ads\|hip`; rays from the eyes (one per pellet) find the target, break glass, and explode for the RPG |
+| `combat/damage.js` | `applyGunHits()`: headshot (2x), armor reduction, damage summed per target, red hurt flash, hit/kill sounds |
 | `combat/shotEffects.js` | Hitscan smoke tracer and impact puff |
 | `combat/armor.js` | Armor points per material; tags mobs by the armor they wear |
 | `combat/recoil.js` | `scriptevent recoil:hip\|ads` → camera shake reduced by fitted attachments (`config/recoil.js`) |
@@ -63,7 +62,6 @@ Every gun `<id>` (the item id without `krep:`) has its own files:
 | `TACZ-B/animation_controllers/gun_<id>.json` | Firing (ammo count, fire event, sound) and reload state machines |
 | `TACZ-B/animations/guns/<id>.json` | Shoot / reload timelines (reload functions, ammo scoreboard) |
 | `TACZ-B/functions/<id>.mcfunction`, `<id>quantity`, `<id>reload` | Ammo HUD, reload ammo check, ammo removal |
-| `TACZ-B/entities/bullet/<id>.json` | Bullet entity (only used by projectile guns) |
 | `TACZ-B/entities/player.json` | Shared player entity: every gun's `krep:<id>_fire` / reload / scope events |
 | `TACZ-R/models/entity/guns/<id>.geo.json` | Gun model |
 | `TACZ-R/render_controllers/gun_<id>.json` | Which gun parts/attachments are visible |
@@ -92,12 +90,21 @@ Removing a weapon is the reverse: delete its entry and its files, and its spots 
 
 ## Hitscan, tracers and hit flash
 
-34 guns (plus the M107) hit instantly; shotguns and the RPG fire bullet entities. Each hitscan gun's fire event in
-`entities/player.json` runs `scriptevent tacz:weapon_hitscan <id> ads|hip` instead of spawning `bullet:<id>`.
-`combat/hitscan.js` finds the nearest living entity along the view ray (128 blocks, stopping at blocks), damage goes
-through `processGunHit()`, and `combat/shotEffects.js` draws 5 smoke puffs as a tracer. Script damage does not play the
-red hurt flash, so each non-lethal hit also applies 1 point of real damage first; health is then set to the exact
-result, so the damage dealt is unchanged.
+Every gun hits instantly; there are no bullet entities. Each gun's fire event in `entities/player.json` runs
+`scriptevent tacz:weapon_hitscan <id> ads|hip`, and `combat/hitscan.js` resolves the shot (settings: `HITSCAN` and
+the gun's entry in `config/weapons.js`):
+
+- One ray from the eyes, or `pellets` rays for shotguns (12), each scattered by `spread` (degrees, hip or ADS).
+- A ray breaks glass, panes and wheat (`HITSCAN.breakableBlocks`, as the old bullets did) and keeps going, stops at
+  any other block, and hits the nearest living entity before that (128 blocks).
+- Damage goes through `applyGunHits()`. Each pellet deals the gun's `damage`; a target hit by several pellets takes
+  the sum at once, with one hit sound and one hurt flash.
+- `combat/shotEffects.js` draws a smoke tracer (5 puffs) per ray, or for only the first `tracers` pellets.
+- The RPG has an `explosion`: a power-4 explosion that breaks blocks where the shot lands, plus 10 splash damage
+  within 5 blocks (as the old rocket did), now at hitscan range instead of ~30 blocks.
+
+Script damage does not play the red hurt flash, so each non-lethal hit also applies 1 point of real damage first;
+health is then set to the exact result, so the damage dealt is unchanged.
 
 ## M107
 

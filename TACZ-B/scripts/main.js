@@ -3,7 +3,6 @@
 
 // Combat
 import "./combat/hitscan";
-import "./combat/projectiles";
 import "./combat/armor";
 import "./combat/recoil";
 import "./combat/killTracking";

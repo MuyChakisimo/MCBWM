@@ -1,141 +1,85 @@
 import { Player, GameMode, EquipmentSlot, EntityDamageCause } from "@minecraft/server";
 import { armorProtection } from "./armor.js";
-import { getWeapon } from "../config/weapons.js";
 
-// Applies one gun hit: headshot check, armor reduction, damage, hit/kill sounds.
-// Used by hitscan shots (hitscan.js) and physical bullets (projectiles.js).
-// weaponId is a key of WEAPONS (config/weapons.js); damage/penetration come from there.
-export function processGunHit({ source, target: entity, hitLocation: location, weaponId }) {
-  if (!entity || entity.matches({ gameMode: GameMode.creative }) || entity.hasTag("immune")) return;
-  if (!(source instanceof Player)) {
-    return;
-  }
-  const health = entity.getComponent("minecraft:health");
-  if (!health) {
-    return;
-  }
-  const bullet = getWeapon(weaponId);
-  if (!bullet) return;
-  let isHeadshot = false;
-  const headLocation = entity.getHeadLocation(),
-    distanceToHead = Math.sqrt(
-      (headLocation.x - location.x) ** 2 +
-        (headLocation.y - location.y) ** 2 +
-        (headLocation.z - location.z) ** 2,
-    );
-  distanceToHead <= 0.375 && (isHeadshot = true);
-  let totalArmor = 0,
-    helmetArmor = 0;
+// Gun damage: headshot check, armor reduction, damage, hit/kill sounds. Used by hitscan.js.
+// damage / penetration come from the gun's entry in config/weapons.js.
+const HEADSHOT_RADIUS = 0.375;
+const HEADSHOT_MULTIPLIER = 2;
+const MAX_ARMOR_REDUCTION = 0.8;
+const DEFAULT_PENETRATION = 0.3;
+
+const ARMOR_SLOTS = [
+  [EquipmentSlot.Head, "helmet"],
+  [EquipmentSlot.Chest, "chestplate"],
+  [EquipmentSlot.Legs, "leggings"],
+  [EquipmentSlot.Feet, "boots"],
+];
+const MATERIALS = Object.keys(armorProtection);
+
+// { total, helmet } armor points. Players: worn equipment. Mobs: tags set by armor.js.
+function getArmor(entity) {
+  const armor = { total: 0, helmet: 0 };
+  const add = (material, piece) => {
+    const points = armorProtection[material]?.[piece] || 0;
+    armor.total += points;
+    if (piece === "helmet") armor.helmet = points;
+  };
   if (entity instanceof Player) {
     const equippable = entity.getComponent("minecraft:equippable");
-    if (equippable) {
-      const list = [
-        EquipmentSlot.Head,
-        EquipmentSlot.Chest,
-        EquipmentSlot.Legs,
-        EquipmentSlot.Feet,
-      ];
-      for (const entry of list) {
-        {
-          const equipment = equippable.getEquipment(entry);
-          if (equipment) {
-            const lower = equipment.typeId.replace("minecraft:", "").toLowerCase();
-            let material = null;
-            if (lower.includes("leather_")) material = "leather";
-            else {
-              if (lower.includes("chainmail_")) material = "chainmail";
-              else {
-                if (lower.includes("iron_")) material = "iron";
-                else {
-                  if (lower.includes("diamond_")) material = "diamond";
-                  else {
-                    if (lower.includes("netherite_")) material = "netherite";
-                    else {
-                      if (lower.includes("golden_")) material = "golden";
-                    }
-                  }
-                }
-              }
-            }
-            if (material) {
-              const piece =
-                  entry === EquipmentSlot.Head
-                    ? "helmet"
-                    : entry === EquipmentSlot.Chest
-                      ? "chestplate"
-                      : entry === EquipmentSlot.Legs
-                        ? "leggings"
-                        : "boots",
-                protection = armorProtection[material][piece] || 0;
-              ((totalArmor += protection),
-                entry === EquipmentSlot.Head && (helmetArmor = protection));
-            }
-          }
-        }
-      }
+    for (const [slot, piece] of ARMOR_SLOTS) {
+      const id = equippable?.getEquipment(slot)?.typeId.replace("minecraft:", "");
+      const material = id && MATERIALS.find((m) => id.startsWith(m + "_"));
+      if (material) add(material, piece);
     }
   } else {
-    {
-      const list = [
-        "leather_helmet",
-        "leather_chestplate",
-        "leather_leggings",
-        "leather_boots",
-        "chainmail_helmet",
-        "chainmail_chestplate",
-        "chainmail_leggings",
-        "chainmail_boots",
-        "iron_helmet",
-        "iron_chestplate",
-        "iron_leggings",
-        "iron_boots",
-        "diamond_helmet",
-        "diamond_chestplate",
-        "diamond_leggings",
-        "diamond_boots",
-        "netherite_helmet",
-        "netherite_chestplate",
-        "netherite_leggings",
-        "netherite_boots",
-        "golden_helmet",
-        "golden_chestplate",
-        "golden_leggings",
-        "golden_boots",
-      ];
-      for (const entry of list) {
-        if (entity.hasTag(entry)) {
-          const [material, piece] = entry.split("_"),
-            protection = armorProtection[material][piece] || 0;
-          ((totalArmor += protection), piece === "helmet" && (helmetArmor = protection));
-        }
-      }
-    }
+    for (const material of MATERIALS)
+      for (const [, piece] of ARMOR_SLOTS) if (entity.hasTag(`${material}_${piece}`)) add(material, piece);
   }
-  const penetration = bullet.penetration || 0.3;
-  let damage = bullet.damage;
-  if (isHeadshot) {
-    ((damage = Math.max(
-      1,
-      bullet.damage * 2 * (1 - Math.min(0.8, (helmetArmor * (1 - penetration)) / 20)),
-    )),
-      source.playSound("headshot_sound"));
-  } else
-    ((damage = Math.max(
-      1,
-      bullet.damage * (1 - Math.min(0.8, (totalArmor * (1 - penetration)) / 20)),
-    )),
-      source.playSound("hitmark"));
-  const healthBefore = health.currentValue;
-  if (healthBefore - damage > 0) showHurtEffect(entity);
-  health.setCurrentValue(Math.max(0, healthBefore - damage));
-  if (health.currentValue <= 0) {
-    source.playSound("kill");
-    source.addTag("murderEntity");
+  return armor;
+}
+
+function isHeadshot(entity, location) {
+  const head = entity.getHeadLocation();
+  return Math.hypot(head.x - location.x, head.y - location.y, head.z - location.z) <= HEADSHOT_RADIUS;
+}
+
+// Applies one shot's hits: [{ entity, location }], one per pellet that hit (a shotgun can hit the
+// same target several times). Each pellet deals the gun's damage; each target then takes the sum
+// in one go, so it gets one hurt flash and one hit/kill sound per shot.
+export function applyGunHits(source, weapon, hits) {
+  if (!(source instanceof Player)) return;
+  const penetration = weapon.penetration || DEFAULT_PENETRATION;
+  const targets = new Map();
+  for (const { entity, location } of hits) {
+    let target = targets.get(entity.id);
+    if (!target) {
+      if (entity.matches({ gameMode: GameMode.creative }) || entity.hasTag("immune")) continue;
+      const health = entity.getComponent("minecraft:health");
+      if (!health || health.currentValue <= 0) continue;
+      target = { entity, health, armor: getArmor(entity), damage: 0, headshot: false };
+      targets.set(entity.id, target);
+    }
+    const headshot = isHeadshot(entity, location);
+    const armorPoints = headshot ? target.armor.helmet : target.armor.total;
+    const reduction = Math.min(MAX_ARMOR_REDUCTION, (armorPoints * (1 - penetration)) / 20);
+    target.damage += Math.max(1, weapon.damage * (headshot ? HEADSHOT_MULTIPLIER : 1) * (1 - reduction));
+    target.headshot ||= headshot;
+  }
+
+  for (const { entity, health, damage, headshot } of targets.values()) {
+    source.playSound(headshot ? "headshot_sound" : "hitmark");
+    const healthBefore = health.currentValue;
+    if (healthBefore - damage > 0) showHurtEffect(entity);
+    health.setCurrentValue(Math.max(0, healthBefore - damage));
+    if (health.currentValue <= 0) {
+      source.playSound("kill");
+      source.addTag("murderEntity");
+    }
   }
 }
 
-// Setting health directly does not play the red hurt flash (only real damage does), so hitscan
-// hits register a 1-point hit first; the health is then set to the exact result above, so this
+// Setting health directly does not play the red hurt flash (only real damage does), so hits
+// register a 1-point hit first; the health is then set to the exact result above, so this
 // does not change the damage dealt. The game may skip the flash during a target's brief
 // invulnerability after a hit; the damage still applies.
 // Lethal hits skip it: the death animation already flashes.
