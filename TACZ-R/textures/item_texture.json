@@ -14,6 +14,9 @@
     "g3": {
       "textures": "textures/items/g3"
     },
+    "m107": {
+      "textures": "textures/items/m107"
+    },
     "mk14": {
       "textures": "textures/items/mk14"
     },
@@ -172,9 +175,6 @@
     },
     "5842mm": {
       "textures": "textures/items/5842mm"
-    },
-    "m107": {
-      "textures": "textures/items/m107"
     }
   }
 }

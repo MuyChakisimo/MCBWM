@@ -221,5 +221,3 @@ krep:box.ammoboxc.lore=§fТут є всі набої крім ракет РПГ
 krep:hud.no_ammunition.name=§cНемає набоїв
 krep:hud.no_rocket.name=§cНемає ракети
 krep:hud.need_ammo_box.name=§cПотрібна \nкоробка з набоями!
-krep:gun.m107.name=M107
-krep:gun.m107_emp.name=M107 (Empty)
