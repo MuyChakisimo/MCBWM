@@ -7,7 +7,7 @@ import { WEAPONS } from "../config/weapons.js";
 // Weapon tooltips are generated from config/weapons.js.
 // Change damage / penetration / range / pellets / spread there and the
 // same values drive both gameplay and the inventory hover description.
-// Existing inventory items refresh automatically on a lightweight 5-second safety pass.
+// Existing inventory items refresh automatically on the periodic pass.
 // =====================================================
 
 const CATEGORY_LABELS = Object.freeze({
@@ -100,9 +100,15 @@ function buildWeaponLore(typeId) {
     );
   }
 
+<<<<<<< HEAD
   if (weapon.fireMode) lore.push(`§fFire Mode: ${weapon.fireMode}`);
   if (weapon.rpm) lore.push(`§fRate of Fire: ${formatNumber(weapon.rpm)} RPM`);
   if (weapon.reload?.empty) lore.push(`§fReload: ${formatNumber(weapon.reload.empty)}s empty / ${formatNumber(weapon.reload.tactical ?? weapon.reload.empty)}s tactical`);
+=======
+  if (weapon.fireMode) {
+    lore.push(`§fFire Mode: ${weapon.fireMode}`);
+  }
+>>>>>>> parent of ad75d8b (Integrated Java Weapons)
 
   return lore;
 }
@@ -145,4 +151,4 @@ system.runInterval(() => {
   for (const player of world.getAllPlayers()) {
     updateInventory(player);
   }
-}, 100);
+}, 20);

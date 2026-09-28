@@ -3675,7 +3675,7 @@
               "trigger.reload": "query.get_equipped_item_name=='m107_emp' && variable.attack_time == 0.0 && q.is_using_item"
             },
             {
-              "trigger.tac": "(query.get_equipped_item_name=='m107' && variable.attack_time > 0.0f && query.scoreboard('m107') <= 9 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='m107')"
+              "trigger.tac": "(query.get_equipped_item_name=='m107' && variable.attack_time > 0.0f && query.scoreboard('m107') <= 4 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='m107')"
             }
           ]
         },

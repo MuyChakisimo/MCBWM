@@ -4373,6 +4373,7 @@
     "sounds": [
       "sounds/m107/m107_settle"
     ]
+<<<<<<< HEAD
   },
   "tacz.java.mk23.shoot": {
     "category": "player",
@@ -4773,5 +4774,7 @@
         "pitch": 1.0
       }
     ]
+=======
+>>>>>>> parent of ad75d8b (Integrated Java Weapons)
   }
 }

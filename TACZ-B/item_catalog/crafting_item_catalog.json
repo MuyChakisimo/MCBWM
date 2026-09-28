@@ -23,9 +23,7 @@
               "krep:m16a1",
               "krep:g3",
               "krep:qbz191",
-              "krep:type81",
-              "krep:aug",
-              "krep:spr15hb"
+              "krep:type81"
             ]
           },
           {
@@ -42,14 +40,7 @@
               "krep:deagle",
               "krep:t50",
               "krep:cp",
-              "krep:p320",
-              "krep:cz75",
-              "krep:mk23",
-              "krep:lonetrail",
-              "krep:m9a4",
-              "krep:rhino357",
-              "krep:taurus500",
-              "krep:taurus943"
+              "krep:p320"
             ]
           },
           {
@@ -75,11 +66,7 @@
               "krep:awp",
               "krep:m107",
               "krep:sks",
-              "krep:mk14",
-              "krep:kar98",
-              "krep:m700",
-              "krep:m95",
-              "krep:springfield1873"
+              "krep:mk14"
             ]
           },
           {
@@ -91,9 +78,7 @@
               "krep:minigun",
               "krep:evolys",
               "krep:m249",
-              "krep:rpg",
-              "krep:m320",
-              "krep:rpk"
+              "krep:rpg"
             ]
           },
           {
@@ -106,8 +91,7 @@
               "krep:saiga12",
               "krep:aa12",
               "krep:db",
-              "krep:m1014",
-              "krep:spas12"
+              "krep:m1014"
             ]
           },
           {
@@ -177,18 +161,7 @@
               "krep:lapua338",
               "krep:win308",
               "krep:mm5842",
-              "krep:rpgrocket",
-              "krep:ammo_22wmr",
-              "krep:ammo_30_06",
-              "krep:ammo_40mm",
-              "krep:ammo_45_70",
-              "krep:ammo_500mag",
-              "krep:50bmg",
-              "krep:ammo_545x39",
-              "krep:ammo_68x51fury",
-              "krep:ammo_762x25",
-              "krep:ammo_762x54",
-              "krep:ammo_792x57"
+              "krep:rpgrocket"
             ]
           }
         ]

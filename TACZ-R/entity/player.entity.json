@@ -55,6 +55,7 @@
         "evolys": "textures/gun/evolys",
         "m249": "textures/gun/m249",
         "type81": "textures/gun/type81",
+<<<<<<< HEAD
         "aug": "textures/java_import/guns/aug",
         "cz75": "textures/java_import/guns/cz75",
         "mk23": "textures/java_import/guns/mk23",
@@ -71,6 +72,9 @@
         "springfield1873": "textures/java_import/guns/springfield1873",
         "taurus500": "textures/java_import/guns/taurus500",
         "taurus943": "textures/java_import/guns/taurus943"
+=======
+        "m107": "textures/gun/m107"
+>>>>>>> parent of ad75d8b (Integrated Java Weapons)
       },
       "geometry": {
         "default": "geometry.humanoid.custom",
@@ -151,6 +155,7 @@
         "evolys": "geometry.evolys",
         "m249": "geometry.m249",
         "type81": "geometry.type81",
+<<<<<<< HEAD
         "aug": "geometry.aug",
         "cz75": "geometry.cz75",
         "mk23": "geometry.mk23",
@@ -167,6 +172,9 @@
         "springfield1873": "geometry.springfield1873",
         "taurus500": "geometry.taurus500",
         "taurus943": "geometry.taurus943"
+=======
+        "m107": "geometry.m107"
+>>>>>>> parent of ad75d8b (Integrated Java Weapons)
       },
       "scripts": {
         "scale": "0.9375",
@@ -245,7 +253,11 @@
           "v.tp_melee_spear_attack_arm_rotation_x = t.melee_spear_attack_raise_scale * 90.0 + t.melee_spear_attack_thrust_scale * -120.0 + t.melee_spear_attack_recover_scale * 30.0;",
           "v.tp_melee_spear_attack_item_rotation_x = t.melee_spear_attack_thrust_scale * 60.0 + t.melee_spear_attack_recover_scale * -60.0;",
           "v.tp_melee_spear_attack_attachable_position_z = (t.melee_spear_attack_thrust_scale * -0.15 + t.melee_spear_attack_recover_scale * 0.15) * v.melee_spear_java_to_bedrock_scale;",
+<<<<<<< HEAD
           "variable.holding_all_guns = query.get_equipped_item_name=='type81' || query.get_equipped_item_name=='type81_emp' || query.get_equipped_item_name=='m249' || query.get_equipped_item_name=='m249_emp' || query.get_equipped_item_name=='evolys' || query.get_equipped_item_name=='evolys_emp' || query.get_equipped_item_name=='mk14' || query.get_equipped_item_name=='mk14_emp' || query.get_equipped_item_name=='p320' || query.get_equipped_item_name=='p320_emp' || query.get_equipped_item_name=='qbz191' || query.get_equipped_item_name=='qbz191_emp' || query.get_equipped_item_name=='cp' || query.get_equipped_item_name=='cp_emp' || query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp' || query.get_equipped_item_name=='t50' || query.get_equipped_item_name=='t50_emp' || query.get_equipped_item_name=='fal' || query.get_equipped_item_name=='fal_emp' || query.get_equipped_item_name=='sks' || query.get_equipped_item_name=='sks_emp' || query.get_equipped_item_name=='b93' || query.get_equipped_item_name=='b93_emp' || query.get_equipped_item_name=='qbz95' || query.get_equipped_item_name=='qbz95_emp' || query.get_equipped_item_name=='ump' || query.get_equipped_item_name=='ump_emp' || query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp' || query.get_equipped_item_name=='m16' || query.get_equipped_item_name=='m16_emp' || query.get_equipped_item_name=='vector' || query.get_equipped_item_name=='vector_emp' || query.get_equipped_item_name=='p90' || query.get_equipped_item_name=='p90_emp' || query.get_equipped_item_name=='g3' || query.get_equipped_item_name=='g3_emp' || query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp' || query.get_equipped_item_name=='deagle' || query.get_equipped_item_name=='deagle_emp' || query.get_equipped_item_name=='scarh' || query.get_equipped_item_name=='scarh_emp' || query.get_equipped_item_name=='mp5' || query.get_equipped_item_name=='mp5_emp' || query.get_equipped_item_name=='rpg' || query.get_equipped_item_name=='rpg_emp' || query.get_equipped_item_name=='aa12' || query.get_equipped_item_name=='aa12_emp' || q.get_equipped_item_name=='awp' || q.get_equipped_item_name=='awp_emp' || q.get_equipped_item_name=='g17' || q.get_equipped_item_name=='g17_emp' || q.get_equipped_item_name=='m870' || q.get_equipped_item_name=='m870_emp' || q.get_equipped_item_name=='scarl' || q.get_equipped_item_name=='scarl_emp' || q.get_equipped_item_name=='akm' || q.get_equipped_item_name=='akm_emp' || query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp' || query.get_equipped_item_name=='m1911' || query.get_equipped_item_name=='m1911_emp' || q.get_equipped_item_name=='minigun' || q.get_equipped_item_name=='minigun_emp' || query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp' || query.get_equipped_item_name=='mp7' || query.get_equipped_item_name=='mp7_emp' || query.get_equipped_item_name=='deagleg' || query.get_equipped_item_name=='deagleg_emp' || query.get_equipped_item_name=='uzi' || query.get_equipped_item_name=='uzi_emp' || query.get_equipped_item_name=='db' || query.get_equipped_item_name=='db_emp' || q.get_equipped_item_name=='g18' || q.get_equipped_item_name=='g18_emp' || q.get_equipped_item_name=='saiga12' || q.get_equipped_item_name=='saiga12_emp';",
+=======
+          "variable.holding_all_guns = query.get_equipped_item_name=='type81' || query.get_equipped_item_name=='type81_emp' || query.get_equipped_item_name=='m249' || query.get_equipped_item_name=='m249_emp' || query.get_equipped_item_name=='evolys' || query.get_equipped_item_name=='evolys_emp' || query.get_equipped_item_name=='mk14' || query.get_equipped_item_name=='mk14_emp' || query.get_equipped_item_name=='p320' || query.get_equipped_item_name=='p320_emp' || query.get_equipped_item_name=='qbz191' || query.get_equipped_item_name=='qbz191_emp' || query.get_equipped_item_name=='cp' || query.get_equipped_item_name=='cp_emp' || query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp' || query.get_equipped_item_name=='t50' || query.get_equipped_item_name=='t50_emp' || query.get_equipped_item_name=='fal' || query.get_equipped_item_name=='fal_emp' || query.get_equipped_item_name=='sks' || query.get_equipped_item_name=='sks_emp' || query.get_equipped_item_name=='b93' || query.get_equipped_item_name=='b93_emp' || query.get_equipped_item_name=='qbz95' || query.get_equipped_item_name=='qbz95_emp' || query.get_equipped_item_name=='ump' || query.get_equipped_item_name=='ump_emp' || query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp' || query.get_equipped_item_name=='m16' || query.get_equipped_item_name=='m16_emp' || query.get_equipped_item_name=='vector' || query.get_equipped_item_name=='vector_emp' || query.get_equipped_item_name=='p90' || query.get_equipped_item_name=='p90_emp' || query.get_equipped_item_name=='g3' || query.get_equipped_item_name=='g3_emp' || query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp' || query.get_equipped_item_name=='deagle' || query.get_equipped_item_name=='deagle_emp' || query.get_equipped_item_name=='scarh' || query.get_equipped_item_name=='scarh_emp' || query.get_equipped_item_name=='mp5' || query.get_equipped_item_name=='mp5_emp' || query.get_equipped_item_name=='rpg' || query.get_equipped_item_name=='rpg_emp' || query.get_equipped_item_name=='aa12' || query.get_equipped_item_name=='aa12_emp' || q.get_equipped_item_name=='awp' || q.get_equipped_item_name=='awp_emp' || q.get_equipped_item_name=='g17' || q.get_equipped_item_name=='g17_emp' || q.get_equipped_item_name=='m870' || q.get_equipped_item_name=='m870_emp' || q.get_equipped_item_name=='scarl' || q.get_equipped_item_name=='scarl_emp' || q.get_equipped_item_name=='akm' || q.get_equipped_item_name=='akm_emp' || query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp' || query.get_equipped_item_name=='m1911' || query.get_equipped_item_name=='m1911_emp' || q.get_equipped_item_name=='minigun' || q.get_equipped_item_name=='minigun_emp' || query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp' || query.get_equipped_item_name=='mp7' || query.get_equipped_item_name=='mp7_emp' || query.get_equipped_item_name=='deagleg' || query.get_equipped_item_name=='deagleg_emp' || query.get_equipped_item_name=='uzi' || query.get_equipped_item_name=='uzi_emp' || query.get_equipped_item_name=='db' || query.get_equipped_item_name=='db_emp' || q.get_equipped_item_name=='g18' || q.get_equipped_item_name=='g18_emp' || q.get_equipped_item_name=='saiga12' || q.get_equipped_item_name=='saiga12_emp' || query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp';",
+>>>>>>> parent of ad75d8b (Integrated Java Weapons)
           "variable.is_third_person = !variable.is_first_person && !variable.map_face_icon;",
           "variable.dbb = query.get_equipped_item_name=='db';",
           "variable.m16a1 = query.get_equipped_item_name=='m16a1' || query.get_equipped_item_name=='m16a1_emp';",
@@ -371,6 +383,7 @@
           "variable.type81 = query.get_equipped_item_name=='type81' || query.get_equipped_item_name=='type81_emp';",
           "variable.type81b = query.get_equipped_item_name=='type81';",
           "variable.type81emp = query.get_equipped_item_name=='type81_emp';",
+<<<<<<< HEAD
           "variable.aug = query.get_equipped_item_name=='aug';",
           "variable.cz75 = query.get_equipped_item_name=='cz75';",
           "variable.mk23 = query.get_equipped_item_name=='mk23';",
@@ -389,6 +402,11 @@
           "variable.taurus943 = query.get_equipped_item_name=='taurus943';",
           "variable.java_import_weapon = variable.aug || variable.cz75 || variable.mk23 || variable.kar98 || variable.lonetrail || variable.m320 || variable.m700 || variable.m95 || variable.m9a4 || variable.rhino357 || variable.rpk || variable.spas12 || variable.spr15hb || variable.springfield1873 || variable.taurus500 || variable.taurus943;",
           "v.java_import_weapon_render_index = v.aug ? 0 : v.cz75 ? 1 : v.mk23 ? 2 : v.kar98 ? 3 : v.lonetrail ? 4 : v.m320 ? 5 : v.m700 ? 6 : v.m95 ? 7 : v.m9a4 ? 8 : v.rhino357 ? 9 : v.rpk ? 10 : v.spas12 ? 11 : v.spr15hb ? 12 : v.springfield1873 ? 13 : v.taurus500 ? 14 : v.taurus943 ? 15 : 0;"
+=======
+          "variable.m107 = query.get_equipped_item_name=='m107' || query.get_equipped_item_name=='m107_emp';",
+          "variable.m107b = query.get_equipped_item_name=='m107';",
+          "variable.m107emp = query.get_equipped_item_name=='m107_emp';"
+>>>>>>> parent of ad75d8b (Integrated Java Weapons)
         ],
         "animate": [
           "root",
@@ -759,6 +777,7 @@
             "type81_fp": "v.is_first_person"
           },
           {
+<<<<<<< HEAD
             "java_import_fp_base": "variable.is_first_person && variable.java_import_weapon"
           },
           {
@@ -808,6 +827,12 @@
           },
           {
             "java_taurus943_hold": "variable.is_first_person && variable.taurus943"
+=======
+            "m107_fp_hold": "variable.is_first_person && variable.m107"
+          },
+          {
+            "m107_fp_sight": "variable.is_first_person && variable.m107 && query.is_sneaking"
+>>>>>>> parent of ad75d8b (Integrated Java Weapons)
           }
         ],
         "should_update_effects_offscreen": "1.0"
@@ -1477,6 +1502,7 @@
         "type81_tp_hold": "animation.type81.tp.hold",
         "type81_tp_sprint": "animation.type81.tp.sprint",
         "type81_tp_sight": "animation.type81.tp.sight",
+<<<<<<< HEAD
         "java_aug_hold": "animation.tacz.aug.static_idle",
         "java_cz75_hold": "animation.tacz.cz75.static_idle",
         "java_mk23_hold": "animation.tacz.mk23.static_idle",
@@ -1494,6 +1520,19 @@
         "java_taurus500_hold": "animation.tacz.taurus500.static_idle",
         "java_taurus943_hold": "animation.tacz.taurus943.static_idle",
         "java_import_fp_base": "animation.tacz.java_import.fp_base"
+=======
+        "m107_draw": "animation.m107.draw",
+        "m107_fp_hold": "animation.m107.fp.hold",
+        "m107_fp_inspect": "animation.m107.fp.inspect",
+        "m107_fp_sprint": "animation.m107.fp.sprint",
+        "m107_fp_reload": "animation.m107.fp.reload",
+        "m107_fp_reload_tac": "animation.m107.fp.tac",
+        "m107_fp_sight": "animation.m107.fp.sight",
+        "m107_fp_sight_coyote": "animation.m107.fp.sight.coyote",
+        "m107_fp_sight_elcan": "animation.m107.fp.sight.elcan",
+        "m107_fp_sight_acog": "animation.m107.fp.sight.acog",
+        "m107_fp_sight_standard_8": "animation.m107.fp.sight.standard_8"
+>>>>>>> parent of ad75d8b (Integrated Java Weapons)
       },
       "sound_effects": {
         "bruenmk9_raise": "bruenmk9_raise",
@@ -2391,7 +2430,14 @@
           "controller.render.type81": "variable.type81"
         },
         {
+<<<<<<< HEAD
           "controller.render.java_import_weapon": "variable.java_import_weapon"
+=======
+          "controller.render.player.universal22.first_person": "variable.is_first_person && variable.m107"
+        },
+        {
+          "controller.render.m107": "variable.m107"
+>>>>>>> parent of ad75d8b (Integrated Java Weapons)
         }
       ],
       "enable_attachables": true
