@@ -10,20 +10,45 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace checker: proves two versions of the scripts make the same API calls |
 | `*.zip` | Reference only (original release, Java TACZ, earlier attempt). Never shipped |
 
-## Current state: original baseline, readable scripts
+## Current state: original baseline + hitscan
 
-- **Every pack file except the scripts and the manifest version has identical content to the original** `TACZ mod V1.0.2 TRANSLATED EDITION [Original].zip` (git commit `20cdafc`).
-- **Scripts** (`TACZ-B/scripts/`) are the original obfuscated scripts, deobfuscated mechanically:
-  encrypted strings replaced by the exact values the original decoder produced, obfuscator wrapper objects and
-  always-true/false junk branches removed, variables renamed. Nothing was rewritten by hand.
-  `tools/trace` confirms the result makes the identical sequence of ~426k Minecraft API calls as the original
-  across ~48k fired handlers.
-- **Pack version is `1.1.0`** (was `1.0.2` originally, `2.0.x` during the rewrite). It's a fresh number so no
-  device reuses a cached broken copy. **On a dedicated server, set `"version": [1, 1, 0]` for both packs in the
-  world's `world_behavior_packs.json` / `world_resource_packs.json`.**
+- **Resource pack (`TACZ-R/`) has identical content to the original** `TACZ mod V1.0.2 TRANSLATED EDITION [Original].zip`
+  (git commit `20cdafc`) apart from the manifest version. Player and gun rendering is exactly the original's.
+- **Behavior pack** is the original except:
+  - **Scripts** (`TACZ-B/scripts/`) are the original obfuscated scripts, deobfuscated mechanically:
+    encrypted strings replaced by the exact values the original decoder produced, obfuscator wrapper objects and
+    always-true/false junk branches removed, variables renamed. `tools/trace` confirms they make the identical
+    sequence of ~426k Minecraft API calls as the original across ~48k fired handlers.
+  - **Hitscan** (see below): `weapons/hitscan.js`, `weapons/shotEffects.js`, `processGunHit()` in
+    `events/projectileHitEntity.js`, and 34 fire events in `entities/plalyer.json`.
+- **Pack version is `1.2.0`** for both packs (original `1.0.2`; `1.1.0` was the plain-original baseline; `2.0.x`
+  during the rewrite). **On a dedicated server, set `"version": [1, 2, 0]` for both packs in the world's
+  `world_behavior_packs.json` / `world_resource_packs.json`.** Bump the version again whenever you change a pack,
+  or players and worlds keep using their cached copy.
 
-The previous rewrite (hitscan, Java weapon import, modular scripts, its docs and validator) lives in git history at
+The previous rewrite (Java weapon import, modular scripts, its docs and validator) lives in git history at
 commit `d7cf6f3` if you want to salvage pieces of it.
+
+## Hitscan and tracers
+
+Ported from commit `8f227e0` ("hitscan convertion"). 34 guns hit instantly instead of firing a bullet entity:
+assault rifles, battle rifles/DMRs, AWP, SMGs, pistols, M249 and minigun. **Shotguns, RPG and M107 still fire
+physical bullets.**
+
+1. The gun's fire event in `entities/plalyer.json` (`krep:<gun>_fire`) no longer adds the `krep:<gun>_fires` /
+   `_firest` component group (which spawned `bullet:<gun>`); it runs `scriptevent tacz:weapon_hitscan <gun> ads|hip`
+   instead (ads when sneaking). Animation, recoil and camera shake commands are unchanged.
+2. `weapons/hitscan.js` casts a 128-block ray from the eyes: nearest living entity (the ray stops at blocks),
+   otherwise the block hit.
+3. Damage goes through `processGunHit()`, the same headshot/armor/damage code physical bullets use, with the
+   gun's values from `global/global.js`.
+4. `weapons/shotEffects.js` draws the tracer: 5 vanilla smoke puffs from beside the muzzle to the impact, plus one
+   puff at the impact. No resource-pack assets are involved.
+
+To make another gun hitscan: add `"scriptevent tacz:weapon_hitscan <gun> ads"` / `"... hip"` to both entries of its
+fire event, remove the `add` of its `_fires`/`_firest` group, and add its id to `HITSCAN_WEAPONS` in `hitscan.js`.
+The line-tracer model bone, `krep:m4a1tracer` property, and `m4a1_tracer` particle from the tracer experiments were
+never used by `8f227e0` and were left out.
 
 ## Script map
 
@@ -32,7 +57,9 @@ Imported in this order by `TACZ-B/scripts/main.js` (`global.js` must stay before
 | File | What it does |
 |---|---|
 | `global/global.js` | `globalThis.Indoarsenal.bullets`: damage and penetration per gun |
-| `events/projectileHitEntity.js` | Bullet hit damage: headshots, armor reduction, hit/kill sounds, `murderEntity` tag |
+| `events/projectileHitEntity.js` | `processGunHit()`: headshots, armor reduction, damage, hit/kill sounds, `murderEntity` tag. Used by physical bullets and hitscan |
+| `weapons/hitscan.js` | Hitscan shots for 34 guns (`scriptevent tacz:weapon_hitscan`) |
+| `weapons/shotEffects.js` | Hitscan smoke tracer and impact puff |
 | `events/armorDetection.js` | Armor values; tags mobs by worn armor (every 20 ticks) |
 | `events/bulletCleanup.js` | Kills bullet entities 10 ticks after spawn |
 | `events/recoil.js` | Recoil profiles per gun and attachment (`scriptevent` driven) |
@@ -67,7 +94,7 @@ Node isn't required; VS Code's bundled runtime works. From Git Bash in the repo 
 ```bash
 export ELECTRON_RUN_AS_NODE=1
 NODE="$LOCALAPPDATA/Programs/Microsoft VS Code/Code.exe"
-T=$(mktemp -d); git archive 20cdafc TACZ-B/scripts | tar -x -C "$T"   # original scripts
+T=$(mktemp -d); git archive HEAD TACZ-B/scripts | tar -x -C "$T"   # last committed scripts (use 20cdafc for the pure original)
 cd tools/trace
 "$NODE" --import ./register.mjs run.mjs "$T/TACZ-B/scripts" "$T/a.txt" ../../TACZ-B/scripts
 "$NODE" --import ./register.mjs run.mjs ../../TACZ-B/scripts "$T/b.txt" ../../TACZ-B/scripts

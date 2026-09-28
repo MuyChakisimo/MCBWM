@@ -1,4 +1,5 @@
 import "./events/projectileHitEntity";
+import "./weapons/hitscan";
 import "./events/itemLore";
 import "./events/gunsmithInteract";
 import "./events/gunCraftingMenu";

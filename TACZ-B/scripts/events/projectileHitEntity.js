@@ -1,8 +1,10 @@
 import { world, Player, GameMode, EquipmentSlot, system } from "@minecraft/server";
 import { armorProtection } from "./armorDetection.js";
-world.afterEvents.projectileHitEntity.subscribe((event) => {
-  const { projectile: projectile, source: source, location: location } = event,
-    entity = event.getEntityHit().entity;
+
+// Applies one gun hit: headshot check, armor reduction, damage, hit/kill sounds.
+// Shared by physical bullets (below) and hitscan weapons (../weapons/hitscan.js).
+// weaponId is the key into Indoarsenal.bullets (global/global.js).
+export function processGunHit({ source, target: entity, hitLocation: location, weaponId }) {
   if (!entity || entity.matches({ gameMode: GameMode.creative }) || entity.hasTag("immune")) return;
   if (!(source instanceof Player)) {
     return;
@@ -11,19 +13,18 @@ world.afterEvents.projectileHitEntity.subscribe((event) => {
   if (!health) {
     return;
   }
-  const replaced = projectile.typeId.replace("bullet:", ""),
-    bullet = Indoarsenal.bullets[replaced];
+  const bullet = Indoarsenal.bullets[weaponId];
   if (!bullet) return;
-  let value = false;
+  let isHeadshot = false;
   const headLocation = entity.getHeadLocation(),
-    value2 = Math.sqrt(
+    distanceToHead = Math.sqrt(
       (headLocation.x - location.x) ** 2 +
         (headLocation.y - location.y) ** 2 +
         (headLocation.z - location.z) ** 2,
     );
-  value2 <= 0.375 && (value = true);
-  let value3 = 0,
-    value4 = 0;
+  distanceToHead <= 0.375 && (isHeadshot = true);
+  let totalArmor = 0,
+    helmetArmor = 0;
   if (entity instanceof Player) {
     const equippable = entity.getComponent("minecraft:equippable");
     if (equippable) {
@@ -38,25 +39,25 @@ world.afterEvents.projectileHitEntity.subscribe((event) => {
           const equipment = equippable.getEquipment(entry);
           if (equipment) {
             const lower = equipment.typeId.replace("minecraft:", "").toLowerCase();
-            let value6 = null;
-            if (lower.includes("leather_")) value6 = "leather";
+            let material = null;
+            if (lower.includes("leather_")) material = "leather";
             else {
-              if (lower.includes("chainmail_")) value6 = "chainmail";
+              if (lower.includes("chainmail_")) material = "chainmail";
               else {
-                if (lower.includes("iron_")) value6 = "iron";
+                if (lower.includes("iron_")) material = "iron";
                 else {
-                  if (lower.includes("diamond_")) value6 = "diamond";
+                  if (lower.includes("diamond_")) material = "diamond";
                   else {
-                    if (lower.includes("netherite_")) value6 = "netherite";
+                    if (lower.includes("netherite_")) material = "netherite";
                     else {
-                      if (lower.includes("golden_")) value6 = "golden";
+                      if (lower.includes("golden_")) material = "golden";
                     }
                   }
                 }
               }
             }
-            if (value6) {
-              const value7 =
+            if (material) {
+              const piece =
                   entry === EquipmentSlot.Head
                     ? "helmet"
                     : entry === EquipmentSlot.Chest
@@ -64,8 +65,9 @@ world.afterEvents.projectileHitEntity.subscribe((event) => {
                       : entry === EquipmentSlot.Legs
                         ? "leggings"
                         : "boots",
-                value8 = armorProtection[value6][value7] || 0;
-              ((value3 += value8), entry === EquipmentSlot.Head && (value4 = value8));
+                protection = armorProtection[material][piece] || 0;
+              ((totalArmor += protection),
+                entry === EquipmentSlot.Head && (helmetArmor = protection));
             }
           }
         }
@@ -101,23 +103,39 @@ world.afterEvents.projectileHitEntity.subscribe((event) => {
       ];
       for (const entry of list) {
         if (entity.hasTag(entry)) {
-          const [value6, value7] = entry.split("_"),
-            value8 = armorProtection[value6][value7] || 0;
-          ((value3 += value8), value7 === "helmet" && (value4 = value8));
+          const [material, piece] = entry.split("_"),
+            protection = armorProtection[material][piece] || 0;
+          ((totalArmor += protection), piece === "helmet" && (helmetArmor = protection));
         }
       }
     }
   }
-  const value5 = bullet.penetration || 0.3;
+  const penetration = bullet.penetration || 0.3;
   let damage = bullet.damage;
-  if (value) {
-    ((damage = Math.max(1, bullet.damage * 2 * (1 - Math.min(0.8, (value4 * (1 - value5)) / 20)))),
+  if (isHeadshot) {
+    ((damage = Math.max(
+      1,
+      bullet.damage * 2 * (1 - Math.min(0.8, (helmetArmor * (1 - penetration)) / 20)),
+    )),
       source.playSound("headshot_sound"));
   } else
-    ((damage = Math.max(1, bullet.damage * (1 - Math.min(0.8, (value3 * (1 - value5)) / 20)))),
+    ((damage = Math.max(
+      1,
+      bullet.damage * (1 - Math.min(0.8, (totalArmor * (1 - penetration)) / 20)),
+    )),
       source.playSound("hitmark"));
   (health.setCurrentValue(Math.max(0, health.currentValue - damage)),
     health.currentValue <= 0 && (source.playSound("kill"), source.addTag("murderEntity")));
+}
+
+world.afterEvents.projectileHitEntity.subscribe((event) => {
+  const { projectile, source, location } = event;
+  processGunHit({
+    source,
+    target: event.getEntityHit().entity,
+    hitLocation: location,
+    weaponId: projectile.typeId.replace("bullet:", ""),
+  });
 });
 let murderTagCheckInterval = null;
 function manageMurderTagRemoval() {
