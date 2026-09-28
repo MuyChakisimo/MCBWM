@@ -16,6 +16,7 @@ import "./attachments/attachmentState";
 import "./attachments/attachmentMenu";
 
 // Items
+import "./items/ammoScoreboards";
 import "./items/itemLore";
 import "./items/storedAmmoDisplay";
 import "./items/ammoBox308";

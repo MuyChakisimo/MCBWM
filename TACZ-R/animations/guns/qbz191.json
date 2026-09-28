@@ -796,12 +796,10 @@
         "coyote_reticle": {"scale": 0}
       },
       "sound_effects": {
-        "0.0": {"effect": "qbz_191_inspect_mid"},
         "0.3333": {"effect": "qbz191_magout_fast"},
         "0.5833": {"effect": "qbz191_cloth_move_4"},
         "0.875": {"effect": "qbz191_magdrop"},
         "1.3333": {"effect": "qbz191_magin_fast"},
-        "1.5833": {"effect": "qbz_191_reload_empty_fast_rotate"},
         "1.8333": {"effect": "qbz191_rackhit"},
         "1.9167": {"effect": "qbz191_rack_in"},
         "2.25": {"effect": "qbz191_reset"}

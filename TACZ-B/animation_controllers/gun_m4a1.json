@@ -186,24 +186,6 @@
         }
       }
     },
-    "controller.animation.m4a1.inspect": {
-      "initial_state": "setup",
-      "states": {
-        "setup": {
-          "transitions": [
-            {
-              "trigger.inspect": "(query.get_equipped_item_name=='m4a1' && variable.attack_time > 0.0f && query.scoreboard('m4a1') >= 30 && q.mark_variant != 2)"
-            }
-          ]
-        },
-        "trigger.inspect": {
-          "animations": ["m4a1shoot"],
-          "on_entry": ["@s krep:inspect"],
-          "on_exit": ["@s krep:noinspect"],
-          "transitions": [{"setup": "query.is_using_item || q.all_animations_finished || q.mark_variant == 2"}]
-        }
-      }
-    },
     "controller.animation.m4a1.reload": {
       "initial_state": "setup",
       "states": {

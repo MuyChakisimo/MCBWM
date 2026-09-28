@@ -1,25 +1,4 @@
 {
-  "tail.close": {
-    "category": "hostile",
-    "max_distance": 50,
-    "sounds": [
-      "sounds/tail/close"
-    ]
-  },
-  "tail.mid": {
-    "category": "hostile",
-    "max_distance": 150,
-    "sounds": [
-      "sounds/tail/mid"
-    ]
-  },
-  "tail.far": {
-    "category": "hostile",
-    "max_distance": 500,
-    "sounds": [
-      "sounds/tail/far"
-    ]
-  },
   "bruenmk9_raise": {
     "category": "hostile",
     "sounds": [
@@ -257,13 +236,13 @@
   "cloth_move_3": {
     "category": "hostile",
     "sounds": [
-      "sounds/evolys/cloth_move_3"
+      "sounds/qbz1911/cloth_move_3"
     ]
   },
   "cloth_move_4": {
     "category": "hostile",
     "sounds": [
-      "sounds/evolys/cloth_move_4"
+      "sounds/m1014/cloth_move_4"
     ]
   },
   "evolys_belt": {
@@ -356,12 +335,6 @@
       "sounds/evolys/evolys_reset"
     ]
   },
-  "m249_reload_empty_load_belt": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/evolys/m249_reload_empty_load_belt"
-    ]
-  },
   "evolys.shoot": {
     "category": "hostile",
     "sounds": [
@@ -440,22 +413,10 @@
       "sounds/type81/type_81_reload_raise_quick_up"
     ]
   },
-  "cloth_move_3": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/qbz1911/cloth_move_3"
-    ]
-  },
-  "cloth_move_4": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/qbz1911/cloth_move_4"
-    ]
-  },
   "qbz191_cloth_move_4": {
     "category": "hostile",
     "sounds": [
-      "sounds/qbz1911/qbz191_cloth_move_4"
+      "sounds/qbz1911/cloth_move_4"
     ]
   },
   "qbz191_hit": {
@@ -540,30 +501,6 @@
     "category": "hostile",
     "sounds": [
       "sounds/qbz1911/qbz191_reset"
-    ]
-  },
-  "qbz_191_inspect_mid": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/qbz1911/qbz_191_inspect_mid"
-    ]
-  },
-  "qbz_191_reload_empty_fast_rotate": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/qbz1911/qbz_191_reload_empty_fast_rotate"
-    ]
-  },
-  "cloth_move_3": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/m1014/cloth_move_3"
-    ]
-  },
-  "cloth_move_4": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/m1014/cloth_move_4"
     ]
   },
   "m1014_bulletinbore": {
@@ -1556,12 +1493,6 @@
       "sounds/m107/shoot"
     ]
   },
-  "m107.draw": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/m107/m107_draw"
-    ]
-  },
   "m107_inspect_01": {
     "category": "hostile",
     "sounds": [
@@ -2285,7 +2216,7 @@
   "g36.magoutins": {
     "category": "hostile",
     "sounds": [
-      "sounds/g36/magoutins"
+      "sounds/g36/magout"
     ]
   },
   "g36.magouttac": {
@@ -2310,12 +2241,6 @@
     "category": "hostile",
     "sounds": [
       "sounds/g36/shoot"
-    ]
-  },
-  "g36.shootloop": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/g36/shootloop"
     ]
   },
   "minigun.buzz": {
@@ -2507,130 +2432,10 @@
       "sounds/m4a1/shoot"
     ]
   },
-  "m4a1.shootloop_0": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/shootloop"
-    ]
-  },
-  "m4a1.shootloop_1": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/shootloop"
-    ]
-  },
-  "m4a1.shootloop_2": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/shootloop"
-    ]
-  },
-  "m4a1.shootloop_3": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/shootloop"
-    ]
-  },
-  "m4a1.shootloop_4": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/shootloop"
-    ]
-  },
-  "m4a1.shootloop_5": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/shootloop"
-    ]
-  },
-  "m4a1.shootloop_6": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/shootloop"
-    ]
-  },
-  "m4a1.shootloop_7": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/shootloop"
-    ]
-  },
-  "m4a1.shootloop_8": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/shootloop"
-    ]
-  },
-  "m4a1.shootloop_9": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/shootloop"
-    ]
-  },
   "m4a1.suppress": {
     "category": "ui",
     "sounds": [
       "sounds/m4a1/suppressor"
-    ]
-  },
-  "m4a1.suppressloop_0": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/suppressorloop"
-    ]
-  },
-  "m4a1.suppressloop_1": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/suppressorloop"
-    ]
-  },
-  "m4a1.suppressloop_2": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/suppressorloop"
-    ]
-  },
-  "m4a1.suppressloop_3": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/suppressorloop"
-    ]
-  },
-  "m4a1.suppressloop_4": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/suppressorloop"
-    ]
-  },
-  "m4a1.suppressloop_5": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/suppressorloop"
-    ]
-  },
-  "m4a1.suppressloop_6": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/suppressorloop"
-    ]
-  },
-  "m4a1.suppressloop_7": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/suppressorloop"
-    ]
-  },
-  "m4a1.suppressloop_8": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/suppressorloop"
-    ]
-  },
-  "m4a1.suppressloop_9": {
-    "category": "ui",
-    "sounds": [
-      "sounds/m4a1/suppressorloop"
     ]
   },
   "m4a1.bolt": {
@@ -3624,7 +3429,7 @@
   "scarh.draw": {
     "category": "hostile",
     "sounds": [
-      "sounds/scarh/draw"
+      "sounds/scarh/raise"
     ]
   },
   "scarh.end": {
@@ -3685,73 +3490,6 @@
     "category": "hostile",
     "sounds": [
       "sounds/scarh/rotateins"
-    ]
-  },
-  "car15.shoot": {
-    "category": "hostile",
-    "max_distance": 120,
-    "sounds": [
-      "sounds/car15/shoot"
-    ]
-  },
-  "car15.glshoot": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/car15/glshoot"
-    ]
-  },
-  "car15.magless": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/car15/magless"
-    ]
-  },
-  "car15.maghit": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/car15/maghit"
-    ]
-  },
-  "car15.magin": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/car15/magin"
-    ]
-  },
-  "car15.ch2": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/car15/ch2"
-    ]
-  },
-  "car15.bolt": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/car15/bolt"
-    ]
-  },
-  "car15.maggrab": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/car15/maggrab"
-    ]
-  },
-  "car15.glinsert": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/car15/glinsert"
-    ]
-  },
-  "car15.glslide1": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/car15/glslide1"
-    ]
-  },
-  "car15.glslide2": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/car15/glslide2"
     ]
   },
   "vector.shoot": {
@@ -3983,12 +3721,6 @@
     "category": "hostile",
     "sounds": [
       "sounds/vector/draw"
-    ]
-  },
-  "vector.shake": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/vector/emptyshake"
     ]
   },
   "vector.end": {
@@ -4309,142 +4041,10 @@
       "sounds/hk416/shoot"
     ]
   },
-  "hk416.shootloop_0": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/shootloop"
-    ]
-  },
-  "hk416.shootloop_1": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/shootloop"
-    ]
-  },
-  "hk416.shootloop_2": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/shootloop"
-    ]
-  },
-  "hk416.shootloop_3": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/shootloop"
-    ]
-  },
-  "hk416.shootloop_4": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/shootloop"
-    ]
-  },
-  "hk416.shootloop_5": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/shootloop"
-    ]
-  },
-  "hk416.shootloop_6": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/shootloop"
-    ]
-  },
-  "hk416.shootloop_7": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/shootloop"
-    ]
-  },
-  "hk416.shootloop_8": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/shootloop"
-    ]
-  },
-  "hk416.shootloop_9": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/shootloop"
-    ]
-  },
-  "hk416.suppress": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressor"
-    ]
-  },
-  "hk416.suppressloop_0": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressorloop"
-    ]
-  },
-  "hk416.suppressloop_1": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressorloop"
-    ]
-  },
-  "hk416.suppressloop_2": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressorloop"
-    ]
-  },
-  "hk416.suppressloop_3": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressorloop"
-    ]
-  },
-  "hk416.suppressloop_4": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressorloop"
-    ]
-  },
-  "hk416.suppressloop_5": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressorloop"
-    ]
-  },
-  "hk416.suppressloop_6": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressorloop"
-    ]
-  },
-  "hk416.suppressloop_7": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressorloop"
-    ]
-  },
-  "hk416.suppressloop_8": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressorloop"
-    ]
-  },
-  "hk416.suppressloop_9": {
-    "category": "ui",
-    "sounds": [
-      "sounds/hk416/suppressorloop"
-    ]
-  },
   "hk416.suppress": {
     "category": "hostile",
     "sounds": [
       "sounds/hk416/suppress"
-    ]
-  },
-  "hk416.shootend": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/hk416/shootend"
     ]
   },
   "hk416.draw": {
@@ -4519,82 +4119,10 @@
       "sounds/hk416/starttac"
     ]
   },
-  "pkm.bolt2": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/pkm/bolt2"
-    ]
-  },
-  "pkm.magless": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/pkm/magless"
-    ]
-  },
-  "pkm.topcover1": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/pkm/topcover1"
-    ]
-  },
-  "pkm.topcover2": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/pkm/topcover2"
-    ]
-  },
-  "pkm.bullet": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/pkm/bullet"
-    ]
-  },
-  "pkm.bolt1": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/pkm/bolt1"
-    ]
-  },
-  "pkm.magin": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/pkm/magin"
-    ]
-  },
-  "tabukar.shoot": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/tabukar/shoot"
-    ]
-  },
   "scarh.shoot": {
     "category": "hostile",
     "sounds": [
       "sounds/scarh/shoot"
-    ]
-  },
-  "tabukar.kokang2": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/tabukar/kokang2"
-    ]
-  },
-  "tabukar.magless": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/tabukar/magless"
-    ]
-  },
-  "tabukar.kokang1": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/tabukar/kokang1"
-    ]
-  },
-  "tabukar.magin": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/tabukar/magin"
     ]
   },
   "rpg.shoot": {

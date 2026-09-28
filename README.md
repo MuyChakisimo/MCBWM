@@ -11,7 +11,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/deobfuscate/` | How the obfuscated original scripts were made readable (history) |
 | `*.zip` | Reference only (original release, Java TACZ, earlier attempt). Never shipped |
 
-**Pack version is `1.4.0`** for both packs. On a dedicated server set `"version": [1, 4, 0]` for both packs in the
+**Pack version is `1.5.0`** for both packs. On a dedicated server set `"version": [1, 5, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -48,6 +48,7 @@ edit).
 | `crafting/workbenchBlocks.js` | Using a workbench block opens its menu |
 | `attachments/attachmentMenu.js` | Attachment workbench menus built from `config/attachments.js` |
 | `attachments/attachmentState.js` | Per-player attachment storage; syncs the held gun's attachments to the model |
+| `items/ammoScoreboards.js` | Creates the scoreboard objectives (loaded rounds per gun, etc.) once on world load |
 | `items/itemLore.js` | Lore text on guns and ammo |
 | `items/storedAmmoDisplay.js` | Loaded rounds on the Evolys / M249 / M1014 models (`storedAmmoDisplay`) |
 | `items/ammoBox308.js` | Storing .308 rounds in an ammo box |
@@ -75,10 +76,8 @@ Every gun `<id>` (the item id without `krep:`) has its own files:
 Shared files are named `shared_*` / `shared/` (player arms `taczuniversal*`, scopes, walk cycles). Ammo is under
 `items/ammo/` and `attachables/ammo_*`.
 
-Four resource-pack animation files keep their original obfuscated paths on purpose: they each define
-`animation.acog.new` / `animation.elcan.new`, one copy differs, and which copy the game uses depends on load order.
-Moving them could change it. One broken model file (`models/entity/7sf3y8pgug/.../y7rwInQT2sq3l6gu.json`, which
-does not parse) is left untouched.
+The ammo HUD (`functions/<id>.mcfunction`) is drawn by each gun's animation controller, which runs it as the player.
+There is no `tick.json`: functions run from it have no `@s`, so they did nothing.
 
 ### Adding a weapon
 
@@ -116,6 +115,15 @@ Reload sound effects are not wired up yet.
 - Attachment workbench: the Vector's grip menu "Preview" equipped grip 9; the Double Barrel's "Preview" selected a
   nonexistent barrel; the Vector/Golden Deagle magazine "Back" opened the preview. Menu texts were inconsistent.
 - The damage table used `g93` / `scar1`, so B93R / SCAR-L bullets did no damage (moot now that both are hitscan).
+- The M1911's first-person arms model (`geometry.taczuniversal16`) had a stray copy of its leg bones after the
+  closing brace, so it never loaded. Fixed and moved to `models/entity/shared/taczuniversal16.geo.json`.
+- 11 sounds pointed at files that didn't exist (and 5 sound names were defined twice, some copies pointing at missing
+  files). They now use the matching file from `TACZ-JAVA.zip` or the existing copy in the pack.
+- Removed: dead player events/component groups (old attachment modes, old recoil events, reload steps past the
+  magazine size, bullet spawns for hitscan guns), 34 unused bullet entities, uncalled functions, `tick.json` /
+  `testis.mcfunction`, animations/controllers/sounds for guns not in the pack (CAR-15, M9, L85, PKM, Tabuk), the
+  unused `acog.new`/`elcan.new` copies, unused sounds (124 of them are also in `TACZ-JAVA.zip`), particles and
+  textures, and ~10,000 empty folders.
 - Removed: the `openui2` menu tag (called an undefined function), the `Indoarsenal` global, the chat message on
   every world load, and the dead `TACZ-B/kanjut/` folder (not a Bedrock folder).
 
@@ -123,12 +131,10 @@ Reload sound effects are not wired up yet.
 
 These all scale with players or entities. Change one at a time and test with several players:
 
-1. `functions/tick.json` runs 40 functions **every tick**. `testis.mcfunction` alone is 100 commands
-   (re-adds ~50 scoreboard objectives each tick); the 39 per-gun functions redraw the ammo actionbar every tick.
-2. `items/itemLore.js`: every second, `setItem` on **every slot of every player's inventory**. Only write when lore
+1. `items/itemLore.js`: every second, `setItem` on **every slot of every player's inventory**. Only write when lore
    was actually missing.
-3. `combat/armor.js`: every second, 48 `/tag @e[...]` commands scanning all entities.
-4. `items/storedAmmoDisplay.js` (every tick) and `attachments/attachmentState.js` (every 2 ticks): `setProperty` on
+2. `combat/armor.js`: every second, 48 `/tag @e[...]` commands scanning all entities.
+3. `items/storedAmmoDisplay.js` (every tick) and `attachments/attachmentState.js` (every 2 ticks): `setProperty` on
    every player holding a gun, even when the value hasn't changed. Cache the last value.
 
 ## Tools
