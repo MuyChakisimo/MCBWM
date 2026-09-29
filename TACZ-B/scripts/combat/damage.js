@@ -40,10 +40,7 @@ export function applyGunHits(source, weapon, hits) {
     const healthBefore = health.currentValue;
     if (healthBefore - damage > 0) showHurtEffect(entity);
     health.setCurrentValue(Math.max(0, healthBefore - damage));
-    if (health.currentValue <= 0) {
-      source.playSound("kill");
-      source.addTag("murderEntity");
-    }
+    if (health.currentValue <= 0) source.playSound("kill");
   }
 }
 

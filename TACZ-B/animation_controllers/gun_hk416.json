@@ -27,7 +27,7 @@
               "hk416.31": "query.get_equipped_item_name=='hk416' && query.is_using_item && query.scoreboard('hk416') == 0"
             }
           ],
-          "on_entry": ["/function hk416", "/scoreboard players set @s hk416sound 0"]
+          "on_entry": ["/function hk416"]
         },
         "hk416.31": {
           "animations": ["hk416shoot"],
@@ -48,7 +48,6 @@
             "@s krep:hk416_firegrip",
             "/playsound hk416.shoot @a[r=30]",
             "/scoreboard players set @s[scores={hk416=32..}] hk416 31",
-            "/scoreboard players add @s[scores={hk416sound=0}] hk416soundsound 1",
             "/scoreboard players remove @s[scores={hk416=1..31}] hk416 1",
             "/replaceitem entity @s[scores={hk416=0}] slot.weapon.mainhand 1 krep:hk416_emp 1 0",
             "/title @s[scores={hk416=0}] actionbar No Ammunition",
@@ -77,7 +76,6 @@
           ],
           "on_entry": [
             "@s krep:hk416_fire",
-            "/scoreboard players add @s[scores={hk416sound=0}] hk416soundsound 1",
             "/playsound hk416.shoot @a[r=30]",
             "@s krep:hk416_firegrip",
             "/scoreboard players set @s[scores={hk416=32..}] hk416 31",
@@ -98,7 +96,6 @@
           ],
           "on_entry": [
             "@s krep:hk416_fire",
-            "/scoreboard players add @s[scores={hk416sound=0}] hk416soundsound 1",
             "@s krep:hk416_firegrip",
             "/playsound hk416.shoot @a[r=30]",
             "/scoreboard players set @s[scores={hk416=32..}] hk416 31",
@@ -119,7 +116,6 @@
           ],
           "on_entry": [
             "@s krep:hk416_fire",
-            "/scoreboard players add @s[scores={hk416sound=0}] hk416soundsound 1",
             "@s krep:hk416_firegrip",
             "/playsound hk416.suppress @a[r=15]",
             "/scoreboard players set @s[scores={hk416=32..}] hk416 31",
@@ -150,7 +146,6 @@
           ],
           "on_entry": [
             "@s krep:hk416_fire",
-            "/scoreboard players add @s[scores={hk416sound=0}] hk416soundsound 1",
             "/playsound hk416.suppress @a[r=15]",
             "@s krep:hk416_firegrip",
             "/scoreboard players set @s[scores={hk416=32..}] hk416 31",
@@ -171,7 +166,6 @@
           ],
           "on_entry": [
             "@s krep:hk416_fire",
-            "/scoreboard players add @s[scores={hk416sound=0}] hk416sound 1",
             "/playsound hk416.suppress @a[r=15]",
             "@s krep:hk416_firegrip",
             "/scoreboard players set @s[scores={hk416=32..}] hk416 31",

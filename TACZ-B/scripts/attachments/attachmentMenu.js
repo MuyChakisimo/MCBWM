@@ -5,7 +5,6 @@ import { getAttachments, setAttachments } from "./attachmentState.js";
 
 // Attachment workbench (krep:attachmentblock). Menus are built from config/attachments.js:
 // pick a gun -> pick a slot -> pick an attachment (or a sight, or Preview).
-export const OPEN_ATTACHMENTS_TAG = "tacz_open_attachments";
 
 // The resource pack's UI (TACZ-R/ui/server_form.json) styles forms by their exact title;
 // the preview form must keep this title.
@@ -113,22 +112,14 @@ function openPreview(player, gunId) {
   });
 }
 
-system.runInterval(() => {
-  for (const player of world.getPlayers()) {
-    // crafting/workbenchBlocks.js tags the player when they use the block.
-    if (player.hasTag(OPEN_ATTACHMENTS_TAG)) {
-      player.removeTag(OPEN_ATTACHMENTS_TAG);
-      openAttachmentWorkbench(player);
-    }
-  }
-}, 20);
-
-// A preview left open by a disconnect/reload keeps the tag; end it.
-system.runInterval(() => {
-  for (const player of world.getPlayers()) {
-    if (player.hasTag(PREVIEW_TAG) && !playersInPreview.has(player.id)) {
-      player.removeTag(PREVIEW_TAG);
-      player.runCommandAsync("event entity @s krep:noview");
-    }
-  }
-}, 20);
+// A preview left open by a disconnect or script reload keeps the tag; end it when the player
+// joins, and for everyone online when the scripts (re)load.
+function endStalePreview(player) {
+  if (!player.hasTag(PREVIEW_TAG) || playersInPreview.has(player.id)) return;
+  player.removeTag(PREVIEW_TAG);
+  player.runCommandAsync("event entity @s krep:noview");
+}
+world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
+  if (initialSpawn) endStalePreview(player);
+});
+system.run(() => world.getPlayers().forEach(endStalePreview));

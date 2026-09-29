@@ -3,12 +3,9 @@
 
 // Combat
 import "./combat/hitscan";
-import "./combat/killTracking";
 
 // Crafting and attachment workbenches
 import "./crafting/workbenchBlocks";
-import "./crafting/gunsmith";
-import "./crafting/ammoWorkbench";
 import "./attachments/attachmentState";
 import "./attachments/attachmentMenu";
 

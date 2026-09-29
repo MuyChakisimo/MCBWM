@@ -65,7 +65,7 @@
               "m4a1.31": "query.get_equipped_item_name=='m4a1' && query.is_using_item && query.scoreboard('m4a1') == 0"
             }
           ],
-          "on_entry": ["/function m4a1", "/scoreboard players set @s m4a1sound 0"]
+          "on_entry": ["/function m4a1"]
         },
         "m4a1.31": {
           "animations": ["m4a1shoot"],
@@ -89,7 +89,6 @@
             "/function m4a1",
             "/playsound m4a1.shoot @a[r=30]",
             "/scoreboard players set @s[scores={m4a1=32..}] m4a1 31",
-            "/scoreboard players add @s[scores={m4a1sound=0}] m4a1sound 1",
             "/scoreboard players remove @s[scores={m4a1=1..31}] m4a1 1",
             "/replaceitem entity @s[scores={m4a1=0}] slot.weapon.mainhand 1 krep:m4a1_emp 1 0",
             "/title @s[scores={m4a1=0}] actionbar No Ammunition"
@@ -120,7 +119,6 @@
             "/function m4a1",
             "/playsound m4a1.shoot @a[r=30]",
             "/scoreboard players set @s[scores={m4a1=32..}] m4a1 31",
-            "/scoreboard players add @s[scores={m4a1sound=0}] m4a1sound 1",
             "/scoreboard players remove @s[scores={m4a1=1..31}] m4a1 1",
             "/replaceitem entity @s[scores={m4a1=0}] slot.weapon.mainhand 1 krep:m4a1_emp 1 0",
             "/title @s[scores={m4a1=0}] actionbar No Ammunition"
@@ -144,7 +142,6 @@
             "/playsound m4a1.suppress @a[r=15]",
             "/scoreboard players set @s[scores={m4a1=32..}] m4a1 31",
             "/scoreboard players remove @s[scores={m4a1=1..31}] m4a1 1",
-            "/scoreboard players add @s[scores={m4a1sound=0}] m4a1sound 1",
             "/replaceitem entity @s[scores={m4a1=0}] slot.weapon.mainhand 1 krep:m4a1_emp 1 0",
             "/title @s[scores={m4a1=0}] actionbar No Ammunition"
           ]
@@ -178,7 +175,6 @@
             "/function m4a1",
             "/playsound m4a1.suppress @a[r=15]",
             "/scoreboard players set @s[scores={m4a1=32..}] m4a1 31",
-            "/scoreboard players add @s[scores={m4a1sound=0}] m4a1sound 1",
             "/scoreboard players remove @s[scores={m4a1=1..31}] m4a1 1",
             "/replaceitem entity @s[scores={m4a1=0}] slot.weapon.mainhand 1 krep:m4a1_emp 1 0",
             "/title @s[scores={m4a1=0}] actionbar No Ammunition"

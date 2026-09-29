@@ -93,15 +93,11 @@
               "shoot": "query.get_equipped_item_name=='mp7' && query.is_using_item && query.scoreboard('mp7') >= 1 && q.mark_variant != 2"
             }
           ],
-          "on_entry": [
-            "/stopsound @a[r=15] mp7.suppressloop",
-            "/stopsound @a[r=30] mp7.shootloop",
-            "/scoreboard players set @s mp7sound 0"
-          ]
+          "on_entry": ["/stopsound @a[r=15] mp7.suppressloop", "/stopsound @a[r=30] mp7.shootloop"]
         },
         "shoot": {
           "animations": [{"g36shootsound": "query.get_equipped_item_name=='mp7' && q.is_using_item"}],
-          "on_entry": ["/scoreboard players set @s mp7sound 0"],
+          "on_entry": [],
           "transitions": [
             {"setup": "query.scoreboard('mp7') == 0 || !q.is_using_item || q.mark_variant == 2"},
             {"setup": "query.get_equipped_item_name!='mp7'"},
@@ -117,12 +113,8 @@
             {"setup": "query.get_equipped_item_name!='mp7'"},
             {"setup": "query.get_equipped_item_name=='mp7' && !query.is_using_item"}
           ],
-          "on_entry": ["/playsound mp7.shootloop @a[r=30]", "/scoreboard players set @s mp7sound 1"],
-          "on_exit": [
-            "/playsound mp7.shoot @a[r=30]",
-            "/scoreboard players set @s mp7sound 0",
-            "/stopsound @a[r=30] mp7.shootloop"
-          ]
+          "on_entry": ["/playsound mp7.shootloop @a[r=30]"],
+          "on_exit": ["/playsound mp7.shoot @a[r=30]", "/stopsound @a[r=30] mp7.shootloop"]
         }
       }
     },

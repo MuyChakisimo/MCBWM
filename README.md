@@ -11,7 +11,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/deobfuscate/` | How the obfuscated original scripts were made readable (history) |
 | `*.zip` | Reference only (original release, Java TACZ, earlier attempt). Never shipped |
 
-**Pack version is `1.9.0`** for both packs. On a dedicated server set `"version": [1, 9, 0]` for both packs in the
+**Pack version is `1.10.0`** for both packs. On a dedicated server set `"version": [1, 10, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -43,10 +43,9 @@ edit).
 | `combat/shotEffects.js` | Hitscan smoke tracer and impact puff |
 | `combat/armor.js` | `getArmor()`: armor a hit target wears (equipment, or `hasitem` tests on mobs, cached 2 s) |
 | `combat/recoil.js` | `applyRecoil()`: the gun's camera shake, reduced by fitted attachments (`config/recoil.js`) |
-| `combat/killTracking.js` | Kill marker tag `murderEntity` on the shooter for ~2 ticks |
 | `crafting/gunsmith.js`, `crafting/ammoWorkbench.js` | Crafting menus built from `config/weapons.js` / `config/ammo.js` |
 | `crafting/craftingHelpers.js` | Takes ingredients (only if all are present) and gives the result; `log` accepts any wood |
-| `crafting/workbenchBlocks.js` | Using a workbench block opens its menu |
+| `crafting/workbenchBlocks.js` | Using a workbench block opens its menu at once, like a chest (sneak to place blocks against it) |
 | `attachments/attachmentMenu.js` | Attachment workbench menus built from `config/attachments.js` |
 | `attachments/attachmentState.js` | Per-player attachment storage; syncs the held gun's attachments to the model |
 | `items/ammoScoreboards.js` | Creates the scoreboard objectives (loaded rounds per gun, etc.) once on world load |
@@ -138,6 +137,9 @@ Its reload, tactical reload and inspect sounds use the Java TACZ names (`tacz:m1
 - Sounds that never played because their name had no sound definition: M107 reload/inspect (27), the AA-12, G17/G18,
   SKS, Uzi and UMP draw, the RPG inspect, a T50 reload sound and the Vector's empty shake. Wired to the matching
   pack file or TACZ-JAVA sound. Two RPG keyframes with no sound in either pack were removed.
+- Workbench menus were opened by a once-a-second check for a tag (up to a second of delay); the kill marker tag
+  `murderEntity` was checked every 2 ticks but nothing read it (removed); the `m4a1sound`/`hk416sound`/`g36sound`/
+  `mp7sound` counters were written on every shot but never read (removed).
 - Removed: dead player events/component groups (old attachment modes, old recoil events, reload steps past the
   magazine size, bullet spawns for hitscan guns), 34 unused bullet entities, uncalled functions, `tick.json` /
   `testis.mcfunction`, animations/controllers/sounds for guns not in the pack (CAR-15, M9, L85, PKM, Tabuk), the
@@ -156,7 +158,7 @@ Everything that runs on a timer only reads unless something changed, so it doesn
 | `items/storedAmmoDisplay.js` | every tick, players holding an Evolys / M249 / M1014 | the loaded-round count changed |
 | `attachments/attachmentState.js` | every 2 ticks, players holding a gun with attachments | a fitted attachment changed |
 
-Nothing runs from `tick.json`. Per shot: one `scriptevent` (recoil + hitscan); mob armor is looked up on hit and
+Nothing runs from `tick.json`, and nothing polls for menus: workbench menus open from the block-use event. Per shot: one `scriptevent` (recoil + hitscan); mob armor is looked up on hit and
 cached for 2 seconds. When adding timers, keep this rule: compare with the current value before calling
 `setProperty` / `setItem` / `setDynamicProperty`.
 
