@@ -61,7 +61,7 @@
           "animations": [{"scarh_fp_hold": "v.scarh"}],
           "transitions": [
             {"reload": "v.scarhemp && q.mark_variant == 1"},
-            {"inspect": "v.scarhb && q.skin_id == 1 && !q.is_sneaking"},
+            {"inspect": "v.scarh && q.skin_id == 1 && !q.is_sneaking"},
             {"reloadtac": "v.scarh && q.mark_variant == 2"},
             {"sprint": "v.scarh && q.is_sprinting && !q.is_using_item"},
             {"sight": "v.scarh && q.is_sneaking"},
@@ -69,7 +69,7 @@
           ]
         },
         "inspect": {
-          "animations": [{"scarh_fp_inspect": "v.scarh"}],
+          "animations": [{"scarh_fp_inspect": "v.scarhb"}, {"scarh_fp_inspect_emp": "v.scarhemp"}],
           "transitions": [
             {
               "hold": "(v.scarh && q.all_animations_finished) || (v.scarh && q.is_using_item) || (v.scarh && q.is_sneaking)"

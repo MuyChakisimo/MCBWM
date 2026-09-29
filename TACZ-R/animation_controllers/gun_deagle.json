@@ -61,7 +61,7 @@
           "animations": [{"deagle_fp_hold": "v.deagle"}],
           "transitions": [
             {"reload": "v.deagleemp && q.mark_variant == 1"},
-            {"inspect": "v.deagleb && q.skin_id == 1 && !q.is_sneaking"},
+            {"inspect": "v.deagle && q.skin_id == 1 && !q.is_sneaking"},
             {"reloadtac": "v.deagle && q.mark_variant == 2"},
             {"sprint": "v.deagle && q.is_sprinting && !q.is_using_item"},
             {"sight": "v.deagle && q.is_sneaking"},
@@ -69,7 +69,7 @@
           ]
         },
         "inspect": {
-          "animations": [{"deagle_fp_inspect": "v.deagle"}],
+          "animations": [{"deagle_fp_inspect": "v.deagleb"}, {"deagle_fp_inspect_emp": "v.deagleemp"}],
           "transitions": [
             {
               "hold": "(v.deagle && q.any_animation_finished) || (v.deagle && q.is_using_item) || (v.deagle && q.is_sneaking)"

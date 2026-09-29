@@ -61,7 +61,7 @@
           "animations": [{"m16a1_fp_hold": "v.m16a1"}],
           "transitions": [
             {"reload": "v.m16a1emp && q.mark_variant == 1"},
-            {"inspect": "v.m16a1b && q.skin_id == 1 && !q.is_sneaking"},
+            {"inspect": "v.m16a1 && q.skin_id == 1 && !q.is_sneaking"},
             {"reloadtac": "v.m16a1 && q.mark_variant == 2"},
             {"sprint": "v.m16a1 && q.is_sprinting && !q.is_using_item"},
             {"sight": "v.m16a1 && q.is_sneaking"},
@@ -69,7 +69,7 @@
           ]
         },
         "inspect": {
-          "animations": [{"m16a1_fp_inspect": "v.m16a1"}],
+          "animations": [{"m16a1_fp_inspect": "v.m16a1b"}, {"m16a1_fp_inspect_emp": "v.m16a1emp"}],
           "transitions": [
             {
               "hold": "(v.m16a1 && q.any_animation_finished) || (v.m16a1 && q.is_using_item) || (v.m16a1 && q.is_sneaking)"

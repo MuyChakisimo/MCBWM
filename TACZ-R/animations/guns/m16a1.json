@@ -1346,20 +1346,7 @@
         "rightArm": {"rotation": [0, 0, 180], "position": [-1.93645, -12.58158, 0.07154]},
         "Joints": {"position": [-4, 14, -17]}
       },
-      "sound_effects": {
-        "0.1": {"effect": "p01_ar_mike4_inspect_lift"},
-        "1.3": {"effect": "p01_ar_mike4_reload_empty_rattle"},
-        "3.2333": {"effect": "p01_ar_mike4_drop"},
-        "4.1333": {"effect": "p01_ar_mike4_reload_magout"},
-        "5.0667": {"effect": "p01_ar_mike4_reload_empty_fast_xmag_rattle"},
-        "5.7": {"effect": "p01_ar_mike4_inspect_empty_charge"},
-        "6.9667": {"effect": "p01_ar_mike4_reload_empty_fast_xmag_lift"},
-        "7.3333": {"effect": "p01_ar_mike4_inspect_maghit"},
-        "7.6": {"effect": "p01_ar_mike4_inspect_magin"},
-        "8.1667": {"effect": "p01_ar_mike4_reload_empty_lift"},
-        "8.5667": {"effect": "p01_ar_mike4_inspect_empty_rack"},
-        "9.2667": {"effect": "p01_ar_mike4_reload_empty_end"}
-      }
+      "sound_effects": {"0.0": {"effect": "tacz:m16a1/m16a1_inspect_empty"}}
     },
     "animation.m16a1.shoot": {
       "animation_length": 0.6333,

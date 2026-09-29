@@ -61,7 +61,7 @@
           "animations": [{"hk416_fp_hold": "v.hk416"}],
           "transitions": [
             {"reload": "v.hk416emp && q.mark_variant == 1"},
-            {"inspect": "v.hk416b && q.skin_id == 1 && !q.is_sneaking"},
+            {"inspect": "v.hk416 && q.skin_id == 1 && !q.is_sneaking"},
             {"view": "v.hk416b && q.skin_id == 2 && !q.is_sneaking"},
             {"reloadtac": "v.hk416 && q.mark_variant == 2"},
             {"sprint": "v.hk416 && q.is_sprinting && !q.is_using_item"},
@@ -71,7 +71,7 @@
           ]
         },
         "inspect": {
-          "animations": [{"hk416_fp_inspect": "v.hk416"}],
+          "animations": [{"hk416_fp_inspect": "v.hk416b"}, {"hk416_fp_inspect_emp": "v.hk416emp"}],
           "transitions": [
             {
               "hold": "(v.hk416 && q.all_animations_finished) || (v.hk416 && q.is_using_item) || (v.hk416 && q.is_sneaking)"

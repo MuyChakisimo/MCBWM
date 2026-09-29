@@ -1753,7 +1753,20 @@
         "552_reticle": {"scale": 0},
         "t2_reticle": {"scale": 0}
       },
-      "sound_effects": {"0.0": {"effect": "hk416.inspectemp"}}
+      "sound_effects": {
+        "0.1667": {"effect": "tacz:hk416d/hk416d_inspect_01"},
+        "0.9": {"effect": "tacz:hk416d/hk416d_inspect_02"},
+        "2.1667": {"effect": "tacz:hk416d/hk416d_reload_fast_magout"},
+        "3.4667": {"effect": "tacz:hk416d/hk416d_hybrid01_off_arm"},
+        "3.8333": {"effect": "tacz:hk416d/hk416d_reload_empty_rattle"},
+        "4.4333": {"effect": "tacz:hk416d/hk416d_inspect_empty_rack"},
+        "5.3333": {"effect": "tacz:hk416d/hk416d_inspect_03"},
+        "6.2": {"effect": "tacz:hk416d/hk416d_reload_fast_magin_01"},
+        "6.4667": {"effect": "tacz:hk416d/hk416d_reload_empty_magin_02"},
+        "7.1": {"effect": "tacz:hk416d/hk416d_inspect_empty_charge"},
+        "7.2333": {"effect": "tacz:hk416d/hk416d_inspect_empty_handle"},
+        "7.6": {"effect": "tacz:hk416d/hk416d_inspect_05"}
+      }
     },
     "animation.hk416.shoot.sight": {
       "animation_length": 0.6333,

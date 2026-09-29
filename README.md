@@ -10,7 +10,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.11.0`** for both packs. On a dedicated server set `"version": [1, 11, 0]` for both packs in the
+**Pack version is `1.12.0`** for both packs. On a dedicated server set `"version": [1, 12, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -159,6 +159,11 @@ Its reload, tactical reload and inspect sounds use the Java TACZ names (`tacz:m1
 - Workbench menus were opened by a once-a-second check for a tag (up to a second of delay); the kill marker tag
   `murderEntity` was checked every 2 ticks but nothing read it (removed); the `m4a1sound`/`hk416sound`/`g36sound`/
   `mp7sound` counters were written on every shot but never read (removed).
+- Inspecting with an empty magazine played the loaded inspect for the AA-12, AWM, Desert Eagle, G3, HK416, M16,
+  M16A1, MP5, SCAR-H and Vector (their empty inspect animations were never connected). Now wired like the SKS, with
+  the Java TACZ sounds.
+- Sounds that never played because the player's `sound_effects` table lacked them (M107 reload/inspect, several draw
+  sounds), the SKS suppressed shot, and the pistols' walk animation. Found by `check.mjs`'s pack-wide reference check.
 - Removed: dead player events/component groups (old attachment modes, old recoil events, reload steps past the
   magazine size, bullet spawns for hitscan guns), 34 unused bullet entities, uncalled functions, `tick.json` /
   `testis.mcfunction`, animations/controllers/sounds for guns not in the pack (CAR-15, M9, L85, PKM, Tabuk), the

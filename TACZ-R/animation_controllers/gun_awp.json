@@ -36,7 +36,7 @@
           "animations": [{"awp_fp_hold": "v.awp"}],
           "transitions": [
             {"reload": "v.awpemp && q.mark_variant == 1"},
-            {"inspect": "v.awpb && q.skin_id == 1 && !q.is_sneaking"},
+            {"inspect": "v.awp && q.skin_id == 1 && !q.is_sneaking"},
             {"reloadtac": "v.awp && q.mark_variant == 2"},
             {"sprint": "v.awp && q.is_sprinting && !q.is_using_item"},
             {"sight": "v.awp && q.is_sneaking"},
@@ -44,7 +44,7 @@
           ]
         },
         "inspect": {
-          "animations": [{"awp_fp_inspect": "v.awp"}],
+          "animations": [{"awp_fp_inspect": "v.awpb"}, {"awp_fp_inspect_emp": "v.awpemp"}],
           "transitions": [
             {
               "hold": "(v.awp && q.any_animation_finished) || (v.awp && q.is_using_item) || (v.awp && q.is_sneaking)"

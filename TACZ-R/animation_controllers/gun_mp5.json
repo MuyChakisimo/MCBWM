@@ -58,7 +58,7 @@
           "animations": [{"mp5_fp_hold": "v.mp5"}],
           "transitions": [
             {"reload": "v.mp5emp && q.mark_variant == 1"},
-            {"inspect": "v.mp5b && q.skin_id == 1 && !q.is_sneaking"},
+            {"inspect": "v.mp5 && q.skin_id == 1 && !q.is_sneaking"},
             {"view": "v.mp5b && q.skin_id == 2 && !q.is_sneaking"},
             {"reloadtac": "v.mp5 && q.mark_variant == 2"},
             {"sprint": "v.mp5 && q.is_sprinting && !q.is_using_item"},
@@ -67,7 +67,7 @@
           ]
         },
         "inspect": {
-          "animations": [{"mp5_fp_inspect": "v.mp5"}],
+          "animations": [{"mp5_fp_inspect": "v.mp5b"}, {"mp5_fp_inspect_emp": "v.mp5emp"}],
           "transitions": [
             {
               "hold": "(v.mp5 && q.any_animation_finished) || (v.mp5 && q.is_using_item) || (v.mp5 && q.is_sneaking)"

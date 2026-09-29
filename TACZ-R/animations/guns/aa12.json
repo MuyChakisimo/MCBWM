@@ -1636,18 +1636,7 @@
         "root": {"rotation": [0, 180, 0]},
         "Joints": {"position": [-3, 11.5, -12]}
       },
-      "sound_effects": {
-        "0.0": {"effect": "wfoly_sh_jak12_raise"},
-        "0.55": {"effect": "aa12_inspect_magout"},
-        "1.15": {"effect": "aa12_inspect_mvmnt"},
-        "1.85": {"effect": "aa12_inspect_magin"},
-        "2.45": {"effect": "aa12_reload_mvmnt"},
-        "3.25": {"effect": "aa12_reload_empty_boltpull"},
-        "3.75": {"effect": "aa12_reload_empty_fast_drum_boltforward"},
-        "4.7": {"effect": "weap_mike4_deadtrigger_plr_ads_05"},
-        "4.75": {"effect": "aa12_inspect_end"},
-        "4.8": {"effect": "weap_mike4_fire_dryfire_plr_ads_01"}
-      }
+      "sound_effects": {"0.0": {"effect": "tacz:aa12/aa12_inspect_empty"}}
     },
     "animation.aa12.shoot": {
       "animation_length": 0.75,
