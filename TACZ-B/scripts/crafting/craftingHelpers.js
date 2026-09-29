@@ -48,7 +48,7 @@ function removeItem(container, item, count) {
   }
 }
 
-/** Takes every ingredient and gives `result` ("krep:m107" or "krep:bmg50 24") only if all are present. */
+/** Takes every ingredient and gives `result` (an item id, or "id count" like "krep:bmg50 24") only if all are present. */
 export function craftWithIngredients(player, ingredients, result) {
   const container = inventory(player);
   if (ingredients.some(([item, count]) => countItem(container, item) < count)) {

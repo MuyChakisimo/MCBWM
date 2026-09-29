@@ -53,7 +53,8 @@ for (const [id, w] of Object.entries(WEAPONS)) {
   const quantity = read(`TACZ-B/functions/${id}quantity.mcfunction`) ?? "";
   if (w.overheat) {
     // Minigun: no magazine; reloads from an ammo box.
-  } else if (w.magazine != null && id !== "rpg") {
+  } else if (w.magazine != null && quantity) {
+    // (Guns without a <id>quantity function, like the RPG, load one round from the animation.)
     const hudSize = +(/"\/(\d+)/.exec(hud)?.[1] ?? NaN);
     if (hudSize !== w.magazine) bad(id, `magazine ${w.magazine} but HUD shows /${hudSize}`, `TACZ-B/functions/${id}.mcfunction`);
     const fill = +(/quantity=(\d+)\.\.\},\{item=krep:ammoboxc/.exec(quantity)?.[1] ?? NaN);

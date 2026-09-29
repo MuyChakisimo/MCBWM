@@ -6,12 +6,12 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 |---|---|
 | `TACZ-B/` | Behavior pack (scripts, items, entities, controllers, functions) |
 | `TACZ-R/` | Resource pack (player renderer, models, textures, animations, sounds) |
-| `tools/weapons/` | `check.mjs` (config vs pack consistency), `verify-pack.cjs` (proves two pack trees are equivalent) |
+| `tools/weapons/` | `gun.mjs` (clone / remove a gun), `check.mjs` (config vs pack consistency), `verify-pack.cjs` (proves two pack trees are equivalent) |
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `tools/deobfuscate/` | How the obfuscated original scripts were made readable (history) |
 | `*.zip` | Reference only (original release, Java TACZ, earlier attempt). Never shipped |
 
-**Pack version is `1.10.0`** for both packs. On a dedicated server set `"version": [1, 10, 0]` for both packs in the
+**Pack version is `1.11.0`** for both packs. On a dedicated server set `"version": [1, 11, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -80,14 +80,34 @@ There is no `tick.json`: functions run from it have no `@s`, so they did nothing
 
 ### Adding a weapon
 
-1. Copy a similar gun's files from the table above (for example `m4a1` for a rifle) and rename `m4a1` inside them.
-2. Add its events to `entities/player.json` and its model/animations/render controllers to `player.entity.json`
-   (search for the gun you copied to find every spot; also add it to `variable.holding_all_guns`).
-3. Add its entry to `config/weapons.js` (and `attachments.js` / `recoil.js` if it has attachments).
-4. Add names and lore to `TACZ-R/texts/*.lang`, and the items to `item_catalog/crafting_item_catalog.json`.
-5. Run `tools/weapons/check.mjs` (below) and fix what it reports.
+Start from the most similar existing gun (same kind, same attachments) and copy it with `tools/weapons/gun.mjs`:
 
-Removing a weapon is the reverse: delete its entry and its files, and its spots in the two player files.
+```bash
+"$NODE" tools/weapons/gun.mjs clone m4a1 aug --name "AUG" --dry-run   # list what would change
+"$NODE" tools/weapons/gun.mjs clone m4a1 aug --name "AUG"
+"$NODE" tools/weapons/check.mjs
+```
+
+This copies every file of the source gun under the new id (items, both packs' controllers and animations,
+functions, model, render controller, attachables, textures, sounds, attachment icons and, if the source has its own,
+its first-person arms model `taczuniversal<N>`), and adds the new gun everywhere the source appears in the shared
+files: `player.json`, `player.entity.json`, the shared draw/inspect/scope controllers, `shared_player.json`, sound
+definitions, lang files, the item catalog and item textures, and its entries in `config/weapons.js`,
+`attachments.js` and `recoil.js`. The new gun is an exact working copy (same stats, recipe, sounds and model). Then
+replace its model, textures, animations and sounds, and edit its stats and lore.
+
+`"$NODE" tools/weapons/gun.mjs remove <id>` removes a gun the same way, and refuses if another gun still uses its
+files (for example an animation it borrows); `--force` removes it anyway.
+
+A few things stay shared with the source gun and are listed as "Not copied" when the clone runs: single references
+such as the item group's icon (`krep:mp5`), or an animation the source borrows from another gun. Names only one gun
+uses, like the RPG's ammo `krep:rpgrocket` or `minigunoverheat`, also stay shared.
+
+The tool stops with an error instead of guessing when it finds a mention of the gun it doesn't understand. It
+only renames words that belong to the gun: `fal` in `false` or `m16` in `m16a1` are left alone. Tested by cloning
+every gun and removing the clone again (the packs come back byte for byte) and by removing every gun.
+
+Bedrock allows 32 player properties; guns with scopes add one (`krep:<id>scope`), and the tool refuses to go over.
 
 ## Hitscan, tracers and hit flash
 
