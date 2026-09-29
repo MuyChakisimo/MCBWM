@@ -20,7 +20,7 @@ import { pathToFileURL } from "node:url";
 const repo = process.cwd();
 const full = process.argv.includes("--full"), keep = process.argv.includes("--keep");
 const QUICK = ["sks", "m4a1", "m16", "deagle", "fal", "vector", "rpg", "m870", "minigun", "cp"];
-const PORTS = [["m9a4", "m9a4", "p320"], ["rpk", "rpk", "type81"], ["kar98", "kar98", "awp"], ["spas_12", "spas12", "m870"], ["db_long", "dblong", "db"]];
+const PORTS = [["m9a4", "m9a4", "p320"], ["spr15hb", "spr15", "m4a1"], ["rpk", "rpk", "type81"], ["kar98", "kar98", "awp"], ["spas_12", "spas12", "m870"], ["db_long", "dblong", "db"]];
 
 const walk = (d) => (fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)])) : []);
 const rel = (base, f) => path.relative(base, f).split(path.sep).join("/");

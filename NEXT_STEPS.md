@@ -18,7 +18,9 @@ at the end of each session. How the code works is in `README.md`.
 - 41 guns, 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
-  definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`.
+  definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `test.mjs`
+  (tests the tools on a scratch copy; run it after changing any tool).
+- `docs/HOW-IT-WORKS.md`: each system step by step and a troubleshooting table.
 
 ## Not tested in game yet (ask the user how these went)
 
@@ -58,12 +60,12 @@ The user last tested around v1.9.0 ("everything's working great"). Since then:
    | db_long (as `dblong`) | db | Java has no sounds; the tool keeps the Double Barrel's |
    | cz75, hk_mk23 | p320 or m1911 | |
    | rhino357, taurus500, taurus943 | cp (Colt Python) | revolvers |
-   | spr15hb | m4a1 | M4A1 has attachments: its attachment menu entry is cloned too (see below) |
+   | spr15hb | m4a1 | tested in `test.mjs`; starts with no attachments |
    | aug | m4a1 | **built-in scope** (Java `scope_aug_default` attachment model) not handled yet |
    | m320 | rpg | grenade launcher: give it an `explosion` in `weapons.js` like the RPG; 40mm ammo |
 
-   Still to build: merging a built-in scope model (AUG), and attachment menus for new guns (a clone of a gun with
-   attachments inherits that gun's `attachments.js` / `recoil.js` entries, which name parts the new model may lack).
+   Ported guns start with no attachments (`java-port.mjs` strips what the clone inherited). Still to build: merging a
+   built-in scope model (AUG), and Java attachments for ported guns (Java has 100+ attachment models).
 4. **Lag: gate the 47 always-running BP controllers.** In `entities/player.json` `scripts.animate`, the 40
    `<id>reloading` controllers, 5 scope controllers, `minigun` and `mp7sound` run every tick for every player
    regardless of the held gun (about 80 Molang checks per player per tick). Gate them on the held item like the main

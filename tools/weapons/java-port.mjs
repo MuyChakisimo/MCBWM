@@ -84,6 +84,11 @@ const entity = parse(readText(entityFile))["minecraft:client_entity"].descriptio
 const armsNumber = entity.render_controllers.map((rc) => Object.entries(rc)[0]).find(([k, v]) => /universal\d+\.first_person/.test(k) && new RegExp(`(v|variable)\\.${id}\\b(?!_)`).test(v) && !/\|\|/.test(v))?.[0].match(/universal(\d+)/)[1];
 if (!armsNumber) throw new Error(`${id} has no first-person arms model of its own (clone from a gun that has one)`);
 
+// ---------------------------------------------------------------- 1b. no attachment system (yet)
+// A clone of a gun with attachments/sights inherits its menus, scope property and events, which name parts
+// the Java model doesn't have. Remove them: the new gun starts with no attachments.
+stripAttachments(id);
+
 // ---------------------------------------------------------------- 2. model and arms model
 const converted = convertGun(java, javaId, id);
 const builtinScope = !!javaData.builtin_attachments?.scope;
@@ -143,7 +148,8 @@ const soundNames = new Map(); // our cue name -> Java sound path
   if (emptyInspect && !byRole(ROLES["fp.inspect_empty"][0]).length) {
     anims[`animation.${id}.fp.inspect_empty`] = structuredClone(emptyInspect);
     wireEmptyInspect(id);
-    replaced.push("fp.inspect_empty (added)");
+    replaced.push("fp.inspect_empty");
+    log("   the starting gun had no empty inspect: added and wired Java's");
   }
   // Pose: move the clone's first-person joints so its hold matches the Java model; the aim ends on the sight.
   const J = (a) => a?.bones && Object.keys(a.bones).find((k) => k.toLowerCase() === "joints");
@@ -353,6 +359,66 @@ function resizeMagazine(id, M, N) {
     }
     j["minecraft:entity"].events = rebuilt;
   });
+}
+
+function stripAttachments(id) {
+  const removed = [];
+  // Config: menu entries and attachment recoil.
+  for (const f of ["TACZ-B/scripts/config/attachments.js", "TACZ-B/scripts/config/recoil.js"])
+    edit(f, (t) => {
+      const m = new RegExp(`\\n  ${id}: \\{\\n[\\s\\S]*?\\n  \\},\\n`).exec(t);
+      if (!m) return undefined;
+      removed.push(path.basename(f));
+      return t.slice(0, m.index + 1) + t.slice(m.index + m[0].length);
+    });
+  const scopeProp = `krep:${id}scope`;
+  // BP: scope property, sight events, scope controller.
+  editJson("TACZ-B/entities/player.json", (j) => {
+    const e = j["minecraft:entity"], d = e.description;
+    if (d.properties[scopeProp]) { delete d.properties[scopeProp]; removed.push(scopeProp); }
+    // Sight events set the scope property (other <id>:... events, e.g. bolt/pump actions, stay).
+    for (const [k, v] of Object.entries(e.events)) if (JSON.stringify(v).includes(`"${scopeProp}"`)) { delete e.events[k]; removed.push(`event ${k}`); }
+    if (d.animations[`${id}scope`]) {
+      delete d.animations[`${id}scope`];
+      d.scripts.animate = d.scripts.animate.filter((a) => a !== `${id}scope`);
+      removed.push(`${id}scope controller`);
+    }
+  });
+  editJson(`TACZ-B/animation_controllers/gun_${id}.json`, (j) => { delete j.animation_controllers[`controller.animation.${id}.scope`]; });
+  // RP: aim state keeps only the plain sight; the gun's parts are all shown.
+  const dropAnims = new Set();
+  editJson(`TACZ-R/animation_controllers/gun_${id}.json`, (j) => {
+    for (const c of Object.values(j.animation_controllers))
+      for (const st of Object.values(c.states)) {
+        if (!Array.isArray(st.animations)) continue;
+        st.animations = st.animations.flatMap((a) => {
+          if (typeof a === "string") return [a];
+          const [k, cond] = Object.entries(a)[0];
+          if (!cond.includes(scopeProp)) return [a];
+          if (new RegExp(`q\\.property\\('${scopeProp}'\\) *== *'nothing'`).test(cond))
+            return [{ [k]: cond.replace(new RegExp(` *&& *q\\.property\\('${scopeProp}'\\) *== *'nothing'`), "") }];
+          dropAnims.add(k);
+          return [];
+        });
+      }
+  });
+  editJson(`TACZ-R/render_controllers/gun_${id}.json`, (j) => { for (const rc of Object.values(j.render_controllers)) rc.part_visibility = [{ "*": true }]; });
+  if (dropAnims.size) {
+    let ids = [];
+    editJson("TACZ-R/entity/player.entity.json", (j) => {
+      const a = j["minecraft:client_entity"].description.animations;
+      for (const k of dropAnims) { if (a[k]) ids.push(a[k]); delete a[k]; }
+    });
+    editJson(`TACZ-R/animations/guns/${id}.json`, (j) => { for (const k of ids) delete j.animations[k]; });
+    removed.push(`scope aim animations ${[...dropAnims].join(", ")}`);
+  }
+  const icons = `TACZ-R/textures/ui/new/${id}`;
+  if (exists(icons)) { fs.rmSync(abs(icons), { recursive: true }); removed.push("attachment icons"); }
+  // Nothing may still use the scope property.
+  const left = ["TACZ-B", "TACZ-R"].flatMap(function all(d) { return fs.readdirSync(abs(d), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? all(`${d}/${e.name}`) : [`${d}/${e.name}`])); })
+    .filter((f) => /\.json$/.test(f) && readText(f).includes(scopeProp));
+  if (left.length) throw new Error(`${scopeProp} is still used in: ${left.join(", ")}`);
+  log(`1b. attachments: ${removed.length ? "removed " + removed.join(", ") : "none"}`);
 }
 
 function wireEmptyInspect(id) {

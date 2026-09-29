@@ -122,7 +122,9 @@ AKM/Saiga-12 or MP7/FAL, which share one):
 "$NODE" tools/weapons/check.mjs
 ```
 
-`java-port.mjs` clones the starting gun (`gun.mjs`), then replaces:
+`java-port.mjs` clones the starting gun (`gun.mjs`), removes the attachment system it inherited (menu entries in
+`attachments.js` / `recoil.js`, `krep:<id>scope` and the sight events, scope-specific aim animations; all model parts
+shown), then replaces:
 
 - the model and first-person arms model with Java's (`java-convert.mjs`): Java's bones under our player skeleton;
   optional parts removed (extended mags, light/heavy stocks and the AR stock adapter, scope mounts and rails)
@@ -135,11 +137,10 @@ AKM/Saiga-12 or MP7/FAL, which share one):
 - stats (damage, penetration, headshot, falloff, fire mode, rpm, pellets) as proposed by `java-stats.mjs`, the ammo
   item, and the magazine size (HUD, reload functions and events, and thresholds are regenerated; 3+ rounds)
 
-Tested by porting the M9A4 (from the P320), RPK (Type 81), Kar98k (AWM), SPAS-12 (M870) and long Double Barrel (Double
-Barrel) into a copy of the packs: `check.mjs` passes for each, and `gun.mjs remove` restores the packs byte for byte.
-Not handled yet: built-in scopes (the AUG's scope is a separate Java attachment model), and attachment menus for the
-new gun (it inherits the starting gun's entries in `config/attachments.js`, if any, which refer to parts it may not
-have). Each ported gun still needs an in-game check: aim, reloads, sounds.
+`tools/weapons/test.mjs` ports the M9A4 (from the P320), SPR-15 (M4A1), RPK (Type 81), Kar98k (AWM), SPAS-12 (M870) and
+long Double Barrel into a scratch copy: `check.mjs` passes for each, and `gun.mjs remove` restores the packs byte for
+byte. Not handled yet: built-in scopes (the AUG's scope is a separate Java attachment model) and attachments for
+ported guns (they start with none). Each ported gun still needs an in-game check: aim, reloads, sounds.
 
 ## Hitscan, tracers and hit flash
 
