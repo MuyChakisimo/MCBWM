@@ -23,6 +23,12 @@ export const AMMO = Object.freeze({
   // Ammo box: refills the minigun; also stores .308 (items/ammoBox308.js).
   ammobox: { name: ".308 Winchester Ammo Box", icon: "textures/items/308winbox", lore: "krep:box.ammobox.lore", count: 1, recipe: [["chest", 1]] },
   bmg50: { name: ".50 BMG", icon: "textures/items/50bmg", lore: "krep:ammo.lore.50bmg", count: 24, recipe: [["copper_ingot", 110], ["gunpowder", 20], ["lapis_lazuli", 12], ["blaze_rod", 1]] },
+  mm792: { name: "7.92x57mm Mauser", icon: "textures/items/792x57", lore: "krep:ammo.lore.792x57", count: 60, recipe: [["copper_ingot", 30], ["lapis_lazuli", 1], ["gunpowder", 10]] },
+  spr3006: { name: ".30-06 Springfield", icon: "textures/items/30_06", lore: "krep:ammo.lore.30_06", count: 60, recipe: [["copper_ingot", 30], ["lapis_lazuli", 1], ["gunpowder", 10]] },
+  govt4570: { name: ".45-70 Government", icon: "textures/items/45_70", lore: "krep:ammo.lore.45_70", count: 40, recipe: [["copper_ingot", 30], ["lapis_lazuli", 2], ["gunpowder", 12]] },
+  mag500: { name: ".500 S&W Magnum", icon: "textures/items/500mag", lore: "krep:ammo.lore.500mag", count: 30, recipe: [["copper_ingot", 30], ["lapis_lazuli", 2], ["gunpowder", 10]] },
+  wmr22: { name: ".22 WMR", icon: "textures/items/22wmr", lore: "krep:ammo.lore.22wmr", count: 64, recipe: [["copper_ingot", 10], ["gunpowder", 2]] },
+  grenade40: { name: "40mm Grenade", icon: "textures/items/40mm", lore: "krep:ammo.lore.40mm", count: 4, recipe: [["copper_ingot", 20], ["iron_ingot", 2], ["gunpowder", 8]] },
 });
 
 // Items that get lore but are not craftable ammo.

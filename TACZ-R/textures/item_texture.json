@@ -58,6 +58,12 @@
     "t50": {"textures": "textures/items/t50"},
     "m4a1": {"textures": "textures/items/m4a1"},
     "4630mm": {"textures": "textures/items/4630mm"},
-    "5842mm": {"textures": "textures/items/5842mm"}
+    "5842mm": {"textures": "textures/items/5842mm"},
+    "792x57": {"textures": "textures/items/792x57"},
+    "30_06": {"textures": "textures/items/30_06"},
+    "45_70": {"textures": "textures/items/45_70"},
+    "500mag": {"textures": "textures/items/500mag"},
+    "22wmr": {"textures": "textures/items/22wmr"},
+    "40mm": {"textures": "textures/items/40mm"}
   }
 }
