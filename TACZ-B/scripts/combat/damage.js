@@ -6,6 +6,13 @@ import { COMBAT } from "../config/combat.js";
 // damage / penetration come from the gun's entry in config/weapons.js, the rules from
 // COMBAT (config/combat.js).
 
+// Damage multiplier at `distance` blocks: the first falloff step [upTo, multiplier] that reaches
+// that far (upTo null = any distance). No falloff: full damage.
+function falloffAt(weapon, distance) {
+  for (const [upTo, multiplier] of weapon.falloff ?? []) if (upTo === null || distance <= upTo) return multiplier;
+  return 1;
+}
+
 function isHeadshot(entity, location) {
   const head = entity.getHeadLocation();
   return Math.hypot(head.x - location.x, head.y - location.y, head.z - location.z) <= COMBAT.headshotRadius;
@@ -18,6 +25,8 @@ export function applyGunHits(source, weapon, hits) {
   if (!(source instanceof Player)) return;
   const penetration = weapon.penetration ?? 0;
   const baseDamage = weapon.damage * COMBAT.damageMultiplier;
+  const headshotMultiplier = weapon.headshot ?? COMBAT.headshotMultiplier;
+  const origin = source.getHeadLocation();
   const targets = new Map();
   for (const { entity, location } of hits) {
     let target = targets.get(entity.id);
@@ -31,7 +40,9 @@ export function applyGunHits(source, weapon, hits) {
     const headshot = isHeadshot(entity, location);
     const armorPoints = headshot ? target.armor.helmet : target.armor.total;
     const reduction = Math.min(COMBAT.maxArmorReduction, (armorPoints * (1 - penetration)) / 20);
-    target.damage += Math.max(COMBAT.minDamage, baseDamage * (headshot ? COMBAT.headshotMultiplier : 1) * (1 - reduction));
+    const distance = Math.hypot(location.x - origin.x, location.y - origin.y, location.z - origin.z);
+    const damage = baseDamage * falloffAt(weapon, distance) * (headshot ? headshotMultiplier : 1) * (1 - reduction);
+    target.damage += Math.max(COMBAT.minDamage, damage);
     target.headshot ||= headshot;
   }
 

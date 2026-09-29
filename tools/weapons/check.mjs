@@ -89,6 +89,14 @@ for (const [id, w] of Object.entries(WEAPONS)) {
   if (!num(w.penetration) || w.penetration < 0 || w.penetration > 1) bad(id, "penetration must be 0..1", "config/weapons.js");
   for (const mode of ["hip", "ads"]) if (!(w.recoil?.[mode]?.length === 2 && w.recoil[mode].every(num))) bad(id, `recoil.${mode} must be [power, duration]`, "config/weapons.js");
   if (w.pellets > 1 && !(num(w.spread?.hip) && num(w.spread?.ads))) bad(id, "pellets without spread { hip, ads }", "config/weapons.js");
+  if (!["semi", "burst", "auto"].includes(w.fireMode)) bad(id, `fireMode must be semi, burst or auto`, "config/weapons.js");
+  if (!num(w.rpm) || w.rpm <= 0) bad(id, "rpm missing or not positive", "config/weapons.js");
+  if (w.fireMode === "burst" && !(num(w.burst?.count) && num(w.burst?.rpm) && num(w.burst?.delay))) bad(id, "burst needs { count, rpm, delay }", "config/weapons.js");
+  if (w.headshot != null && !(num(w.headshot) && w.headshot > 0)) bad(id, "headshot must be a positive number", "config/weapons.js");
+  if (w.falloff != null) {
+    const ok = Array.isArray(w.falloff) && w.falloff.length && w.falloff.every(([d, m], i) => (d === null ? i === w.falloff.length - 1 : num(d)) && num(m));
+    if (!ok) bad(id, "falloff must be [[blocks, multiplier], ..., [null, multiplier]]", "config/weapons.js");
+  }
   for (const [item] of w.recipe ?? []) if (item !== "log" && !/^[a-z_]+$/.test(item)) bad(id, `odd recipe item ${item}`, "config/weapons.js");
 }
 

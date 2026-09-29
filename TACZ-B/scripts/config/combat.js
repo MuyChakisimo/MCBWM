@@ -8,8 +8,8 @@ export const COMBAT = Object.freeze({
   damageMultiplier: 1,
   recoilMultiplier: 1,
 
-  // A hit within headshotRadius blocks of the target's head deals headshotMultiplier x damage
-  // and only the helmet counts as armor.
+  // A hit within headshotRadius blocks of the target's head is a headshot: it deals the gun's
+  // `headshot` multiplier (headshotMultiplier if the gun has none) and only the helmet counts as armor.
   headshotMultiplier: 2,
   headshotRadius: 0.375,
 
