@@ -346,378 +346,130 @@
           {
             "look_at_target_default": "variable.holding_all_guns && !query.is_sneaking && variable.is_third_person"
           },
-          {
-            "draw": "variable.is_first_person"
-          },
-          {
-            "m16a1_fp": "variable.is_first_person && variable.m16a1"
-          },
-          {
-            "m16a1_walk_ac": "variable.m16a1 && variable.is_first_person"
-          },
-          {
-            "m16_fp": "variable.is_first_person && variable.m16"
-          },
-          {
-            "m16_walk_ac": "variable.m16 && variable.is_first_person"
-          },
-          {
-            "m16a1_tp": "variable.m16a1 && variable.is_third_person"
-          },
-          {
-            "m16_tp": "variable.m16 && variable.is_third_person"
-          },
-          {
-            "vector_fp": "variable.is_first_person && variable.vector"
-          },
-          {
-            "vector_walk_ac": "variable.is_first_person && variable.vector"
-          },
-          {
-            "vector_tp": "variable.vector && variable.is_third_person"
-          },
-          {
-            "g18_fp": "variable.is_first_person && variable.g18"
-          },
-          {
-            "g18_walk_ac": "variable.is_first_person && variable.g18"
-          },
-          {
-            "g18_tp": "variable.g18 && variable.is_third_person"
-          },
-          {
-            "g17_fp": "variable.is_first_person && variable.g17"
-          },
-          {
-            "g17_walk_ac": "variable.is_first_person && variable.g17"
-          },
-          {
-            "g17_tp": "variable.g17 && variable.is_third_person"
-          },
-          {
-            "minigun_fp": "variable.is_first_person && variable.minigun"
-          },
-          {
-            "minigun_walk_ac": "variable.is_first_person && variable.minigun"
-          },
-          {
-            "minigun_tp": "variable.minigun && variable.is_third_person"
-          },
-          {
-            "saiga12_fp": "variable.is_first_person && variable.saiga12"
-          },
-          {
-            "saiga12_walk_ac": "variable.is_first_person && variable.saiga12"
-          },
-          {
-            "saiga12_tp": "variable.saiga12 && variable.is_third_person"
-          },
-          {
-            "aa12_fp": "variable.is_first_person && variable.aa12"
-          },
-          {
-            "aa12_walk_ac": "variable.is_first_person && variable.aa12"
-          },
-          {
-            "aa12_tp": "variable.aa12 && variable.is_third_person"
-          },
-          {
-            "awp_fp": "variable.is_first_person && variable.awp"
-          },
-          {
-            "awp_walk_ac": "variable.is_first_person && variable.awp"
-          },
-          {
-            "awp_tp": "variable.awp && variable.is_third_person"
-          },
-          {
-            "mp5_fp": "variable.is_first_person && variable.mp5"
-          },
-          {
-            "mp5_walk_ac": "variable.is_first_person && variable.mp5"
-          },
-          {
-            "mp5_tp": "variable.mp5 && variable.is_third_person"
-          },
-          {
-            "mp7_fp": "variable.is_first_person && variable.mp7"
-          },
-          {
-            "mp7_walk_ac": "variable.is_first_person && variable.mp7"
-          },
-          {
-            "mp7_tp": "variable.mp7 && variable.is_third_person"
-          },
-          {
-            "rpg_fp": "variable.is_first_person && variable.rpg"
-          },
-          {
-            "rpg_walk_ac": "variable.is_first_person && variable.rpg"
-          },
-          {
-            "rpg_tp": "variable.rpg && variable.is_third_person"
-          },
-          {
-            "deagle_fp": "variable.is_first_person && variable.deagle"
-          },
-          {
-            "deagle_walk_ac": "variable.is_first_person && variable.deagle"
-          },
-          {
-            "deagle_tp": "variable.deagle && variable.is_third_person"
-          },
-          {
-            "m107_fp": "variable.is_first_person && variable.m107"
-          },
-          {
-            "m107_walk_ac": "variable.is_first_person && variable.m107"
-          },
-          {
-            "m107_tp": "variable.m107 && variable.is_third_person"
-          },
-          {
-            "deagleg_fp": "variable.is_first_person && variable.deagleg"
-          },
-          {
-            "deagleg_walk_ac": "variable.is_first_person && variable.deagleg"
-          },
-          {
-            "deagleg_tp": "variable.deagleg && variable.is_third_person"
-          },
-          {
-            "hk416_fp": "variable.is_first_person"
-          },
-          {
-            "hk416_walk_ac": "variable.is_first_person"
-          },
-          {
-            "hk416_tp": "variable.hk416 && variable.is_third_person"
-          },
-          {
-            "g3_fp": "variable.is_first_person && variable.g3"
-          },
-          {
-            "g3_walk_ac": "variable.is_first_person && variable.g3"
-          },
-          {
-            "g3_tp": "variable.g3 && variable.is_third_person"
-          },
-          {
-            "fal_fp": "variable.is_first_person && variable.fal"
-          },
-          {
-            "fal_walk_ac": "variable.is_first_person && variable.fal"
-          },
-          {
-            "fal_tp": "variable.fal && variable.is_third_person"
-          },
-          {
-            "p90_fp": "variable.is_first_person && variable.p90"
-          },
-          {
-            "p90_walk_ac": "variable.is_first_person && variable.p90"
-          },
-          {
-            "p90_tp": "variable.p90 && variable.is_third_person"
-          },
-          {
-            "scarh_fp": "variable.is_first_person && variable.scarh"
-          },
-          {
-            "scarh_walk_ac": "variable.is_first_person && variable.scarh"
-          },
-          {
-            "scarh_tp": "variable.scarh && variable.is_third_person"
-          },
-          {
-            "scarl_fp": "variable.is_first_person && variable.scarl"
-          },
-          {
-            "scarl_walk_ac": "variable.is_first_person && variable.scarl"
-          },
-          {
-            "scarl_tp": "variable.scarl && variable.is_third_person"
-          },
-          {
-            "g36_fp": "variable.is_first_person && variable.g36"
-          },
-          {
-            "g36_walk_ac": "variable.is_first_person && variable.g36"
-          },
-          {
-            "g36_tp": "variable.g36 && variable.is_third_person"
-          },
-          {
-            "akm_fp": "variable.is_first_person && variable.akm"
-          },
-          {
-            "akm_walk_ac": "variable.is_first_person && variable.akm"
-          },
-          {
-            "akm_tp": "variable.akm && variable.is_third_person"
-          },
-          {
-            "m4a1_fp": "variable.is_first_person && variable.m4a1"
-          },
-          {
-            "m4a1_walk_ac": "variable.is_first_person && variable.m4a1"
-          },
-          {
-            "m4a1_tp": "variable.m4a1 && variable.is_third_person"
-          },
-          {
-            "uzi_fp": "variable.is_first_person && variable.uzi"
-          },
-          {
-            "uzi_walk_ac": "variable.is_first_person && variable.uzi"
-          },
-          {
-            "uzi_tp": "variable.uzi && variable.is_third_person"
-          },
-          {
-            "db_fp": "variable.is_first_person && variable.db"
-          },
-          {
-            "db_walk_ac": "variable.is_first_person && variable.db"
-          },
-          {
-            "db_tp": "variable.db && variable.is_third_person"
-          },
-          {
-            "m1911_fp": "variable.is_first_person && variable.m1911"
-          },
-          {
-            "m1911_walk_ac": "variable.is_first_person && variable.m1911"
-          },
-          {
-            "m1911_tp": "variable.m1911 && variable.is_third_person"
-          },
-          {
-            "m870_fp": "variable.is_first_person && variable.m870"
-          },
-          {
-            "m870_walk_ac": "variable.is_first_person && variable.m870"
-          },
-          {
-            "m870_tp": "variable.m870 && variable.is_third_person"
-          },
-          {
-            "ump_tp": "variable.ump && variable.is_third_person"
-          },
-          {
-            "ump_walk_ac": "variable.is_first_person && variable.ump"
-          },
-          {
-            "ump_fp": "variable.is_first_person"
-          },
-          {
-            "qbz95_tp": "variable.qbz95 && variable.is_third_person"
-          },
-          {
-            "qbz95_walk_ac": "variable.is_first_person && variable.qbz95"
-          },
-          {
-            "qbz95_fp": "variable.is_first_person"
-          },
-          {
-            "b93_tp": "variable.b93 && variable.is_third_person"
-          },
-          {
-            "b93_walk_ac": "variable.is_first_person && variable.b93"
-          },
-          {
-            "b93_fp": "variable.is_first_person"
-          },
-          {
-            "sks_tp": "variable.sks && variable.is_third_person"
-          },
-          {
-            "sks_walk_ac": "variable.is_first_person && variable.sks"
-          },
-          {
-            "sks_fp": "variable.is_first_person"
-          },
-          {
-            "t50_tp": "v.t50 && v.is_third_person"
-          },
-          {
-            "t50_walk_ac": "variable.is_first_person && variable.t50"
-          },
-          {
-            "t50_fp": "v.is_first_person"
-          },
-          {
-            "m1014_tp": "v.m1014 && v.is_third_person"
-          },
-          {
-            "m1014_walk_ac": "variable.is_first_person && variable.m1014"
-          },
-          {
-            "m1014_fp": "v.is_first_person"
-          },
-          {
-            "cp_tp": "v.cp && v.is_third_person"
-          },
-          {
-            "cp_walk_ac": "variable.is_first_person && variable.cp"
-          },
-          {
-            "cp_fp": "v.is_first_person"
-          },
-          {
-            "qbz191_tp": "v.qbz191 && v.is_third_person"
-          },
-          {
-            "qbz191_walk_ac": "variable.is_first_person && variable.qbz191"
-          },
-          {
-            "qbz191_fp": "v.is_first_person"
-          },
-          {
-            "p320_tp": "v.p320 && v.is_third_person"
-          },
-          {
-            "p320_walk_ac": "variable.is_first_person && variable.p320"
-          },
-          {
-            "p320_fp": "v.is_first_person"
-          },
-          {
-            "mk14_tp": "v.mk14 && v.is_third_person"
-          },
-          {
-            "mk14_walk_ac": "variable.is_first_person && variable.mk14"
-          },
-          {
-            "mk14_fp": "v.is_first_person"
-          },
-          {
-            "evolys_tp": "v.evolys && v.is_third_person"
-          },
-          {
-            "evolys_walk_ac": "variable.is_first_person && variable.evolys"
-          },
-          {
-            "evolys_fp": "v.is_first_person"
-          },
-          {
-            "m249_tp": "v.m249 && v.is_third_person"
-          },
-          {
-            "m249_walk_ac": "variable.is_first_person && variable.m249"
-          },
-          {
-            "m249_fp": "v.is_first_person"
-          },
-          {
-            "type81_tp": "v.type81 && v.is_third_person"
-          },
-          {
-            "type81_walk_ac": "variable.is_first_person && variable.type81"
-          },
-          {
-            "type81_fp": "v.is_first_person"
-          }
+          {"draw": "variable.is_first_person"},
+          {"m16a1_fp": "variable.is_first_person && variable.m16a1"},
+          {"m16a1_walk_ac": "variable.m16a1 && variable.is_first_person"},
+          {"m16_fp": "variable.is_first_person && variable.m16"},
+          {"m16_walk_ac": "variable.m16 && variable.is_first_person"},
+          {"m16a1_tp": "variable.m16a1 && variable.is_third_person"},
+          {"m16_tp": "variable.m16 && variable.is_third_person"},
+          {"vector_fp": "variable.is_first_person && variable.vector"},
+          {"vector_walk_ac": "variable.is_first_person && variable.vector"},
+          {"vector_tp": "variable.vector && variable.is_third_person"},
+          {"g18_fp": "variable.is_first_person && variable.g18"},
+          {"g18_walk_ac": "variable.is_first_person && variable.g18"},
+          {"g18_tp": "variable.g18 && variable.is_third_person"},
+          {"g17_fp": "variable.is_first_person && variable.g17"},
+          {"g17_walk_ac": "variable.is_first_person && variable.g17"},
+          {"g17_tp": "variable.g17 && variable.is_third_person"},
+          {"minigun_fp": "variable.is_first_person && variable.minigun"},
+          {"minigun_walk_ac": "variable.is_first_person && variable.minigun"},
+          {"minigun_tp": "variable.minigun && variable.is_third_person"},
+          {"saiga12_fp": "variable.is_first_person && variable.saiga12"},
+          {"saiga12_walk_ac": "variable.is_first_person && variable.saiga12"},
+          {"saiga12_tp": "variable.saiga12 && variable.is_third_person"},
+          {"aa12_fp": "variable.is_first_person && variable.aa12"},
+          {"aa12_walk_ac": "variable.is_first_person && variable.aa12"},
+          {"aa12_tp": "variable.aa12 && variable.is_third_person"},
+          {"awp_fp": "variable.is_first_person && variable.awp"},
+          {"awp_walk_ac": "variable.is_first_person && variable.awp"},
+          {"awp_tp": "variable.awp && variable.is_third_person"},
+          {"mp5_fp": "variable.is_first_person && variable.mp5"},
+          {"mp5_walk_ac": "variable.is_first_person && variable.mp5"},
+          {"mp5_tp": "variable.mp5 && variable.is_third_person"},
+          {"mp7_fp": "variable.is_first_person && variable.mp7"},
+          {"mp7_walk_ac": "variable.is_first_person && variable.mp7"},
+          {"mp7_tp": "variable.mp7 && variable.is_third_person"},
+          {"rpg_fp": "variable.is_first_person && variable.rpg"},
+          {"rpg_walk_ac": "variable.is_first_person && variable.rpg"},
+          {"rpg_tp": "variable.rpg && variable.is_third_person"},
+          {"deagle_fp": "variable.is_first_person && variable.deagle"},
+          {"deagle_walk_ac": "variable.is_first_person && variable.deagle"},
+          {"deagle_tp": "variable.deagle && variable.is_third_person"},
+          {"m107_fp": "variable.is_first_person && variable.m107"},
+          {"m107_walk_ac": "variable.is_first_person && variable.m107"},
+          {"m107_tp": "variable.m107 && variable.is_third_person"},
+          {"deagleg_fp": "variable.is_first_person && variable.deagleg"},
+          {"deagleg_walk_ac": "variable.is_first_person && variable.deagleg"},
+          {"deagleg_tp": "variable.deagleg && variable.is_third_person"},
+          {"hk416_fp": "variable.is_first_person"},
+          {"hk416_walk_ac": "variable.is_first_person"},
+          {"hk416_tp": "variable.hk416 && variable.is_third_person"},
+          {"g3_fp": "variable.is_first_person && variable.g3"},
+          {"g3_walk_ac": "variable.is_first_person && variable.g3"},
+          {"g3_tp": "variable.g3 && variable.is_third_person"},
+          {"fal_fp": "variable.is_first_person && variable.fal"},
+          {"fal_walk_ac": "variable.is_first_person && variable.fal"},
+          {"fal_tp": "variable.fal && variable.is_third_person"},
+          {"p90_fp": "variable.is_first_person && variable.p90"},
+          {"p90_walk_ac": "variable.is_first_person && variable.p90"},
+          {"p90_tp": "variable.p90 && variable.is_third_person"},
+          {"scarh_fp": "variable.is_first_person && variable.scarh"},
+          {"scarh_walk_ac": "variable.is_first_person && variable.scarh"},
+          {"scarh_tp": "variable.scarh && variable.is_third_person"},
+          {"scarl_fp": "variable.is_first_person && variable.scarl"},
+          {"scarl_walk_ac": "variable.is_first_person && variable.scarl"},
+          {"scarl_tp": "variable.scarl && variable.is_third_person"},
+          {"g36_fp": "variable.is_first_person && variable.g36"},
+          {"g36_walk_ac": "variable.is_first_person && variable.g36"},
+          {"g36_tp": "variable.g36 && variable.is_third_person"},
+          {"akm_fp": "variable.is_first_person && variable.akm"},
+          {"akm_walk_ac": "variable.is_first_person && variable.akm"},
+          {"akm_tp": "variable.akm && variable.is_third_person"},
+          {"m4a1_fp": "variable.is_first_person && variable.m4a1"},
+          {"m4a1_walk_ac": "variable.is_first_person && variable.m4a1"},
+          {"m4a1_tp": "variable.m4a1 && variable.is_third_person"},
+          {"uzi_fp": "variable.is_first_person && variable.uzi"},
+          {"uzi_walk_ac": "variable.is_first_person && variable.uzi"},
+          {"uzi_tp": "variable.uzi && variable.is_third_person"},
+          {"db_fp": "variable.is_first_person && variable.db"},
+          {"db_walk_ac": "variable.is_first_person && variable.db"},
+          {"db_tp": "variable.db && variable.is_third_person"},
+          {"m1911_fp": "variable.is_first_person && variable.m1911"},
+          {"m1911_walk_ac": "variable.is_first_person && variable.m1911"},
+          {"m1911_tp": "variable.m1911 && variable.is_third_person"},
+          {"m870_fp": "variable.is_first_person && variable.m870"},
+          {"m870_walk_ac": "variable.is_first_person && variable.m870"},
+          {"m870_tp": "variable.m870 && variable.is_third_person"},
+          {"ump_tp": "variable.ump && variable.is_third_person"},
+          {"ump_walk_ac": "variable.is_first_person && variable.ump"},
+          {"ump_fp": "variable.is_first_person"},
+          {"qbz95_tp": "variable.qbz95 && variable.is_third_person"},
+          {"qbz95_walk_ac": "variable.is_first_person && variable.qbz95"},
+          {"qbz95_fp": "variable.is_first_person"},
+          {"b93_tp": "variable.b93 && variable.is_third_person"},
+          {"b93_walk_ac": "variable.is_first_person && variable.b93"},
+          {"b93_fp": "variable.is_first_person"},
+          {"sks_tp": "variable.sks && variable.is_third_person"},
+          {"sks_walk_ac": "variable.is_first_person && variable.sks"},
+          {"sks_fp": "variable.is_first_person"},
+          {"t50_tp": "v.t50 && v.is_third_person"},
+          {"t50_walk_ac": "variable.is_first_person && variable.t50"},
+          {"t50_fp": "v.is_first_person"},
+          {"m1014_tp": "v.m1014 && v.is_third_person"},
+          {"m1014_walk_ac": "variable.is_first_person && variable.m1014"},
+          {"m1014_fp": "v.is_first_person"},
+          {"cp_tp": "v.cp && v.is_third_person"},
+          {"cp_walk_ac": "variable.is_first_person && variable.cp"},
+          {"cp_fp": "v.is_first_person"},
+          {"qbz191_tp": "v.qbz191 && v.is_third_person"},
+          {"qbz191_walk_ac": "variable.is_first_person && variable.qbz191"},
+          {"qbz191_fp": "v.is_first_person"},
+          {"p320_tp": "v.p320 && v.is_third_person"},
+          {"p320_walk_ac": "variable.is_first_person && variable.p320"},
+          {"p320_fp": "v.is_first_person"},
+          {"mk14_tp": "v.mk14 && v.is_third_person"},
+          {"mk14_walk_ac": "variable.is_first_person && variable.mk14"},
+          {"mk14_fp": "v.is_first_person"},
+          {"evolys_tp": "v.evolys && v.is_third_person"},
+          {"evolys_walk_ac": "variable.is_first_person && variable.evolys"},
+          {"evolys_fp": "v.is_first_person"},
+          {"m249_tp": "v.m249 && v.is_third_person"},
+          {"m249_walk_ac": "variable.is_first_person && variable.m249"},
+          {"m249_fp": "v.is_first_person"},
+          {"type81_tp": "v.type81 && v.is_third_person"},
+          {"type81_walk_ac": "variable.is_first_person && variable.type81"},
+          {"type81_fp": "v.is_first_person"}
         ],
         "should_update_effects_offscreen": "1.0"
       },
@@ -2013,8 +1765,6 @@
         "mk14.reload4": "mk14.reload4",
         "mk14.tac1": "mk14.tac1",
         "mk14.tac2": "mk14.tac2",
-        "cloth_move_3": "cloth_move_3",
-        "cloth_move_4": "cloth_move_4",
         "qbz191_cloth_move_4": "qbz191_cloth_move_4",
         "qbz191_hit": "qbz191_hit",
         "qbz191_magdrop": "qbz191_magdrop",
@@ -2053,9 +1803,7 @@
         {
           "controller.render.player.first_person": "variable.is_first_person && !variable.holding_all_guns"
         },
-        {
-          "controller.render.player.third_person": "variable.is_third_person"
-        },
+        {"controller.render.player.third_person": "variable.is_third_person"},
         {
           "controller.render.player.universal.first_person": "variable.is_first_person && (variable.m16a1 || variable.m16)"
         },
@@ -2137,159 +1885,57 @@
         {
           "controller.render.player.universal26.first_person": "variable.is_first_person && variable.sks"
         },
-        {
-          "controller.render.player.universal27.first_person": "variable.is_first_person && v.t50"
-        },
-        {
-          "controller.render.player.universal28.first_person": "variable.is_first_person && v.cp"
-        },
-        {
-          "controller.render.player.universal29.first_person": "variable.is_first_person && v.type81"
-        },
-        {
-          "controller.render.player.universal30.first_person": "variable.is_first_person && v.p320"
-        },
-        {
-          "controller.render.player.universal31.first_person": "variable.is_first_person && v.mk14"
-        },
-        {
-          "controller.render.player.universal34.first_person": "variable.is_first_person && v.qbz191"
-        },
-        {
-          "controller.render.player.universal35.first_person": "variable.is_first_person && v.m1014"
-        },
-        {
-          "controller.render.m870": "variable.m870"
-        },
-        {
-          "controller.render.scarl": "variable.scarl"
-        },
-        {
-          "controller.render.uzi": "variable.uzi"
-        },
-        {
-          "controller.render.db": "variable.db"
-        },
-        {
-          "controller.render.akm": "variable.akm"
-        },
-        {
-          "controller.render.saiga12": "variable.saiga12"
-        },
-        {
-          "controller.render.m4a1": "variable.m4a1"
-        },
-        {
-          "controller.render.m1911": "variable.m1911"
-        },
-        {
-          "controller.render.g17": "variable.g17"
-        },
-        {
-          "controller.render.g18": "variable.g18"
-        },
-        {
-          "controller.render.m16a1": "variable.m16a1"
-        },
-        {
-          "controller.render.m16": "variable.m16"
-        },
-        {
-          "controller.render.mp7": "variable.mp7"
-        },
-        {
-          "controller.render.vector": "variable.vector"
-        },
-        {
-          "controller.render.aa12": "variable.aa12"
-        },
-        {
-          "controller.render.mp5": "variable.mp5"
-        },
-        {
-          "controller.render.rpg": "variable.rpg"
-        },
-        {
-          "controller.render.deagle": "variable.deagle"
-        },
-        {
-          "controller.render.m107": "variable.m107"
-        },
-        {
-          "controller.render.deagleg": "variable.deagleg"
-        },
-        {
-          "controller.render.hk416": "variable.hk416"
-        },
-        {
-          "controller.render.g3": "variable.g3"
-        },
-        {
-          "controller.render.fal": "variable.fal"
-        },
-        {
-          "controller.render.awp": "variable.awp"
-        },
-        {
-          "controller.render.p90": "variable.p90"
-        },
-        {
-          "controller.render.scarh": "variable.scarh"
-        },
-        {
-          "controller.render.g36": "variable.g36"
-        },
-        {
-          "controller.render.minigun": "variable.minigun"
-        },
-        {
-          "controller.render.player.map": "variable.map_face_icon"
-        },
-        {
-          "controller.render.ump": "variable.ump"
-        },
-        {
-          "controller.render.qbz95": "variable.qbz95"
-        },
-        {
-          "controller.render.b93": "variable.b93"
-        },
-        {
-          "controller.render.sks": "variable.sks"
-        },
-        {
-          "controller.render.t50": "variable.t50"
-        },
-        {
-          "controller.render.m1014": "variable.m1014"
-        },
-        {
-          "controller.render.cp": "variable.cp"
-        },
-        {
-          "controller.render.qbz191": "variable.qbz191"
-        },
-        {
-          "controller.render.p320": "variable.p320"
-        },
-        {
-          "controller.render.mk14": "variable.mk14"
-        },
-        {
-          "controller.render.player.universal32.first_person": "variable.is_first_person && v.evolys"
-        },
-        {
-          "controller.render.evolys": "variable.evolys"
-        },
-        {
-          "controller.render.player.universal33.first_person": "variable.is_first_person && v.m249"
-        },
-        {
-          "controller.render.m249": "variable.m249"
-        },
-        {
-          "controller.render.type81": "variable.type81"
-        }
+        {"controller.render.player.universal27.first_person": "variable.is_first_person && v.t50"},
+        {"controller.render.player.universal28.first_person": "variable.is_first_person && v.cp"},
+        {"controller.render.player.universal29.first_person": "variable.is_first_person && v.type81"},
+        {"controller.render.player.universal30.first_person": "variable.is_first_person && v.p320"},
+        {"controller.render.player.universal31.first_person": "variable.is_first_person && v.mk14"},
+        {"controller.render.player.universal34.first_person": "variable.is_first_person && v.qbz191"},
+        {"controller.render.player.universal35.first_person": "variable.is_first_person && v.m1014"},
+        {"controller.render.m870": "variable.m870"},
+        {"controller.render.scarl": "variable.scarl"},
+        {"controller.render.uzi": "variable.uzi"},
+        {"controller.render.db": "variable.db"},
+        {"controller.render.akm": "variable.akm"},
+        {"controller.render.saiga12": "variable.saiga12"},
+        {"controller.render.m4a1": "variable.m4a1"},
+        {"controller.render.m1911": "variable.m1911"},
+        {"controller.render.g17": "variable.g17"},
+        {"controller.render.g18": "variable.g18"},
+        {"controller.render.m16a1": "variable.m16a1"},
+        {"controller.render.m16": "variable.m16"},
+        {"controller.render.mp7": "variable.mp7"},
+        {"controller.render.vector": "variable.vector"},
+        {"controller.render.aa12": "variable.aa12"},
+        {"controller.render.mp5": "variable.mp5"},
+        {"controller.render.rpg": "variable.rpg"},
+        {"controller.render.deagle": "variable.deagle"},
+        {"controller.render.m107": "variable.m107"},
+        {"controller.render.deagleg": "variable.deagleg"},
+        {"controller.render.hk416": "variable.hk416"},
+        {"controller.render.g3": "variable.g3"},
+        {"controller.render.fal": "variable.fal"},
+        {"controller.render.awp": "variable.awp"},
+        {"controller.render.p90": "variable.p90"},
+        {"controller.render.scarh": "variable.scarh"},
+        {"controller.render.g36": "variable.g36"},
+        {"controller.render.minigun": "variable.minigun"},
+        {"controller.render.player.map": "variable.map_face_icon"},
+        {"controller.render.ump": "variable.ump"},
+        {"controller.render.qbz95": "variable.qbz95"},
+        {"controller.render.b93": "variable.b93"},
+        {"controller.render.sks": "variable.sks"},
+        {"controller.render.t50": "variable.t50"},
+        {"controller.render.m1014": "variable.m1014"},
+        {"controller.render.cp": "variable.cp"},
+        {"controller.render.qbz191": "variable.qbz191"},
+        {"controller.render.p320": "variable.p320"},
+        {"controller.render.mk14": "variable.mk14"},
+        {"controller.render.player.universal32.first_person": "variable.is_first_person && v.evolys"},
+        {"controller.render.evolys": "variable.evolys"},
+        {"controller.render.player.universal33.first_person": "variable.is_first_person && v.m249"},
+        {"controller.render.m249": "variable.m249"},
+        {"controller.render.type81": "variable.type81"}
       ],
       "enable_attachables": true
     }
