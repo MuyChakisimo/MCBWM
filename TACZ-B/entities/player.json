@@ -10,8 +10,6 @@
       "properties": {
         "krep:movement": {"range": [0, 10], "default": 0, "type": "int", "client_sync": true},
         "krep:view": {"range": [0, 10], "default": 0, "type": "int", "client_sync": true},
-        "krep:hk416recoil": {"range": [0, 9999], "default": 0, "type": "int", "client_sync": true},
-        "krep:join": {"range": [0, 9], "default": 0, "type": "int", "client_sync": true},
         "krep:bulletcache": {"range": [0, 9999], "default": 0, "type": "int", "client_sync": true},
         "krep:bulletcachemk2": {"range": [0, 9999], "default": 0, "type": "int", "client_sync": true},
         "krep:stock": {"range": [0, 15], "default": 0, "type": "int", "client_sync": true},
@@ -19,7 +17,6 @@
         "krep:magazine": {"range": [0, 5], "default": 0, "type": "int", "client_sync": true},
         "krep:laser": {"range": [0, 15], "default": 0, "type": "int", "client_sync": true},
         "krep:muzzle": {"range": [0, 15], "default": 0, "type": "int", "client_sync": true},
-        "krep:akmrecoil": {"range": [0, 9999], "default": 0, "type": "int", "client_sync": true},
         "krep:akmscope": {
           "values": ["nothing", "elcan", "acog", "coyote", "okp7", "holo"],
           "default": "nothing",
@@ -41,7 +38,6 @@
           "type": "enum",
           "client_sync": true
         },
-        "krep:m4a1recoil": {"range": [0, 9999], "default": 0, "type": "int", "client_sync": true},
         "krep:m4a1scope": {
           "values": ["nothing", "elcan", "acog", "coyote", "t2", "holo"],
           "default": "nothing",
