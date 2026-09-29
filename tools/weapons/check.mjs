@@ -32,6 +32,9 @@ const itemTextures = parse(read("TACZ-R/textures/item_texture.json")).texture_da
 const lang = new Map(read("TACZ-R/texts/en_US.lang").split(/\r?\n/).map((l) => [l.split("=")[0], l.slice(l.indexOf("=") + 1)]));
 const player = parse(read("TACZ-B/entities/player.json"))["minecraft:entity"];
 
+// Vanilla Minecraft textures menus may use (not in the pack).
+const VANILLA_TEXTURES = new Set(["textures/blocks/barrier"]);
+
 const problems = [], warnings = [];
 const line = (id, msg, where) => `${id.padEnd(9)} ${msg}${where ? `  [${where}]` : ""}`;
 const bad = (...a) => problems.push(line(...a));
@@ -93,7 +96,7 @@ for (const id of Object.keys(ATTACHMENTS)) if (!WEAPONS[id]) bad(id, "has attach
 for (const id of Object.keys(RECOIL_ATTACHMENTS)) if (!WEAPONS[id]) bad(id, "has attachment recoil but is not in WEAPONS", "config/recoil.js");
 for (const [id, gun] of Object.entries(ATTACHMENTS))
   for (const [label, icon] of [...(gun.sights ?? []), ...(gun.slots ?? []).flatMap((s) => [[s.label, s.icon], ...(s.options ?? []), ...(s.sights ?? [])])])
-    if (icon && !fs.existsSync(path.join(root, "TACZ-R", icon + ".png"))) warn(id, `attachment icon ${icon}.png not found (${label})`, "config/attachments.js");
+    if (icon && !VANILLA_TEXTURES.has(icon) && !fs.existsSync(path.join(root, "TACZ-R", icon + ".png"))) warn(id, `attachment icon ${icon}.png not found (${label})`, "config/attachments.js");
 
 const guns = Object.keys(WEAPONS).length;
 console.log(`${guns} guns, ${Object.keys(AMMO).length} ammo types checked.`);

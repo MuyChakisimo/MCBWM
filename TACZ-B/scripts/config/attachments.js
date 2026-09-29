@@ -169,7 +169,7 @@ export const ATTACHMENTS = Object.freeze({
         property: "magazine",
         last: "back",
         options: [
-          ["No Extension", "textures/ui/new/magazinenone"],
+          ["No Extension", "textures/blocks/barrier"],
           ["Extended 1", "textures/ui/new/magazine1"],
           ["Extended 2", "textures/ui/new/magazine2"],
           ["Extended 3", "textures/ui/new/magazine3"],
@@ -452,7 +452,7 @@ export const ATTACHMENTS = Object.freeze({
         property: "magazine",
         last: "back",
         options: [
-          ["No Extension", "textures/ui/new/magazinenone"],
+          ["No Extension", "textures/blocks/barrier"],
           ["Extended 1", "textures/ui/new/magazine1"],
           ["Extended 2", "textures/ui/new/magazine2"],
           ["Extended 3", "textures/ui/new/magazine3"],
