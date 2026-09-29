@@ -1,0 +1,207 @@
+// Pack-wide reference check, run by check.mjs: everything the packs refer to must exist, and
+// (as warnings) everything they define should be used.
+//
+// Errors:
+//   - JSON files that don't parse
+//   - client entity / attachable: animations, geometry, textures, render controllers, particles and
+//     sound effects it names must exist; the short names its controllers and animations use
+//     (animations, sound_effects, particle_effects) must be in its own tables; render controllers
+//     it uses may only name its own Geometry./Texture./Material. entries
+//   - sound definitions must point at existing files; item/terrain textures must exist
+//   - behavior pack: player.json animations must exist, controllers may only use its short names,
+//     events and component groups named in events/controllers/functions must exist, /function
+//     targets must exist, playanimation / playsound / script playSound names must exist
+// Warnings: RP/BP animations, sound definitions and player events that nothing uses.
+const fs = require("fs");
+const path = require("path");
+const { parse, walk } = require("./lenient.cjs");
+
+// Vanilla Minecraft names the packs may use (not defined in the packs).
+const VANILLA = {
+  animations: /^(animation|controller\.animation)\.(player|humanoid|bow|crossbow|trident|shield|holding|skeleton|persona)\b/,
+  geometry: /^geometry\.(humanoid|cape|player)\b/,
+  renderControllers: /^controller\.render\.(player\.(first_person|third_person|map|cape|body_first_person|first_person_spectator|third_person_spectator)|item_default|armor)\b/,
+  textures: /^textures\/(misc|entity|items|blocks)\//,
+  sounds: /^(random|mob|step|dig|note|ambient|block|item|game|use|damage|fire|liquid)\./,
+  particles: /^minecraft:/,
+};
+// Events meant to be triggered by hand (/event entity @s m107:acog, see README).
+const MANUAL_EVENT = /^m107:/;
+
+function checkPack(root) {
+  const problems = [], warnings = [];
+  const err = (file, msg) => problems.push({ file, msg });
+  const warn = (file, msg) => warnings.push({ file, msg });
+  const rel = (f) => path.relative(root, f).split(path.sep).join("/");
+  const files = (dir) => walk(path.join(root, dir)).map(rel);
+  const json = new Map();
+  for (const f of [...files("TACZ-B"), ...files("TACZ-R")].filter((f) => f.endsWith(".json"))) {
+    try {
+      json.set(f, parse(fs.readFileSync(path.join(root, f), "utf8")));
+    } catch (e) {
+      err(f, `does not parse: ${e.message}`);
+    }
+  }
+  const under = (dir) => [...json].filter(([f]) => f.startsWith(dir + "/"));
+  // A path with or without its extension ("textures/gunsmith.png" or "textures/items/m4a1").
+  const exists = (p, exts) => [/\.\w+$/.test(p) ? "" : null, ...exts].some((x) => x !== null && fs.existsSync(path.join(root, "TACZ-R", p + x)));
+
+  // ---- Definitions
+  const rpAnims = new Map(); // id -> { file, anim }
+  for (const [f, j] of under("TACZ-R/animations")) for (const [id, a] of Object.entries(j.animations ?? {})) rpAnims.set(id, { file: f, anim: a });
+  const rpControllers = new Map();
+  for (const [f, j] of under("TACZ-R/animation_controllers")) for (const [id, c] of Object.entries(j.animation_controllers ?? {})) rpControllers.set(id, { file: f, ctrl: c });
+  const renderControllers = new Map();
+  for (const [f, j] of under("TACZ-R/render_controllers")) for (const [id, rc] of Object.entries(j.render_controllers ?? {})) renderControllers.set(id, { file: f, rc });
+  const geometry = new Set();
+  for (const [, j] of under("TACZ-R/models")) {
+    for (const g of j["minecraft:geometry"] ?? []) geometry.add(g.description?.identifier);
+    for (const k of Object.keys(j)) if (k.startsWith("geometry.")) geometry.add(k.split(":")[0]);
+  }
+  const particles = new Set(under("TACZ-R/particles").map(([, j]) => j.particle_effect?.description?.identifier));
+  const soundDefs = json.get("TACZ-R/sounds/sound_definitions.json") ?? {};
+  const bpAnims = new Map();
+  for (const [f, j] of under("TACZ-B/animations")) for (const id of Object.keys(j.animations ?? {})) bpAnims.set(id, f);
+  const bpControllers = new Map();
+  for (const [f, j] of under("TACZ-B/animation_controllers")) for (const [id, c] of Object.entries(j.animation_controllers ?? {})) bpControllers.set(id, { file: f, ctrl: c });
+  const functions = new Set(files("TACZ-B/functions").filter((f) => f.endsWith(".mcfunction")).map((f) => f.slice("TACZ-B/functions/".length, -".mcfunction".length)));
+
+  const usedRpAnims = new Set(), usedSounds = new Set(), usedBpAnims = new Set();
+  const useSound = (name, file, where) => {
+    usedSounds.add(name);
+    if (!soundDefs[name] && !VANILLA.sounds.test(name)) err(file, `${where}: sound "${name}" has no sound definition`);
+  };
+
+  // ---- Client entities and attachables
+  const clients = [...under("TACZ-R/entity"), ...under("TACZ-R/attachables")]
+    .map(([f, j]) => [f, (j["minecraft:client_entity"] ?? j["minecraft:attachable"])?.description])
+    .filter(([, d]) => d);
+  for (const [f, d] of clients) {
+    const anims = d.animations ?? {}, sfx = d.sound_effects ?? {}, pfx = d.particle_effects ?? {};
+    for (const [short, id] of Object.entries(anims)) {
+      if (rpAnims.has(id) || rpControllers.has(id)) usedRpAnims.add(id);
+      else if (!VANILLA.animations.test(id)) err(f, `animation "${short}": ${id} is not defined`);
+    }
+    for (const [short, id] of Object.entries(d.geometry ?? {})) if (!geometry.has(id) && !VANILLA.geometry.test(id)) err(f, `geometry "${short}": ${id} is not defined`);
+    for (const [short, p] of Object.entries(d.textures ?? {}))
+      if (!exists(p, [".png", ".tga"]) && !VANILLA.textures.test(p) && p !== "textures/nothing") err(f, `texture "${short}": ${p} not found`);
+    for (const [short, id] of Object.entries(pfx)) if (!particles.has(id) && !VANILLA.particles.test(id) && id !== "krep:nothin") err(f, `particle "${short}": ${id} is not defined`);
+    for (const [short, name] of Object.entries(sfx)) useSound(name, f, `sound effect "${short}"`);
+
+    // Short names used by this entity's animations/controllers must be in its own tables.
+    const shorts = new Set(Object.keys(anims));
+    const checkShort = (list, where) => {
+      for (const a of list ?? []) {
+        const name = typeof a === "string" ? a : Object.keys(a)[0];
+        if (!shorts.has(name)) err(f, `${where}: "${name}" is not in this entity's animations`);
+      }
+    };
+    checkShort(d.scripts?.animate, "scripts.animate");
+    for (const id of Object.values(anims)) {
+      const c = rpControllers.get(id);
+      if (c) for (const [state, s] of Object.entries(c.ctrl.states ?? {})) {
+        checkShort(s.animations, `${id} state ${state}`);
+        for (const x of s.sound_effects ?? []) if (!sfx[x.effect]) err(c.file, `${id} state ${state}: sound effect "${x.effect}" is not in ${f}'s sound_effects`);
+        for (const x of s.particle_effects ?? []) if (!pfx[x.effect]) err(c.file, `${id} state ${state}: particle "${x.effect}" is not in ${f}'s particle_effects`);
+      }
+      const a = rpAnims.get(id);
+      if (a) {
+        for (const fx of Object.values(a.anim.sound_effects ?? {}))
+          for (const x of [].concat(fx)) if (!sfx[x.effect]) err(a.file, `${id}: sound effect "${x.effect}" is not in ${f}'s sound_effects`);
+        for (const fx of Object.values(a.anim.particle_effects ?? {}))
+          for (const x of [].concat(fx)) if (!pfx[x.effect]) err(a.file, `${id}: particle "${x.effect}" is not in ${f}'s particle_effects`);
+      }
+    }
+    for (const rc of d.render_controllers ?? []) {
+      const id = typeof rc === "string" ? rc : Object.keys(rc)[0];
+      const def = renderControllers.get(id);
+      if (!def) {
+        if (!VANILLA.renderControllers.test(id)) err(f, `render controller ${id} is not defined`);
+        continue;
+      }
+      const text = JSON.stringify(def.rc);
+      for (const [, kind, name] of text.matchAll(/\b(Geometry|Texture|Material)\.([\w.]+)/gi)) {
+        const table = { geometry: d.geometry, texture: d.textures, material: d.materials }[kind.toLowerCase()] ?? {};
+        if (!(name in table) && !(def.rc.arrays && JSON.stringify(def.rc.arrays).includes(`${kind}.${name}`)))
+          err(def.file, `${id}: ${kind}.${name} is not in ${f}'s ${kind.toLowerCase()} table`);
+      }
+    }
+  }
+
+  // ---- Sounds and textures
+  for (const [name, def] of Object.entries(soundDefs))
+    for (const s of def.sounds ?? []) {
+      const p = typeof s === "string" ? s : s.name;
+      if (!exists(p, [".ogg", ".wav", ".fsb"])) err("TACZ-R/sounds/sound_definitions.json", `"${name}": file ${p} not found`);
+    }
+  for (const f of ["TACZ-R/textures/item_texture.json", "TACZ-R/textures/terrain_texture.json"]) {
+    for (const [name, t] of Object.entries(json.get(f)?.texture_data ?? {}))
+      for (const p of [].concat(t.textures)) if (!exists(typeof p === "string" ? p : p.path, [".png", ".tga"])) err(f, `"${name}": ${JSON.stringify(p)} not found`);
+  }
+
+  // ---- Behavior pack
+  const PJ = "TACZ-B/entities/player.json";
+  const player = json.get(PJ)?.["minecraft:entity"];
+  const events = new Set(Object.keys(player?.events ?? {})), groups = new Set(Object.keys(player?.component_groups ?? {}));
+  const bpMap = player?.description?.animations ?? {};
+  for (const [short, id] of Object.entries(bpMap)) {
+    if (bpAnims.has(id)) usedBpAnims.add(id);
+    else if (!bpControllers.has(id)) err(PJ, `animation "${short}": ${id} is not defined`);
+  }
+  for (const a of player?.description?.scripts?.animate ?? []) {
+    const name = typeof a === "string" ? a : Object.keys(a)[0];
+    if (!(name in bpMap)) err(PJ, `scripts.animate: "${name}" is not in animations`);
+  }
+  for (const id of Object.values(bpMap)) {
+    const c = bpControllers.get(id);
+    if (c) for (const [state, s] of Object.entries(c.ctrl.states ?? {})) for (const a of s.animations ?? []) {
+      const name = typeof a === "string" ? a : Object.keys(a)[0];
+      if (!(name in bpMap)) err(c.file, `${id} state ${state}: "${name}" is not in player.json animations`);
+    }
+  }
+  for (const [ev, body] of Object.entries(player?.events ?? {})) {
+    if (ev.startsWith("minecraft:")) continue; // vanilla player events
+    const text = JSON.stringify(body);
+    for (const m of text.matchAll(/"(?:add|remove)":\{"component_groups":\[([^\]]*)\]/g))
+      for (const g of m[1].match(/"[^"]+"/g) ?? []) if (!groups.has(JSON.parse(g))) err(PJ, `event ${ev}: component group ${g} does not exist`);
+  }
+  // Commands anywhere in the behavior pack.
+  const triggered = new Set();
+  const commandSources = [
+    ...[...json].filter(([f]) => f.startsWith("TACZ-B/")).map(([f, j]) => [f, JSON.stringify(j)]),
+    ...files("TACZ-B/functions").filter((f) => f.endsWith(".mcfunction")).map((f) => [f, fs.readFileSync(path.join(root, f), "utf8")]),
+  ];
+  for (const [f, text] of commandSources) {
+    for (const m of text.matchAll(/(?:^|["\s/])function ([\w/]+)/gm)) if (!functions.has(m[1])) err(f, `function ${m[1]} does not exist`);
+    for (const m of text.matchAll(/"@s ([\w:.]+)"|event entity @\w(?:\[[^\]]*\])? ([\w:.]+)/g)) {
+      const ev = m[1] ?? m[2];
+      triggered.add(ev);
+      if (!events.has(ev)) err(f, `event ${ev} does not exist in player.json`);
+    }
+    for (const m of text.matchAll(/playanimation @\S+ (animation\.[\w.]+)/g)) {
+      usedRpAnims.add(m[1]);
+      if (!rpAnims.has(m[1])) err(f, `playanimation ${m[1]} is not defined in the resource pack`);
+    }
+    for (const m of text.matchAll(/playsound ([\w.:/-]+)/g)) useSound(m[1], f, "playsound");
+    for (const m of text.matchAll(/stopsound @\S+ ([\w.:/-]+)/g)) usedSounds.add(m[1]);
+  }
+  for (const f of files("TACZ-B/scripts").filter((f) => f.endsWith(".js"))) {
+    const text = fs.readFileSync(path.join(root, f), "utf8");
+    for (const m of text.matchAll(/playSound\("([^"]+)"/g)) useSound(m[1], f, "playSound");
+    // Sounds chosen in code (playSound(headshot ? "a" : "b")): a string naming a sound counts as played.
+    for (const m of text.matchAll(/"([\w.:/-]+)"/g)) if (soundDefs[m[1]]) usedSounds.add(m[1]);
+    for (const m of text.matchAll(/event entity @s ([\w:.]+)/g)) triggered.add(m[1]);
+    for (const m of text.matchAll(/"([a-z0-9_]+:[a-z0-9_]+)"/g)) triggered.add(m[1]); // sight events in config
+  }
+  const eventText = JSON.stringify(player?.events ?? {}) + JSON.stringify(player?.components ?? {}) + JSON.stringify(player?.component_groups ?? {});
+  for (const ev of events)
+    if (!ev.startsWith("minecraft:") && !MANUAL_EVENT.test(ev) && !triggered.has(ev) && !eventText.includes(`"${ev}"`)) warn(PJ, `event ${ev} is never triggered`);
+
+  // ---- Unused (warnings)
+  for (const [id, { file }] of rpAnims) if (!usedRpAnims.has(id)) warn(file, `${id} is never used`);
+  for (const [id, { file }] of rpControllers) if (!usedRpAnims.has(id)) warn(file, `${id} is never used`);
+  for (const [id, file] of bpAnims) if (!usedBpAnims.has(id)) warn(file, `${id} is never used`);
+  for (const name of Object.keys(soundDefs)) if (!usedSounds.has(name)) warn("TACZ-R/sounds/sound_definitions.json", `sound "${name}" is never played`);
+  return { problems, warnings };
+}
+module.exports = { checkPack };

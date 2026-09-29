@@ -2213,12 +2213,6 @@
       "sounds/g36/magout"
     ]
   },
-  "g36.magoutins": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/g36/magout"
-    ]
-  },
   "g36.magouttac": {
     "category": "hostile",
     "sounds": [
@@ -3094,22 +3088,10 @@
       "sounds/awp/rattletac"
     ]
   },
-  "awp.rechamberin": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/awp/rechamberin"
-    ]
-  },
   "awp.rechamberinbolt": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/rechamberinbolt"
-    ]
-  },
-  "awp.rechamberout": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/awp/rechamberout"
     ]
   },
   "awp.rechamberoutbolt": {
@@ -3655,12 +3637,6 @@
     "category": "hostile",
     "sounds": [
       "sounds/mp5/magin1"
-    ]
-  },
-  "mp5.maginins": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/mp5/maginins"
     ]
   },
   "mp5.magintac": {
@@ -4357,6 +4333,12 @@
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_inspect_end"
+    ]
+  },
+  "sks.suppress": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/sks/sks_silence"
     ]
   }
 }

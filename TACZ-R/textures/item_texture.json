@@ -35,7 +35,6 @@
     "9mm": {"textures": "textures/items/9mm"},
     "db": {"textures": "textures/items/db"},
     "deagle": {"textures": "textures/items/deagle"},
-    "127mm": {"textures": "textures/items/127mm"},
     "scarh": {"textures": "textures/items/scarh"},
     "scarl": {"textures": "textures/items/scarl"},
     "mp5": {"textures": "textures/items/mp5"},

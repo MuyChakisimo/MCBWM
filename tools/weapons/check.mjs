@@ -4,12 +4,17 @@
 // For each gun it checks: BP items krep:<id> / krep:<id>_emp, RP attachables, icon, name and
 // lore text, magazine size and ammo item (functions/<id>*.mcfunction), and that the fire event
 // in entities/player.json runs the hitscan scriptevent (and spawns nothing).
+//
+// Then, for the whole pack (refs.cjs): every animation, controller, model, texture, particle,
+// sound, function and event something refers to exists (errors), and what is never used
+// (warnings, listed with --unused).
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
 const require = createRequire(import.meta.url);
 const { loadAll, parse } = require("./lenient.cjs");
+const { checkPack } = require("./refs.cjs");
 
 const root = process.cwd();
 const cfg = (f) => import(pathToFileURL(path.join(root, "TACZ-B/scripts/config", f)).href);
@@ -98,12 +103,23 @@ for (const [id, gun] of Object.entries(ATTACHMENTS))
   for (const [label, icon] of [...(gun.sights ?? []), ...(gun.slots ?? []).flatMap((s) => [[s.label, s.icon], ...(s.options ?? []), ...(s.sights ?? [])])])
     if (icon && !VANILLA_TEXTURES.has(icon) && !fs.existsSync(path.join(root, "TACZ-R", icon + ".png"))) warn(id, `attachment icon ${icon}.png not found (${label})`, "config/attachments.js");
 
+// Pack-wide references (refs.cjs): everything referenced exists; unused things are listed.
+const pack = checkPack(root);
+for (const p of pack.problems) problems.push(`${p.file}: ${p.msg}`);
+const unused = pack.warnings.map((w) => `${w.file}: ${w.msg}`);
+
 const guns = Object.keys(WEAPONS).length;
-console.log(`${guns} guns, ${Object.keys(AMMO).length} ammo types checked.`);
+console.log(`${guns} guns, ${Object.keys(AMMO).length} ammo types and all pack references checked.`);
 if (warnings.length) {
   console.log(`
 ${warnings.length} warning(s) (missing assets, the game shows a blank icon):`);
   for (const w of warnings) console.log("  " + w);
+}
+if (unused.length) {
+  const all = process.argv.includes("--unused");
+  console.log(`
+${unused.length} unused definition(s)${all ? ":" : " (run with --unused to list them)"}`);
+  if (all) for (const u of unused) console.log("  " + u);
 }
 if (problems.length) {
   console.log(`\n${problems.length} problem(s):`);
