@@ -12,5 +12,5 @@ Working rules:
 - Run `node tools/weapons/check.mjs` before committing; it must print `Everything matches.`
 - Bump the pack version in both manifests and the README whenever the packs change.
 - One commit per step; end commit messages with the attribution line.
-- Verify tool changes in a scratch copy of the repo, not by adding test guns to the packs.
+- After changing a tool, run `node tools/weapons/test.mjs` (scratch copy; never add test guns to the packs).
 - Say plainly what needs testing in game. Update `NEXT_STEPS.md` at the end of a session.

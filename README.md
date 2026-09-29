@@ -239,6 +239,9 @@ NODE="$LOCALAPPDATA/Programs/Microsoft VS Code/Code.exe"
 # Config vs pack files for every gun and ammo type (run after editing weapons or pack files):
 "$NODE" tools/weapons/check.mjs
 
+# After changing a tool (gun.mjs, java-port.mjs, check.mjs ...): test them on a scratch copy of the packs
+"$NODE" tools/weapons/test.mjs            # a representative set of guns, ~10 minutes; --full: every gun
+
 # Did a script change alter behavior? Trace the last commit and the working tree, then compare:
 T=$(mktemp -d); git archive HEAD TACZ-B/scripts | tar -x -C "$T"
 cd tools/trace
