@@ -1,0 +1,375 @@
+// Ports a Java TACZ gun: clone the most similar gun we have, then replace everything that makes it
+// that gun with the Java version.
+//
+//   node tools/weapons/java-port.mjs <javaId> <newId> --from <ourGun> [--name "Name"]
+//   then: node tools/weapons/check.mjs
+//
+// Steps (each prints what it did):
+//   1. tools/weapons/gun.mjs clone <ourGun> <newId>       controllers, items, functions, sounds ...
+//   2. model + first-person arms model (java-convert.mjs); optional parts removed (extended mags,
+//      alternative stocks, scope mount/rails unless the gun has a built-in scope)
+//   3. textures: Java gun texture and inventory icon
+//   4. animations: draw, shoot, reloads, inspects replaced with Java's; hold/sprint/walk/aim moved to
+//      the pose computed from the Java model; an empty inspect is added and wired if the clone lacks one
+//   5. sounds: every sound the new animations and the shot use, from TACZ-JAVA
+//   6. stats (config/weapons.js) from java-stats.mjs; ammo item; magazine size (HUD, reload
+//      functions, reload events and thresholds are regenerated for the new size)
+// The source gun must have its own first-person arms model (most do; M16/M16A1, Deagle/Golden Deagle,
+// G17/G18, AKM/Saiga-12 and MP7/FAL share one).
+import fs from "node:fs";
+import path from "node:path";
+import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
+import { createRequire } from "node:module";
+import { pathToFileURL } from "node:url";
+import { convertGun, armsModel } from "./java-convert.mjs";
+const require = createRequire(import.meta.url);
+const { parse } = require("./lenient.cjs");
+const { format } = require("./format.cjs");
+const { openJava } = require("./java.cjs");
+
+const root = process.cwd();
+const abs = (f) => path.join(root, f);
+const readText = (f) => fs.readFileSync(abs(f), "utf8");
+const exists = (f) => fs.existsSync(abs(f));
+function edit(f, fn) {
+  const raw = readText(f), crlf = raw.includes("\r\n");
+  const next = fn(raw.replace(/\r\n/g, "\n"));
+  if (next !== undefined) fs.writeFileSync(abs(f), crlf ? next.replace(/\n/g, "\r\n") : next);
+}
+// Text files keep their line endings (Windows or Unix).
+function writeText(f, text) {
+  const crlf = exists(f) && readText(f).includes("\r\n");
+  fs.writeFileSync(abs(f), crlf ? text.replace(/\n/g, "\r\n") : text);
+}
+const editJson =(f, fn) => edit(f, (t) => { const j = parse(t); fn(j); return format(j); });
+const md5 = (b) => crypto.createHash("md5").update(b).digest("hex");
+const log = (...a) => console.log(...a);
+
+// Java ammo -> our ammo item.
+const AMMO = {
+  "tacz:9mm": "mm9", "tacz:556x45": "m885", "tacz:45acp": "acp45", "tacz:762x39": "m43", "tacz:12g": "gauge12", "tacz:357mag": "mag357",
+  "tacz:50bmg": "bmg50", "tacz:308": "win308", "tacz:338": "lapua338", "tacz:57x28": "mm5728", "tacz:46x30": "mm4630", "tacz:58x42": "mm5842",
+  "tacz:50ae": "ae50", "tacz:rpg_rocket": "rpgrocket", "tacz:792x57": "mm792", "tacz:30_06": "spr3006", "tacz:45_70": "govt4570",
+  "tacz:500mag": "mag500", "tacz:22wmr": "wmr22", "tacz:40mm": "grenade40",
+};
+const OPTIONAL_PARTS = /^(mag_extended_\d+|mount|rail\d*|side_rail)$/;
+
+// ---------------------------------------------------------------- arguments
+const args = process.argv.slice(2);
+const opt = (n) => { const i = args.indexOf(n); return i < 0 ? undefined : args.splice(i, 2)[1]; };
+const from = opt("--from"), name = opt("--name");
+const [javaId, id] = args;
+if (!javaId || !id || !from) {
+  log(readText("tools/weapons/java-port.mjs").split("\n").slice(0, 21).join("\n"));
+  process.exit(1);
+}
+const java = openJava(root);
+const javaData = java.gunData(javaId);
+const javaDisplay = java.json(`assets/tacz/display/guns/${javaId}_display.json`);
+const javaName = (() => {
+  const en = JSON.parse(java.read("assets/tacz/lang/en_us.json").toString());
+  return (en[java.gunIndex(javaId).name] ?? javaId).replace(/§./g, "").trim();
+})();
+
+// ---------------------------------------------------------------- 1. clone
+if (!exists(`TACZ-B/items/guns/${id}/${id}.json`)) {
+  log(`1. clone ${from} -> ${id}`);
+  execFileSync(process.execPath, ["tools/weapons/gun.mjs", "clone", from, id, "--name", name ?? javaName], { stdio: ["ignore", "ignore", "inherit"] });
+} else log(`1. ${id} already exists (not cloning)`);
+
+// The clone's first-person arms model.
+const entityFile = "TACZ-R/entity/player.entity.json";
+const entity = parse(readText(entityFile))["minecraft:client_entity"].description;
+const armsNumber = entity.render_controllers.map((rc) => Object.entries(rc)[0]).find(([k, v]) => /universal\d+\.first_person/.test(k) && new RegExp(`(v|variable)\\.${id}\\b(?!_)`).test(v) && !/\|\|/.test(v))?.[0].match(/universal(\d+)/)[1];
+if (!armsNumber) throw new Error(`${id} has no first-person arms model of its own (clone from a gun that has one)`);
+
+// ---------------------------------------------------------------- 2. model and arms model
+const converted = convertGun(java, javaId, id);
+const builtinScope = !!javaData.builtin_attachments?.scope;
+if (builtinScope)
+  log(`   note: ${javaId} has a built-in scope (${javaData.builtin_attachments.scope}); its model is a separate Java attachment and is not added yet, so the gun has no scope and aims with its iron-sight position`);
+{
+  const g = converted.model["minecraft:geometry"][0];
+  const drop = new Set();
+  // Stocks: Java's standard stock is oem_stock_tactical (light/heavy/AR adapter are attachments);
+  // a gun without one keeps its first oem_stock_*.
+  const stocks = g.bones.filter((b) => /^oem_stock_/.test(b.name));
+  const keepStock = stocks.find((b) => b.name === "oem_stock_tactical") ?? stocks[0];
+  for (const b of g.bones) {
+    const optional = OPTIONAL_PARTS.test(b.name) && !(builtinScope && /^(mount|rail\d*)$/.test(b.name));
+    if (optional || (/^oem_stock_/.test(b.name) && b !== keepStock) || b.name === "ar_stock_adapter") drop.add(b.name);
+  }
+  for (let grew = true; grew; ) { grew = false; for (const b of g.bones) if (!drop.has(b.name) && drop.has(b.parent)) { drop.add(b.name); grew = true; } }
+  g.bones = g.bones.filter((b) => !drop.has(b.name));
+  log(`2. model: ${g.bones.length} bones (removed optional parts: ${[...drop].join(", ") || "none"})`);
+  writeText(`TACZ-R/models/entity/guns/${id}.geo.json`, format(converted.model));
+  const armsFile = `TACZ-R/models/entity/shared/taczuniversal${armsNumber}.geo.json`;
+  writeText(armsFile, format(armsModel(converted.model, parse(readText(armsFile)), armsNumber)));
+  log(`   arms model ${armsFile}`);
+}
+
+// ---------------------------------------------------------------- 3. textures
+{
+  const tex = (javaDisplay.texture ?? "").replace(/^tacz:/, "");
+  const slot = (javaDisplay.slot ?? "").replace(/^tacz:/, "");
+  fs.writeFileSync(abs(`TACZ-R/textures/gun/${id}.png`), java.read(`assets/tacz/textures/${tex}.png`));
+  if (slot && java.has(`assets/tacz/textures/${slot}.png`)) fs.writeFileSync(abs(`TACZ-R/textures/items/${id}.png`), java.read(`assets/tacz/textures/${slot}.png`));
+  log(`3. textures: gun ${tex}, icon ${slot}`);
+}
+
+// ---------------------------------------------------------------- 4. animations and pose
+const animFile = `TACZ-R/animations/guns/${id}.json`;
+const soundNames = new Map(); // our cue name -> Java sound path
+{
+  const file = parse(readText(animFile));
+  const anims = file.animations;
+  // Animations in use: the player's table, plus shots started by playanimation in player.json.
+  const used = new Set([...Object.values(entity.animations), ...(readText("TACZ-B/entities/player.json").match(/animation\.[\w.]+/g) ?? [])]);
+  const byRole = (re) => Object.keys(anims).filter((k) => re.test(k) && used.has(k));
+  const ROLES = {
+    draw: [/\.(fp\.)?draw$/], shoot: [/\.(fp\.)?shoot(\.(n?sight))?$/], "fp.tac": [/\.fp\.tac$/], "fp.reload": [/\.fp\.reload$/],
+    "fp.inspect": [/\.fp\.inspect$/], "fp.inspect_empty": [/\.fp\.inspect_?emp(ty)?$/],
+  };
+  const replaced = [];
+  const before = {}; // the clone's animations, for their sounds if Java has none
+  for (const [role, [re]] of Object.entries(ROLES)) {
+    const src = converted.animations[`animation.${id}.${role}`];
+    if (!src) continue;
+    for (const k of byRole(re)) { before[k] = anims[k]; anims[k] = structuredClone(src); replaced.push(k.replace(`animation.${id}.`, "")); }
+  }
+  // Empty inspect the clone lacks: add and wire it.
+  const emptyInspect = converted.animations[`animation.${id}.fp.inspect_empty`];
+  if (emptyInspect && !byRole(ROLES["fp.inspect_empty"][0]).length) {
+    anims[`animation.${id}.fp.inspect_empty`] = structuredClone(emptyInspect);
+    wireEmptyInspect(id);
+    replaced.push("fp.inspect_empty (added)");
+  }
+  // Pose: move the clone's first-person joints so its hold matches the Java model; the aim ends on the sight.
+  const J = (a) => a?.bones && Object.keys(a.bones).find((k) => k.toLowerCase() === "joints");
+  const firstVal = (v) => (Array.isArray(v) ? v : Object.values(v)[0]).map((x) => (typeof x === "object" ? x.post ?? x : x));
+  const holdAnim = anims[`animation.${id}.fp.hold`];
+  let shifted = [];
+  if (converted.pose && holdAnim && J(holdAnim)) {
+    const oldHold = firstVal(holdAnim.bones[J(holdAnim)].position);
+    const delta = converted.pose.hold.map((v, i) => v - oldHold[i]);
+    const shift = (v) => (Array.isArray(v) && typeof v[0] === "number" ? v.map((x, i) => +(x + delta[i]).toFixed(3)) : v?.post ? { ...v, post: shift(v.post) } : v);
+    for (const [k, a] of Object.entries(anims)) {
+      if (!/\.fp\./.test(k) || replaced.some((r) => k.endsWith("." + r))) continue;
+      const jk = J(a);
+      if (!jk || !a.bones[jk].position) continue;
+      const pos = a.bones[jk].position;
+      if (Array.isArray(pos)) a.bones[jk].position = shift(pos);
+      else for (const t of Object.keys(pos)) pos[t] = shift(pos[t]);
+      if (/\.fp\.sight$/.test(k) && !Array.isArray(pos)) { const last = Object.keys(pos).at(-1); pos[last] = converted.pose.aim; }
+      shifted.push(k.replace(`animation.${id}.`, ""));
+    }
+  }
+  // Sound cues: name them after our gun (tacz:<id>/<file>, so gun.mjs remove finds them) and drop
+  // cues whose sound TACZ-JAVA doesn't have (Java plays nothing for them either).
+  const dropped = new Set(), keptSounds = [];
+  for (const k of replaced) {
+    const a = anims[`animation.${id}.${k.split(" ")[0]}`];
+    if (!a?.sound_effects) continue;
+    for (const [t, fx] of Object.entries(a.sound_effects)) {
+      const cues = [].concat(fx).flatMap((x) => {
+        const javaPath = x.effect.replace(/^tacz:/, "");
+        if (!java.has(`assets/tacz/tacz_sounds/${javaPath}.ogg`)) { dropped.add(x.effect); return []; }
+        const ours = `tacz:${id}/${path.basename(javaPath)}`;
+        soundNames.set(ours, javaPath);
+        return [{ ...x, effect: ours }];
+      });
+      if (!cues.length) delete a.sound_effects[t];
+      else a.sound_effects[t] = Array.isArray(fx) ? cues : cues[0];
+    }
+    // No Java sound at all: keep the clone's cues, timed to the new animation's length.
+    const old = before[`animation.${id}.${k.split(" ")[0]}`];
+    if (!Object.keys(a.sound_effects).length && old?.sound_effects && old.animation_length && a.animation_length) {
+      const scale = a.animation_length / old.animation_length;
+      a.sound_effects = Object.fromEntries(Object.entries(old.sound_effects).map(([t, fx]) => [String(+(+t * scale).toFixed(4)), fx]));
+      keptSounds.push(k);
+    }
+  }
+  if (dropped.size) log(`   sound cues not in TACZ-JAVA (dropped): ${[...dropped].join(", ")}`);
+  if (keptSounds.length) log(`   no Java sounds for ${keptSounds.join(", ")}: kept ${from}'s, timed to the new animations`);
+  writeText(animFile, format(file));
+  log(`4. animations from Java: ${replaced.join(", ")}`);
+  log(`   pose: hold ${JSON.stringify(converted.pose?.hold)}, aim ${JSON.stringify(converted.pose?.aim)}; moved ${shifted.join(", ") || "-"}`);
+}
+
+// ---------------------------------------------------------------- 5. sounds
+{
+  const SD = "TACZ-R/sounds/sound_definitions.json";
+  const defs = JSON.parse(readText(SD));
+  const ent = parse(readText(entityFile));
+  const sfx = ent["minecraft:client_entity"].description.sound_effects;
+  const ours = new Map();
+  const walk = (d) => fs.readdirSync(abs(d), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(`${d}/${e.name}`) : [`${d}/${e.name}`]));
+  for (const f of walk("TACZ-R/sounds").filter((f) => f.endsWith(".ogg"))) ours.set(md5(fs.readFileSync(abs(f))), f.replace(/^TACZ-R\//, "").replace(/\.ogg$/, ""));
+  const fileFor = (javaPath) => {
+    const src = `assets/tacz/tacz_sounds/${javaPath}.ogg`;
+    if (!java.has(src)) return null;
+    const data = java.read(src), h = md5(data);
+    if (ours.has(h)) return ours.get(h);
+    const file = `sounds/${id}/${path.basename(javaPath)}`;
+    fs.mkdirSync(path.dirname(abs(`TACZ-R/${file}`)), { recursive: true });
+    fs.writeFileSync(abs(`TACZ-R/${file}.ogg`), data);
+    ours.set(h, file);
+    return file;
+  };
+  let wired = 0;
+  const missing = [];
+  for (const [n, javaPath] of soundNames) {
+    const file = defs[n]?.sounds ? null : fileFor(javaPath);
+    if (!defs[n] && !file) { missing.push(n); continue; }
+    if (file) defs[n] = { category: "hostile", sounds: [file] };
+    sfx[n] = n;
+    wired++;
+  }
+  // The shot (and suppressed shot) the gun's controller plays.
+  for (const [ours, java] of [[`${id}.shoot`, javaDisplay.sounds?.shoot], [`${id}.suppress`, javaDisplay.sounds?.silence]]) {
+    if (!defs[ours] || !java) continue;
+    const file = fileFor(java.replace(/^tacz:/, ""));
+    if (file) defs[ours] = { ...defs[ours], sounds: [file] };
+  }
+  writeText(SD, JSON.stringify(defs, null, 2) + "\n");
+  writeText(entityFile, format(ent));
+  log(`5. sounds: ${wired} animation sounds wired${missing.length ? `; not in TACZ-JAVA (silent): ${missing.join(", ")}` : ""}; shot ${javaDisplay.sounds?.shoot}`);
+  // Sound files from the source gun that nothing uses any more.
+  const refs = JSON.stringify(defs);
+  let removed = 0;
+  if (exists(`TACZ-R/sounds/${id}`)) for (const f of walk(`TACZ-R/sounds/${id}`)) { const p = f.replace(/^TACZ-R\//, "").replace(/\.\w+$/, ""); if (!refs.includes(`"${p}"`)) { fs.rmSync(abs(f)); removed++; } }
+  if (removed) log(`   removed ${removed} of the source gun's sound files nothing uses now`);
+}
+
+// ---------------------------------------------------------------- 6. stats, ammo, magazine
+{
+  const stats = JSON.parse(execFileSync(process.execPath, ["tools/weapons/java-stats.mjs", "--json"], { encoding: "utf8", maxBuffer: 1 << 26 }));
+  const p = stats.proposed.find((x) => x.javaId === javaId) ?? stats.shared.find((x) => x.java.javaId === javaId);
+  const s = p.java ? { ...p.java, damage: p.ours.damage, penetration: p.ours.penetration } : p;
+  const { WEAPONS } = await import(pathToFileURL(abs("TACZ-B/scripts/config/weapons.js")).href + "?t=" + Date.now());
+  const oldMag = WEAPONS[id].magazine, oldAmmo = WEAPONS[id].ammo.replace(/^krep:/, "");
+  const newMag = javaData.ammo_amount ?? oldMag, newAmmo = AMMO[javaData.ammo];
+  if (!newAmmo) throw new Error(`no ammo item for ${javaData.ammo}; add it to AMMO in java-port.mjs`);
+  const b = javaData.bullet ?? {}, x = b.extra_damage ?? {};
+  const falloff = Array.isArray(x.damage_adjust) ? x.damage_adjust.map((a) => [a.distance === "infinite" ? null : a.distance, +(a.damage / b.damage).toFixed(2)]) : null;
+  const fireMode = javaData.fire_mode?.[0] ?? "semi";
+  const bd = javaData.burst_data;
+  edit("TACZ-B/scripts/config/weapons.js", (t) => {
+    const re = new RegExp(`(\\n  ${id}: \\{\\n)([\\s\\S]*?)(\\n  \\},\\n)`);
+    const m = re.exec(t);
+    let body = m[2];
+    const set = (k, v) => { const r = new RegExp(`^    ${k}: .*$`, "m"); body = r.test(body) ? body.replace(r, `    ${k}: ${v},`) : body.replace(/^(    recoil: .*)$/m, `$1\n    ${k}: ${v},`); };
+    const del = (k) => { body = body.replace(new RegExp(`^    ${k}: .*\\n?`, "m"), ""); };
+    set("damage", s.damage); set("penetration", s.penetration);
+    set("headshot", x.head_shot_multiplier ?? 1);
+    falloff ? set("falloff", `[${falloff.map(([d, v]) => `[${d}, ${v}]`).join(", ")}]`) : del("falloff");
+    set("fireMode", JSON.stringify(fireMode)); set("rpm", javaData.rpm);
+    fireMode === "burst" && bd ? set("burst", `{ count: ${bd.count ?? 3}, rpm: ${bd.bpm ?? javaData.rpm}, delay: ${bd.min_interval ?? 0.3} }`) : del("burst");
+    if ((b.bullet_amount ?? 1) > 1) set("pellets", b.bullet_amount); else { del("pellets"); del("spread"); del("tracers"); }
+    set("magazine", newMag); set("ammo", JSON.stringify(`krep:${newAmmo}`));
+    return t.slice(0, m.index) + m[1] + body + m[3] + t.slice(m.index + m[0].length);
+  });
+  log(`6. stats: damage ${s.damage}, penetration ${s.penetration}, headshot ${x.head_shot_multiplier}, ${fireMode} ${javaData.rpm} rpm, falloff ${falloff ? "yes" : "no"}`);
+  if (newAmmo !== oldAmmo) { swapAmmo(id, oldAmmo, newAmmo); log(`   ammo: krep:${oldAmmo} -> krep:${newAmmo}`); }
+  if (newMag !== oldMag) { resizeMagazine(id, oldMag, newMag); log(`   magazine: ${oldMag} -> ${newMag}`); }
+}
+log(`\nDone. Run tools/weapons/check.mjs, then test ${id} in game (aim, reloads, sounds).`);
+
+// ---------------------------------------------------------------- helpers
+function ownBpFiles(id) {
+  const fn = fs.readdirSync(abs("TACZ-B/functions")).filter((f) => new RegExp(`^${id}((quantity|reload)\\d*)?\\.mcfunction$`).test(f)).map((f) => `TACZ-B/functions/${f}`);
+  return [...fn, `TACZ-B/animation_controllers/gun_${id}.json`, `TACZ-B/animations/guns/${id}.json`];
+}
+
+function swapAmmo(id, oldAmmo, newAmmo) {
+  // HUD shows the ammo's name: use the lang key a gun with the new ammo already shows, else the item's.
+  const hudKey = (ammo) => {
+    for (const f of fs.readdirSync(abs("TACZ-B/functions")).filter((f) => /^[a-z0-9]+quantity\.mcfunction$/.test(f))) {
+      if (!readText(`TACZ-B/functions/${f}`).includes(`item=krep:${ammo},`)) continue;
+      const hud = `TACZ-B/functions/${f.replace("quantity", "")}`;
+      const m = exists(hud) && /"translate":"(krep:ammo\.name\.[^"]+)"/.exec(readText(hud));
+      if (m) return m[1];
+    }
+    const item = parse(readText(`TACZ-B/items/ammo/${ammo}.json`));
+    return item["minecraft:item"].components["minecraft:display_name"].value;
+  };
+  const oldKey = hudKey(oldAmmo), newKey = hudKey(newAmmo);
+  for (const f of ownBpFiles(id)) edit(f, (t) => t.split(`krep:${oldAmmo}`).join(`krep:${newAmmo}`).split(oldKey).join(newKey));
+}
+
+function resizeMagazine(id, M, N) {
+  if (M < 3 || N < 3) throw new Error(`magazine ${M} -> ${N}: only magazines of 3+ rounds are resized automatically`);
+  const d = N - M;
+  const near = (n) => n >= M - 1 && n <= M + 2; // numbers tied to the magazine size
+  const shiftNum = (n) => (near(n) ? n + d : n);
+  // HUD, controllers, animations: counts and caps tied to the size.
+  const shiftText = (t) => t
+    .replace(/"\/(\d+)( ?\\n)/g, (m, n, rest) => `"/${shiftNum(+n)}${rest}`)
+    .replace(new RegExp(`(${id}=)(\\d+)(\\.\\.)(\\d*)`, "g"), (m, a, lo, dots, hi) => a + shiftNum(+lo) + dots + (hi === "" ? "" : shiftNum(+hi)))
+    .replace(new RegExp(`(scoreboard\\('${id}'\\) *[<>=]+ *)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n))
+    .replace(new RegExp(`(@s(?:\\[[^\\]]*\\])? ${id} )(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n));
+  edit(`TACZ-B/functions/${id}.mcfunction`, (t) => t.replace(/"\/(\d+)(?=[ \\])/g, (m, n) => `"/${shiftNum(+n)}`).replace(new RegExp(`(${id}=1\\.\\.)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
+  for (const f of [`TACZ-B/animation_controllers/gun_${id}.json`, `TACZ-B/animations/guns/${id}.json`]) edit(f, shiftText);
+  edit("TACZ-B/animation_controllers/shared_inspect.json", (t) => t.replace(new RegExp(`(scoreboard\\('${id}'\\) *[<>=]+ *)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
+  // Reload count function: one event per round in the inventory, then "N or more".
+  edit(`TACZ-B/functions/${id}quantity.mcfunction`, (t) => {
+    const lines = t.split("\n");
+    const tpl = lines.find((l) => /quantity=0\}/.test(l));
+    const box = lines.find((l) => /hasitem=\{item=krep:ammoboxc,quantity=1\.\.\}/.test(l));
+    const out = [];
+    for (let q = 0; q < N; q++) out.push(tpl.replace("quantity=0}", `quantity=${q}}`).replace(/reload0$/, `reload${q}`));
+    out.push(tpl.replace("quantity=0}", `quantity=${N}..}`).replace(/reload0$/, `reload${N}`));
+    if (box) out.push(box.replace(/reload\d+$/, `reload${N}`));
+    return out.join("\n");
+  });
+  // Ammo removal: "score s -> clear C - s rounds".
+  edit(`TACZ-B/functions/${id}reload.mcfunction`, (t) => {
+    const lines = t.split("\n").filter(Boolean);
+    const m = /scores=\{[a-z0-9]+=(\d+)\}.* (\d+)$/.exec(lines[0]);
+    const C = +m[1] + +m[2] + d;
+    const top = +m[1] + d;
+    const out = [];
+    for (let s = top; s >= 0; s--) out.push(lines[0].replace(/scores=\{([a-z0-9]+)=\d+\}/, `scores={$1=${s}}`).replace(/ \d+$/, ` ${C - s}`));
+    return out.join("\n");
+  });
+  // Reload events: <id>reload0..N set krep:ammoreload base + k; krep:<id>_reload adds k.
+  editJson("TACZ-B/entities/player.json", (j) => {
+    const ev = j["minecraft:entity"].events;
+    const base = ev[`${id}reload1`].set_property["krep:ammoreload"] - 1;
+    for (const k of Object.keys(ev)) if (new RegExp(`^${id}reload\\d+$`).test(k) && +k.slice(id.length + 6) > 0) delete ev[k];
+    const rebuilt = {};
+    for (const [k, v] of Object.entries(ev)) {
+      rebuilt[k] = v;
+      if (k === `${id}reload0`) for (let q = 1; q <= N; q++) rebuilt[`${id}reload${q}`] = { set_property: { "krep:ammoreload": base + q } };
+    }
+    const seq = rebuilt[`krep:${id}_reload`].sequence;
+    const have = new Set(seq.map((s) => s.filters?.value));
+    for (let q = 1; q <= N + 1; q++) if (!have.has(base + q)) {
+      const tpl = structuredClone(seq[0]);
+      tpl.filters.value = base + q;
+      tpl.queue_command.command = [`scoreboard players add @s ${id} ${q}`];
+      seq.push(tpl);
+    }
+    j["minecraft:entity"].events = rebuilt;
+  });
+}
+
+function wireEmptyInspect(id) {
+  editJson(`TACZ-R/animation_controllers/gun_${id}.json`, (j) => {
+    const c = j.animation_controllers[`controller.animation.${id}.fp`];
+    for (const st of Object.values(c.states)) for (const t of st.transitions ?? []) if (t.inspect === `v.${id}b && q.skin_id == 1 && !q.is_sneaking`) t.inspect = `v.${id} && q.skin_id == 1 && !q.is_sneaking`;
+    c.states.inspect.animations = [{ [`${id}_fp_inspect`]: `v.${id}b` }, { [`${id}_fp_inspect_emp`]: `v.${id}emp` }];
+  });
+  editJson("TACZ-R/entity/player.entity.json", (j) => {
+    const a = j["minecraft:client_entity"].description.animations, out = {};
+    for (const [k, v] of Object.entries(a)) { out[k] = v; if (k === `${id}_fp_inspect`) out[`${id}_fp_inspect_emp`] = `animation.${id}.fp.inspect_empty`; }
+    j["minecraft:client_entity"].description.animations = out;
+  });
+  editJson("TACZ-B/animation_controllers/shared_inspect.json", (j) => {
+    const st = Object.values(j.animation_controllers)[0].states.setup;
+    if (st.transitions.some((t) => (t["trigger.inspect.emp"] ?? "").includes(`=='${id}_emp'`))) return;
+    const i = st.transitions.findLastIndex((t) => (t["trigger.inspect"] ?? "").startsWith(`(query.get_equipped_item_name=='${id}' &&`));
+    st.transitions.splice(i + 1, 0, { "trigger.inspect.emp": `(query.get_equipped_item_name=='${id}_emp' && variable.attack_time > 0.0f && query.scoreboard('${id}') == 0 && q.mark_variant != 1)` });
+  });
+}

@@ -108,6 +108,37 @@ every gun and removing the clone again (the packs come back byte for byte) and b
 
 Bedrock allows 32 player properties; guns with scopes add one (`krep:<id>scope`), and the tool refuses to go over.
 
+### Porting a gun from Java TACZ
+
+`reference/TACZ-JAVA.zip` must be present. Pick the most similar gun we have as the starting point (same kind of
+action and reload), one with its own first-person arms model (not M16/M16A1, Deagle/Golden Deagle, G17/G18,
+AKM/Saiga-12 or MP7/FAL, which share one):
+
+```bash
+"$NODE" tools/weapons/java-stats.mjs                              # Java stats vs ours, proposed stats for new guns
+"$NODE" tools/weapons/java-port.mjs m9a4 m9a4 --from p320 --name "M9A4"
+"$NODE" tools/weapons/check.mjs
+```
+
+`java-port.mjs` clones the starting gun (`gun.mjs`), then replaces:
+
+- the model and first-person arms model with Java's (`java-convert.mjs`): Java's bones under our player skeleton;
+  optional parts removed (extended mags, light/heavy stocks and the AR stock adapter, scope mounts and rails)
+- the gun texture and inventory icon
+- draw, shoot, reload and inspect animations with Java's; an empty inspect is added and wired if the starting gun
+  has none. The hold, sprint and aim animations are moved to the pose computed from the Java model's `iron_view`
+  bone (`java-convert.mjs --compare` on the SKS: 0.02 blocks from our hand-tuned aim)
+- the sounds of those animations and the shot, from TACZ-JAVA (named `tacz:<id>/<file>`). Cues TACZ-JAVA has no
+  file for are dropped; when an animation has none left, the starting gun's cues are kept, timed to the new length
+- stats (damage, penetration, headshot, falloff, fire mode, rpm, pellets) as proposed by `java-stats.mjs`, the ammo
+  item, and the magazine size (HUD, reload functions and events, and thresholds are regenerated; 3+ rounds)
+
+Tested by porting the M9A4 (from the P320), RPK (Type 81), Kar98k (AWM), SPAS-12 (M870) and long Double Barrel (Double
+Barrel) into a copy of the packs: `check.mjs` passes for each, and `gun.mjs remove` restores the packs byte for byte.
+Not handled yet: built-in scopes (the AUG's scope is a separate Java attachment model), and attachment menus for the
+new gun (it inherits the starting gun's entries in `config/attachments.js`, if any, which refer to parts it may not
+have). Each ported gun still needs an in-game check: aim, reloads, sounds.
+
 ## Hitscan, tracers and hit flash
 
 Every gun hits instantly; there are no bullet entities. Each gun's fire event in `entities/player.json` runs
