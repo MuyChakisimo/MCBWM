@@ -8,8 +8,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `TACZ-R/` | Resource pack (player renderer, models, textures, animations, sounds) |
 | `tools/weapons/` | `gun.mjs` (clone / remove a gun), `check.mjs` (config vs pack consistency), `verify-pack.cjs` (proves two pack trees are equivalent) |
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
-| `tools/deobfuscate/` | How the obfuscated original scripts were made readable (history) |
-| `*.zip` | Reference only (original release, Java TACZ, earlier attempt). Never shipped |
+| `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
 **Pack version is `1.11.0`** for both packs. On a dedicated server set `"version": [1, 11, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
@@ -129,7 +128,7 @@ health is then set to the exact result, so the damage dealt is unchanged.
 
 ## M107
 
-Completed from the original's unused assets, with stats and recipes from the Java TACZ data (`TACZ-JAVA.zip`):
+Completed from the original's unused assets, with stats and recipes from the Java TACZ data (`reference/TACZ-JAVA.zip`):
 55 damage, 0.8 penetration, 10-round magazine, `.50 BMG` ammo (`krep:bmg50`). The attachment workbench has no M107
 entry yet; set scopes with `/event entity @s m107:acog` (also `elcan`, `coyote`, `standard_8`, `ironsight`).
 Its reload, tactical reload and inspect sounds use the Java TACZ names (`tacz:m107/...`) in `sound_definitions.json`.
@@ -146,7 +145,7 @@ Its reload, tactical reload and inspect sounds use the Java TACZ names (`tacz:m1
 - The M1911's first-person arms model (`geometry.taczuniversal16`) had a stray copy of its leg bones after the
   closing brace, so it never loaded. Fixed and moved to `models/entity/shared/taczuniversal16.geo.json`.
 - 11 sounds pointed at files that didn't exist (and 5 sound names were defined twice, some copies pointing at missing
-  files). They now use the matching file from `TACZ-JAVA.zip` or the existing copy in the pack.
+  files). They now use the matching file from `reference/TACZ-JAVA.zip` or the existing copy in the pack.
 - Mob armor was detected by 48 `/tag @e` commands every second, in the Overworld only (mobs in the Nether and End
   had no armor). It is now looked up on the target when it is hit.
 - The HK416's hip fire used its ADS recoil.
@@ -163,7 +162,7 @@ Its reload, tactical reload and inspect sounds use the Java TACZ names (`tacz:m1
 - Removed: dead player events/component groups (old attachment modes, old recoil events, reload steps past the
   magazine size, bullet spawns for hitscan guns), 34 unused bullet entities, uncalled functions, `tick.json` /
   `testis.mcfunction`, animations/controllers/sounds for guns not in the pack (CAR-15, M9, L85, PKM, Tabuk), the
-  unused `acog.new`/`elcan.new` copies, unused sounds (124 of them are also in `TACZ-JAVA.zip`), particles and
+  unused `acog.new`/`elcan.new` copies, unused sounds (124 of them are also in `reference/TACZ-JAVA.zip`), particles and
   textures, and ~10,000 empty folders.
 - Removed: the `openui2` menu tag (called an undefined function), the `Indoarsenal` global, the chat message on
   every world load, and the dead `TACZ-B/kanjut/` folder (not a Bedrock folder).
