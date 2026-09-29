@@ -21,11 +21,6 @@
         "2.1": ["/function hk416reload", "/event entity @s krep:hk416_reload"]
       }
     },
-    "animation.hk416.stop": {
-      "loop": true,
-      "animation_length": 0.1,
-      "timeline": {"0.0": ["/scriptevent krep:stop_hk416_shoot", "/scriptevent krep:stop_hk416_suppress"]}
-    },
     "animation.hk416.shoot": {"loop": false, "animation_length": 0, "timeline": {}}
   }
 }

@@ -1,11 +1,6 @@
 {
   "format_version": "1.10.0",
   "animations": {
-    "animation.m4a1.stop": {
-      "loop": true,
-      "animation_length": 0.1,
-      "timeline": {"0.0": ["/scriptevent krep:stop_m4a1_shoot", "/scriptevent krep:stop_m4a1_suppress"]}
-    },
     "animation.m4a1.shoot": {"loop": false, "animation_length": 0, "timeline": {}},
     "animation.m4a1.reload.tac": {
       "loop": "hold_on_last_frame",

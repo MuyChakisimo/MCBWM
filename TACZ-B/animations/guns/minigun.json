@@ -2,7 +2,6 @@
   "format_version": "1.10.0",
   "animations": {
     "animation.minigun.delay": {"loop": false, "animation_length": 0.3, "timeline": {}},
-    "animation.minigun.shoot": {"loop": false, "animation_length": 0, "timeline": {}},
     "animation.minigun.loop": {
       "loop": true,
       "animation_length": 0.1,
