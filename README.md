@@ -6,6 +6,8 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 |---|---|
 | `TACZ-B/` | Behavior pack (scripts, items, entities, controllers, functions) |
 | `TACZ-R/` | Resource pack (player renderer, models, textures, animations, sounds) |
+| `docs/HOW-IT-WORKS.md` | What happens when you fire, reload, inspect, aim; which file does each step; where to look when something breaks |
+| `NEXT_STEPS.md` | Current state, what's untested, planned work |
 | `tools/weapons/` | `gun.mjs` (clone / remove a gun), `check.mjs` (config vs pack consistency), `verify-pack.cjs` (proves two pack trees are equivalent) |
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |

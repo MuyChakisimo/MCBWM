@@ -3,7 +3,8 @@
 Minecraft Bedrock gun add-on (behavior pack `TACZ-B/`, resource pack `TACZ-R/`), ported from TACZ.
 
 - **Read `NEXT_STEPS.md` first**: current state, what's untested, the planned work, decisions already made.
-- `README.md` explains the code, config files and tools.
+- `README.md` explains the code, config files and tools; `docs/HOW-IT-WORKS.md` traces each system (firing,
+  reloading, HUD, inspect, rendering, sounds) file by file, with a troubleshooting table.
 - `reference/` (Java TACZ zip, original release) is not in git; copy it by hand on a new computer.
 
 Working rules:
