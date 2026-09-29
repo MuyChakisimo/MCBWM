@@ -172,6 +172,15 @@ Its reload, tactical reload and inspect sounds use the Java TACZ names (`tacz:m1
 - Removed: the `openui2` menu tag (called an undefined function), the `Indoarsenal` global, the chat message on
   every world load, and the dead `TACZ-B/kanjut/` folder (not a Bedrock folder).
 
+## Not wired up yet
+
+Animations that exist but no controller plays (`check.mjs --unused` lists them):
+
+- M16 / M16A1 walk (`fp.walk`, `fp.walk.delay`): these guns have no walk state.
+- Minigun barrel spin (`animation.minigun.spin`) and its third-person controller `controller.animation.minigun.tp`.
+- M870 shell-by-shell reload pieces: the reload intros `m870_fp_rintroemp` / `m870_fp_rintrotac` are registered but no
+  state plays them, nor `fp.reload11`.
+
 ## Performance (what runs repeatedly)
 
 Everything that runs on a timer only reads unless something changed, so it doesn't send updates to clients:

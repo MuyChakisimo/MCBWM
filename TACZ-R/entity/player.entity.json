@@ -643,7 +643,7 @@
         "m870_fp_inspect": "animation.m870.fp.inspect",
         "m870_fp_sprint": "animation.m870.fp.sprint",
         "m870_fp_rintroemp": "animation.m870.fp.rintroemp",
-        "m870_fp_rintrotac": "animation.m870.fp.rintroemp",
+        "m870_fp_rintrotac": "animation.m870.fp.rintrotac",
         "m870_fp_pump": "animation.m870.fp.pump",
         "m870_fp_rend": "animation.m870.fp.rend",
         "m870_fp_reload": "animation.m870.fp.reload",

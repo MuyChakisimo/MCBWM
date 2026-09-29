@@ -2679,7 +2679,6 @@
         "coyote_reticle": {"scale": {"0.1263": [0, 0, 0], "0.1515": {"pre": [0, 0, 0], "post": [1, 1, 1]}}}
       }
     },
-    "animation.akm.new": {"loop": true, "bones": {"front": {"scale": [1, 1, 0.2]}}},
     "animation.akm.tp.hold": {
       "loop": true,
       "animation_length": 3.2,

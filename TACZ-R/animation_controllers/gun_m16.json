@@ -1,44 +1,6 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.m16.recoil": {
-      "initial_state": "setup",
-      "states": {
-        "setup": {
-          "blend_transition": 0.6,
-          "blend_via_shortest_path": true,
-          "animations": [{"shootdelay": "q.is_using_item && q.property('krep:l85reload') != 300"}],
-          "transitions": [
-            {
-              "shoot.hip": "v.m16b && q.is_using_item && q.mark_variant == 0 && !q.is_sneaking && q.all_animations_finished"
-            },
-            {
-              "shoot.sight": "v.m16b && q.is_using_item && q.mark_variant == 0 && q.is_sneaking && q.all_animations_finished"
-            }
-          ]
-        },
-        "shoot.hip": {
-          "blend_transition": 0.6,
-          "blend_via_shortest_path": true,
-          "animations": [{"recoil_hip": "v.m16 && q.property('krep:l85reload') != 300"}],
-          "transitions": [
-            {
-              "setup": "!v.m16b || !q.is_using_item || q.mark_variant != 0 || q.is_sneaking || q.property('krep:l85reload') == 300"
-            }
-          ]
-        },
-        "shoot.sight": {
-          "blend_transition": 0.6,
-          "blend_via_shortest_path": true,
-          "animations": [{"recoil_sight": "v.m16 && q.property('krep:l85reload') != 300"}],
-          "transitions": [
-            {
-              "setup": "!v.m16b || !q.is_using_item || q.mark_variant != 0 || !q.is_sneaking || q.property('krep:l85reload') == 300"
-            }
-          ]
-        }
-      }
-    },
     "controller.animation.m16.walk": {
       "initial_state": "setup",
       "states": {
