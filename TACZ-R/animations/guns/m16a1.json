@@ -1311,7 +1311,7 @@
         "rightArm": {"rotation": [0, 0, 180], "position": [-1.93645, -12.58158, 0.07154]},
         "Joints": {"position": [-4, 14, -17]}
       },
-      "sound_effects": {"0.0": {"effect": "tacz:m16a1/m16a1_inspect_empty"}}
+      "sound_effects": {"0.0": {"effect": "tacz.m16a1.m16a1_inspect_empty"}}
     },
     "animation.m16a1.shoot": {
       "animation_length": 0.6333,

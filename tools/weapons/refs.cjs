@@ -76,6 +76,14 @@ function checkPack(root) {
   const clients = [...under("TACZ-R/entity"), ...under("TACZ-R/attachables")]
     .map(([f, j]) => [f, (j["minecraft:client_entity"] ?? j["minecraft:attachable"])?.description])
     .filter(([, d]) => d);
+  // Short names in a client entity's tables may only use letters, digits, "_" and "." (a name like
+  // "tacz:m107/reload" makes the game reject the whole entity: invisible guns, default arms).
+  const SAFE_NAME = /^[A-Za-z0-9_.]+$/;
+  for (const [f, d] of clients)
+    for (const table of ["animations", "sound_effects", "particle_effects", "geometry", "textures", "materials"])
+      for (const k of Object.keys(d[table] ?? {})) if (!SAFE_NAME.test(k)) err(f, `${table} name "${k}" may only use letters, digits, _ and .`);
+  for (const k of Object.keys(soundDefs)) if (!SAFE_NAME.test(k)) err("TACZ-R/sounds/sound_definitions.json", `sound name "${k}" may only use letters, digits, _ and .`);
+
   for (const [f, d] of clients) {
     const anims = d.animations ?? {}, sfx = d.sound_effects ?? {}, pfx = d.particle_effects ?? {};
     for (const [short, id] of Object.entries(anims)) {

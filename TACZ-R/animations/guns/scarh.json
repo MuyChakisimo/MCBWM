@@ -1475,19 +1475,19 @@
         "rightArm": {"rotation": [0, 0, 180], "position": [-1, -12, 0], "scale": [0.7, 1, 1]}
       },
       "sound_effects": {
-        "0.0": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_raise"},
-        "1.4333": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_magrattle"},
-        "2.7": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_magout"},
-        "3.6667": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_magrattle"},
-        "4.4": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_empty_charge"},
-        "4.7667": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_empty_charge2"},
-        "4.9333": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_empty_boltback"},
-        "5.6667": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_empty_boltclose"},
-        "6.5": {"effect": "tacz:scar_h/p05_ar_schotel_reload_empty_magin"},
-        "7.0333": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_rotate"},
-        "7.3": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_empty_boltback2"},
-        "7.5": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_handling"},
-        "8.9333": {"effect": "tacz:scar_h/p05_ar_schotel_inspect_end"}
+        "0.0": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_raise"},
+        "1.4333": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_magrattle"},
+        "2.7": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_magout"},
+        "3.6667": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_magrattle"},
+        "4.4": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_empty_charge"},
+        "4.7667": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_empty_charge2"},
+        "4.9333": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_empty_boltback"},
+        "5.6667": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_empty_boltclose"},
+        "6.5": {"effect": "tacz.scar_h.p05_ar_schotel_reload_empty_magin"},
+        "7.0333": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_rotate"},
+        "7.3": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_empty_boltback2"},
+        "7.5": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_handling"},
+        "8.9333": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_end"}
       }
     },
     "animation.scarh.shoot": {

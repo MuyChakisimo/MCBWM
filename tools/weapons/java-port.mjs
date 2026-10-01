@@ -171,7 +171,8 @@ const soundNames = new Map(); // our cue name -> Java sound path
       shifted.push(k.replace(`animation.${id}.`, ""));
     }
   }
-  // Sound cues: name them after our gun (tacz:<id>/<file>, so gun.mjs remove finds them) and drop
+  // Sound cues: name them after our gun (tacz.<id>.<file>: letters, digits, _ and . only, or the game rejects the player entity;
+  // the <id> lets gun.mjs remove find them) and drop
   // cues whose sound TACZ-JAVA doesn't have (Java plays nothing for them either).
   const dropped = new Set(), keptSounds = [];
   for (const k of replaced) {
@@ -181,7 +182,7 @@ const soundNames = new Map(); // our cue name -> Java sound path
       const cues = [].concat(fx).flatMap((x) => {
         const javaPath = x.effect.replace(/^tacz:/, "");
         if (!java.has(`assets/tacz/tacz_sounds/${javaPath}.ogg`)) { dropped.add(x.effect); return []; }
-        const ours = `tacz:${id}/${path.basename(javaPath)}`;
+        const ours = `tacz.${id}.${path.basename(javaPath).replace(/[^A-Za-z0-9_]/g, "_")}`;
         soundNames.set(ours, javaPath);
         return [{ ...x, effect: ours }];
       });

@@ -130,6 +130,7 @@ magazine sizes.
 | Reload takes no ammo | `<id>reload.mcfunction` covers every score (per-magazine guns: the right reload animation plays for the fitted magazine) |
 | HUD shows wrong numbers | `functions/<id>.mcfunction` |
 | A sound doesn't play | `check.mjs`; then the effect name in `player.entity.json` `sound_effects` and `sound_definitions.json` |
+| All guns invisible, third-person arms stiff | `TACZ-R/entity/player.entity.json` was rejected: content log; names in its tables must use only letters, digits, `_`, `.` (`check.mjs` checks) |
 | Gun invisible / arms missing in first person | model files parse (`check.mjs`); `player.entity.json` render controllers for `<id>` and `universal<N>` |
 | Sight doesn't line up | `joints` position at the end of `animation.<id>.fp.sight` (RP `animations/guns/<id>.json`) |
 | Animation doesn't play | RP `gun_<id>.json` state and its condition; the short name in `player.entity.json` `animations` |

@@ -1636,7 +1636,7 @@
         "root": {"rotation": [0, 180, 0]},
         "Joints": {"position": [-3, 11.5, -12]}
       },
-      "sound_effects": {"0.0": {"effect": "tacz:aa12/aa12_inspect_empty"}}
+      "sound_effects": {"0.0": {"effect": "tacz.aa12.aa12_inspect_empty"}}
     },
     "animation.aa12.shoot": {
       "animation_length": 0.75,

@@ -1852,21 +1852,21 @@
         "Joints": {"position": [-2, 19.4, -17]}
       },
       "sound_effects": {
-        "0.0": {"effect": "tacz:deagle/deagle_inspect_raise"},
-        "0.5": {"effect": "tacz:deagle/deagle_inspect_empty_turn"},
-        "0.9333": {"effect": "tacz:deagle/deagle_inspect_magrelease"},
-        "1.0": {"effect": "tacz:deagle/deagle_inspect_magout"},
-        "1.6667": {"effect": "tacz:deagle/deagle_inspect_pivot"},
-        "2.1667": {"effect": "tacz:deagle/deagle_inspect_empty_slidegrab"},
-        "2.2333": {"effect": "tacz:deagle/deagle_inspect_empty_slidecheck1"},
-        "2.6667": {"effect": "tacz:deagle/deagle_inspect_empty_slidecheck2"},
-        "3.1": {"effect": "tacz:deagle/deagle_inspect_empty_slidecheck2"},
-        "3.4": {"effect": "tacz:deagle/deagle_inspect_empty_tilt"},
-        "3.8333": {"effect": "tacz:deagle/deagle_inspect_empty_magfindwell"},
-        "4.0667": {"effect": "tacz:deagle/deagle_inspect_empty_magin"},
-        "4.4667": {"effect": "tacz:deagle/deagle_inspect_empty_lift"},
-        "4.8": {"effect": "tacz:deagle/deagle_inspect_empty_slidelock"},
-        "4.9333": {"effect": "tacz:deagle/deagle_inspect_empty_end"}
+        "0.0": {"effect": "tacz.deagle.deagle_inspect_raise"},
+        "0.5": {"effect": "tacz.deagle.deagle_inspect_empty_turn"},
+        "0.9333": {"effect": "tacz.deagle.deagle_inspect_magrelease"},
+        "1.0": {"effect": "tacz.deagle.deagle_inspect_magout"},
+        "1.6667": {"effect": "tacz.deagle.deagle_inspect_pivot"},
+        "2.1667": {"effect": "tacz.deagle.deagle_inspect_empty_slidegrab"},
+        "2.2333": {"effect": "tacz.deagle.deagle_inspect_empty_slidecheck1"},
+        "2.6667": {"effect": "tacz.deagle.deagle_inspect_empty_slidecheck2"},
+        "3.1": {"effect": "tacz.deagle.deagle_inspect_empty_slidecheck2"},
+        "3.4": {"effect": "tacz.deagle.deagle_inspect_empty_tilt"},
+        "3.8333": {"effect": "tacz.deagle.deagle_inspect_empty_magfindwell"},
+        "4.0667": {"effect": "tacz.deagle.deagle_inspect_empty_magin"},
+        "4.4667": {"effect": "tacz.deagle.deagle_inspect_empty_lift"},
+        "4.8": {"effect": "tacz.deagle.deagle_inspect_empty_slidelock"},
+        "4.9333": {"effect": "tacz.deagle.deagle_inspect_empty_end"}
       }
     },
     "animation.deagle.shoot": {

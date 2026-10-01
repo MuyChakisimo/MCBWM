@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.14.0** (both manifests; worlds need `[1, 14, 0]` in `world_*_packs.json`).
+- Pack version **1.15.0** (both manifests; worlds need `[1, 15, 0]` in `world_*_packs.json`).
 - 41 guns, 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -95,6 +95,12 @@ The user last tested around v1.9.0 ("everything's working great"). Since then:
   remove, compare byte for byte), never by adding test guns to the real packs.
 
 ## Gotchas learned
+
+- **Names in the player client entity's tables** (`sound_effects`, `animations`, ...) may only use letters, digits, `_`
+  and `.`. v1.12.0-1.14.0 added sound names like `tacz:m107/m107_reload_up`; at home (2026-10-01) the guns were
+  invisible and the third-person arms didn't move (the game fell back to the vanilla player). v1.15.0 renamed them
+  to `tacz.m107.m107_reload_up`; `check.mjs` now rejects such names. If the guns disappear again, check the content
+  log for player.entity.json errors first.
 
 - Animation sound effects play only if the name is in `player.entity.json`'s `sound_effects` table (and in
   `sound_definitions.json`); `check.mjs` checks both.

@@ -987,7 +987,7 @@
           "rotation": {"0.0": [0, 0, 12.5], "5.8333": [0, 0, 12.5], "5.8667": [0, 0, 0], "8.7": [0, 0, 0], "8.7333": [0, 0, 12.5]}
         }
       },
-      "sound_effects": {"0.0": {"effect": "tacz:m16a4/m16a4_inspect_empty"}}
+      "sound_effects": {"0.0": {"effect": "tacz.m16a4.m16a4_inspect_empty"}}
     },
     "animation.m16.shoot": {
       "animation_length": 0.6333,

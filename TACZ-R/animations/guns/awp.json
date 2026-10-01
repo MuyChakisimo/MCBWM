@@ -16112,21 +16112,21 @@
         "elcan_reticle": {"position": [0, 2.225, 86], "scale": 0}
       },
       "sound_effects": {
-        "0.0": {"effect": "tacz:ai_awp/awp_inspect_raise"},
-        "2.5833": {"effect": "tacz:ai_awp/awp_reload_ejectclick"},
-        "2.85": {"effect": "tacz:ai_awp/awp_reload_empty_magout"},
-        "4.2167": {"effect": "tacz:ai_awp/awp_reload_empty_rattle"},
-        "4.8": {"effect": "tacz:ai_awp/awp_reload_raise1"},
-        "5.35": {"effect": "tacz:ai_awp/awp_inspect_boltback"},
-        "5.6": {"effect": "tacz:ai_awp/awp_inspect_fast_mvmnt"},
-        "6.7167": {"effect": "tacz:ai_awp/awp_rechamber_in"},
-        "7.1167": {"effect": "tacz:ai_awp/awp_inspect_load_mvmnt"},
-        "7.2833": {"effect": "tacz:ai_awp/awp_inspect_fast_mvmnt"},
-        "8.0833": {"effect": "tacz:ai_awp/awp_inspect_maghit"},
-        "8.4167": {"effect": "tacz:ai_awp/awp_inspect_magin_02"},
-        "8.7667": {"effect": "tacz:ai_awp/awp_inspect_fast_tilt"},
-        "8.8167": {"effect": "tacz:ai_awp/awp_inspect_empty_magpalmhit"},
-        "9.0167": {"effect": "tacz:ai_awp/awp_inspect_end"}
+        "0.0": {"effect": "tacz.ai_awp.awp_inspect_raise"},
+        "2.5833": {"effect": "tacz.ai_awp.awp_reload_ejectclick"},
+        "2.85": {"effect": "tacz.ai_awp.awp_reload_empty_magout"},
+        "4.2167": {"effect": "tacz.ai_awp.awp_reload_empty_rattle"},
+        "4.8": {"effect": "tacz.ai_awp.awp_reload_raise1"},
+        "5.35": {"effect": "tacz.ai_awp.awp_inspect_boltback"},
+        "5.6": {"effect": "tacz.ai_awp.awp_inspect_fast_mvmnt"},
+        "6.7167": {"effect": "tacz.ai_awp.awp_rechamber_in"},
+        "7.1167": {"effect": "tacz.ai_awp.awp_inspect_load_mvmnt"},
+        "7.2833": {"effect": "tacz.ai_awp.awp_inspect_fast_mvmnt"},
+        "8.0833": {"effect": "tacz.ai_awp.awp_inspect_maghit"},
+        "8.4167": {"effect": "tacz.ai_awp.awp_inspect_magin_02"},
+        "8.7667": {"effect": "tacz.ai_awp.awp_inspect_fast_tilt"},
+        "8.8167": {"effect": "tacz.ai_awp.awp_inspect_empty_magpalmhit"},
+        "9.0167": {"effect": "tacz.ai_awp.awp_inspect_end"}
       }
     },
     "animation.awp.shoot": {
