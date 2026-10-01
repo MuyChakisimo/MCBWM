@@ -60,7 +60,6 @@ world.afterEvents.itemUse.subscribe((event) => {
       (source.runCommand("title @s actionbar §a+" + value5 + " 308 Winchester"),
         source.playSound("random.orb"));
     } catch (error) {
-      (source.runCommand("title @s actionbar §a+" + maxConvert + " 308 Winchester"),
-        source.playSound("random.orb"));
+      console.warn(`[TACZ Ammo box] ${error}`);
     }
 });

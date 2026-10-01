@@ -1,4 +1,4 @@
-import { system, world } from "@minecraft/server";
+import { system, world, EquipmentSlot } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
 import { ATTACHMENTS } from "../config/attachments.js";
 import { getAttachments, setAttachments } from "./attachmentState.js";
@@ -13,7 +13,7 @@ const PREVIEW_TAG = "preview_active";
 const playersInPreview = new Set();
 
 function heldItemId(player) {
-  return player.getComponent("minecraft:equippable").getEquipment("Mainhand")?.typeId;
+  return player.getComponent("minecraft:equippable").getEquipment(EquipmentSlot.Mainhand)?.typeId;
 }
 
 function isHolding(player, gunId) {
@@ -80,7 +80,7 @@ function openSlot(player, gunId, slot) {
 }
 
 // Sights are entity events (e.g. "m4a1:acog") that set the gun's scope property.
-function openSights(player, gunId, { title, body, sights }, returnToGunMenu) {
+function openSights(player, gunId, { title, body = "", sights }, returnToGunMenu) {
   const form = new ActionFormData().title(title);
   if (body) form.body(body);
   for (const [label, icon] of sights) form.button(label, icon);

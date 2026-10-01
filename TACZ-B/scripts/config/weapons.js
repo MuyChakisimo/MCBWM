@@ -44,7 +44,8 @@
 // =====================================================================================
 
 // Order = order in the gunsmith menu.
-export const WEAPONS = Object.freeze({
+// (Loosely typed for editors and type checks: entries have different optional fields.)
+export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   deagle: {
     name: "Desert Eagle",
     category: "pistol",
@@ -805,7 +806,7 @@ export const WEAPONS = Object.freeze({
       ["blaze_rod", 5],
     ],
   },
-});
+}));
 
 /** The gun for an item id ("krep:m4a1" or the empty variant "krep:m4a1_emp"), or undefined. */
 export function getWeaponByItem(typeId) {

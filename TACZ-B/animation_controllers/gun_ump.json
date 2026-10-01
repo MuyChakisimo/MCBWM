@@ -12,7 +12,7 @@
           ],
           "on_entry": [
             "/scoreboard players set @s ump 25",
-            "@s[hasitem={item=krep:ump, location=slot.weapon.mainhand}] krep:noreload"
+            "/event entity @s[hasitem={item=krep:ump, location=slot.weapon.mainhand}] krep:noreload"
           ]
         },
         "setup": {

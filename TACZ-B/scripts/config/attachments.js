@@ -12,7 +12,8 @@
 // sightsOnly: the gun's menu is just a sight list (no hold check).
 // =====================================================================================
 
-export const ATTACHMENTS = Object.freeze({
+// (Loosely typed for editors and type checks: entries have different optional fields.)
+export const ATTACHMENTS = /** @type {Record<string, any>} */ (Object.freeze({
   mp5: {
     menuLabel: "MP5",
     menuIcon: "textures/items/mp5",
@@ -650,4 +651,4 @@ export const ATTACHMENTS = Object.freeze({
       { label: "Preview", icon: "textures/ui/blank", preview: true },
     ],
   },
-});
+}));

@@ -10,7 +10,7 @@
               "setup": "(query.get_equipped_item_name=='rpg' && q.is_using_item) || query.get_equipped_item_name=='rpg_emp'"
             }
           ],
-          "on_entry": ["@s[hasitem={item=krep:rpg, location=slot.weapon.mainhand}] krep:noreload"]
+          "on_entry": ["/event entity @s[hasitem={item=krep:rpg, location=slot.weapon.mainhand}] krep:noreload"]
         },
         "setup": {
           "transitions": [{"rpg.30": "query.get_equipped_item_name=='rpg' && query.is_using_item && q.is_sneaking"}],

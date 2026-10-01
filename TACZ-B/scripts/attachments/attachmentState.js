@@ -1,4 +1,4 @@
-import { system, world } from "@minecraft/server";
+import { system, world, EquipmentSlot } from "@minecraft/server";
 import { ATTACHMENTS } from "../config/attachments.js";
 import { getWeaponByItem } from "../config/weapons.js";
 
@@ -48,7 +48,7 @@ export function setAttachments(player, typeId, changes = {}) {
 // every setProperty is synced to all nearby clients.
 system.runInterval(() => {
   for (const player of world.getPlayers()) {
-    const mainhandItem = player.getComponent("minecraft:equippable").getEquipment("Mainhand");
+    const mainhandItem = player.getComponent("minecraft:equippable").getEquipment(EquipmentSlot.Mainhand);
     if (!mainhandItem?.typeId) continue;
     const key = getAttachmentKey(mainhandItem.typeId);
     if (!key) continue;

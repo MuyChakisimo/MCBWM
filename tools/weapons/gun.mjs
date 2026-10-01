@@ -27,6 +27,7 @@ import { pathToFileURL } from "node:url";
 const require = createRequire(import.meta.url);
 const { parse } = require("./lenient.cjs");
 const { format } = require("./format.cjs");
+const { generateLore, LORE_FILE, LANG_FILE } = require("./lore.cjs");
 
 const ROOT = process.cwd();
 const PACKS = ["TACZ-B", "TACZ-R"];
@@ -483,6 +484,10 @@ async function clone(from, to, name) {
     tree.write(f, text.slice(0, block.end) + copy + text.slice(block.end));
   }
 
+  // Item lore (generated from the English lang file).
+  tree.read(LORE_FILE); // (keeps its line endings)
+  tree.write(LORE_FILE, generateLore(tree.read(LANG_FILE)));
+
   // 5. Files that new names point at (sounds, textures outside the gun's folders).
   for (const f of tree.writes.keys()) {
     if (!TEXT.test(f)) continue;
@@ -527,6 +532,9 @@ async function remove(id, force) {
     const block = configBlock(text, id);
     if (block) tree.write(f, text.slice(0, block.start) + text.slice(block.end));
   }
+
+  tree.read(LORE_FILE); // (keeps its line endings)
+  tree.write(LORE_FILE, generateLore(tree.read(LANG_FILE)));
 
   // Assets only the removed parts used.
   const remaining = tree.list().filter((f) => TEXT.test(f)).map((f) => tree.read(f)).join("\n");

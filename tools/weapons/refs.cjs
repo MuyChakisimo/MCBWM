@@ -205,6 +205,58 @@ function checkPack(root) {
   for (const ev of events)
     if (!ev.startsWith("minecraft:") && !MANUAL_EVENT.test(ev) && !triggered.has(ev) && !eventText.includes(`"${ev}"`)) warn(PJ, `event ${ev} is never triggered`);
 
+  // ---- Structure the game expects (things JSON schemas don't check)
+  const balanced = (s) => {
+    let depth = 0, quote = null;
+    for (const c of s) {
+      if (quote) { if (c === quote) quote = null; continue; }
+      if (c === "'") quote = c;
+      else if (c === "(") depth++;
+      else if (c === ")" && --depth < 0) return false;
+    }
+    return depth === 0 && !quote;
+  };
+  for (const [f, j] of json) {
+    for (const [id, c] of Object.entries(j.animation_controllers ?? {})) {
+      const states = c.states ?? {}, init = c.initial_state ?? "default";
+      if (!states[init]) err(f, `${id}: initial_state "${init}" is not one of its states`);
+      for (const [sn, st] of Object.entries(states)) {
+        for (const t of st.transitions ?? []) {
+          const [to, cond] = Object.entries(t)[0];
+          if (!states[to]) err(f, `${id} state ${sn}: transition to "${to}", which is not a state`);
+          if (typeof cond === "string" && !balanced(cond)) err(f, `${id} state ${sn} -> ${to}: unbalanced ( ) or ' ' in condition`);
+        }
+        // Entry/exit lines: "@s <event>" (no selector), "/command", or Molang ending in ";".
+        if (f.startsWith("TACZ-B/"))
+          for (const k of ["on_entry", "on_exit"]) for (const x of st[k] ?? [])
+            if (!(/^@s [\w:.]+$/.test(x) || x.startsWith("/") || x.trim().endsWith(";")))
+              err(f, `${id} state ${sn} ${k}: "${x}" is not "@s <event>", a "/command" or Molang (use "/event entity @s[...] <event>" for a selector)`);
+      }
+    }
+    const geos = [...(j["minecraft:geometry"] ?? []), ...Object.entries(j).filter(([k]) => k.startsWith("geometry.")).map(([k, v]) => ({ description: { identifier: k }, ...v }))];
+    for (const g of geos) {
+      const names = new Set();
+      for (const b of g.bones ?? []) { if (names.has(b.name)) err(f, `${g.description?.identifier}: bone "${b.name}" defined twice`); names.add(b.name); }
+      for (const b of g.bones ?? []) if (b.parent && !names.has(b.parent)) err(f, `${g.description?.identifier}: bone "${b.name}" has parent "${b.parent}", which doesn't exist`);
+    }
+  }
+  // Duplicate keys: the game keeps only one of them, silently.
+  const { stripJson } = require("./lenient.cjs");
+  for (const f of json.keys()) {
+    const s = stripJson(fs.readFileSync(path.join(root, f), "utf8")), stack = [], re = /"(?:[^"\\]|\\.)*"\s*:|[{}\[\]]/g;
+    let m;
+    while ((m = re.exec(s))) {
+      const t = m[0];
+      if (t === "{") stack.push(new Set());
+      else if (t === "[") stack.push(null);
+      else if (t === "}" || t === "]") stack.pop();
+      else {
+        const k = t.slice(0, t.lastIndexOf(":")).trim(), top = stack[stack.length - 1];
+        if (top) { if (top.has(k)) err(f, `key ${k} appears twice in the same object (only one is used)`); top.add(k); }
+      }
+    }
+  }
+
   // ---- Unused (warnings)
   for (const [id, { file }] of rpAnims) if (!usedRpAnims.has(id)) warn(file, `${id} is never used`);
   for (const [id, { file }] of rpControllers) if (!usedRpAnims.has(id)) warn(file, `${id} is never used`);

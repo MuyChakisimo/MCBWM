@@ -10,7 +10,9 @@
               "setup": "(query.get_equipped_item_name=='deagleg' && q.is_using_item) || query.get_equipped_item_name=='deagleg_emp'"
             }
           ],
-          "on_entry": ["@s[hasitem={item=krep:deagleg, location=slot.weapon.mainhand}] krep:noreload"]
+          "on_entry": [
+            "/event entity @s[hasitem={item=krep:deagleg, location=slot.weapon.mainhand}] krep:noreload"
+          ]
         },
         "setup": {
           "transitions": [

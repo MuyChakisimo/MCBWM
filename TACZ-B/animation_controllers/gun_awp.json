@@ -12,7 +12,7 @@
           ],
           "on_entry": [
             "/scoreboard players set @s awp 5",
-            "@s[hasitem={item=krep:awp, location=slot.weapon.mainhand}] krep:noreload",
+            "/event entity @s[hasitem={item=krep:awp, location=slot.weapon.mainhand}] krep:noreload",
             "@s awp:normal"
           ]
         },

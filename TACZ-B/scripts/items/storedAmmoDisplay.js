@@ -1,4 +1,4 @@
-import { system, world } from "@minecraft/server";
+import { system, world, EquipmentSlot } from "@minecraft/server";
 import { getWeaponByItem } from "../config/weapons.js";
 
 // Guns with storedAmmoDisplay: true (config/weapons.js) show their loaded rounds on the model:
@@ -7,7 +7,7 @@ import { getWeaponByItem } from "../config/weapons.js";
 // setProperty is synced to all nearby clients).
 system.runInterval(() => {
   for (const player of world.getPlayers()) {
-    const mainhandItem = player.getComponent("minecraft:equippable").getEquipment("Mainhand");
+    const mainhandItem = player.getComponent("minecraft:equippable").getEquipment(EquipmentSlot.Mainhand);
     if (!mainhandItem?.typeId) continue;
     const weapon = getWeaponByItem(mainhandItem.typeId);
     if (!weapon?.storedAmmoDisplay) continue;

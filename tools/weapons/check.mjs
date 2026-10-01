@@ -111,6 +111,13 @@ for (const [id, gun] of Object.entries(ATTACHMENTS))
   for (const [label, icon] of [...(gun.sights ?? []), ...(gun.slots ?? []).flatMap((s) => [[s.label, s.icon], ...(s.options ?? []), ...(s.sights ?? [])])])
     if (icon && !VANILLA_TEXTURES.has(icon) && !fs.existsSync(path.join(root, "TACZ-R", icon + ".png"))) warn(id, `attachment icon ${icon}.png not found (${label})`, "config/attachments.js");
 
+// Item lore (config/lore.js) is generated from the English lang file.
+{
+  const { generateLore, LORE_FILE, LANG_FILE } = require("./lore.cjs");
+  const crlfToLf = (s) => (s ?? "").split("\r\n").join("\n");
+  if (crlfToLf(read(LORE_FILE)) !== generateLore(read(LANG_FILE))) problems.push(`${LORE_FILE} is out of date with ${LANG_FILE}: run node tools/weapons/lore.cjs`);
+}
+
 // Pack-wide references (refs.cjs): everything referenced exists; unused things are listed.
 const pack = checkPack(root);
 for (const p of pack.problems) problems.push(`${p.file}: ${p.msg}`);

@@ -13,7 +13,7 @@
           "on_entry": [
             "/scoreboard players set @s m1014 7",
             "/replaceitem entity @s[scores={m1014=1..}] slot.weapon.mainhand 1 krep:m1014 1 0",
-            "@s[hasitem={item=krep:m1014, location=slot.weapon.mainhand}] krep:noreload"
+            "/event entity @s[hasitem={item=krep:m1014, location=slot.weapon.mainhand}] krep:noreload"
           ]
         },
         "setup": {

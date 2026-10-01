@@ -7,12 +7,13 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `TACZ-B/` | Behavior pack (scripts, items, entities, controllers, functions) |
 | `TACZ-R/` | Resource pack (player renderer, models, textures, animations, sounds) |
 | `docs/HOW-IT-WORKS.md` | What happens when you fire, reload, inspect, aim; which file does each step; where to look when something breaks |
+| `docs/NAMING.md` | Minecraft's naming/format rules (and which tool checks each) and what every name in the packs means |
 | `NEXT_STEPS.md` | Current state, what's untested, planned work |
 | `tools/weapons/` | `gun.mjs` (clone / remove a gun), `check.mjs` (config vs pack consistency), `verify-pack.cjs` (proves two pack trees are equivalent) |
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.15.0`** for both packs. On a dedicated server set `"version": [1, 15, 0]` for both packs in the
+**Pack version is `1.16.0`** for both packs. On a dedicated server set `"version": [1, 16, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -239,6 +240,9 @@ NODE="$LOCALAPPDATA/Programs/Microsoft VS Code/Code.exe"
 
 # Config vs pack files for every gun and ammo type (run after editing weapons or pack files):
 "$NODE" tools/weapons/check.mjs
+
+# Compatibility with Minecraft's own definitions (script API types + Bedrock JSON schemas; internet once):
+"$NODE" tools/weapons/validate.mjs
 
 # After changing a tool (gun.mjs, java-port.mjs, check.mjs ...): test them on a scratch copy of the packs
 "$NODE" tools/weapons/test.mjs            # a representative set of guns, ~10 minutes; --full: every gun

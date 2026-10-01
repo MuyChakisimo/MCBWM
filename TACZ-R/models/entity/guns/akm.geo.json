@@ -872,8 +872,6 @@
         },
         {"name": "lefthand", "parent": "lefthand_and_mag", "pivot": [-6, 19, 0]},
         {"name": "lefthand_pos", "parent": "lefthand", "pivot": [0, 8, 0]},
-        {"name": "rightSleeve", "parent": "rightArm", "pivot": [-5, 22, 0]},
-        {"name": "rightItem", "parent": "rightArm", "pivot": [-6, 15, 1]},
         {"name": "attachment_adapter", "parent": "AKM", "pivot": [-0.01863, 9.17121, -1.04084]},
         {
           "name": "bolt",
@@ -21924,8 +21922,6 @@
         },
         {"name": "righthand", "parent": "bone2", "pivot": [6, 19, 0]},
         {"name": "righthand_pos", "parent": "righthand", "pivot": [0, 8, 0]},
-        {"name": "leftSleeve", "parent": "leftArm", "pivot": [5, 22, 0]},
-        {"name": "leftItem", "parent": "leftArm", "pivot": [6, 15, 1]},
         {
           "name": "akmlocator",
           "parent": "Joints",

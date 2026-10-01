@@ -9,7 +9,9 @@ Minecraft Bedrock gun add-on (behavior pack `TACZ-B/`, resource pack `TACZ-R/`),
 
 Working rules:
 
-- Run `node tools/weapons/check.mjs` before committing; it must print `Everything matches.`
+- Run `node tools/weapons/check.mjs` before committing; it must print `Everything matches.` After big changes also
+  run `node tools/weapons/validate.mjs` (Minecraft's script API types and JSON schemas). Names must follow
+  `docs/NAMING.md`.
 - Bump the pack version in both manifests and the README whenever the packs change.
 - One commit per step; end commit messages with the attribution line.
 - After changing a tool, run `node tools/weapons/test.mjs` (scratch copy; never add test guns to the packs).

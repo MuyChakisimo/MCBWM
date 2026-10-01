@@ -12,7 +12,7 @@
           ],
           "on_entry": [
             "/scoreboard players set @s evolys 75",
-            "@s[hasitem={item=krep:evolys, location=slot.weapon.mainhand}] krep:noreload"
+            "/event entity @s[hasitem={item=krep:evolys, location=slot.weapon.mainhand}] krep:noreload"
           ]
         },
         "setup": {

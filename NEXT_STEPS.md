@@ -14,13 +14,15 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.15.0** (both manifests; worlds need `[1, 15, 0]` in `world_*_packs.json`).
+- Pack version **1.16.0** (both manifests; worlds need `[1, 16, 0]` in `world_*_packs.json`).
 - 41 guns, 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
   definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `test.mjs`
   (tests the tools on a scratch copy; run it after changing any tool).
-- `docs/HOW-IT-WORKS.md`: each system step by step and a troubleshooting table.
+- `docs/HOW-IT-WORKS.md`: each system step by step and a troubleshooting table. `docs/NAMING.md`: Minecraft's
+  naming/format rules and what every name means. `tools/weapons/validate.mjs`: checks scripts against Mojang's API
+  definitions and pack files against the Bedrock JSON schemas.
 
 ## Not tested in game yet (ask the user how these went)
 

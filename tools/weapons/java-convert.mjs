@@ -58,11 +58,21 @@ const FIRST_PERSON = new Set(["fp.tac", "fp.reload", "fp.inspect", "fp.inspect_e
 const round = (v) => v.map((x) => +x.toFixed(3));
 const geometryOf = (json) => (json["minecraft:geometry"] ?? [])[0];
 
+// Java bones named like a bone of our player skeleton (e.g. the SPAS-12's "body") are renamed
+// "<name>_gun": bone names must be unique. Returns { oldName: newName } (also used for animations).
+export function boneRenames(javaGeo) {
+  const reserved = new Set([...SKELETON, ...ARMS, ...LOWER_BODY].map((b) => b.name.toLowerCase()));
+  return Object.fromEntries(javaGeo.bones.filter((b) => b.name !== "root" && reserved.has(b.name.toLowerCase())).map((b) => [b.name, `${b.name}_gun`]));
+}
+
 export function convertModel(javaGeo, id) {
   const bones = [];
+  const renames = boneRenames(javaGeo);
   for (const b of javaGeo.bones) {
     if (HELPER_BONES.test(b.name) && !b.cubes?.length) continue;
     const bone = structuredClone(b);
+    if (renames[bone.name]) bone.name = renames[bone.name];
+    if (renames[bone.parent]) bone.parent = renames[bone.parent];
     if (bone.name === "root") {
       bone.name = "rot";
       bone.parent = "joints";
@@ -95,12 +105,12 @@ export function pose(javaGeo) {
 }
 
 // Java animation -> ours: root -> rot, camera dropped, fixed first-person bones added.
-export function convertAnimation(anim, firstPerson, hold) {
+export function convertAnimation(anim, firstPerson, hold, renames = {}) {
   const out = structuredClone(anim);
   const bones = {};
   for (const [name, b] of Object.entries(out.bones ?? {})) {
     if (name === "camera") continue;
-    bones[name === "root" ? "rot" : name] = b;
+    bones[name === "root" ? "rot" : renames[name] ?? name] = b;
   }
   if (firstPerson) Object.assign(bones, structuredClone(FIXED_FP), { joints: { position: hold } });
   out.bones = bones;
@@ -114,7 +124,7 @@ export function convertGun(java, javaId, id) {
   const animations = {};
   for (const [j, ours] of Object.entries(ANIMATIONS)) {
     if (!javaAnims[j]) continue;
-    animations[`animation.${id}.${ours}`] = convertAnimation(javaAnims[j], FIRST_PERSON.has(ours), p?.hold ?? [-3, 14, -15]);
+    animations[`animation.${id}.${ours}`] = convertAnimation(javaAnims[j], FIRST_PERSON.has(ours), p?.hold ?? [-3, 14, -15], boneRenames(javaGeo));
   }
   return { model: convertModel(javaGeo, id), animations, pose: p };
 }
@@ -177,7 +187,7 @@ function compare(converted, id) {
 }
 
 // ---------------------------------------------------------------- main
-if (import.meta.url === `file:///${process.argv[1].replace(/\\/g, "/")}` || process.argv[1]?.endsWith("java-convert.mjs")) {
+if ((process.argv[1] ?? "").replace(/\\/g, "/").endsWith("java-convert.mjs")) {
   const [javaId, id] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
   if (!javaId || !id) {
     console.log(fs.readFileSync(new URL(import.meta.url), "utf8").split("\n").slice(0, 5).join("\n"));
