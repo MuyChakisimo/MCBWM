@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.22.1** (both manifests; worlds need `[1, 22, 1]` in `world_*_packs.json`).
+- Pack version **1.22.2** (both manifests; worlds need `[1, 22, 2]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -99,7 +99,12 @@ work.
    pre_animation entry with two assignments. Precautions in the same version: the expression (4632 characters) is
    split into `holding_guns_a` / `holding_guns_b`, and 19 Taurus 943 sound names with a part starting with a digit
    (`943_reload...`) are now `s943_...`; `check.mjs` refuses both. If still invisible: the content log names the
-   error (v1.21.0 = `de7c9d2` rendered fine).
+   error (v1.21.0 = `de7c9d2` rendered fine). **v1.22.1 still invisible (user, 2026-10-02).** Second break, same
+   bug at the other end: cloning the M95 from the M107 (the last gun in that line) copied the closing `;` with the
+   last term: `=='m107_emp'; || ...=='m95b_emp';`. Fixed in v1.22.2 (the gun.mjs fix already stops before the `;`);
+   `check.mjs` refuses a `;` mid-expression. A Molang syntax pass over all 9000 Molang strings in both packs
+   finds nothing new since v1.21.0. M320: wired exactly like the RPG (fires only while aiming/sneaking; reload =
+   use the empty launcher with 40mm grenades); re-test once guns render.
    The M320's description said RPG-7 rockets (copied from the RPG); it already reloaded 40mm grenades. Fixed text.
    **Then waiting for the user's in-game test** of each: first person hold/aim/draw, reloads, inspect, sounds,
    crafting, ammo. Recipes are Java's (the M95 is 300 iron, 60 gold, 15 diamonds, 3 netherite, 5 blaze rods).
@@ -148,7 +153,7 @@ work.
 
 - **Player entity rejected = every gun invisible** (icons, firing and damage still work; third-person arms at the
   sides). Causes so far: names with `:` or `/` (v1.12.0-1.14.0); an invalid Molang line from `gun.mjs clone`
-  (v1.22.0). `check.mjs` also refuses, as precautions, sound names with a part starting with a digit and Molang
+  (v1.22.0: an assignment and a `;` copied into the middle of `holding_all_guns`). `check.mjs` also refuses, as precautions, sound names with a part starting with a digit and Molang
   expressions over 4000 characters. The in-game content log (Settings > Creator) names the exact error.
 
 - The local zips folder must be named `reference/` (singular). Only that name is in `.gitignore` and read by the

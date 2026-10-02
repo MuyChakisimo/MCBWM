@@ -93,6 +93,8 @@ function checkPack(root) {
     const exprs = [...(d.scripts?.pre_animation ?? []), ...[d.render_controllers ?? [], d.scripts?.animate ?? []].flat().flatMap((r) => (typeof r === "string" ? [] : Object.values(r)))];
     // One assignment per pre_animation entry ("v.a = x || v.b = y" is invalid and rejects the entity).
     for (const e of d.scripts?.pre_animation ?? []) if ((e.replace(/'[^']*'/g, "").match(/(^|[^=!<>])=(?!=)/g) ?? []).length > 1) err(f, `pre_animation entry with more than one assignment: ${e.slice(0, 80)}...`);
+    // A ";" only at the end ("=='m107_emp'; || ..." from v1.22.0's M95 clone also rejected the entity).
+    for (const e of exprs) if (/;\s*\S/.test(e.replace(/'[^']*'/g, ""))) err(f, `";" in the middle of a Molang expression: ${e.slice(0, 80)}...`);
     for (const e of exprs) if (e.length > MAX_MOLANG) err(f, `Molang expression of ${e.length} characters (keep under ${MAX_MOLANG}; split it): ${e.slice(0, 60)}...`);
   }
   for (const k of Object.keys(soundDefs)) if (!SAFE_SOUND.test(k)) err("TACZ-R/sounds/sound_definitions.json", `sound name "${k}" may only use letters, digits, _ and . (no part starting with a digit)`);
