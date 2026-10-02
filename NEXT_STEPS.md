@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.16.0** (both manifests; worlds need `[1, 16, 0]` in `world_*_packs.json`).
+- Pack version **1.17.0** (both manifests; worlds need `[1, 17, 0]` in `world_*_packs.json`).
 - 41 guns, 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -38,13 +38,20 @@ work.
 
 ## Next, in order
 
-1. **Ammo counter in the hitscan script** (user decided 2026-10-01: do this before any Java import, so ported guns copy the new firing path instead of the old per-gun controller logic; needs in-game testing).
+1. **Ammo counter in the hitscan script.** **M4A1 done in v1.17.0, waiting for the user's in-game test**: hold to
+   fire (auto, about 800 rpm, same as before), the ammo HUD counts down per shot, last round shows "No Ammunition" and
+   swaps to the empty gun, empty and tactical reloads, no shots during a tactical reload, ADS kick/recoil, silencer
+   sound, switching guns stops fire. How it works: `combat/firing.js`, `scriptFiring: true` in `weapons.js`, the
+   M4A1's BP controller keeps only `setup1`/`setup`/`m4a1.31` (docs/HOW-IT-WORKS.md "Firing a shot"). Simulated
+   outside the game (fire rate, empty swap, reload block, semi and burst). Guns cloned/ported from the M4A1 inherit
+   `scriptFiring`. The rollout to every gun comes after the Java imports (user's order, see Decisions): per gun,
+   add `scriptFiring: true` and delete its controller's shoot states; do it with a tool so ported guns are included.
    Move "remove one round, update HUD, swap to `<id>_emp` at 0, 'No Ammunition' title" from each gun's BP controller
    into `combat/hitscan.js`. Then fire timing can use `fireMode` / `rpm` / `burst` from `weapons.js` (one fixed mode
    per gun, no switching; the user chose: M16 and B93R burst, Double Barrel bursts both barrels, SCAR-H auto, G3/FAL/
    MK14 semi, CZ75 auto). Do the M4A1 first, have the user test, then roll out. Special cases: minigun overheat,
    tube-fed shotguns (`reload: "single"`), Golden Deagle and Vector per-magazine reloads, `storedAmmoDisplay` guns.
-2. **First Java gun port: M9A4**, after step 1 (the user agreed to test one port first). Cleanest case: full Java sounds, no
+2. **First Java gun port: M9A4**, after the M4A1 test (the user agreed to test one port first). Cleanest case: full Java sounds, no
    attachments. `node tools/weapons/java-port.mjs m9a4 m9a4 --from p320 --name "M9A4"`, then `check.mjs`, bump the
    pack version, commit. The user tests: crafting, aim (sight lines up?), reload empty/tactical, inspect, sounds.
    If the aim is off, adjust `EYE_HEIGHT` / `EYE_DEPTH` / `HOLD_OFFSET` in `java-convert.mjs` (measured on 34 guns).
@@ -77,7 +84,8 @@ work.
 
 ## Decisions the user already made (don't re-ask)
 
-- Order: ammo counter in the hitscan script first (M4A1 test, then all guns), then Java imports (M9A4 first).
+- Order (user, 2026-10-01): M4A1 on script firing -> user tests -> import one Java gun (M9A4) -> import all Java
+  guns -> convert all guns (including the imported ones) to script firing.
 - Stats: headshot multipliers and damage falloff come from Java; new guns use `java-stats.mjs`'s proposals for now
   ("we'll modify later"). Fire modes as listed in step 2. MP7 950 auto, G18 1100 auto, Saiga-12 300 semi, Colt Python
   150 semi (real-world values; not in Java).

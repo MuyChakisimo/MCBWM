@@ -3,6 +3,7 @@
 
 // Combat
 import "./combat/hitscan";
+import "./combat/firing";
 
 // Crafting and attachment workbenches
 import "./crafting/workbenchBlocks";

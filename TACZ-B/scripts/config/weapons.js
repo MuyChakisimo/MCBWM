@@ -17,8 +17,10 @@
 //                 ads = sneaking. Fitted attachments can reduce it (recoil.js).
 //   fireMode      "semi" | "burst" | "auto": the gun's only fire mode.
 //   rpm           Rounds per minute. burst: { count, rpm, delay }: shots per burst, fire rate within
-//                 the burst, seconds between bursts. (Not applied yet: fire timing is still in each
-//                 gun's animation controller; they take over when firing moves into the script.)
+//                 the burst, seconds between bursts. Applied to guns with scriptFiring; the others
+//                 still fire at their animation controller's rate.
+//   scriptFiring  true: firing, fire rate and the ammo count run in combat/firing.js instead of the
+//                 gun's BP fire controller (being rolled out one gun at a time).
 //   pellets       Rays per shot (shotguns: 12). Default 1.
 //   spread        { hip, ads }: pellet scatter in degrees (typical deviation from the aim;
 //                 about 2 in 3 pellets land within it). ads = sneaking. Only with pellets.
@@ -352,6 +354,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[25, 1], [60, 0.85], [null, 0.69]],
     fireMode: "auto",
     rpm: 810,
+    scriptFiring: true,
     magazine: 30,
     ammo: "krep:m885",
     recipe: [

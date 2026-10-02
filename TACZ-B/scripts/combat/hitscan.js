@@ -140,7 +140,11 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
   const shooter = event.sourceEntity;
   if (!(shooter instanceof Player)) return;
 
-  const mode = requestedMode === "ads" ? "ads" : "hip";
+  shoot(shooter, weaponId, weapon, requestedMode === "ads" ? "ads" : "hip");
+});
+
+/** One shot: recoil, then the hitscan rays. Used by the scriptevent above and by combat/firing.js. */
+export function shoot(shooter, weaponId, weapon, mode) {
   try {
     applyRecoil(shooter, weaponId, weapon, mode);
   } catch (error) {
@@ -151,4 +155,4 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
   } catch (error) {
     console.error(`[TACZ Hitscan] ${weaponId} error:`, error);
   }
-});
+}

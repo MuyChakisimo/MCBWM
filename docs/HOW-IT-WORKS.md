@@ -31,6 +31,18 @@ out or is reloaded.
 
 ## Firing a shot
 
+**Guns with `scriptFiring: true`** (`config/weapons.js`; so far the M4A1) fire from the script instead of steps
+1 and 2 below: `combat/firing.js` starts on the use button (`itemStartUse` on `krep:<id>`) and fires at the gun's
+`rpm` in its `fireMode` (auto while held, semi one per press, burst `burst.count` per press) until the button is
+released (`itemStopUse`), the gun is switched, or the magazine is empty. Each shot: scoreboard `<id>` minus one
+(capped at magazine + 1 first), ammo HUD (`setActionBar`), `<id>.shoot` (or `<id>.suppress` with `krep:muzzle` >=
+4), the shoot animation (`animation.<id>.shoot.sight` when sneaking, else `.nsight`), then `shoot()` in
+`combat/hitscan.js` (recoil + rays, step 3). The last round swaps to `krep:<id>_emp` and shows "No Ammunition". No
+shots during a tactical reload (`mark_variant` 2). The gun's BP controller keeps only `setup1` (initial ammo),
+`setup` (HUD) and `<id>.31` (using it at 0 rounds swaps to `_emp`); reloading is unchanged.
+
+**Other guns:**
+
 1. **BP** `animation_controllers/gun_<id>.json`, controller `controller.animation.<id>`: while the gun is held, the
    use button is down and the scoreboard `<id>` is at least 1, it enters a shoot state (`<id>.30`, `delay.30` ...).
    On entry: event `@s krep:<id>_fire`, `/function <id>` (HUD), `playsound <id>.shoot`, remove one round,
@@ -125,6 +137,7 @@ magazine sizes.
 |---|---|
 | Gun doesn't fire | BP `gun_<id>.json` shoot transitions (scoreboard `<id>` >= 1?); `/scoreboard players list @s` |
 | Fires but no damage | `player.json` `krep:<id>_fire` has `scriptevent tacz:weapon_hitscan <id>`; `config/weapons.js` entry; content log for `[TACZ Hitscan]` errors |
+| Gun with `scriptFiring` doesn't fire, or fires twice | `config/weapons.js` `scriptFiring` and `fireMode`/`rpm`; its BP controller must have no shoot states left (only `setup1`, `setup`, `<id>.31`); content log for `combat/firing.js` errors |
 | Damage feels off | `weapons.js` `damage`, `falloff`, `headshot`, `penetration`; `combat.js` multipliers |
 | Wrong ammo count / reload loads wrong amount | `functions/<id>quantity.mcfunction`, `<id>reload.mcfunction`, `player.json` `<id>reload<N>` and `krep:<id>_reload`; `check.mjs` compares them to `magazine` |
 | Reload takes no ammo | `<id>reload.mcfunction` covers every score (per-magazine guns: the right reload animation plays for the fitted magazine) |

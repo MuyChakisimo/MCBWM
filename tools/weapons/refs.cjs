@@ -201,6 +201,13 @@ function checkPack(root) {
     for (const m of text.matchAll(/event entity @s ([\w:.]+)/g)) triggered.add(m[1]);
     for (const m of text.matchAll(/"([a-z0-9_]+:[a-z0-9_]+)"/g)) triggered.add(m[1]); // sight events in config
   }
+  // Guns with scriptFiring: combat/firing.js plays `<id>.shoot` (and `<id>.suppress` with a silencer).
+  const weaponsSrc = fs.existsSync(path.join(root, "TACZ-B/scripts/config/weapons.js")) ? fs.readFileSync(path.join(root, "TACZ-B/scripts/config/weapons.js"), "utf8") : "";
+  for (const m of weaponsSrc.matchAll(/^ {2}([a-z0-9_]+): \{[\s\S]*?^ {2}\},?$/gm)) {
+    if (!/^ {4}scriptFiring: true,/m.test(m[0])) continue;
+    useSound(`${m[1]}.shoot`, "TACZ-B/scripts/combat/firing.js", "playSound");
+    if (soundDefs[`${m[1]}.suppress`]) usedSounds.add(`${m[1]}.suppress`);
+  }
   const eventText = JSON.stringify(player?.events ?? {}) + JSON.stringify(player?.components ?? {}) + JSON.stringify(player?.component_groups ?? {});
   for (const ev of events)
     if (!ev.startsWith("minecraft:") && !MANUAL_EVENT.test(ev) && !triggered.has(ev) && !eventText.includes(`"${ev}"`)) warn(PJ, `event ${ev} is never triggered`);
