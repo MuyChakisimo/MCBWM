@@ -23,6 +23,7 @@ import { execFileSync } from "node:child_process";
 import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
 import { convertGun, armsModel, FIXED_FP } from "./java-convert.mjs";
+import { armLayout } from "./arm-layout.mjs";
 const require = createRequire(import.meta.url);
 const { parse } = require("./lenient.cjs");
 const { format } = require("./format.cjs");
@@ -296,6 +297,18 @@ const soundNames = new Map(); // our cue name -> Java sound path
   log(`6. stats: damage ${s.damage}, penetration ${s.penetration}, headshot ${x.head_shot_multiplier}, ${fireMode} ${javaData.rpm} rpm, falloff ${falloff ? "yes" : "no"}`);
   if (newAmmo !== oldAmmo) { swapAmmo(id, oldAmmo, newAmmo); log(`   ammo: krep:${oldAmmo} -> krep:${newAmmo}`); }
   if (newMag !== oldMag) { resizeMagazine(id, oldMag, newMag); log(`   magazine: ${oldMag} -> ${newMag}`); }
+}
+// ---------------------------------------------------------------- 7. arm layout
+// The converted model mirrors the arms (right arm on lefthand_pos), which holds rifles fine but hides the
+// right hand on pistols. If the source gun puts each arm on its own hand (P320, AA-12), do the same with
+// its offsets (arm-layout.mjs).
+{
+  const src = parse(readText(`TACZ-R/models/entity/guns/${from}.geo.json`));
+  const srcGeo = (src["minecraft:geometry"] ?? [])[0] ?? Object.values(src).find((v) => v?.bones);
+  if (srcGeo?.bones.find((b) => b.name === "rightArm")?.parent === "righthand_pos") {
+    log(`7. arm layout: arms on their own hands, offsets from ${from}`);
+    armLayout(root, [id], from, log);
+  }
 }
 log(`\nDone. Run tools/weapons/check.mjs, then test ${id} in game (aim, reloads, sounds).`);
 

@@ -173,8 +173,8 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [180, 0, 0], "position": [-0.2, -12, 0], "scale": [0.8, 1, 1]},
-        "rightArm": {"rotation": [180, 0, 0], "position": [0.3, -11.6, -0.1], "scale": [0.76, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.6, -11.6, -0.15], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-2, 16.5, -13]}
       },
       "sound_effects": {
@@ -556,8 +556,8 @@
         "bullet2": {"scale": "v.t50emp ? 0 : 1"},
         "bullet_in_mag2": {"scale": "v.t50emp ? 0 : 1"},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [180, 0, 0], "position": [-0.2, -12, 0], "scale": [0.8, 1, 1]},
-        "rightArm": {"rotation": [180, 0, 0], "position": [0.3, -11.6, -0.1], "scale": [0.76, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.6, -11.6, -0.15], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-2, 16.5, -13]}
       }
     },
@@ -575,8 +575,8 @@
         "bullet2": {"scale": "v.t50emp ? 0 : 1"},
         "bullet_in_mag2": {"scale": "v.t50emp ? 0 : 1"},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [180, 0, 0], "position": [-0.2, -12, 0], "scale": [0.8, 1, 1]},
-        "rightArm": {"rotation": [180, 0, 0], "position": [0.3, -11.6, -0.1], "scale": [0.76, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.6, -11.6, -0.15], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": {"0.0": [-2, 16.5, -13], "0.25": [0, 17.6, -12]}}
       }
     },
@@ -634,8 +634,8 @@
         "bullet2": {"scale": "v.t50emp ? 0 : 1"},
         "bullet_in_mag2": {"scale": "v.t50emp ? 0 : 1"},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [180, 0, 0], "position": [-0.2, -12, 0], "scale": [0.8, 1, 1]},
-        "rightArm": {"rotation": [180, 0, 0], "position": [0.3, -11.6, -0.1], "scale": [0.76, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.6, -11.6, -0.15], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-2, 16.5, -13]}
       }
     },
@@ -884,8 +884,8 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [180, 0, 0], "position": [-0.2, -12, 0], "scale": [0.8, 1, 1]},
-        "rightArm": {"rotation": [180, 0, 0], "position": [0.3, -11.6, -0.1], "scale": [0.76, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.6, -11.6, -0.15], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-2, 16.5, -13]}
       },
       "sound_effects": {
@@ -1181,8 +1181,8 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [180, 0, 0], "position": [-0.2, -12, 0], "scale": [0.8, 1, 1]},
-        "rightArm": {"rotation": [180, 0, 0], "position": [0.3, -11.6, -0.1], "scale": [0.76, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.6, -11.6, -0.15], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-2, 16.5, -13]}
       },
       "sound_effects": {
@@ -1450,8 +1450,8 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [180, 0, 0], "position": [-0.2, -12, 0], "scale": [0.8, 1, 1]},
-        "rightArm": {"rotation": [180, 0, 0], "position": [0.3, -11.6, -0.1], "scale": [0.76, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.6, -11.6, -0.15], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-2, 16.5, -13]}
       },
       "sound_effects": {

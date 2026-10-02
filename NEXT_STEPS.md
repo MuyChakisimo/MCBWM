@@ -14,11 +14,11 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.19.0** (both manifests; worlds need `[1, 19, 0]` in `world_*_packs.json`).
+- Pack version **1.20.0** (both manifests; worlds need `[1, 20, 0]` in `world_*_packs.json`).
 - 42 guns (41 original + the M9A4, the first Java port), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
-  definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `test.mjs`
+  definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `arm-layout.mjs` (first-person arms on their own hand bones), `test.mjs`
   (tests the tools on a scratch copy; run it after changing any tool).
 - `docs/HOW-IT-WORKS.md`: each system step by step and a troubleshooting table. `docs/NAMING.md`: Minecraft's
   naming/format rules and what every name means. `tools/weapons/validate.mjs`: checks scripts against Mojang's API
@@ -58,7 +58,15 @@ work.
    the right hand (only P320, M1911, AA-12 do; the converted Java model mirrors them like the other 33 guns), and its
    hold/aim/sprint poses (kept by the port) placed the arms for that layout. Fixed in v1.19.0 in java-port.mjs:
    moved poses take the hands from Java `static_idle` (what every original gun's fp.hold uses) and the fixed arm
-   offsets; the M9A4 was removed and re-ported. **Waiting for the user's re-test of first-person hold and aim** (crafting: Java recipe, 16
+   offsets; the M9A4 was removed and re-ported. User re-test of v1.19.0: left hand right, **right hand missing, gun
+   floats in inspect**, the same as the G17, G18, Golden Deagle, B93R and Timeless 50 (M1911, P320, Colt Python fine).
+   Cause: those use the mirrored arm layout (right arm under `lefthand_pos`), which on a pistol puts the right arm in
+   front of the camera. Fixed in v1.20.0: new `tools/weapons/arm-layout.mjs` puts each arm under its own hand bone
+   with the P320's offsets (shifted when the hand bones sit elsewhere), applied to m9a4, g17, g18, deagle, deagleg,
+   b93, t50; java-port.mjs runs it when the template has that layout (step 7). Checked outside the game: each arm now
+   ends on its hand exactly as on the P320. **Waiting for the user's in-game test** of first person on those 7 pistols
+   (both hands on the grip in hold, aim, sprint, reloads and inspect; the Deagle shares the Golden Deagle's arms) and
+   the rest of the M9A4 list (crafting: Java recipe, 16
    iron; aim/sights; empty and tactical reload; inspect and empty inspect; sounds; 17 rounds of 9mm). Fires from its
    controller (template P320), not by script yet. Java falloff gives 117% damage within 18 blocks. (The user agreed to test one port first.) Cleanest case: full Java sounds, no
    attachments. `node tools/weapons/java-port.mjs m9a4 m9a4 --from p320 --name "M9A4"`, then `check.mjs`, bump the
@@ -120,6 +128,9 @@ work.
   invisible and the third-person arms didn't move (the game fell back to the vanilla player). v1.15.0 renamed them
   to `tacz.m107.m107_reload_up`; `check.mjs` now rejects such names. If the guns disappear again, check the content
   log for player.entity.json errors first.
+- **Pistol arms**: a pistol with the mirrored arm layout (right arm under `lefthand_pos`) shows no right hand in
+  first person; third person looks fine. Fix with `tools/weapons/arm-layout.mjs <id>`. Copying arm offsets between
+  guns only works within one layout (that was the v1.18.0 M9A4 bug). docs/HOW-IT-WORKS.md "What the player sees".
 
 - Animation sound effects play only if the name is in `player.entity.json`'s `sound_effects` table (and in
   `sound_definitions.json`); `check.mjs` checks both.

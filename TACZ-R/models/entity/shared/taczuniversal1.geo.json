@@ -35,7 +35,7 @@
       {"name": "lefthand_pos", "parent": "lefthand", "pivot": [0, 8, 0]},
       {
         "name": "rightArm",
-        "parent": "lefthand_pos",
+        "parent": "righthand_pos",
         "pivot": [-5, 22, 0],
         "cubes": [{"origin": [-8, 12, -2], "size": [4, 12, 4], "uv": [40, 16]}]
       },
@@ -52,7 +52,7 @@
       {"name": "righthand_pos", "parent": "righthand", "pivot": [0, 8, 0]},
       {
         "name": "leftArm",
-        "parent": "righthand_pos",
+        "parent": "lefthand_pos",
         "pivot": [5, 22, 0],
         "cubes": [{"origin": [4, 12, -2], "size": [4, 12, 4], "uv": [32, 48]}]
       },

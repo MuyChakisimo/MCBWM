@@ -110,6 +110,12 @@ once when the world loads.
   when switching guns.
 - In every first-person animation, bone `joints` places the gun in view: its position in `fp.hold` is the hold pose,
   the end of `fp.sight` is the aim pose (sight lined up with the camera).
+- The arms hang off the gun's hand bones, in one of two layouts (in the gun model and its `taczuniversal<N>`):
+  mirrored (`rightArm` under `lefthand_pos`, `leftArm` under `righthand_pos`, arm offsets about ±2; most rifles) or
+  own hand (each arm under its own `*_pos` bone, offsets about ±10; P320, AA-12, and since v1.20.0 the M9A4, G17,
+  G18, Deagle, Golden Deagle, B93R, Timeless 50). Pistols need the own-hand layout: mirrored, the right arm sits in
+  front of the camera and isn't drawn. The arm offsets (`rightArm` / `leftArm` in every `fp` animation) must match
+  the layout; `tools/weapons/arm-layout.mjs` switches a gun to own hand with the P320's offsets.
 - `attachables/gun_<id>.json` hides the vanilla item sprite (the gun is drawn by the player renderer).
 
 ## Sounds
@@ -145,6 +151,7 @@ magazine sizes.
 | A sound doesn't play | `check.mjs`; then the effect name in `player.entity.json` `sound_effects` and `sound_definitions.json` |
 | All guns invisible, third-person arms stiff | `TACZ-R/entity/player.entity.json` was rejected: content log; names in its tables must use only letters, digits, `_`, `.` (`check.mjs` checks) |
 | Gun invisible / arms missing in first person | model files parse (`check.mjs`); `player.entity.json` render controllers for `<id>` and `universal<N>` |
+| Pistol: one hand missing in first person, gun floats | mirrored arm layout (see "What the player sees"); `node tools/weapons/arm-layout.mjs <id>` |
 | Sight doesn't line up | `joints` position at the end of `animation.<id>.fp.sight` (RP `animations/guns/<id>.json`) |
 | Animation doesn't play | RP `gun_<id>.json` state and its condition; the short name in `player.entity.json` `animations` |
 | Menu doesn't open | `crafting/workbenchBlocks.js` (block id), content log |

@@ -577,8 +577,8 @@
         },
         "bullet": {"scale": 0},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 16.313, -14.938]}
       },
       "sound_effects": {
@@ -902,8 +902,8 @@
         },
         "bullet": {"scale": 0},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 16.313, -14.938]}
       },
       "sound_effects": {
@@ -1127,8 +1127,8 @@
           "scale": {"0.0": [0, 0, 0], "0.3667": {"pre": [0, 0, 0], "post": [1, 1, 1]}, "2.1333": [1, 1, 1]}
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 16.313, -14.938]}
       },
       "sound_effects": {
@@ -1508,8 +1508,8 @@
         },
         "constraint": {"rotation": [0.2, 0.2, 0.2], "position": [0.2, 0.2, 0.2]},
         "hammer": {"rotation": [0, 0, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]}
       }
     },
     "animation.m9a4.fp.sight": {
@@ -1543,8 +1543,8 @@
         },
         "constraint": {"rotation": [0.2, 0.2, 0.2], "position": [0.2, 0.2, 0.2]},
         "hammer": {"rotation": [0, 0, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]}
       }
     },
     "animation.m9a4.fp.sprint": {
@@ -1601,8 +1601,8 @@
         },
         "constraint": {"rotation": [0.2, 0.2, 0.2], "position": [0.2, 0.2, 0.2]},
         "hammer": {"rotation": [0, 0, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]}
       }
     },
     "animation.m9a4.fp.shoot.nsight": {
@@ -1907,8 +1907,8 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 16.313, -14.938]}
       },
       "sound_effects": {

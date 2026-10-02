@@ -379,8 +379,8 @@
         "bullet": {"scale": "(v.deagleb || v.deaglegb) ? 1 : 0"},
         "bullet_in_mag": {"scale": "(v.deagleb || v.deaglegb) ? 1 : 0"},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [0, -12, 0], "scale": [0.9, 1, 1]},
-        "rightArm": {"rotation": [182.5, 0, 0], "position": [1, -12, 0], "scale": [0.9, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "Joints": {"position": [-2, 19.4, -17]}
       }
     },
@@ -435,8 +435,8 @@
         "bullet": {"scale": "(v.deagleb || v.deaglegb) ? 1 : 0"},
         "bullet_in_mag": {"scale": "(v.deagleb || v.deaglegb) ? 1 : 0"},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [0, -12, 0], "scale": [0.9, 1, 1]},
-        "rightArm": {"rotation": [182.5, 0, 0], "position": [1, -12, 0], "scale": [0.9, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "Joints": {"position": {"0.0": [-2, 19.4, -17], "0.2083": [0, 20.8, -17]}}
       }
     },
@@ -700,8 +700,8 @@
         },
         "bullet": {"scale": 1},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [0, -12, 0], "scale": [0.9, 1, 1]},
-        "rightArm": {"rotation": [182.5, 0, 0], "position": [1, -12, 0], "scale": [0.9, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "Joints": {"position": [-2, 19.4, -17]}
       },
       "sound_effects": {
@@ -980,8 +980,8 @@
           "position": {"0.0": [0.2, 0.2, 0.2], "0.3": [0.4, 0.4, 0.4], "0.6": [0.4, 0.4, 0.4], "1.2": [0.2, 0.2, 0.2]}
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [0, -12, 0], "scale": [0.9, 1, 1]},
-        "rightArm": {"rotation": [182.5, 0, 0], "position": [1, -12, 0], "scale": [0.9, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "Joints": {"position": [-2, 19.4, -17]},
         "bullet_in_mag2": {"scale": {"0.0": [0, 0, 0], "0.5667": [0, 0, 0], "0.6": [1, 1, 1]}},
         "bullet_in_mag": {"scale": {"0.0": [0, 0, 0], "0.5667": [0, 0, 0], "0.6": [1, 1, 1]}}
@@ -1847,8 +1847,8 @@
         "bullet_in_mag": {"scale": 0},
         "bullet_in_barrel": {"scale": 0},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [0, -12, 0], "scale": [0.9, 1, 1]},
-        "rightArm": {"rotation": [182.5, 0, 0], "position": [1, -12, 0], "scale": [0.9, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "Joints": {"position": [-2, 19.4, -17]}
       },
       "sound_effects": {
@@ -3757,20 +3757,8 @@
         },
         "bullet": {"scale": 0},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [0, -12, 0], "scale": [0.9, 1, 1]},
-        "rightArm": {
-          "rotation": [182.5, 0, 0],
-          "position": {
-            "0.0": [1, -12, 0],
-            "0.1667": [0, -12, 0],
-            "0.3": [0, -12, 1],
-            "0.3333": [0, -12, 1],
-            "0.4": [-1, -12, 0],
-            "0.5333": [-1, -12, 0],
-            "0.6": [1, -12, 0]
-          },
-          "scale": [0.9, 1, 1]
-        },
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "Joints": {"position": [-2, 19.4, -17]}
       },
       "sound_effects": {
@@ -3844,8 +3832,8 @@
         "bullet": {"scale": "(v.deagleb || v.deaglegb) ? 1 : 0"},
         "bullet_in_mag": {"scale": "(v.deagleb || v.deaglegb) ? 1 : 0"},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [0, -12, 0], "scale": [0.9, 1, 1]},
-        "rightArm": {"rotation": [182.5, 0, 0], "position": [1, -12, 0], "scale": [0.9, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "Joints": {"position": [-2, 19.4, -17]}
       }
     },
@@ -4054,8 +4042,8 @@
           },
           "scale": 1
         },
-        "rightArm": {"rotation": [182.5, 0, 0], "position": [1, -12, 0], "scale": [0.9, 1, 1]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [0, -12, 0], "scale": [0.9, 1, 1]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]}
       },
       "sound_effects": {
         "0.0": {"effect": "deagleg.raise"},
@@ -4287,8 +4275,8 @@
           },
           "scale": 1
         },
-        "rightArm": {"rotation": [182.5, 0, 0], "position": [1, -12, 0], "scale": [0.9, 1, 1]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [0, -12, 0], "scale": [0.9, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
         "bullet2": {"scale": 0},
         "bullet_in_barrel": {"scale": 0}
       },
@@ -4618,8 +4606,8 @@
             "5.7333": [0, 0, 0]
           }
         },
-        "rightArm": {"rotation": [182.5, 0, 0], "position": [1, -12, 0], "scale": [0.9, 1, 1]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [0, -12, 0], "scale": [0.9, 1, 1]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]}
       },
       "sound_effects": {
         "0.1": {"effect": "deagleg.magreleaseins"},
@@ -5330,8 +5318,8 @@
         "bullet": {"scale": "(v.deagleb || v.deaglegb) ? 1 : 0"},
         "bullet_in_mag": {"scale": "(v.deagleb || v.deaglegb) ? 1 : 0"},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [-182.5, 0, 0], "position": [-7.37262, -23.35301, 138.33927], "scale": [0.9, 1, 1]},
-        "rightArm": {"rotation": [182.5, 0, 0], "position": [-0.86827, -56.31204, 122.20046], "scale": [0.9, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "Joints": {"rotation": [0, -90, 0], "position": [0, 24.7, -20]}
       }
     }
