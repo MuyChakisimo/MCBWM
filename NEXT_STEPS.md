@@ -24,6 +24,18 @@ at the end of each session. How the code works is in `README.md`.
   naming/format rules and what every name means. `tools/weapons/validate.mjs`: checks scripts against Mojang's API
   definitions and pack files against the Bedrock JSON schemas.
 
+## Open issue: guns invisible at v1.14.0 (investigating)
+
+Reported 2026-10-01: at v1.14.0 every gun is invisible (shots, sounds, tracers and damage work). v1.4.0 showed guns;
+the user may not have looked since. Ruled out by comparing v1.4.0 / v1.9.0 / HEAD: `player.entity.json` textures,
+geometry, materials, render-controller list and scripts (pre_animation, animate) are identical to v1.4.0; render
+controllers and gun models unchanged; every pack JSON parses strictly with no null values; no removed definition is
+still referenced; texture/sound paths match git filenames exactly (case-sensitive platforms); manifests fine; the
+player properties removed in v1.10.0 are not read by the resource pack. Still unknown: whether the player body/arms
+render (if the client entity were rejected, the vanilla player would show with no gun), and the content log. New
+in `player.entity.json` since v1.9.0: 96 sound_effects keys containing `:` and `/` (e.g. `tacz:m107/...`, from
+v1.12.0); the original had none. Next: user's observations + content log, then bisect with test builds if needed.
+
 ## Not tested in game yet (ask the user how these went)
 
 The user last tested around v1.9.0 ("everything's working great"). Since then:
