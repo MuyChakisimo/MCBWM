@@ -24,32 +24,17 @@ at the end of each session. How the code works is in `README.md`.
   naming/format rules and what every name means. `tools/weapons/validate.mjs`: checks scripts against Mojang's API
   definitions and pack files against the Bedrock JSON schemas.
 
-## Open issue: guns invisible at v1.14.0 (investigating)
+## Known-good state: v1.16.0 (tag `stable-v1.16.0`)
 
-Reported 2026-10-01: at v1.14.0 every gun is invisible (shots, sounds, tracers and damage work). v1.4.0 showed guns;
-the user may not have looked since. Ruled out by comparing v1.4.0 / v1.9.0 / HEAD: `player.entity.json` textures,
-geometry, materials, render-controller list and scripts (pre_animation, animate) are identical to v1.4.0; render
-controllers and gun models unchanged; every pack JSON parses strictly with no null values; no removed definition is
-still referenced; texture/sound paths match git filenames exactly (case-sensitive platforms); manifests fine; the
-player properties removed in v1.10.0 are not read by the resource pack. Still unknown: whether the player body/arms
-render (if the client entity were rejected, the vanilla player would show with no gun), and the content log. New
-in `player.entity.json` since v1.9.0: 96 sound_effects keys containing `:` and `/` (e.g. `tacz:m107/...`, from
-v1.12.0); the original had none. Next: user's observations + content log, then bisect with test builds if needed.
+Tested in game by the user on 2026-10-01: guns visible in first and third person, damage, animations and sounds all
+work. Everything listed as untested in earlier handoffs (v1.10.0 to v1.14.0: instant workbench menus, sounds that
+never played, SKS suppressed shot, pistol walk sway, empty-magazine inspects, per-gun headshot multipliers and damage
+falloff, the six new ammo types) is part of this tested state. Return to it with `git checkout stable-v1.16.0`.
 
-## Not tested in game yet (ask the user how these went)
-
-The user last tested around v1.9.0 ("everything's working great"). Since then:
-
-- v1.10.0: workbench menus open instantly like a chest (sneak to place blocks against them); kill tag and per-shot
-  sound counters removed; MP7 looping fire sound should still work.
-- v1.11.0: gun tool cleanup (should look the same in game).
-- v1.12.0: sounds that never played now play (M107 reload/inspect, AA-12/G17/G18/SKS/Uzi/UMP draw), SKS suppressed
-  shot, pistol walk sway (G17, G18, Deagle, Golden Deagle, M1911), empty-magazine inspect for AA-12, AWM, Deagle, G3,
-  HK416, M16, M16A1, MP5, SCAR-H, Vector.
-- v1.13.0: per-gun headshot multipliers from Java (1.25x SMGs to 2x snipers, was 2x for all) and damage falloff by
-  distance (e.g. M16 does 75% past 70 blocks).
-- v1.14.0: six new ammo types in the ammo workbench (7.92x57, .30-06, .45-70, .500 Magnum, .22 WMR, 40mm grenade);
-  no gun uses them yet.
+The invisible-guns bug at v1.12.0 to v1.14.0 was the game rejecting `player.entity.json` (fallback to the vanilla
+player) because 96 `sound_effects` names contained `:` and `/`; fixed in v1.15.0, and `check.mjs` now rejects such
+names. Symptom to remember: guns invisible and third-person arms not posed, but firing, sounds, tracers and damage
+work.
 
 ## Next, in order
 
@@ -110,6 +95,8 @@ The user last tested around v1.9.0 ("everything's working great"). Since then:
 
 ## Gotchas learned
 
+- The local zips folder must be named `reference/` (singular). Only that name is in `.gitignore` and read by the
+  tools; a `references/` folder would be committed to GitHub.
 - **Names in the player client entity's tables** (`sound_effects`, `animations`, ...) may only use letters, digits, `_`
   and `.`. v1.12.0-1.14.0 added sound names like `tacz:m107/m107_reload_up`; at home (2026-10-01) the guns were
   invisible and the third-person arms didn't move (the game fell back to the vanilla player). v1.15.0 renamed them
