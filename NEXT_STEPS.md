@@ -105,6 +105,22 @@ work.
    `check.mjs` refuses a `;` mid-expression. A Molang syntax pass over all 9000 Molang strings in both packs
    finds nothing new since v1.21.0. M320: wired exactly like the RPG (fires only while aiming/sneaking; reload =
    use the empty launcher with 40mm grenades); re-test once guns render.
+   **User review of v1.22.2 (2026-10-02): all guns render again.** Per gun (fp = first person, tp = third person):
+   - RPK: no ammo count; after inspect the gun disappears until firing; unlimited ammo; tp too high (by the ear);
+     stock flashes toward the screen when starting to aim.
+   - SPR-15: draw animation loops; left hand far left and up (on the barrel?); reload and ammo count work; tp good.
+   - Kar98k: draw animation loops; otherwise good.
+   - M700: bolt not animated after each shot (sound plays); empty reload fine.
+   - M95: pass (ammo counter a bit late: old controller firing).
+   - SPAS-12: reload: left hand stuck on the pump, arm visible on screen.
+   - DB-4 Ursus: fp left hand far left/up (middle of the screen), right arm missing; tp good.
+   - CZ75: reload: left hand doesn't bring the mag, reload restarts then stops; tp gun too low (inside the hand);
+     jumps up then back when shooting.
+   - MK23: left hand missing in reload; one-frame glitch in reload.
+   - Rhino 357: draw loops; fp too low, reload too close to the screen; tp small and too close to the neck.
+   - Raging Hunter: fp gun and arm shrunk; tp too high, too small.
+   - Taurus 943: invisible in fp; tp between the legs; no reload animation or sound.
+   - M320: ADS goes far left (sight not lined up); tp slightly too high.
    The M320's description said RPG-7 rockets (copied from the RPG); it already reloaded 40mm grenades. Fixed text.
    **Then waiting for the user's in-game test** of each: first person hold/aim/draw, reloads, inspect, sounds,
    crafting, ammo. Recipes are Java's (the M95 is 300 iron, 60 gold, 15 diamonds, 3 netherite, 5 blaze rods).
