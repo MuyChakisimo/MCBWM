@@ -344,13 +344,16 @@ const soundNames = new Map(); // our cue name -> Java sound path
 // ---------------------------------------------------------------- 7. arm layout
 // The converted model mirrors the arms (right arm on lefthand_pos), which holds rifles fine but hides the
 // right hand on pistols. If the source gun puts each arm on its own hand (P320, AA-12), do the same with
-// its offsets (arm-layout.mjs).
+// its offsets (arm-layout.mjs); Java pistols get it with the P320's offsets whatever the source (the Colt
+// Python hangs its arms off its own rhand/lhand bones, which a converted model doesn't have).
 {
   const src = parse(readText(`TACZ-R/models/entity/guns/${from}.geo.json`));
   const srcGeo = (src["minecraft:geometry"] ?? [])[0] ?? Object.values(src).find((v) => v?.bones);
-  if (srcGeo?.bones.find((b) => b.name === "rightArm")?.parent === "righthand_pos") {
-    log(`7. arm layout: arms on their own hands, offsets from ${from}`);
-    armLayout(root, [id], from, log);
+  const ownHand = srcGeo?.bones.find((b) => b.name === "rightArm")?.parent === "righthand_pos";
+  const like = ownHand ? from : java.gunIndex(javaId).type === "pistol" ? "p320" : null;
+  if (like) {
+    log(`7. arm layout: arms on their own hands, offsets from ${like}`);
+    armLayout(root, [id], like, log);
   }
 }
 log(`\nDone. Run tools/weapons/check.mjs, then test ${id} in game (aim, reloads, sounds).`);

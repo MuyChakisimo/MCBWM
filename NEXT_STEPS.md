@@ -107,6 +107,9 @@ work.
 
 - Order (user, 2026-10-01): M4A1 on script firing -> user tests -> import one Java gun (M9A4) -> import all Java
   guns -> convert all guns (including the imported ones) to script firing.
+- Pistols (user, 2026-10-01): semi-auto, one shot per click, except the B93R (burst) and G18 (auto). Already so in
+  `weapons.js`; takes effect with script firing. The user tested that the M1911 now fires while held and is OK
+  with it becoming one shot per click.
 - Stats: headshot multipliers and damage falloff come from Java; new guns use `java-stats.mjs`'s proposals for now
   ("we'll modify later"). Fire modes as listed in step 2. MP7 950 auto, G18 1100 auto, Saiga-12 300 semi, Colt Python
   150 semi (real-world values; not in Java).
