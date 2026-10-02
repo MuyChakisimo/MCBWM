@@ -1,0 +1,121 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.m95b": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='m95b' && q.is_using_item) || query.get_equipped_item_name=='m95b_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s m95b 5",
+            "/event entity @s[hasitem={item=krep:m95b, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "m95b.30": "query.get_equipped_item_name=='m95b' && query.is_using_item && query.scoreboard('m95b') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "m95b.31": "query.get_equipped_item_name=='m95b' && query.is_using_item && query.scoreboard('m95b') == 0"
+            }
+          ],
+          "on_entry": ["/function m95b"]
+        },
+        "m95b.31": {
+          "animations": ["m95bshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={m95b=0}] slot.weapon.mainhand 1 krep:m95b_emp 1 0"]
+        },
+        "m95b.30": {
+          "animations": ["m95bshoot"],
+          "transitions": [{"setup": "query.all_animations_finished && !q.is_using_item"}],
+          "on_entry": [
+            "@s krep:m95b_fire",
+            "/scoreboard players remove @s[scores={m95b=1..6}] m95b 1",
+            "/scoreboard players set @s[scores={m95b=7..}] m95b 6",
+            "/playsound m95b.shoot @a[r=120]",
+            "/replaceitem entity @s[scores={m95b=0}] slot.weapon.mainhand 1 krep:m95b_emp 1 0",
+            "/title @s[scores={m95b=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.m95b.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='m95b_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='m95b' && variable.attack_time > 0.0f && query.scoreboard('m95b') <= 4 && q.mark_variant != 3) || (q.mark_variant == 2 && query.get_equipped_item_name=='m95b')"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function m95bquantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='m95b' && q.property('krep:ammoreload') == 750"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='m95b' && q.property('krep:ammoreload') >= 751"
+            },
+            {"setup": "query.get_equipped_item_name!='m95b'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function m95bquantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='m95b_emp' && q.property('krep:ammoreload') == 750"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='m95b_emp' && q.property('krep:ammoreload') >= 751"
+            },
+            {"setup": "query.get_equipped_item_name!='m95b'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "m95breload": "query.get_equipped_item_name('main_hand')=='m95b_emp' || query.get_equipped_item_name('main_hand')=='m95b'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='m95b_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "m95breloadtac": "query.get_equipped_item_name('main_hand')=='m95b_emp' || query.get_equipped_item_name('main_hand')=='m95b'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='m95b'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function m95b", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='m95b' || query.get_equipped_item_name=='m95b_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

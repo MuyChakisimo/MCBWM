@@ -344,73 +344,85 @@
   "type_81_inspect_smag_magbump": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_inspect_smag_magbump"
+      "sounds/type81/type_81_inspect_smag_magbump",
+      "sounds/rpk/type_81_inspect_smag_magbump"
     ]
   },
   "type_81_inspect_smag_magin": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_inspect_smag_magin"
+      "sounds/type81/type_81_inspect_smag_magin",
+      "sounds/rpk/type_81_inspect_smag_magin"
     ]
   },
   "type_81_inspect_smag_over": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_inspect_smag_over"
+      "sounds/type81/type_81_inspect_smag_over",
+      "sounds/rpk/type_81_inspect_smag_over"
     ]
   },
   "type_81_reload_fast_empty_chamber": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_reload_fast_empty_chamber"
+      "sounds/type81/type_81_reload_fast_empty_chamber",
+      "sounds/rpk/type_81_reload_fast_empty_chamber"
     ]
   },
   "type_81_reload_fast_empty_magin": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_reload_fast_empty_magin"
+      "sounds/type81/type_81_reload_fast_empty_magin",
+      "sounds/rpk/type_81_reload_fast_empty_magin"
     ]
   },
   "type_81_reload_fast_empty_magout": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_reload_fast_empty_magout"
+      "sounds/type81/type_81_reload_fast_empty_magout",
+      "sounds/rpk/type_81_reload_fast_empty_magout"
     ]
   },
   "type_81_reload_fast_empty_shoulder": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_reload_fast_empty_shoulder"
+      "sounds/type81/type_81_reload_fast_empty_shoulder",
+      "sounds/rpk/type_81_reload_fast_empty_shoulder"
     ]
   },
   "type_81_reload_fast_maghit": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_reload_fast_maghit"
+      "sounds/type81/type_81_reload_fast_maghit",
+      "sounds/rpk/type_81_reload_fast_maghit"
     ]
   },
   "type_81_reload_fast_magin": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_reload_fast_magin"
+      "sounds/type81/type_81_reload_fast_magin",
+      "sounds/rpk/type_81_reload_fast_magin"
     ]
   },
   "type_81_reload_fast_magout": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_reload_fast_magout"
+      "sounds/type81/type_81_reload_fast_magout",
+      "sounds/rpk/type_81_reload_fast_magout"
     ]
   },
   "type_81_reload_fast_shoulder": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_reload_fast_shoulder"
+      "sounds/type81/type_81_reload_fast_shoulder",
+      "sounds/rpk/type_81_reload_fast_shoulder"
     ]
   },
   "type_81_reload_raise_quick_up": {
     "category": "hostile",
     "sounds": [
-      "sounds/type81/type_81_reload_raise_quick_up"
+      "sounds/type81/type_81_reload_raise_quick_up",
+      "sounds/rpk/type_81_reload_raise_quick_up"
     ]
   },
   "qbz191_cloth_move_4": {
@@ -575,10 +587,34 @@
       "sounds/cp/shoot"
     ]
   },
+  "taurus943.shoot": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/taurus943_shoot"
+    ]
+  },
+  "taurus500.shoot": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_shoot"
+    ]
+  },
+  "rhino357.shoot": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_shoot"
+    ]
+  },
   "type81.shoot": {
     "category": "hostile",
     "sounds": [
       "sounds/type81/shoot"
+    ]
+  },
+  "rpk.shoot": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rpk/rpk_shoot"
     ]
   },
   "m249.shoot": {
@@ -590,73 +626,109 @@
   "wfoly_pi_cpapa_charge_reload_cylinderopen_01": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_charge_reload_cylinderopen_01"
+      "sounds/cp/wfoly_pi_cpapa_charge_reload_cylinderopen_01",
+      "sounds/taurus943/wfoly_pi_cpapa_charge_reload_cylinderopen_01",
+      "sounds/taurus500/wfoly_pi_cpapa_charge_reload_cylinderopen_01",
+      "sounds/rhino357/wfoly_pi_cpapa_charge_reload_cylinderopen_01"
     ]
   },
   "wfoly_pi_cpapa_charge_reload_ejectorrod_01": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_charge_reload_ejectorrod_01"
+      "sounds/cp/wfoly_pi_cpapa_charge_reload_ejectorrod_01",
+      "sounds/taurus943/wfoly_pi_cpapa_charge_reload_ejectorrod_01",
+      "sounds/taurus500/wfoly_pi_cpapa_charge_reload_ejectorrod_01",
+      "sounds/rhino357/wfoly_pi_cpapa_charge_reload_ejectorrod_01"
     ]
   },
   "wfoly_pi_cpapa_charge_reload_end": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_charge_reload_end"
+      "sounds/cp/wfoly_pi_cpapa_charge_reload_end",
+      "sounds/taurus943/wfoly_pi_cpapa_charge_reload_end",
+      "sounds/taurus500/wfoly_pi_cpapa_charge_reload_end",
+      "sounds/rhino357/wfoly_pi_cpapa_charge_reload_end"
     ]
   },
   "wfoly_pi_cpapa_charge_reload_fast_cylinderclose_01": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_charge_reload_fast_cylinderclose_01"
+      "sounds/cp/wfoly_pi_cpapa_charge_reload_fast_cylinderclose_01",
+      "sounds/taurus943/wfoly_pi_cpapa_charge_reload_fast_cylinderclose_01",
+      "sounds/taurus500/wfoly_pi_cpapa_charge_reload_fast_cylinderclose_01",
+      "sounds/rhino357/wfoly_pi_cpapa_charge_reload_fast_cylinderclose_01"
     ]
   },
   "wfoly_pi_cpapa_charge_reload_fast_shelleject_01": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_charge_reload_fast_shelleject_01"
+      "sounds/cp/wfoly_pi_cpapa_charge_reload_fast_shelleject_01",
+      "sounds/taurus943/wfoly_pi_cpapa_charge_reload_fast_shelleject_01",
+      "sounds/taurus500/wfoly_pi_cpapa_charge_reload_fast_shelleject_01",
+      "sounds/rhino357/wfoly_pi_cpapa_charge_reload_fast_shelleject_01"
     ]
   },
   "wfoly_pi_cpapa_charge_reload_speedloader_01": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_charge_reload_speedloader_01"
+      "sounds/cp/wfoly_pi_cpapa_charge_reload_speedloader_01",
+      "sounds/taurus943/wfoly_pi_cpapa_charge_reload_speedloader_01",
+      "sounds/taurus500/wfoly_pi_cpapa_charge_reload_speedloader_01",
+      "sounds/rhino357/wfoly_pi_cpapa_charge_reload_speedloader_01"
     ]
   },
   "wfoly_pi_cpapa_first_raise_cylinderclose_01": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_first_raise_cylinderclose_01"
+      "sounds/cp/wfoly_pi_cpapa_first_raise_cylinderclose_01",
+      "sounds/taurus943/wfoly_pi_cpapa_first_raise_cylinderclose_01",
+      "sounds/taurus500/wfoly_pi_cpapa_first_raise_cylinderclose_01",
+      "sounds/rhino357/wfoly_pi_cpapa_first_raise_cylinderclose_01"
     ]
   },
   "wfoly_pi_cpapa_first_raise_cylinderopen_01": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_first_raise_cylinderopen_01"
+      "sounds/cp/wfoly_pi_cpapa_first_raise_cylinderopen_01",
+      "sounds/taurus943/wfoly_pi_cpapa_first_raise_cylinderopen_01",
+      "sounds/taurus500/wfoly_pi_cpapa_first_raise_cylinderopen_01",
+      "sounds/rhino357/wfoly_pi_cpapa_first_raise_cylinderopen_01"
     ]
   },
   "wfoly_pi_cpapa_inspect_01": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_inspect_01"
+      "sounds/cp/wfoly_pi_cpapa_inspect_01",
+      "sounds/taurus943/wfoly_pi_cpapa_inspect_01",
+      "sounds/taurus500/wfoly_pi_cpapa_inspect_01",
+      "sounds/rhino357/wfoly_pi_cpapa_inspect_01"
     ]
   },
   "wfoly_pi_cpapa_inspect_02": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_inspect_02"
+      "sounds/cp/wfoly_pi_cpapa_inspect_02",
+      "sounds/taurus943/wfoly_pi_cpapa_inspect_02",
+      "sounds/taurus500/wfoly_pi_cpapa_inspect_02",
+      "sounds/rhino357/wfoly_pi_cpapa_inspect_02"
     ]
   },
   "wfoly_pi_cpapa_inspect_03": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_inspect_03"
+      "sounds/cp/wfoly_pi_cpapa_inspect_03",
+      "sounds/taurus943/wfoly_pi_cpapa_inspect_03",
+      "sounds/taurus500/wfoly_pi_cpapa_inspect_03",
+      "sounds/rhino357/wfoly_pi_cpapa_inspect_03"
     ]
   },
   "wfoly_pi_cpapa_inspect_04": {
     "category": "hostile",
     "sounds": [
-      "sounds/cp/wfoly_pi_cpapa_inspect_04"
+      "sounds/cp/wfoly_pi_cpapa_inspect_04",
+      "sounds/taurus943/wfoly_pi_cpapa_inspect_04",
+      "sounds/taurus500/wfoly_pi_cpapa_inspect_04",
+      "sounds/rhino357/wfoly_pi_cpapa_inspect_04"
     ]
   },
   "sks_charge_01": {
@@ -989,6 +1061,18 @@
       "sounds/p320/p320_inspect_empty_end"
     ]
   },
+  "mk23_inspect_empty_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_empty_end"
+    ]
+  },
+  "cz75_inspect_empty_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_empty_end"
+    ]
+  },
   "m9a4_inspect_empty_end": {
     "category": "hostile",
     "sounds": [
@@ -999,6 +1083,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_inspect_empty_flip"
+    ]
+  },
+  "mk23_inspect_empty_flip": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_empty_flip"
+    ]
+  },
+  "cz75_inspect_empty_flip": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_empty_flip"
     ]
   },
   "m9a4_inspect_empty_flip": {
@@ -1013,6 +1109,18 @@
       "sounds/p320/p320_inspect_empty_maghit"
     ]
   },
+  "mk23_inspect_empty_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_empty_maghit"
+    ]
+  },
+  "cz75_inspect_empty_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_empty_maghit"
+    ]
+  },
   "m9a4_inspect_empty_maghit": {
     "category": "hostile",
     "sounds": [
@@ -1023,6 +1131,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_inspect_empty_magin"
+    ]
+  },
+  "mk23_inspect_empty_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_empty_magin"
+    ]
+  },
+  "cz75_inspect_empty_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_empty_magin"
     ]
   },
   "m9a4_inspect_empty_magin": {
@@ -1037,6 +1157,18 @@
       "sounds/p320/p320_inspect_empty_magout"
     ]
   },
+  "mk23_inspect_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_empty_magout"
+    ]
+  },
+  "cz75_inspect_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_empty_magout"
+    ]
+  },
   "m9a4_inspect_empty_magout": {
     "category": "hostile",
     "sounds": [
@@ -1047,6 +1179,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_inspect_empty_raise"
+    ]
+  },
+  "mk23_inspect_empty_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_empty_raise"
+    ]
+  },
+  "cz75_inspect_empty_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_empty_raise"
     ]
   },
   "m9a4_inspect_empty_raise": {
@@ -1061,6 +1205,18 @@
       "sounds/p320/p320_inspect_empty_rattle"
     ]
   },
+  "mk23_inspect_empty_rattle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_empty_rattle"
+    ]
+  },
+  "cz75_inspect_empty_rattle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_empty_rattle"
+    ]
+  },
   "m9a4_inspect_empty_rattle": {
     "category": "hostile",
     "sounds": [
@@ -1071,6 +1227,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_inspect_empty_rotate"
+    ]
+  },
+  "mk23_inspect_empty_rotate": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_empty_rotate"
+    ]
+  },
+  "cz75_inspect_empty_rotate": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_empty_rotate"
     ]
   },
   "m9a4_inspect_empty_rotate": {
@@ -1085,6 +1253,18 @@
       "sounds/p320/p320_inspect_slidepull"
     ]
   },
+  "mk23_inspect_slidepull": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_slidepull"
+    ]
+  },
+  "cz75_inspect_slidepull": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_slidepull"
+    ]
+  },
   "m9a4_inspect_slidepull": {
     "category": "hostile",
     "sounds": [
@@ -1095,6 +1275,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_inspect_sliderelease"
+    ]
+  },
+  "mk23_inspect_sliderelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_sliderelease"
+    ]
+  },
+  "cz75_inspect_sliderelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_sliderelease"
     ]
   },
   "m9a4_inspect_sliderelease": {
@@ -1109,6 +1301,18 @@
       "sounds/p320/p320_mag_drop"
     ]
   },
+  "mk23_mag_drop": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_mag_drop"
+    ]
+  },
+  "cz75_mag_drop": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_mag_drop"
+    ]
+  },
   "m9a4_mag_drop": {
     "category": "hostile",
     "sounds": [
@@ -1119,6 +1323,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_reload_empty_charge"
+    ]
+  },
+  "mk23_reload_empty_charge": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_empty_charge"
+    ]
+  },
+  "cz75_reload_empty_charge": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_empty_charge"
     ]
   },
   "m9a4_reload_empty_charge": {
@@ -1133,6 +1349,18 @@
       "sounds/p320/p320_reload_empty_end"
     ]
   },
+  "mk23_reload_empty_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_empty_end"
+    ]
+  },
+  "cz75_reload_empty_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_empty_end"
+    ]
+  },
   "m9a4_reload_empty_end": {
     "category": "hostile",
     "sounds": [
@@ -1143,6 +1371,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_reload_empty_maghit"
+    ]
+  },
+  "mk23_reload_empty_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_empty_maghit"
+    ]
+  },
+  "cz75_reload_empty_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_empty_maghit"
     ]
   },
   "m9a4_reload_empty_maghit": {
@@ -1157,6 +1397,18 @@
       "sounds/p320/p320_reload_empty_magin"
     ]
   },
+  "mk23_reload_empty_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_empty_magin"
+    ]
+  },
+  "cz75_reload_empty_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_empty_magin"
+    ]
+  },
   "m9a4_reload_empty_magin": {
     "category": "hostile",
     "sounds": [
@@ -1167,6 +1419,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_reload_empty_magout"
+    ]
+  },
+  "mk23_reload_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_empty_magout"
+    ]
+  },
+  "cz75_reload_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_empty_magout"
     ]
   },
   "m9a4_reload_empty_magout": {
@@ -1181,6 +1445,18 @@
       "sounds/p320/p320_reload_empty_magrelease"
     ]
   },
+  "mk23_reload_empty_magrelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_empty_magrelease"
+    ]
+  },
+  "cz75_reload_empty_magrelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_empty_magrelease"
+    ]
+  },
   "m9a4_reload_empty_magrelease": {
     "category": "hostile",
     "sounds": [
@@ -1191,6 +1467,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_reload_empty_raise"
+    ]
+  },
+  "mk23_reload_empty_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_empty_raise"
+    ]
+  },
+  "cz75_reload_empty_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_empty_raise"
     ]
   },
   "m9a4_reload_empty_raise": {
@@ -1205,6 +1493,18 @@
       "sounds/p320/p320_reload_fast_end"
     ]
   },
+  "mk23_reload_fast_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_fast_end"
+    ]
+  },
+  "cz75_reload_fast_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_fast_end"
+    ]
+  },
   "m9a4_reload_fast_end": {
     "category": "hostile",
     "sounds": [
@@ -1215,6 +1515,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_reload_maghit"
+    ]
+  },
+  "mk23_reload_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_maghit"
+    ]
+  },
+  "cz75_reload_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_maghit"
     ]
   },
   "m9a4_reload_maghit": {
@@ -1229,6 +1541,18 @@
       "sounds/p320/p320_reload_magin"
     ]
   },
+  "mk23_reload_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_magin"
+    ]
+  },
+  "cz75_reload_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_magin"
+    ]
+  },
   "m9a4_reload_magin": {
     "category": "hostile",
     "sounds": [
@@ -1239,6 +1563,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/p320_reload_magout"
+    ]
+  },
+  "mk23_reload_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_magout"
+    ]
+  },
+  "cz75_reload_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_magout"
     ]
   },
   "m9a4_reload_magout": {
@@ -1253,6 +1589,18 @@
       "sounds/p320/p320_reload_magrelease"
     ]
   },
+  "mk23_reload_magrelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_magrelease"
+    ]
+  },
+  "cz75_reload_magrelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_magrelease"
+    ]
+  },
   "m9a4_reload_magrelease": {
     "category": "hostile",
     "sounds": [
@@ -1265,6 +1613,18 @@
       "sounds/p320/p320_reload_raise"
     ]
   },
+  "mk23_reload_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_raise"
+    ]
+  },
+  "cz75_reload_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_raise"
+    ]
+  },
   "m9a4_reload_raise": {
     "category": "hostile",
     "sounds": [
@@ -1275,6 +1635,18 @@
     "category": "hostile",
     "sounds": [
       "sounds/p320/shoot"
+    ]
+  },
+  "mk23.shoot": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_shoot"
+    ]
+  },
+  "cz75.shoot": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_shoot"
     ]
   },
   "m9a4.shoot": {
@@ -1637,10 +2009,22 @@
       "sounds/m107/m107_draw"
     ]
   },
+  "m95b.draw": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_draw"
+    ]
+  },
   "m107.shoot": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/shoot"
+    ]
+  },
+  "m95b.shoot": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_shoot"
     ]
   },
   "m107_inspect_01": {
@@ -1649,10 +2033,22 @@
       "sounds/m107/m107_inspect_01"
     ]
   },
+  "m95b_inspect_01": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_01"
+    ]
+  },
   "m107_inspect_02": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_inspect_02"
+    ]
+  },
+  "m95b_inspect_02": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_02"
     ]
   },
   "m107_inspect_03": {
@@ -1661,10 +2057,22 @@
       "sounds/m107/m107_inspect_03"
     ]
   },
+  "m95b_inspect_03": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_03"
+    ]
+  },
   "m107_inspect_04": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_inspect_04"
+    ]
+  },
+  "m95b_inspect_04": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_04"
     ]
   },
   "m107_inspect_05": {
@@ -1673,10 +2081,22 @@
       "sounds/m107/m107_inspect_05"
     ]
   },
+  "m95b_inspect_05": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_05"
+    ]
+  },
   "m107_inspect_end": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_inspect_end"
+    ]
+  },
+  "m95b_inspect_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_end"
     ]
   },
   "m107_inspect_grabrotate": {
@@ -1685,10 +2105,22 @@
       "sounds/m107/m107_inspect_grabrotate"
     ]
   },
+  "m95b_inspect_grabrotate": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_grabrotate"
+    ]
+  },
   "m107_reload_arm": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_arm"
+    ]
+  },
+  "m95b_reload_arm": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_arm"
     ]
   },
   "m107_reload_empty_armmag": {
@@ -1697,10 +2129,22 @@
       "sounds/m107/m107_reload_empty_armmag"
     ]
   },
+  "m95b_reload_empty_armmag": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_armmag"
+    ]
+  },
   "m107_reload_empty_charge": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_empty_charge"
+    ]
+  },
+  "m95b_reload_empty_charge": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_charge"
     ]
   },
   "m107_reload_empty_end": {
@@ -1709,10 +2153,22 @@
       "sounds/m107/m107_reload_empty_end"
     ]
   },
+  "m95b_reload_empty_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_end"
+    ]
+  },
   "m107_reload_empty_fast_magout": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_empty_fast_magout"
+    ]
+  },
+  "m95b_reload_empty_fast_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_fast_magout"
     ]
   },
   "m107_reload_empty_fast_pullbolt": {
@@ -1721,10 +2177,22 @@
       "sounds/m107/m107_reload_empty_fast_pullbolt"
     ]
   },
+  "m95b_reload_empty_fast_pullbolt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_fast_pullbolt"
+    ]
+  },
   "m107_reload_empty_fast_rotate": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_empty_fast_rotate"
+    ]
+  },
+  "m95b_reload_empty_fast_rotate": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_fast_rotate"
     ]
   },
   "m107_reload_empty_magin_01": {
@@ -1733,10 +2201,22 @@
       "sounds/m107/m107_reload_empty_magin_01"
     ]
   },
+  "m95b_reload_empty_magin_01": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_magin_01"
+    ]
+  },
   "m107_reload_empty_magin_02": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_empty_magin_02"
+    ]
+  },
+  "m95b_reload_empty_magin_02": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_magin_02"
     ]
   },
   "m107_reload_empty_magrelease": {
@@ -1745,10 +2225,22 @@
       "sounds/m107/m107_reload_empty_magrelease"
     ]
   },
+  "m95b_reload_empty_magrelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_magrelease"
+    ]
+  },
   "m107_reload_end": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_end"
+    ]
+  },
+  "m95b_reload_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_end"
     ]
   },
   "m107_reload_fast_shake": {
@@ -1757,10 +2249,22 @@
       "sounds/m107/m107_reload_fast_shake"
     ]
   },
+  "m95b_reload_fast_shake": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_fast_shake"
+    ]
+  },
   "m107_reload_fast_up": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_fast_up"
+    ]
+  },
+  "m95b_reload_fast_up": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_fast_up"
     ]
   },
   "m107_reload_magin_01": {
@@ -1769,10 +2273,22 @@
       "sounds/m107/m107_reload_magin_01"
     ]
   },
+  "m95b_reload_magin_01": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_magin_01"
+    ]
+  },
   "m107_reload_magin_02": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_magin_02"
+    ]
+  },
+  "m95b_reload_magin_02": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_magin_02"
     ]
   },
   "m107_reload_magout": {
@@ -1781,10 +2297,22 @@
       "sounds/m107/m107_reload_magout"
     ]
   },
+  "m95b_reload_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_magout"
+    ]
+  },
   "m107_reload_magrelease": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_magrelease"
+    ]
+  },
+  "m95b_reload_magrelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_magrelease"
     ]
   },
   "m107_reload_mvmnt": {
@@ -1793,16 +2321,34 @@
       "sounds/m107/m107_reload_mvmnt"
     ]
   },
+  "m95b_reload_mvmnt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_mvmnt"
+    ]
+  },
   "m107_reload_up": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_up"
     ]
   },
+  "m95b_reload_up": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_up"
+    ]
+  },
   "m107_settle": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_settle"
+    ]
+  },
+  "m95b_settle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_settle"
     ]
   },
   "fal.shoot": {
@@ -2051,10 +2597,22 @@
       "sounds/db/draw"
     ]
   },
+  "dblong.draw": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/draw"
+    ]
+  },
   "db.close": {
     "category": "hostile",
     "sounds": [
       "sounds/db/close"
+    ]
+  },
+  "dblong.close": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/close"
     ]
   },
   "db.open": {
@@ -2063,10 +2621,22 @@
       "sounds/db/open"
     ]
   },
+  "dblong.open": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/open"
+    ]
+  },
   "db.insert": {
     "category": "hostile",
     "sounds": [
       "sounds/db/insert"
+    ]
+  },
+  "dblong.insert": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/insert"
     ]
   },
   "db.inserttac": {
@@ -2075,10 +2645,22 @@
       "sounds/db/inserttac"
     ]
   },
+  "dblong.inserttac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/inserttac"
+    ]
+  },
   "db.closeins": {
     "category": "hostile",
     "sounds": [
       "sounds/db/closeins"
+    ]
+  },
+  "dblong.closeins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/closeins"
     ]
   },
   "db.openins": {
@@ -2087,10 +2669,22 @@
       "sounds/db/openins"
     ]
   },
+  "dblong.openins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/openins"
+    ]
+  },
   "db.opentac": {
     "category": "hostile",
     "sounds": [
       "sounds/db/opentac"
+    ]
+  },
+  "dblong.opentac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/opentac"
     ]
   },
   "db.rotate1ins": {
@@ -2099,16 +2693,34 @@
       "sounds/db/rotate1ins"
     ]
   },
+  "dblong.rotate1ins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/rotate1ins"
+    ]
+  },
   "db.rotate2ins": {
     "category": "hostile",
     "sounds": [
       "sounds/db/rotate2ins"
     ]
   },
+  "dblong.rotate2ins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/rotate2ins"
+    ]
+  },
   "db.shoot": {
     "category": "hostile",
     "sounds": [
       "sounds/db/shoot"
+    ]
+  },
+  "dblong.shoot": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/dblong/dbl_shoot"
     ]
   },
   "uzi.bolt": {
@@ -2576,10 +3188,22 @@
       "sounds/m4a1/shoot"
     ]
   },
+  "spr15.shoot": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_shoot"
+    ]
+  },
   "m4a1.suppress": {
     "category": "ui",
     "sounds": [
       "sounds/m4a1/suppressor"
+    ]
+  },
+  "spr15.suppress": {
+    "category": "ui",
+    "sounds": [
+      "sounds/spr15/spr15hb_silence"
     ]
   },
   "m4a1.bolt": {
@@ -2588,10 +3212,22 @@
       "sounds/m4a1/bolt"
     ]
   },
+  "spr15.bolt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/bolt"
+    ]
+  },
   "m4a1.boltins": {
     "category": "hostile",
     "sounds": [
       "sounds/m4a1/boltins"
+    ]
+  },
+  "spr15.boltins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/boltins"
     ]
   },
   "m4a1.draw": {
@@ -2600,10 +3236,22 @@
       "sounds/m4a1/draw"
     ]
   },
+  "spr15.draw": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/draw"
+    ]
+  },
   "m4a1.endtac": {
     "category": "hostile",
     "sounds": [
       "sounds/m4a1/endtac"
+    ]
+  },
+  "spr15.endtac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/endtac"
     ]
   },
   "m4a1.fains": {
@@ -2612,10 +3260,22 @@
       "sounds/m4a1/fains"
     ]
   },
+  "spr15.fains": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/fains"
+    ]
+  },
   "m4a1.lookins": {
     "category": "hostile",
     "sounds": [
       "sounds/m4a1/lookins"
+    ]
+  },
+  "spr15.lookins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/lookins"
     ]
   },
   "m4a1.magin": {
@@ -2624,10 +3284,22 @@
       "sounds/m4a1/magin"
     ]
   },
+  "spr15.magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/magin"
+    ]
+  },
   "m4a1.maginins": {
     "category": "hostile",
     "sounds": [
       "sounds/m4a1/maginins"
+    ]
+  },
+  "spr15.maginins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/maginins"
     ]
   },
   "m4a1.magout": {
@@ -2636,10 +3308,22 @@
       "sounds/m4a1/magout"
     ]
   },
+  "spr15.magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/magout"
+    ]
+  },
   "m4a1.magoutins": {
     "category": "hostile",
     "sounds": [
       "sounds/m4a1/magoutins"
+    ]
+  },
+  "spr15.magoutins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/magoutins"
     ]
   },
   "m4a1.magtac": {
@@ -2648,10 +3332,22 @@
       "sounds/m4a1/magtac"
     ]
   },
+  "spr15.magtac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/magtac"
+    ]
+  },
   "m4a1.startins": {
     "category": "hostile",
     "sounds": [
       "sounds/m4a1/startins"
+    ]
+  },
+  "spr15.startins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/startins"
     ]
   },
   "m4a1.starttac": {
@@ -2660,10 +3356,22 @@
       "sounds/m4a1/starttac"
     ]
   },
+  "spr15.starttac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/starttac"
+    ]
+  },
   "m870.boltin": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/boltin"
+    ]
+  },
+  "spas12.boltin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/boltin"
     ]
   },
   "m870.endturnover": {
@@ -2672,10 +3380,22 @@
       "sounds/m870/endturnover"
     ]
   },
+  "spas12.endturnover": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/endturnover"
+    ]
+  },
   "m870.grabins": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/grabins"
+    ]
+  },
+  "spas12.grabins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/grabins"
     ]
   },
   "m870.mvmtins": {
@@ -2684,10 +3404,22 @@
       "sounds/m870/mvmtins"
     ]
   },
+  "spas12.mvmtins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/mvmtins"
+    ]
+  },
   "m870.raiseins": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/raiseins"
+    ]
+  },
+  "spas12.raiseins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/raiseins"
     ]
   },
   "m870.rattle3ins": {
@@ -2696,10 +3428,22 @@
       "sounds/m870/rattle3ins"
     ]
   },
+  "spas12.rattle3ins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/rattle3ins"
+    ]
+  },
   "m870.rattle4ins": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/rattle4ins"
+    ]
+  },
+  "spas12.rattle4ins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/rattle4ins"
     ]
   },
   "m870.rattleins": {
@@ -2708,10 +3452,22 @@
       "sounds/m870/rattleins"
     ]
   },
+  "spas12.rattleins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/rattleins"
+    ]
+  },
   "m870.rotateins": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/rotateins"
+    ]
+  },
+  "spas12.rotateins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/rotateins"
     ]
   },
   "m870.shellcatchins": {
@@ -2720,10 +3476,22 @@
       "sounds/m870/shellcatchins"
     ]
   },
+  "spas12.shellcatchins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/shellcatchins"
+    ]
+  },
   "m870.shellejectins": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/shellejectins"
+    ]
+  },
+  "spas12.shellejectins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/shellejectins"
     ]
   },
   "m870.shellin": {
@@ -2732,10 +3500,22 @@
       "sounds/m870/shellin"
     ]
   },
+  "spas12.shellin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/shellin"
+    ]
+  },
   "m870.sideload2ins": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/sideload2ins"
+    ]
+  },
+  "spas12.sideload2ins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/sideload2ins"
     ]
   },
   "m870.sideloadins": {
@@ -2744,10 +3524,22 @@
       "sounds/m870/sideloadins"
     ]
   },
+  "spas12.sideloadins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/sideloadins"
+    ]
+  },
   "m870.startclose": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/startclose"
+    ]
+  },
+  "spas12.startclose": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/startclose"
     ]
   },
   "m870.startopen": {
@@ -2756,10 +3548,22 @@
       "sounds/m870/startopen"
     ]
   },
+  "spas12.startopen": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/startopen"
+    ]
+  },
   "m870.startsideload": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/startsideload"
+    ]
+  },
+  "spas12.startsideload": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/startsideload"
     ]
   },
   "m870.starttwist": {
@@ -2768,10 +3572,22 @@
       "sounds/m870/starttwist"
     ]
   },
+  "spas12.starttwist": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/starttwist"
+    ]
+  },
   "m870.turnover": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/turnover"
+    ]
+  },
+  "spas12.turnover": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/turnover"
     ]
   },
   "m870.twistins": {
@@ -2780,10 +3596,22 @@
       "sounds/m870/twistins"
     ]
   },
+  "spas12.twistins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/twistins"
+    ]
+  },
   "m870.boltout": {
     "category": "hostile",
     "sounds": [
       "sounds/m870/boltout"
+    ]
+  },
+  "spas12.boltout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/boltout"
     ]
   },
   "m870.shoot": {
@@ -2791,6 +3619,13 @@
     "max_distance": 30,
     "sounds": [
       "sounds/m870/shoot"
+    ]
+  },
+  "spas12.shoot": {
+    "category": "hostile",
+    "max_distance": 30,
+    "sounds": [
+      "sounds/spas12/spas12_shoot"
     ]
   },
   "m1014.shoot": {
@@ -3076,10 +3911,36 @@
       "sounds/awp/shoot"
     ]
   },
+  "m700.shoot": {
+    "category": "hostile",
+    "max_distance": 120,
+    "sounds": [
+      "sounds/m700/m700_shoot"
+    ]
+  },
+  "kar98.shoot": {
+    "category": "hostile",
+    "max_distance": 120,
+    "sounds": [
+      "sounds/kar98/kar98_shoot"
+    ]
+  },
   "awp.boltclose": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/boltclose"
+    ]
+  },
+  "m700.boltclose": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/boltclose"
+    ]
+  },
+  "kar98.boltclose": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/boltclose"
     ]
   },
   "awp.catchbulletins": {
@@ -3088,10 +3949,34 @@
       "sounds/awp/catchbulletins"
     ]
   },
+  "m700.catchbulletins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/catchbulletins"
+    ]
+  },
+  "kar98.catchbulletins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/catchbulletins"
+    ]
+  },
   "awp.ejectclicktac": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/ejectclicktac"
+    ]
+  },
+  "m700.ejectclicktac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/ejectclicktac"
+    ]
+  },
+  "kar98.ejectclicktac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/ejectclicktac"
     ]
   },
   "awp.end": {
@@ -3100,10 +3985,34 @@
       "sounds/awp/end"
     ]
   },
+  "m700.end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/end"
+    ]
+  },
+  "kar98.end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/end"
+    ]
+  },
   "awp.endbolt": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/endbolt"
+    ]
+  },
+  "m700.endbolt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/endbolt"
+    ]
+  },
+  "kar98.endbolt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/endbolt"
     ]
   },
   "awp.fastmvmntins": {
@@ -3112,10 +4021,34 @@
       "sounds/awp/fastmvmntins"
     ]
   },
+  "m700.fastmvmntins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/fastmvmntins"
+    ]
+  },
+  "kar98.fastmvmntins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/fastmvmntins"
+    ]
+  },
   "awp.fasttiltins": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/fasttiltins"
+    ]
+  },
+  "m700.fasttiltins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/fasttiltins"
+    ]
+  },
+  "kar98.fasttiltins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/fasttiltins"
     ]
   },
   "awp.loadmvmntins": {
@@ -3124,10 +4057,34 @@
       "sounds/awp/loadmvmntins"
     ]
   },
+  "m700.loadmvmntins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/loadmvmntins"
+    ]
+  },
+  "kar98.loadmvmntins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/loadmvmntins"
+    ]
+  },
   "awp.loadroundins": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/loadroundins"
+    ]
+  },
+  "m700.loadroundins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/loadroundins"
+    ]
+  },
+  "kar98.loadroundins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/loadroundins"
     ]
   },
   "awp.magdrop": {
@@ -3136,10 +4093,34 @@
       "sounds/awp/magdrop"
     ]
   },
+  "m700.magdrop": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magdrop"
+    ]
+  },
+  "kar98.magdrop": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magdrop"
+    ]
+  },
   "awp.maghit": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/maghit"
+    ]
+  },
+  "m700.maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/maghit"
+    ]
+  },
+  "kar98.maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/maghit"
     ]
   },
   "awp.maghit01": {
@@ -3148,10 +4129,34 @@
       "sounds/awp/maghit01"
     ]
   },
+  "m700.maghit01": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/maghit01"
+    ]
+  },
+  "kar98.maghit01": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/maghit01"
+    ]
+  },
   "awp.maghitins": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/maghitins"
+    ]
+  },
+  "m700.maghitins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/maghitins"
+    ]
+  },
+  "kar98.maghitins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/maghitins"
     ]
   },
   "awp.maghittac": {
@@ -3160,10 +4165,34 @@
       "sounds/awp/maghittac"
     ]
   },
+  "m700.maghittac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/maghittac"
+    ]
+  },
+  "kar98.maghittac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/maghittac"
+    ]
+  },
   "awp.magin": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/magin"
+    ]
+  },
+  "m700.magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magin"
+    ]
+  },
+  "kar98.magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magin"
     ]
   },
   "awp.magin02ins": {
@@ -3172,10 +4201,34 @@
       "sounds/awp/magin02ins"
     ]
   },
+  "m700.magin02ins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magin02ins"
+    ]
+  },
+  "kar98.magin02ins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magin02ins"
+    ]
+  },
   "awp.magintac": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/magintac"
+    ]
+  },
+  "m700.magintac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magintac"
+    ]
+  },
+  "kar98.magintac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magintac"
     ]
   },
   "awp.magout": {
@@ -3184,10 +4237,34 @@
       "sounds/awp/magout"
     ]
   },
+  "m700.magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magout"
+    ]
+  },
+  "kar98.magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magout"
+    ]
+  },
   "awp.magouttac": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/magouttac"
+    ]
+  },
+  "m700.magouttac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magouttac"
+    ]
+  },
+  "kar98.magouttac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magouttac"
     ]
   },
   "awp.magpalmhitins": {
@@ -3196,10 +4273,34 @@
       "sounds/awp/magpalmhitins"
     ]
   },
+  "m700.magpalmhitins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magpalmhitins"
+    ]
+  },
+  "kar98.magpalmhitins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magpalmhitins"
+    ]
+  },
   "awp.magtiltins": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/magtiltins"
+    ]
+  },
+  "m700.magtiltins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magtiltins"
+    ]
+  },
+  "kar98.magtiltins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magtiltins"
     ]
   },
   "awp.raise1tac": {
@@ -3208,10 +4309,34 @@
       "sounds/awp/raise1tac"
     ]
   },
+  "m700.raise1tac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/raise1tac"
+    ]
+  },
+  "kar98.raise1tac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/raise1tac"
+    ]
+  },
   "awp.raiseins": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/raiseins"
+    ]
+  },
+  "m700.raiseins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/raiseins"
+    ]
+  },
+  "kar98.raiseins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/raiseins"
     ]
   },
   "awp.raisetac": {
@@ -3220,10 +4345,34 @@
       "sounds/awp/raisetac"
     ]
   },
+  "m700.raisetac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/raisetac"
+    ]
+  },
+  "kar98.raisetac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/raisetac"
+    ]
+  },
   "awp.rattle": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/rattle"
+    ]
+  },
+  "m700.rattle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/rattle"
+    ]
+  },
+  "kar98.rattle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/rattle"
     ]
   },
   "awp.rattleins": {
@@ -3232,10 +4381,34 @@
       "sounds/awp/rattleins"
     ]
   },
+  "m700.rattleins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/rattleins"
+    ]
+  },
+  "kar98.rattleins": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/rattleins"
+    ]
+  },
   "awp.rattletac": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/rattletac"
+    ]
+  },
+  "m700.rattletac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/rattletac"
+    ]
+  },
+  "kar98.rattletac": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/rattletac"
     ]
   },
   "awp.rechamberinbolt": {
@@ -3244,10 +4417,34 @@
       "sounds/awp/rechamberinbolt"
     ]
   },
+  "m700.rechamberinbolt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/rechamberinbolt"
+    ]
+  },
+  "kar98.rechamberinbolt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/rechamberinbolt"
+    ]
+  },
   "awp.rechamberoutbolt": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/rechamberoutbolt"
+    ]
+  },
+  "m700.rechamberoutbolt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/rechamberoutbolt"
+    ]
+  },
+  "kar98.rechamberoutbolt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/rechamberoutbolt"
     ]
   },
   "aa12.shoot": {
@@ -4257,10 +5454,22 @@
       "sounds/rpg/shoot"
     ]
   },
+  "m320.shoot": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m320/m320_shoot"
+    ]
+  },
   "rpg.insert": {
     "category": "hostile",
     "sounds": [
       "sounds/rpg/insert"
+    ]
+  },
+  "m320.insert": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m320/insert"
     ]
   },
   "rpg.start": {
@@ -4269,10 +5478,22 @@
       "sounds/rpg/start"
     ]
   },
+  "m320.start": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m320/start"
+    ]
+  },
   "rpg.end": {
     "category": "hostile",
     "sounds": [
       "sounds/rpg/end"
+    ]
+  },
+  "m320.end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m320/end"
     ]
   },
   "aa12_raise": {
@@ -4314,7 +5535,8 @@
   "p30_la_rpapa7_inspect_hip_raise": {
     "category": "hostile",
     "sounds": [
-      "sounds/rpg/rpg7_inspect"
+      "sounds/rpg/rpg7_inspect",
+      "sounds/m320/rpg7_inspect"
     ]
   },
   "vector.emptyshake": {
@@ -4329,10 +5551,22 @@
       "sounds/m107/m107_reload_up"
     ]
   },
+  "tacz.m95b.m95b_reload_up": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_up"
+    ]
+  },
   "tacz.m107.m107_reload_magrelease": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_magrelease"
+    ]
+  },
+  "tacz.m95b.m95b_reload_magrelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_magrelease"
     ]
   },
   "tacz.m107.m107_reload_magout": {
@@ -4341,10 +5575,22 @@
       "sounds/m107/m107_reload_magout"
     ]
   },
+  "tacz.m95b.m95b_reload_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_magout"
+    ]
+  },
   "tacz.m107.m107_reload_empty_armmag": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_empty_armmag"
+    ]
+  },
+  "tacz.m95b.m95b_reload_empty_armmag": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_armmag"
     ]
   },
   "tacz.m107.m107_reload_mvmnt": {
@@ -4353,10 +5599,22 @@
       "sounds/m107/m107_reload_mvmnt"
     ]
   },
+  "tacz.m95b.m95b_reload_mvmnt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_mvmnt"
+    ]
+  },
   "tacz.m107.m107_reload_magin_01": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_magin_01"
+    ]
+  },
+  "tacz.m95b.m95b_reload_magin_01": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_magin_01"
     ]
   },
   "tacz.m107.m107_reload_magin_02": {
@@ -4365,10 +5623,22 @@
       "sounds/m107/m107_reload_magin_02"
     ]
   },
+  "tacz.m95b.m95b_reload_magin_02": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_magin_02"
+    ]
+  },
   "tacz.m107.m107_settle": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_settle"
+    ]
+  },
+  "tacz.m95b.m95b_settle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_settle"
     ]
   },
   "tacz.m107.m107_reload_end": {
@@ -4377,10 +5647,22 @@
       "sounds/m107/m107_reload_end"
     ]
   },
+  "tacz.m95b.m95b_reload_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_end"
+    ]
+  },
   "tacz.m107.m107_reload_fast_up": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_fast_up"
+    ]
+  },
+  "tacz.m95b.m95b_reload_fast_up": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_fast_up"
     ]
   },
   "tacz.m107.m107_reload_empty_magrelease": {
@@ -4389,10 +5671,22 @@
       "sounds/m107/m107_reload_empty_magrelease"
     ]
   },
+  "tacz.m95b.m95b_reload_empty_magrelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_magrelease"
+    ]
+  },
   "tacz.m107.m107_reload_empty_fast_magout": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_empty_fast_magout"
+    ]
+  },
+  "tacz.m95b.m95b_reload_empty_fast_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_fast_magout"
     ]
   },
   "tacz.m107.m107_reload_arm": {
@@ -4401,10 +5695,22 @@
       "sounds/m107/m107_reload_arm"
     ]
   },
+  "tacz.m95b.m95b_reload_arm": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_arm"
+    ]
+  },
   "tacz.m107.m107_reload_empty_magin_01": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_empty_magin_01"
+    ]
+  },
+  "tacz.m95b.m95b_reload_empty_magin_01": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_magin_01"
     ]
   },
   "tacz.m107.m107_reload_empty_magin_02": {
@@ -4413,10 +5719,22 @@
       "sounds/m107/m107_reload_empty_magin_02"
     ]
   },
+  "tacz.m95b.m95b_reload_empty_magin_02": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_magin_02"
+    ]
+  },
   "tacz.m107.m107_reload_empty_fast_rotate": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_empty_fast_rotate"
+    ]
+  },
+  "tacz.m95b.m95b_reload_empty_fast_rotate": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_fast_rotate"
     ]
   },
   "tacz.m107.m107_reload_empty_fast_pullbolt": {
@@ -4425,10 +5743,22 @@
       "sounds/m107/m107_reload_empty_fast_pullbolt"
     ]
   },
+  "tacz.m95b.m95b_reload_empty_fast_pullbolt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_fast_pullbolt"
+    ]
+  },
   "tacz.m107.m107_reload_empty_charge": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_empty_charge"
+    ]
+  },
+  "tacz.m95b.m95b_reload_empty_charge": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_charge"
     ]
   },
   "tacz.m107.m107_reload_fast_shake": {
@@ -4437,10 +5767,22 @@
       "sounds/m107/m107_reload_fast_shake"
     ]
   },
+  "tacz.m95b.m95b_reload_fast_shake": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_fast_shake"
+    ]
+  },
   "tacz.m107.m107_reload_empty_end": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_reload_empty_end"
+    ]
+  },
+  "tacz.m95b.m95b_reload_empty_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_end"
     ]
   },
   "tacz.m107.m107_inspect_01": {
@@ -4449,10 +5791,22 @@
       "sounds/m107/m107_inspect_01"
     ]
   },
+  "tacz.m95b.m95b_inspect_01": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_01"
+    ]
+  },
   "tacz.m107.m107_inspect_02": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_inspect_02"
+    ]
+  },
+  "tacz.m95b.m95b_inspect_02": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_02"
     ]
   },
   "tacz.m107.m107_inspect_03": {
@@ -4461,10 +5815,22 @@
       "sounds/m107/m107_inspect_03"
     ]
   },
+  "tacz.m95b.m95b_inspect_03": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_03"
+    ]
+  },
   "tacz.m107.m107_inspect_05": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_inspect_05"
+    ]
+  },
+  "tacz.m95b.m95b_inspect_05": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_05"
     ]
   },
   "tacz.m107.m107_inspect_04": {
@@ -4473,16 +5839,34 @@
       "sounds/m107/m107_inspect_04"
     ]
   },
+  "tacz.m95b.m95b_inspect_04": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_04"
+    ]
+  },
   "tacz.m107.m107_inspect_grabrotate": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_inspect_grabrotate"
     ]
   },
+  "tacz.m95b.m95b_inspect_grabrotate": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_grabrotate"
+    ]
+  },
   "tacz.m107.m107_inspect_end": {
     "category": "hostile",
     "sounds": [
       "sounds/m107/m107_inspect_end"
+    ]
+  },
+  "tacz.m95b.m95b_inspect_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_end"
     ]
   },
   "sks.suppress": {
@@ -4503,10 +5887,34 @@
       "sounds/awp/raiseins"
     ]
   },
+  "tacz.ai_m700.m700_inspect_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/raiseins"
+    ]
+  },
+  "tacz.ai_kar98.kar98_inspect_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/raiseins"
+    ]
+  },
   "tacz.ai_awp.awp_reload_ejectclick": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/ejectclicktac"
+    ]
+  },
+  "tacz.ai_m700.m700_reload_ejectclick": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/ejectclicktac"
+    ]
+  },
+  "tacz.ai_kar98.kar98_reload_ejectclick": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/ejectclicktac"
     ]
   },
   "tacz.ai_awp.awp_reload_empty_magout": {
@@ -4515,10 +5923,34 @@
       "sounds/awp/magout"
     ]
   },
+  "tacz.ai_m700.m700_reload_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magout"
+    ]
+  },
+  "tacz.ai_kar98.kar98_reload_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magout"
+    ]
+  },
   "tacz.ai_awp.awp_reload_empty_rattle": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/awp_reload_empty_rattle"
+    ]
+  },
+  "tacz.ai_m700.m700_reload_empty_rattle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/m700_reload_empty_rattle"
+    ]
+  },
+  "tacz.ai_kar98.kar98_reload_empty_rattle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_reload_empty_rattle"
     ]
   },
   "tacz.ai_awp.awp_reload_raise1": {
@@ -4527,10 +5959,34 @@
       "sounds/awp/raise1tac"
     ]
   },
+  "tacz.ai_m700.m700_reload_raise1": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/raise1tac"
+    ]
+  },
+  "tacz.ai_kar98.kar98_reload_raise1": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/raise1tac"
+    ]
+  },
   "tacz.ai_awp.awp_inspect_boltback": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/awp_inspect_boltback"
+    ]
+  },
+  "tacz.ai_m700.m700_inspect_boltback": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/m700_inspect_boltback"
+    ]
+  },
+  "tacz.ai_kar98.kar98_inspect_boltback": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_inspect_boltback"
     ]
   },
   "tacz.ai_awp.awp_inspect_fast_mvmnt": {
@@ -4539,10 +5995,34 @@
       "sounds/awp/fastmvmntins"
     ]
   },
+  "tacz.ai_m700.m700_inspect_fast_mvmnt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/fastmvmntins"
+    ]
+  },
+  "tacz.ai_kar98.kar98_inspect_fast_mvmnt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/fastmvmntins"
+    ]
+  },
   "tacz.ai_awp.awp_rechamber_in": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/rechamberinbolt"
+    ]
+  },
+  "tacz.ai_m700.m700_rechamber_in": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/rechamberinbolt"
+    ]
+  },
+  "tacz.ai_kar98.kar98_rechamber_in": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/rechamberinbolt"
     ]
   },
   "tacz.ai_awp.awp_inspect_load_mvmnt": {
@@ -4551,10 +6031,34 @@
       "sounds/awp/loadmvmntins"
     ]
   },
+  "tacz.ai_m700.m700_inspect_load_mvmnt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/loadmvmntins"
+    ]
+  },
+  "tacz.ai_kar98.kar98_inspect_load_mvmnt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/loadmvmntins"
+    ]
+  },
   "tacz.ai_awp.awp_inspect_maghit": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/maghitins"
+    ]
+  },
+  "tacz.ai_m700.m700_inspect_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/maghitins"
+    ]
+  },
+  "tacz.ai_kar98.kar98_inspect_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/maghitins"
     ]
   },
   "tacz.ai_awp.awp_inspect_magin_02": {
@@ -4563,10 +6067,34 @@
       "sounds/awp/magin02ins"
     ]
   },
+  "tacz.ai_m700.m700_inspect_magin_02": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magin02ins"
+    ]
+  },
+  "tacz.ai_kar98.kar98_inspect_magin_02": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magin02ins"
+    ]
+  },
   "tacz.ai_awp.awp_inspect_fast_tilt": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/fasttiltins"
+    ]
+  },
+  "tacz.ai_m700.m700_inspect_fast_tilt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/fasttiltins"
+    ]
+  },
+  "tacz.ai_kar98.kar98_inspect_fast_tilt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/fasttiltins"
     ]
   },
   "tacz.ai_awp.awp_inspect_empty_magpalmhit": {
@@ -4575,10 +6103,34 @@
       "sounds/awp/magpalmhitins"
     ]
   },
+  "tacz.ai_m700.m700_inspect_empty_magpalmhit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/magpalmhitins"
+    ]
+  },
+  "tacz.ai_kar98.kar98_inspect_empty_magpalmhit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/magpalmhitins"
+    ]
+  },
   "tacz.ai_awp.awp_inspect_end": {
     "category": "hostile",
     "sounds": [
       "sounds/awp/end"
+    ]
+  },
+  "tacz.ai_m700.m700_inspect_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/end"
+    ]
+  },
+  "tacz.ai_kar98.kar98_inspect_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/end"
     ]
   },
   "tacz.deagle.deagle_inspect_raise": {
@@ -4987,6 +6539,925 @@
     "category": "hostile",
     "sounds": [
       "sounds/m9a4/m9a4_inspect_end"
+    ]
+  },
+  "tacz.kar98.kar98_inspect_start": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_inspect_start"
+    ]
+  },
+  "tacz.kar98.kar98_inspect_rotate": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_inspect_rotate"
+    ]
+  },
+  "tacz.kar98.kar98_inspect_bolt_out_fast": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_inspect_bolt_out_fast"
+    ]
+  },
+  "tacz.kar98.kar98_inspect_bullet_catch": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_inspect_bullet_catch"
+    ]
+  },
+  "tacz.kar98.kar98_reload_move": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_reload_move"
+    ]
+  },
+  "tacz.kar98.kar98_reload_press": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_reload_press"
+    ]
+  },
+  "tacz.kar98.kar98_reload_bullet_insert": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_reload_bullet_insert"
+    ]
+  },
+  "tacz.kar98.kar98_bolt_in": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_bolt_in"
+    ]
+  },
+  "tacz.kar98.kar98_inspect_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_inspect_end"
+    ]
+  },
+  "tacz.kar98.kar98_reload_bolt_out": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/kar98/kar98_reload_bolt_out"
+    ]
+  },
+  "tacz.m700.m700_reload_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/m700_reload_raise"
+    ]
+  },
+  "tacz.m700.m700_reload_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/m700_reload_magout"
+    ]
+  },
+  "tacz.m700.m700_reload_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/m700_reload_magin"
+    ]
+  },
+  "tacz.m700.m700_reload_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/m700_reload_end"
+    ]
+  },
+  "tacz.m700.m700_bolt_out": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/m700_bolt_out"
+    ]
+  },
+  "tacz.m700.m700_shell_drop": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/m700_shell_drop"
+    ]
+  },
+  "tacz.m700.m700_bolt_in": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m700/m700_bolt_in"
+    ]
+  },
+  "tacz.m95b.m95_raise_arm": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_arm"
+    ]
+  },
+  "tacz.m95b.m95_raise_01": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_raise_01"
+    ]
+  },
+  "tacz.m95b.m95_raise_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_end"
+    ]
+  },
+  "tacz.m95b.m95_reload_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_reload_raise"
+    ]
+  },
+  "tacz.m95b.m95_reload_magrelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_magrelease"
+    ]
+  },
+  "tacz.m95b.m95_reload_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_magout"
+    ]
+  },
+  "tacz.m95b.m95_reload_arm": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_reload_arm"
+    ]
+  },
+  "tacz.m95b.m95_reload_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_reload_magin"
+    ]
+  },
+  "tacz.m95b.m95_reload_rotate": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_reload_rotate"
+    ]
+  },
+  "tacz.m95b.m95_reload_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_end"
+    ]
+  },
+  "tacz.m95b.m95_boltback_shell": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_boltback_shell"
+    ]
+  },
+  "tacz.m95b.m95_reload_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_reload_empty_magout"
+    ]
+  },
+  "tacz.m95b.m95_reload_empty_lift": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_reload_raise"
+    ]
+  },
+  "tacz.m95b.m95_reload_empty_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_magin_01"
+    ]
+  },
+  "tacz.m95b.m95_reload_empty_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_reload_empty_magin_02"
+    ]
+  },
+  "tacz.m95b.m95_reload_empty_drop": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_raise_01"
+    ]
+  },
+  "tacz.m95b.m95_reload_empty_drop_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_reload_empty_drop_end"
+    ]
+  },
+  "tacz.m95b.m95_boltclose": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_boltclose"
+    ]
+  },
+  "tacz.m95b.m95_reload_empty_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_reload_empty_end"
+    ]
+  },
+  "tacz.m95b.m95_inspect_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_01"
+    ]
+  },
+  "tacz.m95b.m95_inspect_rattle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_02"
+    ]
+  },
+  "tacz.m95b.m95_inspect_rotate": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_03"
+    ]
+  },
+  "tacz.m95b.m95_inspect_shoulder": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_05"
+    ]
+  },
+  "tacz.m95b.m95_boltback": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_boltback"
+    ]
+  },
+  "tacz.m95b.m95_inspect_boltclose": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95_inspect_boltclose"
+    ]
+  },
+  "tacz.m95b.m95_inspect_lower": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_04"
+    ]
+  },
+  "tacz.m95b.m95_inspect_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m95b/m95b_inspect_end"
+    ]
+  },
+  "tacz.spas12.spas12_move_1": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_move_1"
+    ]
+  },
+  "tacz.spas12.spas12_move_3": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_move_3"
+    ]
+  },
+  "tacz.spas12.spas12_pumpoff": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_pumpoff"
+    ]
+  },
+  "tacz.spas12.spas12_bulletgrab": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_bulletgrab"
+    ]
+  },
+  "tacz.spas12.cloth_move_4": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/qbz1911/cloth_move_4"
+    ]
+  },
+  "tacz.spas12.cloth_move_3": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/qbz1911/cloth_move_3"
+    ]
+  },
+  "tacz.spas12.spas12_bolthandleon": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_bolthandleon"
+    ]
+  },
+  "tacz.spas12.spas12_bulletin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_bulletin"
+    ]
+  },
+  "tacz.spas12.spas12_move_2": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_move_2"
+    ]
+  },
+  "tacz.cz75.cz75_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_raise"
+    ]
+  },
+  "tacz.cz75.cz75_reload_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_reload_raise",
+      "sounds/mk23/mk23_reload_raise"
+    ]
+  },
+  "tacz.cz75.cz75_reload_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_reload_magout",
+      "sounds/mk23/mk23_reload_magout"
+    ]
+  },
+  "tacz.cz75.cz75_reload_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_reload_maghit",
+      "sounds/mk23/mk23_reload_maghit"
+    ]
+  },
+  "tacz.cz75.cz75_reload_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_reload_magin",
+      "sounds/mk23/mk23_reload_magin"
+    ]
+  },
+  "tacz.cz75.cz75_reload_fast_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_reload_fast_end",
+      "sounds/mk23/mk23_reload_fast_end"
+    ]
+  },
+  "tacz.cz75.cz75_reload_empty_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_reload_empty_raise",
+      "sounds/mk23/mk23_reload_empty_raise"
+    ]
+  },
+  "tacz.cz75.cz75_reload_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_empty_magout"
+    ]
+  },
+  "tacz.cz75.mag_drop_pi_metal_dirt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/mag_drop_pi_metal_dirt"
+    ]
+  },
+  "tacz.cz75.cz75_reload_empty_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_reload_empty_maghit",
+      "sounds/mk23/mk23_reload_empty_maghit"
+    ]
+  },
+  "tacz.cz75.cz75_reload_empty_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_reload_empty_magin",
+      "sounds/mk23/mk23_reload_empty_magin"
+    ]
+  },
+  "tacz.cz75.cz75_reload_empty_fast_xmag_charge": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_reload_empty_fast_xmag_charge"
+    ]
+  },
+  "tacz.cz75.cz75_reload_empty_fast_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_reload_empty_end",
+      "sounds/mk23/mk23_reload_empty_end"
+    ]
+  },
+  "tacz.cz75.cz75_inspect_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_raise"
+    ]
+  },
+  "tacz.cz75.cz75_inspect_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_magout"
+    ]
+  },
+  "tacz.cz75.cz75_inspect_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_magin"
+    ]
+  },
+  "tacz.cz75.cz75_inspect_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/cz75/cz75_inspect_maghit"
+    ]
+  },
+  "tacz.cz75.cz75_inspect_empty_flip": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_inspect_empty_flip",
+      "sounds/mk23/mk23_inspect_empty_flip"
+    ]
+  },
+  "tacz.cz75.cz75_inspect_slidepull": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_inspect_slidepull",
+      "sounds/mk23/mk23_inspect_slidepull"
+    ]
+  },
+  "tacz.cz75.cz75_inspect_sliderelease": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_inspect_sliderelease",
+      "sounds/mk23/mk23_inspect_sliderelease"
+    ]
+  },
+  "tacz.cz75.cz75_inspect_empty_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/p320/p320_inspect_empty_end",
+      "sounds/mk23/mk23_inspect_empty_end"
+    ]
+  },
+  "tacz.mk23.mk23_reload_tactical_rise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_tactical_rise"
+    ]
+  },
+  "tacz.mk23.mk23_reload_tactical_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_tactical_magout"
+    ]
+  },
+  "tacz.mk23.mk23_reload_tactical_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_tactical_magin"
+    ]
+  },
+  "tacz.mk23.mk23_reload_tactical_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_tactical_end"
+    ]
+  },
+  "tacz.mk23.mk23_reload_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_tactical_magout"
+    ]
+  },
+  "tacz.mk23.mk23_reload_empty_charge": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_reload_empty_charge"
+    ]
+  },
+  "tacz.mk23.mk23_hammer": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_hammer"
+    ]
+  },
+  "tacz.mk23.mk23_inspect_start": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_start"
+    ]
+  },
+  "tacz.mk23.mk23_inspect_toss": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_toss"
+    ]
+  },
+  "tacz.mk23.mk23_inspect_chamber": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_chamber"
+    ]
+  },
+  "tacz.mk23.mk23_inspect_charge": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_charge"
+    ]
+  },
+  "tacz.mk23.mk23_inspect_hammer": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_hammer"
+    ]
+  },
+  "tacz.mk23.mk23_inspect_rack": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_rack"
+    ]
+  },
+  "tacz.mk23.mk23_inspect_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/mk23/mk23_inspect_end"
+    ]
+  },
+  "tacz.rhino357.rhino_reload_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_reload_raise"
+    ]
+  },
+  "tacz.rhino357.rhino_reload_cylinder_turn": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_reload_cylinder_turn"
+    ]
+  },
+  "tacz.rhino357.rhino_reload_eject": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_reload_eject"
+    ]
+  },
+  "tacz.rhino357.rhino_reload_shell": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_reload_shell"
+    ]
+  },
+  "tacz.rhino357.rhino_reload_bulletin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_reload_bulletin"
+    ]
+  },
+  "tacz.rhino357.rhino_cylinder_spin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_cylinder_spin"
+    ]
+  },
+  "tacz.rhino357.rhino_reload_cylinder_close": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_reload_cylinder_close"
+    ]
+  },
+  "tacz.rhino357.rhino_reload_reset": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_reload_reset"
+    ]
+  },
+  "tacz.rhino357.rhino_inspect_start": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_inspect_start"
+    ]
+  },
+  "tacz.rhino357.rhino_inspect_rotate_1": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_inspect_rotate_1"
+    ]
+  },
+  "tacz.rhino357.rhino_inspect_rotate_2": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_inspect_rotate_2"
+    ]
+  },
+  "tacz.rhino357.rhino_inspect_rotate_3": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_inspect_rotate_3"
+    ]
+  },
+  "tacz.rhino357.rhino_inspect_rotate_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_inspect_rotate_end"
+    ]
+  },
+  "tacz.rhino357.rhino_inspect_rift": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_inspect_rift"
+    ]
+  },
+  "tacz.rhino357.rhino_inspect_rotate_4": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_inspect_rotate_4"
+    ]
+  },
+  "tacz.rhino357.rhino_inspect_reset": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_inspect_reset"
+    ]
+  },
+  "tacz.taurus500.taurus500_reload_cylinder_turn": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_reload_cylinder_turn"
+    ]
+  },
+  "tacz.taurus500.taurus500_reload_bullet_eject": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_reload_bullet_eject"
+    ]
+  },
+  "tacz.taurus500.taurus500_reload_shell": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_reload_shell"
+    ]
+  },
+  "tacz.taurus500.taurus500_reload_bullet_in": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_reload_bullet_in"
+    ]
+  },
+  "tacz.taurus500.taurus500_reload_cylinder_off": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_reload_cylinder_off"
+    ]
+  },
+  "tacz.taurus500.taurus500_reload_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_reload_end"
+    ]
+  },
+  "tacz.taurus500.taurus500_inspect_rotate_1": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_inspect_rotate_1"
+    ]
+  },
+  "tacz.taurus500.taurus500_inspect_rotate_2": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_inspect_rotate_2"
+    ]
+  },
+  "tacz.taurus500.taurus500_inspect_mvt1": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_inspect_mvt1"
+    ]
+  },
+  "tacz.taurus500.taurus500_inspect_mvt2": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_inspect_mvt2"
+    ]
+  },
+  "tacz.taurus500.taurus500_inspect_mvt3": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_inspect_mvt3"
+    ]
+  },
+  "tacz.taurus500.taurus500_inspect_bullet": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_inspect_bullet"
+    ]
+  },
+  "tacz.taurus500.taurus500_inspect_bullet_close": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_inspect_bullet_close"
+    ]
+  },
+  "tacz.taurus500.taurus500_inspect_bullet_down": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_inspect_bullet_down"
+    ]
+  },
+  "tacz.taurus500.taurus500_inspect_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_inspect_end"
+    ]
+  },
+  "tacz.taurus943.943_reload_cylinder_turn": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_reload_cylinder_turn"
+    ]
+  },
+  "tacz.taurus943.943_reload_bullet_eject": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus500/taurus500_reload_bullet_eject"
+    ]
+  },
+  "tacz.taurus943.943_reload_shell": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_reload_shell"
+    ]
+  },
+  "tacz.taurus943.943_reload_bullet_insert_1": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_reload_bullet_insert_1"
+    ]
+  },
+  "tacz.taurus943.943_reload_cylinder_spin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_reload_cylinder_spin"
+    ]
+  },
+  "tacz.taurus943.943_reload_bullet_insert_2": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_reload_bullet_insert_2"
+    ]
+  },
+  "tacz.taurus943.943_reload_bullet_insert_3": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_reload_bullet_insert_3"
+    ]
+  },
+  "tacz.taurus943.943_reload_bullet_insert_4": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_reload_bullet_insert_4"
+    ]
+  },
+  "tacz.taurus943.943_reload_cylinder_close": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_reload_cylinder_close"
+    ]
+  },
+  "tacz.taurus943.943_reload_reset": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_reload_reset"
+    ]
+  },
+  "tacz.taurus943.943_inspect_rotate_1": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_inspect_rotate_1"
+    ]
+  },
+  "tacz.taurus943.943_inspect_rotate_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/rhino357/rhino_inspect_rotate_end"
+    ]
+  },
+  "tacz.taurus943.943_inspect_rotate_2": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_inspect_rotate_2"
+    ]
+  },
+  "tacz.taurus943.943_inspect_move": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_inspect_move"
+    ]
+  },
+  "tacz.taurus943.943_inspect_move_2": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_inspect_move_2"
+    ]
+  },
+  "tacz.taurus943.943_inspect_reset": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/taurus943/943_inspect_reset"
+    ]
+  },
+  "tacz.spr15.spr15hb_reload_rattle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_reload_rattle"
+    ]
+  },
+  "tacz.spr15.spr15hb_reload_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_reload_magout"
+    ]
+  },
+  "tacz.spr15.spr15hb_reload_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_reload_maghit"
+    ]
+  },
+  "tacz.spr15.spr15hb_reload_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_reload_magin"
+    ]
+  },
+  "tacz.spr15.spr15hb_reload_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_reload_end"
+    ]
+  },
+  "tacz.spr15.spr15hb_reload_empty_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_reload_empty_raise"
+    ]
+  },
+  "tacz.spr15.spr15hb_reload_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_reload_empty_magout"
+    ]
+  },
+  "tacz.spr15.spr15hb_reload_empty_mag_drop": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_reload_empty_mag_drop"
+    ]
+  },
+  "tacz.spr15.spr15hb_reload_empty_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_reload_empty_end"
+    ]
+  },
+  "tacz.spr15.spr15hb_reload_empty_charge": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_reload_empty_charge"
+    ]
+  },
+  "tacz.spr15.spr15hb_inspect_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_inspect_raise"
+    ]
+  },
+  "tacz.spr15.spr15hb_inspect_rotate": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_inspect_rotate"
+    ]
+  },
+  "tacz.spr15.spr15hb_inspect_rotate2": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_inspect_rotate2"
+    ]
+  },
+  "tacz.spr15.spr15hb_inspect_rattle": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_inspect_rattle"
+    ]
+  },
+  "tacz.spr15.spr15hb_inspect_rattle2": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m1014/m1014_move1"
+    ]
+  },
+  "tacz.spr15.spr15hb_inspect_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spr15/spr15hb_inspect_end"
     ]
   }
 }

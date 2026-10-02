@@ -1,0 +1,125 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.taurus943.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='taurus943_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='taurus943' && variable.attack_time > 0.0f && query.scoreboard('taurus943') <= 7) || (query.get_equipped_item_name=='taurus943' && q.mark_variant == 2)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function taurus943quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='taurus943' && q.property('krep:ammoreload') == 0"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='taurus943' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='taurus943'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function taurus943quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='taurus943_emp' && q.property('krep:ammoreload') == 0"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='taurus943_emp' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='taurus943'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "taurus943reload": "query.get_equipped_item_name('main_hand')=='taurus943_emp' || query.get_equipped_item_name('main_hand')=='taurus943'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='taurus943_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "taurus943reloadtac": "query.get_equipped_item_name('main_hand')=='taurus943_emp' || query.get_equipped_item_name('main_hand')=='taurus943'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='taurus943'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function taurus943"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='taurus943' || query.get_equipped_item_name=='taurus943_emp'"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.taurus943": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='taurus943' && q.is_using_item) || query.get_equipped_item_name=='taurus943_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s taurus943 8",
+            "/event entity @s[hasitem={item=krep:taurus943, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "taurus943.30": "query.get_equipped_item_name=='taurus943' && query.is_using_item && query.scoreboard('taurus943') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "taurus943.31": "query.get_equipped_item_name=='taurus943' && query.is_using_item && query.scoreboard('taurus943') == 0"
+            }
+          ],
+          "on_entry": ["/function taurus943"]
+        },
+        "taurus943.31": {
+          "animations": ["taurus943shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "/replaceitem entity @s[scores={taurus943=0}] slot.weapon.mainhand 1 krep:taurus943_emp 1 0"
+          ]
+        },
+        "taurus943.30": {
+          "animations": ["taurus943shoot"],
+          "transitions": [{"setup": "query.all_animations_finished && !q.is_using_item"}],
+          "on_entry": [
+            "@s krep:taurus943_fire",
+            "/scoreboard players remove @s[scores={taurus943=1..9}] taurus943 1",
+            "/scoreboard players set @s[scores={taurus943=9..}] taurus943 8",
+            "/playsound taurus943.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={taurus943=0}] slot.weapon.mainhand 1 krep:taurus943_emp 1 0",
+            "/title @s[scores={taurus943=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.m95b.shoot": {"loop": false, "animation_length": 0.25, "timeline": {}},
+    "animation.m95b.reload.tac": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 4.3,
+      "timeline": {
+        "4.2": ["/scoreboard players set @s[scores={m95b=7..}] m95b 6", "/function m95b"],
+        "4.1": ["/function m95breload", "/event entity @s krep:m95b_reload"]
+      }
+    },
+    "animation.m95b.reload": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 5.2,
+      "timeline": {
+        "5.1": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:m95b 1 0",
+          "/scoreboard players set @s[scores={m95b=6..}] m95b 5",
+          "/function m95b"
+        ],
+        "5.0": ["/function m95breload", "/event entity @s krep:m95b_reload"]
+      }
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.spas12": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='spas12' && q.is_using_item) || query.get_equipped_item_name=='spas12_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s spas12 5",
+            "/event entity @s[hasitem={item=krep:spas12, location=slot.weapon.mainhand}] krep:noreload",
+            "@s spas12:normal"
+          ]
+        },
+        "jawir": {
+          "animations": ["spas12delay"],
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='spas12' || query.get_equipped_item_name=='spas12_emp') && q.all_animations_finished && q.is_using_item"
+            }
+          ],
+          "on_entry": ["@s spas12:normal"]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "spas12.30": "query.get_equipped_item_name=='spas12' && query.is_using_item && query.scoreboard('spas12') >= 1 && (q.mark_variant != 2 && q.mark_variant!=1)"
+            },
+            {
+              "spas12.31": "query.get_equipped_item_name=='spas12' && query.is_using_item && query.scoreboard('spas12') == 0"
+            }
+          ],
+          "on_entry": ["/function spas12"]
+        },
+        "spas12.31": {
+          "animations": ["spas12shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={spas12=0}] slot.weapon.mainhand 1 krep:spas12_emp 1 0"]
+        },
+        "spas12.30": {
+          "animations": ["spas12shoot"],
+          "transitions": [
+            {
+              "bolt": "query.all_animations_finished && query.get_equipped_item_name=='spas12' && q.mark_variant!= 2"
+            },
+            {"setup": "query.get_equipped_item_name!='spas12'"},
+            {"setup": "query.get_equipped_item_name=='spas12' && q.mark_variant == 2"}
+          ],
+          "on_entry": [
+            "@s krep:spas12_fire",
+            "/scoreboard players remove @s[scores={spas12=1..6}] spas12 1",
+            "/scoreboard players set @s[scores={spas12=7..}] spas12 6",
+            "/playsound spas12.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={spas12=0}] slot.weapon.mainhand 1 krep:spas12_emp 1 0",
+            "/title @s[scores={spas12=0}] actionbar No Ammunition"
+          ]
+        },
+        "bolt": {
+          "animations": ["spas12bolt"],
+          "transitions": [
+            {"jawir": "query.all_animations_finished"},
+            {"jawir": "query.get_equipped_item_name!='spas12'"}
+          ],
+          "on_entry": ["@s spas12:bolt", "/function spas12"]
+        }
+      }
+    },
+    "controller.animation.spas12.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='spas12_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='spas12' && variable.attack_time > 0.0f && query.scoreboard('spas12') <= 4 && q.mark_variant != 3 && q.property('krep:ammoreload')!=3) || (q.mark_variant == 2 && query.get_equipped_item_name=='spas12' && q.property('krep:ammoreload')!=3)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function spas12quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='spas12' && q.property('krep:ammoreload') == 410"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='spas12' && q.property('krep:ammoreload') >= 411"
+            },
+            {"setup": "query.get_equipped_item_name!='spas12'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function spas12quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='spas12_emp' && q.property('krep:ammoreload') == 410"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='spas12_emp' && q.property('krep:ammoreload') >= 411"
+            },
+            {"setup": "query.get_equipped_item_name!='spas12'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "spas12reload": "query.get_equipped_item_name('main_hand')=='spas12_emp' || query.get_equipped_item_name('main_hand')=='spas12'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name!='spas12_emp' && query.get_equipped_item_name!='spas12'"
+            },
+            {
+              "reloadfinish1": "query.get_equipped_item_name=='spas12' && q.is_using_item && query.scoreboard('spas12') >= 1"
+            },
+            {
+              "reloadfinish1": "query.get_equipped_item_name=='spas12' && q.property('krep:ammoreload') == 410"
+            },
+            {
+              "reloadfinish1": "query.get_equipped_item_name=='spas12' && query.scoreboard('spas12') == 5"
+            }
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "spas12reloadtac": "query.get_equipped_item_name('main_hand')=='spas12_emp' || query.get_equipped_item_name('main_hand')=='spas12'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='spas12'"},
+            {
+              "reloadfinish": "query.get_equipped_item_name=='spas12' && query.scoreboard('spas12') == 6"
+            },
+            {
+              "reloadfinish": "query.get_equipped_item_name=='spas12' && q.property('krep:ammoreload') == 410"
+            },
+            {
+              "reloadfinish": "query.get_equipped_item_name=='spas12' && q.is_using_item && query.scoreboard('spas12') >= 1"
+            }
+          ]
+        },
+        "reloadfinish1": {
+          "animations": [
+            {
+              "spas12end": "query.get_equipped_item_name('main_hand')=='spas12_emp' || query.get_equipped_item_name('main_hand')=='spas12'"
+            }
+          ],
+          "on_entry": ["/function spas12", "@s krep:reload", "@s spas12:end"],
+          "on_exit": ["@s krep:noreload", "@s spas12:normal"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='spas12' || query.get_equipped_item_name=='spas12_emp'"
+            }
+          ]
+        },
+        "reloadfinish": {
+          "animations": [
+            {
+              "spas12end": "query.get_equipped_item_name('main_hand')=='spas12_emp' || query.get_equipped_item_name('main_hand')=='spas12'"
+            }
+          ],
+          "on_entry": ["/function spas12", "@s krep:reloadtac", "@s spas12:end"],
+          "on_exit": ["@s krep:noreload", "@s spas12:normal"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='spas12' || query.get_equipped_item_name=='spas12_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

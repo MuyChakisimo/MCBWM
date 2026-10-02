@@ -1,0 +1,112 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.mk23": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='mk23' && q.is_using_item) || query.get_equipped_item_name=='mk23_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s mk23 12",
+            "/event entity @s[hasitem={item=krep:mk23, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "mk23.13": "query.get_equipped_item_name=='mk23' && query.is_using_item && query.scoreboard('mk23') >= 1 && q.mark_variant != 2"
+            }
+          ],
+          "on_entry": ["/function mk23"]
+        },
+        "mk23.13": {
+          "animations": ["mk23shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:mk23_fire",
+            "/scoreboard players remove @s[scores={mk23=1..13}] mk23 1",
+            "/playsound mk23.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={mk23=0}] slot.weapon.mainhand 1 krep:mk23_emp 1 0",
+            "/title @s[scores={mk23=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.mk23.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='mk23_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='mk23' && variable.attack_time > 0.0f && query.scoreboard('mk23') <= 11) || (query.get_equipped_item_name=='mk23' && q.mark_variant == 2)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function mk23quantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='mk23' && q.property('krep:ammoreload') == 0"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='mk23' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='mk23'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function mk23quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='mk23_emp' && q.property('krep:ammoreload') == 0"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='mk23_emp' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='mk23'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "mk23reload": "query.get_equipped_item_name('main_hand')=='mk23_emp' || query.get_equipped_item_name('main_hand')=='mk23'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='mk23_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "mk23reloadtac": "query.get_equipped_item_name('main_hand')=='mk23_emp' || query.get_equipped_item_name('main_hand')=='mk23'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='mk23'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function mk23"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='mk23' || query.get_equipped_item_name=='mk23_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

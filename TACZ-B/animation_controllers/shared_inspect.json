@@ -14,6 +14,12 @@
               "trigger.inspect": "(query.get_equipped_item_name=='m4a1' && variable.attack_time > 0.0f && query.scoreboard('m4a1') >= 30 && q.mark_variant != 2)"
             },
             {
+              "trigger.inspect": "(query.get_equipped_item_name=='spr15' && variable.attack_time > 0.0f && query.scoreboard('spr15') >= 15 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='spr15_emp' && variable.attack_time > 0.0f && query.scoreboard('spr15') == 0 && q.mark_variant != 1)"
+            },
+            {
               "trigger.inspect": "(query.get_equipped_item_name=='hk416' && variable.attack_time > 0.0f && query.scoreboard('hk416') >= 30 && q.mark_variant != 2)"
             },
             {
@@ -56,16 +62,55 @@
               "trigger.inspect": "(query.get_equipped_item_name=='cp' && variable.attack_time > 0.0f && query.scoreboard('cp') >= 6 && q.mark_variant != 2)"
             },
             {
+              "trigger.inspect": "(query.get_equipped_item_name=='taurus943' && variable.attack_time > 0.0f && query.scoreboard('taurus943') >= 8 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='taurus943_emp' && variable.attack_time > 0.0f && query.scoreboard('taurus943') == 0 && q.mark_variant != 1)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='taurus500' && variable.attack_time > 0.0f && query.scoreboard('taurus500') >= 5 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='taurus500_emp' && variable.attack_time > 0.0f && query.scoreboard('taurus500') == 0 && q.mark_variant != 1)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='rhino357' && variable.attack_time > 0.0f && query.scoreboard('rhino357') >= 6 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='rhino357_emp' && variable.attack_time > 0.0f && query.scoreboard('rhino357') == 0 && q.mark_variant != 1)"
+            },
+            {
               "trigger.inspect": "(query.get_equipped_item_name=='cp_emp' && variable.attack_time > 0.0f && query.scoreboard('cp') == 0 && q.mark_variant != 2)"
             },
             {
+              "trigger.inspect": "(query.get_equipped_item_name=='taurus943_emp' && variable.attack_time > 0.0f && query.scoreboard('taurus943') == 0 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='taurus500_emp' && variable.attack_time > 0.0f && query.scoreboard('taurus500') == 0 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='rhino357_emp' && variable.attack_time > 0.0f && query.scoreboard('rhino357') == 0 && q.mark_variant != 2)"
+            },
+            {
               "trigger.inspect": "(query.get_equipped_item_name=='p320' && variable.attack_time > 0.0f && query.scoreboard('p320') >= 12 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='mk23' && variable.attack_time > 0.0f && query.scoreboard('mk23') >= 12 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='cz75' && variable.attack_time > 0.0f && query.scoreboard('cz75') >= 16 && q.mark_variant != 2)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='m9a4' && variable.attack_time > 0.0f && query.scoreboard('m9a4') >= 17 && q.mark_variant != 2)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='p320_emp' && variable.attack_time > 0.0f && query.scoreboard('p320') == 0 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='mk23_emp' && variable.attack_time > 0.0f && query.scoreboard('mk23') == 0 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='cz75_emp' && variable.attack_time > 0.0f && query.scoreboard('cz75') == 0 && q.mark_variant != 2)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='m9a4_emp' && variable.attack_time > 0.0f && query.scoreboard('m9a4') == 0 && q.mark_variant != 2)"
@@ -87,6 +132,12 @@
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='db' && variable.attack_time > 0.0f && query.scoreboard('db') >= 2 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='dblong' && variable.attack_time > 0.0f && query.scoreboard('dblong') >= 2 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='dblong_emp' && variable.attack_time > 0.0f && query.scoreboard('dblong') == 0 && q.mark_variant != 1)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='aa12' && variable.attack_time > 0.0f && query.scoreboard('aa12') >= 10 && q.mark_variant != 2)"
@@ -131,6 +182,9 @@
               "trigger.inspect": "(query.get_equipped_item_name=='type81' && variable.attack_time > 0.0f && query.scoreboard('type81') >= 30 && q.mark_variant != 2)"
             },
             {
+              "trigger.inspect": "(query.get_equipped_item_name=='rpk' && variable.attack_time > 0.0f && query.scoreboard('rpk') >= 40 && q.mark_variant != 2)"
+            },
+            {
               "trigger.inspect.emp": "(query.get_equipped_item_name=='qbz95_emp' && variable.attack_time > 0.0f && query.scoreboard('qbz95') == 0 && q.mark_variant != 1)"
             },
             {
@@ -138,6 +192,9 @@
             },
             {
               "trigger.inspect.emp": "(query.get_equipped_item_name=='type81_emp' && variable.attack_time > 0.0f && query.scoreboard('type81') == 0 && q.mark_variant != 1)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='rpk_emp' && variable.attack_time > 0.0f && query.scoreboard('rpk') == 0 && q.mark_variant != 1)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='sks' && variable.attack_time > 0.0f && query.scoreboard('sks') >= 10 && q.mark_variant != 2)"
@@ -170,10 +227,28 @@
               "trigger.inspect": "(query.get_equipped_item_name=='awp' && variable.attack_time > 0.0f && query.scoreboard('awp') >= 5 && q.mark_variant != 2)"
             },
             {
+              "trigger.inspect": "(query.get_equipped_item_name=='m700' && variable.attack_time > 0.0f && query.scoreboard('m700') >= 5 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='kar98' && variable.attack_time > 0.0f && query.scoreboard('kar98') >= 4 && q.mark_variant != 2)"
+            },
+            {
               "trigger.inspect.emp": "(query.get_equipped_item_name=='awp_emp' && variable.attack_time > 0.0f && query.scoreboard('awp') == 0 && q.mark_variant != 1)"
             },
             {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='m700_emp' && variable.attack_time > 0.0f && query.scoreboard('m700') == 0 && q.mark_variant != 1)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='kar98_emp' && variable.attack_time > 0.0f && query.scoreboard('kar98') == 0 && q.mark_variant != 1)"
+            },
+            {
               "trigger.inspect": "(query.get_equipped_item_name=='m107' && variable.attack_time > 0.0f && query.scoreboard('m107') >= 10 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='m95b' && variable.attack_time > 0.0f && query.scoreboard('m95b') >= 5 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='m95b_emp' && variable.attack_time > 0.0f && query.scoreboard('m95b') == 0 && q.mark_variant != 1)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='deagle' && variable.attack_time > 0.0f && query.scoreboard('deagle') >= 7 && q.mark_variant != 2)"
@@ -206,7 +281,19 @@
               "trigger.inspect": "(query.get_equipped_item_name=='m870' && variable.attack_time > 0.0f && query.scoreboard('m870') >= 5 && q.mark_variant != 2)"
             },
             {
+              "trigger.inspect": "(query.get_equipped_item_name=='spas12' && variable.attack_time > 0.0f && query.scoreboard('spas12') >= 5 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='spas12_emp' && variable.attack_time > 0.0f && query.scoreboard('spas12') == 0 && q.mark_variant != 1)"
+            },
+            {
               "trigger.inspect": "(query.get_equipped_item_name=='rpg' && variable.attack_time > 0.0f && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='m320' && variable.attack_time > 0.0f && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='m320_emp' && variable.attack_time > 0.0f && query.scoreboard('m320') == 0 && q.mark_variant != 1)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='scarh' && variable.attack_time > 0.0f && query.scoreboard('scarh') >= 20 && q.mark_variant != 2)"

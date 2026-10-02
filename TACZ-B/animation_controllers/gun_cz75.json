@@ -1,0 +1,112 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.cz75": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='cz75' && q.is_using_item) || query.get_equipped_item_name=='cz75_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s cz75 16",
+            "/event entity @s[hasitem={item=krep:cz75, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "cz75.13": "query.get_equipped_item_name=='cz75' && query.is_using_item && query.scoreboard('cz75') >= 1 && q.mark_variant != 2"
+            }
+          ],
+          "on_entry": ["/function cz75"]
+        },
+        "cz75.13": {
+          "animations": ["cz75shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:cz75_fire",
+            "/scoreboard players remove @s[scores={cz75=1..17}] cz75 1",
+            "/playsound cz75.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={cz75=0}] slot.weapon.mainhand 1 krep:cz75_emp 1 0",
+            "/title @s[scores={cz75=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
+    "controller.animation.cz75.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='cz75_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='cz75' && variable.attack_time > 0.0f && query.scoreboard('cz75') <= 15) || (query.get_equipped_item_name=='cz75' && q.mark_variant == 2)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function cz75quantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='cz75' && q.property('krep:ammoreload') == 0"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='cz75' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='cz75'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function cz75quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='cz75_emp' && q.property('krep:ammoreload') == 0"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='cz75_emp' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='cz75'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "cz75reload": "query.get_equipped_item_name('main_hand')=='cz75_emp' || query.get_equipped_item_name('main_hand')=='cz75'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='cz75_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "cz75reloadtac": "query.get_equipped_item_name('main_hand')=='cz75_emp' || query.get_equipped_item_name('main_hand')=='cz75'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='cz75'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function cz75"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='cz75' || query.get_equipped_item_name=='cz75_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

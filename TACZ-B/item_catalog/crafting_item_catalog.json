@@ -10,6 +10,7 @@
             "items": [
               "krep:akm",
               "krep:m4a1",
+              "krep:spr15",
               "krep:hk416",
               "krep:qbz95",
               "krep:fal",
@@ -20,7 +21,8 @@
               "krep:m16a1",
               "krep:g3",
               "krep:qbz191",
-              "krep:type81"
+              "krep:type81",
+              "krep:rpk"
             ]
           },
           {
@@ -34,7 +36,12 @@
               "krep:deagle",
               "krep:t50",
               "krep:cp",
+              "krep:taurus943",
+              "krep:taurus500",
+              "krep:rhino357",
               "krep:p320",
+              "krep:mk23",
+              "krep:cz75",
               "krep:m9a4"
             ]
           },
@@ -44,21 +51,30 @@
           },
           {
             "group_identifier": {"icon": "krep:awp", "name": "krep:itemGroup.name.sr"},
-            "items": ["krep:awp", "krep:m107", "krep:sks", "krep:mk14"]
+            "items": ["krep:awp", "krep:m700", "krep:kar98", "krep:m107", "krep:m95b", "krep:sks", "krep:mk14"]
           },
           {
             "group_identifier": {"icon": "krep:minigun", "name": "krep:itemGroup.name.misc"},
-            "items": ["krep:minigun", "krep:evolys", "krep:m249", "krep:rpg"]
+            "items": ["krep:minigun", "krep:evolys", "krep:m249", "krep:rpg", "krep:m320"]
           },
           {
             "group_identifier": {"icon": "krep:m870", "name": "krep:itemGroup.name.sg"},
-            "items": ["krep:m870", "krep:saiga12", "krep:aa12", "krep:db", "krep:m1014"]
+            "items": [
+              "krep:m870",
+              "krep:spas12",
+              "krep:saiga12",
+              "krep:aa12",
+              "krep:db",
+              "krep:dblong",
+              "krep:m1014"
+            ]
           },
           {
             "group_identifier": {"icon": "krep:akm_emp", "name": "krep:itemGroup.name.empty"},
             "items": [
               "krep:akm_emp",
               "krep:m4a1_emp",
+              "krep:spr15_emp",
               "krep:hk416_emp",
               "krep:qbz95_emp",
               "krep:fal_emp",
@@ -72,16 +88,22 @@
               "krep:mk14_emp",
               "krep:qbz191_emp",
               "krep:type81_emp",
+              "krep:rpk_emp",
               "krep:m1911_emp",
               "krep:b93_emp",
               "krep:g17_emp",
               "krep:g18_emp",
               "krep:p320_emp",
+              "krep:mk23_emp",
+              "krep:cz75_emp",
               "krep:m9a4_emp",
               "krep:deagleg_emp",
               "krep:deagle_emp",
               "krep:t50_emp",
               "krep:cp_emp",
+              "krep:taurus943_emp",
+              "krep:taurus500_emp",
+              "krep:rhino357_emp",
               "krep:mp5_emp",
               "krep:p90_emp",
               "krep:vector_emp",
@@ -89,16 +111,22 @@
               "krep:uzi_emp",
               "krep:mp7_emp",
               "krep:awp_emp",
+              "krep:m700_emp",
+              "krep:kar98_emp",
               "krep:m107_emp",
+              "krep:m95b_emp",
               "krep:minigun_emp",
               "krep:m249_emp",
               "krep:evolys_emp",
               "krep:rpg_emp",
+              "krep:m320_emp",
               "krep:m870_emp",
+              "krep:spas12_emp",
               "krep:saiga12_emp",
               "krep:aa12_emp",
               "krep:m1014_emp",
-              "krep:db_emp"
+              "krep:db_emp",
+              "krep:dblong_emp"
             ]
           },
           {

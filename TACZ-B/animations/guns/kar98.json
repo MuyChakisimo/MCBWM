@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.kar98.bolt": {"loop": false, "animation_length": 1.25, "timeline": {}},
+    "animation.kar98.shoot": {"loop": false, "animation_length": 0.25, "timeline": {}},
+    "animation.kar98.reload.tac": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 3,
+      "timeline": {
+        "2.88": ["/scoreboard players set @s[scores={kar98=6..}] kar98 5", "/function kar98"],
+        "2.8": ["/function kar98reload", "/event entity @s krep:kar98_reload"]
+      }
+    },
+    "animation.kar98.delay": {"loop": false, "animation_length": 0.1, "timeline": {}},
+    "animation.kar98.reload": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 3.7,
+      "timeline": {
+        "3.6": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:kar98 1 0",
+          "/scoreboard players set @s[scores={kar98=5..}] kar98 4",
+          "/function kar98"
+        ],
+        "3.5": ["/function kar98reload", "/event entity @s krep:kar98_reload"]
+      }
+    }
+  }
+}

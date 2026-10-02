@@ -1,0 +1,112 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.rpk.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='rpk_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='rpk' && variable.attack_time > 0.0f && query.scoreboard('rpk') <= 39) || (query.get_equipped_item_name=='rpk' && q.mark_variant == 2)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function rpkquantity", "@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name=='rpk' && q.property('krep:ammoreload') == 0"},
+            {
+              "reload.tac": "query.get_equipped_item_name=='rpk' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='rpk'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function rpkquantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='rpk_emp' && q.property('krep:ammoreload') == 0"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='rpk_emp' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='rpk'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "rpkreload": "query.get_equipped_item_name('main_hand')=='rpk_emp' || query.get_equipped_item_name('main_hand')=='rpk'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='rpk_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "rpkreloadtac": "query.get_equipped_item_name('main_hand')=='rpk_emp' || query.get_equipped_item_name('main_hand')=='rpk'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='rpk'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function rpk"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='rpk' || query.get_equipped_item_name=='rpk_emp'"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.rpk": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='rpk' && q.is_using_item) || query.get_equipped_item_name=='rpk_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s rpk 40",
+            "/event entity @s[hasitem={item=krep:rpk, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "rpk.31": "query.get_equipped_item_name=='rpk' && query.is_using_item && query.scoreboard('rpk') >= 1 && q.mark_variant != 2"
+            }
+          ],
+          "on_entry": ["/function rpk"]
+        },
+        "rpk.31": {
+          "animations": ["rpkshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:rpk_fire",
+            "/scoreboard players remove @s[scores={rpk=1..41}] rpk 1",
+            "/playsound rpk.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={rpk=0}] slot.weapon.mainhand 1 krep:rpk_emp 1 0",
+            "/title @s[scores={rpk=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    }
+  }
+}

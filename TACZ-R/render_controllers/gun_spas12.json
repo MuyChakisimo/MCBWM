@@ -1,0 +1,13 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.spas12": {
+      "geometry": "geometry.spas12",
+      "materials": [{"*": "material.guns"}, {"anpeq15_laser": "material.glow"}],
+      "part_visibility": [{"*": true}],
+      "textures": ["texture.spas12"],
+      "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
+      "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
+    }
+  }
+}

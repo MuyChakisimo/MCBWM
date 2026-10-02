@@ -1,0 +1,147 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.kar98": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='kar98' && q.is_using_item) || query.get_equipped_item_name=='kar98_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s kar98 4",
+            "/event entity @s[hasitem={item=krep:kar98, location=slot.weapon.mainhand}] krep:noreload",
+            "@s kar98:normal"
+          ]
+        },
+        "jawir": {
+          "animations": ["kar98delay"],
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='kar98' || query.get_equipped_item_name=='kar98_emp') && q.all_animations_finished && q.is_using_item"
+            }
+          ],
+          "on_entry": ["@s kar98:normal"]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "kar98.30": "query.get_equipped_item_name=='kar98' && query.is_using_item && query.scoreboard('kar98') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "kar98.31": "query.get_equipped_item_name=='kar98' && query.is_using_item && query.scoreboard('kar98') == 0"
+            }
+          ],
+          "on_entry": ["/function kar98"]
+        },
+        "kar98.31": {
+          "animations": ["kar98shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s[scores={kar98=0}] slot.weapon.mainhand 1 krep:kar98_emp 1 0"]
+        },
+        "kar98.30": {
+          "animations": ["kar98shoot"],
+          "transitions": [
+            {
+              "bolt": "query.all_animations_finished && query.get_equipped_item_name=='kar98' && q.mark_variant!= 2"
+            },
+            {"setup": "query.get_equipped_item_name!='kar98'"},
+            {"setup": "query.get_equipped_item_name=='kar98' && q.mark_variant == 2"}
+          ],
+          "on_entry": [
+            "@s krep:kar98_fire",
+            "/scoreboard players remove @s[scores={kar98=1..5}] kar98 1",
+            "/scoreboard players set @s[scores={kar98=6..}] kar98 5",
+            "/playsound kar98.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={kar98=0}] slot.weapon.mainhand 1 krep:kar98_emp 1 0",
+            "/title @s[scores={kar98=0}] actionbar No Ammunition"
+          ]
+        },
+        "bolt": {
+          "animations": ["kar98bolt"],
+          "transitions": [
+            {"jawir": "query.all_animations_finished"},
+            {"jawir": "query.get_equipped_item_name!='kar98'"}
+          ],
+          "on_entry": ["@s kar98:bolt", "/function kar98"]
+        }
+      }
+    },
+    "controller.animation.kar98.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='kar98_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='kar98' && variable.attack_time > 0.0f && query.scoreboard('kar98') <= 3 && q.mark_variant != 3 && q.property('krep:ammoreload')!=1) || (q.mark_variant == 2 && query.get_equipped_item_name=='kar98' && q.property('krep:ammoreload')!=1)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function kar98quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='kar98' && q.property('krep:ammoreload') == 340"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='kar98' && q.property('krep:ammoreload') >= 341"
+            },
+            {"setup": "query.get_equipped_item_name!='kar98'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function kar98quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='kar98_emp' && q.property('krep:ammoreload') == 340"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='kar98_emp' && q.property('krep:ammoreload') >= 341"
+            },
+            {"setup": "query.get_equipped_item_name!='kar98'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "kar98reload": "query.get_equipped_item_name('main_hand')=='kar98_emp' || query.get_equipped_item_name('main_hand')=='kar98'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='kar98_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "kar98reloadtac": "query.get_equipped_item_name('main_hand')=='kar98_emp' || query.get_equipped_item_name('main_hand')=='kar98'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='kar98'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function kar98", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='kar98' || query.get_equipped_item_name=='kar98_emp'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

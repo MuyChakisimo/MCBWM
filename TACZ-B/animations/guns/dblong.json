@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.dblong.reload.tac": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 1.8,
+      "timeline": {
+        "1.7": ["/scoreboard players set @s[scores={dblong=3..}] dblong 2", "/function dblong"],
+        "1.6": ["/function dblongreload", "/event entity @s krep:dblong_reload"]
+      }
+    },
+    "animation.dblong.reload": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.4,
+      "timeline": {
+        "2.3": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:dblong 1 0",
+          "/scoreboard players set @s[scores={dblong=3..}] dblong 2",
+          "/function dblong"
+        ],
+        "2.2": ["/function dblongreload", "/event entity @s krep:dblong_reload"]
+      }
+    },
+    "animation.dblong.reload1": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 1.8,
+      "timeline": {
+        "1.7": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:dblong 1 0",
+          "/scoreboard players set @s[scores={dblong=3..}] dblong 2",
+          "/function dblong"
+        ],
+        "1.6": ["/function dblongreload", "/event entity @s krep:dblong_reload"]
+      }
+    },
+    "animation.dblong.shoot": {"loop": false, "animation_length": 0.15, "timeline": {}}
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.cz75.shoot": {"loop": false, "animation_length": 0.15, "timeline": {}},
+    "animation.cz75.reload": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.5,
+      "timeline": {
+        "2.4": [
+          "/replaceitem entity @s slot.weapon.mainhand 1 krep:cz75 1 0",
+          "/scoreboard players set @s[scores={cz75=17..}] cz75 16",
+          "/function cz75"
+        ],
+        "2.3": ["/function cz75reload", "/event entity @s krep:cz75_reload"]
+      }
+    },
+    "animation.cz75.reload.tac": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.1,
+      "timeline": {
+        "2.0": ["/scoreboard players set @s[scores={cz75=18..}] cz75 17", "/function cz75"],
+        "1.9": ["/function cz75reload", "/event entity @s krep:cz75_reload"]
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.rpk.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.rpk && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.rpk"}, {"walk_delay_2": "v.rpk"}],
+          "transitions": [
+            {"delay": "v.rpk && q.is_sprinting"},
+            {"delay": "v.rpk && q.is_sneaking"},
+            {"delay": "v.rpk && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.rpk"}],
+          "transitions": [{"setup": "v.rpk && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.rpk.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"rpk_tp_hold": "v.rpk"}],
+          "transitions": [
+            {"sprint": "v.rpk && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.rpk && q.is_sneaking"},
+            {"hold": "v.rpk && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"rpk_tp_sprint": "v.rpk"}],
+          "transitions": [
+            {"hold": "v.rpk && !q.is_sprinting"},
+            {"hold": "v.rpk && q.is_using_item"},
+            {"sight": "v.rpk && q.is_sneaking"}
+          ]
+        },
+        "sight": {"animations": [{"rpk_tp_sight": "v.rpk"}], "transitions": [{"hold": "v.rpk && !q.is_sneaking"}]}
+      }
+    },
+    "controller.animation.rpk.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"rpk_fp_hold": "v.rpk"}],
+          "transitions": [
+            {"reload": "v.rpkemp && q.mark_variant == 1"},
+            {"inspect": "v.rpk && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.rpk && q.mark_variant == 2"},
+            {"sprint": "v.rpk && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.rpk && q.is_sneaking"},
+            {"hold": "v.rpk && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"rpk_fp_inspect": "v.rpkb"}, {"rpk_fp_inspect_emp": "v.rpkemp"}],
+          "transitions": [
+            {
+              "hold": "(v.rpk && q.all_animations_finished) || (v.rpk && q.is_using_item) || (v.rpk && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"rpk_fp_sprint": "v.rpk"}],
+          "transitions": [
+            {"hold": "v.rpk && !q.is_sprinting"},
+            {"hold": "v.rpk && q.is_using_item"},
+            {"reload": "v.rpkemp && q.mark_variant == 1"},
+            {"reloadtac": "v.rpk && q.mark_variant == 2"},
+            {"sight": "v.rpk && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"rpk_fp_reload": "v.rpk"}],
+          "transitions": [{"hold": "v.rpk && (q.all_animations_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"rpk_fp_reload_tac": "v.rpk"}],
+          "transitions": [{"hold": "v.rpk && q.all_animations_finished"}, {"hold": "v.rpkb && q.mark_variant != 2"}]
+        },
+        "sight": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"rpk_fp_sight": "v.rpk"}],
+          "transitions": [
+            {"hold": "v.rpk && !q.is_sneaking"},
+            {"reloadtac": "v.rpk && q.mark_variant == 2"},
+            {"reload": "v.rpkemp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

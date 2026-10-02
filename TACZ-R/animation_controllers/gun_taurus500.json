@@ -1,0 +1,115 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.taurus500.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.taurus500 && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.taurus500"}, {"walk_delay_2": "v.taurus500"}],
+          "transitions": [
+            {"delay": "v.taurus500 && q.is_sprinting"},
+            {"delay": "v.taurus500 && q.is_sneaking"},
+            {"delay": "v.taurus500 && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.taurus500"}],
+          "transitions": [{"setup": "v.taurus500 && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.taurus500.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"taurus500_tp_hold": "v.taurus500"}],
+          "transitions": [
+            {"sprint": "v.taurus500 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.taurus500 && q.is_sneaking"},
+            {"hold": "v.taurus500 && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"taurus500_tp_sprint": "v.taurus500"}],
+          "transitions": [
+            {"hold": "v.taurus500 && !q.is_sprinting"},
+            {"hold": "v.taurus500 && q.is_using_item"},
+            {"sight": "v.taurus500 && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"taurus500_tp_sight": "v.taurus500"}],
+          "transitions": [{"hold": "v.taurus500 && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.taurus500.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"taurus500_fp_hold": "v.taurus500"}],
+          "transitions": [
+            {"reload": "v.taurus500emp && q.mark_variant == 1"},
+            {"inspect": "v.taurus500 && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.taurus500 && q.mark_variant == 2"},
+            {"sprint": "v.taurus500 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.taurus500 && q.is_sneaking"},
+            {"hold": "v.taurus500 && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"taurus500_fp_inspect": "v.taurus500b"}, {"taurus500_fp_inspect_emp": "v.taurus500emp"}],
+          "transitions": [
+            {
+              "hold": "(v.taurus500 && q.all_animations_finished) || (v.taurus500 && q.is_using_item) || (v.taurus500 && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"taurus500_fp_sprint": "v.taurus500"}],
+          "transitions": [
+            {"hold": "v.taurus500 && !q.is_sprinting"},
+            {"hold": "v.taurus500 && q.is_using_item"},
+            {"reload": "v.taurus500emp && q.mark_variant == 1"},
+            {"reloadtac": "v.taurus500 && q.mark_variant == 2"},
+            {"sight": "v.taurus500 && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"taurus500_fp_reload": "v.taurus500"}],
+          "transitions": [{"hold": "v.taurus500 && (q.all_animations_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"taurus500_fp_reload_tac": "v.taurus500"}],
+          "transitions": [
+            {"hold": "v.taurus500 && q.all_animations_finished"},
+            {"hold": "v.taurus500b && q.mark_variant != 2"}
+          ]
+        },
+        "sight": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"taurus500_fp_sight": "v.taurus500"}],
+          "transitions": [
+            {"hold": "v.taurus500 && !q.is_sneaking"},
+            {"reloadtac": "v.taurus500 && q.mark_variant == 2"},
+            {"reload": "v.taurus500emp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

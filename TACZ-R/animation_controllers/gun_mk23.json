@@ -1,0 +1,112 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.mk23.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.mk23 && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.mk23"}, {"walk_delay_2": "v.mk23"}],
+          "transitions": [
+            {"delay": "v.mk23 && q.is_sprinting"},
+            {"delay": "v.mk23 && q.is_sneaking"},
+            {"delay": "v.mk23 && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.mk23"}],
+          "transitions": [{"setup": "v.mk23 && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.mk23.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"mk23_tp_hold": "v.mk23"}],
+          "transitions": [
+            {"sprint": "v.mk23 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.mk23 && q.is_sneaking"},
+            {"hold": "v.mk23 && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"mk23_tp_sprint": "v.mk23"}],
+          "transitions": [
+            {"hold": "v.mk23 && !q.is_sprinting"},
+            {"hold": "v.mk23 && q.is_using_item"},
+            {"sight": "v.mk23 && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"mk23_tp_sight": "v.mk23"}],
+          "transitions": [{"hold": "v.mk23 && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.mk23.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"mk23_fp_hold": "v.mk23"}],
+          "transitions": [
+            {"reload": "v.mk23emp && q.mark_variant == 1"},
+            {"inspect": "v.mk23 && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.mk23 && q.mark_variant == 2"},
+            {"sprint": "v.mk23 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.mk23 && q.is_sneaking"},
+            {"hold": "v.mk23 && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"mk23_fp_inspect": "v.mk23b"}, {"mk23_fp_inspect_emp": "v.mk23emp"}],
+          "transitions": [
+            {
+              "hold": "(v.mk23 && q.any_animation_finished) || (v.mk23 && q.is_using_item) || (v.mk23 && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"mk23_fp_sprint": "v.mk23"}],
+          "transitions": [
+            {"hold": "v.mk23 && !q.is_sprinting"},
+            {"hold": "v.mk23 && q.is_using_item"},
+            {"reload": "v.mk23emp && q.mark_variant == 1"},
+            {"reloadtac": "v.mk23 && q.mark_variant == 2"},
+            {"sight": "v.mk23 && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"mk23_fp_reload": "v.mk23"}],
+          "transitions": [{"hold": "v.mk23 && (q.all_animations_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"mk23_fp_reload_tac": "v.mk23"}],
+          "transitions": [{"hold": "v.mk23 && q.all_animations_finished"}, {"hold": "v.mk23b && q.mark_variant != 2"}]
+        },
+        "sight": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"mk23_fp_sight": "v.mk23"}],
+          "transitions": [
+            {"hold": "v.mk23 && !q.is_sneaking"},
+            {"reloadtac": "v.mk23 && q.mark_variant == 2"},
+            {"reload": "v.mk23emp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

@@ -14,8 +14,8 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.21.0** (both manifests; worlds need `[1, 21, 0]` in `world_*_packs.json`).
-- 42 guns (41 original + the M9A4, the first Java port), 21 ammo types. Every gun fires by hitscan (no bullet entities).
+- Pack version **1.22.0** (both manifests; worlds need `[1, 22, 0]` in `world_*_packs.json`).
+- 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
   definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `arm-layout.mjs` (first-person arms on their own hand bones), `test.mjs`
@@ -76,26 +76,34 @@ work.
    **Fire modes:** the user noticed semi pistols (G17, P320) keep firing while the trigger is held. Every gun not on
    script firing repeats while held (its BP controller loops); `fireMode: "semi"` (one shot per press) only applies
    with `scriptFiring` (step 4).
-3. **Port the other Java guns** with `java-port.mjs` (templates must have their own arms model):
+3. **Port the other Java guns.** 13 more ported in v1.22.0 (2026-10-01), short names given with `--name`:
 
-   | Java gun | from | notes |
-   |---|---|---|
-   | rpk | type81 | Java has no reload sounds; the tool keeps the Type 81's |
-   | kar98, m700, springfield1873, lonetrail | awp | bolt/lever action; `lonetrail` is Java type "pistol" |
-   | m95 | m107 | |
-   | spas_12 | m870 | |
-   | db_long (as `dblong`) | db | Java has no sounds; the tool keeps the Double Barrel's |
-   | cz75, hk_mk23 | p320 or m1911 | |
-   | rhino357, taurus500, taurus943 | cp (Colt Python) | revolvers |
-   | spr15hb | m4a1 | tested in `test.mjs`; starts with no attachments |
-   | aug | m4a1 | **built-in scope** (Java `scope_aug_default` attachment model) not handled yet |
-   | m320 | rpg | grenade launcher: give it an `explosion` in `weapons.js` like the RPG; 40mm ammo |
+   | ours | Java | from | notes |
+   |---|---|---|---|
+   | rpk "RPK" | rpk | type81 | Java has no reload/inspect sounds; kept the Type 81's |
+   | kar98 "Kar98k", m700 "M700" | kar98, m700 | awp | |
+   | m95b "M95" | m95 | m107 | id `m95` is taken (the M107 animation has a bone `m95_barrel`) |
+   | spas12 "SPAS-12" | spas_12 | m870 | tube-fed (`reload: "single"`); inherited the M870's unused `fp.reload11` |
+   | dblong "DB-4 Ursus" | db_long | db | Java has no sounds; kept the Double Barrel's |
+   | cz75 "CZ75", mk23 "MK23" | cz75, hk_mk23 | p320 | CZ75 auto 900 (user's choice); MK23 is Java's 50 rpm |
+   | rhino357 "Rhino 357", taurus500 "Raging Hunter", taurus943 "Taurus 943" | same | cp | own-hand arms (java-port step 7); Taurus 943 has no Java recipe, kept the Colt Python's |
+   | spr15 "SPR-15" | spr15hb | m4a1 | inherits `scriptFiring` from the M4A1 |
+   | m320 "M320" | m320 | rpg | inherits the RPG's `explosion`; 40mm ammo |
+
+   Checked outside the game: `check.mjs`, `validate.mjs`; the arms of the 5 new pistols end on their hands as on the
+   P320. **Waiting for the user's in-game test** of each: first person hold/aim/draw, reloads, inspect, sounds,
+   crafting, ammo. Recipes are Java's (the M95 is 300 iron, 60 gold, 15 diamonds, 3 netherite, 5 blaze rods).
+   **Still to port:**
+   - springfield1873, lonetrail (1-round guns): `resizeMagazine` refuses magazines under 3 (its number matching
+     would hit the 0/1 empty and has-ammo checks). Port from db (2 rounds) and hand-edit to 1, or teach the resizer.
+   - aug: **built-in scope** (Java `scope_aug_default` attachment model) not handled yet.
 
    Ported guns start with no attachments (`java-port.mjs` strips what the clone inherited). Still to build: merging a
-   built-in scope model (AUG), and Java attachments for ported guns (Java has 100+ attachment models).
-4. **Lag: gate the 47 always-running BP controllers.** In `entities/player.json` `scripts.animate`, the 40
+   built-in scope model (AUG), and Java attachments for ported guns (Java has 100+ attachment models). Each port adds
+   an always-running `<id>reloading` controller (step 4).
+4. **Lag: gate the 61 always-running BP controllers.** In `entities/player.json` `scripts.animate`, the 54
    `<id>reloading` controllers, 5 scope controllers, `minigun` and `mp7sound` run every tick for every player
-   regardless of the held gun (about 80 Molang checks per player per tick). Gate them on the held item like the main
+   regardless of the held gun (over 100 Molang checks per player per tick). Gate them on the held item like the main
    gun controllers, but a gated controller freezes mid-state: switching guns mid-reload would skip its cleanup, so the
    gate needs a "reload in progress" exception. Needs in-game testing (switch guns mid-reload).
 5. **Unfinished features** (animations exist, nothing plays them; `check.mjs --unused`): M16/M16A1 walk, minigun

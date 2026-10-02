@@ -21,6 +21,26 @@
         }
       ]
     },
+    "controller.render.player.universal49.first_person": {
+      "geometry": "Geometry.taczuniversal49",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.m320"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.m320"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.m320"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.m320"
+        }
+      ]
+    },
     "controller.render.player.universal6.first_person": {
       "geometry": "Geometry.taczuniversal6",
       "materials": [{"*": "Material.default"}],
@@ -78,6 +98,26 @@
         },
         {
           "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.m107"
+        }
+      ]
+    },
+    "controller.render.player.universal40.first_person": {
+      "geometry": "Geometry.taczuniversal40",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.m95b"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.m95b"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.m95b"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.m95b"
         }
       ]
     },
@@ -246,6 +286,26 @@
         }
       ]
     },
+    "controller.render.player.universal42.first_person": {
+      "geometry": "Geometry.taczuniversal42",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.dblong"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.dblong"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.dblong"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.dblong"
+        }
+      ]
+    },
     "controller.render.player.universal13.first_person": {
       "geometry": "Geometry.taczuniversal13",
       "materials": [{"*": "Material.default"}],
@@ -253,16 +313,36 @@
       "part_visibility": [
         {"*": false},
         {
-          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || (v.m870 || v.m1014)"
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || (v.m870 || v.spas12 || v.m1014)"
         },
         {
-          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || (v.m870 || v.m1014)"
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || (v.m870 || v.spas12 || v.m1014)"
         },
         {
-          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || (v.m870 || v.m1014)"
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || (v.m870 || v.spas12 || v.m1014)"
         },
         {
-          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || (v.m870 || v.m1014)"
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || (v.m870 || v.spas12 || v.m1014)"
+        }
+      ]
+    },
+    "controller.render.player.universal41.first_person": {
+      "geometry": "Geometry.taczuniversal41",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || (v.m870 || v.spas12 || v.m1014)"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || (v.m870 || v.spas12 || v.m1014)"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || (v.m870 || v.spas12 || v.m1014)"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || (v.m870 || v.spas12 || v.m1014)"
         }
       ]
     },
@@ -383,6 +463,46 @@
         },
         {
           "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.awp"
+        }
+      ]
+    },
+    "controller.render.player.universal39.first_person": {
+      "geometry": "Geometry.taczuniversal39",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.m700"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.m700"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.m700"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.m700"
+        }
+      ]
+    },
+    "controller.render.player.universal38.first_person": {
+      "geometry": "Geometry.taczuniversal38",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.kar98"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.kar98"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.kar98"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.kar98"
         }
       ]
     },
@@ -606,6 +726,26 @@
         }
       ]
     },
+    "controller.render.player.universal37.first_person": {
+      "geometry": "Geometry.taczuniversal37",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.rpk"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.rpk"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.rpk"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.rpk"
+        }
+      ]
+    },
     "controller.render.player.universal30.first_person": {
       "geometry": "Geometry.taczuniversal30",
       "materials": [{"*": "Material.default"}],
@@ -623,6 +763,46 @@
         },
         {
           "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.p320"
+        }
+      ]
+    },
+    "controller.render.player.universal44.first_person": {
+      "geometry": "Geometry.taczuniversal44",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.mk23"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.mk23"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.mk23"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.mk23"
+        }
+      ]
+    },
+    "controller.render.player.universal43.first_person": {
+      "geometry": "Geometry.taczuniversal43",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.cz75"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.cz75"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.cz75"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.cz75"
         }
       ]
     },
@@ -732,6 +912,66 @@
         }
       ]
     },
+    "controller.render.player.universal47.first_person": {
+      "geometry": "Geometry.taczuniversal47",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.taurus943"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.taurus943"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.taurus943"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.taurus943"
+        }
+      ]
+    },
+    "controller.render.player.universal46.first_person": {
+      "geometry": "Geometry.taczuniversal46",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.taurus500"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.taurus500"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.taurus500"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.taurus500"
+        }
+      ]
+    },
+    "controller.render.player.universal45.first_person": {
+      "geometry": "Geometry.taczuniversal45",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.rhino357"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.rhino357"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.rhino357"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.rhino357"
+        }
+      ]
+    },
     "controller.render.player.universal12.first_person": {
       "geometry": "Geometry.taczuniversal12",
       "materials": [{"*": "Material.default"}],
@@ -769,6 +1009,26 @@
         },
         {
           "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || (v.m4a1)"
+        }
+      ]
+    },
+    "controller.render.player.universal48.first_person": {
+      "geometry": "Geometry.taczuniversal48",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || (v.spr15)"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || (v.spr15)"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || (v.spr15)"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || (v.spr15)"
         }
       ]
     },

@@ -1,0 +1,122 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.spr15.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.spr15 && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.spr15"}, {"walk_delay_2": "v.spr15"}],
+          "transitions": [
+            {"delay": "v.spr15 && q.is_sprinting"},
+            {"delay": "v.spr15 && q.is_sneaking"},
+            {"delay": "v.spr15 && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.spr15"}],
+          "transitions": [{"setup": "v.spr15 && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.spr15.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"spr15_tp_hold": "v.spr15"}],
+          "transitions": [
+            {"sprint": "v.spr15 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.spr15 && q.is_sneaking"},
+            {"hold": "v.spr15 && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"spr15_tp_sprint": "v.spr15"}],
+          "transitions": [
+            {"hold": "v.spr15 && !q.is_sprinting"},
+            {"hold": "v.spr15 && q.is_using_item"},
+            {"sight": "v.spr15 && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"spr15_tp_sight": "v.spr15"}],
+          "transitions": [{"hold": "v.spr15 && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.spr15.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"spr15_fp_hold": "v.spr15"}],
+          "transitions": [
+            {"reload": "v.spr15emp && q.mark_variant == 1"},
+            {"view": "v.spr15b && q.skin_id == 2 && !q.is_sneaking"},
+            {"inspect": "v.spr15 && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.spr15 && q.mark_variant == 2"},
+            {"sprint": "v.spr15 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.spr15 && q.is_sneaking"},
+            {"hold": "v.spr15 && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"spr15_fp_inspect": "v.spr15b"}, {"spr15_fp_inspect_emp": "v.spr15emp"}],
+          "transitions": [
+            {
+              "hold": "(v.spr15 && q.all_animations_finished) || (v.spr15 && q.is_using_item) || (v.spr15 && q.is_sneaking)"
+            }
+          ]
+        },
+        "view": {
+          "animations": [{"spr15_fp_view": "v.spr15"}],
+          "transitions": [{"hold": "(v.spr15 && q.skin_id != 2)"}]
+        },
+        "sprint": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"spr15_fp_sprint": "v.spr15"}],
+          "transitions": [
+            {"hold": "v.spr15 && !q.is_sprinting"},
+            {"view": "v.spr15b && q.skin_id == 2 && !q.is_sneaking"},
+            {"hold": "v.spr15 && q.is_using_item"},
+            {"reload": "v.spr15emp && q.mark_variant == 1"},
+            {"reloadtac": "v.spr15 && q.mark_variant == 2"},
+            {"sight": "v.spr15 && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"spr15_fp_reload": "v.spr15"}],
+          "transitions": [{"hold": "v.spr15 && (q.all_animations_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"spr15_fp_reload_tac": "v.spr15"}],
+          "transitions": [
+            {"hold": "v.spr15 && q.all_animations_finished"},
+            {"hold": "v.spr15b && q.mark_variant != 2"}
+          ]
+        },
+        "sight": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"spr15_fp_sight": "v.spr15"}],
+          "transitions": [
+            {"hold": "v.spr15 && !q.is_sneaking"},
+            {"view": "v.spr15b && q.skin_id == 2 && !q.is_sneaking"},
+            {"reloadtac": "v.spr15 && q.mark_variant == 2"},
+            {"reload": "v.spr15emp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

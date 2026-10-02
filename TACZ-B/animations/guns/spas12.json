@@ -1,0 +1,85 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.spas12.end": {"loop": false, "animation_length": 0.7333, "timeline": {}},
+    "animation.spas12.reload": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 5.6333,
+      "timeline": {
+        "1.67": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ],
+        "1.77": ["/function spas12"],
+        "2.1": ["/replaceitem entity @s slot.weapon.mainhand 1 krep:spas12 1 0"],
+        "2.6": ["/function spas12quantity"],
+        "2.7": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ],
+        "2.8": ["/function spas12"],
+        "3.3": ["/function spas12quantity"],
+        "3.4": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ],
+        "3.5": ["/function spas12"],
+        "4.0": ["/function spas12quantity"],
+        "4.1": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ],
+        "4.2": ["/function spas12"],
+        "4.7": ["/function spas12quantity"],
+        "4.8": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ],
+        "4.9": ["/function spas12"],
+        "5.4": ["/function spas12quantity"],
+        "5.5": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ]
+      }
+    },
+    "animation.spas12.shoot": {"loop": false, "animation_length": 0.1, "timeline": {}},
+    "animation.spas12.bolt": {"loop": false, "animation_length": 0.75, "timeline": {}},
+    "animation.spas12.reload.tac": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 3.8667,
+      "timeline": {
+        "0.9": ["/function spas12quantity"],
+        "1.0": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ],
+        "1.1": ["/function spas12"],
+        "1.6": ["/function spas12quantity"],
+        "1.7": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ],
+        "1.8": ["/function spas12"],
+        "2.3": ["/function spas12quantity"],
+        "2.4": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ],
+        "2.5": ["/function spas12"],
+        "3.0": ["/function spas12quantity"],
+        "3.1": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ],
+        "3.2": ["/function spas12"],
+        "3.7": ["/function spas12quantity"],
+        "3.8": [
+          "/clear @s[m=!c,hasitem={item=krep:gauge12,quantity=1..}] krep:gauge12 0 1",
+          "/event entity @s krep:spas12_reload"
+        ]
+      }
+    },
+    "animation.spas12.delay": {"loop": false, "animation_length": 0.1, "timeline": {}}
+  }
+}

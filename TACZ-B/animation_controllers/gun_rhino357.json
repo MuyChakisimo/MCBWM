@@ -1,0 +1,125 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.rhino357.reload": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "on_entry": ["@s krep:noreload"],
+          "transitions": [
+            {
+              "trigger.reload": "query.get_equipped_item_name=='rhino357_emp' && variable.attack_time == 0.0 && q.is_using_item"
+            },
+            {
+              "trigger.tac": "(query.get_equipped_item_name=='rhino357' && variable.attack_time > 0.0f && query.scoreboard('rhino357') <= 5) || (query.get_equipped_item_name=='rhino357' && q.mark_variant == 2)"
+            }
+          ]
+        },
+        "trigger.tac": {
+          "on_entry": ["/function rhino357quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='rhino357' && q.property('krep:ammoreload') == 0"
+            },
+            {
+              "reload.tac": "query.get_equipped_item_name=='rhino357' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='rhino357'"}
+          ]
+        },
+        "trigger.reload": {
+          "on_entry": ["/function rhino357quantity", "@s krep:noreload"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='rhino357_emp' && q.property('krep:ammoreload') == 0"
+            },
+            {
+              "reload": "query.get_equipped_item_name=='rhino357_emp' && q.property('krep:ammoreload') >= 1"
+            },
+            {"setup": "query.get_equipped_item_name!='rhino357'"}
+          ]
+        },
+        "reload": {
+          "animations": [
+            {
+              "rhino357reload": "query.get_equipped_item_name('main_hand')=='rhino357_emp' || query.get_equipped_item_name('main_hand')=='rhino357'"
+            }
+          ],
+          "on_entry": ["@s krep:reload"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='rhino357_emp'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reload.tac": {
+          "animations": [
+            {
+              "rhino357reloadtac": "query.get_equipped_item_name('main_hand')=='rhino357_emp' || query.get_equipped_item_name('main_hand')=='rhino357'"
+            }
+          ],
+          "on_entry": ["@s krep:reloadtac"],
+          "on_exit": ["@s krep:noreload"],
+          "transitions": [
+            {"setup": "query.get_equipped_item_name!='rhino357'"},
+            {"reloadfinish": "query.all_animations_finished"}
+          ]
+        },
+        "reloadfinish": {
+          "on_entry": ["/function rhino357"],
+          "transitions": [
+            {
+              "setup": "query.get_equipped_item_name=='rhino357' || query.get_equipped_item_name=='rhino357_emp'"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.rhino357": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='rhino357' && q.is_using_item) || query.get_equipped_item_name=='rhino357_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s rhino357 6",
+            "/event entity @s[hasitem={item=krep:rhino357, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "rhino357.30": "query.get_equipped_item_name=='rhino357' && query.is_using_item && query.scoreboard('rhino357') >= 1 && q.mark_variant != 2"
+            },
+            {
+              "rhino357.31": "query.get_equipped_item_name=='rhino357' && query.is_using_item && query.scoreboard('rhino357') == 0"
+            }
+          ],
+          "on_entry": ["/function rhino357"]
+        },
+        "rhino357.31": {
+          "animations": ["rhino357shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "/replaceitem entity @s[scores={rhino357=0}] slot.weapon.mainhand 1 krep:rhino357_emp 1 0"
+          ]
+        },
+        "rhino357.30": {
+          "animations": ["rhino357shoot"],
+          "transitions": [{"setup": "query.all_animations_finished && !q.is_using_item"}],
+          "on_entry": [
+            "@s krep:rhino357_fire",
+            "/scoreboard players remove @s[scores={rhino357=1..7}] rhino357 1",
+            "/scoreboard players set @s[scores={rhino357=7..}] rhino357 6",
+            "/playsound rhino357.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={rhino357=0}] slot.weapon.mainhand 1 krep:rhino357_emp 1 0",
+            "/title @s[scores={rhino357=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    }
+  }
+}

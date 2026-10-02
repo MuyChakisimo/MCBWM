@@ -1,0 +1,112 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.cz75.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.cz75 && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.cz75"}, {"walk_delay_2": "v.cz75"}],
+          "transitions": [
+            {"delay": "v.cz75 && q.is_sprinting"},
+            {"delay": "v.cz75 && q.is_sneaking"},
+            {"delay": "v.cz75 && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.cz75"}],
+          "transitions": [{"setup": "v.cz75 && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.cz75.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"cz75_tp_hold": "v.cz75"}],
+          "transitions": [
+            {"sprint": "v.cz75 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.cz75 && q.is_sneaking"},
+            {"hold": "v.cz75 && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"cz75_tp_sprint": "v.cz75"}],
+          "transitions": [
+            {"hold": "v.cz75 && !q.is_sprinting"},
+            {"hold": "v.cz75 && q.is_using_item"},
+            {"sight": "v.cz75 && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"cz75_tp_sight": "v.cz75"}],
+          "transitions": [{"hold": "v.cz75 && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.cz75.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"cz75_fp_hold": "v.cz75"}],
+          "transitions": [
+            {"reload": "v.cz75emp && q.mark_variant == 1"},
+            {"inspect": "v.cz75 && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.cz75 && q.mark_variant == 2"},
+            {"sprint": "v.cz75 && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.cz75 && q.is_sneaking"},
+            {"hold": "v.cz75 && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"cz75_fp_inspect": "v.cz75b"}, {"cz75_fp_inspect_emp": "v.cz75emp"}],
+          "transitions": [
+            {
+              "hold": "(v.cz75 && q.any_animation_finished) || (v.cz75 && q.is_using_item) || (v.cz75 && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"cz75_fp_sprint": "v.cz75"}],
+          "transitions": [
+            {"hold": "v.cz75 && !q.is_sprinting"},
+            {"hold": "v.cz75 && q.is_using_item"},
+            {"reload": "v.cz75emp && q.mark_variant == 1"},
+            {"reloadtac": "v.cz75 && q.mark_variant == 2"},
+            {"sight": "v.cz75 && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"cz75_fp_reload": "v.cz75"}],
+          "transitions": [{"hold": "v.cz75 && (q.all_animations_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"cz75_fp_reload_tac": "v.cz75"}],
+          "transitions": [{"hold": "v.cz75 && q.all_animations_finished"}, {"hold": "v.cz75b && q.mark_variant != 2"}]
+        },
+        "sight": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"cz75_fp_sight": "v.cz75"}],
+          "transitions": [
+            {"hold": "v.cz75 && !q.is_sneaking"},
+            {"reloadtac": "v.cz75 && q.mark_variant == 2"},
+            {"reload": "v.cz75emp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

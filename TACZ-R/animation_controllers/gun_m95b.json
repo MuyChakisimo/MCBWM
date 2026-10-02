@@ -1,0 +1,112 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.m95b.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.m95b && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.m95b"}, {"walk_delay_2": "v.m95b"}],
+          "transitions": [
+            {"delay": "v.m95b && q.is_sprinting"},
+            {"delay": "v.m95b && q.is_sneaking"},
+            {"delay": "v.m95b && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.m95b"}],
+          "transitions": [{"setup": "v.m95b && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.m95b.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"m95b_tp_hold": "v.m95b"}],
+          "transitions": [
+            {"sprint": "v.m95b && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.m95b && q.is_sneaking"},
+            {"hold": "v.m95b && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"m95b_tp_sprint": "v.m95b"}],
+          "transitions": [
+            {"hold": "v.m95b && !q.is_sprinting"},
+            {"hold": "v.m95b && q.is_using_item"},
+            {"sight": "v.m95b && q.is_sneaking"}
+          ]
+        },
+        "sight": {
+          "animations": [{"m95b_tp_sight": "v.m95b"}],
+          "transitions": [{"hold": "v.m95b && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.m95b.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"m95b_fp_hold": "v.m95b"}],
+          "transitions": [
+            {"reload": "v.m95bemp && q.mark_variant == 1"},
+            {"inspect": "v.m95b && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.m95b && q.mark_variant == 2"},
+            {"sprint": "v.m95b && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.m95b && q.is_sneaking"},
+            {"hold": "v.m95b && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"m95b_fp_inspect": "v.m95bb"}, {"m95b_fp_inspect_emp": "v.m95bemp"}],
+          "transitions": [
+            {
+              "hold": "(v.m95b && q.all_animations_finished) || (v.m95b && q.is_using_item) || (v.m95b && q.is_sneaking)"
+            }
+          ]
+        },
+        "sprint": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"m95b_fp_sprint": "v.m95b"}],
+          "transitions": [
+            {"hold": "v.m95b && !q.is_sprinting"},
+            {"hold": "v.m95b && q.is_using_item"},
+            {"reload": "v.m95bemp && q.mark_variant == 1"},
+            {"reloadtac": "v.m95b && q.mark_variant == 2"},
+            {"sight": "v.m95b && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"m95b_fp_reload": "v.m95b"}],
+          "transitions": [{"hold": "v.m95b && (q.all_animations_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"m95b_fp_reload_tac": "v.m95b"}],
+          "transitions": [{"hold": "v.m95b && q.all_animations_finished"}, {"hold": "v.m95bb && q.mark_variant != 2"}]
+        },
+        "sight": {
+          "blend_transition": 0.16,
+          "blend_via_shortest_path": true,
+          "animations": [{"m95b_fp_sight": "v.m95b"}],
+          "transitions": [
+            {"hold": "v.m95b && !q.is_sneaking"},
+            {"reloadtac": "v.m95b && q.mark_variant == 2"},
+            {"reload": "v.m95bemp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}
