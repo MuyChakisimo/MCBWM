@@ -20,10 +20,11 @@ import { pathToFileURL } from "node:url";
 const repo = process.cwd();
 const full = process.argv.includes("--full"), keep = process.argv.includes("--keep");
 const QUICK = ["sks", "m4a1", "m16", "deagle", "fal", "vector", "rpg", "m870", "minigun", "cp"];
-// Java guns to port, each as the test gun "zzp" (so it works whether or not the gun is in the packs).
-// cz75 from the P320 covers a source gun with the other arm layout (right arm on the right hand; see
-// java-port.mjs steps 4 and 7), rhino357 from the Colt Python a Java pistol from a mirrored source.
-const PORTS = [["cz75", "p320"], ["rhino357", "cp"], ["spr15hb", "m4a1"], ["rpk", "type81"], ["kar98", "awp"], ["spas_12", "m870"], ["db_long", "db"]];
+// Java guns to port: [java id, our id, source]. A gun already in the packs is first removed from the scratch
+// copy and the port compared with that state (porting it under another id fails: its Java sound names
+// contain its own id). cz75 from the P320 covers a source gun with the other arm layout (right arm on the
+// right hand; java-port.mjs steps 4 and 7), rhino357 from the Colt Python a Java pistol from a mirrored source.
+const PORTS = [["cz75", "cz75", "p320"], ["rhino357", "rhino357", "cp"], ["spr15hb", "spr15", "m4a1"], ["rpk", "rpk", "type81"], ["kar98", "kar98", "awp"], ["spas_12", "spas12", "m870"], ["db_long", "dblong", "db"]];
 
 const walk = (d) => (fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)])) : []);
 const rel = (base, f) => path.relative(base, f).split(path.sep).join("/");
@@ -36,7 +37,7 @@ if (fs.existsSync(javaZip)) { fs.mkdirSync(path.join(work, "reference")); fs.cop
 
 const packFiles = () => ["TACZ-B", "TACZ-R"].flatMap((d) => walk(path.join(work, d))).map((f) => rel(work, f));
 const hash = (f) => crypto.createHash("md5").update(fs.readFileSync(path.join(work, f))).digest("hex");
-const start = new Map(packFiles().map((f) => [f, hash(f)]));
+let start = new Map(packFiles().map((f) => [f, hash(f)]));
 const original = (f) => path.join(repo, f);
 
 // Differences from the start; restore() puts the start back.
@@ -94,14 +95,21 @@ for (const g of guns) {
 }
 
 if (fs.existsSync(path.join(work, "reference", "TACZ-JAVA.zip"))) {
-  const id = "zzp";
-  for (const [javaId, from] of PORTS) {
+  const initial = start;
+  for (const [javaId, id, from] of PORTS) {
+    if (fs.existsSync(path.join(work, `TACZ-B/items/guns/${id}/${id}.json`))) {
+      const r0 = run("tools/weapons/gun.mjs", "remove", id);
+      if (!r0.ok) { report(`port ${javaId} (from ${from})`, false, `      couldn't remove the packs' ${id} first\n${lastLines(r0.out)}`); restore(); continue; }
+      start = new Map(packFiles().map((f) => [f, hash(f)]));
+    }
     const p = run("tools/weapons/java-port.mjs", javaId, id, "--from", from);
     const c = p.ok ? check() : p;
     const r = p.ok ? run("tools/weapons/gun.mjs", "remove", id) : { ok: true, out: "" };
     const left = diff();
     const ok = p.ok && c.ok && r.ok && left.length === 0;
     report(`port ${javaId} (from ${from})`, ok, ok ? "" : [!p.ok && lastLines(p.out, 6), !c.ok && lastLines(c.out, 8), !r.ok && lastLines(r.out), left.length && "      left behind: " + left.slice(0, 5).join(", ")].filter(Boolean).join("\n"));
+    restore(); // back to the state the port started from, then to the unchanged packs
+    start = initial;
     restore();
   }
 } else console.log("skip port tests: reference/TACZ-JAVA.zip not found");

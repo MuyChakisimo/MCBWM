@@ -224,7 +224,7 @@ const soundNames = new Map(); // our cue name -> Java sound path
       const cues = [].concat(fx).flatMap((x) => {
         const javaPath = x.effect.replace(/^tacz:/, "");
         if (!java.has(`assets/tacz/tacz_sounds/${javaPath}.ogg`)) { dropped.add(x.effect); return []; }
-        const ours = `tacz.${id}.${path.basename(javaPath).replace(/[^A-Za-z0-9_]/g, "_")}`;
+        const ours = `tacz.${id}.${path.basename(javaPath).replace(/[^A-Za-z0-9_]/g, "_").replace(/^(?=\d)/, "s")}`; // no part may start with a digit
         soundNames.set(ours, javaPath);
         return [{ ...x, effect: ours }];
       });

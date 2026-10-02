@@ -186,8 +186,12 @@ const jsonOf = (v) => (typeof v === "string" ? v : JSON.stringify(v));
 
 // ---------------------------------------------------------------- conditions
 // Splits a Molang condition into terms separated by top-level || / && at each paren level.
+// In an assignment ("variable.x = a || b;") the top level is only the right-hand side: copying the first
+// term with its "variable.x =" made an invalid expression (v1.22.0: every gun invisible after the RPK
+// was cloned from the Type 81, the first gun in variable.holding_all_guns).
 function parenGroups(s) {
-  const groups = [{ start: 0, end: s.length }];
+  const lhs = /^\s*[A-Za-z_][\w.]*\s*=(?!=)\s*/.exec(s);
+  const groups = [{ start: lhs ? lhs[0].length : 0, end: s.replace(/;\s*$/, "").length }];
   const stack = [];
   let quote = null;
   for (let i = 0; i < s.length; i++) {

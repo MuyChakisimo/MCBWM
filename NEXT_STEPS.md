@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.22.0** (both manifests; worlds need `[1, 22, 0]` in `world_*_packs.json`).
+- Pack version **1.22.1** (both manifests; worlds need `[1, 22, 1]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -91,7 +91,17 @@ work.
    | m320 "M320" | m320 | rpg | inherits the RPG's `explosion`; 40mm ammo |
 
    Checked outside the game: `check.mjs`, `validate.mjs`; the arms of the 5 new pistols end on their hands as on the
-   P320. **Waiting for the user's in-game test** of each: first person hold/aim/draw, reloads, inspect, sounds,
+   P320. **User test of v1.22.0 (2026-10-02): every gun invisible again (icons, firing and damage work; third-person
+   arms at the sides)**, so the game rejected `player.entity.json` again. Cause: cloning the RPK from the Type 81 (the
+   first gun in `variable.holding_all_guns`) copied that first term together with its assignment, making
+   `... =='type81' || variable.holding_all_guns = ...=='rpk' || ...` (invalid Molang). Fixed in v1.22.1: the line,
+   `gun.mjs` (an assignment's left side is no longer part of its first term), and `check.mjs` refuses a
+   pre_animation entry with two assignments. Precautions in the same version: the expression (4632 characters) is
+   split into `holding_guns_a` / `holding_guns_b`, and 19 Taurus 943 sound names with a part starting with a digit
+   (`943_reload...`) are now `s943_...`; `check.mjs` refuses both. If still invisible: the content log names the
+   error (v1.21.0 = `de7c9d2` rendered fine).
+   The M320's description said RPG-7 rockets (copied from the RPG); it already reloaded 40mm grenades. Fixed text.
+   **Then waiting for the user's in-game test** of each: first person hold/aim/draw, reloads, inspect, sounds,
    crafting, ammo. Recipes are Java's (the M95 is 300 iron, 60 gold, 15 diamonds, 3 netherite, 5 blaze rods).
    **Still to port:**
    - springfield1873, lonetrail (1-round guns): `resizeMagazine` refuses magazines under 3 (its number matching
@@ -135,6 +145,11 @@ work.
   remove, compare byte for byte), never by adding test guns to the real packs.
 
 ## Gotchas learned
+
+- **Player entity rejected = every gun invisible** (icons, firing and damage still work; third-person arms at the
+  sides). Causes so far: names with `:` or `/` (v1.12.0-1.14.0); an invalid Molang line from `gun.mjs clone`
+  (v1.22.0). `check.mjs` also refuses, as precautions, sound names with a part starting with a digit and Molang
+  expressions over 4000 characters. The in-game content log (Settings > Creator) names the exact error.
 
 - The local zips folder must be named `reference/` (singular). Only that name is in `.gitignore` and read by the
   tools; a `references/` folder would be committed to GitHub.

@@ -77,12 +77,25 @@ function checkPack(root) {
     .map(([f, j]) => [f, (j["minecraft:client_entity"] ?? j["minecraft:attachable"])?.description])
     .filter(([, d]) => d);
   // Short names in a client entity's tables may only use letters, digits, "_" and "." (a name like
-  // "tacz:m107/reload" makes the game reject the whole entity: invisible guns, default arms).
+  // "tacz:m107/reload" makes the game reject the whole entity: invisible guns, default arms). Sound names
+  // also keep every part between dots starting with a letter or _ (v1.22.0 broke rendering with
+  // "tacz.taurus943.943_reload" and a 4632-character Molang expression; which one did it is untested,
+  // so both are refused). Particle names like "krep.556shell" are known to work.
   const SAFE_NAME = /^[A-Za-z0-9_.]+$/;
-  for (const [f, d] of clients)
+  const SAFE_SOUND = /^[A-Za-z_][A-Za-z0-9_]*(\.[A-Za-z_][A-Za-z0-9_]*)*$/;
+  const MAX_MOLANG = 4000;
+  for (const [f, d] of clients) {
     for (const table of ["animations", "sound_effects", "particle_effects", "geometry", "textures", "materials"])
-      for (const k of Object.keys(d[table] ?? {})) if (!SAFE_NAME.test(k)) err(f, `${table} name "${k}" may only use letters, digits, _ and .`);
-  for (const k of Object.keys(soundDefs)) if (!SAFE_NAME.test(k)) err("TACZ-R/sounds/sound_definitions.json", `sound name "${k}" may only use letters, digits, _ and .`);
+      for (const k of Object.keys(d[table] ?? {})) {
+        if (!SAFE_NAME.test(k)) err(f, `${table} name "${k}" may only use letters, digits, _ and .`);
+        else if (table === "sound_effects" && !SAFE_SOUND.test(k)) err(f, `sound_effects name "${k}": no part between dots may start with a digit`);
+      }
+    const exprs = [...(d.scripts?.pre_animation ?? []), ...[d.render_controllers ?? [], d.scripts?.animate ?? []].flat().flatMap((r) => (typeof r === "string" ? [] : Object.values(r)))];
+    // One assignment per pre_animation entry ("v.a = x || v.b = y" is invalid and rejects the entity).
+    for (const e of d.scripts?.pre_animation ?? []) if ((e.replace(/'[^']*'/g, "").match(/(^|[^=!<>])=(?!=)/g) ?? []).length > 1) err(f, `pre_animation entry with more than one assignment: ${e.slice(0, 80)}...`);
+    for (const e of exprs) if (e.length > MAX_MOLANG) err(f, `Molang expression of ${e.length} characters (keep under ${MAX_MOLANG}; split it): ${e.slice(0, 60)}...`);
+  }
+  for (const k of Object.keys(soundDefs)) if (!SAFE_SOUND.test(k)) err("TACZ-R/sounds/sound_definitions.json", `sound name "${k}" may only use letters, digits, _ and . (no part starting with a digit)`);
 
   for (const [f, d] of clients) {
     const anims = d.animations ?? {}, sfx = d.sound_effects ?? {}, pfx = d.particle_effects ?? {};

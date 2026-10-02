@@ -7268,97 +7268,97 @@
       "sounds/taurus500/taurus500_inspect_end"
     ]
   },
-  "tacz.taurus943.943_reload_cylinder_turn": {
+  "tacz.taurus943.s943_reload_cylinder_turn": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_reload_cylinder_turn"
     ]
   },
-  "tacz.taurus943.943_reload_bullet_eject": {
+  "tacz.taurus943.s943_reload_bullet_eject": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus500/taurus500_reload_bullet_eject"
     ]
   },
-  "tacz.taurus943.943_reload_shell": {
+  "tacz.taurus943.s943_reload_shell": {
     "category": "hostile",
     "sounds": [
       "sounds/rhino357/rhino_reload_shell"
     ]
   },
-  "tacz.taurus943.943_reload_bullet_insert_1": {
+  "tacz.taurus943.s943_reload_bullet_insert_1": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_reload_bullet_insert_1"
     ]
   },
-  "tacz.taurus943.943_reload_cylinder_spin": {
+  "tacz.taurus943.s943_reload_cylinder_spin": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_reload_cylinder_spin"
     ]
   },
-  "tacz.taurus943.943_reload_bullet_insert_2": {
+  "tacz.taurus943.s943_reload_bullet_insert_2": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_reload_bullet_insert_2"
     ]
   },
-  "tacz.taurus943.943_reload_bullet_insert_3": {
+  "tacz.taurus943.s943_reload_bullet_insert_3": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_reload_bullet_insert_3"
     ]
   },
-  "tacz.taurus943.943_reload_bullet_insert_4": {
+  "tacz.taurus943.s943_reload_bullet_insert_4": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_reload_bullet_insert_4"
     ]
   },
-  "tacz.taurus943.943_reload_cylinder_close": {
+  "tacz.taurus943.s943_reload_cylinder_close": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_reload_cylinder_close"
     ]
   },
-  "tacz.taurus943.943_reload_reset": {
+  "tacz.taurus943.s943_reload_reset": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_reload_reset"
     ]
   },
-  "tacz.taurus943.943_inspect_rotate_1": {
+  "tacz.taurus943.s943_inspect_rotate_1": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_inspect_rotate_1"
     ]
   },
-  "tacz.taurus943.943_inspect_rotate_end": {
+  "tacz.taurus943.s943_inspect_rotate_end": {
     "category": "hostile",
     "sounds": [
       "sounds/rhino357/rhino_inspect_rotate_end"
     ]
   },
-  "tacz.taurus943.943_inspect_rotate_2": {
+  "tacz.taurus943.s943_inspect_rotate_2": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_inspect_rotate_2"
     ]
   },
-  "tacz.taurus943.943_inspect_move": {
+  "tacz.taurus943.s943_inspect_move": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_inspect_move"
     ]
   },
-  "tacz.taurus943.943_inspect_move_2": {
+  "tacz.taurus943.s943_inspect_move_2": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_inspect_move_2"
     ]
   },
-  "tacz.taurus943.943_inspect_reset": {
+  "tacz.taurus943.s943_inspect_reset": {
     "category": "hostile",
     "sounds": [
       "sounds/taurus943/943_inspect_reset"
