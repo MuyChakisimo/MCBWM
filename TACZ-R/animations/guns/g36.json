@@ -14,8 +14,8 @@
         "constraint": {"rotation": [0.3, 0.3, 0.3], "position": [0.2, 0.2, 0.2]},
         "Joints": {"position": [-4, 15, -12]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "pull_handle": {"position": [0, 0, "v.g36emp ? 4.25 : 0"]},
         "bullet_in_barrel": {"scale": "v.g36emp ? 0 : 0"},
         "rot": {
@@ -389,8 +389,8 @@
         "constraint": {"rotation": [0.3, 0.3, 0.3], "position": [0.2, 0.2, 0.2]},
         "Joints": {"rotation": [0, -2.5, 5], "position": [-5, 15, -12]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 197.5], "position": {"0.0": [-16, -22, 0], "0.341": [-16, -22, 0]}},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "pull_handle": {"position": [0, 0, "v.g36emp ? 4.25 : 0"]},
         "bullet_in_barrel": {"scale": "v.g36emp ? 0 : 0"},
         "rot": {
@@ -437,8 +437,8 @@
         "constraint": {"rotation": [0.3, 0.3, 0.3], "position": [0.2, 0.2, 0.2]},
         "Joints": {"position": [-4, 15, -12]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "rot": {
           "rotation": {
             "0.0": [-36.52, -35.74, 32.48],
@@ -496,8 +496,8 @@
         "constraint": {"rotation": [0.3, 0.3, 0.3], "position": [0.2, 0.2, 0.2]},
         "Joints": {"position": {"0.0": [-4, 15, -12], "0.2083": [0, 15.7, -10]}},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "rot": {
           "rotation": {
             "0.0": [-0.02, -0.03, 1.61],
@@ -780,8 +780,8 @@
         },
         "Joints": {"position": [-4, 15, -12]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]}
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]}
       },
       "sound_effects": {
         "0.0": {"effect": "g36.lift"},
@@ -1079,8 +1079,8 @@
         },
         "Joints": {"position": [-4, 15, -12]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "bullet2": {"position": [0, -2, 0]},
         "bullet_in_mag2": {"position": [0, -2, 0]}
       },
@@ -1393,9 +1393,9 @@
           }
         },
         "Joints": {"position": [-4, 15, -12]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]}
       },
       "sound_effects": {
         "0.0": {"effect": "g36.raiseins"},

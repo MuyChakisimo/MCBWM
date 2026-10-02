@@ -6954,7 +6954,7 @@
         {"name": "shell", "parent": "positioning2", "pivot": [-0.15, 9.2625, 4.25]},
         {"name": "righthand", "parent": "gun_and_rh", "pivot": [6, 19, 0]},
         {"name": "righthand_pos", "parent": "righthand", "pivot": [0, 8, 0]},
-        {"name": "leftArm", "parent": "righthand_pos", "pivot": [5, 22, 0]},
+        {"name": "leftArm", "parent": "lefthand_pos", "pivot": [5, 22, 0]},
         {"name": "leftItem", "parent": "leftArm", "pivot": [6, 15, 1]},
         {"name": "mag_and_lh", "parent": "rot", "pivot": [0, 5, 3]},
         {"name": "mag_and_bullet", "parent": "mag_and_lh", "pivot": [0, 5, 3]},
@@ -7652,7 +7652,7 @@
         },
         {"name": "lefthand", "parent": "mag_and_lh", "pivot": [-6, 19, 0]},
         {"name": "lefthand_pos", "parent": "lefthand", "pivot": [0, 8, 0]},
-        {"name": "rightArm", "parent": "lefthand_pos", "pivot": [-5, 22, 0]},
+        {"name": "rightArm", "parent": "righthand_pos", "pivot": [-5, 22, 0]},
         {"name": "rightSleeve", "parent": "rightArm", "pivot": [-5, 22, 0]},
         {"name": "rightItem", "parent": "rightArm", "pivot": [-6, 15, 1]},
         {

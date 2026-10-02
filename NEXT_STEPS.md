@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.22.5** (both manifests; worlds need `[1, 22, 5]` in `world_*_packs.json`).
+- Pack version **1.23.0** (both manifests; worlds need `[1, 23, 0]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -161,6 +161,17 @@ work.
    - SPAS-12: reload left hand stays on the pump/barrel handle; gun briefly disappears after each shot;
      right hand missing during inspect. Pump motion itself not explicitly confirmed.
    - RPK and DB-4 Ursus: no new result in this report; earlier issues remain open.
+   **Rifles, one hand missing (user, 2026-10-02):** most ARs show no right (grip) hand; FAL, Type 81 and SPR-15 show
+   no left (support) hand. Not a regression: the rifles' arm files are unchanged since v1.16.0 (original pack).
+   Test at FOV 110, M4A1 aiming: left arm visible, still no right arm right under the sight, so not off-screen.
+   Reading: the mirrored layout puts each arm ~12 units to the other side of its hand bone compared with the
+   own-hand (P320) layout; at the grip that buries the arm inside the receiver. The support arm sits on the same
+   side in both layouts (why it shows). **v1.23.0: arm-layout.mjs (P320 own-hand) applied to the 11 mirrored
+   rifles** (g3 g36 hk416 m16 m16a1 m4a1 qbz191 qbz95 rpk scarh scarl); arm-layout.mjs now also finds the M16s'
+   unnumbered `taczuniversal` arms model. **Waiting for the user's test.** Still open: FAL / Type 81 (arms
+   under rhand/lhand, an older rig; arm-layout doesn't handle it) and SPR-15 (own-hand since v1.22.5, left arm
+   missing: its Java hand bones sit 9 units further forward, maybe inside the handguard).
+   RPK "jump" on switching = Java's draw (swings in tilted, small overshoot); can be smoothed if wanted.
    **v1.22.5 import repair implemented (2026-10-02; awaiting in-game confirmation):**
    - Kar98k/M700: BP reload and bolt durations now match RP recovery, and BP ammo timelines are rescaled with
      the reloads. Preserve late Java recovery keys (Kar98k clip reload 3.55 s; bolt 1.4667 s), rather than cutting

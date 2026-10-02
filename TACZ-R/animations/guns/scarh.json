@@ -374,8 +374,8 @@
         "bullet2": {"scale": "v.scarhemp ? 0 : 1"},
         "Joints": {"position": [-3, 14, -16]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [1, -12, 0], "scale": [0.68, 1, 1]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-1, -12, 0], "scale": [0.7, 1, 1]}
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]}
       }
     },
     "animation.scarh.draw": {
@@ -627,8 +627,8 @@
         },
         "Joints": {"position": [-3, 14, -16]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [1, -12, 0], "scale": [0.68, 1, 1]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-1, -12, 0], "scale": [0.7, 1, 1]}
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]}
       },
       "sound_effects": {
         "0.0": {"effect": "scarh.raise"},
@@ -876,8 +876,8 @@
         },
         "Joints": {"position": [-3, 14, -16]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [1, -12, 0], "scale": [0.68, 1, 1]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-1, -12, 0], "scale": [0.7, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "bullet_in_mag2": {"scale": {"0.7": [0, 0, 0], "0.7333": [1, 1, 1]}},
         "bullet2": {"scale": {"0.7": [0, 0, 0], "0.7333": [1, 1, 1]}}
       },
@@ -1113,8 +1113,8 @@
         "bullet": {"scale": 0},
         "Joints": {"position": [-3, 14, -16]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [1, -12, 0], "scale": [0.68, 1, 1]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-1, -12, 0], "scale": [0.7, 1, 1]}
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]}
       },
       "sound_effects": {
         "0.0": {"effect": "scarh.raiseins"},
@@ -1471,8 +1471,8 @@
         "bullet_in_barrel": {"scale": 0},
         "Joints": {"position": [-3, 14, -16]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [1, -12, 0], "scale": [0.68, 1, 1]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-1, -12, 0], "scale": [0.7, 1, 1]}
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]}
       },
       "sound_effects": {
         "0.0": {"effect": "tacz.scar_h.p05_ar_schotel_inspect_raise"},
@@ -1596,8 +1596,8 @@
         "bullet2": {"scale": "v.scarhemp ? 0 : 1"},
         "Joints": {"position": [-3, 14, -15]},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [1, -12, 0], "scale": [0.68, 1, 1]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-1, -12, 0], "scale": [0.7, 1, 1]}
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]}
       }
     },
     "animation.scarh.fp.sight": {
@@ -1662,8 +1662,8 @@
         "bullet2": {"scale": "v.scarhemp ? 0 : 1"},
         "Joints": {"position": {"0.0": [-3, 14, -16], "0.306": [0, 14.75, -15]}},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [1, -12, 0], "scale": [0.68, 1, 1]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-1, -12, 0], "scale": [0.7, 1, 1]}
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]}
       }
     },
     "animation.scarh.tp.hold": {

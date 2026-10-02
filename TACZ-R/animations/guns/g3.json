@@ -8,8 +8,8 @@
         "lefthand": {"rotation": [109.31225, -21.8344, -155.94098], "position": [8.4, -11.42, -6.32], "scale": [1, 1.5, 1]},
         "righthand": {"rotation": [96, 0, -180], "position": [-6.5, -14, 7.6], "scale": [1, 1.5, 1]},
         "constraint": {"rotation": [0.2, 0.2, 0.2], "position": [0.2, 0.2, 0.25]},
-        "leftArm": {"rotation": [0, 0, -180], "position": [1.225, -13, 8], "scale": [0.79, 1, 1]},
-        "rightArm": {"rotation": [0, 0, -180], "position": [-1.3, -12, 8], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, 7.9536], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, 7.95], "scale": [0.79, 1, 1]},
         "root": {"rotation": [0, 180, 0]},
         "Joints": {"position": [-3.5, 13.8, -24]},
         "rot": {
@@ -377,8 +377,8 @@
         "lefthand": {"rotation": [109.31225, -21.8344, -155.94098], "position": [8.4, -11.42, -6.32], "scale": [1, 1.5, 1]},
         "righthand": {"rotation": [96, 0, -180], "position": [-6.5, -14, 7.6], "scale": [1, 1.5, 1]},
         "constraint": {"rotation": [0.2, 0.2, 0.2], "position": [0.2, 0.2, 0.25]},
-        "leftArm": {"rotation": [0, 0, -180], "position": [1.225, -13, 8], "scale": [0.79, 1, 1]},
-        "rightArm": {"rotation": [0, 0, -180], "position": [-1.3, -12, 8], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, 7.9536], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, 7.95], "scale": [0.79, 1, 1]},
         "root": {"rotation": [0, 180, 0]},
         "Joints": {"position": {"0.0": [-3.5, 13.8, -24], "0.306": [0, 15, -22]}},
         "rot": {
@@ -696,8 +696,8 @@
           }
         },
         "bullet": {"scale": 0},
-        "leftArm": {"rotation": [0, 0, -180], "position": [1.225, -13, 8], "scale": [0.79, 1, 1]},
-        "rightArm": {"rotation": [0, 0, -180], "position": [-1.3, -12, 8], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, 7.9536], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, 7.95], "scale": [0.79, 1, 1]},
         "root": {"rotation": [0, 180, 0]},
         "Joints": {"position": [-3.5, 13.8, -24]}
       },
@@ -1054,8 +1054,8 @@
           }
         },
         "bullet": {"scale": {"1.65": {"pre": [0, 0, 0], "post": [1, 1, 1]}}},
-        "leftArm": {"rotation": [0, 0, -180], "position": [1.225, -13, 8], "scale": [0.79, 1, 1]},
-        "rightArm": {"rotation": [0, 0, -180], "position": [-1.3, -12, 8], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, 7.9536], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, 7.95], "scale": [0.79, 1, 1]},
         "root": {"rotation": [0, 180, 0]},
         "Joints": {"position": [-3.5, 13.8, -24]},
         "bullet_in_mag": {"scale": {"1.35": [0, 0, 0], "1.4": [1, 1, 1]}}
@@ -1598,8 +1598,8 @@
             "4.3": [0, 0, 0]
           }
         },
-        "leftArm": {"rotation": [0, 0, -180], "position": [1.225, -13, 8], "scale": [0.79, 1, 1]},
-        "rightArm": {"rotation": [0, 0, -180], "position": [-1.3, -12, 8], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, 7.9536], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, 7.95], "scale": [0.79, 1, 1]},
         "root": {"rotation": [0, 180, 0]},
         "Joints": {"position": [-3.5, 13.8, -24]}
       },
@@ -2449,8 +2449,8 @@
             "8.0": [0, 0, 0]
           }
         },
-        "leftArm": {"rotation": [0, 0, -180], "position": [1.225, -13, 8], "scale": [0.79, 1, 1]},
-        "rightArm": {"rotation": [0, 0, -180], "position": [-1.3, -12, 8], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, 7.9536], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, 7.95], "scale": [0.79, 1, 1]},
         "root": {"rotation": [0, 180, 0]},
         "Joints": {"position": [-3.5, 13.8, -24]},
         "bullet_in_mag": {"scale": 0}
@@ -2639,9 +2639,9 @@
           }
         },
         "lefthand": {"rotation": [109.31225, -21.8344, -155.94098], "position": [8.4, -11.42, -6.32], "scale": [1, 1.5, 1]},
-        "rightArm": {"rotation": [0, 0, -180], "position": [-1.3, -12, 8], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, 7.95], "scale": [0.79, 1, 1]},
         "righthand": {"rotation": [96, 0, -180], "position": [-6.5, -14, 7.6], "scale": [1, 1.5, 1]},
-        "leftArm": {"rotation": [0, 0, -180], "position": [1.225, -13, 8], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, 7.9536], "scale": [0.79, 1, 1]},
         "constraint": {"rotation": [0.2, 0.2, 0.2], "position": [0.2, 0.2, 0.25]}
       }
     },

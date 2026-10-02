@@ -60,7 +60,7 @@ export function armLayout(root, ids, like = "p320", log = console.log) {
     const v = new RegExp(`\\b(?:v|variable)\\.${id}\\b`);
     const armsGeos = entity.render_controllers
       .map((r) => (typeof r === "string" ? [r, ""] : Object.entries(r)[0]))
-      .filter(([n, c]) => /universal\d+\.first_person$/.test(n) && v.test(c))
+      .filter(([n, c]) => /universal\d*\.first_person$/.test(n) && v.test(c)) // the M16s' is plain "universal"
       .map(([n]) => rcs[n]?.geometry?.replace(/^Geometry\./i, "geometry."));
     const files = [`TACZ-R/models/entity/guns/${id}.geo.json`, ...armsGeos.map(modelFileOf)];
     if (files.some((f) => !f)) throw new Error(`${id}: arms model not found`);
