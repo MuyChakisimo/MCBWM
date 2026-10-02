@@ -2454,7 +2454,6 @@
       }
     },
     "animation.dblong.shoot": {
-      "loop": true,
       "animation_length": 1.2,
       "bones": {
         "rot": {

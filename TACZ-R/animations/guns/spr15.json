@@ -844,7 +844,6 @@
       }
     },
     "animation.spr15.draw": {
-      "loop": true,
       "animation_length": 0.8333,
       "bones": {
         "lefthand": {"rotation": {"0.0": [0, 0, 0], "0.2083": [10.3827, 17.0749, 3.4385], "0.3333": [0, 0, 0]}},
@@ -1357,7 +1356,6 @@
       }
     },
     "animation.spr15.shoot.nsight": {
-      "loop": true,
       "animation_length": 0.8667,
       "bones": {
         "rot": {
@@ -1402,7 +1400,6 @@
       }
     },
     "animation.spr15.shoot.sight": {
-      "loop": true,
       "animation_length": 0.8667,
       "bones": {
         "rot": {

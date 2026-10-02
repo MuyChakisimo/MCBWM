@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.22.2** (both manifests; worlds need `[1, 22, 2]` in `world_*_packs.json`).
+- Pack version **1.22.3** (both manifests; worlds need `[1, 22, 3]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -86,7 +86,7 @@ work.
    | spas12 "SPAS-12" | spas_12 | m870 | tube-fed (`reload: "single"`); inherited the M870's unused `fp.reload11` |
    | dblong "DB-4 Ursus" | db_long | db | Java has no sounds; kept the Double Barrel's |
    | cz75 "CZ75", mk23 "MK23" | cz75, hk_mk23 | p320 | CZ75 auto 900 (user's choice); MK23 is Java's 50 rpm |
-   | rhino357 "Rhino 357", taurus500 "Raging Hunter", taurus943 "Taurus 943" | same | cp | own-hand arms (java-port step 7); Taurus 943 has no Java recipe, kept the Colt Python's |
+   | rhino357 "Rhino 357", taurus500 "Raging Hunter", taurus943 "Taurus 943" | same | p320 (v1.22.3; cp before) | own-hand arms; Taurus 943 has no Java recipe (P320 recipe) |
    | spr15 "SPR-15" | spr15hb | m4a1 | inherits `scriptFiring` from the M4A1 |
    | m320 "M320" | m320 | rpg | inherits the RPG's `explosion`; 40mm ammo |
 
@@ -121,6 +121,24 @@ work.
    - Raging Hunter: fp gun and arm shrunk; tp too high, too small.
    - Taurus 943: invisible in fp; tp between the legs; no reload animation or sound.
    - M320: ADS goes far left (sight not lined up); tp slightly too high.
+   **Fixed in v1.22.3 (re-ported spr15, kar98, dblong, cz75, mk23 and the 3 revolvers), needs the user's re-test:**
+   - Draw / reload / inspect / shoot loops: some Java animations are `"loop": true`, so the controller never got
+     `all_animations_finished`; java-port.mjs drops it on the animations it replaces. Likely fixes the SPR-15,
+     Kar98k and Rhino draw loops, the CZ75 reload restarting and the CZ75 jump when shooting.
+   - Revolvers now port from the P320, not the Colt Python: the Colt Python's poses scale `joints` to 0.6 and tilt
+     it (its own model is oversized), which shrank and misplaced the Java revolvers (Raging Hunter small, Rhino low,
+     reload closer to the screen, probably the Taurus 943 invisible).
+   **Still open, with leads:**
+   - Third person: every Java model has a `thirdperson_hand` bone (Java display scale 0.6). Same as the template's
+     (M9A4 = P320: [0,8,1.75]) looks right; CZ75 is 3.25 lower (looks too low), M320 4.4 higher than the RPG (too
+     high). Shift the tp animations by the difference (which bone: the tp anims move torso/arms; find what carries
+     the gun). Type 81 and Colt Python aren't Java models (no reference); RPK too high needs its own offset.
+   - Left hand off: SPR-15 (from M4A1), DB-4 Ursus (the Double Barrel's arms hang off rightHand/leftHand, not *_pos:
+     right arm missing). Reload left hand: CZ75/MK23 missing, SPAS-12 stuck on the pump. Check the Java reload's
+     `lefthand` / `mag_and_lefthand` keyframes against our arm layout (fk.cjs / rel.cjs in a scratch dir).
+   - RPK: no ammo HUD, unlimited ammo, gun gone after inspect until firing (Type 81 template; objective exists).
+   - M700: no bolt animation after each shot (AWM's `fp.bolt` kept; Java's bolt is in its shoot animation?).
+   - M320 ADS far left: its aim pose (Java `iron_view`) is probably wrong for a launcher.
    The M320's description said RPG-7 rockets (copied from the RPG); it already reloaded 40mm grenades. Fixed text.
    **Then waiting for the user's in-game test** of each: first person hold/aim/draw, reloads, inspect, sounds,
    crafting, ammo. Recipes are Java's (the M95 is 300 iron, 60 gold, 15 diamonds, 3 netherite, 5 blaze rods).

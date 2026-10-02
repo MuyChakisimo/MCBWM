@@ -1728,7 +1728,6 @@
       }
     },
     "animation.mk23.fp.shoot.nsight": {
-      "loop": true,
       "animation_length": 0.6667,
       "bones": {
         "rot": {
@@ -1783,7 +1782,6 @@
       }
     },
     "animation.mk23.fp.shoot.sight": {
-      "loop": true,
       "animation_length": 0.6667,
       "bones": {
         "rot": {

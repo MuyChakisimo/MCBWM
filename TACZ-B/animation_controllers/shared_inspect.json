@@ -62,37 +62,19 @@
               "trigger.inspect": "(query.get_equipped_item_name=='cp' && variable.attack_time > 0.0f && query.scoreboard('cp') >= 6 && q.mark_variant != 2)"
             },
             {
-              "trigger.inspect": "(query.get_equipped_item_name=='taurus943' && variable.attack_time > 0.0f && query.scoreboard('taurus943') >= 8 && q.mark_variant != 2)"
+              "trigger.inspect": "(query.get_equipped_item_name=='cp_emp' && variable.attack_time > 0.0f && query.scoreboard('cp') == 0 && q.mark_variant != 2)"
             },
             {
-              "trigger.inspect.emp": "(query.get_equipped_item_name=='taurus943_emp' && variable.attack_time > 0.0f && query.scoreboard('taurus943') == 0 && q.mark_variant != 1)"
+              "trigger.inspect": "(query.get_equipped_item_name=='p320' && variable.attack_time > 0.0f && query.scoreboard('p320') >= 12 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='taurus943' && variable.attack_time > 0.0f && query.scoreboard('taurus943') >= 8 && q.mark_variant != 2)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='taurus500' && variable.attack_time > 0.0f && query.scoreboard('taurus500') >= 5 && q.mark_variant != 2)"
             },
             {
-              "trigger.inspect.emp": "(query.get_equipped_item_name=='taurus500_emp' && variable.attack_time > 0.0f && query.scoreboard('taurus500') == 0 && q.mark_variant != 1)"
-            },
-            {
               "trigger.inspect": "(query.get_equipped_item_name=='rhino357' && variable.attack_time > 0.0f && query.scoreboard('rhino357') >= 6 && q.mark_variant != 2)"
-            },
-            {
-              "trigger.inspect.emp": "(query.get_equipped_item_name=='rhino357_emp' && variable.attack_time > 0.0f && query.scoreboard('rhino357') == 0 && q.mark_variant != 1)"
-            },
-            {
-              "trigger.inspect": "(query.get_equipped_item_name=='cp_emp' && variable.attack_time > 0.0f && query.scoreboard('cp') == 0 && q.mark_variant != 2)"
-            },
-            {
-              "trigger.inspect": "(query.get_equipped_item_name=='taurus943_emp' && variable.attack_time > 0.0f && query.scoreboard('taurus943') == 0 && q.mark_variant != 2)"
-            },
-            {
-              "trigger.inspect": "(query.get_equipped_item_name=='taurus500_emp' && variable.attack_time > 0.0f && query.scoreboard('taurus500') == 0 && q.mark_variant != 2)"
-            },
-            {
-              "trigger.inspect": "(query.get_equipped_item_name=='rhino357_emp' && variable.attack_time > 0.0f && query.scoreboard('rhino357') == 0 && q.mark_variant != 2)"
-            },
-            {
-              "trigger.inspect": "(query.get_equipped_item_name=='p320' && variable.attack_time > 0.0f && query.scoreboard('p320') >= 12 && q.mark_variant != 2)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='mk23' && variable.attack_time > 0.0f && query.scoreboard('mk23') >= 12 && q.mark_variant != 2)"
@@ -105,6 +87,15 @@
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='p320_emp' && variable.attack_time > 0.0f && query.scoreboard('p320') == 0 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='taurus943_emp' && variable.attack_time > 0.0f && query.scoreboard('taurus943') == 0 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='taurus500_emp' && variable.attack_time > 0.0f && query.scoreboard('taurus500') == 0 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='rhino357_emp' && variable.attack_time > 0.0f && query.scoreboard('rhino357') == 0 && q.mark_variant != 2)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='mk23_emp' && variable.attack_time > 0.0f && query.scoreboard('mk23') == 0 && q.mark_variant != 2)"
@@ -227,19 +218,19 @@
               "trigger.inspect": "(query.get_equipped_item_name=='awp' && variable.attack_time > 0.0f && query.scoreboard('awp') >= 5 && q.mark_variant != 2)"
             },
             {
-              "trigger.inspect": "(query.get_equipped_item_name=='m700' && variable.attack_time > 0.0f && query.scoreboard('m700') >= 5 && q.mark_variant != 2)"
+              "trigger.inspect": "(query.get_equipped_item_name=='kar98' && variable.attack_time > 0.0f && query.scoreboard('kar98') >= 4 && q.mark_variant != 2)"
             },
             {
-              "trigger.inspect": "(query.get_equipped_item_name=='kar98' && variable.attack_time > 0.0f && query.scoreboard('kar98') >= 4 && q.mark_variant != 2)"
+              "trigger.inspect": "(query.get_equipped_item_name=='m700' && variable.attack_time > 0.0f && query.scoreboard('m700') >= 5 && q.mark_variant != 2)"
             },
             {
               "trigger.inspect.emp": "(query.get_equipped_item_name=='awp_emp' && variable.attack_time > 0.0f && query.scoreboard('awp') == 0 && q.mark_variant != 1)"
             },
             {
-              "trigger.inspect.emp": "(query.get_equipped_item_name=='m700_emp' && variable.attack_time > 0.0f && query.scoreboard('m700') == 0 && q.mark_variant != 1)"
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='kar98_emp' && variable.attack_time > 0.0f && query.scoreboard('kar98') == 0 && q.mark_variant != 1)"
             },
             {
-              "trigger.inspect.emp": "(query.get_equipped_item_name=='kar98_emp' && variable.attack_time > 0.0f && query.scoreboard('kar98') == 0 && q.mark_variant != 1)"
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='m700_emp' && variable.attack_time > 0.0f && query.scoreboard('m700') == 0 && q.mark_variant != 1)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='m107' && variable.attack_time > 0.0f && query.scoreboard('m107') >= 10 && q.mark_variant != 2)"

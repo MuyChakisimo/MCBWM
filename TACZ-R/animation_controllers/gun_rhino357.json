@@ -72,7 +72,7 @@
           "animations": [{"rhino357_fp_inspect": "v.rhino357b"}, {"rhino357_fp_inspect_emp": "v.rhino357emp"}],
           "transitions": [
             {
-              "hold": "(v.rhino357 && q.all_animations_finished) || (v.rhino357 && q.is_using_item) || (v.rhino357 && q.is_sneaking)"
+              "hold": "(v.rhino357 && q.any_animation_finished) || (v.rhino357 && q.is_using_item) || (v.rhino357 && q.is_sneaking)"
             }
           ]
         },

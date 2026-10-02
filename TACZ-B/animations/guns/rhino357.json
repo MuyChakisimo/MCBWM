@@ -1,26 +1,26 @@
 {
   "format_version": "1.10.0",
   "animations": {
-    "animation.rhino357.reload.tac": {
-      "loop": "hold_on_last_frame",
-      "animation_length": 3.2,
-      "timeline": {
-        "3.1": ["/scoreboard players set @s[scores={rhino357=7..}] rhino357 6", "/function rhino357"],
-        "2.9": ["/function rhino357reload", "/event entity @s krep:rhino357_reload"]
-      }
-    },
+    "animation.rhino357.shoot": {"loop": false, "animation_length": 0.15, "timeline": {}},
     "animation.rhino357.reload": {
       "loop": "hold_on_last_frame",
-      "animation_length": 3.2,
+      "animation_length": 2.5,
       "timeline": {
-        "3.1": [
+        "2.4": [
           "/replaceitem entity @s slot.weapon.mainhand 1 krep:rhino357 1 0",
           "/scoreboard players set @s[scores={rhino357=7..}] rhino357 6",
           "/function rhino357"
         ],
-        "2.9": ["/function rhino357reload", "/event entity @s krep:rhino357_reload"]
+        "2.3": ["/function rhino357reload", "/event entity @s krep:rhino357_reload"]
       }
     },
-    "animation.rhino357.shoot": {"loop": false, "animation_length": 0.2, "timeline": {}}
+    "animation.rhino357.reload.tac": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 2.1,
+      "timeline": {
+        "2.0": ["/scoreboard players set @s[scores={rhino357=8..}] rhino357 7", "/function rhino357"],
+        "1.9": ["/function rhino357reload", "/event entity @s krep:rhino357_reload"]
+      }
+    }
   }
 }

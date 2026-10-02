@@ -1,6 +1,41 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
+    "controller.animation.taurus500": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='taurus500' && q.is_using_item) || query.get_equipped_item_name=='taurus500_emp'"
+            }
+          ],
+          "on_entry": [
+            "/scoreboard players set @s taurus500 5",
+            "/event entity @s[hasitem={item=krep:taurus500, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {
+          "transitions": [
+            {
+              "taurus500.13": "query.get_equipped_item_name=='taurus500' && query.is_using_item && query.scoreboard('taurus500') >= 1 && q.mark_variant != 2"
+            }
+          ],
+          "on_entry": ["/function taurus500"]
+        },
+        "taurus500.13": {
+          "animations": ["taurus500shoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": [
+            "@s krep:taurus500_fire",
+            "/scoreboard players remove @s[scores={taurus500=1..6}] taurus500 1",
+            "/playsound taurus500.shoot @a[r=30]",
+            "/replaceitem entity @s[scores={taurus500=0}] slot.weapon.mainhand 1 krep:taurus500_emp 1 0",
+            "/title @s[scores={taurus500=0}] actionbar No Ammunition"
+          ]
+        }
+      }
+    },
     "controller.animation.taurus500.reload": {
       "initial_state": "setup",
       "states": {
@@ -71,52 +106,6 @@
             {
               "setup": "query.get_equipped_item_name=='taurus500' || query.get_equipped_item_name=='taurus500_emp'"
             }
-          ]
-        }
-      }
-    },
-    "controller.animation.taurus500": {
-      "initial_state": "setup1",
-      "states": {
-        "setup1": {
-          "transitions": [
-            {
-              "setup": "(query.get_equipped_item_name=='taurus500' && q.is_using_item) || query.get_equipped_item_name=='taurus500_emp'"
-            }
-          ],
-          "on_entry": [
-            "/scoreboard players set @s taurus500 5",
-            "/event entity @s[hasitem={item=krep:taurus500, location=slot.weapon.mainhand}] krep:noreload"
-          ]
-        },
-        "setup": {
-          "transitions": [
-            {
-              "taurus500.30": "query.get_equipped_item_name=='taurus500' && query.is_using_item && query.scoreboard('taurus500') >= 1 && q.mark_variant != 2"
-            },
-            {
-              "taurus500.31": "query.get_equipped_item_name=='taurus500' && query.is_using_item && query.scoreboard('taurus500') == 0"
-            }
-          ],
-          "on_entry": ["/function taurus500"]
-        },
-        "taurus500.31": {
-          "animations": ["taurus500shoot"],
-          "transitions": [{"setup": "query.all_animations_finished"}],
-          "on_entry": [
-            "/replaceitem entity @s[scores={taurus500=0}] slot.weapon.mainhand 1 krep:taurus500_emp 1 0"
-          ]
-        },
-        "taurus500.30": {
-          "animations": ["taurus500shoot"],
-          "transitions": [{"setup": "query.all_animations_finished && !q.is_using_item"}],
-          "on_entry": [
-            "@s krep:taurus500_fire",
-            "/scoreboard players remove @s[scores={taurus500=1..6}] taurus500 1",
-            "/scoreboard players set @s[scores={taurus500=6..}] taurus500 5",
-            "/playsound taurus500.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={taurus500=0}] slot.weapon.mainhand 1 krep:taurus500_emp 1 0",
-            "/title @s[scores={taurus500=0}] actionbar No Ammunition"
           ]
         }
       }

@@ -72,7 +72,7 @@
           "animations": [{"taurus943_fp_inspect": "v.taurus943b"}, {"taurus943_fp_inspect_emp": "v.taurus943emp"}],
           "transitions": [
             {
-              "hold": "(v.taurus943 && q.all_animations_finished) || (v.taurus943 && q.is_using_item) || (v.taurus943 && q.is_sneaking)"
+              "hold": "(v.taurus943 && q.any_animation_finished) || (v.taurus943 && q.is_using_item) || (v.taurus943 && q.is_sneaking)"
             }
           ]
         },

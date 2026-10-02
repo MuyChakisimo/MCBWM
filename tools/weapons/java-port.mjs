@@ -142,12 +142,20 @@ const soundNames = new Map(); // our cue name -> Java sound path
   for (const [role, [re]] of Object.entries(ROLES)) {
     const src = converted.animations[`animation.${id}.${role}`];
     if (!src) continue;
-    for (const k of byRole(re)) { before[k] = anims[k]; anims[k] = structuredClone(src); replaced.push(k.replace(`animation.${id}.`, "")); }
+    for (const k of byRole(re)) {
+      before[k] = anims[k];
+      anims[k] = structuredClone(src);
+      // Some Java files mark these "loop": true; ours must end (controllers wait for all_animations_finished),
+      // or the draw / reload / inspect repeats forever (v1.22.0: Kar98k, SPR-15 and Rhino draws).
+      if (anims[k].loop === true) delete anims[k].loop;
+      replaced.push(k.replace(`animation.${id}.`, ""));
+    }
   }
   // Empty inspect the clone lacks: add and wire it.
   const emptyInspect = converted.animations[`animation.${id}.fp.inspect_empty`];
   if (emptyInspect && !byRole(ROLES["fp.inspect_empty"][0]).length) {
     anims[`animation.${id}.fp.inspect_empty`] = structuredClone(emptyInspect);
+    if (anims[`animation.${id}.fp.inspect_empty`].loop === true) delete anims[`animation.${id}.fp.inspect_empty`].loop;
     wireEmptyInspect(id);
     replaced.push("fp.inspect_empty");
     log("   the starting gun had no empty inspect: added and wired Java's");

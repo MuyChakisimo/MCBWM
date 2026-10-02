@@ -36,10 +36,10 @@
               "krep:deagle",
               "krep:t50",
               "krep:cp",
+              "krep:p320",
               "krep:taurus943",
               "krep:taurus500",
               "krep:rhino357",
-              "krep:p320",
               "krep:mk23",
               "krep:cz75",
               "krep:m9a4"
@@ -51,7 +51,7 @@
           },
           {
             "group_identifier": {"icon": "krep:awp", "name": "krep:itemGroup.name.sr"},
-            "items": ["krep:awp", "krep:m700", "krep:kar98", "krep:m107", "krep:m95b", "krep:sks", "krep:mk14"]
+            "items": ["krep:awp", "krep:kar98", "krep:m700", "krep:m107", "krep:m95b", "krep:sks", "krep:mk14"]
           },
           {
             "group_identifier": {"icon": "krep:minigun", "name": "krep:itemGroup.name.misc"},
@@ -94,6 +94,9 @@
               "krep:g17_emp",
               "krep:g18_emp",
               "krep:p320_emp",
+              "krep:taurus943_emp",
+              "krep:taurus500_emp",
+              "krep:rhino357_emp",
               "krep:mk23_emp",
               "krep:cz75_emp",
               "krep:m9a4_emp",
@@ -101,9 +104,6 @@
               "krep:deagle_emp",
               "krep:t50_emp",
               "krep:cp_emp",
-              "krep:taurus943_emp",
-              "krep:taurus500_emp",
-              "krep:rhino357_emp",
               "krep:mp5_emp",
               "krep:p90_emp",
               "krep:vector_emp",
@@ -111,8 +111,8 @@
               "krep:uzi_emp",
               "krep:mp7_emp",
               "krep:awp_emp",
-              "krep:m700_emp",
               "krep:kar98_emp",
+              "krep:m700_emp",
               "krep:m107_emp",
               "krep:m95b_emp",
               "krep:minigun_emp",

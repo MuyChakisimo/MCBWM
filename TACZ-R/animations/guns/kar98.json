@@ -889,7 +889,6 @@
       }
     },
     "animation.kar98.draw": {
-      "loop": true,
       "animation_length": 0.7833,
       "bones": {
         "lefthand": {

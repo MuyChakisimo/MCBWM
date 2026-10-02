@@ -72,7 +72,7 @@
           "animations": [{"taurus500_fp_inspect": "v.taurus500b"}, {"taurus500_fp_inspect_emp": "v.taurus500emp"}],
           "transitions": [
             {
-              "hold": "(v.taurus500 && q.all_animations_finished) || (v.taurus500 && q.is_using_item) || (v.taurus500 && q.is_sneaking)"
+              "hold": "(v.taurus500 && q.any_animation_finished) || (v.taurus500 && q.is_using_item) || (v.taurus500 && q.is_sneaking)"
             }
           ]
         },
