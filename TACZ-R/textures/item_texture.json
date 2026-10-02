@@ -24,6 +24,7 @@
     "50bmg": {"textures": "textures/items/50bmg"},
     "5728mm": {"textures": "textures/items/5728mm"},
     "p320": {"textures": "textures/items/p320"},
+    "m9a4": {"textures": "textures/items/m9a4"},
     "hk416": {"textures": "textures/items/hk416"},
     "m1014": {"textures": "textures/items/m1014"},
     "p90": {"textures": "textures/items/p90"},

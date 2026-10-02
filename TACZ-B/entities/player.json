@@ -120,7 +120,11 @@
           {
             "p320": "query.get_equipped_item_name=='p320' || query.get_equipped_item_name=='p320_emp'"
           },
+          {
+            "m9a4": "query.get_equipped_item_name=='m9a4' || query.get_equipped_item_name=='m9a4_emp'"
+          },
           "p320reloading",
+          "m9a4reloading",
           {"g18": "query.get_equipped_item_name=='g18' || query.get_equipped_item_name=='g18_emp'"},
           "g18reloading",
           {
@@ -215,10 +219,15 @@
         "mk14reload": "animation.mk14.reload",
         "mk14reloadtac": "animation.mk14.reload.tac",
         "p320": "controller.animation.p320",
+        "m9a4": "controller.animation.m9a4",
         "p320reloading": "controller.animation.p320.reload",
+        "m9a4reloading": "controller.animation.m9a4.reload",
         "p320shoot": "animation.p320.shoot",
+        "m9a4shoot": "animation.m9a4.shoot",
         "p320reload": "animation.p320.reload",
+        "m9a4reload": "animation.m9a4.reload",
         "p320reloadtac": "animation.p320.reload.tac",
+        "m9a4reloadtac": "animation.m9a4.reload.tac",
         "m16a1": "controller.animation.m16a1",
         "m16a1reloading": "controller.animation.m16a1.reload",
         "m16a1shoot": "animation.m16a1.shoot",
@@ -5831,10 +5840,53 @@
           }
         ]
       },
+      "krep:m9a4_fire": {
+        "sequence": [
+          {
+            "filters": {"test": "is_sneaking", "value": true, "subject": "self"},
+            "queue_command": {
+              "command": [
+                "playanimation @s[r=0.5] animation.m9a4.fp.shoot.sight shoot",
+                "scriptevent tacz:weapon_hitscan m9a4 ads"
+              ]
+            }
+          },
+          {
+            "filters": {"test": "is_sneaking", "value": false, "subject": "self"},
+            "queue_command": {
+              "command": [
+                "playanimation @s[r=0.5] animation.m9a4.fp.shoot.nsight shoot",
+                "scriptevent tacz:weapon_hitscan m9a4 hip"
+              ]
+            }
+          }
+        ]
+      },
       "p320reload0": {
         "set_property": {"krep:ammoreload": 0},
         "queue_command": {"command": ["title @s actionbar No :\n.45 ACP"]}
       },
+      "m9a4reload0": {
+        "set_property": {"krep:ammoreload": 0},
+        "queue_command": {"command": ["title @s actionbar No :\n.45 ACP"]}
+      },
+      "m9a4reload1": {"set_property": {"krep:ammoreload": 1}},
+      "m9a4reload2": {"set_property": {"krep:ammoreload": 2}},
+      "m9a4reload3": {"set_property": {"krep:ammoreload": 3}},
+      "m9a4reload4": {"set_property": {"krep:ammoreload": 4}},
+      "m9a4reload5": {"set_property": {"krep:ammoreload": 5}},
+      "m9a4reload6": {"set_property": {"krep:ammoreload": 6}},
+      "m9a4reload7": {"set_property": {"krep:ammoreload": 7}},
+      "m9a4reload8": {"set_property": {"krep:ammoreload": 8}},
+      "m9a4reload9": {"set_property": {"krep:ammoreload": 9}},
+      "m9a4reload10": {"set_property": {"krep:ammoreload": 10}},
+      "m9a4reload11": {"set_property": {"krep:ammoreload": 11}},
+      "m9a4reload12": {"set_property": {"krep:ammoreload": 12}},
+      "m9a4reload13": {"set_property": {"krep:ammoreload": 13}},
+      "m9a4reload14": {"set_property": {"krep:ammoreload": 14}},
+      "m9a4reload15": {"set_property": {"krep:ammoreload": 15}},
+      "m9a4reload16": {"set_property": {"krep:ammoreload": 16}},
+      "m9a4reload17": {"set_property": {"krep:ammoreload": 17}},
       "p320reload1": {"set_property": {"krep:ammoreload": 1}},
       "p320reload2": {"set_property": {"krep:ammoreload": 2}},
       "p320reload3": {"set_property": {"krep:ammoreload": 3}},
@@ -5920,6 +5972,82 @@
           {
             "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 18, "subject": "self"},
             "queue_command": {"command": ["scoreboard players add @s p320 18"]}
+          }
+        ]
+      },
+      "krep:m9a4_reload": {
+        "sequence": [
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 1, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 1"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 2, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 2"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 3, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 3"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 4, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 4"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 5, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 5"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 6, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 6"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 7, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 7"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 8, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 8"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 9, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 9"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 10, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 10"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 11, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 11"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 12, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 12"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 13, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 13"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 14, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 14"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 15, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 15"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 16, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 16"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 17, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 17"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 18, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s m9a4 18"]}
           }
         ]
       },

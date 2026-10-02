@@ -789,6 +789,21 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
       ["lapis_lazuli", 2],
     ],
   },
+  m9a4: {
+    name: "M9A4",
+    category: "pistol",
+    damage: 6,
+    penetration: 0.3,
+    recoil: { hip: [0.057, 0.2], ads: [0.037, 0.17] },
+    headshot: 1.5,
+    falloff: [[18, 1.17], [45, 0.83], [null, 0.67]],
+    fireMode: "semi",
+    rpm: 400,
+    magazine: 17,
+    ammo: "krep:mm9",
+    // Java TACZ recipe.
+    recipe: [["iron_ingot", 16]],
+  },
   m107: {
     name: "M107",
     category: "sniper",

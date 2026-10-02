@@ -34,7 +34,8 @@
               "krep:deagle",
               "krep:t50",
               "krep:cp",
-              "krep:p320"
+              "krep:p320",
+              "krep:m9a4"
             ]
           },
           {
@@ -76,6 +77,7 @@
               "krep:g17_emp",
               "krep:g18_emp",
               "krep:p320_emp",
+              "krep:m9a4_emp",
               "krep:deagleg_emp",
               "krep:deagle_emp",
               "krep:t50_emp",

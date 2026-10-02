@@ -8,6 +8,7 @@
           "transitions": [
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -51,10 +52,11 @@
           "animations": [{"m1014_draw": "v.m1014"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.type81": "v.type81"},
             {"draw.aa12": "v.aa12"},
@@ -98,9 +100,10 @@
           "animations": [{"vector_draw": "v.vector"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -145,7 +148,7 @@
           "animations": [{"p320_fp_draw": "v.p320"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.mk14": "v.mk14"},
@@ -185,17 +188,67 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.deagle": "v.deagle"},
-            {"draw.deagleg": "v.deagleg"}
+            {"draw.deagleg": "v.deagleg"},
+            {"draw.m9a4": "v.m9a4"}
+          ]
+        },
+        "draw.m9a4": {
+          "animations": [{"m9a4_fp_draw": "v.m9a4"}],
+          "transitions": [
+            {
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+            },
+            {"draw.vector": "v.vector"},
+            {"draw.mk14": "v.mk14"},
+            {"draw.m1014": "v.m1014"},
+            {"draw.type81": "v.type81"},
+            {"draw.aa12": "v.aa12"},
+            {"draw.m249": "v.m249"},
+            {"draw.m16a1": "v.m16a1"},
+            {"draw.t50": "v.t50"},
+            {"draw.cp": "v.cp"},
+            {"draw.qbz191": "v.qbz191"},
+            {"draw.evolys": "v.evolys"},
+            {"draw.m16": "v.m16"},
+            {"draw.mp5": "v.mp5"},
+            {"draw.mp7": "v.mp7"},
+            {"draw.m870": "v.m870"},
+            {"draw.g3": "v.g3"},
+            {"draw.minigun": "v.minigun"},
+            {"draw.hk416": "v.hk416"},
+            {"draw.g36": "v.g36"},
+            {"draw.uzi": "v.uzi"},
+            {"draw.db": "v.db"},
+            {"draw.m4a1": "v.m4a1"},
+            {"draw.p90": "v.p90"},
+            {"draw.akm": "v.akm"},
+            {"draw.ump": "v.ump"},
+            {"draw.qbz95": "v.qbz95"},
+            {"draw.fal": "v.fal"},
+            {"draw.sks": "v.sks"},
+            {"draw.b93": "v.b93"},
+            {"draw.saiga12": "v.saiga12"},
+            {"draw.awp": "v.awp"},
+            {"draw.g17": "v.g17"},
+            {"draw.g18": "v.g18"},
+            {"draw.scarl": "v.scarl"},
+            {"draw.scarh": "v.scarh"},
+            {"draw.m1911": "v.m1911"},
+            {"draw.rpg": "v.rpg"},
+            {"draw.deagle": "v.deagle"},
+            {"draw.deagleg": "v.deagleg"},
+            {"draw.p320": "v.p320"}
           ]
         },
         "draw.mk14": {
           "animations": [{"mk14_fp_draw": "v.mk14"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
             {"draw.aa12": "v.aa12"},
@@ -239,10 +292,11 @@
           "animations": [{"type81_fp_draw": "v.type81"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.aa12": "v.aa12"},
@@ -286,11 +340,12 @@
           "animations": [{"m249_fp_draw": "v.m249"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -333,12 +388,13 @@
           "animations": [{"t50_fp_draw": "v.t50"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16a1": "v.m16a1"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -380,7 +436,7 @@
           "animations": [{"cp_fp_draw": "v.cp"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.qbz191": "v.qbz191"},
@@ -388,6 +444,7 @@
             {"draw.m16a1": "v.m16a1"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -427,7 +484,7 @@
           "animations": [{"qbz191_fp_draw": "v.qbz191"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.evolys": "v.evolys"},
@@ -435,6 +492,7 @@
             {"draw.m16a1": "v.m16a1"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -474,7 +532,7 @@
           "animations": [{"evolys_fp_draw": "v.evolys"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.qbz191": "v.qbz191"},
@@ -482,6 +540,7 @@
             {"draw.m16a1": "v.m16a1"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -521,7 +580,7 @@
           "animations": [{"m16a1_draw": "v.m16a1"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.t50": "v.t50"},
@@ -530,6 +589,7 @@
             {"draw.evolys": "v.evolys"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -568,11 +628,12 @@
           "animations": [{"g3_fp_draw": "v.g3"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -615,11 +676,12 @@
           "animations": [{"minigun_fp_draw": "v.minigun"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -662,7 +724,7 @@
           "animations": [{"hk416_draw": "v.hk416"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -674,6 +736,7 @@
             {"draw.m870": "v.m870"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -709,7 +772,7 @@
           "animations": [{"g36_draw": "v.g36"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -721,6 +784,7 @@
             {"draw.db": "v.db"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -756,7 +820,7 @@
           "animations": [{"uzi_draw": "v.uzi"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -768,6 +832,7 @@
             {"draw.g36": "v.g36"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -803,7 +868,7 @@
           "animations": [{"db_draw": "v.db"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -815,6 +880,7 @@
             {"draw.g36": "v.g36"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -850,7 +916,7 @@
           "animations": [{"m4a1_draw": "v.m4a1"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -859,6 +925,7 @@
             {"draw.m870": "v.m870"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -897,11 +964,12 @@
           "animations": [{"p90_draw": "v.p90"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -944,7 +1012,7 @@
           "animations": [{"akm_draw": "v.akm"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.qbz95": "v.qbz95"},
             {"draw.fal": "v.fal"},
@@ -954,6 +1022,7 @@
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -991,7 +1060,7 @@
           "animations": [{"ump_draw": "v.ump"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.qbz95": "v.qbz95"},
             {"draw.fal": "v.fal"},
@@ -1001,6 +1070,7 @@
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1038,7 +1108,7 @@
           "animations": [{"qbz95_draw": "v.qbz95"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.fal": "v.fal"},
             {"draw.akm": "v.akm"},
@@ -1048,6 +1118,7 @@
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1085,7 +1156,7 @@
           "animations": [{"g3_fp_draw": "v.fal"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.qbz95": "v.qbz95"},
             {"draw.akm": "v.akm"},
@@ -1095,6 +1166,7 @@
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1132,7 +1204,7 @@
           "animations": [{"sks_draw": "v.sks"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.akm": "v.akm"},
             {"draw.b93": "v.b93"},
@@ -1142,6 +1214,7 @@
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1179,7 +1252,7 @@
           "animations": [{"b93_draw": "v.b93"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.akm": "v.akm"},
             {"draw.sks": "v.sks"},
@@ -1189,6 +1262,7 @@
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1226,11 +1300,12 @@
           "animations": [{"saiga12_draw": "v.saiga12"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1273,11 +1348,12 @@
           "animations": [{"awp_draw": "v.awp"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1320,11 +1396,12 @@
           "animations": [{"scarl_draw": "v.scarl"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1367,11 +1444,12 @@
           "animations": [{"g17_draw": "v.g17"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1414,11 +1492,12 @@
           "animations": [{"g17_draw": "v.g18"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1461,7 +1540,7 @@
           "animations": [{"scarh_draw": "v.scarh"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -1470,6 +1549,7 @@
             {"draw.m870": "v.m870"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1508,7 +1588,7 @@
           "animations": [{"m1911_draw": "v.m1911"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -1517,6 +1597,7 @@
             {"draw.m870": "v.m870"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1555,7 +1636,7 @@
           "animations": [{"rpg_draw": "v.rpg"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -1564,6 +1645,7 @@
             {"draw.m870": "v.m870"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1602,11 +1684,12 @@
           "animations": [{"deagle_draw": "v.deagle"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1642,11 +1725,12 @@
           "animations": [{"deagle_draw": "v.deagleg"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1682,11 +1766,12 @@
           "animations": [{"m16a1_draw": "v.m16"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1722,11 +1807,12 @@
           "animations": [{"mp5_draw": "v.mp5"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1762,11 +1848,12 @@
           "animations": [{"mp7_draw": "v.mp7"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1802,11 +1889,12 @@
           "animations": [{"m870_draw": "v.m870"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
@@ -1842,13 +1930,14 @@
           "animations": [{"aa12_draw": "v.aa12"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.awp && !v.g17 && !v.scarl && !v.m870 && !v.akm && !v.m4a1 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.mp5": "v.mp5"},
             {"draw.mp7": "v.mp7"},
             {"draw.m870": "v.m870"},
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
+            {"draw.m9a4": "v.m9a4"},
             {"draw.mk14": "v.mk14"},
             {"draw.m1014": "v.m1014"},
             {"draw.type81": "v.type81"},
