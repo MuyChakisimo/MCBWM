@@ -38,7 +38,9 @@ work.
 
 ## Next, in order
 
-1. **Ammo counter in the hitscan script.** **M4A1 done in v1.17.0, waiting for the user's in-game test**: hold to
+1. **Ammo counter in the hitscan script.** **M4A1 done in v1.17.0 and tested by the user (2026-10-01): tap fire,
+   full auto, empty and tactical reload, with and without silencer all work; feels more responsive than the guns
+   still on controllers (they react a tick or more later).** What was tested: hold to
    fire (auto, about 800 rpm, same as before), the ammo HUD counts down per shot, last round shows "No Ammunition" and
    swaps to the empty gun, empty and tactical reloads, no shots during a tactical reload, ADS kick/recoil, silencer
    sound, switching guns stops fire. How it works: `combat/firing.js`, `scriptFiring: true` in `weapons.js`, the
