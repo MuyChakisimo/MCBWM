@@ -38,16 +38,16 @@ work.
 
 ## Next, in order
 
-1. **First Java gun port: M9A4** (the user agreed to test one port first). Cleanest case: full Java sounds, no
-   attachments. `node tools/weapons/java-port.mjs m9a4 m9a4 --from p320 --name "M9A4"`, then `check.mjs`, bump the
-   pack version, commit. The user tests: crafting, aim (sight lines up?), reload empty/tactical, inspect, sounds.
-   If the aim is off, adjust `EYE_HEIGHT` / `EYE_DEPTH` / `HOLD_OFFSET` in `java-convert.mjs` (measured on 34 guns).
-2. **Ammo counter in the hitscan script** (the user wants it; needs in-game testing, so do it when they can test).
+1. **Ammo counter in the hitscan script** (user decided 2026-10-01: do this before any Java import, so ported guns copy the new firing path instead of the old per-gun controller logic; needs in-game testing).
    Move "remove one round, update HUD, swap to `<id>_emp` at 0, 'No Ammunition' title" from each gun's BP controller
    into `combat/hitscan.js`. Then fire timing can use `fireMode` / `rpm` / `burst` from `weapons.js` (one fixed mode
    per gun, no switching; the user chose: M16 and B93R burst, Double Barrel bursts both barrels, SCAR-H auto, G3/FAL/
    MK14 semi, CZ75 auto). Do the M4A1 first, have the user test, then roll out. Special cases: minigun overheat,
    tube-fed shotguns (`reload: "single"`), Golden Deagle and Vector per-magazine reloads, `storedAmmoDisplay` guns.
+2. **First Java gun port: M9A4**, after step 1 (the user agreed to test one port first). Cleanest case: full Java sounds, no
+   attachments. `node tools/weapons/java-port.mjs m9a4 m9a4 --from p320 --name "M9A4"`, then `check.mjs`, bump the
+   pack version, commit. The user tests: crafting, aim (sight lines up?), reload empty/tactical, inspect, sounds.
+   If the aim is off, adjust `EYE_HEIGHT` / `EYE_DEPTH` / `HOLD_OFFSET` in `java-convert.mjs` (measured on 34 guns).
 3. **Port the other Java guns** with `java-port.mjs` (templates must have their own arms model):
 
    | Java gun | from | notes |
@@ -77,6 +77,7 @@ work.
 
 ## Decisions the user already made (don't re-ask)
 
+- Order: ammo counter in the hitscan script first (M4A1 test, then all guns), then Java imports (M9A4 first).
 - Stats: headshot multipliers and damage falloff come from Java; new guns use `java-stats.mjs`'s proposals for now
   ("we'll modify later"). Fire modes as listed in step 2. MP7 950 auto, G18 1100 auto, Saiga-12 300 semi, Colt Python
   150 semi (real-world values; not in Java).
