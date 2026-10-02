@@ -188,6 +188,31 @@ const soundNames = new Map(); // our cue name -> Java sound path
     }
     log(`   hands from Java static_idle in ${shifted.join(", ")}`);
   }
+  // The draw plays on top of the hold (its own controller), and Bedrock adds the two. Java's draw gives the
+  // whole hand pose, so on top of the hold it doubled (the M9A4's right arm swung up while drawing). Keep only
+  // what the draw changes from static_idle: positions and rotations minus idle's, scales divided by it.
+  if (converted.idle) {
+    const idle = Object.fromEntries(Object.entries(converted.idle).map(([k, v]) => [k.toLowerCase(), v]));
+    const num = (v) => Array.isArray(v) && v.every((x) => typeof x === "number");
+    for (const k of replaced.filter((r) => /(^|\.)draw$/.test(r))) {
+      const bones = anims[`animation.${id}.${k}`].bones ?? {};
+      for (const [bone, ch] of Object.entries(bones)) {
+        const base = idle[bone.toLowerCase()];
+        if (!base || ["root", "rot", "joints"].includes(bone.toLowerCase())) continue;
+        for (const c of ["rotation", "position", "scale"]) {
+          if (!ch[c] || !num(base[c])) continue;
+          const rel = (v) => (num(v) ? v.map((x, i) => +(c === "scale" ? x / base[c][i] : x - base[c][i]).toFixed(4)) : v);
+          if (num(ch[c])) ch[c] = rel(ch[c]);
+          else for (const [t, key] of Object.entries(ch[c])) ch[c][t] = num(key) ? rel(key) : { ...key, ...(key.pre && { pre: rel(key.pre) }), ...(key.post && { post: rel(key.post) }) };
+          const none = c === "scale" ? 1 : 0;
+          const vals = num(ch[c]) ? [ch[c]] : Object.values(ch[c]).flatMap((key) => (num(key) ? [key] : [key.pre, key.post].filter(Boolean)));
+          if (vals.every((v) => num(v) && v.every((x) => Math.abs(x - none) < 1e-3))) delete ch[c];
+        }
+        if (!Object.keys(ch).length) delete bones[bone];
+      }
+      log(`   ${k}: hands relative to static_idle (it plays on top of the hold)`);
+    }
+  }
   // Sound cues: name them after our gun (tacz.<id>.<file>: letters, digits, _ and . only, or the game rejects the player entity;
   // the <id> lets gun.mjs remove find them) and drop
   // cues whose sound TACZ-JAVA doesn't have (Java plays nothing for them either).
@@ -279,6 +304,18 @@ const soundNames = new Map(); // our cue name -> Java sound path
   const falloff = Array.isArray(x.damage_adjust) ? x.damage_adjust.map((a) => [a.distance === "infinite" ? null : a.distance, +(a.damage / b.damage).toFixed(2)]) : null;
   const fireMode = javaData.fire_mode?.[0] ?? "semi";
   const bd = javaData.burst_data;
+  // Gunsmith recipe from Java's (forge tags -> our item names, crafting/craftingHelpers.js).
+  const TAGS = {
+    "forge:ingots/iron": "iron_ingot", "forge:ingots/gold": "gold_ingot", "forge:ingots/netherite": "netherite_ingot",
+    "forge:gems/lapis": "lapis_lazuli", "forge:gems/diamond": "diamond", "forge:gems/quartz": "quartz",
+    "forge:gems/amethyst": "amethyst_shard", "forge:rods/blaze": "blaze_rod", "minecraft:logs": "log",
+  };
+  const recipeFile = `data/tacz/recipes/gun/${javaId}.json`;
+  const recipe = java.has(recipeFile) ? java.json(recipeFile).materials.map((m) => {
+    const item = m.item.tag ? TAGS[m.item.tag] : m.item.item?.replace(/^minecraft:/, "");
+    if (!item) throw new Error(`${recipeFile}: no item name for ${JSON.stringify(m.item)}; add it to TAGS in java-port.mjs`);
+    return [item, m.count ?? 1];
+  }) : null;
   edit("TACZ-B/scripts/config/weapons.js", (t) => {
     const re = new RegExp(`(\\n  ${id}: \\{\\n)([\\s\\S]*?)(\\n  \\},\\n)`);
     const m = re.exec(t);
@@ -292,9 +329,15 @@ const soundNames = new Map(); // our cue name -> Java sound path
     fireMode === "burst" && bd ? set("burst", `{ count: ${bd.count ?? 3}, rpm: ${bd.bpm ?? javaData.rpm}, delay: ${bd.min_interval ?? 0.3} }`) : del("burst");
     if ((b.bullet_amount ?? 1) > 1) set("pellets", b.bullet_amount); else { del("pellets"); del("spread"); del("tracers"); }
     set("magazine", newMag); set("ammo", JSON.stringify(`krep:${newAmmo}`));
+    if (recipe) {
+      const r = /^(    \/\/ Java TACZ recipe\.\n)?    recipe: (\[\[.*\]\]|\[\n[\s\S]*?\n    \]),?$/m;
+      if (!r.test(body)) throw new Error(`${id}: no recipe line in weapons.js`);
+      body = body.replace(r, `    // Java TACZ recipe.\n    recipe: [${recipe.map(([i, n]) => `["${i}", ${n}]`).join(", ")}],`);
+    }
     return t.slice(0, m.index) + m[1] + body + m[3] + t.slice(m.index + m[0].length);
   });
   log(`6. stats: damage ${s.damage}, penetration ${s.penetration}, headshot ${x.head_shot_multiplier}, ${fireMode} ${javaData.rpm} rpm, falloff ${falloff ? "yes" : "no"}`);
+  log(recipe ? `   recipe from Java: ${recipe.map(([i, n]) => `${n} ${i}`).join(", ")}` : `   no Java recipe: kept ${from}'s`);
   if (newAmmo !== oldAmmo) { swapAmmo(id, oldAmmo, newAmmo); log(`   ammo: krep:${oldAmmo} -> krep:${newAmmo}`); }
   if (newMag !== oldMag) { resizeMagazine(id, oldMag, newMag); log(`   magazine: ${oldMag} -> ${newMag}`); }
 }

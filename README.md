@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.20.0`** for both packs. On a dedicated server set `"version": [1, 20, 0]` for both packs in the
+**Pack version is `1.21.0`** for both packs. On a dedicated server set `"version": [1, 21, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -132,11 +132,13 @@ shown), then replaces:
 - the gun texture and inventory icon
 - draw, shoot, reload and inspect animations with Java's; an empty inspect is added and wired if the starting gun
   has none. The hold, sprint and aim animations are moved to the pose computed from the Java model's `iron_view`
-  bone (`java-convert.mjs --compare` on the SKS: 0.02 blocks from our hand-tuned aim)
+  bone (`java-convert.mjs --compare` on the SKS: 0.02 blocks from our hand-tuned aim). The draw plays on top of
+  the hold, so its hand motion is kept relative to Java's `static_idle`
 - the sounds of those animations and the shot, from TACZ-JAVA (named `tacz.<id>.<file>`). Cues TACZ-JAVA has no
   file for are dropped; when an animation has none left, the starting gun's cues are kept, timed to the new length
 - stats (damage, penetration, headshot, falloff, fire mode, rpm, pellets) as proposed by `java-stats.mjs`, the ammo
-  item, and the magazine size (HUD, reload functions and events, and thresholds are regenerated; 3+ rounds)
+  item, and the magazine size (HUD, reload functions and events, and thresholds are regenerated; 3+ rounds), and the
+  gunsmith recipe from Java's (forge tags mapped to our item names)
 - when the starting gun hangs each arm off its own hand (P320, AA-12), the first-person arm layout, with
   `arm-layout.mjs` (also usable alone: `"$NODE" tools/weapons/arm-layout.mjs <gun> [--like p320]` puts a gun's arms
   on their own hand bones with the P320's offsets; pistols need it, or the right hand isn't seen)

@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.20.0** (both manifests; worlds need `[1, 20, 0]` in `world_*_packs.json`).
+- Pack version **1.21.0** (both manifests; worlds need `[1, 21, 0]` in `world_*_packs.json`).
 - 42 guns (41 original + the M9A4, the first Java port), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -64,14 +64,18 @@ work.
    front of the camera. Fixed in v1.20.0: new `tools/weapons/arm-layout.mjs` puts each arm under its own hand bone
    with the P320's offsets (shifted when the hand bones sit elsewhere), applied to m9a4, g17, g18, deagle, deagleg,
    b93, t50; java-port.mjs runs it when the template has that layout (step 7). Checked outside the game: each arm now
-   ends on its hand exactly as on the P320. **Waiting for the user's in-game test** of first person on those 7 pistols
-   (both hands on the grip in hold, aim, sprint, reloads and inspect; the Deagle shares the Golden Deagle's arms) and
-   the rest of the M9A4 list (crafting: Java recipe, 16
-   iron; aim/sights; empty and tactical reload; inspect and empty inspect; sounds; 17 rounds of 9mm). Fires from its
-   controller (template P320), not by script yet. Java falloff gives 117% damage within 18 blocks. (The user agreed to test one port first.) Cleanest case: full Java sounds, no
-   attachments. `node tools/weapons/java-port.mjs m9a4 m9a4 --from p320 --name "M9A4"`, then `check.mjs`, bump the
-   pack version, commit. The user tests: crafting, aim (sight lines up?), reload empty/tactical, inspect, sounds.
-   If the aim is off, adjust `EYE_HEIGHT` / `EYE_DEPTH` / `HOLD_OFFSET` in `java-convert.mjs` (measured on 34 guns).
+   ends on its hand exactly as on the P320. **User tested v1.20.0 (2026-10-01): right hand holds the gun on all of
+   M1911, B93R, G17, G18, Deagle, Golden Deagle, Timeless 50, Colt Python, P320, M9A4; M9A4 crafting (16 iron) and
+   ammo correct.** One problem left: the M9A4's right arm swung up ("saying hi") while drawing. Cause: the draw plays
+   on top of the hold and Bedrock adds them, and Java's draw gives the full hand pose (the right hand doubled).
+   Fixed in v1.21.0: java-port.mjs makes the draw's hands relative to static_idle; the M9A4 was re-ported.
+   java-port.mjs also takes the gunsmith recipe from Java now (no hand fix after each port). **Waiting for the user's
+   test of the M9A4 draw** (switch to it: hands go straight to the grip). Fires from its controller (template P320),
+   not by script yet. Java falloff gives 117% damage within 18 blocks. If the aim of a port is off, adjust
+   `EYE_HEIGHT` / `EYE_DEPTH` / `HOLD_OFFSET` in `java-convert.mjs` (measured on 34 guns).
+   **Fire modes:** the user noticed semi pistols (G17, P320) keep firing while the trigger is held. Every gun not on
+   script firing repeats while held (its BP controller loops); `fireMode: "semi"` (one shot per press) only applies
+   with `scriptFiring` (step 4).
 3. **Port the other Java guns** with `java-port.mjs` (templates must have their own arms model):
 
    | Java gun | from | notes |
