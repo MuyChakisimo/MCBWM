@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.22.4`** for both packs. On a dedicated server set `"version": [1, 22, 4]` for both packs in the
+**Pack version is `1.22.5`** for both packs. On a dedicated server set `"version": [1, 22, 5]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -112,6 +112,12 @@ every gun and removing the clone again (the packs come back byte for byte) and b
 Bedrock allows 32 player properties; guns with scopes add one (`krep:<id>scope`), and the tool refuses to go over.
 
 ### Porting a gun from Java TACZ
+
+The tested import corrections are applied by `tools/weapons/import-repair.mjs` at the end of the port.
+It repairs action timing/recovery, the affected hand layouts, SPAS-12 staged shell reloads, Taurus 943 grip
+placement and M320 ADS. Run `node tools/weapons/import-repair.mjs` to apply them to the existing imports
+without replacing weapon stats. Run `node tools/weapons/import-repair.test.mjs` for the focused regressions;
+visual poses still need testing in Minecraft.
 
 `reference/TACZ-JAVA.zip` must be present. Pick the most similar gun we have as the starting point (same kind of
 action and reload), one with its own first-person arms model (not M16/M16A1, Deagle/Golden Deagle, G17/G18,

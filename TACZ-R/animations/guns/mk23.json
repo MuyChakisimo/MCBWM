@@ -746,7 +746,8 @@
         "4.5667": {"effect": "tacz.mk23.mk23_inspect_toss"},
         "4.8333": {"effect": "tacz.mk23.mk23_inspect_chamber"},
         "5.8": {"effect": "tacz.mk23.mk23_inspect_end"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.mk23.fp.inspect": {
       "animation_length": 5.7333,
@@ -1065,7 +1066,8 @@
         "3.7667": {"effect": "tacz.mk23.mk23_inspect_chamber"},
         "4.6": {"effect": "tacz.mk23.mk23_inspect_charge"},
         "5.0333": {"effect": "tacz.mk23.mk23_inspect_hammer"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.mk23.fp.tac": {
       "animation_length": 2,
@@ -1261,7 +1263,8 @@
         "0.5333": {"effect": "tacz.mk23.mk23_reload_tactical_magout"},
         "0.8333": {"effect": "tacz.mk23.mk23_reload_tactical_magin"},
         "1.5333": {"effect": "tacz.mk23.mk23_reload_tactical_end"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.mk23.fp.hold": {
       "loop": true,
@@ -1623,7 +1626,7 @@
             "7.25": [0, 0, 0]
           }
         },
-        "root": {"rotation": [0, -180, 0]},
+        "root": {"rotation": [0, 180, 0]},
         "joints": {"position": [-3, 18.672, -21]},
         "lefthand": {"rotation": [-291.52645, -30.21045, 257.16425], "position": [7.25, -17, 6], "scale": [1, 1.5, 1]},
         "magazine_bullet": {"scale": 1},
@@ -1657,7 +1660,7 @@
             "0.1667": [0, 0, 0]
           }
         },
-        "root": {"rotation": [0, -180, 0]},
+        "root": {"rotation": [0, 180, 0]},
         "joints": {"position": {"0.0": [-3, 18.672, -21], "0.2083": [0, 19.672, -18]}},
         "lefthand": {"rotation": [-291.52645, -30.21045, 257.16425], "position": [7.25, -17, 6], "scale": [1, 1.5, 1]},
         "magazine_bullet": {"scale": 1},
@@ -1714,7 +1717,7 @@
             "0.8": [-1.24, -2.65, -0.32]
           }
         },
-        "root": {"rotation": [0, -180, 0]},
+        "root": {"rotation": [0, 180, 0]},
         "joints": {"position": [-1, 18.672, -19]},
         "lefthand": {"rotation": [-291.52645, -30.21045, 257.16425], "position": [7.25, -17, 6], "scale": [1, 1.5, 1]},
         "magazine_bullet": {"scale": 1},
@@ -2030,7 +2033,8 @@
         "0.6333": {"effect": "tacz.mk23.mk23_reload_tactical_magin"},
         "1.5": {"effect": "tacz.mk23.mk23_reload_empty_charge"},
         "1.8667": {"effect": "tacz.mk23.mk23_reload_tactical_end"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.mk23.fp.draw": {
       "animation_length": 0.875,

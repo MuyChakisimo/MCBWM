@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.22.4** (both manifests; worlds need `[1, 22, 4]` in `world_*_packs.json`).
+- Pack version **1.22.5** (both manifests; worlds need `[1, 22, 5]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -144,6 +144,65 @@ work.
      (z left alone: M95 -12, SPR-15/SPAS-12 +9 looked right). CZ75 +2.8, MK23 +2.3, Taurus 943 +3.2, M320 -3.3.
    - SPAS-12 shell reload still the M870's (Java's reload_intro / reload_loop / reload_end not mapped to our
      reload / reloadtac / rend states yet): left hand on the pump during reload.
+   **Latest user re-test, following v1.22.4 (2026-10-02):**
+   - Kar98k: empty and tactical reloads now play, but the gun jumps slightly up and back when a reload ends.
+     Right hand missing during reload and inspect. The bolt cycle was part of the test request, but this report
+     did not explicitly confirm its result; do not mark it passed yet.
+   - M700: right hand missing during reload; the same small jump after reload as the Kar98k. After each shot,
+     the weapon disappears for about two frames and returns. Bolt motion itself not explicitly confirmed.
+   - Revolver fire rates: improved (user confirmed).
+   - SPR-15: left hand still far out of position in first person.
+   - Taurus 943: still near the floor, between the legs, in third person.
+   - CZ75: left hand missing during reload. This report did not explicitly confirm third-person height or the
+     earlier after-reload glitch; keep those open until confirmed.
+   - MK23: placement now looks good. User's wording about the reload left arm was ambiguous ("except left arm
+     now spawning on reload"); clarification requested before marking the missing-hand issue fixed.
+   - M320: still far to the left when aiming/crouching. Third-person height not explicitly confirmed.
+   - SPAS-12: reload left hand stays on the pump/barrel handle; gun briefly disappears after each shot;
+     right hand missing during inspect. Pump motion itself not explicitly confirmed.
+   - RPK and DB-4 Ursus: no new result in this report; earlier issues remain open.
+   **v1.22.5 import repair implemented (2026-10-02; awaiting in-game confirmation):**
+   - Kar98k/M700: BP reload and bolt durations now match RP recovery, and BP ammo timelines are rescaled with
+     the reloads. Preserve late Java recovery keys (Kar98k clip reload 3.55 s; bolt 1.4667 s), rather than cutting
+     them off at the exported animation_length. RP actions hold their final pose until the controller releases;
+     outgoing reload/inspect blends return to hold smoothly. M700 bolt 0.85 s, tactical reload 2.6 s.
+   - Kar98k, M700, SPAS-12 and SPR-15: gun and skin-arm geometries now attach each arm to its own Java hand
+     chain, with P320 arm offsets adjusted for each model's hand pivots. This is intended to restore missing
+     right hands and correct the SPR-15 support hand; visual confirmation is still required.
+   - CZ75/MK23: hold/reload root orientations now use the same 180-degree value, with shortest-path action
+     blends and held recovery poses. Their own-hand layout is retained. Re-test the missing reload left hand;
+     its visibility is not proven by the offline checks. MK23 third-person joint placement is retained.
+   - SPAS-12: replace inherited M870 static reload hands with Java reload_empty_intro/reload_intro, repeated
+     reload_loop stages and reload_end. Empty reload awards five shells (one chamber + four tube); tactical
+     can add five up to the existing six-round limit. Ammo commands and Java sound cues follow the stages.
+     The BP finish states now wait for the 0.8667 s closing animation; RP enters rend before returning to hold.
+     The pump is 0.6 s in both packs and holds its final pose during delayed property cleanup.
+   - Taurus 943: align its third-person grip to the working MK23 grip in hold, aim and sprint (including the
+     rotated/scaled sprint offset), and target body instead of the nonexistent torso bone. This is a placement
+     correction to test, not confirmation that the between-the-legs rendering issue is resolved.
+   - M320 first-person ADS: account for iron_view's sideways offset and 7.5-degree pitch, removing the inherited
+     RPG aim roll. Re-test crouching/aiming in both camera views; third-person launcher aim is not verified.
+   - Normalize inherited Joints channels to the converted joints bone. No damage, recoil, recipes, attachment
+     rollout or script-firing rollout in this step. Previously improved revolver fire rates remain unchanged.
+   - Added tools/weapons/import-repair.mjs, invoked by java-port.mjs for these source guns, so re-porting retains
+     the repairs. It can also repair existing imports without replacing their weapon configs. Re-running it
+     was byte-for-byte idempotent across pack files. import-repair.test.mjs checks recovery gaps, reload shell
+     counts, moving SPAS hands, sight alignment, arm parents and the confirmed MK23 joint position.
+   - Validation: check.mjs passed (55 guns, 21 ammo types); validate.mjs passed scripts and 684 schema-checked
+     JSON files. Final scratch clone/remove/port suite passed 33/33, including fresh ports of all eight repaired
+     guns (plus RPK, Rhino and DB-4) and byte-for-byte pack restoration after removing each port. git diff
+     --check passed. No commit or push made; user commits the changes.
+   **Pre-repair code leads (historical evidence):**
+   - M700 BP bolt state lasts 1.25 s, while RP fp.bolt lasts 0.85 s without hold_on_last_frame. SPAS-12 BP bolt
+     lasts 0.75 s, while RP fp.pump lasts 0.60 s without hold_on_last_frame. Their RP bolt states exit on the
+     BP ammoreload property, so a completed animation may leave a pose gap before the state exits.
+   - Kar98k BP tactical/empty reloads last 3.0/3.7 s; both RP reload animations last 3.45 s. M700 tactical reload
+     is 3.0 s in BP vs 2.6 s in RP. Check these timings and blends when investigating the end-of-reload jump.
+   - Kar98k, M700 and SPAS-12 still use mirrored arms (rightArm under lefthand_pos). Trace both hand chains
+     through reload/inspect poses before changing their layout or offsets; do not apply a pistol fix blindly.
+   - M320 Java iron_view has pivot [2,16.54788,7.95971] and rotation [7.5,0,0]. java-convert.pose() currently
+     uses only pivot y/z, sets aim x to zero, and ignores rotation; the port also keeps the RPG's aim roll.
+     Check the sight's full transform when aligning ADS.
    **Still open, with leads:**
    - Third person: every Java model has a `thirdperson_hand` bone (Java display scale 0.6). Same as the template's
      (M9A4 = P320: [0,8,1.75]) looks right; CZ75 is 3.25 lower (looks too low), M320 4.4 higher than the RPG (too
@@ -153,10 +212,17 @@ work.
      right arm missing). Reload left hand: CZ75/MK23 missing, SPAS-12 stuck on the pump. Check the Java reload's
      `lefthand` / `mag_and_lefthand` keyframes against our arm layout (fk.cjs / rel.cjs in a scratch dir).
    - RPK: no ammo HUD, unlimited ammo, gun gone after inspect until firing (Type 81 template; objective exists).
-   - M700: no bolt animation after each shot (AWM's `fp.bolt` kept; Java's bolt is in its shoot animation?).
+   - M700: Java fp.bolt is now mapped in v1.22.4; latest report is a brief disappearance after each shot and
+     missing reload right hand (see re-test and timing leads above). Do not keep treating it as an unmapped bolt.
    - M320 ADS far left: its aim pose (Java `iron_view`) is probably wrong for a launcher.
    The M320's description said RPG-7 rockets (copied from the RPG); it already reloaded 40mm grenades. Fixed text.
-   **Then waiting for the user's in-game test** of each: first person hold/aim/draw, reloads, inspect, sounds,
+   **Next:** focused v1.22.5 in-game re-test: Kar98k/M700 empty + tactical reload and each-shot bolt; SPAS-12
+   empty + partial + interrupted reload, limited loose ammo/ammo box/creative, pump and inspect; SPR-15 hands;
+   CZ75/MK23 reload hands; Taurus 943 third person; M320 crouched ADS in first and third person. Also test the
+   last shot before empty, switching weapons mid-action, and listen for reload sounds. No new in-game test
+   has been performed by the agent. User confirmed (2026-10-02) that the missing/misplaced hands, including
+   CZ75/MK23 reloads and SPR-15, were seen in first person. MK23 wording clarification remains pending.
+   Other guns still need confirmation of first person hold/aim/draw, reloads, inspect, sounds,
    crafting, ammo. Recipes are Java's (the M95 is 300 iron, 60 gold, 15 diamonds, 3 netherite, 5 blaze rods).
    **Still to port:**
    - springfield1873, lonetrail (1-round guns): `resizeMagazine` refuses magazines under 3 (its number matching

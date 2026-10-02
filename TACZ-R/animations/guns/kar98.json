@@ -101,7 +101,6 @@
             "3.2": [0, -0.125, -1]
           }
         },
-        "Joints": {"position": [-3, 18.985, -13], "scale": 0.6},
         "waist": {
           "rotation": [
             "query.is_swimming ? 0.0 : 0.0 + math.clamp(query.target_x_rotation, -45.0, 45.0) -this",
@@ -156,7 +155,8 @@
             "2.8": [-2.54875, -1.15, -6.22],
             "3.2": [-2.45, -1, -6.225]
           }
-        }
+        },
+        "joints": {"position": [-3, 18.985, -13], "scale": 0.6}
       }
     },
     "animation.kar98.tp.sprint": {
@@ -208,7 +208,6 @@
             "0.6": [0, -0.13, -1]
           }
         },
-        "Joints": {"position": [-2, 2.675, -2.1]},
         "AWP": {
           "rotation": {"0.0": [0, -52.5, 0], "0.2": [11.26969, -47.60677, 1.6033], "0.5": [0, -60, 0], "0.6": [0, -52.5, 0]},
           "position": {
@@ -280,7 +279,8 @@
             "0.5": [-0.23, -1.55, -1.68],
             "0.6": [-0.225, -1.55, -1.675]
           }
-        }
+        },
+        "joints": {"position": [-2, 2.675, -2.1]}
       }
     },
     "animation.kar98.tp.sight": {
@@ -343,7 +343,6 @@
             0
           ]
         },
-        "Joints": {"position": [-3, 18.985, -13], "scale": 0.6},
         "standard_8_reticle": {"scale": 0},
         "acog_reticle": {"scale": 0},
         "elcan_reticle": {"scale": 0},
@@ -392,7 +391,8 @@
             "2.8": {"post": [-2.54875, -1.64375, -5.77], "lerp_mode": "catmullrom"},
             "3.2": {"post": [-2.45, -1.49375, -5.775], "lerp_mode": "catmullrom"}
           }
-        }
+        },
+        "joints": {"position": [-3, 18.985, -13], "scale": 0.6}
       }
     },
     "animation.kar98.fp.hold": {
@@ -756,7 +756,6 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "Joints": {"position": [-3, 17.75, -20]},
         "righthand": {
           "rotation": [88.44664, 10.81558, -164.44915],
           "position": [-7.10298, -14.34534, 12.67291],
@@ -772,8 +771,9 @@
         "bullet_in_gunbody": {"scale": 0},
         "bullet_in_bolt": {"scale": 1},
         "bullet_792x57_3": {"scale": 0},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "joints": {"position": [-3, 17.75, -20]}
       }
     },
     "animation.kar98.fp.sight": {
@@ -803,7 +803,6 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "Joints": {"position": {"0.0": [-3, 17.75, -20], "0.2917": [0, 18.75, -17]}},
         "righthand": {
           "rotation": [88.44664, 10.81558, -164.44915],
           "position": [-7.10298, -14.34534, 12.67291],
@@ -819,8 +818,9 @@
         "bullet_in_gunbody": {"scale": 0},
         "bullet_in_bolt": {"scale": 1},
         "bullet_792x57_3": {"scale": 0},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "joints": {"position": {"0.0": [-3, 17.75, -20], "0.2917": [0, 18.75, -17]}}
       }
     },
     "animation.kar98.fp.sprint": {
@@ -868,7 +868,6 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "Joints": {"position": [-3, 17.75, -20]},
         "righthand": {
           "rotation": [88.44664, 10.81558, -164.44915],
           "position": [-7.10298, -14.34534, 12.67291],
@@ -884,8 +883,9 @@
         "bullet_in_gunbody": {"scale": 0},
         "bullet_in_bolt": {"scale": 1},
         "bullet_792x57_3": {"scale": 0},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "joints": {"position": [-3, 17.75, -20]}
       }
     },
     "animation.kar98.draw": {
@@ -933,7 +933,7 @@
     },
     "animation.kar98.fp.bolt": {
       "loop": "hold_on_last_frame",
-      "animation_length": 1.2667,
+      "animation_length": 1.4667,
       "bones": {
         "righthand": {
           "rotation": {
@@ -1067,8 +1067,8 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 17.75, -20]}
       },
       "sound_effects": {
@@ -1078,7 +1078,7 @@
       }
     },
     "animation.kar98.fp.tac": {
-      "animation_length": 3.45,
+      "animation_length": 3.55,
       "bones": {
         "rot": {
           "rotation": {
@@ -1380,8 +1380,8 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 17.75, -20]}
       },
       "sound_effects": {
@@ -1392,10 +1392,11 @@
         "1.9333": {"effect": "tacz.kar98.kar98_reload_press"},
         "2.5833": {"effect": "tacz.kar98.kar98_reload_bolt_in"},
         "2.9333": {"effect": "tacz.kar98.kar98_reload_end"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.kar98.fp.reload": {
-      "animation_length": 3.45,
+      "animation_length": 3.55,
       "bones": {
         "rot": {
           "rotation": {
@@ -1697,8 +1698,8 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 17.75, -20]}
       },
       "sound_effects": {
@@ -1709,10 +1710,11 @@
         "1.9333": {"effect": "tacz.kar98.kar98_reload_press"},
         "2.5833": {"effect": "tacz.kar98.kar98_reload_bolt_in"},
         "2.9333": {"effect": "tacz.kar98.kar98_reload_end"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.kar98.fp.inspect": {
-      "animation_length": 7.6333,
+      "animation_length": 7.65,
       "bones": {
         "rot": {
           "rotation": {
@@ -2068,8 +2070,8 @@
         "bullet_in_gunbody": {"scale": 0},
         "bullet_in_bolt": {"scale": 0},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 17.75, -20]}
       },
       "sound_effects": {
@@ -2082,7 +2084,8 @@
         "6.0833": {"effect": "tacz.kar98.kar98_reload_bullet_insert"},
         "6.7667": {"effect": "tacz.kar98.kar98_bolt_in"},
         "7.1167": {"effect": "tacz.kar98.kar98_inspect_end"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.kar98.fp.inspectemp": {
       "animation_length": 5.9333,
@@ -2270,8 +2273,8 @@
         "bullet_and_mag": {"scale": 0},
         "bullet_8": {"scale": 0},
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -12.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 17.75, -20]}
       },
       "sound_effects": {

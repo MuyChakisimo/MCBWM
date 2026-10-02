@@ -74,7 +74,9 @@
             {
               "hold": "(v.taurus943 && q.any_animation_finished) || (v.taurus943 && q.is_using_item) || (v.taurus943 && q.is_sneaking)"
             }
-          ]
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "sprint": {
           "blend_transition": 0.16,
@@ -90,14 +92,18 @@
         },
         "reload": {
           "animations": [{"taurus943_fp_reload": "v.taurus943"}],
-          "transitions": [{"hold": "v.taurus943 && (q.all_animations_finished || q.mark_variant != 1)"}]
+          "transitions": [{"hold": "v.taurus943 && (q.all_animations_finished || q.mark_variant != 1)"}],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "reloadtac": {
           "animations": [{"taurus943_fp_reload_tac": "v.taurus943"}],
           "transitions": [
             {"hold": "v.taurus943 && q.all_animations_finished"},
             {"hold": "v.taurus943b && q.mark_variant != 2"}
-          ]
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "sight": {
           "blend_transition": 0.16,

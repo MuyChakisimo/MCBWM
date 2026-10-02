@@ -7852,5 +7852,35 @@
     "sounds": [
       "sounds/spr15/spr15hb_inspect_end"
     ]
+  },
+  "tacz.spas12.spas12_pumpon": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_pumpon"
+    ]
+  },
+  "tacz.spas12.spas12_shellimpact": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_shellimpact"
+    ]
+  },
+  "tacz.spas12.spas12_move_4": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_move_4"
+    ]
+  },
+  "tacz.spas12.spas12_bulletinbore": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/m1014/m1014_bulletinbore"
+    ]
+  },
+  "tacz.spas12.spas12_bolthandleoff": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/spas12/spas12_bolthandleoff"
+    ]
   }
 }

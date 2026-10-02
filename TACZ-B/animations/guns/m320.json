@@ -4,10 +4,10 @@
     "animation.m320.shoot": {"loop": false, "animation_length": 0.4, "timeline": {}},
     "animation.m320.reload": {
       "loop": "hold_on_last_frame",
-      "animation_length": 3.5,
+      "animation_length": 3.04,
       "timeline": {
-        "3.4": ["/replaceitem entity @s slot.weapon.mainhand 1 krep:m320 1 0"],
-        "3.3": ["/clear @s[m=!c] krep:grenade40 0 1"]
+        "2.9531": ["/replaceitem entity @s slot.weapon.mainhand 1 krep:m320 1 0"],
+        "2.8663": ["/clear @s[m=!c] krep:grenade40 0 1"]
       }
     }
   }

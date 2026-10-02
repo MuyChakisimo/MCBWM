@@ -75,11 +75,14 @@
               "hold": "(v.spas12 && q.any_animation_finished) || (v.spas12 && q.is_using_item) || (v.spas12 && q.is_sneaking)"
             },
             {"bolt": "v.spas12b && q.property('krep:ammoreload')==3"}
-          ]
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "bolt": {
           "animations": [{"spas12_fp_pump": "v.spas12"}],
-          "transitions": [{"hold": "(v.spas12 && q.property('krep:ammoreload')!=3)"}]
+          "transitions": [{"hold": "(v.spas12 && q.property('krep:ammoreload')!=3)"}],
+          "blend_via_shortest_path": true
         },
         "sprint": {
           "blend_transition": 0.13,
@@ -95,25 +98,16 @@
           ]
         },
         "reload": {
-          "blend_transition": 0.13,
+          "blend_transition": 0.1,
           "blend_via_shortest_path": true,
           "animations": [{"spas12_fp_reload": "v.spas12"}],
-          "transitions": [
-            {
-              "hold": "v.spas12 && (q.any_animation_finished || q.mark_variant != 1 && q.property('krep:ammoreload')!=411)"
-            },
-            {"rend": "v.spas12 && q.property('krep:ammoreload')!=411"}
-          ]
+          "transitions": [{"rend": "v.spas12 && q.property('krep:ammoreload')!=411"}, {"hold": "!v.spas12"}]
         },
         "reloadtac": {
-          "blend_transition": 0.13,
+          "blend_transition": 0.1,
           "blend_via_shortest_path": true,
           "animations": [{"spas12_fp_reload_tac": "v.spas12"}],
-          "transitions": [
-            {"rend": "v.spas12 && q.property('krep:ammoreload')!=411"},
-            {"hold": "v.spas12 && q.mark_variant != 2 && q.property('krep:ammoreload')!=411"},
-            {"hold": "!v.spas12"}
-          ]
+          "transitions": [{"rend": "v.spas12 && q.property('krep:ammoreload')!=411"}, {"hold": "!v.spas12"}]
         },
         "rend": {
           "animations": [{"spas12_fp_rend": "v.spas12"}],
@@ -121,7 +115,9 @@
             {"hold": "v.spas12 && q.any_animation_finished"},
             {"hold": "!v.spas12"},
             {"bolt": "v.spas12b && q.property('krep:ammoreload')==3"}
-          ]
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "sight": {
           "blend_transition": 0.13,

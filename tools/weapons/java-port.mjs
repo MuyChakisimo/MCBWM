@@ -24,6 +24,7 @@ import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
 import { convertGun, armsModel, FIXED_FP } from "./java-convert.mjs";
 import { armLayout } from "./arm-layout.mjs";
+import { repairImport } from "./import-repair.mjs";
 const require = createRequire(import.meta.url);
 const { parse } = require("./lenient.cjs");
 const { format } = require("./format.cjs");
@@ -408,6 +409,7 @@ const soundNames = new Map(); // our cue name -> Java sound path
     armLayout(root, [id], like, log);
   }
 }
+repairImport(root, javaId, id, log);
 log(`\nDone. Run tools/weapons/check.mjs, then test ${id} in game (aim, reloads, sounds).`);
 
 // ---------------------------------------------------------------- helpers

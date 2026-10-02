@@ -74,7 +74,9 @@
             {
               "hold": "(v.mk23 && q.any_animation_finished) || (v.mk23 && q.is_using_item) || (v.mk23 && q.is_sneaking)"
             }
-          ]
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "sprint": {
           "blend_transition": 0.16,
@@ -90,11 +92,15 @@
         },
         "reload": {
           "animations": [{"mk23_fp_reload": "v.mk23"}],
-          "transitions": [{"hold": "v.mk23 && (q.all_animations_finished || q.mark_variant != 1)"}]
+          "transitions": [{"hold": "v.mk23 && (q.all_animations_finished || q.mark_variant != 1)"}],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "reloadtac": {
           "animations": [{"mk23_fp_reload_tac": "v.mk23"}],
-          "transitions": [{"hold": "v.mk23 && q.all_animations_finished"}, {"hold": "v.mk23b && q.mark_variant != 2"}]
+          "transitions": [{"hold": "v.mk23 && q.all_animations_finished"}, {"hold": "v.mk23b && q.mark_variant != 2"}],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "sight": {
           "blend_transition": 0.16,

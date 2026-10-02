@@ -158,8 +158,9 @@
           "on_entry": ["/function spas12", "@s krep:reload", "@s spas12:end"],
           "on_exit": ["@s krep:noreload", "@s spas12:normal"],
           "transitions": [
+            {"setup": "q.all_animations_finished"},
             {
-              "setup": "query.get_equipped_item_name=='spas12' || query.get_equipped_item_name=='spas12_emp'"
+              "setup": "query.get_equipped_item_name!='spas12' && query.get_equipped_item_name!='spas12_emp'"
             }
           ]
         },
@@ -172,8 +173,9 @@
           "on_entry": ["/function spas12", "@s krep:reloadtac", "@s spas12:end"],
           "on_exit": ["@s krep:noreload", "@s spas12:normal"],
           "transitions": [
+            {"setup": "q.all_animations_finished"},
             {
-              "setup": "query.get_equipped_item_name=='spas12' || query.get_equipped_item_name=='spas12_emp'"
+              "setup": "query.get_equipped_item_name!='spas12' && query.get_equipped_item_name!='spas12_emp'"
             }
           ]
         }

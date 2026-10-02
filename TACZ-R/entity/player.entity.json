@@ -2731,7 +2731,12 @@
         "tacz.spr15.spr15hb_inspect_rotate2": "tacz.spr15.spr15hb_inspect_rotate2",
         "tacz.spr15.spr15hb_inspect_rattle": "tacz.spr15.spr15hb_inspect_rattle",
         "tacz.spr15.spr15hb_inspect_rattle2": "tacz.spr15.spr15hb_inspect_rattle2",
-        "tacz.spr15.spr15hb_inspect_end": "tacz.spr15.spr15hb_inspect_end"
+        "tacz.spr15.spr15hb_inspect_end": "tacz.spr15.spr15hb_inspect_end",
+        "tacz.spas12.spas12_pumpon": "tacz.spas12.spas12_pumpon",
+        "tacz.spas12.spas12_shellimpact": "tacz.spas12.spas12_shellimpact",
+        "tacz.spas12.spas12_move_4": "tacz.spas12.spas12_move_4",
+        "tacz.spas12.spas12_bulletinbore": "tacz.spas12.spas12_bulletinbore",
+        "tacz.spas12.spas12_bolthandleoff": "tacz.spas12.spas12_bolthandleoff"
       },
       "particle_effects": {
         "krep.muzzlesmoke": "krep:nothin",

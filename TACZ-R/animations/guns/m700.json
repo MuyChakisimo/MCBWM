@@ -66,7 +66,6 @@
             "3.2": [0, -0.125, -1]
           }
         },
-        "Joints": {"position": [-3, 19.6, -13], "scale": 0.6},
         "waist": {
           "rotation": [
             "query.is_swimming ? 0.0 : 0.0 + math.clamp(query.target_x_rotation, -45.0, 45.0) -this",
@@ -121,7 +120,8 @@
             "2.8": [-2.54875, -1.15, -6.22],
             "3.2": [-2.45, -1, -6.225]
           }
-        }
+        },
+        "joints": {"position": [-3, 19.6, -13], "scale": 0.6}
       }
     },
     "animation.m700.tp.sprint": {
@@ -173,7 +173,6 @@
             "0.6": [0, -0.13, -1]
           }
         },
-        "Joints": {"position": [-2, 3.7, -2.1]},
         "AWP": {
           "rotation": {"0.0": [0, -52.5, 0], "0.2": [11.26969, -47.60677, 1.6033], "0.5": [0, -60, 0], "0.6": [0, -52.5, 0]},
           "position": {
@@ -245,7 +244,8 @@
             "0.5": [-0.23, -1.55, -1.68],
             "0.6": [-0.225, -1.55, -1.675]
           }
-        }
+        },
+        "joints": {"position": [-2, 3.7, -2.1]}
       }
     },
     "animation.m700.tp.sight": {
@@ -308,7 +308,6 @@
             0
           ]
         },
-        "Joints": {"position": [-3, 19.6, -13], "scale": 0.6},
         "standard_8_reticle": {"scale": 0},
         "acog_reticle": {"scale": 0},
         "elcan_reticle": {"scale": 0},
@@ -357,7 +356,8 @@
             "2.8": {"post": [-2.54875, -1.64375, -5.77], "lerp_mode": "catmullrom"},
             "3.2": {"post": [-2.45, -1.49375, -5.775], "lerp_mode": "catmullrom"}
           }
-        }
+        },
+        "joints": {"position": [-3, 19.6, -13], "scale": 0.6}
       }
     },
     "animation.m700.fp.hold": {
@@ -721,7 +721,6 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "Joints": {"position": [-3, 18.094, -18.5]},
         "constraint": {"rotation": [0.25, 0.35, 0.2], "position": [0.1, 0.1, 0.1]},
         "righthand": {
           "rotation": [99.13083, 12.94967, -178.84728],
@@ -733,8 +732,9 @@
           "position": [7.925, -16.15, -2.6],
           "scale": [1, 1.5, 1]
         },
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [8.8, -11, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -11.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "joints": {"position": [-3, 18.094, -18.5]}
       }
     },
     "animation.m700.fp.sight": {
@@ -764,7 +764,6 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "Joints": {"position": {"0.0": [-3, 18.094, -18.5], "0.2917": [0, 19.094, -15.5]}},
         "constraint": {"rotation": [0.25, 0.35, 0.2], "position": [0.1, 0.1, 0.1]},
         "righthand": {
           "rotation": [99.13083, 12.94967, -178.84728],
@@ -776,8 +775,9 @@
           "position": [7.925, -16.15, -2.6],
           "scale": [1, 1.5, 1]
         },
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [8.8, -11, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -11.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "joints": {"position": {"0.0": [-3, 18.094, -18.5], "0.2917": [0, 19.094, -15.5]}}
       }
     },
     "animation.m700.fp.sprint": {
@@ -825,7 +825,6 @@
           }
         },
         "root": {"rotation": [0, 180, 0]},
-        "Joints": {"position": [-3, 18.094, -18.5]},
         "constraint": {"rotation": [0.25, 0.35, 0.2], "position": [0.1, 0.1, 0.1]},
         "righthand": {
           "rotation": [99.13083, 12.94967, -178.84728],
@@ -837,8 +836,9 @@
           "position": [7.925, -16.15, -2.6],
           "scale": [1, 1.5, 1]
         },
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
+        "rightArm": {"rotation": [0, 0, -180], "position": [8.8, -11, -0.05], "scale": [0.79, 1, 1]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -11.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "joints": {"position": [-3, 18.094, -18.5]}
       }
     },
     "animation.m700.draw": {
@@ -983,15 +983,16 @@
           "scale": [1, 1.5, 1]
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -11.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [8.8, -11, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 18.094, -18.5]}
       },
       "sound_effects": {
         "0.05": {"effect": "tacz.m700.m700_bolt_out"},
         "0.3": {"effect": "tacz.m700.m700_bolt_in"},
         "0.6": {"effect": "tacz.m700.m700_shell_drop"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.m700.fp.tac": {
       "animation_length": 2.6,
@@ -1114,8 +1115,8 @@
           "scale": [1, 1.5, 1]
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -11.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [8.8, -11, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 18.094, -18.5]}
       },
       "sound_effects": {
@@ -1123,7 +1124,8 @@
         "0.45": {"effect": "tacz.m700.m700_reload_magout"},
         "1.45": {"effect": "tacz.m700.m700_reload_magin"},
         "1.65": {"effect": "tacz.m700.m700_reload_end"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.m700.fp.reload": {
       "animation_length": 3.7,
@@ -1348,8 +1350,8 @@
           "scale": [1, 1.5, 1]
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -11.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [8.8, -11, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 18.094, -18.5]}
       },
       "sound_effects": {
@@ -1360,7 +1362,8 @@
         "1.95": {"effect": "tacz.m700.m700_reload_magin"},
         "2.45": {"effect": "tacz.m700.m700_bolt_in"},
         "2.8": {"effect": "tacz.m700.m700_reload_end"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.m700.fp.inspect": {
       "animation_length": 5.65,
@@ -1603,8 +1606,8 @@
           "scale": [1, 1.5, 1]
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -11.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [8.8, -11, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 18.094, -18.5]}
       },
       "sound_effects": {
@@ -1614,7 +1617,8 @@
         "3.25": {"effect": "tacz.m700.m700_bolt_out"},
         "4.45": {"effect": "tacz.m700.m700_bolt_in"},
         "4.8": {"effect": "tacz.m700.m700_reload_end"}
-      }
+      },
+      "loop": "hold_on_last_frame"
     },
     "animation.m700.fp.inspectemp": {
       "animation_length": 5.8,
@@ -1869,8 +1873,8 @@
           "scale": [1, 1.5, 1]
         },
         "root": {"rotation": [0, 180, 0]},
-        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]},
-        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, -180], "position": [-9.648, -11.0231, -0.0464], "scale": [0.79, 1, 1]},
+        "rightArm": {"rotation": [0, 0, -180], "position": [8.8, -11, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 18.094, -18.5]}
       },
       "sound_effects": {

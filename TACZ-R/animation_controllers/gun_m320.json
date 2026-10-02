@@ -60,11 +60,15 @@
             {
               "hold": "(v.m320 && q.any_animation_finished) || (v.m320 && q.is_using_item) || (v.m320 && q.is_sneaking)"
             }
-          ]
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "reload": {
           "animations": [{"m320_fp_reload": "v.m320"}],
-          "transitions": [{"hold": "v.m320 && (q.any_animation_finished || q.mark_variant != 1)"}]
+          "transitions": [{"hold": "v.m320 && (q.any_animation_finished || q.mark_variant != 1)"}],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "sight": {
           "blend_transition": 0.13,

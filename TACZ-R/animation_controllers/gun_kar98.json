@@ -50,11 +50,14 @@
               "hold": "(v.kar98 && q.any_animation_finished) || (v.kar98 && q.is_using_item) || (v.kar98 && q.is_sneaking)"
             },
             {"bolt": "v.kar98b && q.property('krep:ammoreload')==1"}
-          ]
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "bolt": {
           "animations": [{"kar98_fp_bolt": "v.kar98"}],
-          "transitions": [{"hold": "(v.kar98 && q.property('krep:ammoreload')!=1)"}]
+          "transitions": [{"hold": "(v.kar98 && q.property('krep:ammoreload')!=1)"}],
+          "blend_via_shortest_path": true
         },
         "sprint": {
           "blend_transition": 0.13,
@@ -71,11 +74,15 @@
         },
         "reload": {
           "animations": [{"kar98_fp_reload": "v.kar98"}],
-          "transitions": [{"hold": "v.kar98 && (q.any_animation_finished || q.mark_variant != 1)"}]
+          "transitions": [{"hold": "v.kar98 && (q.any_animation_finished || q.mark_variant != 1)"}],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "reloadtac": {
           "animations": [{"kar98_fp_reload_tac": "v.kar98"}],
-          "transitions": [{"hold": "v.kar98 && q.any_animation_finished"}, {"hold": "v.kar98 && q.mark_variant != 2"}]
+          "transitions": [{"hold": "v.kar98 && q.any_animation_finished"}, {"hold": "v.kar98 && q.mark_variant != 2"}],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
         },
         "sight": {
           "blend_transition": 0.13,

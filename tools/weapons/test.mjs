@@ -24,7 +24,7 @@ const QUICK = ["sks", "m4a1", "m16", "deagle", "fal", "vector", "rpg", "m870", "
 // copy and the port compared with that state (porting it under another id fails: its Java sound names
 // contain its own id). cz75 from the P320 covers a source gun with the other arm layout (right arm on the
 // right hand; java-port.mjs steps 4 and 7), rhino357 from the Colt Python a Java pistol from a mirrored source.
-const PORTS = [["cz75", "cz75", "p320"], ["rhino357", "rhino357", "cp"], ["spr15hb", "spr15", "m4a1"], ["rpk", "rpk", "type81"], ["kar98", "kar98", "awp"], ["spas_12", "spas12", "m870"], ["db_long", "dblong", "db"]];
+const PORTS = [["cz75", "cz75", "p320"], ["rhino357", "rhino357", "cp"], ["spr15hb", "spr15", "m4a1"], ["rpk", "rpk", "type81"], ["kar98", "kar98", "awp"], ["m700", "m700", "awp"], ["spas_12", "spas12", "m870"], ["db_long", "dblong", "db"], ["hk_mk23", "mk23", "p320"], ["taurus943", "taurus943", "p320"], ["m320", "m320", "rpg"]];
 
 const walk = (d) => (fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)])) : []);
 const rel = (base, f) => path.relative(base, f).split(path.sep).join("/");
@@ -74,6 +74,10 @@ const report = (name, ok, detail = "") => {
   if (!c.ok) finish();
 }
 const { WEAPONS } = await import(pathToFileURL(path.join(work, "TACZ-B/scripts/config/weapons.js")).href);
+{
+  const r = run("tools/weapons/import-repair.test.mjs");
+  report("import animation regressions", r.ok, r.ok ? "" : lastLines(r.out, 12));
+}
 const guns = full ? Object.keys(WEAPONS) : QUICK.filter((g) => WEAPONS[g]);
 
 for (const g of guns) {
