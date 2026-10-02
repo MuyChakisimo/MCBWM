@@ -4,21 +4,21 @@
     "name": "TACZ Behavior v1.0.2 TRANSLATED EDITION",
     "description": "Official port of the TACZ mod. Mod developer: Akang Krep. Translators: GtaSaa2000, CodeKozak. Translated into Ukrainian, Russian, English and Polish.",
     "uuid": "4f2a831e-9d12-4c6b-96e5-22a83b9f1a01",
-    "version": [1, 18, 0],
+    "version": [1, 19, 0],
     "min_engine_version": [1, 20, 0]
   },
   "modules": [
     {
       "type": "data",
       "uuid": "7b8c9d0e-1a2b-3c4d-5e6f-7a8b9c0d1e2f",
-      "version": [1, 18, 0]
+      "version": [1, 19, 0]
     },
     {
       "type": "script",
       "language": "javascript",
       "uuid": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
       "entry": "scripts/main.js",
-      "version": [1, 18, 0]
+      "version": [1, 19, 0]
     }
   ],
   "capabilities": [
@@ -27,7 +27,7 @@
   "dependencies": [
     {
       "uuid": "9d8e7f6a-5b4c-3d2e-1f0a-9b8c7d6e5f4a",
-      "version": [1, 18, 0]
+      "version": [1, 19, 0]
     },
     {
       "module_name": "@minecraft/server",

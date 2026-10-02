@@ -13,6 +13,8 @@
 //   Animations  draw, shoot, reload_tactical (fp.tac), reload_empty (fp.reload), inspect, inspect_empty:
 //               Java's keyframes; Java `root` -> `rot`, `camera` dropped, plus our fixed first-person
 //               bones (root turned 180°, joints = the hold pose, the arms' offsets).
+//   Idle        static_idle's hand/part keyframes (our original guns' fp.hold uses exactly these); java-port.mjs
+//               puts them, with the fixed arm offsets, into the hold/aim/sprint poses it keeps from the clone.
 //   Pose        aim (fp.sight end): joints = [0, 27.5 - iron_view.y, 0.5 - iron_view.z] from the Java
 //               model's iron_view bone (within ±0.3 up/down for 30 of 34 guns); hold = aim + [-3, -1, -3].
 import fs from "node:fs";
@@ -51,7 +53,7 @@ const LOWER_BODY = [
   { name: "rightLeg", parent: "root", pivot: [-1.9, 12, 0] },
   { name: "rightPants", parent: "rightLeg", pivot: [-1.9, 12, 0] },
 ];
-const FIXED_FP = { root: { rotation: [0, 180, 0] }, leftArm: { rotation: [0, 0, 180], position: [2, -12, 0] }, rightArm: { rotation: [0, 0, 180], position: [-2, -12, 0] } };
+export const FIXED_FP = { root: { rotation: [0, 180, 0] }, leftArm: { rotation: [0, 0, 180], position: [2, -12, 0] }, rightArm: { rotation: [0, 0, 180], position: [-2, -12, 0] } };
 const ANIMATIONS = { draw: "draw", shoot: "shoot", reload_tactical: "fp.tac", reload_empty: "fp.reload", inspect: "fp.inspect", inspect_empty: "fp.inspect_empty" };
 const FIRST_PERSON = new Set(["fp.tac", "fp.reload", "fp.inspect", "fp.inspect_empty"]);
 
@@ -68,8 +70,18 @@ export function boneRenames(javaGeo) {
 export function convertModel(javaGeo, id) {
   const bones = [];
   const renames = boneRenames(javaGeo);
+  // Helper bones (and empty bones under them, e.g. the CZ75's misspelled "gournd" under "positioning").
+  const dropped = new Set(javaGeo.bones.filter((b) => HELPER_BONES.test(b.name) && !b.cubes?.length).map((b) => b.name));
+  for (let grew = true; grew; ) {
+    grew = false;
+    for (const b of javaGeo.bones) if (!dropped.has(b.name) && dropped.has(b.parent)) {
+      if (b.cubes?.length) throw new Error(`Java bone "${b.name}" has cubes but its parent "${b.parent}" is a helper bone`);
+      dropped.add(b.name);
+      grew = true;
+    }
+  }
   for (const b of javaGeo.bones) {
-    if (HELPER_BONES.test(b.name) && !b.cubes?.length) continue;
+    if (dropped.has(b.name)) continue;
     const bone = structuredClone(b);
     if (renames[bone.name]) bone.name = renames[bone.name];
     if (renames[bone.parent]) bone.parent = renames[bone.parent];
@@ -126,7 +138,10 @@ export function convertGun(java, javaId, id) {
     if (!javaAnims[j]) continue;
     animations[`animation.${id}.${ours}`] = convertAnimation(javaAnims[j], FIRST_PERSON.has(ours), p?.hold ?? [-3, 14, -15], boneRenames(javaGeo));
   }
-  return { model: convertModel(javaGeo, id), animations, pose: p };
+  // Java's static_idle: where the hands (and a few parts) sit while the gun is held. Our original guns'
+  // fp.hold uses exactly these keyframes for righthand/lefthand.
+  const idle = javaAnims.static_idle ? convertAnimation(javaAnims.static_idle, false, null, boneRenames(javaGeo)).bones : null;
+  return { model: convertModel(javaGeo, id), animations, pose: p, idle };
 }
 
 // ---------------------------------------------------------------- compare with an existing gun

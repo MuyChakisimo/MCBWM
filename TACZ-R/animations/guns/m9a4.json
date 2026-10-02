@@ -1142,8 +1142,6 @@
       "loop": true,
       "animation_length": 7.25,
       "bones": {
-        "righthand": {"rotation": [93.94813, 362.17452, -175.99563], "position": [-7, -13.08, 2.52], "scale": [1, 1.5, 1]},
-        "lefthand": {"rotation": [103.11473, -0.13988, 168.74893], "position": [8.15, -14.46, 1.63], "scale": [1, 1.5, 1]},
         "rot": {
           "rotation": {
             "0.0": [0, 0, 0],
@@ -1500,27 +1498,24 @@
             "7.25": [0, 0, 0]
           }
         },
-        "constraint": {"rotation": [0.25, 0.5, 0.5], "position": [0.25, 0.35, 0.35]},
-        "slide": {"position": [0, 0, "v.m9a4emp ? 2.25 : 0"]},
-        "barrel": {
-          "rotation": ["-v.m9a4emp ? -3 : -0", 0, 0],
-          "position": [0, "v.m9a4emp ? -0.125 : 0", "v.m9a4emp ? 0.375 : 0"]
-        },
-        "bullet_in_barrel": {"scale": "v.m9a4emp ? 0 : 1"},
-        "bullet_in_mag": {"scale": "v.m9a4emp ? 0 : 1"},
         "root": {"rotation": [0, -180, 0]},
-        "leftArm": {"rotation": [0, 0, -180], "position": [-9.6, -11.6, -0.15], "scale": [0.79, 1, 1]},
-        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-3, 16.313, -14.938]},
-        "bullet_in_mag2": {"scale": "v.m9a4emp ? 0 : 1"}
+        "righthand": {"rotation": [-263.421, 6.29, -176.661], "position": [-6.744, -13.076, 1.904], "scale": [1, 1.5, 1]},
+        "lefthand": {
+          "rotation": [-268.71719, -21.22826, 236.41998],
+          "position": [7.356, -14.697, 0.78],
+          "scale": [1, 1.5, 1]
+        },
+        "constraint": {"rotation": [0.2, 0.2, 0.2], "position": [0.2, 0.2, 0.2]},
+        "hammer": {"rotation": [0, 0, 0]},
+        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
       }
     },
     "animation.m9a4.fp.sight": {
       "loop": "hold_on_last_frame",
       "animation_length": 0.2083,
       "bones": {
-        "righthand": {"rotation": [93.94813, 362.17452, -175.99563], "position": [-7, -13.08, 2.52], "scale": [1, 1.5, 1]},
-        "lefthand": {"rotation": [103.11473, -0.13988, 168.74893], "position": [8.15, -14.46, 1.63], "scale": [1, 1.5, 1]},
         "rot": {
           "rotation": {
             "0.0": [-0.02, -0.03, 1.61],
@@ -1538,27 +1533,24 @@
             "0.1667": [0, 0, 0]
           }
         },
-        "constraint": {"rotation": [0.25, 0.5, 0.5], "position": [0.25, 0.35, 0.35]},
-        "slide": {"position": [0, 0, "v.m9a4emp ? 2.25 : 0"]},
-        "barrel": {
-          "rotation": ["-v.m9a4emp ? -3 : -0", 0, 0],
-          "position": [0, "v.m9a4emp ? -0.125 : 0", "v.m9a4emp ? 0.375 : 0"]
-        },
-        "bullet_in_barrel": {"scale": "v.m9a4emp ? 0 : 1"},
-        "bullet_in_mag": {"scale": "v.m9a4emp ? 0 : 1"},
         "root": {"rotation": [0, -180, 0]},
-        "leftArm": {"rotation": [0, 0, -180], "position": [-9.6, -11.6, -0.15], "scale": [0.79, 1, 1]},
-        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": {"0.0": [-3, 16.313, -14.938], "0.2083": [0, 17.313, -11.938]}},
-        "bullet_in_mag2": {"scale": "v.m9a4emp ? 0 : 1"}
+        "righthand": {"rotation": [-263.421, 6.29, -176.661], "position": [-6.744, -13.076, 1.904], "scale": [1, 1.5, 1]},
+        "lefthand": {
+          "rotation": [-268.71719, -21.22826, 236.41998],
+          "position": [7.356, -14.697, 0.78],
+          "scale": [1, 1.5, 1]
+        },
+        "constraint": {"rotation": [0.2, 0.2, 0.2], "position": [0.2, 0.2, 0.2]},
+        "hammer": {"rotation": [0, 0, 0]},
+        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
       }
     },
     "animation.m9a4.fp.sprint": {
       "loop": true,
       "animation_length": 0.8,
       "bones": {
-        "righthand": {"rotation": [93.94813, 362.17452, -175.99563], "position": [-7, -13.08, 2.52], "scale": [1, 1.5, 1]},
-        "lefthand": {"rotation": [103.11473, -0.13988, 168.74893], "position": [8.15, -14.46, 1.63], "scale": [1, 1.5, 1]},
         "rot": {
           "rotation": {
             "0.0": [-36.52, -13.54, 23.25],
@@ -1599,19 +1591,18 @@
             "0.8": [-1.24, -2.65, -0.32]
           }
         },
-        "constraint": {"rotation": [0.25, 0.5, 0.5], "position": [0.25, 0.35, 0.35]},
-        "slide": {"position": [0, 0, "v.m9a4emp ? 2.25 : 0"]},
-        "barrel": {
-          "rotation": ["-v.m9a4emp ? -3 : -0", 0, 0],
-          "position": [0, "v.m9a4emp ? -0.125 : 0", "v.m9a4emp ? 0.375 : 0"]
-        },
-        "bullet_in_barrel": {"scale": "v.m9a4emp ? 0 : 1"},
-        "bullet_in_mag": {"scale": "v.m9a4emp ? 0 : 1"},
         "root": {"rotation": [0, -180, 0]},
-        "leftArm": {"rotation": [0, 0, -180], "position": [-9.6, -11.6, -0.15], "scale": [0.79, 1, 1]},
-        "rightArm": {"rotation": [0, 0, -180], "position": [9.8, -12, -0.05], "scale": [0.79, 1, 1]},
         "joints": {"position": [-1, 16.313, -12.938]},
-        "bullet_in_mag2": {"scale": "v.m9a4emp ? 0 : 1"}
+        "righthand": {"rotation": [-263.421, 6.29, -176.661], "position": [-6.744, -13.076, 1.904], "scale": [1, 1.5, 1]},
+        "lefthand": {
+          "rotation": [-268.71719, -21.22826, 236.41998],
+          "position": [7.356, -14.697, 0.78],
+          "scale": [1, 1.5, 1]
+        },
+        "constraint": {"rotation": [0.2, 0.2, 0.2], "position": [0.2, 0.2, 0.2]},
+        "hammer": {"rotation": [0, 0, 0]},
+        "rightArm": {"rotation": [0, 0, 180], "position": [-2, -12, 0]},
+        "leftArm": {"rotation": [0, 0, 180], "position": [2, -12, 0]}
       }
     },
     "animation.m9a4.fp.shoot.nsight": {

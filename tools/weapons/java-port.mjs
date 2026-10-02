@@ -22,7 +22,7 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
-import { convertGun, armsModel } from "./java-convert.mjs";
+import { convertGun, armsModel, FIXED_FP } from "./java-convert.mjs";
 const require = createRequire(import.meta.url);
 const { parse } = require("./lenient.cjs");
 const { format } = require("./format.cjs");
@@ -170,6 +170,22 @@ const soundNames = new Map(); // our cue name -> Java sound path
       if (/\.fp\.sight$/.test(k) && !Array.isArray(pos)) { const last = Object.keys(pos).at(-1); pos[last] = converted.pose.aim; }
       shifted.push(k.replace(`animation.${id}.`, ""));
     }
+  }
+  // The moved poses (hold, aim, sprint ...) still place the arms and hands for the source gun's model.
+  // Keep their body motion (root, rot, joints) and take the rest from the Java gun: hands and parts from
+  // its static_idle (what our original guns' fp.hold uses), arms at the fixed first-person offsets of the
+  // converted animations. Without this a source gun with a different arm layout (P320, M1911, AA-12 hang
+  // the right arm off the right hand; the converted model mirrors them) leaves the hands off the grip.
+  if (converted.idle) {
+    const KEEP = new Set(["root", "rot", "joints"]);
+    for (const k of shifted) {
+      const bones = anims[`animation.${id}.${k}`].bones;
+      for (const bone of Object.keys(bones)) if (!KEEP.has(bone.toLowerCase())) delete bones[bone];
+      for (const [bone, v] of Object.entries(converted.idle)) if (!KEEP.has(bone.toLowerCase())) bones[bone] = structuredClone(v);
+      bones.rightArm = structuredClone(FIXED_FP.rightArm);
+      bones.leftArm = structuredClone(FIXED_FP.leftArm);
+    }
+    log(`   hands from Java static_idle in ${shifted.join(", ")}`);
   }
   // Sound cues: name them after our gun (tacz.<id>.<file>: letters, digits, _ and . only, or the game rejects the player entity;
   // the <id> lets gun.mjs remove find them) and drop

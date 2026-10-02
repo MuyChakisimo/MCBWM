@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.18.0** (both manifests; worlds need `[1, 18, 0]` in `world_*_packs.json`).
+- Pack version **1.19.0** (both manifests; worlds need `[1, 19, 0]` in `world_*_packs.json`).
 - 42 guns (41 original + the M9A4, the first Java port), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -53,7 +53,12 @@ work.
    per gun, no switching; the user chose: M16 and B93R burst, Double Barrel bursts both barrels, SCAR-H auto, G3/FAL/
    MK14 semi, CZ75 auto). Do the M4A1 first, have the user test, then roll out. Special cases: minigun overheat,
    tube-fed shotguns (`reload: "single"`), Golden Deagle and Vector per-magazine reloads, `storedAmmoDisplay` guns.
-2. **First Java gun port: M9A4.** **Ported in v1.18.0, waiting for the user's in-game test** (crafting: Java recipe, 16
+2. **First Java gun port: M9A4.** Ported in v1.18.0; the user tested: sounds, reloads and ammo count work, third
+   person correct, but in first person the hand was off the grip. Cause: the P320 template hangs the right arm off
+   the right hand (only P320, M1911, AA-12 do; the converted Java model mirrors them like the other 33 guns), and its
+   hold/aim/sprint poses (kept by the port) placed the arms for that layout. Fixed in v1.19.0 in java-port.mjs:
+   moved poses take the hands from Java `static_idle` (what every original gun's fp.hold uses) and the fixed arm
+   offsets; the M9A4 was removed and re-ported. **Waiting for the user's re-test of first-person hold and aim** (crafting: Java recipe, 16
    iron; aim/sights; empty and tactical reload; inspect and empty inspect; sounds; 17 rounds of 9mm). Fires from its
    controller (template P320), not by script yet. Java falloff gives 117% damage within 18 blocks. (The user agreed to test one port first.) Cleanest case: full Java sounds, no
    attachments. `node tools/weapons/java-port.mjs m9a4 m9a4 --from p320 --name "M9A4"`, then `check.mjs`, bump the

@@ -20,7 +20,9 @@ import { pathToFileURL } from "node:url";
 const repo = process.cwd();
 const full = process.argv.includes("--full"), keep = process.argv.includes("--keep");
 const QUICK = ["sks", "m4a1", "m16", "deagle", "fal", "vector", "rpg", "m870", "minigun", "cp"];
-const PORTS = [["m9a4", "m9a4", "p320"], ["spr15hb", "spr15", "m4a1"], ["rpk", "rpk", "type81"], ["kar98", "kar98", "awp"], ["spas_12", "spas12", "m870"], ["db_long", "dblong", "db"]];
+// Java guns not in the packs yet (a port already in the packs is skipped). cz75 from the P320 covers a
+// source gun with the other arm layout (right arm on the right hand; see java-port.mjs step 4).
+const PORTS = [["cz75", "cz75", "p320"], ["spr15hb", "spr15", "m4a1"], ["rpk", "rpk", "type81"], ["kar98", "kar98", "awp"], ["spas_12", "spas12", "m870"], ["db_long", "dblong", "db"]];
 
 const walk = (d) => (fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)])) : []);
 const rel = (base, f) => path.relative(base, f).split(path.sep).join("/");
@@ -91,7 +93,9 @@ for (const g of guns) {
 }
 
 if (fs.existsSync(path.join(work, "reference", "TACZ-JAVA.zip"))) {
+  const inPacks = fs.readFileSync(path.join(work, "TACZ-B/scripts/config/weapons.js"), "utf8");
   for (const [javaId, id, from] of PORTS) {
+    if (new RegExp(`^ {2}${id}: \\{`, "m").test(inPacks)) { console.log(`skip port ${javaId}: ${id} is already in the packs`); continue; }
     const p = run("tools/weapons/java-port.mjs", javaId, id, "--from", from);
     const c = p.ok ? check() : p;
     const r = p.ok ? run("tools/weapons/gun.mjs", "remove", id) : { ok: true, out: "" };
