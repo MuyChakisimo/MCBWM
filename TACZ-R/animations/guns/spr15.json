@@ -1482,7 +1482,7 @@
         "552_reticle": {"scale": 0},
         "laserbeam_1": {"scale": 0},
         "t2_reticle": {"scale": 0},
-        "Joints": {"position": [0, -2, 11], "scale": 1.1},
+        "Joints": {"position": [0, -2.138, 11], "scale": 1.1},
         "mag_and_bullet2": {"position": [-3, 14.5, -13.3], "scale": 0.65},
         "rightArm": {
           "rotation": {
@@ -1584,7 +1584,7 @@
             "0.6": [0, -0.13, -1]
           }
         },
-        "Joints": {"position": [0, -2, 9], "scale": 1.1},
+        "Joints": {"position": [0, -2.138, 9], "scale": 1.1},
         "additional_magazine": {"position": [2.31914, -0.17401, 2.88576]},
         "coyote_reticle": {"scale": 0},
         "acog_reticle": {"scale": 0},
@@ -1744,7 +1744,7 @@
             "3.2": [0, -0.2875, -1.3125]
           }
         },
-        "Joints": {"position": [0, -1, 11], "scale": 1.1},
+        "Joints": {"position": [0, -1.137, 11], "scale": 1.1},
         "mag_and_bullet2": {"position": [-3, 14.5, -13.3], "scale": 0.65},
         "rightArm": {
           "rotation": {

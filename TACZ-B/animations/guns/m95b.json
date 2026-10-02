@@ -1,7 +1,7 @@
 {
   "format_version": "1.10.0",
   "animations": {
-    "animation.m95b.shoot": {"loop": false, "animation_length": 0.25, "timeline": {}},
+    "animation.m95b.shoot": {"loop": false, "animation_length": 0.397, "timeline": {}},
     "animation.m95b.reload.tac": {
       "loop": "hold_on_last_frame",
       "animation_length": 4.3,

@@ -218,19 +218,19 @@
               "trigger.inspect": "(query.get_equipped_item_name=='awp' && variable.attack_time > 0.0f && query.scoreboard('awp') >= 5 && q.mark_variant != 2)"
             },
             {
-              "trigger.inspect": "(query.get_equipped_item_name=='kar98' && variable.attack_time > 0.0f && query.scoreboard('kar98') >= 4 && q.mark_variant != 2)"
+              "trigger.inspect": "(query.get_equipped_item_name=='m700' && variable.attack_time > 0.0f && query.scoreboard('m700') >= 5 && q.mark_variant != 2)"
             },
             {
-              "trigger.inspect": "(query.get_equipped_item_name=='m700' && variable.attack_time > 0.0f && query.scoreboard('m700') >= 5 && q.mark_variant != 2)"
+              "trigger.inspect": "(query.get_equipped_item_name=='kar98' && variable.attack_time > 0.0f && query.scoreboard('kar98') >= 4 && q.mark_variant != 2)"
             },
             {
               "trigger.inspect.emp": "(query.get_equipped_item_name=='awp_emp' && variable.attack_time > 0.0f && query.scoreboard('awp') == 0 && q.mark_variant != 1)"
             },
             {
-              "trigger.inspect.emp": "(query.get_equipped_item_name=='kar98_emp' && variable.attack_time > 0.0f && query.scoreboard('kar98') == 0 && q.mark_variant != 1)"
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='m700_emp' && variable.attack_time > 0.0f && query.scoreboard('m700') == 0 && q.mark_variant != 1)"
             },
             {
-              "trigger.inspect.emp": "(query.get_equipped_item_name=='m700_emp' && variable.attack_time > 0.0f && query.scoreboard('m700') == 0 && q.mark_variant != 1)"
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='kar98_emp' && variable.attack_time > 0.0f && query.scoreboard('kar98') == 0 && q.mark_variant != 1)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='m107' && variable.attack_time > 0.0f && query.scoreboard('m107') >= 10 && q.mark_variant != 2)"

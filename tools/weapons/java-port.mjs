@@ -27,7 +27,8 @@ import { armLayout } from "./arm-layout.mjs";
 const require = createRequire(import.meta.url);
 const { parse } = require("./lenient.cjs");
 const { format } = require("./format.cjs");
-const { openJava } = require("./java.cjs");
+const { openJava, JAVA_TO_OURS } = require("./java.cjs");
+const geometryOfJava = (j) => (j["minecraft:geometry"] ?? [])[0];
 
 const root = process.cwd();
 const abs = (f) => path.join(root, f);
@@ -136,6 +137,8 @@ const soundNames = new Map(); // our cue name -> Java sound path
   const ROLES = {
     draw: [/\.(fp\.)?draw$/], shoot: [/\.(fp\.)?shoot(\.(n?sight))?$/], "fp.tac": [/\.fp\.tac$/], "fp.reload": [/\.fp\.reload$/],
     "fp.inspect": [/\.fp\.inspect$/], "fp.inspect_empty": [/\.fp\.inspect_?emp(ty)?$/],
+    // Bolt / pump cycle after each shot (AWM-based guns' fp.bolt, M870-based fp.pump).
+    "fp.bolt": [/\.fp\.(bolt|pump)$/],
   };
   const replaced = [];
   const before = {}; // the clone's animations, for their sounds if Java has none
@@ -249,6 +252,34 @@ const soundNames = new Map(); // our cue name -> Java sound path
   }
   if (dropped.size) log(`   sound cues not in TACZ-JAVA (dropped): ${[...dropped].join(", ")}`);
   if (keptSounds.length) log(`   no Java sounds for ${keptSounds.join(", ")}: kept ${from}'s, timed to the new animations`);
+  // Third person: the clone's tp animations put its Java model's thirdperson_hand bone in the hand. Move
+  // their joints so the new model's thirdperson_hand lands there instead (scaled like joints). Needs the
+  // source gun's Java model (not the Type 81 or Colt Python). Tested: CZ75 3.25 lower than the P320 looked
+  // too low, M320 4.4 higher than the RPG too high.
+  const fromJava = Object.entries(JAVA_TO_OURS).find(([, ours]) => ours === from)?.[0];
+  const tpHand = (jid) => {
+    const d = java.json(`assets/tacz/display/guns/${java.gunIndex(jid).display.split(":")[1]}.json`);
+    return geometryOfJava(java.json(d.model.replace("tacz:", "assets/tacz/geo_models/") + ".json"))?.bones.find((b) => b.name === "thirdperson_hand")?.pivot;
+  };
+  const hNew = tpHand(javaId), hRef = fromJava && tpHand(fromJava);
+  if (hNew && hRef) {
+    // Height only: guns whose thirdperson_hand differs a lot front-to-back looked right unmoved (M95 -12,
+    // SPR-15 and SPAS-12 +9 in z).
+    const d = [0, hRef[1] - hNew[1], 0];
+    const moved = [];
+    for (const [k, a] of Object.entries(anims)) {
+      if (!/\.tp\./.test(k)) continue;
+      const jk = J(a);
+      const ch = jk && a.bones[jk];
+      if (!ch?.position) continue;
+      const s = typeof ch.scale === "number" ? ch.scale : Array.isArray(ch.scale) ? ch.scale[1] : 1;
+      const add = (p) => (Array.isArray(p) && typeof p[0] === "number" ? p.map((x, i) => +(x + s * d[i]).toFixed(3)) : p?.post ? { ...p, post: add(p.post), ...(p.pre && { pre: add(p.pre) }) } : p);
+      if (Array.isArray(ch.position)) ch.position = add(ch.position);
+      else for (const t of Object.keys(ch.position)) ch.position[t] = add(ch.position[t]);
+      moved.push(k.replace(`animation.${id}.`, ""));
+    }
+    log(`   third person: thirdperson_hand ${JSON.stringify(hNew)} vs ${from}'s ${JSON.stringify(hRef)}; moved ${moved.join(", ") || "-"}`);
+  } else log(`   third person: kept ${from}'s placement (${fromJava ? "no thirdperson_hand" : `${from} is not a Java gun`})`);
   writeText(animFile, format(file));
   log(`4. animations from Java: ${replaced.join(", ")}`);
   log(`   pose: hold ${JSON.stringify(converted.pose?.hold)}, aim ${JSON.stringify(converted.pose?.aim)}; moved ${shifted.join(", ") || "-"}`);
@@ -345,6 +376,19 @@ const soundNames = new Map(); // our cue name -> Java sound path
     return t.slice(0, m.index) + m[1] + body + m[3] + t.slice(m.index + m[0].length);
   });
   log(`6. stats: damage ${s.damage}, penetration ${s.penetration}, headshot ${x.head_shot_multiplier}, ${fireMode} ${javaData.rpm} rpm, falloff ${falloff ? "yes" : "no"}`);
+  // Fire rate of controller-fired semi guns: the BP shoot animation's length is the time between shots
+  // (the P320's 0.15 s fired the Java revolvers at about 400 rpm). Bolt / pump guns are paced by their
+  // cycle, auto guns fire every tick, script-fired guns use rpm directly.
+  {
+    const bpAnim = `TACZ-B/animations/guns/${id}.json`;
+    const bp = exists(bpAnim) ? parse(readText(bpAnim)).animations : {};
+    const shoot = bp[`animation.${id}.shoot`];
+    if (fireMode === "semi" && shoot && !bp[`animation.${id}.bolt`] && !bp[`animation.${id}.pump`] && !WEAPONS[id].scriptFiring && javaData.rpm) {
+      const len = +(60 / javaData.rpm).toFixed(3);
+      editJson(bpAnim, (j) => { j.animations[`animation.${id}.shoot`].animation_length = len; });
+      log(`   fire rate: ${javaData.rpm} rpm = ${len} s between shots (BP shoot animation)`);
+    }
+  }
   log(recipe ? `   recipe from Java: ${recipe.map(([i, n]) => `${n} ${i}`).join(", ")}` : `   no Java recipe: kept ${from}'s`);
   if (newAmmo !== oldAmmo) { swapAmmo(id, oldAmmo, newAmmo); log(`   ammo: krep:${oldAmmo} -> krep:${newAmmo}`); }
   if (newMag !== oldMag) { resizeMagazine(id, oldMag, newMag); log(`   magazine: ${oldMag} -> ${newMag}`); }

@@ -886,7 +886,7 @@
             0
           ]
         },
-        "Joints": {"position": [-4, 18.8, -10.9], "scale": 0.75},
+        "Joints": {"position": [-4, 15.5, -10.9], "scale": 0.75},
         "rightArm": {
           "rotation": {
             "0.0": [-90.5, 0, 2.5],
@@ -996,7 +996,7 @@
             "3.2": {"post": [0, -0.2875, -1.3125], "lerp_mode": "catmullrom"}
           }
         },
-        "Joints": {"position": [-4, 19.5, -10.9], "scale": 0.75},
+        "Joints": {"position": [-4, 16.2, -10.9], "scale": 0.75},
         "rightArm": {
           "rotation": {
             "0.0": {"post": [-90.5, 0, 2.5], "lerp_mode": "catmullrom"},

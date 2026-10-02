@@ -330,21 +330,6 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
       ["blaze_rod", 5],
     ],
   },
-  kar98: {
-    name: "Kar98k",
-    category: "sniper",
-    damage: 26,
-    penetration: 0.65,
-    recoil: { hip: [0.045, 0.17], ads: [0.032, 0.15] },
-    headshot: 1.85,
-    falloff: [[40, 1], [80, 0.85], [null, 0.58]],
-    fireMode: "semi",
-    rpm: 250,
-    magazine: 4,
-    ammo: "krep:mm792",
-    // Java TACZ recipe.
-    recipe: [["log", 40], ["iron_ingot", 28], ["gold_ingot", 4], ["lapis_lazuli", 12]],
-  },
   m700: {
     name: "M700",
     category: "sniper",
@@ -359,6 +344,21 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     ammo: "krep:spr3006",
     // Java TACZ recipe.
     recipe: [["diamond", 1], ["gold_ingot", 4], ["iron_ingot", 45]],
+  },
+  kar98: {
+    name: "Kar98k",
+    category: "sniper",
+    damage: 26,
+    penetration: 0.65,
+    recoil: { hip: [0.045, 0.17], ads: [0.032, 0.15] },
+    headshot: 1.85,
+    falloff: [[40, 1], [80, 0.85], [null, 0.58]],
+    fireMode: "semi",
+    rpm: 250,
+    magazine: 4,
+    ammo: "krep:mm792",
+    // Java TACZ recipe.
+    recipe: [["log", 40], ["iron_ingot", 28], ["gold_ingot", 4], ["lapis_lazuli", 12]],
   },
   g17: {
     name: "Glock-17",

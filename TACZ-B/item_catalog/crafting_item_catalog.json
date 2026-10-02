@@ -51,7 +51,7 @@
           },
           {
             "group_identifier": {"icon": "krep:awp", "name": "krep:itemGroup.name.sr"},
-            "items": ["krep:awp", "krep:kar98", "krep:m700", "krep:m107", "krep:m95b", "krep:sks", "krep:mk14"]
+            "items": ["krep:awp", "krep:m700", "krep:kar98", "krep:m107", "krep:m95b", "krep:sks", "krep:mk14"]
           },
           {
             "group_identifier": {"icon": "krep:minigun", "name": "krep:itemGroup.name.misc"},
@@ -111,8 +111,8 @@
               "krep:uzi_emp",
               "krep:mp7_emp",
               "krep:awp_emp",
-              "krep:kar98_emp",
               "krep:m700_emp",
+              "krep:kar98_emp",
               "krep:m107_emp",
               "krep:m95b_emp",
               "krep:minigun_emp",

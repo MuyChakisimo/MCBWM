@@ -21,8 +21,8 @@
         }
       ]
     },
-    "controller.render.player.universal49.first_person": {
-      "geometry": "Geometry.taczuniversal49",
+    "controller.render.player.universal69.first_person": {
+      "geometry": "Geometry.taczuniversal69",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [
@@ -101,8 +101,8 @@
         }
       ]
     },
-    "controller.render.player.universal40.first_person": {
-      "geometry": "Geometry.taczuniversal40",
+    "controller.render.player.universal60.first_person": {
+      "geometry": "Geometry.taczuniversal60",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [
@@ -286,8 +286,8 @@
         }
       ]
     },
-    "controller.render.player.universal52.first_person": {
-      "geometry": "Geometry.taczuniversal52",
+    "controller.render.player.universal62.first_person": {
+      "geometry": "Geometry.taczuniversal62",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [
@@ -326,8 +326,8 @@
         }
       ]
     },
-    "controller.render.player.universal41.first_person": {
-      "geometry": "Geometry.taczuniversal41",
+    "controller.render.player.universal61.first_person": {
+      "geometry": "Geometry.taczuniversal61",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [
@@ -466,28 +466,8 @@
         }
       ]
     },
-    "controller.render.player.universal51.first_person": {
-      "geometry": "Geometry.taczuniversal51",
-      "materials": [{"*": "Material.default"}],
-      "textures": ["Texture.default"],
-      "part_visibility": [
-        {"*": false},
-        {
-          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.kar98"
-        },
-        {
-          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.kar98"
-        },
-        {
-          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.kar98"
-        },
-        {
-          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.kar98"
-        }
-      ]
-    },
-    "controller.render.player.universal39.first_person": {
-      "geometry": "Geometry.taczuniversal39",
+    "controller.render.player.universal59.first_person": {
+      "geometry": "Geometry.taczuniversal59",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [
@@ -503,6 +483,26 @@
         },
         {
           "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.m700"
+        }
+      ]
+    },
+    "controller.render.player.universal58.first_person": {
+      "geometry": "Geometry.taczuniversal58",
+      "materials": [{"*": "Material.default"}],
+      "textures": ["Texture.default"],
+      "part_visibility": [
+        {"*": false},
+        {
+          "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.kar98"
+        },
+        {
+          "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'map' || v.kar98"
+        },
+        {
+          "leftArm": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.kar98"
+        },
+        {
+          "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)) || v.kar98"
         }
       ]
     },
@@ -766,8 +766,8 @@
         }
       ]
     },
-    "controller.render.player.universal57.first_person": {
-      "geometry": "Geometry.taczuniversal57",
+    "controller.render.player.universal67.first_person": {
+      "geometry": "Geometry.taczuniversal67",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [
@@ -786,8 +786,8 @@
         }
       ]
     },
-    "controller.render.player.universal56.first_person": {
-      "geometry": "Geometry.taczuniversal56",
+    "controller.render.player.universal66.first_person": {
+      "geometry": "Geometry.taczuniversal66",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [
@@ -806,8 +806,8 @@
         }
       ]
     },
-    "controller.render.player.universal55.first_person": {
-      "geometry": "Geometry.taczuniversal55",
+    "controller.render.player.universal65.first_person": {
+      "geometry": "Geometry.taczuniversal65",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [
@@ -826,8 +826,8 @@
         }
       ]
     },
-    "controller.render.player.universal54.first_person": {
-      "geometry": "Geometry.taczuniversal54",
+    "controller.render.player.universal64.first_person": {
+      "geometry": "Geometry.taczuniversal64",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [
@@ -846,8 +846,8 @@
         }
       ]
     },
-    "controller.render.player.universal53.first_person": {
-      "geometry": "Geometry.taczuniversal53",
+    "controller.render.player.universal63.first_person": {
+      "geometry": "Geometry.taczuniversal63",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [
@@ -1012,8 +1012,8 @@
         }
       ]
     },
-    "controller.render.player.universal50.first_person": {
-      "geometry": "Geometry.taczuniversal50",
+    "controller.render.player.universal68.first_person": {
+      "geometry": "Geometry.taczuniversal68",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [

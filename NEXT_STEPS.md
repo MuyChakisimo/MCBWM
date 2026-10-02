@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.22.3** (both manifests; worlds need `[1, 22, 3]` in `world_*_packs.json`).
+- Pack version **1.22.4** (both manifests; worlds need `[1, 22, 4]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -128,6 +128,22 @@ work.
    - Revolvers now port from the P320, not the Colt Python: the Colt Python's poses scale `joints` to 0.6 and tilt
      it (its own model is oversized), which shrank and misplaced the Java revolvers (Raging Hunter small, Rhino low,
      reload closer to the screen, probably the Taurus 943 invisible).
+   **User re-test of v1.22.3 (2026-10-02):** draws fixed; revolvers right size. Reported: SPR-15 left hand too high and
+   left; Kar98k reload not playing; DB-4 left hand too close and high; CZ75 glitch after reload, left hand missing in
+   reload, tp needs to go up; Taurus 943 tp still by the legs; Raging Hunter and Rhino fire too fast (arm floats a bit
+   in the Raging Hunter's animation); M700 bolt after a shot not animated.
+   **Fixed in v1.22.4 (re-ported all but the RPK):**
+   - Java `bolt` -> our `fp.bolt` / `fp.pump` (java-convert ANIMATIONS, java-port ROLES): the AWM's / M870's own
+     bolt and pump animations were left in, moving bones the Java models don't have (M700, Kar98k, SPAS-12).
+   - Kar98k reload: Java has `reload_empty_clip` (and round-by-round intro/loop/end), no `reload_empty`; it is
+     now used for fp.reload and fp.tac (FALLBACKS in java-convert.mjs).
+   - Fire rate of controller-fired semi guns without a bolt: BP `animation.<id>.shoot` length = 60 / rpm (the
+     P320's 0.15 s made the revolvers fire about 400 rpm). Rhino 0.3 s, Raging Hunter 0.5, Taurus 943 0.333,
+     MK23 1.2 (Java's 50 rpm), M95 0.397, DB-4 0.6, M320 0.4.
+   - Third person: tp `joints` moved up/down by (source's thirdperson_hand - new) x joints scale, height only
+     (z left alone: M95 -12, SPR-15/SPAS-12 +9 looked right). CZ75 +2.8, MK23 +2.3, Taurus 943 +3.2, M320 -3.3.
+   - SPAS-12 shell reload still the M870's (Java's reload_intro / reload_loop / reload_end not mapped to our
+     reload / reloadtac / rend states yet): left hand on the pump during reload.
    **Still open, with leads:**
    - Third person: every Java model has a `thirdperson_hand` bone (Java display scale 0.6). Same as the template's
      (M9A4 = P320: [0,8,1.75]) looks right; CZ75 is 3.25 lower (looks too low), M320 4.4 higher than the RPG (too

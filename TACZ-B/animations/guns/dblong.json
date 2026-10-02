@@ -33,6 +33,6 @@
         "1.6": ["/function dblongreload", "/event entity @s krep:dblong_reload"]
       }
     },
-    "animation.dblong.shoot": {"loop": false, "animation_length": 0.15, "timeline": {}}
+    "animation.dblong.shoot": {"loop": false, "animation_length": 0.6, "timeline": {}}
   }
 }

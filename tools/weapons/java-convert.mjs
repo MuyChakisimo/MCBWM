@@ -54,8 +54,10 @@ const LOWER_BODY = [
   { name: "rightPants", parent: "rightLeg", pivot: [-1.9, 12, 0] },
 ];
 export const FIXED_FP = { root: { rotation: [0, 180, 0] }, leftArm: { rotation: [0, 0, 180], position: [2, -12, 0] }, rightArm: { rotation: [0, 0, 180], position: [-2, -12, 0] } };
-const ANIMATIONS = { draw: "draw", shoot: "shoot", reload_tactical: "fp.tac", reload_empty: "fp.reload", inspect: "fp.inspect", inspect_empty: "fp.inspect_empty" };
-const FIRST_PERSON = new Set(["fp.tac", "fp.reload", "fp.inspect", "fp.inspect_empty"]);
+const ANIMATIONS = { draw: "draw", shoot: "shoot", reload_tactical: "fp.tac", reload_empty: "fp.reload", inspect: "fp.inspect", inspect_empty: "fp.inspect_empty", bolt: "fp.bolt" };
+// Java guns without reload_empty / reload_tactical: the Kar98k loads a clip (reload_empty_clip).
+const FALLBACKS = { "fp.reload": ["reload_empty_clip"], "fp.tac": ["reload_empty_clip"] };
+const FIRST_PERSON = new Set(["fp.tac", "fp.reload", "fp.inspect", "fp.inspect_empty", "fp.bolt"]);
 
 const round = (v) => v.map((x) => +x.toFixed(3));
 const geometryOf = (json) => (json["minecraft:geometry"] ?? [])[0];
@@ -135,8 +137,9 @@ export function convertGun(java, javaId, id) {
   const p = pose(javaGeo);
   const animations = {};
   for (const [j, ours] of Object.entries(ANIMATIONS)) {
-    if (!javaAnims[j]) continue;
-    animations[`animation.${id}.${ours}`] = convertAnimation(javaAnims[j], FIRST_PERSON.has(ours), p?.hold ?? [-3, 14, -15], boneRenames(javaGeo));
+    const src = javaAnims[j] ? j : (FALLBACKS[ours] ?? []).find((f) => javaAnims[f]);
+    if (!src) continue;
+    animations[`animation.${id}.${ours}`] = convertAnimation(javaAnims[src], FIRST_PERSON.has(ours), p?.hold ?? [-3, 14, -15], boneRenames(javaGeo));
   }
   // Java's static_idle: where the hands (and a few parts) sit while the gun is held. Our original guns'
   // fp.hold uses exactly these keyframes for righthand/lefthand.

@@ -42,11 +42,11 @@ krep:gun.vector_emp.name=Крисс Вектор без патронов
 krep:gun.t50.name=Таймелес 50
 krep:gun.t50_emp.name=Таймелес 50 без патронов
 krep:gun.awp.name=АВМ
-krep:gun.kar98.name=Kar98k
 krep:gun.m700.name=M700
+krep:gun.kar98.name=Kar98k
 krep:gun.awp_emp.name=АВМ без патронов
-krep:gun.kar98_emp.name=Kar98k без патронов
 krep:gun.m700_emp.name=M700 без патронов
+krep:gun.kar98_emp.name=Kar98k без патронов
 krep:gun.uzi.name=УЗИ
 krep:gun.uzi_emp.name=УЗИ без патронов
 krep:gun.deagle.name=Обычный Десерт Игл (Дигл)
@@ -144,11 +144,11 @@ krep:block.gunsmith.name=Стол для создания оружия
 
 ========ЛОР ПУШЕК========
 krep:gun.awp.lore=§fТип: Снайперская винтовка Arctic Warfare Magnum \n§fГруппа предметов: §4Снайперские винтовки§r \n§fБезусловно ценная. \n\n§fКалибр: .338 Lapua \nУрон: 42§r \n\n§1Переведенный пак TACZ
-krep:gun.kar98.lore=§fТип: Снайперская винтовка Arctic Warfare Magnum \n§fГруппа предметов: §4Снайперские винтовки§r \n§fБезусловно ценная. \n\n§fКалибр: .338 Lapua \nУрон: 42§r \n\n§1Переведенный пак TACZ
 krep:gun.m700.lore=§fТип: Снайперская винтовка Arctic Warfare Magnum \n§fГруппа предметов: §4Снайперские винтовки§r \n§fБезусловно ценная. \n\n§fКалибр: .338 Lapua \nУрон: 42§r \n\n§1Переведенный пак TACZ
+krep:gun.kar98.lore=§fТип: Снайперская винтовка Arctic Warfare Magnum \n§fГруппа предметов: §4Снайперские винтовки§r \n§fБезусловно ценная. \n\n§fКалибр: .338 Lapua \nУрон: 42§r \n\n§1Переведенный пак TACZ
 krep:gun.awp_emp.lore=§fТип: Снайперская винтовка Arctic Warfare Magnum \n§fГруппа предметов: §7Оружие Без Патронов§r \n§fБезусловно ценная. \n\n§fКалибр: .338 Lapua \nУрон: 42§r \n\n§1Переведенный пак TACZ
-krep:gun.kar98_emp.lore=§fТип: Снайперская винтовка Arctic Warfare Magnum \n§fГруппа предметов: §7Оружие Без Патронов§r \n§fБезусловно ценная. \n\n§fКалибр: .338 Lapua \nУрон: 42§r \n\n§1Переведенный пак TACZ
 krep:gun.m700_emp.lore=§fТип: Снайперская винтовка Arctic Warfare Magnum \n§fГруппа предметов: §7Оружие Без Патронов§r \n§fБезусловно ценная. \n\n§fКалибр: .338 Lapua \nУрон: 42§r \n\n§1Переведенный пак TACZ
+krep:gun.kar98_emp.lore=§fТип: Снайперская винтовка Arctic Warfare Magnum \n§fГруппа предметов: §7Оружие Без Патронов§r \n§fБезусловно ценная. \n\n§fКалибр: .338 Lapua \nУрон: 42§r \n\n§1Переведенный пак TACZ
 krep:gun.hk416.lore=§fТип: Штурмовая винтовка \n§fГруппа предметов: §cШтурмовые Винтовки и Автоматы§r \n§fЯ где-то это уже видел… но неважно — теперь это моя жена. \n\n§fКалибр: 5.56x45мм \nУрон: 5§r \n\n§1Переведенный пак TACZ
 krep:gun.hk416_emp.lore=§fТип: Штурмовая винтовка \n§fГруппа предметов: §7Оружие Без Патронов§r \n§fЯ где-то это уже видел… но неважно — теперь это моя жена. \n\n§fКалибр: 5.56x45мм \nУрон: 5§r \n\n§1Переведенный пак TACZ
 krep:gun.qbz95.lore=§fТип: Автомат \n§fГруппа предметов: §cШтурмовые Винтовки и Автоматы§r \n§fКрепкий боец с Востока. \n\n§fКалибр: 5.8×42мм \nУрон: 7§r \n\n§1Переведенный пак TACZ

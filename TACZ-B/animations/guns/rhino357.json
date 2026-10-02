@@ -1,7 +1,7 @@
 {
   "format_version": "1.10.0",
   "animations": {
-    "animation.rhino357.shoot": {"loop": false, "animation_length": 0.15, "timeline": {}},
+    "animation.rhino357.shoot": {"loop": false, "animation_length": 0.3, "timeline": {}},
     "animation.rhino357.reload": {
       "loop": "hold_on_last_frame",
       "animation_length": 2.5,

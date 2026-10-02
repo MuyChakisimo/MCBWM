@@ -42,11 +42,11 @@ krep:gun.vector_emp.name=Kriss Vector bez amunicji
 krep:gun.t50.name=Timeless 50
 krep:gun.t50_emp.name=Timeless 50 bez amunicji
 krep:gun.awp.name=AWM
-krep:gun.kar98.name=Kar98k
 krep:gun.m700.name=M700
+krep:gun.kar98.name=Kar98k
 krep:gun.awp_emp.name=AWM bez amunicji
-krep:gun.kar98_emp.name=Kar98k bez amunicji
 krep:gun.m700_emp.name=M700 bez amunicji
+krep:gun.kar98_emp.name=Kar98k bez amunicji
 krep:gun.uzi.name=UZI
 krep:gun.uzi_emp.name=UZI bez amunicji
 krep:gun.deagle.name=Zwykły Desert Eagle (Deagle)
@@ -144,11 +144,11 @@ krep:block.gunsmith.name=Stół rusznikarski
 
 ========OPISY BRONI (LORE)========
 krep:gun.awp.lore=§fTyp: Karabin Snajperski Arctic Warfare Magnum \n§fGrupa przedmiotów: §4Karabiny Snajperskie§r \n§fNiezaprzeczalnie cenny. \n\n§fKaliber: .338 Lapua \nObrażenia: 42§r \n\n§1Przetłumaczona paczka TACZ
-krep:gun.kar98.lore=§fTyp: Karabin Snajperski Arctic Warfare Magnum \n§fGrupa przedmiotów: §4Karabiny Snajperskie§r \n§fNiezaprzeczalnie cenny. \n\n§fKaliber: .338 Lapua \nObrażenia: 42§r \n\n§1Przetłumaczona paczka TACZ
 krep:gun.m700.lore=§fTyp: Karabin Snajperski Arctic Warfare Magnum \n§fGrupa przedmiotów: §4Karabiny Snajperskie§r \n§fNiezaprzeczalnie cenny. \n\n§fKaliber: .338 Lapua \nObrażenia: 42§r \n\n§1Przetłumaczona paczka TACZ
+krep:gun.kar98.lore=§fTyp: Karabin Snajperski Arctic Warfare Magnum \n§fGrupa przedmiotów: §4Karabiny Snajperskie§r \n§fNiezaprzeczalnie cenny. \n\n§fKaliber: .338 Lapua \nObrażenia: 42§r \n\n§1Przetłumaczona paczka TACZ
 krep:gun.awp_emp.lore=§fTyp: Karabin Snajperski Arctic Warfare Magnum \n§fGrupa przedmiotów: §7Broń Bez Amunicji§r \n§fNiezaprzeczalnie cenny. \n\n§fKaliber: .338 Lapua \nObrażenia: 42§r \n\n§1Przetłumaczona paczka TACZ
-krep:gun.kar98_emp.lore=§fTyp: Karabin Snajperski Arctic Warfare Magnum \n§fGrupa przedmiotów: §7Broń Bez Amunicji§r \n§fNiezaprzeczalnie cenny. \n\n§fKaliber: .338 Lapua \nObrażenia: 42§r \n\n§1Przetłumaczona paczka TACZ
 krep:gun.m700_emp.lore=§fTyp: Karabin Snajperski Arctic Warfare Magnum \n§fGrupa przedmiotów: §7Broń Bez Amunicji§r \n§fNiezaprzeczalnie cenny. \n\n§fKaliber: .338 Lapua \nObrażenia: 42§r \n\n§1Przetłumaczona paczka TACZ
+krep:gun.kar98_emp.lore=§fTyp: Karabin Snajperski Arctic Warfare Magnum \n§fGrupa przedmiotów: §7Broń Bez Amunicji§r \n§fNiezaprzeczalnie cenny. \n\n§fKaliber: .338 Lapua \nObrażenia: 42§r \n\n§1Przetłumaczona paczka TACZ
 krep:gun.hk416.lore=§fTyp: Karabin szturmowy \n§fGrupa przedmiotów: §cKarabiny Szturmowe i Automatyczne§r \n§fGdzieś to już widziałem... nieważne — teraz to moja żona. \n\n§fKaliber: 5.56x45mm \nObrażenia: 5§r \n\n§1Przetłumaczona paczka TACZ
 krep:gun.hk416_emp.lore=§fTyp: Karabin szturmowy \n§fGrupa przedmiotów: §7Broń Bez Amunicji§r \n§fGdzieś to już widziałem... nieważne — teraz to moja żona. \n\n§fKaliber: 5.56x45mm \nObrażenia: 5§r \n\n§1Przetłumaczona paczka TACZ
 krep:gun.qbz95.lore=§fTyp: Karabin automatyczny \n§fGrupa przedmiotów: §cKarabiny Szturmowe i Automatyczne§r \n§fTwardy zawodnik ze Wschodu. \n\n§fKaliber: 5.8×42mm \nObrażenia: 7§r \n\n§1Przetłumaczona paczka TACZ

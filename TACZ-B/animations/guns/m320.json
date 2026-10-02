@@ -1,7 +1,7 @@
 {
   "format_version": "1.10.0",
   "animations": {
-    "animation.m320.shoot": {"loop": false, "animation_length": 0.06, "timeline": {}},
+    "animation.m320.shoot": {"loop": false, "animation_length": 0.4, "timeline": {}},
     "animation.m320.reload": {
       "loop": "hold_on_last_frame",
       "animation_length": 3.5,

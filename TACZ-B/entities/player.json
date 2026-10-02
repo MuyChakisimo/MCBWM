@@ -157,14 +157,14 @@
           "m1911reloading",
           {"awp": "query.get_equipped_item_name=='awp' || query.get_equipped_item_name=='awp_emp'"},
           {
-            "kar98": "query.get_equipped_item_name=='kar98' || query.get_equipped_item_name=='kar98_emp'"
-          },
-          {
             "m700": "query.get_equipped_item_name=='m700' || query.get_equipped_item_name=='m700_emp'"
           },
+          {
+            "kar98": "query.get_equipped_item_name=='kar98' || query.get_equipped_item_name=='kar98_emp'"
+          },
           "awpreloading",
-          "kar98reloading",
           "m700reloading",
+          "kar98reloading",
           {
             "m870": "query.get_equipped_item_name=='m870' || query.get_equipped_item_name=='m870_emp'"
           },
@@ -426,26 +426,26 @@
         "m1911reload": "animation.m1911.reload",
         "m1911reloadtac": "animation.m1911.reload.tac",
         "awp": "controller.animation.awp",
-        "kar98": "controller.animation.kar98",
         "m700": "controller.animation.m700",
+        "kar98": "controller.animation.kar98",
         "awpreloading": "controller.animation.awp.reload",
-        "kar98reloading": "controller.animation.kar98.reload",
         "m700reloading": "controller.animation.m700.reload",
+        "kar98reloading": "controller.animation.kar98.reload",
         "awpshoot": "animation.awp.shoot",
-        "kar98shoot": "animation.kar98.shoot",
         "m700shoot": "animation.m700.shoot",
+        "kar98shoot": "animation.kar98.shoot",
         "awpdelay": "animation.awp.delay",
-        "kar98delay": "animation.kar98.delay",
         "m700delay": "animation.m700.delay",
+        "kar98delay": "animation.kar98.delay",
         "awpbolt": "animation.awp.bolt",
-        "kar98bolt": "animation.kar98.bolt",
         "m700bolt": "animation.m700.bolt",
+        "kar98bolt": "animation.kar98.bolt",
         "awpreload": "animation.awp.reload",
-        "kar98reload": "animation.kar98.reload",
         "m700reload": "animation.m700.reload",
+        "kar98reload": "animation.kar98.reload",
         "awpreloadtac": "animation.awp.reload.tac",
-        "kar98reloadtac": "animation.kar98.reload.tac",
         "m700reloadtac": "animation.m700.reload.tac",
+        "kar98reloadtac": "animation.kar98.reload.tac",
         "m870": "controller.animation.m870",
         "spas12": "controller.animation.spas12",
         "m870reloading": "controller.animation.m870.reload",
@@ -1154,28 +1154,6 @@
           }
         ]
       },
-      "krep:kar98_fire": {
-        "sequence": [
-          {
-            "filters": {"test": "is_sneaking", "value": true, "subject": "self"},
-            "queue_command": {
-              "command": [
-                "playanimation @s[r=0.5] animation.kar98.shoot shoot",
-                "scriptevent tacz:weapon_hitscan kar98 ads"
-              ]
-            }
-          },
-          {
-            "filters": {"test": "is_sneaking", "value": false, "subject": "self"},
-            "queue_command": {
-              "command": [
-                "playanimation @s[r=0.5] animation.kar98.shoot shoot",
-                "scriptevent tacz:weapon_hitscan kar98 hip"
-              ]
-            }
-          }
-        ]
-      },
       "krep:m700_fire": {
         "sequence": [
           {
@@ -1193,6 +1171,28 @@
               "command": [
                 "playanimation @s[r=0.5] animation.m700.shoot shoot",
                 "scriptevent tacz:weapon_hitscan m700 hip"
+              ]
+            }
+          }
+        ]
+      },
+      "krep:kar98_fire": {
+        "sequence": [
+          {
+            "filters": {"test": "is_sneaking", "value": true, "subject": "self"},
+            "queue_command": {
+              "command": [
+                "playanimation @s[r=0.5] animation.kar98.shoot shoot",
+                "scriptevent tacz:weapon_hitscan kar98 ads"
+              ]
+            }
+          },
+          {
+            "filters": {"test": "is_sneaking", "value": false, "subject": "self"},
+            "queue_command": {
+              "command": [
+                "playanimation @s[r=0.5] animation.kar98.shoot shoot",
+                "scriptevent tacz:weapon_hitscan kar98 hip"
               ]
             }
           }
@@ -4082,6 +4082,10 @@
         "set_property": {"krep:ammoreload": 340},
         "queue_command": {"command": ["title @s actionbar  No\n.338 Lapua"]}
       },
+      "m700reload0": {
+        "set_property": {"krep:ammoreload": 340},
+        "queue_command": {"command": ["title @s actionbar  No\n.338 Lapua"]}
+      },
       "kar98reload0": {
         "set_property": {"krep:ammoreload": 340},
         "queue_command": {"command": ["title @s actionbar  No\n.338 Lapua"]}
@@ -4090,10 +4094,6 @@
       "kar98reload2": {"set_property": {"krep:ammoreload": 342}},
       "kar98reload3": {"set_property": {"krep:ammoreload": 343}},
       "kar98reload4": {"set_property": {"krep:ammoreload": 344}},
-      "m700reload0": {
-        "set_property": {"krep:ammoreload": 340},
-        "queue_command": {"command": ["title @s actionbar  No\n.338 Lapua"]}
-      },
       "awpreload1": {"set_property": {"krep:ammoreload": 341}},
       "m700reload1": {"set_property": {"krep:ammoreload": 341}},
       "awpreload2": {"set_property": {"krep:ammoreload": 342}},
@@ -4156,30 +4156,6 @@
           }
         ]
       },
-      "krep:kar98_reload": {
-        "sequence": [
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 341, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s kar98 1"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 342, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s kar98 2"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 343, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s kar98 3"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 344, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s kar98 4"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 345, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s kar98 5"]}
-          }
-        ]
-      },
       "krep:m700_reload": {
         "sequence": [
           {
@@ -4201,6 +4177,30 @@
           {
             "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 345, "subject": "self"},
             "queue_command": {"command": ["scoreboard players add @s m700 5"]}
+          }
+        ]
+      },
+      "krep:kar98_reload": {
+        "sequence": [
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 341, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s kar98 1"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 342, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s kar98 2"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 343, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s kar98 3"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 344, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s kar98 4"]}
+          },
+          {
+            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 345, "subject": "self"},
+            "queue_command": {"command": ["scoreboard players add @s kar98 5"]}
           }
         ]
       },
@@ -6244,11 +6244,11 @@
       "rpgreload1": {"set_property": {"krep:ammoreload": 1001}},
       "m320reload1": {"set_property": {"krep:ammoreload": 1001}},
       "awp:bolt": {"set_property": {"krep:ammoreload": 1}},
-      "kar98:bolt": {"set_property": {"krep:ammoreload": 1}},
       "m700:bolt": {"set_property": {"krep:ammoreload": 1}},
+      "kar98:bolt": {"set_property": {"krep:ammoreload": 1}},
       "awp:normal": {"set_property": {"krep:ammoreload": 0}},
-      "kar98:normal": {"set_property": {"krep:ammoreload": 0}},
       "m700:normal": {"set_property": {"krep:ammoreload": 0}},
+      "kar98:normal": {"set_property": {"krep:ammoreload": 0}},
       "awp:ironsight": {"set_property": {"krep:awpscope": "'nothing'"}},
       "awp:elcan": {"set_property": {"krep:awpscope": "'elcan'"}},
       "awp:coyote": {"set_property": {"krep:awpscope": "'coyote'"}},
