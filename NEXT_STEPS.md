@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.24.0** (both manifests; worlds need `[1, 24, 0]` in `world_*_packs.json`).
+- Pack version **1.24.1** (both manifests; worlds need `[1, 24, 1]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -46,6 +46,12 @@ work.
    (heat, wind-up), Vector and Golden Deagle (`krep:<id>_range`: cap by magazine attachment), MP7 (`mp7sound`),
    M1014 (item swap in the shot). **Waiting for the user's test** of the 41: semi = one shot per click, bursts
    (M16, B93R, Double Barrel), auto, ammo HUD, empty swap and reloads, silencer sounds (G17/SKS any muzzle).
+   **User (2026-10-02): some guns silent when firing in v1.24.0** (which ones not said yet). All their `.shoot`
+   definitions and files exist (checked). v1.24.1: firing.js plays the shot with the exact command the controllers
+   ran (`playsound <sound> @a[r=30]` via runCommand) instead of `dimension.playSound`. If still silent: get the
+   list of guns. The Blockception VS Code extension's ~18k "problems" are mostly deprecation notices for
+   `query.get_equipped_item_name` (still works in game) and false "cannot find" items/functions/objectives (the
+   files exist; objectives are created by script at world load); validate.mjs (Mojang's schemas and API) is clean.
    Earlier notes: **M4A1 done in v1.17.0 and tested by the user (2026-10-01): tap fire,
    full auto, empty and tactical reload, with and without silencer all work; feels more responsive than the guns
    still on controllers (they react a tick or more later).** What was tested: hold to

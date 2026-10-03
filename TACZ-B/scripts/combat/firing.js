@@ -50,7 +50,9 @@ function fireRound(player, trigger) {
 
   const aiming = player.isSneaking;
   const suppressed = (player.getProperty("krep:muzzle") ?? 0) >= (weapon.suppressedFrom ?? SUPPRESSED_MUZZLE);
-  player.dimension.playSound(`${weapon.shootSound ?? weaponId}.${suppressed ? "suppress" : "shoot"}`, player.location);
+  // The same command the BP controllers ran (plays at each nearby player, full volume). v1.24.0 used
+  // dimension.playSound (a sound placed at the shooter) and some guns were silent.
+  player.runCommand(`playsound ${weapon.shootSound ?? weaponId}.${suppressed ? "suppress" : "shoot"} @a[r=30]`);
   // The firing kick (and muzzle flash) every client plays: same as the fire event's playanimation.
   const animation = weapon.shootAnimation?.[aiming ? "ads" : "hip"] ?? `animation.${weaponId}.shoot.${aiming ? "sight" : "nsight"}`;
   player.playAnimation(animation, { nextState: "shoot" });
