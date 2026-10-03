@@ -48,17 +48,32 @@ function removeItem(container, typeId, count) {
   }
 }
 
+// scriptReload options (tools/weapons/script-reload.mjs writes them from the gun's old BP reload):
+//   empty / tac      [load, end] seconds; a gun without `tac` (RPG, M320) has no tactical reload.
+//   emptyOne         [load, end] for an empty reload that can load only one round (Double Barrel).
+//   emptyProperty    krep:ammoreload values the RP reload watches, by rounds loaded ([one, two]: Double Barrel).
+//   tacEvents        [[seconds, event]] fired during a tactical reload (Evolys / M249 belt: evolys:bulletcache).
+//   reset            event fired when the reload ends (evolys:reset).
+//   byMagazine       per krep:magazine value: { empty, tac, caps: [empty cap, tactical cap] } (Vector, Golden
+//                    Deagle: extended magazines have their own timing and capacity).
+// roundInItem guns (RPG, M320) load the one round into the item: the ammo item goes, the loaded item comes back.
+
 function startReload(player, weapon, kind) {
   if (reloads.has(player.id)) return;
   const id = weapon.id;
-  const objective = world.scoreboard.getObjective(id);
-  if (!objective) return;
-  const current = kind === "empty" ? 0 : objective.getScore(player) ?? 0;
+  const sr = weapon.scriptReload;
+  const spec = sr.byMagazine?.[player.getProperty("krep:magazine") ?? 0] ?? sr;
+  if (!spec[kind]) return;
+  const objective = weapon.roundInItem ? null : world.scoreboard.getObjective(id);
+  if (!weapon.roundInItem && !objective) return;
+  const current = kind === "empty" || weapon.roundInItem ? 0 : objective.getScore(player) ?? 0;
   // Not while the bolt / pump is cycling (the controllers checked krep:ammoreload too).
   if (weapon.cycle && player.getProperty("krep:ammoreload") === weapon.cycle.value) return;
   const chambered = kind === "tac" && weapon.chamber !== false ? 1 : 0;
-  const cap = weapon.capByMagazine?.[player.getProperty("krep:magazine") ?? 0] ?? weapon.magazine + chambered;
-  if (kind === "tac" && current > weapon.magazine - 2) return; // the controllers needed at least 2 missing
+  const full = spec.caps?.[0] ?? weapon.magazine; // a full magazine, without a chambered round
+  const cap = weapon.roundInItem ? 1 : spec.caps?.[kind === "tac" ? 1 : 0] ?? weapon.magazine + chambered;
+  // The controllers needed at least 2 missing (1 for a two-shell Double Barrel).
+  if (kind === "tac" && current > full - (full <= 2 ? 1 : 2)) return;
   const container = inventory(player);
   const unlimited = countItem(container, CREATIVE_BOX) > 0;
   const available = unlimited ? Infinity : countItem(container, weapon.ammo);
@@ -67,24 +82,50 @@ function startReload(player, weapon, kind) {
     player.onScreenDisplay.setActionBar({ rawtext: [{ text: "No ammo: " }, ...(ammoName ? [{ translate: ammoName }] : [])] });
     return;
   }
-  const [loadAt, endAt] = weapon.scriptReload[kind];
+  const toLoad = Math.min(cap - current, available);
+  const timing = kind === "empty" && toLoad === 1 && spec.emptyOne ? spec.emptyOne : spec[kind];
+  const [loadAt, endAt] = timing;
+  const property = kind === "empty" ? sr.emptyProperty?.[Math.min(toLoad, sr.emptyProperty.length) - 1] : undefined;
+  if (property !== undefined) player.setProperty("krep:ammoreload", property);
   player.triggerEvent(MARK[kind]);
-  reloads.set(player.id, { player, weapon, kind, current, cap, unlimited, item: heldTypeId(player), loadTick: system.currentTick + ticks(loadAt), endTick: system.currentTick + ticks(endAt), loaded: false });
+  const now = system.currentTick;
+  reloads.set(player.id, {
+    player, weapon, kind, cap, unlimited, property,
+    cues: kind === "tac" ? (sr.tacEvents ?? []).map(([t, event]) => ({ tick: now + ticks(t), event })) : [],
+    loadTick: now + ticks(loadAt), endTick: now + ticks(endAt), loaded: false,
+  });
 }
 
 function load(r) {
   const { player, weapon, kind, cap, unlimited } = r;
+  const container = inventory(player);
+  const takes = !unlimited && player.getGameMode() !== GameMode.creative;
+  if (weapon.roundInItem) {
+    if (countItem(container, weapon.ammo) < 1 && !unlimited) return void (r.loaded = true);
+    if (takes) removeItem(container, weapon.ammo, 1);
+    player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weapon.id}`, 1));
+    r.loaded = true;
+    return;
+  }
   const objective = world.scoreboard.getObjective(weapon.id);
   const current = kind === "empty" ? 0 : objective.getScore(player) ?? 0; // shots can't happen meanwhile, but be exact
-  const container = inventory(player);
   const give = Math.min(cap - current, unlimited ? Infinity : countItem(container, weapon.ammo));
-  if (give > 0 && !unlimited && player.getGameMode() !== GameMode.creative) removeItem(container, weapon.ammo, give);
+  if (give > 0 && takes) removeItem(container, weapon.ammo, give);
   const rounds = current + Math.max(give, 0);
   objective.setScore(player, rounds);
   if (kind === "empty" && rounds > 0) player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weapon.id}`, 1));
   if (weapon.capByMagazine) player.runCommand(`function ${weapon.id}`);
   else showAmmo(player, weapon, rounds);
   r.loaded = true;
+}
+
+/** End (or cancel) a reload: the mark variant, and whatever else the gun's old reload reset. */
+function finish(r) {
+  const { player, weapon, property } = r;
+  player.triggerEvent("krep:noreload");
+  if (weapon.scriptReload.reset) player.triggerEvent(weapon.scriptReload.reset);
+  if (property !== undefined && player.getProperty("krep:ammoreload") === property) player.setProperty("krep:ammoreload", 0);
+  reloads.delete(player.id);
 }
 
 // Auto reload: when the last round is fired, the empty reload starts by itself shortly after (the controllers
@@ -121,14 +162,11 @@ system.runInterval(() => {
     const stillHolding = held === `krep:${r.weapon.id}` || held === `krep:${r.weapon.id}_emp`;
     if (!r.loaded && !stillHolding) {
       // Switched away before the rounds went in: nothing loaded, nothing taken.
-      player.triggerEvent("krep:noreload");
-      reloads.delete(pid);
+      finish(r);
       continue;
     }
+    while (r.cues.length && now >= r.cues[0].tick) player.triggerEvent(r.cues.shift().event);
     if (!r.loaded && now >= r.loadTick) load(r);
-    if (r.loaded && (now >= r.endTick || !stillHolding)) {
-      player.triggerEvent("krep:noreload");
-      reloads.delete(pid);
-    }
+    if (r.loaded && (now >= r.endTick || !stillHolding)) finish(r);
   }
 }, 1);

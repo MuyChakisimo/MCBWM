@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.28.0** (both manifests; worlds need `[1, 28, 0]` in `world_*_packs.json`).
+- Pack version **1.29.0** (both manifests; worlds need `[1, 29, 0]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -295,6 +295,15 @@ work.
    magazine attachment), RPG, M320 (one round, item swap), M870, SPAS-12, M1014 (shell by shell), Double Barrel,
    DB-4 (extra reload state), Evolys, M249 (`evolys:bulletcache` in the tactical reload), minigun.
    **Waiting for the user's test** of the 42 (reload timing per gun, auto reload).
+   **v1.29.0 (2026-10-03): 8 more** (reload.js options written by script-reload.mjs): Evolys, M249 (`tacEvents`
+   evolys:bulletcache at 2.28 s, `reset` evolys:reset), Double Barrel, DB-4 (`emptyOne`: the shorter one-shell
+   reload; `emptyProperty` [641, 642] because their RP reload states wait for krep:ammoreload == 641 / 642),
+   Vector, Golden Deagle (`byMagazine`: timing and caps per magazine attachment; Golden Deagle firing cap for
+   magazine 1 corrected 12 -> 13 to match its reload), RPG, M320 (round into the item; no tactical reload).
+   `chamber: false` added for Evolys, M249 and both double barrels (old caps had no +1); a 2-shell gun can
+   tactical-reload with 1 missing. **Left on the old reload:** M870, SPAS-12, M1014 (shell by shell; their RP
+   reload / rend states watch krep:ammoreload 411 / 412 / 420) and the minigun (ammo box). **Waiting for the user's
+   test** of the 8.
 4. **Lag: gate the always-running BP controllers.** **v1.25.0 (2026-10-02):** the 54 `<id>reloading` controllers
    in `entities/player.json` `scripts.animate` now run only while their gun is held or any reload is in progress
    (`... || q.mark_variant != 0`, so a reload interrupted by switching guns still cleans up). Left ungated on purpose:

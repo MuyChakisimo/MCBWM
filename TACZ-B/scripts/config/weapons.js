@@ -106,6 +106,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "auto",
     rpm: 1200,
     scriptFiring: true,
+    scriptReload: { byMagazine: [{ empty: [2.6, 2.7], caps: [20, 21], tac: [2.4, 2.5] }, { empty: [2.6, 2.7], caps: [30, 31], tac: [2.4, 2.5] }, { empty: [2.6, 2.7], caps: [40, 41], tac: [2.4, 2.5] }, { empty: [2.6, 2.7], caps: [50, 51], tac: [2.4, 2.5] }] },
     shootAnimation: { ads: "animation.vector.shoot", hip: "animation.vector.shoot" },
     capByMagazine: [21, 31, 41, 51],
     magazine: 20,
@@ -282,6 +283,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "semi",
     rpm: 150,
     scriptFiring: true,
+    scriptReload: { empty: [3.3, 3.5] },
     shootAnimation: { ads: "animation.rpg.shoot", hip: "animation.rpg.shoot" },
     roundInItem: true,
     aimToFire: true,
@@ -305,6 +307,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "semi",
     rpm: 150,
     scriptFiring: true,
+    scriptReload: { empty: [2.8663, 3.04] },
     shootAnimation: { ads: "animation.m320.shoot", hip: "animation.m320.shoot" },
     roundInItem: true,
     aimToFire: true,
@@ -643,12 +646,14 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "burst",
     rpm: 150,
     scriptFiring: true,
+    scriptReload: { empty: [2.2, 2.4], tac: [1.6, 1.8], emptyOne: [1.6, 1.8], emptyProperty: [641, 642] },
     shootAnimation: { ads: "animation.db.shoot.stock", hip: "animation.db.shoot" },
     burst: { count: 2, rpm: 600, delay: 0.5 },
     pellets: 12,
     spread: { hip: 6.1, ads: 2.2 },
     tracers: 6,
     magazine: 2,
+    chamber: false, // no round in the chamber: a tactical reload fills the magazine only
     ammo: "krep:gauge12",
     recipe: [
       ["iron_ingot", 8],
@@ -666,11 +671,13 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "semi",
     rpm: 100,
     scriptFiring: true,
+    scriptReload: { empty: [2.2, 2.4], tac: [1.6, 1.8], emptyOne: [1.6, 1.8], emptyProperty: [641, 642] },
     shootAnimation: { ads: "animation.dblong.shoot.stock", hip: "animation.dblong.shoot" },
     pellets: 10,
     spread: { hip: 6.1, ads: 2.2 },
     tracers: 6,
     magazine: 2,
+    chamber: false, // no round in the chamber: a tactical reload fills the magazine only
     ammo: "krep:gauge12",
     // Java TACZ recipe.
     recipe: [["iron_ingot", 14], ["log", 10]],
@@ -686,10 +693,11 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "semi",
     rpm: 350,
     scriptFiring: true,
+    scriptReload: { byMagazine: [{ empty: [2.38, 2.43], caps: [9, 10], tac: [1.9, 2] }, { empty: [2.4, 2.6], caps: [12, 13], tac: [1.9, 2.2] }, { empty: [2.4, 2.6], caps: [15, 16], tac: [1.9, 2.2] }, { empty: [2.4, 2.6], caps: [17, 18], tac: [1.9, 2.2] }] },
     shootSound: "deagle",
     shootAnimation: { ads: "animation.deagleg.shoot", hip: "animation.deagleg.shoot" },
     suppressedFrom: 1,
-    capByMagazine: [10, 12, 16, 18],
+    capByMagazine: [10, 13, 16, 18],
     magazine: 9,
     ammo: "krep:mag357",
     recipe: [
@@ -918,7 +926,9 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "auto",
     rpm: 750,
     scriptFiring: true,
+    scriptReload: { empty: [6.9, 7.18], tac: [6, 6.29], tacEvents: [[2.28, "evolys:bulletcache"]], reset: "evolys:reset" },
     magazine: 75,
+    chamber: false, // no round in the chamber: a tactical reload fills the magazine only
     ammo: "krep:win308",
     storedAmmoDisplay: true,
     recipe: [
@@ -939,7 +949,9 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "auto",
     rpm: 750,
     scriptFiring: true,
+    scriptReload: { empty: [7.4, 7.6], tac: [5.7, 5.9], tacEvents: [[2.28, "evolys:bulletcache"]], reset: "evolys:reset" },
     magazine: 100,
+    chamber: false, // no round in the chamber: a tactical reload fills the magazine only
     ammo: "krep:m885",
     storedAmmoDisplay: true,
     recipe: [

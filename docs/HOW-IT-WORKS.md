@@ -43,9 +43,8 @@ released (`itemStopUse`), the gun is switched, or the magazine is empty. Each sh
 shots during a tactical reload (`mark_variant` 2). The gun's BP controller keeps only `setup1` (initial ammo),
 `setup` (HUD) and `<id>.31` (using it at 0 rounds swaps to `_emp`); reloading is unchanged.
 
-**Reloading, guns with `scriptReload`** (config/weapons.js; since v1.28.0 all but the Vector, Golden Deagle, RPG,
-M320, M870, SPAS-12, M1014, both double barrels, Evolys, M249 and minigun; `tools/weapons/script-reload.mjs`
-converts a gun): `combat/reload.js`. Empty reload: starts by itself 0.25 s after the last round, or use with
+**Reloading, guns with `scriptReload`** (config/weapons.js; since v1.29.0 all but the M870, SPAS-12, M1014 and minigun;
+`tools/weapons/script-reload.mjs` converts a gun; per-gun options are described in reload.js): `combat/reload.js`. Empty reload: starts by itself 0.25 s after the last round, or use with
 `krep:<id>_emp`. Tactical: a swing
 (the shared BP controller `controller.animation.reload_input` sends `/scriptevent tacz:reload`) with at least 2
 rounds missing. It sets the mark variant the RP reload animations watch, takes the ammo item from the inventory at

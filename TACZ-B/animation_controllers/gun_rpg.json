@@ -19,52 +19,6 @@
           "on_entry": ["/replaceitem entity @s slot.weapon.mainhand 1 krep:rpg_emp 1 0"]
         }
       }
-    },
-    "controller.animation.rpg.reload": {
-      "initial_state": "setup",
-      "states": {
-        "setup": {
-          "on_entry": ["@s krep:noreload"],
-          "transitions": [{"trigger.reload": "query.get_equipped_item_name=='rpg_emp' && q.is_using_item"}]
-        },
-        "trigger.reload": {
-          "on_entry": [
-            "/event entity @s[hasitem={item=krep:rpgrocket,quantity=0}] rpgreload0",
-            "/event entity @s[hasitem={item=krep:rpgrocket,quantity=1..}] rpgreload1",
-            "@s krep:noreload"
-          ],
-          "transitions": [
-            {
-              "setup": "query.get_equipped_item_name=='rpg_emp' && q.property('krep:ammoreload') == 1000"
-            },
-            {
-              "reload": "query.get_equipped_item_name=='rpg_emp' && q.property('krep:ammoreload') >= 1001"
-            },
-            {"setup": "query.get_equipped_item_name=='rpg'"}
-          ]
-        },
-        "reload": {
-          "animations": [
-            {
-              "rpgreload": "query.get_equipped_item_name('main_hand')=='rpg_emp' || query.get_equipped_item_name('main_hand')=='rpg'"
-            }
-          ],
-          "on_entry": ["@s krep:reload"],
-          "on_exit": ["@s krep:noreload"],
-          "transitions": [
-            {"setup": "query.get_equipped_item_name!='rpg_emp'"},
-            {"reloadfinish": "query.all_animations_finished"}
-          ]
-        },
-        "reloadfinish": {
-          "on_entry": ["@s krep:noreload"],
-          "transitions": [
-            {
-              "setup": "query.get_equipped_item_name=='rpg' || query.get_equipped_item_name=='rpg_emp'"
-            }
-          ]
-        }
-      }
     }
   }
 }
