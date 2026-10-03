@@ -31,8 +31,8 @@ out or is reloaded.
 
 ## Firing a shot
 
-**Guns with `scriptFiring: true`** (`config/weapons.js`; since v1.24.0 all but the bolt/pump guns, RPG, M320, minigun, Vector, Golden
-Deagle, MP7 and M1014; `tools/weapons/script-firing.mjs` converts a gun) fire from the script instead of steps
+**Guns with `scriptFiring: true`** (`config/weapons.js`; since v1.26.0 all but the minigun; `tools/weapons/script-firing.mjs` converts a gun;
+per-gun extras `cycle`, `roundInItem`, `aimToFire`, `capByMagazine` are described in firing.js) fire from the script instead of steps
 1 and 2 below: `combat/firing.js` starts on the use button (`itemStartUse` on `krep:<id>`) and fires at the gun's
 `rpm` in its `fireMode` (auto while held, semi one per press, burst `burst.count` per press) until the button is
 released (`itemStopUse`), the gun is switched, or the magazine is empty. Each shot: scoreboard `<id>` minus one

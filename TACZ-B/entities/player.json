@@ -126,7 +126,6 @@
           {
             "mp7reloading": "query.get_equipped_item_name=='mp7' || query.get_equipped_item_name=='mp7_emp' || q.mark_variant != 0"
           },
-          "mp7sound",
           {"g36": "query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp'"},
           {
             "g36reloading": "query.get_equipped_item_name=='g36' || query.get_equipped_item_name=='g36_emp' || q.mark_variant != 0"
@@ -474,7 +473,6 @@
         "mp5reloadtac": "animation.mp5.reload.tac",
         "mp7": "controller.animation.mp7",
         "mp7reloading": "controller.animation.mp7.reload",
-        "mp7sound": "controller.animation.mp7.sound",
         "mp7shoot": "animation.mp7.shoot",
         "mp7reload": "animation.mp7.reload",
         "mp7reloadtac": "animation.mp7.reload.tac",

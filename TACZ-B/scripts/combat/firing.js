@@ -13,6 +13,14 @@ import { AMMO } from "../config/ammo.js";
 // and the shoot animation, and runs the hitscan shot (combat/hitscan.js). The last round swaps the
 // item to `krep:<id>_emp` (which starts an empty reload) and shows "No Ammunition".
 // No shots during a tactical reload (mark variant 2). Reloading itself is still in the BP controllers.
+// Per-gun extras (config/weapons.js):
+//   cycle         bolt / pump after each shot: `<id>:bolt` `after` s after the shot (sets krep:ammoreload to
+//                 `value`, which plays the RP bolt animation), `<id>:normal` `seconds` later; no shot (and a
+//                 press is ignored) until `delay` s after that.
+//   roundInItem   the loaded item is the round (RPG, M320): no scoreboard, every shot empties it.
+//   aimToFire     fires only while aiming (sneaking).
+//   capByMagazine rounds allowed per krep:magazine value (extended magazines); the HUD is the gun's
+//                 function (it shows "/20+10" ...).
 
 const TICKS_PER_MINUTE = 1200;
 const TACTICAL_RELOAD = 2; // q.mark_variant while a tactical reload plays
@@ -39,14 +47,20 @@ function showAmmo(player, weapon, rounds) {
 /** Fires one round if there is one. Returns false when the gun can't fire (empty). */
 function fireRound(player, trigger) {
   const { weaponId, weapon } = trigger;
-  const objective = world.scoreboard.getObjective(weaponId);
-  if (!objective) return false;
-  // Never more than a full magazine plus one chambered round (as the BP controllers did).
-  const rounds = Math.min(objective.getScore(player) ?? 0, weapon.magazine + 1);
-  if (rounds < 1) return false;
-  const left = rounds - 1;
-  objective.setScore(player, left);
-  showAmmo(player, weapon, left);
+  let left = 0;
+  if (weapon.roundInItem) player.onScreenDisplay.setActionBar("No Ammunition");
+  else {
+    const objective = world.scoreboard.getObjective(weaponId);
+    if (!objective) return false;
+    // Never more than a full magazine plus one chambered round (as the BP controllers did).
+    const cap = weapon.capByMagazine?.[player.getProperty("krep:magazine") ?? 0] ?? weapon.magazine + 1;
+    const rounds = Math.min(objective.getScore(player) ?? 0, cap);
+    if (rounds < 1) return false;
+    left = rounds - 1;
+    objective.setScore(player, left);
+    if (weapon.capByMagazine) player.runCommand(`function ${weaponId}`);
+    else showAmmo(player, weapon, left);
+  }
 
   const aiming = player.isSneaking;
   const suppressed = (player.getProperty("krep:muzzle") ?? 0) >= (weapon.suppressedFrom ?? SUPPRESSED_MUZZLE);
@@ -62,7 +76,22 @@ function fireRound(player, trigger) {
     player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weaponId}_emp`, 1));
     return false;
   }
+  if (weapon.cycle) startCycle(player, weaponId, weapon.cycle);
   return true;
+}
+
+const ticks = (seconds) => Math.round(seconds * 20);
+const cycleTicks = (cycle) => ticks(cycle.after + cycle.seconds + cycle.delay);
+
+/** Bolt / pump: the property the RP bolt animation and the reload controllers watch, as the BP states set it. */
+function startCycle(player, weaponId, cycle) {
+  system.runTimeout(() => {
+    if (player.isValid() && heldTypeId(player) === `krep:${weaponId}`) player.triggerEvent(`${weaponId}:bolt`);
+  }, ticks(cycle.after));
+  system.runTimeout(() => {
+    // Only undo our own value (a reload started meanwhile sets krep:ammoreload to something else).
+    if (player.isValid() && player.getProperty("krep:ammoreload") === cycle.value) player.triggerEvent(`${weaponId}:normal`);
+  }, ticks(cycle.after + cycle.seconds));
 }
 
 function startTrigger(player, weaponId, weapon) {
@@ -82,6 +111,9 @@ function startTrigger(player, weaponId, weapon) {
 world.afterEvents.itemStartUse.subscribe(({ source: player, itemStack }) => {
   const weapon = getWeaponByItem(itemStack?.typeId);
   if (!weapon?.scriptFiring || itemStack.typeId !== `krep:${weapon.id}`) return;
+  if (weapon.aimToFire && !player.isSneaking) return;
+  // A bolt / pump still cycling: the press is ignored (the controllers didn't queue it either).
+  if (weapon.cycle && system.currentTick < (triggers.get(player.id)?.readyAt ?? 0)) return;
   startTrigger(player, weapon.id, weapon);
 });
 
@@ -118,6 +150,7 @@ system.runInterval(() => {
     trigger.shotsLeft--;
     // Keep the rhythm (810 rpm = a shot every 1.48 ticks) but never bank shots while waiting.
     trigger.nextShot = Math.max(trigger.nextShot + trigger.interval, now + 1);
+    if (weapon.cycle) trigger.nextShot = Math.max(trigger.nextShot, now + cycleTicks(weapon.cycle));
     if (!fired || trigger.shotsLeft <= 0) done();
   }
 }, 1);

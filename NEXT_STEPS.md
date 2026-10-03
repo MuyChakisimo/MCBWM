@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.25.1** (both manifests; worlds need `[1, 25, 1]` in `world_*_packs.json`).
+- Pack version **1.26.0** (both manifests; worlds need `[1, 26, 0]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -52,6 +52,16 @@ work.
    list of guns. The Blockception VS Code extension's ~18k "problems" are mostly deprecation notices for
    `query.get_equipped_item_name` (still works in game) and false "cannot find" items/functions/objectives (the
    files exist; objectives are created by script at world load); validate.mjs (Mojang's schemas and API) is clean.
+   **v1.26.0 (2026-10-02): Batch 2 converted, 54 of 55 guns script-fired** (all but the minigun: heat, wind-up,
+   ammo-box ammo). New firing.js options (script-firing.mjs fills them in): `cycle` (AWM, M700, Kar98k bolt;
+   M870, SPAS-12 pump: `<id>:bolt` after the shoot animation, `<id>:normal` after the bolt animation, presses
+   ignored until the old delay ends), `roundInItem` + `aimToFire` (RPG, M320), `capByMagazine` (Vector, Golden
+   Deagle; HUD from their own function). MP7: its per-shot sound only played if a never-created `mp7sound`
+   score was 0, so only the late loop sound was heard; now the shot sound plays every shot and the loop
+   controller is removed. AA-12 set to auto (Java: auto, 350 rpm; it was semi). User's test of v1.25.1: AKM no
+   reload animation the first time it ran empty (second time fine), P320 "a bit slow" (Java's 450 rpm), MP7 late
+   sound, DB-4 left hand high/left. **Waiting for the user's test** of Batch 2: bolt and pump after each shot,
+   RPG/M320 only while aiming, Vector/Golden Deagle with extended mags, MP7 sound, AA-12 auto.
    Earlier notes: **M4A1 done in v1.17.0 and tested by the user (2026-10-01): tap fire,
    full auto, empty and tactical reload, with and without silencer all work; feels more responsive than the guns
    still on controllers (they react a tick or more later).** What was tested: hold to
@@ -270,6 +280,13 @@ work.
    barrel spin (`animation.minigun.spin`, `controller.animation.minigun.tp`), M870 shell-by-shell reload intros
    (`m870_fp_rintroemp` / `m870_fp_rintrotac`, `fp.reload11`).
 6. Empty-magazine inspect for the 22 guns that have none (Java has them; `java-convert.mjs` converts `inspect_empty`).
+
+## Future ideas (user)
+
+- **Muzzle flash lighting** (2026-10-02): each shot lights up dark places (caves) for a split second. Bedrock has no
+  dynamic light from entities; the usual way: in firing.js, place `minecraft:light_block` (level ~12-15) in the air
+  block at the shooter's head for 1-2 ticks, then set it back to air (only if that block was air; skip if a light is
+  already there). Costs two block changes per shot, so maybe only every few shots on full-auto guns.
 
 ## Decisions the user already made (don't re-ask)
 

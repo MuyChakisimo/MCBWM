@@ -16,20 +16,8 @@
             "@s kar98:normal"
           ]
         },
-        "jawir": {
-          "animations": ["kar98delay"],
-          "transitions": [
-            {
-              "setup": "(query.get_equipped_item_name=='kar98' || query.get_equipped_item_name=='kar98_emp') && q.all_animations_finished && q.is_using_item"
-            }
-          ],
-          "on_entry": ["@s kar98:normal"]
-        },
         "setup": {
           "transitions": [
-            {
-              "kar98.30": "query.get_equipped_item_name=='kar98' && query.is_using_item && query.scoreboard('kar98') >= 1 && q.mark_variant != 2"
-            },
             {
               "kar98.31": "query.get_equipped_item_name=='kar98' && query.is_using_item && query.scoreboard('kar98') == 0"
             }
@@ -40,32 +28,6 @@
           "animations": ["kar98shoot"],
           "transitions": [{"setup": "query.all_animations_finished"}],
           "on_entry": ["/replaceitem entity @s[scores={kar98=0}] slot.weapon.mainhand 1 krep:kar98_emp 1 0"]
-        },
-        "kar98.30": {
-          "animations": ["kar98shoot"],
-          "transitions": [
-            {
-              "bolt": "query.all_animations_finished && query.get_equipped_item_name=='kar98' && q.mark_variant!= 2"
-            },
-            {"setup": "query.get_equipped_item_name!='kar98'"},
-            {"setup": "query.get_equipped_item_name=='kar98' && q.mark_variant == 2"}
-          ],
-          "on_entry": [
-            "@s krep:kar98_fire",
-            "/scoreboard players remove @s[scores={kar98=1..5}] kar98 1",
-            "/scoreboard players set @s[scores={kar98=6..}] kar98 5",
-            "/playsound kar98.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={kar98=0}] slot.weapon.mainhand 1 krep:kar98_emp 1 0",
-            "/title @s[scores={kar98=0}] actionbar No Ammunition"
-          ]
-        },
-        "bolt": {
-          "animations": ["kar98bolt"],
-          "transitions": [
-            {"jawir": "query.all_animations_finished"},
-            {"jawir": "query.get_equipped_item_name!='kar98'"}
-          ],
-          "on_entry": ["@s kar98:bolt", "/function kar98"]
         }
       }
     },

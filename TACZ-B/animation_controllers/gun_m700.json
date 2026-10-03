@@ -16,20 +16,8 @@
             "@s m700:normal"
           ]
         },
-        "jawir": {
-          "animations": ["m700delay"],
-          "transitions": [
-            {
-              "setup": "(query.get_equipped_item_name=='m700' || query.get_equipped_item_name=='m700_emp') && q.all_animations_finished && q.is_using_item"
-            }
-          ],
-          "on_entry": ["@s m700:normal"]
-        },
         "setup": {
           "transitions": [
-            {
-              "m700.30": "query.get_equipped_item_name=='m700' && query.is_using_item && query.scoreboard('m700') >= 1 && q.mark_variant != 2"
-            },
             {
               "m700.31": "query.get_equipped_item_name=='m700' && query.is_using_item && query.scoreboard('m700') == 0"
             }
@@ -40,32 +28,6 @@
           "animations": ["m700shoot"],
           "transitions": [{"setup": "query.all_animations_finished"}],
           "on_entry": ["/replaceitem entity @s[scores={m700=0}] slot.weapon.mainhand 1 krep:m700_emp 1 0"]
-        },
-        "m700.30": {
-          "animations": ["m700shoot"],
-          "transitions": [
-            {
-              "bolt": "query.all_animations_finished && query.get_equipped_item_name=='m700' && q.mark_variant!= 2"
-            },
-            {"setup": "query.get_equipped_item_name!='m700'"},
-            {"setup": "query.get_equipped_item_name=='m700' && q.mark_variant == 2"}
-          ],
-          "on_entry": [
-            "@s krep:m700_fire",
-            "/scoreboard players remove @s[scores={m700=1..6}] m700 1",
-            "/scoreboard players set @s[scores={m700=7..}] m700 6",
-            "/playsound m700.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={m700=0}] slot.weapon.mainhand 1 krep:m700_emp 1 0",
-            "/title @s[scores={m700=0}] actionbar No Ammunition"
-          ]
-        },
-        "bolt": {
-          "animations": ["m700bolt"],
-          "transitions": [
-            {"jawir": "query.all_animations_finished"},
-            {"jawir": "query.get_equipped_item_name!='m700'"}
-          ],
-          "on_entry": ["@s m700:bolt", "/function m700"]
         }
       }
     },

@@ -16,20 +16,8 @@
             "@s spas12:normal"
           ]
         },
-        "jawir": {
-          "animations": ["spas12delay"],
-          "transitions": [
-            {
-              "setup": "(query.get_equipped_item_name=='spas12' || query.get_equipped_item_name=='spas12_emp') && q.all_animations_finished && q.is_using_item"
-            }
-          ],
-          "on_entry": ["@s spas12:normal"]
-        },
         "setup": {
           "transitions": [
-            {
-              "spas12.30": "query.get_equipped_item_name=='spas12' && query.is_using_item && query.scoreboard('spas12') >= 1 && (q.mark_variant != 2 && q.mark_variant!=1)"
-            },
             {
               "spas12.31": "query.get_equipped_item_name=='spas12' && query.is_using_item && query.scoreboard('spas12') == 0"
             }
@@ -40,32 +28,6 @@
           "animations": ["spas12shoot"],
           "transitions": [{"setup": "query.all_animations_finished"}],
           "on_entry": ["/replaceitem entity @s[scores={spas12=0}] slot.weapon.mainhand 1 krep:spas12_emp 1 0"]
-        },
-        "spas12.30": {
-          "animations": ["spas12shoot"],
-          "transitions": [
-            {
-              "bolt": "query.all_animations_finished && query.get_equipped_item_name=='spas12' && q.mark_variant!= 2"
-            },
-            {"setup": "query.get_equipped_item_name!='spas12'"},
-            {"setup": "query.get_equipped_item_name=='spas12' && q.mark_variant == 2"}
-          ],
-          "on_entry": [
-            "@s krep:spas12_fire",
-            "/scoreboard players remove @s[scores={spas12=1..6}] spas12 1",
-            "/scoreboard players set @s[scores={spas12=7..}] spas12 6",
-            "/playsound spas12.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={spas12=0}] slot.weapon.mainhand 1 krep:spas12_emp 1 0",
-            "/title @s[scores={spas12=0}] actionbar No Ammunition"
-          ]
-        },
-        "bolt": {
-          "animations": ["spas12bolt"],
-          "transitions": [
-            {"jawir": "query.all_animations_finished"},
-            {"jawir": "query.get_equipped_item_name!='spas12'"}
-          ],
-          "on_entry": ["@s spas12:bolt", "/function spas12"]
         }
       }
     },
