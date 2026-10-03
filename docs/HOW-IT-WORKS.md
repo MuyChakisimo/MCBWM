@@ -43,7 +43,8 @@ released (`itemStopUse`), the gun is switched, or the magazine is empty. Each sh
 shots during a tactical reload (`mark_variant` 2). The gun's BP controller keeps only `setup1` (initial ammo),
 `setup` (HUD) and `<id>.31` (using it at 0 rounds swaps to `_emp`); reloading is unchanged.
 
-**Other guns:**
+**The minigun** (the only gun still fired by its controller; script-fired guns have no `krep:<id>_fire` event since
+v1.26.1):
 
 1. **BP** `animation_controllers/gun_<id>.json`, controller `controller.animation.<id>`: while the gun is held, the
    use button is down and the scoreboard `<id>` is at least 1, it enters a shoot state (`<id>.30`, `delay.30` ...).
@@ -144,7 +145,7 @@ magazine sizes.
 | Symptom | Look at |
 |---|---|
 | Gun doesn't fire | BP `gun_<id>.json` shoot transitions (scoreboard `<id>` >= 1?); `/scoreboard players list @s` |
-| Fires but no damage | `player.json` `krep:<id>_fire` has `scriptevent tacz:weapon_hitscan <id>`; `config/weapons.js` entry; content log for `[TACZ Hitscan]` errors |
+| Fires but no damage | script-fired: content log `[TACZ Hitscan]`, `config/weapons.js` entry; minigun: `player.json` `krep:minigun_fire` has `scriptevent tacz:weapon_hitscan <id>`; `config/weapons.js` entry; content log for `[TACZ Hitscan]` errors |
 | Gun with `scriptFiring` doesn't fire, or fires twice | `config/weapons.js` `scriptFiring` and `fireMode`/`rpm`; its BP controller must have no shoot states left (only `setup1`, `setup`, `<id>.31`); content log for `combat/firing.js` errors |
 | Damage feels off | `weapons.js` `damage`, `falloff`, `headshot`, `penetration`; `combat.js` multipliers |
 | Wrong ammo count / reload loads wrong amount | `functions/<id>quantity.mcfunction`, `<id>reload.mcfunction`, `player.json` `<id>reload<N>` and `krep:<id>_reload`; `check.mjs` compares them to `magazine` |

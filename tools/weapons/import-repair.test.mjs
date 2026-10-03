@@ -25,7 +25,10 @@ for (const id of ["kar98", "m700", "spas12"]) {
   const role = id === "spas12" ? "pump" : "bolt";
   const action = rp[`animation.${id}.fp.${role}`];
   assert.equal(action.loop, "hold_on_last_frame", `${id}: must keep rendering during delayed server cleanup`);
-  assert.equal(action.animation_length, bp[`animation.${id}.bolt`].animation_length);
+  // Since v1.26 the script runs the cycle (config/weapons.js cycle.seconds, from the BP bolt timer it replaced).
+  const cycle = new RegExp(`\\n  ${id}: \\{[\\s\\S]*?\\n    cycle: \\{[^}]*seconds: ([\\d.]+)`).exec(fs.readFileSync(path.join(root, "TACZ-B/scripts/config/weapons.js"), "utf8"));
+  assert.ok(cycle, `${id}: no cycle in config/weapons.js`);
+  assert.equal(action.animation_length, +cycle[1], `${id}: the bolt animation must last as long as the script's cycle`);
   for (const role of ["reload", "tac"]) {
     const a = rp[`animation.${id}.fp.${role}`], b = bp[`animation.${id}.${role === "tac" ? "reload.tac" : role}`];
     assert.equal(a.animation_length, b.animation_length, `${id}: reload lock must match visuals`);

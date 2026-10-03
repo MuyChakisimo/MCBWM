@@ -9,7 +9,6 @@
         "2.4": ["/function type81reload", "/event entity @s krep:type81_reload"]
       }
     },
-    "animation.type81.shoot": {"loop": false, "animation_length": 0, "timeline": {}},
     "animation.type81.reload": {
       "loop": "hold_on_last_frame",
       "animation_length": 3.1,

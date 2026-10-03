@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.26.0** (both manifests; worlds need `[1, 26, 0]` in `world_*_packs.json`).
+- Pack version **1.26.1** (both manifests; worlds need `[1, 26, 1]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -62,6 +62,10 @@ work.
    reload animation the first time it ran empty (second time fine), P320 "a bit slow" (Java's 450 rpm), MP7 late
    sound, DB-4 left hand high/left. **Waiting for the user's test** of Batch 2: bolt and pump after each shot,
    RPG/M320 only while aiming, Vector/Golden Deagle with extended mags, MP7 sound, AA-12 auto.
+   **User (2026-10-02): tested some guns on v1.26.0, "so far so good".** v1.26.1 cleanup: the 54 script-fired
+   guns' `krep:<id>_fire` events, 21 BP animations only the removed firing states played (bolt/pump/delay/shoot
+   timers) and the MP7 loop sound are removed (player.json about 1200 lines shorter); check.mjs now refuses a fire
+   event on a script-fired gun and counts the default shoot animations firing.js plays.
    Earlier notes: **M4A1 done in v1.17.0 and tested by the user (2026-10-01): tap fire,
    full auto, empty and tactical reload, with and without silencer all work; feels more responsive than the guns
    still on controllers (they react a tick or more later).** What was tested: hold to

@@ -20,7 +20,6 @@
         "2.25": ["/scoreboard players set @s[scores={mk14=22..}] mk14 21", "/function mk14"],
         "2.1": ["/function mk14reload", "/event entity @s krep:mk14_reload"]
       }
-    },
-    "animation.mk14.shoot": {"loop": false, "animation_length": 0, "timeline": {}}
+    }
   }
 }

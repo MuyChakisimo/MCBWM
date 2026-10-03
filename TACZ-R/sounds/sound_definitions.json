@@ -3269,12 +3269,6 @@
       "sounds/mp7/shoot"
     ]
   },
-  "mp7.shootloop": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/mp7/shootloop"
-    ]
-  },
   "g36.armup": {
     "category": "hostile",
     "sounds": [

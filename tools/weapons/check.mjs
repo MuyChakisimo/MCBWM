@@ -74,9 +74,10 @@ for (const [id, w] of Object.entries(WEAPONS)) {
   }
   if (!bpItems.has(w.ammo)) bad(id, `ammo item ${w.ammo} does not exist`, "config/weapons.js ammo");
 
-  // Fire event runs the hitscan scriptevent.
+  // Fire event runs the hitscan scriptevent (controller-fired guns; script-fired ones call shoot() directly).
   const fire = player.events[`krep:${id}_fire`];
-  if (!fire) bad(id, "no fire event krep:" + id + "_fire", "TACZ-B/entities/player.json");
+  if (w.scriptFiring) { if (fire) bad(id, `script-fired but still has krep:${id}_fire (nothing triggers it)`, "TACZ-B/entities/player.json"); }
+  else if (!fire) bad(id, "no fire event krep:" + id + "_fire", "TACZ-B/entities/player.json");
   else {
     const steps = fire.sequence ?? [fire];
     const hitscan = steps.every((s) => (s.queue_command?.command ?? []).some((c) => c.startsWith(`scriptevent tacz:weapon_hitscan ${id} `)));

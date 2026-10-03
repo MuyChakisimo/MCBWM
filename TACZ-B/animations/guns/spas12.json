@@ -38,7 +38,6 @@
       }
     },
     "animation.spas12.shoot": {"loop": false, "animation_length": 0.1, "timeline": {}},
-    "animation.spas12.bolt": {"loop": false, "animation_length": 0.6, "timeline": {}},
     "animation.spas12.reload.tac": {
       "loop": "hold_on_last_frame",
       "animation_length": 4.1335,
@@ -74,7 +73,6 @@
         ],
         "3.7335": ["/function spas12"]
       }
-    },
-    "animation.spas12.delay": {"loop": false, "animation_length": 0.1, "timeline": {}}
+    }
   }
 }

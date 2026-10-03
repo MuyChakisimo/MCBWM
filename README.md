@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.26.0`** for both packs. On a dedicated server set `"version": [1, 26, 0]` for both packs in the
+**Pack version is `1.26.1`** for both packs. On a dedicated server set `"version": [1, 26, 1]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -65,7 +65,7 @@ Every gun `<id>` (the item id without `krep:`) has its own files:
 | `TACZ-B/animation_controllers/gun_<id>.json` | Firing (ammo count, fire event, sound) and reload state machines |
 | `TACZ-B/animations/guns/<id>.json` | Shoot / reload timelines (reload functions, ammo scoreboard) |
 | `TACZ-B/functions/<id>.mcfunction`, `<id>quantity`, `<id>reload` | Ammo HUD, reload ammo check, ammo removal |
-| `TACZ-B/entities/player.json` | Shared player entity: every gun's `krep:<id>_fire` / reload / scope events |
+| `TACZ-B/entities/player.json` | Shared player entity: reload / scope events (and the minigun's `krep:minigun_fire`) |
 | `TACZ-R/models/entity/guns/<id>.geo.json` | Gun model |
 | `TACZ-R/render_controllers/gun_<id>.json` | Which gun parts/attachments are visible |
 | `TACZ-R/animation_controllers/gun_<id>.json` | First-/third-person animation state machines |

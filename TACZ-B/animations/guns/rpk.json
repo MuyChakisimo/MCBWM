@@ -9,7 +9,6 @@
         "2.4": ["/function rpkreload", "/event entity @s krep:rpk_reload"]
       }
     },
-    "animation.rpk.shoot": {"loop": false, "animation_length": 0, "timeline": {}},
     "animation.rpk.reload": {
       "loop": "hold_on_last_frame",
       "animation_length": 3.1,

@@ -44,7 +44,6 @@
       }
     },
     "animation.m870.shoot": {"loop": false, "animation_length": 0.1, "timeline": {}},
-    "animation.m870.bolt": {"loop": false, "animation_length": 0.75, "timeline": {}},
     "animation.m870.reload.tac": {
       "loop": "hold_on_last_frame",
       "animation_length": 3.8667,
@@ -79,7 +78,6 @@
           "/event entity @s krep:m870_reload"
         ]
       }
-    },
-    "animation.m870.delay": {"loop": false, "animation_length": 0.1, "timeline": {}}
+    }
   }
 }

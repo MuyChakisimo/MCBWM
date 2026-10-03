@@ -1,7 +1,6 @@
 {
   "format_version": "1.10.0",
   "animations": {
-    "animation.kar98.bolt": {"loop": false, "animation_length": 1.4667, "timeline": {}},
     "animation.kar98.shoot": {"loop": false, "animation_length": 0.25, "timeline": {}},
     "animation.kar98.reload.tac": {
       "loop": "hold_on_last_frame",
@@ -11,7 +10,6 @@
         "3.3133": ["/function kar98reload", "/event entity @s krep:kar98_reload"]
       }
     },
-    "animation.kar98.delay": {"loop": false, "animation_length": 0.1, "timeline": {}},
     "animation.kar98.reload": {
       "loop": "hold_on_last_frame",
       "animation_length": 3.55,

@@ -1,7 +1,6 @@
 {
   "format_version": "1.10.0",
   "animations": {
-    "animation.cz75.shoot": {"loop": false, "animation_length": 0.15, "timeline": {}},
     "animation.cz75.reload": {
       "loop": "hold_on_last_frame",
       "animation_length": 2.45,
