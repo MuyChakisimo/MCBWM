@@ -49,6 +49,10 @@ function checkPack(root) {
   // ---- Definitions
   const rpAnims = new Map(); // id -> { file, anim }
   for (const [f, j] of under("TACZ-R/animations")) for (const [id, a] of Object.entries(j.animations ?? {})) rpAnims.set(id, { file: f, anim: a });
+  // Bone names: a space (Java's "release button") makes the game reject the whole animation file.
+  const BONE = /^[A-Za-z0-9_.\-]+$/;
+  for (const [f, j] of under("TACZ-R/animations")) for (const [id, a] of Object.entries(j.animations ?? {})) for (const b of Object.keys(a.bones ?? {})) if (!BONE.test(b)) err(f, `${id}: bone "${b}" may only use letters, digits, _ . -`);
+  for (const [f, j] of under("TACZ-R/models")) for (const g of [...(j["minecraft:geometry"] ?? []), ...Object.entries(j).filter(([k]) => k.startsWith("geometry.")).map(([, v]) => v)]) for (const b of g.bones ?? []) if (!BONE.test(b.name)) err(f, `bone "${b.name}" may only use letters, digits, _ . -`);
   const rpControllers = new Map();
   for (const [f, j] of under("TACZ-R/animation_controllers")) for (const [id, c] of Object.entries(j.animation_controllers ?? {})) rpControllers.set(id, { file: f, ctrl: c });
   const renderControllers = new Map();
@@ -107,8 +111,8 @@ function checkPack(root) {
     }
     for (const [short, id] of Object.entries(d.geometry ?? {})) if (!geometry.has(id) && !VANILLA.geometry.test(id)) err(f, `geometry "${short}": ${id} is not defined`);
     for (const [short, p] of Object.entries(d.textures ?? {}))
-      if (!exists(p, [".png", ".tga"]) && !VANILLA.textures.test(p) && p !== "textures/nothing") err(f, `texture "${short}": ${p} not found`);
-    for (const [short, id] of Object.entries(pfx)) if (!particles.has(id) && !VANILLA.particles.test(id) && id !== "krep:nothin") err(f, `particle "${short}": ${id} is not defined`);
+      if (!exists(p, [".png", ".tga"]) && !VANILLA.textures.test(p)) err(f, `texture "${short}": ${p} not found`);
+    for (const [short, id] of Object.entries(pfx)) if (!particles.has(id) && !VANILLA.particles.test(id)) err(f, `particle "${short}": ${id} is not defined`);
     for (const [short, name] of Object.entries(sfx)) useSound(name, f, `sound effect "${short}"`);
 
     // Short names used by this entity's animations/controllers must be in its own tables.

@@ -316,7 +316,6 @@
       },
       "particle_effects": {
         "0.0": [
-          {"effect": "krep.muzzlesmoke", "locator": "qbz191muzzle"},
           {"effect": "krep.muzzleflash", "locator": "qbz191muzzle"},
           {"effect": "krep.762shell", "locator": "qbz191shell"}
         ]
@@ -1821,7 +1820,6 @@
       },
       "particle_effects": {
         "0.0": [
-          {"effect": "krep.muzzlesmoke", "locator": "qbz191muzzle"},
           {"effect": "krep.muzzleflash", "locator": "qbz191muzzle"},
           {"effect": "krep.762shell", "locator": "qbz191shell"}
         ]

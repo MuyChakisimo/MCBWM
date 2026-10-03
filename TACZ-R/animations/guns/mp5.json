@@ -5855,7 +5855,6 @@
       },
       "particle_effects": {
         "0.0": [
-          {"effect": "krep.muzzlesmoke", "locator": "mp5muzzle"},
           {"effect": "krep.muzzleflash", "locator": "mp5muzzle"},
           {"effect": "krep.556shell", "locator": "mp5shell"}
         ]
@@ -5932,7 +5931,6 @@
       },
       "particle_effects": {
         "0.0": [
-          {"effect": "krep.muzzlesmoke", "locator": "mp5muzzle"},
           {"effect": "krep.muzzleflash", "locator": "mp5muzzle"},
           {"effect": "krep.556shell", "locator": "mp5shell"}
         ]

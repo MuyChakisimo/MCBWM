@@ -124,7 +124,8 @@ export function convertAnimation(anim, firstPerson, hold, renames = {}) {
   const bones = {};
   for (const [name, b] of Object.entries(out.bones ?? {})) {
     if (name === "camera") continue;
-    bones[name === "root" ? "rot" : renames[name] ?? name] = b;
+    // Java tolerates "release button" (Taurus 943) where the model says "releasebutton"; Bedrock rejects the file.
+    bones[name === "root" ? "rot" : (renames[name] ?? name).replace(/[^A-Za-z0-9_.\-]/g, "")] = b;
   }
   if (firstPerson) Object.assign(bones, structuredClone(FIXED_FP), { joints: { position: hold } });
   out.bones = bones;

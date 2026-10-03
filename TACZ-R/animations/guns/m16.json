@@ -1021,7 +1021,6 @@
       },
       "particle_effects": {
         "0.0": [
-          {"effect": "krep.muzzlesmoke", "locator": "m16muzzle"},
           {"effect": "krep.muzzleflash", "locator": "m16muzzle"},
           {"effect": "krep.556shell", "locator": "m16shell"}
         ]

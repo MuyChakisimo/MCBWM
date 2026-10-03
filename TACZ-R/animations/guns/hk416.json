@@ -1797,7 +1797,6 @@
       "particle_effects": {
         "0.0": [
           {"effect": "krep.muzzleflash", "locator": "hk416muzzle"},
-          {"effect": "krep.muzzlesmoke", "locator": "hk416muzzle"},
           {"effect": "krep.556shell", "locator": "hk416shell"}
         ]
       }
@@ -1831,7 +1830,6 @@
       "particle_effects": {
         "0.0": [
           {"effect": "krep.muzzleflash", "locator": "hk416muzzle"},
-          {"effect": "krep.muzzlesmoke", "locator": "hk416muzzle"},
           {"effect": "krep.556shell", "locator": "hk416shell"}
         ]
       }

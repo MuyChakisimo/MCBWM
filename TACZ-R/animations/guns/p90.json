@@ -1082,12 +1082,7 @@
           "position": {"0.0": [0.25, 0.5, 0.75], "0.5667": [0, 0, 0]}
         }
       },
-      "particle_effects": {
-        "0.0": [
-          {"effect": "krep.muzzlesmoke", "locator": "p90muzzle"},
-          {"effect": "krep.muzzleflash", "locator": "p90muzzle"}
-        ]
-      }
+      "particle_effects": {"0.0": [{"effect": "krep.muzzleflash", "locator": "p90muzzle"}]}
     },
     "animation.p90.fp.sprint": {
       "loop": true,

@@ -71,15 +71,8 @@
       "particle_effects": {
         "0.0": [
           {"effect": "krep.muzzleflash", "locator": "rpgmuzzle"},
-          {"effect": "krep.muzzleflash", "locator": "rpgblast"},
-          {"effect": "krep.muzzlesmoke", "locator": "rpgmuzzle"},
-          {"effect": "krep.muzzlesmoke", "locator": "rpgblast"}
-        ],
-        "0.0333": {"effect": "krep.muzzlesmoke", "locator": "rocketstep"},
-        "0.1": {"effect": "krep.muzzlesmoke", "locator": "rocketstep"},
-        "0.1667": {"effect": "krep.muzzlesmoke", "locator": "rocketstep"},
-        "0.2333": {"effect": "krep.muzzlesmoke", "locator": "rocketstep"},
-        "0.3": {"effect": "krep.muzzlesmoke", "locator": "rocketstep"}
+          {"effect": "krep.muzzleflash", "locator": "rpgblast"}
+        ]
       }
     },
     "animation.rpg.fp.reload": {

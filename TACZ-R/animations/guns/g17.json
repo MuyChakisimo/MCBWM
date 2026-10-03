@@ -8200,8 +8200,7 @@
       "particle_effects": {
         "0.0": [
           {"effect": "krep.muzzleflash", "locator": "g17muzzle"},
-          {"effect": "krep.556shell", "locator": "g17shell"},
-          {"effect": "krep.muzzlesmoke", "locator": "g17muzzle"}
+          {"effect": "krep.556shell", "locator": "g17shell"}
         ]
       }
     },

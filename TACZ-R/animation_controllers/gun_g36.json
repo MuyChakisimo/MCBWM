@@ -53,7 +53,7 @@
           "transitions": [{"hold": "v.g36 && !q.is_sneaking"}, {"slide": "v.g36 && q.property('krep:movement')==1"}]
         },
         "slide": {
-          "animations": [{"slide": "v.g36"}, {"g36_tp_hold": "v.g36"}],
+          "animations": [{"g36_tp_hold": "v.g36"}],
           "transitions": [{"hold": "v.g36 && q.property('krep:movement')==0"}]
         }
       }

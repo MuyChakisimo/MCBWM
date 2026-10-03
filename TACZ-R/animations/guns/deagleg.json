@@ -59,7 +59,6 @@
       "particle_effects": {
         "0.0": [
           {"effect": "krep.muzzleflash", "locator": "deaglegmuzzle"},
-          {"effect": "krep.muzzlesmoke", "locator": "deaglegmuzzle"},
           {"effect": "krep.556shell", "locator": "deagleshell"}
         ]
       }

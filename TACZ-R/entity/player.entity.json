@@ -674,7 +674,6 @@
         "recoil_hip": "animation.recoil.hip",
         "tabuk_recoil": "animation.tabuk.fp.dredet",
         "recoil_sight": "animation.recoil.sight",
-        "slide": "animation.humanoid.slide",
         "universal_walk": "animation.m16a1.fp.walk",
         "m16a1_walk_ac": "controller.animation.m16a1.walk",
         "m16a1_fp": "controller.animation.m16a1.fp",
@@ -2737,7 +2736,6 @@
         "tacz.spas12.spas12_bolthandleoff": "tacz.spas12.spas12_bolthandleoff"
       },
       "particle_effects": {
-        "krep.muzzlesmoke": "krep:nothin",
         "krep.muzzleflash": "krep:taczmuzzleflash",
         "krep.556shell": "krep:556shell",
         "krep.762shell": "krep:762shell",
