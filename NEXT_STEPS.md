@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.24.1** (both manifests; worlds need `[1, 24, 1]` in `world_*_packs.json`).
+- Pack version **1.25.0** (both manifests; worlds need `[1, 25, 0]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -257,11 +257,15 @@ work.
    Ported guns start with no attachments (`java-port.mjs` strips what the clone inherited). Still to build: merging a
    built-in scope model (AUG), and Java attachments for ported guns (Java has 100+ attachment models). Each port adds
    an always-running `<id>reloading` controller (step 4).
-4. **Lag: gate the 61 always-running BP controllers.** In `entities/player.json` `scripts.animate`, the 54
-   `<id>reloading` controllers, 5 scope controllers, `minigun` and `mp7sound` run every tick for every player
-   regardless of the held gun (over 100 Molang checks per player per tick). Gate them on the held item like the main
-   gun controllers, but a gated controller freezes mid-state: switching guns mid-reload would skip its cleanup, so the
-   gate needs a "reload in progress" exception. Needs in-game testing (switch guns mid-reload).
+4. **Lag: gate the always-running BP controllers.** **v1.25.0 (2026-10-02):** the 54 `<id>reloading` controllers
+   in `entities/player.json` `scripts.animate` now run only while their gun is held or any reload is in progress
+   (`... || q.mark_variant != 0`, so a reload interrupted by switching guns still cleans up). Left ungated on purpose:
+   `mp7sound` (would leave its loop sound playing), `minigun`, and the 5 scope controllers (could leave the zoom on).
+   Same version, client side: `player.entity.json` pre_animation asked `query.get_equipped_item_name` 332 times per
+   frame per player; now 112 (`variable.<id> = variable.<id>b || variable.<id>emp` and `holding_all_guns` an OR of
+   the gun variables, both at the end of pre_animation). Simulated for all 112 held items: same values as before.
+   Storing the item name in a variable was avoided (string variables are not reliably supported). **Waiting for the
+   user's test**: all guns render; switch guns mid-reload (empty and tactical), then reload both guns.
 5. **Unfinished features** (animations exist, nothing plays them; `check.mjs --unused`): M16/M16A1 walk, minigun
    barrel spin (`animation.minigun.spin`, `controller.animation.minigun.tp`), M870 shell-by-shell reload intros
    (`m870_fp_rintroemp` / `m870_fp_rintrotac`, `fp.reload11`).
