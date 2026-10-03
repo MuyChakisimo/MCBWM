@@ -275,6 +275,8 @@ work.
 
 - Order (user, 2026-10-01): M4A1 on script firing -> user tests -> import one Java gun (M9A4) -> import all Java
   guns -> convert all guns (including the imported ones) to script firing.
+- Order (user, 2026-10-02): test the performance work (v1.24.0 script firing, v1.24.1 shot sound, v1.25.0 gating
+  and fewer item queries) -> visual and sound fixes by category -> then Batch 2 script firing / reloading in script.
 - Pistols (user, 2026-10-01): semi-auto, one shot per click, except the B93R (burst) and G18 (auto). Already so in
   `weapons.js`; takes effect with script firing. The user tested that the M1911 now fires while held and is OK
   with it becoming one shot per click.
