@@ -298,6 +298,8 @@ work.
 
 ## Gotchas learned
 
+- **User test of v1.25.1 (2026-10-02): content log empty at world load.** Mostly looks great; some guns fixed;
+  open: some guns' shot sounds are late (which ones not said yet), arms and animations sometimes off.
 - **Turn on the in-game content log** (Settings > Creator > Content Log GUI): it names errors our checks missed.
   First run (user, 2026-10-02, v1.25.0) found, fixed in v1.25.1: Taurus 943 animation bone "release button" (a space:
   the game rejected its whole animation file, why it was invisible in first person / between the legs in third;
