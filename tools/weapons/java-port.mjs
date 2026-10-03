@@ -448,6 +448,9 @@ function resizeMagazine(id, M, N) {
   edit(`TACZ-B/functions/${id}.mcfunction`, (t) => t.replace(/"\/(\d+)(?=[ \\])/g, (m, n) => `"/${shiftNum(+n)}`).replace(new RegExp(`(${id}=1\\.\\.)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
   for (const f of [`TACZ-B/animation_controllers/gun_${id}.json`, `TACZ-B/animations/guns/${id}.json`]) edit(f, shiftText);
   edit("TACZ-B/animation_controllers/shared_inspect.json", (t) => t.replace(new RegExp(`(scoreboard\\('${id}'\\) *[<>=]+ *)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
+  // A script-reloaded gun (combat/reload.js) has no quantity / reload functions or reload events: its capacity is
+  // config/weapons.js magazine, already set.
+  if (!exists(`TACZ-B/functions/${id}quantity.mcfunction`)) return;
   // Reload count function: one event per round in the inventory, then "N or more".
   edit(`TACZ-B/functions/${id}quantity.mcfunction`, (t) => {
     const lines = t.split("\n");

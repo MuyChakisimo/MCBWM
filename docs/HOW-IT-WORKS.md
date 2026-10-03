@@ -43,6 +43,13 @@ released (`itemStopUse`), the gun is switched, or the magazine is empty. Each sh
 shots during a tactical reload (`mark_variant` 2). The gun's BP controller keeps only `setup1` (initial ammo),
 `setup` (HUD) and `<id>.31` (using it at 0 rounds swaps to `_emp`); reloading is unchanged.
 
+**Reloading, guns with `scriptReload`** (config/weapons.js; since v1.27.0 the M4A1, being rolled out with
+`tools/weapons/script-reload.mjs`): `combat/reload.js`. Empty reload: use with `krep:<id>_emp`. Tactical: a swing
+(the shared BP controller `controller.animation.reload_input` sends `/scriptevent tacz:reload`) with at least 2
+rounds missing. It sets the mark variant the RP reload animations watch, takes the ammo item from the inventory at
+`scriptReload.<kind>[0]` seconds, fills the scoreboard (magazine; tactical + 1 chambered), swaps the empty gun
+back, and ends at `[1]` seconds. The other guns reload from their BP reload controller (below).
+
 **The minigun** (the only gun still fired by its controller; script-fired guns have no `krep:<id>_fire` event since
 v1.26.1):
 

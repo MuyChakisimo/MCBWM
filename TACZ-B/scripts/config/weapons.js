@@ -472,6 +472,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "auto",
     rpm: 810,
     scriptFiring: true,
+    scriptReload: { empty: [2.3, 2.5], tac: [2, 2.2] },
     magazine: 30,
     ammo: "krep:m885",
     recipe: [

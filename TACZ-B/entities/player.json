@@ -308,9 +308,6 @@
             "spr15": "query.get_equipped_item_name=='spr15' || query.get_equipped_item_name=='spr15_emp'"
           },
           {
-            "m4a1reloading": "query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp' || q.mark_variant != 0"
-          },
-          {
             "spr15reloading": "query.get_equipped_item_name=='spr15' || query.get_equipped_item_name=='spr15_emp' || q.mark_variant != 0"
           },
           {
@@ -356,7 +353,8 @@
           "hk416scope",
           "akmscope",
           "m4a1scope",
-          "universalscope"
+          "universalscope",
+          "reload_input"
         ]
       },
       "animations": {
@@ -631,13 +629,10 @@
         "m4a1": "controller.animation.m4a1",
         "spr15": "controller.animation.spr15",
         "m4a1scope": "controller.animation.m4a1.scope",
-        "m4a1reloading": "controller.animation.m4a1.reload",
         "spr15reloading": "controller.animation.spr15.reload",
         "m4a1shoot": "animation.m4a1.shoot",
         "spr15shoot": "animation.spr15.shoot",
-        "m4a1reload": "animation.m4a1.reload",
         "spr15reload": "animation.spr15.reload",
-        "m4a1reloadtac": "animation.m4a1.reload.tac",
         "spr15reloadtac": "animation.spr15.reload.tac",
         "minigun": "controller.animation.minigun",
         "minigundelay": "animation.minigun.delay",
@@ -645,7 +640,8 @@
         "minigunloop": "animation.minigun.loop",
         "awpscope": "controller.animation.awp.scope",
         "universalscope": "controller.animation.universalscope",
-        "inspectdelay": "animation.inspectdelay"
+        "inspectdelay": "animation.inspectdelay",
+        "reload_input": "controller.animation.reload_input"
       }
     },
     "component_groups": {
@@ -4913,10 +4909,6 @@
         "queue_command": {"command": ["title @s actionbar No :\nAmmo Box or .308"]}
       },
       "minigunreload1": {"set_property": {"krep:ammoreload": 1}},
-      "m4a1reload0": {
-        "set_property": {"krep:ammoreload": 460},
-        "queue_command": {"command": ["title @s actionbar No :\n5.56x45mm"]}
-      },
       "spr15reload0": {
         "set_property": {"krep:ammoreload": 460},
         "queue_command": {"command": ["title @s actionbar No :\n5.56x45mm"]}
@@ -4936,160 +4928,6 @@
       "spr15reload13": {"set_property": {"krep:ammoreload": 473}},
       "spr15reload14": {"set_property": {"krep:ammoreload": 474}},
       "spr15reload15": {"set_property": {"krep:ammoreload": 475}},
-      "m4a1reload1": {"set_property": {"krep:ammoreload": 461}},
-      "m4a1reload2": {"set_property": {"krep:ammoreload": 462}},
-      "m4a1reload3": {"set_property": {"krep:ammoreload": 463}},
-      "m4a1reload4": {"set_property": {"krep:ammoreload": 464}},
-      "m4a1reload5": {"set_property": {"krep:ammoreload": 465}},
-      "m4a1reload6": {"set_property": {"krep:ammoreload": 466}},
-      "m4a1reload7": {"set_property": {"krep:ammoreload": 467}},
-      "m4a1reload8": {"set_property": {"krep:ammoreload": 468}},
-      "m4a1reload9": {"set_property": {"krep:ammoreload": 469}},
-      "m4a1reload10": {"set_property": {"krep:ammoreload": 470}},
-      "m4a1reload11": {"set_property": {"krep:ammoreload": 471}},
-      "m4a1reload12": {"set_property": {"krep:ammoreload": 472}},
-      "m4a1reload13": {"set_property": {"krep:ammoreload": 473}},
-      "m4a1reload14": {"set_property": {"krep:ammoreload": 474}},
-      "m4a1reload15": {"set_property": {"krep:ammoreload": 475}},
-      "m4a1reload16": {"set_property": {"krep:ammoreload": 476}},
-      "m4a1reload17": {"set_property": {"krep:ammoreload": 477}},
-      "m4a1reload18": {"set_property": {"krep:ammoreload": 478}},
-      "m4a1reload19": {"set_property": {"krep:ammoreload": 479}},
-      "m4a1reload20": {"set_property": {"krep:ammoreload": 480}},
-      "m4a1reload21": {"set_property": {"krep:ammoreload": 481}},
-      "m4a1reload22": {"set_property": {"krep:ammoreload": 482}},
-      "m4a1reload23": {"set_property": {"krep:ammoreload": 483}},
-      "m4a1reload24": {"set_property": {"krep:ammoreload": 484}},
-      "m4a1reload25": {"set_property": {"krep:ammoreload": 485}},
-      "m4a1reload26": {"set_property": {"krep:ammoreload": 486}},
-      "m4a1reload27": {"set_property": {"krep:ammoreload": 487}},
-      "m4a1reload28": {"set_property": {"krep:ammoreload": 488}},
-      "m4a1reload29": {"set_property": {"krep:ammoreload": 489}},
-      "m4a1reload30": {"set_property": {"krep:ammoreload": 490}},
-      "krep:m4a1_reload": {
-        "sequence": [
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 461, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 1"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 462, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 2"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 463, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 3"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 464, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 4"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 465, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 5"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 466, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 6"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 467, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 7"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 468, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 8"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 469, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 9"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 470, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 10"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 471, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 11"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 472, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 12"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 473, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 13"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 474, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 14"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 475, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 15"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 476, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 16"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 477, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 17"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 478, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 18"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 479, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 19"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 480, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 20"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 481, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 21"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 482, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 22"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 483, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 23"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 484, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 24"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 485, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 25"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 486, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 26"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 487, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 27"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 488, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 28"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 489, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 29"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 490, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m4a1 30"]}
-          }
-        ]
-      },
       "krep:spr15_reload": {
         "sequence": [
           {

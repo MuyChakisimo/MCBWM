@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.26.1** (both manifests; worlds need `[1, 26, 1]` in `world_*_packs.json`).
+- Pack version **1.27.0** (both manifests; worlds need `[1, 27, 0]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -271,6 +271,18 @@ work.
    Ported guns start with no attachments (`java-port.mjs` strips what the clone inherited). Still to build: merging a
    built-in scope model (AUG), and Java attachments for ported guns (Java has 100+ attachment models). Each port adds
    an always-running `<id>reloading` controller (step 4).
+3b. **Reloading in the script.** **v1.27.0 (2026-10-02): M4A1 converted as the test gun.** New `combat/reload.js`
+   (empty reload = use with `krep:<id>_emp`; tactical = swing with at least 2 rounds missing, from the shared BP
+   controller `controller.animation.reload_input` in `shared_reload.json` that sends `/scriptevent tacz:reload`).
+   It counts the ammo item in the inventory (`krep:ammoboxc` = unlimited; creative mode takes nothing), sets the
+   mark variant the RP reload animations watch (krep:reload / krep:reloadtac), loads at the old timing (empty 2.3
+   of 2.5 s, tactical 2.0 of 2.2 s: `scriptReload` in weapons.js), swaps the empty gun back, shows the HUD, and
+   cancels if the gun is switched before the rounds go in. New `tools/weapons/script-reload.mjs` reads the timing
+   from the BP reload animations and removes the gun's reload controller, BP reload animations, `<id>reloadN` /
+   `krep:<id>_reload` events (32 for the M4A1) and its quantity / reload functions; it refuses shell-by-shell
+   reloads. java-port's magazine resize skips the reload files when a gun has none. **Waiting for the user's
+   test** (M4A1: empty and tactical reloads, partial ammo, no ammo, creative ammo box, switching mid-reload); then
+   convert the rest in batches (shell-by-shell shotguns/revolvers and the minigun need reload.js support).
 4. **Lag: gate the always-running BP controllers.** **v1.25.0 (2026-10-02):** the 54 `<id>reloading` controllers
    in `entities/player.json` `scripts.animate` now run only while their gun is held or any reload is in progress
    (`... || q.mark_variant != 0`, so a reload interrupted by switching guns still cleans up). Left ungated on purpose:

@@ -29,16 +29,16 @@ const SUPPRESSED_MUZZLE = 4; // krep:muzzle values from this up are silencers (`
 /** Per player: the gun being fired and when its next shot is due. */
 const triggers = new Map();
 
-function heldTypeId(player) {
+export function heldTypeId(player) {
   return player.getComponent("minecraft:equippable")?.getEquipment(EquipmentSlot.Mainhand)?.typeId;
 }
 
 // Ammo name for the HUD, e.g. "krep:ammo.name.5_56" (same key as the ammo's lore, ".lore." -> ".name.").
-function ammoNameKey(weapon) {
+export function ammoNameKey(weapon) {
   return AMMO[weapon.ammo?.replace(/^krep:/, "")]?.lore?.replace(".lore.", ".name.");
 }
 
-function showAmmo(player, weapon, rounds) {
+export function showAmmo(player, weapon, rounds) {
   const ammoName = ammoNameKey(weapon);
   if (rounds > 0) player.onScreenDisplay.setActionBar({ rawtext: [{ text: `${rounds}/${weapon.magazine} \n` }, ...(ammoName ? [{ translate: ammoName }] : [])] });
   else player.onScreenDisplay.setActionBar("No Ammunition");

@@ -106,6 +106,14 @@ for (const g of guns) {
   restore();
 }
 
+// script-reload.mjs refuses a shell-by-shell reload (M870) and changes nothing.
+{
+  const r = run("tools/weapons/script-reload.mjs", "m870");
+  const left = diff();
+  report("script-reload m870 (refused: shell by shell)", !r.ok && /reload\.js doesn't do that yet/.test(r.out) && left.length === 0, left.length ? "      left behind: " + left.slice(0, 5).join(", ") : r.ok ? "      it converted the M870" : "");
+  restore();
+}
+
 if (fs.existsSync(path.join(work, "reference", "TACZ-JAVA.zip"))) {
   const initial = start;
   for (const [javaId, id, from] of PORTS) {

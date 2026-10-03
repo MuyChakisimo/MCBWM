@@ -1,0 +1,12 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.reload_input": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {"transitions": [{"swing": "variable.attack_time > 0.0"}]},
+        "swing": {"on_entry": ["/scriptevent tacz:reload tac"], "transitions": [{"setup": "variable.attack_time == 0.0"}]}
+      }
+    }
+  }
+}
