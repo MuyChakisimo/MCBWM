@@ -20,7 +20,10 @@
 //                 the burst, seconds between bursts. Applied to guns with scriptFiring; the others
 //                 still fire at their animation controller's rate.
 //   scriptFiring  true: firing, fire rate and the ammo count run in combat/firing.js instead of the
-//                 gun's BP fire controller (being rolled out one gun at a time).
+//                 gun's BP fire controller (tools/weapons/script-firing.mjs converts a gun).
+//   shootSound    Sound name prefix if not the gun's id: plays "<shootSound>.shoot" / ".suppress".
+//   shootAnimation { ads, hip }: shoot animations if not animation.<id>.shoot.sight / .nsight.
+//   suppressedFrom krep:muzzle value from which the muzzle is a silencer. Default 4.
 //   pellets       Rays per shot (shotguns: 12). Default 1.
 //   spread        { hip, ads }: pellet scatter in degrees (typical deviation from the aim;
 //                 about 2 in 3 pellets land within it). ads = sneaking. Only with pellets.
@@ -58,6 +61,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[15, 1], [30, 0.88], [50, 0.75], [null, 0.63]],
     fireMode: "semi",
     rpm: 300,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.deagle.shoot", hip: "animation.deagle.shoot" },
     magazine: 7,
     ammo: "krep:ae50",
     recipe: [
@@ -77,6 +82,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[18, 1], [40, 0.83], [65, 0.75], [null, 0.58]],
     fireMode: "auto",
     rpm: 820,
+    scriptFiring: true,
     magazine: 30,
     ammo: "krep:mm9",
     recipe: [
@@ -113,6 +119,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[14, 1], [36, 0.82], [50, 0.73], [null, 0.55]],
     fireMode: "auto",
     rpm: 810,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.p90.shoot", hip: "animation.p90.shoot" },
     magazine: 50,
     ammo: "krep:mm5728",
     recipe: [
@@ -132,6 +140,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[45, 1.06], [70, 0.88], [null, 0.63]],
     fireMode: "auto",
     rpm: 750,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.m16a1.shoot", hip: "animation.m16a1.shoot" },
     magazine: 20,
     ammo: "krep:m885",
     recipe: [
@@ -150,6 +160,9 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[45, 1], [70, 0.81], [null, 0.75]],
     fireMode: "burst",
     rpm: 400,
+    scriptFiring: true,
+    shootSound: "m16a1",
+    shootAnimation: { ads: "animation.m16.shoot", hip: "animation.m16.shoot" },
     burst: { count: 3, rpm: 937, delay: 0.4 },
     magazine: 30,
     ammo: "krep:m885",
@@ -169,6 +182,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[30, 1], [60, 0.77], [null, 0.62]],
     fireMode: "auto",
     rpm: 943,
+    scriptFiring: true,
     magazine: 30,
     ammo: "krep:m885",
     recipe: [
@@ -187,6 +201,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[35, 1], [85, 0.79], [null, 0.64]],
     fireMode: "auto",
     rpm: 570,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.scarh.shoot", hip: "animation.scarh.shoot" },
     magazine: 20,
     ammo: "krep:win308",
     recipe: [
@@ -206,6 +222,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[35, 1], [80, 0.75], [null, 0.63]],
     fireMode: "semi",
     rpm: 350,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.g3.shoot", hip: "animation.g3.shoot" },
     magazine: 20,
     ammo: "krep:win308",
     recipe: [
@@ -224,6 +242,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[15, 1], [30, 0.83], [null, 0.5]],
     fireMode: "semi",
     rpm: 350,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.aa12.shoot", hip: "animation.aa12.shoot" },
     pellets: 12,
     spread: { hip: 7.4, ads: 3.9 },
     tracers: 6,
@@ -370,6 +390,9 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[18, 1.17], [45, 0.83], [null, 0.67]],
     fireMode: "semi",
     rpm: 400,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.g17.shoot", hip: "animation.g17.shoot" },
+    suppressedFrom: 1,
     magazine: 17,
     ammo: "krep:mm9",
     recipe: [["iron_ingot", 16]],
@@ -384,6 +407,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[19, 1], [40, 0.82], [null, 0.45]],
     fireMode: "semi",
     rpm: 350,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.m1911.shoot", hip: "animation.m1911.shoot" },
     magazine: 7,
     ammo: "krep:acp45",
     recipe: [
@@ -401,6 +426,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[30, 1], [60, 0.83], [null, 0.67]],
     fireMode: "auto",
     rpm: 600,
+    scriptFiring: true,
     magazine: 30,
     ammo: "krep:m43",
     recipe: [
@@ -454,6 +480,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[30, 1], [70, 0.8], [null, 0.67]],
     fireMode: "auto",
     rpm: 650,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.scarl.shoot", hip: "animation.scarl.shoot" },
     magazine: 30,
     ammo: "krep:m885",
     recipe: [
@@ -472,6 +500,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[45, 1], [72, 0.86], [null, 0.79]],
     fireMode: "auto",
     rpm: 780,
+    scriptFiring: true,
     magazine: 30,
     ammo: "krep:m885",
     recipe: [
@@ -529,6 +558,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[24, 1], [50, 0.85], [null, 0.62]],
     fireMode: "auto",
     rpm: 600,
+    scriptFiring: true,
     magazine: 20,
     ammo: "krep:mm9",
     recipe: [["iron_ingot", 32]],
@@ -542,6 +572,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     headshot: 1.5,
     fireMode: "auto",
     rpm: 1100,
+    scriptFiring: true,
+    shootSound: "g17",
     magazine: 17,
     ammo: "krep:mm9",
     recipe: [["iron_ingot", 32]],
@@ -556,6 +588,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[5, 1], [9, 0.75], [null, 0.5]],
     fireMode: "burst",
     rpm: 150,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.db.shoot.stock", hip: "animation.db.shoot" },
     burst: { count: 2, rpm: 600, delay: 0.5 },
     pellets: 12,
     spread: { hip: 6.1, ads: 2.2 },
@@ -577,6 +611,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[16, 1], [24, 0.83], [null, 0.5]],
     fireMode: "semi",
     rpm: 100,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.dblong.shoot.stock", hip: "animation.dblong.shoot" },
     pellets: 10,
     spread: { hip: 6.1, ads: 2.2 },
     tracers: 6,
@@ -613,6 +649,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     headshot: 1.33,
     fireMode: "semi",
     rpm: 300,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.saiga12.shoot.nsight", hip: "animation.saiga12.shoot.nsight" },
     pellets: 12,
     spread: { hip: 6.1, ads: 2.2 },
     tracers: 6,
@@ -633,6 +671,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[45, 1], [90, 0.73], [null, 0.62]],
     fireMode: "semi",
     rpm: 350,
+    scriptFiring: true,
     magazine: 20,
     ammo: "krep:win308",
     recipe: [
@@ -651,6 +690,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[25, 1], [45, 0.8], [null, 0.6]],
     fireMode: "auto",
     rpm: 660,
+    scriptFiring: true,
     magazine: 30,
     ammo: "krep:mm5842",
     recipe: [
@@ -670,6 +710,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[30, 1], [55, 0.78], [null, 0.61]],
     fireMode: "auto",
     rpm: 660,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.ump.shoot", hip: "animation.ump.shoot" },
     magazine: 25,
     ammo: "krep:acp45",
     icon: "textures/items/ump45",
@@ -689,6 +731,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[16, 1], [32, 0.8], [48, 0.53], [null, 0.4]],
     fireMode: "burst",
     rpm: 900,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.b93.shoot", hip: "animation.b93.shoot" },
     burst: { count: 3, rpm: 900, delay: 0.4 },
     magazine: 20,
     ammo: "krep:mm9",
@@ -708,6 +752,9 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[55, 1], [110, 0.82], [null, 0.64]],
     fireMode: "semi",
     rpm: 510,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.sks.shoot", hip: "animation.sks.shoot" },
+    suppressedFrom: 1,
     magazine: 10,
     ammo: "krep:m43",
     recipe: [
@@ -726,6 +773,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[60, 1], [120, 0.84], [null, 0.66]],
     fireMode: "semi",
     rpm: 300,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.mk14.fp.shoot.sight", hip: "animation.mk14.fp.shoot" },
     magazine: 20,
     ammo: "krep:win308",
     recipe: [
@@ -745,6 +794,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[40, 1], [75, 0.8], [null, 0.6]],
     fireMode: "auto",
     rpm: 750,
+    scriptFiring: true,
     magazine: 30,
     ammo: "krep:mm5842",
     recipe: [
@@ -764,6 +814,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[25, 1], [55, 0.78], [null, 0.5]],
     fireMode: "auto",
     rpm: 630,
+    scriptFiring: true,
     magazine: 30,
     ammo: "krep:m43",
     recipe: [
@@ -781,6 +832,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[36, 1], [64, 0.7], [null, 0.6]],
     fireMode: "auto",
     rpm: 630,
+    scriptFiring: true,
     magazine: 40,
     ammo: "krep:m43",
     // Java TACZ recipe.
@@ -796,6 +848,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[40, 1], [80, 0.67], [null, 0.5]],
     fireMode: "auto",
     rpm: 750,
+    scriptFiring: true,
     magazine: 75,
     ammo: "krep:win308",
     storedAmmoDisplay: true,
@@ -816,6 +869,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[35, 0.93], [80, 0.73], [null, 0.6]],
     fireMode: "auto",
     rpm: 750,
+    scriptFiring: true,
     magazine: 100,
     ammo: "krep:m885",
     storedAmmoDisplay: true,
@@ -836,6 +890,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[20, 1.07], [50, 0.93], [null, 0.6]],
     fireMode: "semi",
     rpm: 300,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.t50.shoot", hip: "animation.t50.shoot" },
     magazine: 8,
     ammo: "krep:ae50",
     recipe: [
@@ -853,6 +909,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     headshot: 1.75,
     fireMode: "semi",
     rpm: 150,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.cp.shoot", hip: "animation.cp.shoot" },
     magazine: 6,
     ammo: "krep:mag357",
     recipe: [
@@ -895,6 +953,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[20, 1], [50, 0.7], [null, 0.5]],
     fireMode: "semi",
     rpm: 450,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.p320.fp.shoot.sight", hip: "animation.p320.fp.shoot.nsight" },
     magazine: 12,
     ammo: "krep:acp45",
     recipe: [
@@ -913,6 +973,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[15, 1], [25, 0.75], [30, 0.5], [null, 0.5]],
     fireMode: "semi",
     rpm: 180,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.taurus943.fp.shoot.sight", hip: "animation.taurus943.fp.shoot.nsight" },
     magazine: 8,
     ammo: "krep:wmr22",
     recipe: [
@@ -931,6 +993,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[40, 1], [55, 0.75], [75, 0.5], [null, 0.38]],
     fireMode: "semi",
     rpm: 120,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.taurus500.fp.shoot.sight", hip: "animation.taurus500.fp.shoot.nsight" },
     magazine: 5,
     ammo: "krep:mag500",
     // Java TACZ recipe.
@@ -946,6 +1010,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[25, 1], [35, 0.81], [50, 0.57], [null, 0.57]],
     fireMode: "semi",
     rpm: 200,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.rhino357.fp.shoot.sight", hip: "animation.rhino357.fp.shoot.nsight" },
     magazine: 6,
     ammo: "krep:mag357",
     // Java TACZ recipe.
@@ -961,6 +1027,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[20, 1], [50, 0.92], [null, 0.75]],
     fireMode: "semi",
     rpm: 50,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.mk23.fp.shoot.sight", hip: "animation.mk23.fp.shoot.nsight" },
     magazine: 12,
     ammo: "krep:acp45",
     // Java TACZ recipe.
@@ -976,6 +1044,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[15, 1], [35, 0.8], [null, 0.6]],
     fireMode: "auto",
     rpm: 900,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.cz75.fp.shoot.sight", hip: "animation.cz75.fp.shoot.nsight" },
     magazine: 16,
     ammo: "krep:mm9",
     // Java TACZ recipe.
@@ -991,6 +1061,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[18, 1.17], [45, 0.83], [null, 0.67]],
     fireMode: "semi",
     rpm: 400,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.m9a4.fp.shoot.sight", hip: "animation.m9a4.fp.shoot.nsight" },
     magazine: 17,
     ammo: "krep:mm9",
     // Java TACZ recipe.
@@ -1006,6 +1078,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[65, 0.91], [120, 0.73], [null, 0.64]],
     fireMode: "semi",
     rpm: 400,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.m107.shoot", hip: "animation.m107.shoot" },
     magazine: 10,
     ammo: "krep:bmg50",
     recipe: [
@@ -1026,6 +1100,8 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     falloff: [[75, 1], [150, 0.87], [null, 0.67]],
     fireMode: "semi",
     rpm: 151,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.m95b.shoot", hip: "animation.m95b.shoot" },
     magazine: 5,
     ammo: "krep:bmg50",
     // Java TACZ recipe.

@@ -18,9 +18,6 @@
         "setup": {
           "transitions": [
             {
-              "qbz95.30": "query.get_equipped_item_name=='qbz95' && query.is_using_item && query.scoreboard('qbz95') >= 1 && q.mark_variant != 2"
-            },
-            {
               "qbz95.31": "query.get_equipped_item_name=='qbz95' && query.is_using_item && query.scoreboard('qbz95') == 0"
             }
           ],
@@ -30,18 +27,6 @@
           "animations": ["qbz95shoot"],
           "transitions": [{"setup": "query.all_animations_finished"}],
           "on_entry": ["/replaceitem entity @s[scores={qbz95=0}] slot.weapon.mainhand 1 krep:qbz95_emp 1 0"]
-        },
-        "qbz95.30": {
-          "animations": ["qbz95shoot"],
-          "transitions": [{"setup": "query.all_animations_finished"}],
-          "on_entry": [
-            "@s krep:qbz95_fire",
-            "/scoreboard players set @s[scores={qbz95=32..}] qbz95 31",
-            "/scoreboard players remove @s[scores={qbz95=1..31}] qbz95 1",
-            "/playsound qbz95.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={qbz95=0}] slot.weapon.mainhand 1 krep:qbz95_emp 1 0",
-            "/title @s[scores={qbz95=0}] actionbar No Ammunition"
-          ]
         }
       }
     },

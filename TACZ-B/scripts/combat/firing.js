@@ -49,10 +49,11 @@ function fireRound(player, trigger) {
   showAmmo(player, weapon, left);
 
   const aiming = player.isSneaking;
-  const suppressed = (player.getProperty("krep:muzzle") ?? 0) >= SUPPRESSED_MUZZLE;
-  player.dimension.playSound(`${weaponId}.${suppressed ? "suppress" : "shoot"}`, player.location);
+  const suppressed = (player.getProperty("krep:muzzle") ?? 0) >= (weapon.suppressedFrom ?? SUPPRESSED_MUZZLE);
+  player.dimension.playSound(`${weapon.shootSound ?? weaponId}.${suppressed ? "suppress" : "shoot"}`, player.location);
   // The firing kick (and muzzle flash) every client plays: same as the fire event's playanimation.
-  player.playAnimation(`animation.${weaponId}.shoot.${aiming ? "sight" : "nsight"}`, { nextState: "shoot" });
+  const animation = weapon.shootAnimation?.[aiming ? "ads" : "hip"] ?? `animation.${weaponId}.shoot.${aiming ? "sight" : "nsight"}`;
+  player.playAnimation(animation, { nextState: "shoot" });
   shoot(player, weaponId, weapon, aiming ? "ads" : "hip");
 
   if (left === 0) {

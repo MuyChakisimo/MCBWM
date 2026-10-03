@@ -18,9 +18,6 @@
         "setup": {
           "transitions": [
             {
-              "deagle.30": "query.get_equipped_item_name=='deagle' && query.is_using_item && query.scoreboard('deagle') >= 1 && q.mark_variant != 2"
-            },
-            {
               "deagle.31": "query.get_equipped_item_name=='deagle' && query.is_using_item && query.scoreboard('deagle') == 0"
             }
           ],
@@ -30,18 +27,6 @@
           "animations": ["deagleshoot"],
           "transitions": [{"setup": "query.all_animations_finished"}],
           "on_entry": ["/replaceitem entity @s[scores={deagle=0}] slot.weapon.mainhand 1 krep:deagle_emp 1 0"]
-        },
-        "deagle.30": {
-          "animations": ["deagleshoot"],
-          "transitions": [{"setup": "query.all_animations_finished && !q.is_using_item"}],
-          "on_entry": [
-            "@s krep:deagle_fire",
-            "/scoreboard players remove @s[scores={deagle=1..8}] deagle 1",
-            "/scoreboard players set @s[scores={deagle=9..}] deagle 8",
-            "/playsound deagle.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={deagle=0}] slot.weapon.mainhand 1 krep:deagle_emp 1 0",
-            "/title @s[scores={deagle=0}] actionbar No Ammunition"
-          ]
         }
       }
     },

@@ -31,12 +31,14 @@ out or is reloaded.
 
 ## Firing a shot
 
-**Guns with `scriptFiring: true`** (`config/weapons.js`; so far the M4A1) fire from the script instead of steps
+**Guns with `scriptFiring: true`** (`config/weapons.js`; since v1.24.0 all but the bolt/pump guns, RPG, M320, minigun, Vector, Golden
+Deagle, MP7 and M1014; `tools/weapons/script-firing.mjs` converts a gun) fire from the script instead of steps
 1 and 2 below: `combat/firing.js` starts on the use button (`itemStartUse` on `krep:<id>`) and fires at the gun's
 `rpm` in its `fireMode` (auto while held, semi one per press, burst `burst.count` per press) until the button is
 released (`itemStopUse`), the gun is switched, or the magazine is empty. Each shot: scoreboard `<id>` minus one
-(capped at magazine + 1 first), ammo HUD (`setActionBar`), `<id>.shoot` (or `<id>.suppress` with `krep:muzzle` >=
-4), the shoot animation (`animation.<id>.shoot.sight` when sneaking, else `.nsight`), then `shoot()` in
+(capped at magazine + 1 first), ammo HUD (`setActionBar`), `<shootSound or id>.shoot` (or `.suppress` with `krep:muzzle` >=
+`suppressedFrom`, default 4), the shoot animation (`shootAnimation.ads` / `.hip`, default
+`animation.<id>.shoot.sight` when sneaking, else `.nsight`), then `shoot()` in
 `combat/hitscan.js` (recoil + rays, step 3). The last round swaps to `krep:<id>_emp` and shows "No Ammunition". No
 shots during a tactical reload (`mark_variant` 2). The gun's BP controller keeps only `setup1` (initial ammo),
 `setup` (HUD) and `<id>.31` (using it at 0 rounds swaps to `_emp`); reloading is unchanged.

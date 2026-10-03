@@ -18,9 +18,6 @@
         "setup": {
           "transitions": [
             {
-              "m107.30": "query.get_equipped_item_name=='m107' && query.is_using_item && query.scoreboard('m107') >= 1 && q.mark_variant != 2"
-            },
-            {
               "m107.31": "query.get_equipped_item_name=='m107' && query.is_using_item && query.scoreboard('m107') == 0"
             }
           ],
@@ -30,18 +27,6 @@
           "animations": ["m107shoot"],
           "transitions": [{"setup": "query.all_animations_finished"}],
           "on_entry": ["/replaceitem entity @s[scores={m107=0}] slot.weapon.mainhand 1 krep:m107_emp 1 0"]
-        },
-        "m107.30": {
-          "animations": ["m107shoot"],
-          "transitions": [{"setup": "query.all_animations_finished && !q.is_using_item"}],
-          "on_entry": [
-            "@s krep:m107_fire",
-            "/scoreboard players remove @s[scores={m107=1..11}] m107 1",
-            "/scoreboard players set @s[scores={m107=12..}] m107 11",
-            "/playsound m107.shoot @a[r=120]",
-            "/replaceitem entity @s[scores={m107=0}] slot.weapon.mainhand 1 krep:m107_emp 1 0",
-            "/title @s[scores={m107=0}] actionbar No Ammunition"
-          ]
         }
       }
     },

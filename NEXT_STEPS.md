@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.23.0** (both manifests; worlds need `[1, 23, 0]` in `world_*_packs.json`).
+- Pack version **1.24.0** (both manifests; worlds need `[1, 24, 0]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -38,7 +38,15 @@ work.
 
 ## Next, in order
 
-1. **Ammo counter in the hitscan script.** **M4A1 done in v1.17.0 and tested by the user (2026-10-01): tap fire,
+1. **Ammo counter in the hitscan script (script firing).** **v1.24.0 (2026-10-02): 41 more guns converted with the
+   new `tools/weapons/script-firing.mjs`** (removes the BP firing states, sets `scriptFiring`, and `shootSound` /
+   `shootAnimation` / `suppressedFrom` when a gun differs from the defaults; refuses guns whose shot does more).
+   Not converted yet (Batch 2, need firing.js support): AWM, M700, Kar98k (bolt: `krep:ammoreload` 1 + the BP
+   `bolt`/`jawir` states), M870, SPAS-12 (pump, ammoreload 3), RPG and M320 (aim-only, no scoreboard), minigun
+   (heat, wind-up), Vector and Golden Deagle (`krep:<id>_range`: cap by magazine attachment), MP7 (`mp7sound`),
+   M1014 (item swap in the shot). **Waiting for the user's test** of the 41: semi = one shot per click, bursts
+   (M16, B93R, Double Barrel), auto, ammo HUD, empty swap and reloads, silencer sounds (G17/SKS any muzzle).
+   Earlier notes: **M4A1 done in v1.17.0 and tested by the user (2026-10-01): tap fire,
    full auto, empty and tactical reload, with and without silencer all work; feels more responsive than the guns
    still on controllers (they react a tick or more later).** What was tested: hold to
    fire (auto, about 800 rpm, same as before), the ammo HUD counts down per shot, last round shows "No Ammunition" and

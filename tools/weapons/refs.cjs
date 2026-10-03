@@ -220,8 +220,11 @@ function checkPack(root) {
   const weaponsSrc = fs.existsSync(path.join(root, "TACZ-B/scripts/config/weapons.js")) ? fs.readFileSync(path.join(root, "TACZ-B/scripts/config/weapons.js"), "utf8") : "";
   for (const m of weaponsSrc.matchAll(/^ {2}([a-z0-9_]+): \{[\s\S]*?^ {2}\},?$/gm)) {
     if (!/^ {4}scriptFiring: true,/m.test(m[0])) continue;
-    useSound(`${m[1]}.shoot`, "TACZ-B/scripts/combat/firing.js", "playSound");
-    if (soundDefs[`${m[1]}.suppress`]) usedSounds.add(`${m[1]}.suppress`);
+    const prefix = /^ {4}shootSound: "([\w.]+)",/m.exec(m[0])?.[1] ?? m[1];
+    useSound(`${prefix}.shoot`, "TACZ-B/scripts/combat/firing.js", "playSound");
+    if (soundDefs[`${prefix}.suppress`]) usedSounds.add(`${prefix}.suppress`);
+    // shootAnimation names must exist (the BP shoot states that played them are gone).
+    for (const a of m[0].matchAll(/"(animation\.[\w.]+)"/g)) { if (!rpAnims.has(a[1])) err("TACZ-B/scripts/config/weapons.js", `${m[1]}: shootAnimation ${a[1]} doesn't exist`); usedRpAnims.add(a[1]); }
   }
   const eventText = JSON.stringify(player?.events ?? {}) + JSON.stringify(player?.components ?? {}) + JSON.stringify(player?.component_groups ?? {});
   for (const ev of events)

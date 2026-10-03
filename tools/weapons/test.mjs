@@ -98,6 +98,14 @@ for (const g of guns) {
   restore();
 }
 
+// script-firing.mjs refuses a gun whose shot does more than the standard (AWM: bolt cycle) and changes nothing.
+{
+  const r = run("tools/weapons/script-firing.mjs", "awp");
+  const left = diff();
+  report("script-firing awp (refused: bolt)", !r.ok && /firing\.js doesn't do that yet/.test(r.out) && left.length === 0, left.length ? "      left behind: " + left.slice(0, 5).join(", ") : r.ok ? "      it converted the AWM" : "");
+  restore();
+}
+
 if (fs.existsSync(path.join(work, "reference", "TACZ-JAVA.zip"))) {
   const initial = start;
   for (const [javaId, id, from] of PORTS) {

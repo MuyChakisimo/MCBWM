@@ -18,9 +18,6 @@
         "setup": {
           "transitions": [
             {
-              "dblong.30": "query.get_equipped_item_name=='dblong' && query.is_using_item && query.scoreboard('dblong') >= 1 && q.mark_variant != 2"
-            },
-            {
               "dblong.31": "query.get_equipped_item_name=='dblong' && query.is_using_item && query.scoreboard('dblong') == 0"
             }
           ],
@@ -30,18 +27,6 @@
           "animations": ["dblongshoot"],
           "transitions": [{"setup": "query.all_animations_finished"}],
           "on_entry": ["/replaceitem entity @s[scores={dblong=0}] slot.weapon.mainhand 1 krep:dblong_emp 1 0"]
-        },
-        "dblong.30": {
-          "animations": ["dblongshoot"],
-          "transitions": [{"setup": "query.all_animations_finished"}],
-          "on_entry": [
-            "@s krep:dblong_fire",
-            "/scoreboard players set @s[scores={dblong=3..}] dblong 2",
-            "/scoreboard players remove @s[scores={dblong=1..}] dblong 1",
-            "/playsound dblong.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={dblong=0}] slot.weapon.mainhand 1 krep:dblong_emp 1 0",
-            "/title @s[scores={dblong=0}] actionbar No Ammunition"
-          ]
         }
       }
     },

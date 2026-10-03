@@ -84,9 +84,6 @@
         "setup": {
           "transitions": [
             {
-              "cp.30": "query.get_equipped_item_name=='cp' && query.is_using_item && query.scoreboard('cp') >= 1 && q.mark_variant != 2"
-            },
-            {
               "cp.31": "query.get_equipped_item_name=='cp' && query.is_using_item && query.scoreboard('cp') == 0"
             }
           ],
@@ -96,18 +93,6 @@
           "animations": ["cpshoot"],
           "transitions": [{"setup": "query.all_animations_finished"}],
           "on_entry": ["/replaceitem entity @s[scores={cp=0}] slot.weapon.mainhand 1 krep:cp_emp 1 0"]
-        },
-        "cp.30": {
-          "animations": ["cpshoot"],
-          "transitions": [{"setup": "query.all_animations_finished && !q.is_using_item"}],
-          "on_entry": [
-            "@s krep:cp_fire",
-            "/scoreboard players remove @s[scores={cp=1..7}] cp 1",
-            "/scoreboard players set @s[scores={cp=7..}] cp 6",
-            "/playsound cp.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={cp=0}] slot.weapon.mainhand 1 krep:cp_emp 1 0",
-            "/title @s[scores={cp=0}] actionbar No Ammunition"
-          ]
         }
       }
     }

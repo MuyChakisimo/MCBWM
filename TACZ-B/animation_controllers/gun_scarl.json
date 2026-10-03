@@ -18,9 +18,6 @@
         "setup": {
           "transitions": [
             {
-              "scarl.30": "query.get_equipped_item_name=='scarl' && query.is_using_item && query.scoreboard('scarl') >= 1 && q.mark_variant != 2"
-            },
-            {
               "scarl.31": "query.get_equipped_item_name=='scarl' && query.is_using_item && query.scoreboard('scarl') == 0"
             }
           ],
@@ -30,18 +27,6 @@
           "animations": ["scarlshoot"],
           "transitions": [{"setup": "query.all_animations_finished"}],
           "on_entry": ["/replaceitem entity @s[scores={scarl=0}] slot.weapon.mainhand 1 krep:scarl_emp 1 0"]
-        },
-        "scarl.30": {
-          "animations": ["scarlshoot"],
-          "transitions": [{"setup": "query.all_animations_finished"}],
-          "on_entry": [
-            "@s krep:scarl_fire",
-            "/scoreboard players set @s[scores={scarl=32..}] scarl 31",
-            "/scoreboard players remove @s[scores={scarl=1..31}] scarl 1",
-            "/playsound scarl.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={scarl=0}] slot.weapon.mainhand 1 krep:scarl_emp 1 0",
-            "/title @s[scores={scarl=0}] actionbar No Ammunition"
-          ]
         }
       }
     },

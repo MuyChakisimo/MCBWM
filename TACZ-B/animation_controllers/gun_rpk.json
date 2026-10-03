@@ -87,25 +87,7 @@
             "/event entity @s[hasitem={item=krep:rpk, location=slot.weapon.mainhand}] krep:noreload"
           ]
         },
-        "setup": {
-          "transitions": [
-            {
-              "rpk.31": "query.get_equipped_item_name=='rpk' && query.is_using_item && query.scoreboard('rpk') >= 1 && q.mark_variant != 2"
-            }
-          ],
-          "on_entry": ["/function rpk"]
-        },
-        "rpk.31": {
-          "animations": ["rpkshoot"],
-          "transitions": [{"setup": "query.all_animations_finished"}],
-          "on_entry": [
-            "@s krep:rpk_fire",
-            "/scoreboard players remove @s[scores={rpk=1..41}] rpk 1",
-            "/playsound rpk.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={rpk=0}] slot.weapon.mainhand 1 krep:rpk_emp 1 0",
-            "/title @s[scores={rpk=0}] actionbar No Ammunition"
-          ]
-        }
+        "setup": {"transitions": [], "on_entry": ["/function rpk"]}
       }
     }
   }

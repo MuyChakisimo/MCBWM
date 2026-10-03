@@ -15,25 +15,7 @@
             "/event entity @s[hasitem={item=krep:m9a4, location=slot.weapon.mainhand}] krep:noreload"
           ]
         },
-        "setup": {
-          "transitions": [
-            {
-              "m9a4.13": "query.get_equipped_item_name=='m9a4' && query.is_using_item && query.scoreboard('m9a4') >= 1 && q.mark_variant != 2"
-            }
-          ],
-          "on_entry": ["/function m9a4"]
-        },
-        "m9a4.13": {
-          "animations": ["m9a4shoot"],
-          "transitions": [{"setup": "query.all_animations_finished"}],
-          "on_entry": [
-            "@s krep:m9a4_fire",
-            "/scoreboard players remove @s[scores={m9a4=1..18}] m9a4 1",
-            "/playsound m9a4.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={m9a4=0}] slot.weapon.mainhand 1 krep:m9a4_emp 1 0",
-            "/title @s[scores={m9a4=0}] actionbar No Ammunition"
-          ]
-        }
+        "setup": {"transitions": [], "on_entry": ["/function m9a4"]}
       }
     },
     "controller.animation.m9a4.reload": {

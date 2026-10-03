@@ -15,25 +15,7 @@
             "/event entity @s[hasitem={item=krep:mk23, location=slot.weapon.mainhand}] krep:noreload"
           ]
         },
-        "setup": {
-          "transitions": [
-            {
-              "mk23.13": "query.get_equipped_item_name=='mk23' && query.is_using_item && query.scoreboard('mk23') >= 1 && q.mark_variant != 2"
-            }
-          ],
-          "on_entry": ["/function mk23"]
-        },
-        "mk23.13": {
-          "animations": ["mk23shoot"],
-          "transitions": [{"setup": "query.all_animations_finished"}],
-          "on_entry": [
-            "@s krep:mk23_fire",
-            "/scoreboard players remove @s[scores={mk23=1..13}] mk23 1",
-            "/playsound mk23.shoot @a[r=30]",
-            "/replaceitem entity @s[scores={mk23=0}] slot.weapon.mainhand 1 krep:mk23_emp 1 0",
-            "/title @s[scores={mk23=0}] actionbar No Ammunition"
-          ]
-        }
+        "setup": {"transitions": [], "on_entry": ["/function mk23"]}
       }
     },
     "controller.animation.mk23.reload": {

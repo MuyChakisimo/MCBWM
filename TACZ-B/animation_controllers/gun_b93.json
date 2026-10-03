@@ -18,9 +18,6 @@
         "setup": {
           "transitions": [
             {
-              "b93.30": "query.get_equipped_item_name=='b93' && query.is_using_item && query.scoreboard('b93') >= 1 && q.mark_variant != 2"
-            },
-            {
               "b93.31": "query.get_equipped_item_name=='b93' && query.is_using_item && query.scoreboard('b93') == 0"
             }
           ],
@@ -30,58 +27,6 @@
           "animations": ["b93shoot"],
           "transitions": [{"setup": "query.all_animations_finished"}],
           "on_entry": ["/replaceitem entity @s[scores={b93=0}] slot.weapon.mainhand 1 krep:b93_emp 1 0"]
-        },
-        "b93.30": {
-          "animations": ["b93shoot"],
-          "transitions": [
-            {"setup": "query.scoreboard('b93') == 0"},
-            {
-              "b93.29": "query.get_equipped_item_name=='b93' && query.scoreboard('b93') >= 1 && q.mark_variant != 2"
-            }
-          ],
-          "on_entry": [
-            "@s krep:b93_fire",
-            "/scoreboard players set @s[scores={b93=22..}] b93 21",
-            "/scoreboard players remove @s[scores={b93=1..21}] b93 1",
-            "/playsound b93.shoot @a[r=30]",
-            "/function b93",
-            "/replaceitem entity @s[scores={b93=0}] slot.weapon.mainhand 1 krep:b93_emp 1 0",
-            "/title @s[scores={b93=0}] actionbar No Ammunition"
-          ]
-        },
-        "b93.29": {
-          "animations": ["b93shoot"],
-          "transitions": [
-            {"setup": "query.scoreboard('b93') == 0"},
-            {
-              "b93.28": "query.get_equipped_item_name=='b93' && query.scoreboard('b93') >= 1 && q.mark_variant != 2"
-            }
-          ],
-          "on_entry": [
-            "@s krep:b93_fire",
-            "/scoreboard players set @s[scores={b93=22..}] b93 21",
-            "/scoreboard players remove @s[scores={b93=1..21}] b93 1",
-            "/playsound b93.shoot @a[r=30]",
-            "/function b93",
-            "/replaceitem entity @s[scores={b93=0}] slot.weapon.mainhand 1 krep:b93_emp 1 0",
-            "/title @s[scores={b93=0}] actionbar No Ammunition"
-          ]
-        },
-        "b93.28": {
-          "animations": ["b93shoot"],
-          "transitions": [
-            {"setup": "query.scoreboard('b93') == 0"},
-            {"setup": "!q.is_using_item && q.all_animations_finished"}
-          ],
-          "on_entry": [
-            "@s krep:b93_fire",
-            "/scoreboard players set @s[scores={b93=22..}] b93 21",
-            "/scoreboard players remove @s[scores={b93=1..21}] b93 1",
-            "/playsound b93.shoot @a[r=30]",
-            "/function b93",
-            "/replaceitem entity @s[scores={b93=0}] slot.weapon.mainhand 1 krep:b93_emp 1 0",
-            "/title @s[scores={b93=0}] actionbar No Ammunition"
-          ]
         }
       }
     },
