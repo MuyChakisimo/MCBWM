@@ -1,9 +1,0 @@
-clear @s[m=!c,scores={taurus943=8},hasitem={item=krep:ammoboxc,quantity=0}] krep:wmr22 0 1
-clear @s[m=!c,scores={taurus943=7},hasitem={item=krep:ammoboxc,quantity=0}] krep:wmr22 0 2
-clear @s[m=!c,scores={taurus943=6},hasitem={item=krep:ammoboxc,quantity=0}] krep:wmr22 0 3
-clear @s[m=!c,scores={taurus943=5},hasitem={item=krep:ammoboxc,quantity=0}] krep:wmr22 0 4
-clear @s[m=!c,scores={taurus943=4},hasitem={item=krep:ammoboxc,quantity=0}] krep:wmr22 0 5
-clear @s[m=!c,scores={taurus943=3},hasitem={item=krep:ammoboxc,quantity=0}] krep:wmr22 0 6
-clear @s[m=!c,scores={taurus943=2},hasitem={item=krep:ammoboxc,quantity=0}] krep:wmr22 0 7
-clear @s[m=!c,scores={taurus943=1},hasitem={item=krep:ammoboxc,quantity=0}] krep:wmr22 0 8
-clear @s[m=!c,scores={taurus943=0},hasitem={item=krep:ammoboxc,quantity=0}] krep:wmr22 0 9

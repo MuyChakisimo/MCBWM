@@ -1,12 +1,13 @@
 import { system, world, EquipmentSlot, ItemStack, GameMode } from "@minecraft/server";
 import { getWeaponByItem } from "../config/weapons.js";
-import { heldTypeId, showAmmo, ammoNameKey } from "./firing.js";
+import { heldTypeId, showAmmo, ammoNameKey, emptyListeners } from "./firing.js";
 
 // Script-controlled reloading for guns with `scriptReload` in config/weapons.js (being rolled out; the other
 // guns still reload from their BP controller `controller.animation.<id>.reload`, the <id>quantity / <id>reload
 // functions and the <id>reloadN events). tools/weapons/script-reload.mjs converts a gun.
 //
-//   Empty reload     use (right click) with krep:<id>_emp in hand.
+//   Empty reload     starts by itself when the last round is fired (if there is ammo), or use (right click)
+//                    with krep:<id>_emp in hand.
 //   Tactical reload  swing (left click) with krep:<id> in hand and at least 2 rounds missing. The swing comes
 //                    from the shared BP controller controller.animation.reload_input (/scriptevent tacz:reload).
 // The reload plays the gun's first-person reload animation (the RP controller watches q.mark_variant: 1 empty,
@@ -53,8 +54,11 @@ function startReload(player, weapon, kind) {
   const objective = world.scoreboard.getObjective(id);
   if (!objective) return;
   const current = kind === "empty" ? 0 : objective.getScore(player) ?? 0;
-  const cap = weapon.capByMagazine?.[player.getProperty("krep:magazine") ?? 0] ?? (kind === "empty" ? weapon.magazine : weapon.magazine + 1);
-  if (kind === "tac" && current > cap - 3) return; // the controllers needed at least 2 missing (magazine - 2)
+  // Not while the bolt / pump is cycling (the controllers checked krep:ammoreload too).
+  if (weapon.cycle && player.getProperty("krep:ammoreload") === weapon.cycle.value) return;
+  const chambered = kind === "tac" && weapon.chamber !== false ? 1 : 0;
+  const cap = weapon.capByMagazine?.[player.getProperty("krep:magazine") ?? 0] ?? weapon.magazine + chambered;
+  if (kind === "tac" && current > weapon.magazine - 2) return; // the controllers needed at least 2 missing
   const container = inventory(player);
   const unlimited = countItem(container, CREATIVE_BOX) > 0;
   const available = unlimited ? Infinity : countItem(container, weapon.ammo);
@@ -82,6 +86,16 @@ function load(r) {
   else showAmmo(player, weapon, rounds);
   r.loaded = true;
 }
+
+// Auto reload: when the last round is fired, the empty reload starts by itself shortly after (the controllers
+// needed a new press, since swapping to the empty gun ends the held trigger; awkward on a controller / touch).
+const AUTO_RELOAD_DELAY = 0.25;
+emptyListeners.push((player, weapon) => {
+  if (!weapon.scriptReload) return;
+  system.runTimeout(() => {
+    if (player.isValid() && heldTypeId(player) === `krep:${weapon.id}_emp`) startReload(player, weapon, "empty");
+  }, ticks(AUTO_RELOAD_DELAY));
+});
 
 world.afterEvents.itemStartUse.subscribe(({ source: player, itemStack }) => {
   const weapon = getWeaponByItem(itemStack?.typeId);

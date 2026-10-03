@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.27.0** (both manifests; worlds need `[1, 27, 0]` in `world_*_packs.json`).
+- Pack version **1.28.0** (both manifests; worlds need `[1, 28, 0]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -283,6 +283,18 @@ work.
    reloads. java-port's magazine resize skips the reload files when a gun has none. **Waiting for the user's
    test** (M4A1: empty and tactical reloads, partial ammo, no ammo, creative ammo box, switching mid-reload); then
    convert the rest in batches (shell-by-shell shotguns/revolvers and the minigun need reload.js support).
+   **User test of v1.27.0 (2026-10-02, M4A1): all good** (empty and tactical reloads, inspect, 30 -> 31 with a
+   chambered round, partial ammo in survival, "No ammo", switching mid-reload loads nothing, creative ammo box).
+   One wish: after emptying the magazine the reload needed a new press (also seen on the AKM).
+   **v1.28.0:** auto reload: when the last round is fired the empty reload starts by itself 0.25 s later
+   (firing.js emptyListeners -> reload.js). 42 more guns converted with script-reload.mjs (every gun but the 10
+   below). New option `chamber: false` (AA-12, Colt Python, Rhino, Raging Hunter, Taurus 943): never more than
+   the magazine (the AA-12's and Colt Python's old caps had no +1; revolvers have no chamber). reload.js also
+   refuses a tactical reload while a bolt / pump cycles (the controllers checked krep:ammoreload). **Not converted
+   yet** (refused by the tool, each needs reload.js support): Vector, Golden Deagle (one reload state per
+   magazine attachment), RPG, M320 (one round, item swap), M870, SPAS-12, M1014 (shell by shell), Double Barrel,
+   DB-4 (extra reload state), Evolys, M249 (`evolys:bulletcache` in the tactical reload), minigun.
+   **Waiting for the user's test** of the 42 (reload timing per gun, auto reload).
 4. **Lag: gate the always-running BP controllers.** **v1.25.0 (2026-10-02):** the 54 `<id>reloading` controllers
    in `entities/player.json` `scripts.animate` now run only while their gun is held or any reload is in progress
    (`... || q.mark_variant != 0`, so a reload interrupted by switching guns still cleans up). Left ungated on purpose:
@@ -310,6 +322,8 @@ work.
   guns -> convert all guns (including the imported ones) to script firing.
 - Order (user, 2026-10-02): test the performance work (v1.24.0 script firing, v1.24.1 shot sound, v1.25.0 gating
   and fewer item queries) -> visual and sound fixes by category -> then Batch 2 script firing / reloading in script.
+- Platform (user, 2026-10-02): plays on an AYN Odin 2 (Android handheld, built-in controller): the mod must run
+  well on mobile; prefer controller-friendly behaviour (e.g. auto reload when the magazine runs dry).
 - Pistols (user, 2026-10-01): semi-auto, one shot per click, except the B93R (burst) and G18 (auto). Already so in
   `weapons.js`; takes effect with script firing. The user tested that the M1911 now fires while held and is OK
   with it becoming one shot per click.

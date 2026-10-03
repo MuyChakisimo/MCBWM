@@ -1,26 +1,4 @@
 {
   "format_version": "1.10.0",
-  "animations": {
-    "animation.ump.shoot": {"loop": false, "animation_length": 0, "timeline": {}},
-    "animation.ump.reload": {
-      "loop": "hold_on_last_frame",
-      "animation_length": 3.1,
-      "timeline": {
-        "3.0": [
-          "/replaceitem entity @s slot.weapon.mainhand 1 krep:ump 1 0",
-          "/scoreboard players set @s[scores={ump=26..}] ump 25",
-          "/function ump"
-        ],
-        "2.9": ["/function umpreload", "/event entity @s krep:ump_reload"]
-      }
-    },
-    "animation.ump.reload.tac": {
-      "loop": "hold_on_last_frame",
-      "animation_length": 2.5,
-      "timeline": {
-        "2.4": ["/scoreboard players set @s[scores={ump=27..}] ump 26", "/function ump"],
-        "2.3": ["/function umpreload", "/event entity @s krep:ump_reload"]
-      }
-    }
-  }
+  "animations": {"animation.ump.shoot": {"loop": false, "animation_length": 0, "timeline": {}}}
 }

@@ -26,6 +26,9 @@ const TICKS_PER_MINUTE = 1200;
 const TACTICAL_RELOAD = 2; // q.mark_variant while a tactical reload plays
 const SUPPRESSED_MUZZLE = 4; // krep:muzzle values from this up are silencers (`<id>.suppress` sound)
 
+/** Called with (player, weapon) when a shot empties the gun (combat/reload.js starts the empty reload). */
+export const emptyListeners = [];
+
 /** Per player: the gun being fired and when its next shot is due. */
 const triggers = new Map();
 
@@ -53,7 +56,7 @@ function fireRound(player, trigger) {
     const objective = world.scoreboard.getObjective(weaponId);
     if (!objective) return false;
     // Never more than a full magazine plus one chambered round (as the BP controllers did).
-    const cap = weapon.capByMagazine?.[player.getProperty("krep:magazine") ?? 0] ?? weapon.magazine + 1;
+    const cap = weapon.capByMagazine?.[player.getProperty("krep:magazine") ?? 0] ?? weapon.magazine + (weapon.chamber === false ? 0 : 1);
     const rounds = Math.min(objective.getScore(player) ?? 0, cap);
     if (rounds < 1) return false;
     left = rounds - 1;
@@ -74,6 +77,7 @@ function fireRound(player, trigger) {
 
   if (left === 0) {
     player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weaponId}_emp`, 1));
+    for (const listener of emptyListeners) listener(player, weapon);
     return false;
   }
   if (weapon.cycle) startCycle(player, weaponId, weapon.cycle);

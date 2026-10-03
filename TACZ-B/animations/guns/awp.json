@@ -1,26 +1,4 @@
 {
   "format_version": "1.10.0",
-  "animations": {
-    "animation.awp.shoot": {"loop": false, "animation_length": 0.25, "timeline": {}},
-    "animation.awp.reload.tac": {
-      "loop": "hold_on_last_frame",
-      "animation_length": 3,
-      "timeline": {
-        "2.88": ["/scoreboard players set @s[scores={awp=7..}] awp 6", "/function awp"],
-        "2.8": ["/function awpreload", "/event entity @s krep:awp_reload"]
-      }
-    },
-    "animation.awp.reload": {
-      "loop": "hold_on_last_frame",
-      "animation_length": 3.7,
-      "timeline": {
-        "3.6": [
-          "/replaceitem entity @s slot.weapon.mainhand 1 krep:awp 1 0",
-          "/scoreboard players set @s[scores={awp=6..}] awp 5",
-          "/function awp"
-        ],
-        "3.5": ["/function awpreload", "/event entity @s krep:awp_reload"]
-      }
-    }
-  }
+  "animations": {"animation.awp.shoot": {"loop": false, "animation_length": 0.25, "timeline": {}}}
 }

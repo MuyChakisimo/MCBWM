@@ -31,6 +31,15 @@ for (const id of ["kar98", "m700", "spas12"]) {
   assert.equal(action.animation_length, +cycle[1], `${id}: the bolt animation must last as long as the script's cycle`);
   for (const role of ["reload", "tac"]) {
     const a = rp[`animation.${id}.fp.${role}`], b = bp[`animation.${id}.${role === "tac" ? "reload.tac" : role}`];
+    if (!b) {
+      // Since v1.28 reload.js reloads it: config scriptReload { empty: [load, end], tac: [load, end] }.
+      const sr = new RegExp(`\\n  ${id}: \\{[\\s\\S]*?\\n    scriptReload: \\{ empty: \\[([\\d.]+), ([\\d.]+)\\], tac: \\[([\\d.]+), ([\\d.]+)\\] \\}`).exec(fs.readFileSync(path.join(root, "TACZ-B/scripts/config/weapons.js"), "utf8").replace(/\r\n/g, "\n"));
+      assert.ok(sr, `${id}: no BP ${role} animation and no scriptReload`);
+      const [load, end] = role === "tac" ? [+sr[3], +sr[4]] : [+sr[1], +sr[2]];
+      assert.equal(a.animation_length, end, `${id}: reload lock must match visuals`);
+      assert.ok(load <= end, `${id}: the rounds must go in before the reload ends`);
+      continue;
+    }
     assert.equal(a.animation_length, b.animation_length, `${id}: reload lock must match visuals`);
     assert.ok(Object.keys(b.timeline).every(t => +t <= b.animation_length), `${id}: every ammo command must run`);
   }
