@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.29.2** (both manifests; worlds need `[1, 29, 2]` in `world_*_packs.json`).
+- Pack version **1.30.0** (both manifests; worlds need `[1, 30, 0]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -304,6 +304,13 @@ work.
    tactical-reload with 1 missing. **Left on the old reload:** M870, SPAS-12, M1014 (shell by shell; their RP
    reload / rend states watch krep:ammoreload 411 / 412 / 420) and the minigun (ammo box). **Waiting for the user's
    test** of the 8.
+   **v1.30.0 (2026-10-03): shell by shell, 54 of 55 guns now reload from the script** (all but the minigun). M870,
+   SPAS-12, M1014: `scriptReload.shells` { empty / tac: shell times, perCue (M1014: 2 after the first), finish,
+   loading 411, ending 412 }: reload.js sets krep:ammoreload to `loading` (the RP reload plays), loads a shell at
+   each time until full / out of ammo / fire pressed, then `ending` (RP closing animation) for `finish` s.
+   firing.js no longer shoots during any reload (mark variant 1 or 2), so a press stops a shell reload instead.
+   Tactical shell reloads need only one round missing. User report 2026-10-03: MP7 sound late / quiet the first
+   time, fine the second (not re-tested). **Waiting for the user's test** of the shotguns.
 4. **Lag: gate the always-running BP controllers.** **v1.25.0 (2026-10-02):** the 54 `<id>reloading` controllers
    in `entities/player.json` `scripts.animate` now run only while their gun is held or any reload is in progress
    (`... || q.mark_variant != 0`, so a reload interrupted by switching guns still cleans up). Left ungated on purpose:

@@ -13,7 +13,7 @@ import { debug, recordShot } from "./debug.js";
 // Each shot: removes one round from the scoreboard `<id>`, updates the ammo HUD, plays the shot sound
 // and the shoot animation, and runs the hitscan shot (combat/hitscan.js). The last round swaps the
 // item to `krep:<id>_emp` (which starts an empty reload) and shows "No Ammunition".
-// No shots during a tactical reload (mark variant 2). Reloading itself is still in the BP controllers.
+// No shots during a reload (mark variant 1 or 2; reloading is combat/reload.js).
 // Per-gun extras (config/weapons.js):
 //   cycle         bolt / pump after each shot: `<id>:bolt` `after` s after the shot (sets krep:ammoreload to
 //                 `value`, which plays the RP bolt animation), `<id>:normal` `seconds` later; no shot (and a
@@ -24,7 +24,7 @@ import { debug, recordShot } from "./debug.js";
 //                 function (it shows "/20+10" ...).
 
 const TICKS_PER_MINUTE = 1200;
-const TACTICAL_RELOAD = 2; // q.mark_variant while a tactical reload plays
+const RELOADING = [1, 2]; // q.mark_variant during an empty (1) or tactical (2) reload: no shots (a press stops a shell reload)
 const SUPPRESSED_MUZZLE = 4; // krep:muzzle values from this up are silencers (`<id>.suppress` sound)
 
 /** Called with (player, weapon) when a shot empties the gun (combat/reload.js starts the empty reload). */
@@ -152,7 +152,7 @@ system.runInterval(() => {
       done();
       continue;
     }
-    if (player.getComponent("minecraft:mark_variant")?.value === TACTICAL_RELOAD) continue;
+    if (RELOADING.includes(player.getComponent("minecraft:mark_variant")?.value) ) continue;
     if (now < trigger.nextShot) continue;
     const fired = fireRound(player, trigger);
     trigger.shotsLeft--;

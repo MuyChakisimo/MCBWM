@@ -140,16 +140,7 @@
             "spas12": "query.get_equipped_item_name=='spas12' || query.get_equipped_item_name=='spas12_emp'"
           },
           {
-            "m870reloading": "query.get_equipped_item_name=='m870' || query.get_equipped_item_name=='m870_emp' || q.mark_variant != 0"
-          },
-          {
-            "spas12reloading": "query.get_equipped_item_name=='spas12' || query.get_equipped_item_name=='spas12_emp' || q.mark_variant != 0"
-          },
-          {
             "m1014": "query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp'"
-          },
-          {
-            "m1014reloading": "query.get_equipped_item_name=='m1014' || query.get_equipped_item_name=='m1014_emp' || q.mark_variant != 0"
           },
           {
             "hk416": "(query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp') && q.skin_id <= 1"
@@ -272,22 +263,10 @@
         "kar98shoot": "animation.kar98.shoot",
         "m870": "controller.animation.m870",
         "spas12": "controller.animation.spas12",
-        "m870reloading": "controller.animation.m870.reload",
-        "spas12reloading": "controller.animation.spas12.reload",
         "m870shoot": "animation.m870.shoot",
         "spas12shoot": "animation.spas12.shoot",
-        "m870reload": "animation.m870.reload",
-        "spas12reload": "animation.spas12.reload",
-        "m870end": "animation.m870.end",
-        "spas12end": "animation.spas12.end",
-        "m870reloadtac": "animation.m870.reload.tac",
-        "spas12reloadtac": "animation.spas12.reload.tac",
         "m1014": "controller.animation.m1014",
-        "m1014reloading": "controller.animation.m1014.reload",
         "m1014shoot": "animation.m1014.shoot",
-        "m1014reload": "animation.m1014.reload",
-        "m1014end": "animation.m1014.end",
-        "m1014reloadtac": "animation.m1014.reload.tac",
         "hk416": "controller.animation.hk416",
         "hk416scope": "controller.animation.hk416.scope",
         "hk416shoot": "animation.hk416.shoot",
@@ -509,58 +488,11 @@
           }
         ]
       },
-      "m870reload0": {
-        "set_property": {"krep:ammoreload": 410},
-        "queue_command": {"command": ["title @s actionbar  No\n12 Gauge"]}
-      },
-      "spas12reload0": {
-        "set_property": {"krep:ammoreload": 410},
-        "queue_command": {"command": ["title @s actionbar  No\n12 Gauge"]}
-      },
-      "m870reload1": {"set_property": {"krep:ammoreload": 411}},
-      "spas12reload1": {"set_property": {"krep:ammoreload": 411}},
-      "m870:end": {"set_property": {"krep:ammoreload": 412}},
-      "spas12:end": {"set_property": {"krep:ammoreload": 412}},
       "m870:normal": {"set_property": {"krep:ammoreload": 0}},
       "spas12:normal": {"set_property": {"krep:ammoreload": 0}},
       "m870:bolt": {"set_property": {"krep:ammoreload": 3}},
       "spas12:bolt": {"set_property": {"krep:ammoreload": 3}},
-      "m1014reload0": {
-        "set_property": {"krep:ammoreload": 410},
-        "queue_command": {"command": ["title @s actionbar  No\n12 Gauge"]}
-      },
-      "m1014reload1": {"set_property": {"krep:ammoreload": 411}},
-      "m1014reload2": {"set_property": {"krep:ammoreload": 420}},
-      "m1014:end": {"set_property": {"krep:ammoreload": 412}},
       "m1014:normal": {"set_property": {"krep:ammoreload": 0}},
-      "krep:m870_reload": {
-        "sequence": [
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 411, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m870 1"]}
-          }
-        ]
-      },
-      "krep:spas12_reload": {
-        "sequence": [
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 411, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s spas12 1"]}
-          }
-        ]
-      },
-      "krep:m1014_reload": {
-        "sequence": [
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 411, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m1014 1"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:ammoreload", "value": 420, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players add @s m1014 2"]}
-          }
-        ]
-      },
       "minigunreload0": {
         "set_property": {"krep:ammoreload": 0},
         "queue_command": {"command": ["title @s actionbar No :\nAmmo Box or .308"]}

@@ -31,6 +31,16 @@ for (const id of ["kar98", "m700", "spas12"]) {
   assert.equal(action.animation_length, +cycle[1], `${id}: the bolt animation must last as long as the script's cycle`);
   for (const role of ["reload", "tac"]) {
     const a = rp[`animation.${id}.fp.${role}`], b = bp[`animation.${id}.${role === "tac" ? "reload.tac" : role}`];
+    const cfg = fs.readFileSync(path.join(root, "TACZ-B/scripts/config/weapons.js"), "utf8").replace(/\r\n/g, "\n");
+    const body = new RegExp(`\\n  ${id}: \\{\\n([\\s\\S]*?)\\n  \\},`).exec(cfg)?.[1] ?? "";
+    const shells = /\n {4}scriptReload: \{ shells: \{ empty: \[([\d., ]+)\][^}]*tac: \[([\d., ]+)\][^}]*finish: ([\d.]+)/.exec("\n" + body);
+    if (!b && shells) {
+      // Since v1.30 reload.js loads shell by shell (config scriptReload.shells): every shell time inside the visuals.
+      const times = (role === "tac" ? shells[2] : shells[1]).split(",").map(Number);
+      assert.ok(times.every((t) => t <= a.animation_length), `${id}: every shell must go in while the ${role} animation plays`);
+      assert.ok(+shells[3] > 0, `${id}: the closing motion must have a length`);
+      continue;
+    }
     if (!b) {
       // Since v1.28 reload.js reloads it: config scriptReload { empty: [load, end], tac: [load, end] }.
       const sr = new RegExp(`\\n  ${id}: \\{[\\s\\S]*?\\n    scriptReload: \\{ empty: \\[([\\d.]+), ([\\d.]+)\\], tac: \\[([\\d.]+), ([\\d.]+)\\] \\}`).exec(fs.readFileSync(path.join(root, "TACZ-B/scripts/config/weapons.js"), "utf8").replace(/\r\n/g, "\n"));
@@ -46,14 +56,11 @@ for (const id of ["kar98", "m700", "spas12"]) {
 }
 const sp = read("TACZ-R/animations/guns/spas12.json").animations;
 assert.ok(Object.keys(sp["animation.spas12.fp.reload"].bones.lefthand.position).length > 10, "empty reload must move the support hand");
-const bpSp = read("TACZ-B/animations/guns/spas12.json").animations;
-for (const [role, count] of [["reload", 5], ["reload.tac", 5]]) {
-  const commands = Object.values(bpSp[`animation.spas12.${role}`].timeline).flat();
-  assert.equal(commands.filter(c => c === "/event entity @s krep:spas12_reload").length, count, "reload must neither duplicate nor lose shells");
-  assert.equal(commands.filter(c => c.startsWith("/clear ")).length, count, "each awarded shell must consume one round");
-}
-const finish = read("TACZ-B/animation_controllers/gun_spas12.json").animation_controllers["controller.animation.spas12.reload"].states;
-assert.ok(finish.reloadfinish.transitions.some(t => t.setup === "q.all_animations_finished"), "finish must wait for the closing motion");
+// Shells: five per reload (since v1.30 config scriptReload.shells; reload.js takes one round per shell and waits
+// out the closing motion).
+const spCfg = /\n  spas12: \{[\s\S]*?\n    scriptReload: \{ shells: \{ empty: \[([\d., ]+)\], tac: \[([\d., ]+)\]/.exec(fs.readFileSync(path.join(root, "TACZ-B/scripts/config/weapons.js"), "utf8").replace(/\r\n/g, "\n"));
+assert.ok(spCfg, "spas12: no scriptReload.shells");
+for (const i of [1, 2]) assert.equal(spCfg[i].split(",").length, 5, "reload must neither duplicate nor lose shells");
 const aim = read("TACZ-R/animations/guns/m320.json").animations["animation.m320.fp.sight"].bones.joints;
 const [px, py, pz] = end(aim.position), [rx, ry, rz] = end(aim.rotation);
 const r = rx * Math.PI / 180;

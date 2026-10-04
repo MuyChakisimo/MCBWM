@@ -45,7 +45,7 @@ for (const id of ids) {
   const ctrlJson = parse(read(ctrlFile));
   const ac = ctrlJson.animation_controllers[ctrlId];
   if (!ac) throw new Error(`${id}: no ${ctrlId}`);
-  const STATES = /^(setup|trigger\.(tac|reload)\d*|reload|reload1|reload\.tac|reloadfinish)$/;
+  const STATES = /^(setup|trigger\.(tac|reload)\d*|reload|reload1|reload\.tac|reloadfinish1?)$/;
   const extra = Object.keys(ac.states).filter((s) => !STATES.test(s));
   if (extra.length) throw new Error(`${id}: its reload has more states (${extra.join(", ")}); reload.js doesn't do that yet`);
 
@@ -74,8 +74,41 @@ for (const id of ids) {
     removedAnims.push([short, animId]);
     return { timing: [loads[0], +anim.animation_length], cap: cap === undefined ? undefined : +cap, events: cues.filter(([, c]) => /^@s (?!krep:)\w+:\w+$/.test(c)).map(([t, c]) => [t, c.slice(3)]) };
   };
-  // Per state: its animations, keyed by magazine attachment when there are several.
   const sr = {};
+  // Shell by shell (M870, SPAS-12, M1014: a "reloadfinish1" closing state): a shell at every time the ammo item is
+  // cleared, until full / out of ammo / fire pressed; then the closing animation.
+  const shellMode = Boolean(ac.states.reloadfinish1);
+  if (shellMode) {
+    const SHELL = [
+      /^\/clear @s\[/, new RegExp(`^/event entity @s(\\[.*\\])? (krep:${id}_reload|${id}reload\\d+)$`),
+      new RegExp(`^/function ${id}(quantity\\d*)?$`), new RegExp(`^/replaceitem entity @s(\\[scores=\\{${id}=1\\.\\.\\}\\])? slot\\.weapon\\.mainhand 1 krep:${id} 1 0$`),
+    ];
+    const shells = {};
+    const shortOf = (state) => (ac.states[state]?.animations ?? []).map((a) => (typeof a === "string" ? a : Object.keys(a)[0]))[0];
+    for (const [kind, state] of [["empty", "reload"], ["tac", "reload.tac"]]) {
+      const short = shortOf(state);
+      const anim = bp.animations[desc.animations[short]];
+      if (!anim) throw new Error(`${id}: no BP animation for ${state} (${short})`);
+      const cues = Object.entries(anim.timeline ?? {}).flatMap(([t, cs]) => [].concat(cs).map((c) => [+t, c])).sort((a, b) => a[0] - b[0]);
+      const odd = cues.filter(([, c]) => !SHELL.some((p) => p.test(c)));
+      if (odd.length) throw new Error(`${id}: its ${state} also runs ${JSON.stringify(odd.map(([, c]) => c))}; reload.js doesn't do that yet`);
+      const clears = cues.filter(([, c]) => c.startsWith("/clear ") && c.includes(` ${ammo} `));
+      shells[kind] = [...new Set(clears.map(([t]) => t))];
+      if (clears.some(([, c]) => / 0 2$/.test(c))) shells.perCue = 2; // the M1014 loads two at a time when it can
+      removedAnims.push([short, desc.animations[short]]);
+    }
+    const endShort = shortOf("reloadfinish1");
+    const endAnim = bp.animations[desc.animations[endShort]];
+    if (!endAnim) throw new Error(`${id}: no BP closing animation (${endShort})`);
+    shells.finish = +endAnim.animation_length;
+    removedAnims.push([endShort, desc.animations[endShort]]);
+    shells.loading = events[`${id}reload1`]?.set_property?.["krep:ammoreload"];
+    shells.ending = events[`${id}:end`]?.set_property?.["krep:ammoreload"];
+    if (shells.loading === undefined || shells.ending === undefined) throw new Error(`${id}: can't read its loading / ending values`);
+    sr.shells = shells;
+  }
+  if (!shellMode) {
+  // Per state: its animations, keyed by magazine attachment when there are several.
   const byMag = [];
   for (const [kind, state] of [["empty", "reload"], ["tac", "reload.tac"], ["emptyOne", "reload1"]]) {
     const anims = (ac.states[state]?.animations ?? []).map((a) => (typeof a === "string" ? [a, ""] : Object.entries(a)[0]));
@@ -111,6 +144,7 @@ for (const id of ids) {
   if (sr.emptyProperty?.some((v) => v === undefined)) throw new Error(`${id}: can't read the one-round reload's property values`);
   const reset = Object.values(ac.states).flatMap((s) => s.on_entry ?? []).map((c) => /^@s (\w+:reset)$/.exec(c)?.[1]).find(Boolean);
   if (reset) sr.reset = reset;
+  }
 
   // Remove the controller machinery.
   delete ctrlJson.animation_controllers[ctrlId];
@@ -126,7 +160,7 @@ for (const id of ids) {
   let evs = 0;
   // (krep:<id>_rangeemp only capped the old empty reload; krep:<id>_range stays: nothing else used it, but it's
   // harmless and the caps above were read from it.)
-  for (const k of Object.keys(events)) if (new RegExp(`^${id}reload\\d+$`).test(k) || k === `krep:${id}_reload` || k === `krep:${id}_rangeemp`) { delete events[k]; evs++; }
+  for (const k of Object.keys(events)) if (new RegExp(`^${id}reload\\d+$`).test(k) || k === `krep:${id}_reload` || k === `krep:${id}_rangeemp` || (shellMode && k === `${id}:end`)) { delete events[k]; evs++; }
 
   // The shared swing detector for tactical reloads.
   if (!desc.animations.reload_input) {

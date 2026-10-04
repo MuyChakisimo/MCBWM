@@ -68,7 +68,14 @@ export function repairImport(root, javaId, id, log = console.log) {
   const javaAnims = java.json(`assets/tacz/animations/${javaId}.animation.json`).animations;
 
   if (javaId === "spas_12") {
-    const reloadActive = parse(read("TACZ-B/entities/player.json"))["minecraft:entity"].events[`${id}reload1`].set_property["krep:ammoreload"];
+    // Since v1.30 the template (M870) reloads from the script: the shell times go to config scriptReload.shells
+    // instead of BP reload animation timelines.
+    const cfgFile = "TACZ-B/scripts/config/weapons.js";
+    const cfg = read(cfgFile);
+    const shellLine = new RegExp(`(\\n  ${id}: \\{\\r?\\n[\\s\\S]*?\\n    scriptReload: \\{ shells: )(\\{[^\\n]*\\})( \\},)`).exec(cfg);
+    const reloadActive = shellLine
+      ? +/loading: (\d+)/.exec(shellLine[2])[1]
+      : parse(read("TACZ-B/entities/player.json"))["minecraft:entity"].events[`${id}reload1`].set_property["krep:ammoreload"];
     // Empty: one chambered shell then four tube shells. Tactical: up to five
     // tube shells, preserving the existing 5 empty / 6 tactical capacity rules.
     anims[`animation.${id}.fp.reload`] = convertAnimation(sequence([javaAnims.reload_empty_intro, ...Array(4).fill(javaAnims.reload_loop)]), true, pose(geo).hold, boneRenames(geo));
@@ -81,17 +88,25 @@ export function repairImport(root, javaId, id, log = console.log) {
       timeline[String(round(time + 0.05))] = [...(first ? [`/replaceitem entity @s slot.weapon.mainhand 1 krep:${id} 1 0`] : []), `/function ${id}`];
       return timeline;
     };
-    for (const [role, intro, count] of [["reload", javaAnims.reload_empty_intro, 4], ["tac", javaAnims.reload_intro, 5]]) {
-      const b = bp.animations[`animation.${id}.${role === "tac" ? "reload.tac" : role}`];
-      b.animation_length = anims[`animation.${id}.fp.${role}`].animation_length;
-      b.timeline = role === "reload" ? insert(0.7333, true) : {};
-      for (let i = 0; i < count; i++) Object.assign(b.timeline, insert(duration(intro) + i * duration(javaAnims.reload_loop) + 0.2167));
+    const shellTimes = (intro, count, first) => [...(first ? [0.7333] : []), ...Array.from({ length: count }, (_, i) => round(duration(intro) + i * duration(javaAnims.reload_loop) + 0.2167))];
+    if (shellLine) {
+      const old = shellLine[2];
+      const keep = (k) => /(\w+: \d+)/.test(old) && new RegExp(`${k}: (\\d+)`).exec(old)?.[1];
+      const shells = `{ empty: [${shellTimes(javaAnims.reload_empty_intro, 4, true).join(", ")}], tac: [${shellTimes(javaAnims.reload_intro, 5).join(", ")}], finish: ${round(duration(javaAnims.reload_end))}, loading: ${keep("loading")}, ending: ${keep("ending")} }`;
+      fs.writeFileSync(path.join(root, cfgFile), cfg.replace(shellLine[0], shellLine[1] + shells + shellLine[3]));
+    } else {
+      for (const [role, intro, count] of [["reload", javaAnims.reload_empty_intro, 4], ["tac", javaAnims.reload_intro, 5]]) {
+        const b = bp.animations[`animation.${id}.${role === "tac" ? "reload.tac" : role}`];
+        b.animation_length = anims[`animation.${id}.fp.${role}`].animation_length;
+        b.timeline = role === "reload" ? insert(0.7333, true) : {};
+        for (let i = 0; i < count; i++) Object.assign(b.timeline, insert(duration(intro) + i * duration(javaAnims.reload_loop) + 0.2167));
+      }
+      bp.animations[`animation.${id}.end`].animation_length = duration(javaAnims.reload_end);
+      edit(`TACZ-B/animation_controllers/gun_${id}.json`, j => {
+        const states = j.animation_controllers[`controller.animation.${id}.reload`].states;
+        for (const name of ["reloadfinish", "reloadfinish1"]) states[name].transitions = [{ setup: "q.all_animations_finished" }, { setup: `query.get_equipped_item_name!='${id}' && query.get_equipped_item_name!='${id}_emp'` }];
+      });
     }
-    bp.animations[`animation.${id}.end`].animation_length = duration(javaAnims.reload_end);
-    edit(`TACZ-B/animation_controllers/gun_${id}.json`, j => {
-      const states = j.animation_controllers[`controller.animation.${id}.reload`].states;
-      for (const name of ["reloadfinish", "reloadfinish1"]) states[name].transitions = [{ setup: "q.all_animations_finished" }, { setup: `query.get_equipped_item_name!='${id}' && query.get_equipped_item_name!='${id}_emp'` }];
-    });
     // Finish must win over returning directly to hold when the server signals end.
     fp.states.reload.transitions = [{ rend: `v.${id} && q.property('krep:ammoreload')!=${reloadActive}` }, { hold: `!v.${id}` }];
     fp.states.reloadtac.transitions = structuredClone(fp.states.reload.transitions);

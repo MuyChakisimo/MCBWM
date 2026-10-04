@@ -59,8 +59,74 @@ function removeItem(container, typeId, count) {
 //                    Deagle: extended magazines have their own timing and capacity).
 // roundInItem guns (RPG, M320) load the one round into the item: the ammo item goes, the loaded item comes back.
 
+//   shells           shell by shell (M870, SPAS-12, M1014): { empty: [times], tac: [times], perCue, finish,
+//                    loading, ending }. While krep:ammoreload is `loading` the RP plays the reload; a shell (perCue:
+//                    up to 2 on the M1014) goes in at each time until the gun is full, the ammo runs out or the
+//                    player presses fire; then `ending` (the RP closing animation) for `finish` seconds.
+
+function startShells(player, weapon, kind, auto) {
+  const id = weapon.id;
+  const sh = weapon.scriptReload.shells;
+  if (!sh[kind]) return;
+  const objective = world.scoreboard.getObjective(id);
+  if (!objective) return;
+  const current = kind === "empty" ? 0 : objective.getScore(player) ?? 0;
+  if (weapon.cycle && player.getProperty("krep:ammoreload") === weapon.cycle.value) return;
+  const cap = weapon.magazine + (kind === "tac" && weapon.chamber !== false ? 1 : 0);
+  if (kind === "tac" && current > weapon.magazine - 1) return; // the controllers needed one missing
+  const container = inventory(player);
+  const unlimited = countItem(container, CREATIVE_BOX) > 0;
+  if (!unlimited && countItem(container, weapon.ammo) < 1) {
+    const ammoName = ammoNameKey(weapon);
+    player.onScreenDisplay.setActionBar({ rawtext: [{ text: "No ammo: " }, ...(ammoName ? [{ translate: ammoName }] : [])] });
+    recordReload(player, id, kind, "noammo");
+    return;
+  }
+  player.setProperty("krep:ammoreload", sh.loading);
+  player.triggerEvent(MARK[kind]);
+  recordReload(player, id, kind, "start", auto);
+  const now = system.currentTick;
+  reloads.set(player.id, { player, weapon, kind, cap, unlimited, shell: true, times: sh[kind].map((t) => now + ticks(t)), loadedAny: false, ending: false, endTick: 0, interrupt: false, cues: [] });
+  debug(() => `${player.name} ${id} ${kind} shell reload start: ${current} in gun, up to ${cap}`);
+}
+
+/** One tick of a shell reload. */
+function tickShells(r, now) {
+  const { player, weapon, kind, cap, unlimited } = r;
+  const sh = weapon.scriptReload.shells;
+  if (r.ending) {
+    if (now >= r.endTick) finish(r);
+    return;
+  }
+  const objective = world.scoreboard.getObjective(weapon.id);
+  const rounds = objective.getScore(player) ?? 0;
+  const container = inventory(player);
+  const available = unlimited ? Infinity : countItem(container, weapon.ammo);
+  const stop = rounds >= cap || available < 1 || (r.interrupt && rounds >= 1) || !r.times.length;
+  if (stop) {
+    // The closing animation: krep:ammoreload `ending`, still in the reload mark variant.
+    r.ending = true;
+    r.loaded = true;
+    r.endTick = now + ticks(sh.finish);
+    player.setProperty("krep:ammoreload", sh.ending);
+    recordReload(player, weapon.id, kind, "load");
+    debug(() => `${player.name} ${weapon.id} shell reload closing at ${rounds} rounds${r.interrupt ? " (fire pressed)" : ""}`);
+    return;
+  }
+  if (now < r.times[0]) return;
+  r.times.shift();
+  const give = Math.min(r.loadedAny ? sh.perCue ?? 1 : 1, cap - rounds, available); // the first shell goes in alone
+  if (!unlimited && player.getGameMode() !== GameMode.creative) removeItem(container, weapon.ammo, give);
+  objective.setScore(player, rounds + give);
+  if (!r.loadedAny && kind === "empty") player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weapon.id}`, 1));
+  r.loadedAny = true;
+  showAmmo(player, weapon, rounds + give);
+  debug(() => `${player.name} ${weapon.id} shell +${give} -> ${rounds + give}`);
+}
+
 function startReload(player, weapon, kind, auto = false) {
   if (reloads.has(player.id)) return;
+  if (weapon.scriptReload.shells) return startShells(player, weapon, kind, auto);
   const id = weapon.id;
   const sr = weapon.scriptReload;
   const spec = sr.byMagazine?.[player.getProperty("krep:magazine") ?? 0] ?? sr;
@@ -130,6 +196,8 @@ function load(r) {
 function finish(r) {
   const { player, weapon, property } = r;
   player.triggerEvent("krep:noreload");
+  const sh = weapon.scriptReload.shells;
+  if (sh && [sh.loading, sh.ending].includes(player.getProperty("krep:ammoreload"))) player.setProperty("krep:ammoreload", 0);
   if (weapon.scriptReload.reset) player.triggerEvent(weapon.scriptReload.reset);
   if (property !== undefined && player.getProperty("krep:ammoreload") === property) player.setProperty("krep:ammoreload", 0);
   reloads.delete(player.id);
@@ -150,6 +218,9 @@ emptyListeners.push((player, weapon) => {
 world.afterEvents.itemStartUse.subscribe(({ source: player, itemStack }) => {
   const weapon = getWeaponByItem(itemStack?.typeId);
   if (weapon?.scriptReload && itemStack.typeId === `krep:${weapon.id}_emp`) startReload(player, weapon, "empty");
+  // Pressing fire during a shell reload stops it after the current shell (firing.js doesn't shoot meanwhile).
+  const r = reloads.get(player.id);
+  if (r?.shell && itemStack?.typeId === `krep:${r.weapon.id}`) r.interrupt = true;
 });
 
 system.afterEvents.scriptEventReceive.subscribe(({ id, sourceEntity: player }) => {
@@ -169,6 +240,12 @@ system.runInterval(() => {
     }
     const held = heldTypeId(player);
     const stillHolding = held === `krep:${r.weapon.id}` || held === `krep:${r.weapon.id}_emp`;
+    if (r.shell) {
+      // Shells already in stay in; switching away just ends the reload.
+      if (!stillHolding) finish(r);
+      else tickShells(r, now);
+      continue;
+    }
     if (!r.loaded && !stillHolding) {
       // Switched away before the rounds went in: nothing loaded, nothing taken.
       finish(r);

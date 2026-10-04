@@ -106,11 +106,11 @@ for (const g of guns) {
   restore();
 }
 
-// script-reload.mjs refuses a shell-by-shell reload (M870) and changes nothing.
+// script-reload.mjs refuses the minigun (still fired by its controller; ammo box reload) and changes nothing.
 {
-  const r = run("tools/weapons/script-reload.mjs", "m870");
+  const r = run("tools/weapons/script-reload.mjs", "minigun");
   const left = diff();
-  report("script-reload m870 (refused: shell by shell)", !r.ok && /reload\.js doesn't do that yet/.test(r.out) && left.length === 0, left.length ? "      left behind: " + left.slice(0, 5).join(", ") : r.ok ? "      it converted the M870" : "");
+  report("script-reload minigun (refused: still controller-fired)", !r.ok && /convert its firing first|reload\.js doesn't do that yet/.test(r.out) && left.length === 0, left.length ? "      left behind: " + left.slice(0, 5).join(", ") : r.ok ? "      it converted the minigun" : "");
   restore();
 }
 
