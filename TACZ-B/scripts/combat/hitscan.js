@@ -57,6 +57,18 @@ function blockRay(dimension, origin, direction, options) {
   return undefined;
 }
 
+// getEntitiesFromRay throws the same way (v1.30.3 still lost those shots); same remedy.
+function entityRay(dimension, origin, direction, options) {
+  for (let maxDistance = options.maxDistance; maxDistance >= 1; maxDistance /= 2) {
+    try {
+      return dimension.getEntitiesFromRay(origin, direction, { ...options, maxDistance });
+    } catch (error) {
+      if (!isUnloaded(error)) throw error;
+    }
+  }
+  return [];
+}
+
 // The first block the ray stops at, breaking breakable ones on the way (at most HITSCAN.maxBlocksBroken
 // per ray, and only in front of `limit`, the nearest entity). Returns { location, distance } or undefined.
 function traceBlocks(dimension, origin, direction, range, limit, breakable) {
@@ -91,8 +103,7 @@ function breakPassable(dimension, origin, direction, reach, breakable) {
 // One ray: { entity, location } of what it hit (entity may be undefined) and where it ended.
 function traceRay(shooter, origin, direction, range, breakable) {
   const dimension = shooter.dimension;
-  const entities = dimension
-    .getEntitiesFromRay(origin, direction, { maxDistance: range, ignoreBlockCollision: true })
+  const entities = entityRay(dimension, origin, direction, { maxDistance: range, ignoreBlockCollision: true })
     .filter(({ entity }) => entity && entity.id !== shooter.id && entity.getComponent("minecraft:health"))
     .sort((a, b) => a.distance - b.distance);
   const nearest = entities[0]?.distance ?? Infinity;
@@ -170,6 +181,6 @@ export function shoot(shooter, weaponId, weapon, mode) {
   try {
     fire(shooter, weaponId, weapon, mode);
   } catch (error) {
-    console.error(`[TACZ Hitscan] ${weaponId} error:`, error);
+    console.error(`[TACZ Hitscan] ${weaponId} error: ${error}\n${error?.stack ?? ""}`); // the stack says which call
   }
 }

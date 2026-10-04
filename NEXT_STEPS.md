@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.30.3** (both manifests; worlds need `[1, 30, 3]` in `world_*_packs.json`).
+- Pack version **1.30.4** (both manifests; worlds need `[1, 30, 4]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -383,6 +383,15 @@ work.
   shared krep:muzzle property; only guns with `suppressedFrom` (MP5, Vector, HK416, G17, AKM, M4A1, Golden Deagle,
   SKS) are silenced now. (3) The report flagged semi guns as slow (that's click pace); it now judges only auto and
   within-burst gaps. Watchdog spike 163 ms at "stop" = printing the report (fine).
+- **First script profile** (user, 2026-10-03, v1.30.3, 15 min on the test server, `script profiler start/stop`;
+  file in reference/, analysed with a scratch script): all TACZ scripts together ~0.76 ms per tick on average (budget
+  50 ms). By file: firing.js 26% (incl. hitscan while shooting), items/storedAmmoDisplay.js 19%, items/itemLore.js
+  12%, attachments/attachmentState.js 11% (these three poll every 1-20 ticks even when nobody shoots: ~0.3 ms/tick,
+  could become event-driven), hitscan 13%, reload.js 8%. Note: the .cpuprofile credits the idle time between
+  ticks to the first function of each tick (System::currentTick in firing.js, World::getPlayers in
+  attachmentState.js: 18,098 samples each = one per tick); count gaps > 1 ms as one sample to get real time.
+  The far-shot fix of v1.30.3 only covered getBlockFromRay; getEntitiesFromRay threw the same error (shots still
+  lost: SPR-15, HK416, M16, M16A1, minigun ...). v1.30.4 shortens that ray too; hitscan errors now log a stack.
 - **Turn on the in-game content log** (Settings > Creator > Content Log GUI): it names errors our checks missed.
   First run (user, 2026-10-02, v1.25.0) found, fixed in v1.25.1: Taurus 943 animation bone "release button" (a space:
   the game rejected its whole animation file, why it was invisible in first person / between the legs in third;
