@@ -1052,8 +1052,8 @@
         }
       ]
     },
-    "controller.render.player.universal70.first_person": {
-      "geometry": "Geometry.taczuniversal70",
+    "controller.render.player.universal73.first_person": {
+      "geometry": "Geometry.taczuniversal73",
       "materials": [{"*": "Material.default"}],
       "textures": ["Texture.default"],
       "part_visibility": [

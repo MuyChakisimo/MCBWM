@@ -8017,120 +8017,6 @@
       "sounds/spas12/spas12_bolthandleoff"
     ]
   },
-  "tacz.aug.aug_reload_raise": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_raise"
-    ]
-  },
-  "tacz.aug.aug_inspect_maggrab": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_inspect_maggrab"
-    ]
-  },
-  "tacz.aug.aug_reload_magout": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_magout"
-    ]
-  },
-  "tacz.aug.aug_reload_magin": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_magin"
-    ]
-  },
-  "tacz.aug.aug_reload_end": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_end"
-    ]
-  },
-  "tacz.aug.aug_reload_maghitwell": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_maghitwell"
-    ]
-  },
-  "tacz.aug.aug_reload_empty_raise": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_empty_raise"
-    ]
-  },
-  "tacz.aug.aug_reload_empty_boltlock": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_empty_boltlock"
-    ]
-  },
-  "tacz.aug.aug_reload_empty_magout": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_empty_magout"
-    ]
-  },
-  "tacz.aug.mag_drop_ar_poly_dirt": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/mag_drop_ar_poly_dirt"
-    ]
-  },
-  "tacz.aug.aug_reload_empty_maghit": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_empty_maghit"
-    ]
-  },
-  "tacz.aug.aug_reload_empty_magin": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_empty_magin"
-    ]
-  },
-  "tacz.aug.aug_reload_empty_boltclose": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_empty_boltclose"
-    ]
-  },
-  "tacz.aug.aug_reload_empty_end": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_reload_empty_end"
-    ]
-  },
-  "tacz.aug.aug_inspect_armin": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_inspect_armin"
-    ]
-  },
-  "tacz.aug.aug_inspect_raise": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/g3/raiseins"
-    ]
-  },
-  "tacz.aug.aug_inspect_boltlock_fast": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_inspect_boltlock_fast"
-    ]
-  },
-  "tacz.aug.aug_inspect_boltclose_fast": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_inspect_boltclose_fast"
-    ]
-  },
-  "tacz.aug.aug_inspect_end": {
-    "category": "hostile",
-    "sounds": [
-      "sounds/aug/aug_inspect_end"
-    ]
-  },
   "tacz.springfield1873.springfield1873_reload_start": {
     "category": "hostile",
     "sounds": [
@@ -8315,6 +8201,120 @@
     "category": "hostile",
     "sounds": [
       "sounds/lonetrail/breach_inspect_end"
+    ]
+  },
+  "tacz.aug.aug_reload_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_raise"
+    ]
+  },
+  "tacz.aug.aug_inspect_maggrab": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_inspect_maggrab"
+    ]
+  },
+  "tacz.aug.aug_reload_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_magout"
+    ]
+  },
+  "tacz.aug.aug_reload_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_magin"
+    ]
+  },
+  "tacz.aug.aug_reload_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_end"
+    ]
+  },
+  "tacz.aug.aug_reload_maghitwell": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_maghitwell"
+    ]
+  },
+  "tacz.aug.aug_reload_empty_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_empty_raise"
+    ]
+  },
+  "tacz.aug.aug_reload_empty_boltlock": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_empty_boltlock"
+    ]
+  },
+  "tacz.aug.aug_reload_empty_magout": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_empty_magout"
+    ]
+  },
+  "tacz.aug.mag_drop_ar_poly_dirt": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/mag_drop_ar_poly_dirt"
+    ]
+  },
+  "tacz.aug.aug_reload_empty_maghit": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_empty_maghit"
+    ]
+  },
+  "tacz.aug.aug_reload_empty_magin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_empty_magin"
+    ]
+  },
+  "tacz.aug.aug_reload_empty_boltclose": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_empty_boltclose"
+    ]
+  },
+  "tacz.aug.aug_reload_empty_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_reload_empty_end"
+    ]
+  },
+  "tacz.aug.aug_inspect_armin": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_inspect_armin"
+    ]
+  },
+  "tacz.aug.aug_inspect_raise": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/g3/raiseins"
+    ]
+  },
+  "tacz.aug.aug_inspect_boltlock_fast": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_inspect_boltlock_fast"
+    ]
+  },
+  "tacz.aug.aug_inspect_boltclose_fast": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_inspect_boltclose_fast"
+    ]
+  },
+  "tacz.aug.aug_inspect_end": {
+    "category": "hostile",
+    "sounds": [
+      "sounds/aug/aug_inspect_end"
     ]
   }
 }

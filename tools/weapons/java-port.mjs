@@ -1,7 +1,9 @@
 // Ports a Java TACZ gun: clone the most similar gun we have, then replace everything that makes it
 // that gun with the Java version.
 //
-//   node tools/weapons/java-port.mjs <javaId> <newId> --from <ourGun> [--name "Name"]
+//   node tools/weapons/java-port.mjs <javaId> <newId> --from <ourGun> [--name "Name"] [--no-scope]
+//   --no-scope: leave out a built-in scope and keep the gun's rail mount instead (the AUG since v1.33.4: Bedrock
+//   can't draw Java's see-through scope, so it was a solid tube)
 //   then: node tools/weapons/check.mjs
 //
 // Steps (each prints what it did):
@@ -68,6 +70,8 @@ const OPTIONAL_PARTS = /^(mag_extended_\d+|mount|rail\d*|side_rail)$/;
 const args = process.argv.slice(2);
 const opt = (n) => { const i = args.indexOf(n); return i < 0 ? undefined : args.splice(i, 2)[1]; };
 const from = opt("--from"), name = opt("--name");
+const noScope = args.includes("--no-scope");
+if (noScope) args.splice(args.indexOf("--no-scope"), 1);
 const [javaId, id] = args;
 if (!javaId || !id || !from) {
   log(readText("tools/weapons/java-port.mjs").split("\n").slice(0, 21).join("\n"));
@@ -104,7 +108,8 @@ const builtinScope = !!javaData.builtin_attachments?.scope;
 // A built-in scope (AUG) is a separate Java attachment model: its parts join the gun model at the gun's
 // scope_pos bone, its texture goes under the gun's (one texture per model). Left out: the reticle
 // (division*: a big flat plane Java only shows through the lens) and camera markers (scope_view, views).
-const scope = builtinScope ? builtinScopeParts(javaData.builtin_attachments.scope) : null;
+const scope = builtinScope && !noScope ? builtinScopeParts(javaData.builtin_attachments.scope) : null;
+if (builtinScope && noScope) log(`   built-in scope ${javaData.builtin_attachments.scope} left out (--no-scope): the rail mount stays`);
 {
   const g = converted.model["minecraft:geometry"][0];
   if (scope) {
@@ -142,7 +147,8 @@ const scope = builtinScope ? builtinScopeParts(javaData.builtin_attachments.scop
   const stocks = g.bones.filter((b) => /^oem_stock_/.test(b.name));
   const keepStock = stocks.find((b) => b.name === "oem_stock_tactical") ?? stocks[0];
   for (const b of g.bones) {
-    const optional = OPTIONAL_PARTS.test(b.name) && !(scope?.showMount && /^(mount|rail\d*)$/.test(b.name));
+    const keepMount = scope ? scope.showMount : builtinScope; // --no-scope: the mount instead of the scope
+    const optional = OPTIONAL_PARTS.test(b.name) && !(keepMount &&/^(mount|rail\d*)$/.test(b.name));
     if (optional || (/^oem_stock_/.test(b.name) && b !== keepStock) || b.name === "ar_stock_adapter") drop.add(b.name);
   }
   for (let grew = true; grew; ) { grew = false; for (const b of g.bones) if (!drop.has(b.name) && drop.has(b.parent)) { drop.add(b.name); grew = true; } }

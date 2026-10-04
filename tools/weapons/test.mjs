@@ -24,7 +24,7 @@ const QUICK = ["sks", "m4a1", "m16", "deagle", "fal", "vector", "rpg", "m870", "
 // copy and the port compared with that state (porting it under another id fails: its Java sound names
 // contain its own id). cz75 from the P320 covers a source gun with the other arm layout (right arm on the
 // right hand; java-port.mjs steps 4 and 7), rhino357 from the Colt Python a Java pistol from a mirrored source.
-const PORTS = [["cz75", "cz75", "p320"], ["rhino357", "rhino357", "cp"], ["spr15hb", "spr15", "m4a1"], ["rpk", "rpk", "type81"], ["kar98", "kar98", "awp"], ["m700", "m700", "awp"], ["spas_12", "spas12", "m870"], ["db_long", "dblong", "db"], ["hk_mk23", "mk23", "p320"], ["taurus943", "taurus943", "p320"], ["m320", "m320", "rpg"], ["aug", "aug", "m4a1"], ["springfield1873", "springfield1873", "m320"]];
+const PORTS = [["cz75", "cz75", "p320"], ["rhino357", "rhino357", "cp"], ["spr15hb", "spr15", "m4a1"], ["rpk", "rpk", "type81"], ["kar98", "kar98", "awp"], ["m700", "m700", "awp"], ["spas_12", "spas12", "m870"], ["db_long", "dblong", "db"], ["hk_mk23", "mk23", "p320"], ["taurus943", "taurus943", "p320"], ["m320", "m320", "rpg"], ["aug", "aug", "m4a1"], ["aug", "aug", "m4a1", "--no-scope"],["springfield1873", "springfield1873", "m320"]];
 
 const walk = (d) => (fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)])) : []);
 const rel = (base, f) => path.relative(base, f).split(path.sep).join("/");
@@ -116,18 +116,18 @@ for (const g of guns) {
 
 if (fs.existsSync(path.join(work, "reference", "TACZ-JAVA.zip"))) {
   const initial = start;
-  for (const [javaId, id, from] of PORTS) {
+  for (const [javaId, id, from, ...extra] of PORTS) {
     if (fs.existsSync(path.join(work, `TACZ-B/items/guns/${id}/${id}.json`))) {
       const r0 = run("tools/weapons/gun.mjs", "remove", id);
-      if (!r0.ok) { report(`port ${javaId} (from ${from})`, false, `      couldn't remove the packs' ${id} first\n${lastLines(r0.out)}`); restore(); continue; }
+      if (!r0.ok) { report(`port ${javaId} (from ${from}${extra.length ? " " + extra.join(" ") : ""})`, false, `      couldn't remove the packs' ${id} first\n${lastLines(r0.out)}`); restore(); continue; }
       start = new Map(packFiles().map((f) => [f, hash(f)]));
     }
-    const p = run("tools/weapons/java-port.mjs", javaId, id, "--from", from);
+    const p = run("tools/weapons/java-port.mjs", javaId, id, "--from", from, ...extra);
     const c = p.ok ? check() : p;
     const r = p.ok ? run("tools/weapons/gun.mjs", "remove", id) : { ok: true, out: "" };
     const left = diff();
     const ok = p.ok && c.ok && r.ok && left.length === 0;
-    report(`port ${javaId} (from ${from})`, ok, ok ? "" : [!p.ok && lastLines(p.out, 6), !c.ok && lastLines(c.out, 8), !r.ok && lastLines(r.out), left.length && "      left behind: " + left.slice(0, 5).join(", ")].filter(Boolean).join("\n"));
+    report(`port ${javaId} (from ${from}${extra.length ? " " + extra.join(" ") : ""})`, ok, ok ? "" : [!p.ok && lastLines(p.out, 6), !c.ok && lastLines(c.out, 8), !r.ok && lastLines(r.out), left.length && "      left behind: " + left.slice(0, 5).join(", ")].filter(Boolean).join("\n"));
     restore(); // back to the state the port started from, then to the unchanged packs
     start = initial;
     restore();

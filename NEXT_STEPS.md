@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.3** (both manifests; worlds need `[1, 33, 3]` in `world_*_packs.json`).
+- Pack version **1.33.4** (both manifests; worlds need `[1, 33, 4]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -38,6 +38,15 @@ names. Symptom to remember: guns invisible and third-person arms not posed, but 
 work.
 
 ## Next, in order
+
+**v1.33.4 (2026-10-04): AUG without its built-in scope; Phase 1 profile.** User test of v1.33.3 (report in chat,
+profile `_02-40-42`): the fire-rate fix works (MK23 never under its 24 ticks; Raging Hunter 10.0 / 10, Taurus 943
+6.7 / 6.7); every Java reload timing is exact (AUG 2.63 / 3.3 s, Springfield 2.1 / 2.95, Lone Trail 1.5 / 2.5, MK23,
+SPR-15, Raging Hunter); the three new guns fire and reload. Script time 0.59 ms/tick; the Phase 1 parts are tiny
+(zoom 0.0014, muzzle light 0.013, recoil 0.015, hit marker < 0.001 ms/tick). The user asked to remove the AUG's
+scope (Bedrock can't draw Java's see-through scope: a solid tube): `java-port.mjs --no-scope` leaves it out and
+keeps the rail mount; the AUG was re-ported with it (aims along the rail, no zoom). test.mjs ports the AUG both ways.
+Still to hear from the user: zoom feel, cave light, hit marker, any [UI] content-log lines.
 
 **Phase 1 done, v1.33.0-1.33.3 (2026-10-04): untested in game.** User decisions: sniper scope zooms most, ACOG /
 ELCAN a little ("mild"); hit marker on by default.

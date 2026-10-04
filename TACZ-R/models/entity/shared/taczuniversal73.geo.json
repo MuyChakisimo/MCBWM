@@ -2,7 +2,7 @@
   "format_version": "1.12.0",
   "minecraft:geometry": [
     {
-      "description": {"texture_width": 64, "texture_height": 64, "identifier": "geometry.taczuniversal70"},
+      "description": {"texture_width": 64, "texture_height": 64, "identifier": "geometry.taczuniversal73"},
       "bones": [
         {"name": "root", "pivot": [0, 0, 0]},
         {"name": "waist", "parent": "root", "pivot": [0, 12, 0]},
@@ -69,6 +69,9 @@
         {"name": "pins", "parent": "aug_default", "pivot": [0.012, 8, 0]},
         {"name": "muzzle_default", "parent": "aug_default", "pivot": [0, 8, 0]},
         {"name": "group17", "parent": "muzzle_default", "pivot": [0, 8.875, -16.8836]},
+        {"name": "mount", "parent": "aug_default", "pivot": [0, 10.16671, -0.01675]},
+        {"name": "group14", "parent": "mount", "pivot": [-0.06641, 10, -9.8125]},
+        {"name": "octagon3", "parent": "group14", "pivot": [-0.52229, 8, 0]},
         {"name": "aug_charge", "parent": "gun", "pivot": [0.66386, 8.28742, -3.75]},
         {"name": "aug_bolt", "parent": "gun", "pivot": [2.09339, 6.112, 7.5625]},
         {"name": "group15", "parent": "aug_bolt", "pivot": [-0.03503, 16.27602, 3.95135]},
@@ -84,10 +87,6 @@
         {"name": "muzzle_pos", "parent": "positioning2", "pivot": [0, 8.875, -14.0625]},
         {"name": "muzzle_flash", "parent": "positioning2", "pivot": [0, 8.875, -17]},
         {"name": "scope_pos", "parent": "positioning2", "pivot": [0, 10.625, 3.5]},
-        {"name": "scope_body", "pivot": [0, 20.66671, 1.73325], "parent": "scope_pos"},
-        {"name": "scope_lens_illuminated", "parent": "scope_body", "pivot": [0, 22.5625, 1.0625]},
-        {"name": "scope_ocular_ring", "pivot": [-0.50243, 23.13347, 9.375], "parent": "scope_pos"},
-        {"name": "scope_ocular", "pivot": [0, 12.0625, 7.25], "parent": "scope_pos"},
         {"name": "shell", "parent": "positioning2", "pivot": [-0.15, 9.0125, 10.25]},
         {"name": "constraint", "parent": "gun", "pivot": [0, 11.025, -17]},
         {
