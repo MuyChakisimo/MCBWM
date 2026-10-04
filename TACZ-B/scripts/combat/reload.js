@@ -1,7 +1,7 @@
 import { system, world, EquipmentSlot, ItemStack, GameMode } from "@minecraft/server";
 import { getWeaponByItem } from "../config/weapons.js";
 import { heldTypeId, showAmmo, ammoNameKey, emptyListeners } from "./firing.js";
-import { debug } from "./debug.js";
+import { debug, recordReload } from "./debug.js";
 
 // Script-controlled reloading for guns with `scriptReload` in config/weapons.js (being rolled out; the other
 // guns still reload from their BP controller `controller.animation.<id>.reload`, the <id>quantity / <id>reload
@@ -59,7 +59,7 @@ function removeItem(container, typeId, count) {
 //                    Deagle: extended magazines have their own timing and capacity).
 // roundInItem guns (RPG, M320) load the one round into the item: the ammo item goes, the loaded item comes back.
 
-function startReload(player, weapon, kind) {
+function startReload(player, weapon, kind, auto = false) {
   if (reloads.has(player.id)) return;
   const id = weapon.id;
   const sr = weapon.scriptReload;
@@ -81,6 +81,7 @@ function startReload(player, weapon, kind) {
   if (available < 1) {
     const ammoName = ammoNameKey(weapon);
     player.onScreenDisplay.setActionBar({ rawtext: [{ text: "No ammo: " }, ...(ammoName ? [{ translate: ammoName }] : [])] });
+    recordReload(player, id, kind, "noammo");
     return;
   }
   const toLoad = Math.min(cap - current, available);
@@ -89,6 +90,7 @@ function startReload(player, weapon, kind) {
   const property = kind === "empty" ? sr.emptyProperty?.[Math.min(toLoad, sr.emptyProperty.length) - 1] : undefined;
   if (property !== undefined) player.setProperty("krep:ammoreload", property);
   player.triggerEvent(MARK[kind]);
+  recordReload(player, id, kind, "start", auto);
   debug(() => `${player.name} ${id} ${kind} reload start: ${current} in gun, ${unlimited ? "unlimited" : available} ammo, loads ${toLoad} at ${loadAt} s, ends ${endAt} s`);
   const now = system.currentTick;
   reloads.set(player.id, {
@@ -107,6 +109,7 @@ function load(r) {
     if (takes) removeItem(container, weapon.ammo, 1);
     player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weapon.id}`, 1));
     r.loaded = true;
+    recordReload(player, weapon.id, kind, "load");
     return;
   }
   const objective = world.scoreboard.getObjective(weapon.id);
@@ -119,6 +122,7 @@ function load(r) {
   if (weapon.capByMagazine) player.runCommand(`function ${weapon.id}`);
   else showAmmo(player, weapon, rounds);
   r.loaded = true;
+  recordReload(player, weapon.id, kind, "load");
   debug(() => `${player.name} ${weapon.id} ${kind} reload loaded ${give} -> ${rounds} rounds`);
 }
 
@@ -129,6 +133,7 @@ function finish(r) {
   if (weapon.scriptReload.reset) player.triggerEvent(weapon.scriptReload.reset);
   if (property !== undefined && player.getProperty("krep:ammoreload") === property) player.setProperty("krep:ammoreload", 0);
   reloads.delete(player.id);
+  recordReload(player, weapon.id, r.kind, r.loaded ? "end" : "cancel");
   debug(() => `${player.name} ${weapon.id} ${r.kind} reload ${r.loaded ? "end" : "cancelled (gun switched)"}`);
 }
 
@@ -138,7 +143,7 @@ const AUTO_RELOAD_DELAY = 0.25;
 emptyListeners.push((player, weapon) => {
   if (!weapon.scriptReload) return;
   system.runTimeout(() => {
-    if (player.isValid() && heldTypeId(player) === `krep:${weapon.id}_emp`) startReload(player, weapon, "empty");
+    if (player.isValid() && heldTypeId(player) === `krep:${weapon.id}_emp`) startReload(player, weapon, "empty", true);
   }, ticks(AUTO_RELOAD_DELAY));
 });
 
