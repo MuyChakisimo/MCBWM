@@ -194,6 +194,7 @@
       "100%",
       "100%c"
     ],
-    "type": "panel"
+    "type": "image",
+    "texture": "textures/nothing"
   }
 }

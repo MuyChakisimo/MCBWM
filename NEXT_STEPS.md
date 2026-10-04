@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.30.4** (both manifests; worlds need `[1, 30, 4]` in `world_*_packs.json`).
+- Pack version **1.30.5** (both manifests; worlds need `[1, 30, 5]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -399,7 +399,8 @@ work.
   attachables; now a 1x1 transparent PNG); muzzle smoke particle `krep:nothin` never existed (25 cues in 16 shot
   animations removed); G36 third-person `animation.humanoid.slide` doesn't exist (removed; check.mjs's vanilla
   rule accepts any animation.humanoid.* so it can't catch this kind); blocks.json format_version. Left: UI warning
-  "Unknown property texture in hud_actionbar_text" (the original pack's ammo bar; harmless).
+  "Unknown property texture in hud_actionbar_text" (the original pack turned the vanilla image into a panel): v1.30.5
+  keeps it an image with textures/nothing (transparent).
 
 - **Player entity rejected = every gun invisible** (icons, firing and damage still work; third-person arms at the
   sides). Causes so far: names with `:` or `/` (v1.12.0-1.14.0); an invalid Molang line from `gun.mjs clone`

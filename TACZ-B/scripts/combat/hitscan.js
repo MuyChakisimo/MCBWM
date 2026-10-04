@@ -47,11 +47,23 @@ const isUnloaded = (error) => /LocationInUnloadedChunk|not in a chunk currently 
 // test server = about 64 blocks), and that used to cancel the whole shot, damage included. Shorten the ray
 // until it stays in the ticking area: nothing out there can be hit anyway.
 function blockRay(dimension, origin, direction, options) {
-  for (let maxDistance = options.maxDistance; maxDistance >= 1; maxDistance /= 2) {
+  for (let maxDistance = options.maxDistance; maxDistance >= 1; ) {
+    let hit;
     try {
-      return dimension.getBlockFromRay(origin, direction, { ...options, maxDistance });
+      hit = dimension.getBlockFromRay(origin, direction, { ...options, maxDistance });
+      // The ray itself can succeed and return a block just past the edge, which then throws on any read
+      // (v1.30.4: hit.block.typeId in traceBlocks). Read it here; if it's out there, stop the ray before it.
+      hit?.block.typeId;
+      return hit;
     } catch (error) {
       if (!isUnloaded(error)) throw error;
+      let edge = maxDistance / 2;
+      try {
+        if (hit) edge = distance(origin, hit.block.location) - 1;
+      } catch {
+        // its location can't be read either: halve
+      }
+      maxDistance = Math.min(maxDistance / 2, edge);
     }
   }
   return undefined;
