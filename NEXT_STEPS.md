@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.31.0** (both manifests; worlds need `[1, 31, 0]` in `world_*_packs.json`).
+- Pack version **1.31.1** (both manifests; worlds need `[1, 31, 1]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -37,6 +37,15 @@ names. Symptom to remember: guns invisible and third-person arms not posed, but 
 work.
 
 ## Next, in order
+
+**v1.31.1 (2026-10-04): fire-rate fix.** The user's all-guns report (reference/Console Report.txt, profile
+_00-58-54) ran on the OLD pack (log: `version: 1.30.5`, profile: runCommandAsync in recoil.js), so Phase 0 is still
+untested. It showed semi guns firing faster than their rpm (MK23 8-14 ticks vs 24; Rhino, Raging Hunter,
+Taurus 943, M95, CP, M1014 a tick or more under): a press while the last press still waited replaced it and skipped
+the wait. Also the first shot of a press could be a tick late and the next one counted from the late tick (DB-4
+barrels 1 tick apart vs 2). Both fixed in firing.js. Script time 0.72 ms/tick (was 0.76); polling scripts
+(attachmentState, storedAmmoDisplay, itemLore) still 0.32 ms of it. The 166 ms watchdog spike is the report itself
+(~110 lines to chat and log), only on `tacz:debug stop`.
 
 **Phase 0 done in v1.31.0 (2026-10-04): scripts on @minecraft/server 2.10.0, server-ui 2.2.0** (the 1.26.51 test
 server's newest stable). Changes: runCommandAsync -> runCommand (attachment menu, crafting, recoil camerashake),

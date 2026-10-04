@@ -104,6 +104,9 @@ function startCycle(player, weaponId, cycle) {
 
 function startTrigger(player, weaponId, weapon) {
   const burst = weapon.fireMode === "burst" ? weapon.burst : undefined;
+  // A press while the last one still waits keeps its wait (v1.31.0: a second click skipped it, MK23 fired
+  // every 8-14 ticks instead of 24).
+  const previous = triggers.get(player.id);
   triggers.set(player.id, {
     player,
     weaponId,
@@ -112,7 +115,7 @@ function startTrigger(player, weaponId, weapon) {
     // semi: one shot; burst: count shots; auto: until released.
     shotsLeft: weapon.fireMode === "semi" ? 1 : burst ? burst.count : Infinity,
     interval: TICKS_PER_MINUTE / (burst?.rpm ?? weapon.rpm),
-    nextShot: Math.max(system.currentTick, triggers.get(player.id)?.readyAt ?? 0),
+    nextShot: Math.max(system.currentTick, previous?.readyAt ?? (previous?.weaponId === weaponId ? previous.nextShot : 0)),
   });
 }
 
@@ -156,8 +159,11 @@ system.runInterval(() => {
     if (now < trigger.nextShot) continue;
     const fired = fireRound(player, trigger);
     trigger.shotsLeft--;
-    // Keep the rhythm (810 rpm = a shot every 1.48 ticks) but never bank shots while waiting.
-    trigger.nextShot = Math.max(trigger.nextShot + trigger.interval, now + 1);
+    // Keep the rhythm (810 rpm = a shot every 1.48 ticks) but never bank shots while waiting: a shot a tick
+    // or more late (the first one, or one held back by a reload) counts from now (DB-4 fired its 2nd barrel
+    // 1 tick after the 1st instead of 2).
+    const from = now - trigger.nextShot >= 1 ? now : trigger.nextShot;
+    trigger.nextShot = Math.max(from + trigger.interval, now + 1);
     if (weapon.cycle) trigger.nextShot = Math.max(trigger.nextShot, now + cycleTicks(weapon.cycle));
     if (!fired || trigger.shotsLeft <= 0) done();
   }
