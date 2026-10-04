@@ -1,3 +1,4 @@
+import { CameraShakeType } from "@minecraft/server";
 import { COMBAT } from "../config/combat.js";
 import { RECOIL_ATTACHMENTS } from "../config/recoil.js";
 import { getAttachments } from "../attachments/attachmentState.js";
@@ -26,7 +27,8 @@ export function applyRecoil(player, weaponId, weapon, mode) {
   const duration = baseDuration * (1 - reduction.duration);
   if (power <= 0 || duration <= 0) return;
   try {
-    player.runCommand(`camerashake add @s ${power.toFixed(3)} ${duration.toFixed(2)} rotational`);
+    // Same shake the `camerashake add @s <power> <duration> rotational` command gave, without building a command.
+    player.camera.addShake({ intensity: power, duration, type: CameraShakeType.Rotational });
   } catch {
     // a failed shake must never stop the shot
   }
