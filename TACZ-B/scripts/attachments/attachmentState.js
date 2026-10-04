@@ -1,6 +1,7 @@
-import { system, world, EquipmentSlot } from "@minecraft/server";
+import { EquipmentSlot } from "@minecraft/server";
 import { ATTACHMENTS } from "../config/attachments.js";
 import { getWeaponByItem } from "../config/weapons.js";
+import { onHeldChange } from "../items/heldItem.js";
 
 // Fitted attachments are stored per player and gun in the dynamic property "krep_<gunId>" as
 // "stock,grip,laser,muzzle,magazine" (numbers, 0 = none). While a gun is held they are copied
@@ -42,19 +43,20 @@ export function setAttachments(player, typeId, changes = {}) {
   const current = readAttachments(player, key);
   const next = SLOTS.map((slot) => changes[slot] ?? current[slot] ?? 0);
   player.setDynamicProperty(key, next.join(","));
+  syncAttachments(player);
 }
 
-// Show the held gun's attachments on the model. Properties are only written when they changed:
-// every setProperty is synced to all nearby clients.
-system.runInterval(() => {
-  for (const player of world.getPlayers()) {
-    const mainhandItem = player.getComponent("minecraft:equippable").getEquipment(EquipmentSlot.Mainhand);
-    if (!mainhandItem?.typeId) continue;
-    const key = getAttachmentKey(mainhandItem.typeId);
-    if (!key) continue;
-    const attachments = readAttachments(player, key);
-    for (const slot of SLOTS) {
-      if (player.getProperty("krep:" + slot) !== attachments[slot]) player.setProperty("krep:" + slot, attachments[slot]);
-    }
+// Show the held gun's attachments on the model. Properties are only written when they changed: every
+// setProperty is synced to all nearby clients. Runs when the held item may have changed (heldItem.js) and when
+// attachments are fitted (setAttachments); it ran every 2 ticks for every player before v1.33.6.
+export function syncAttachments(player) {
+  const typeId = player.getComponent("minecraft:equippable")?.getEquipment(EquipmentSlot.Mainhand)?.typeId;
+  const key = typeId && getAttachmentKey(typeId);
+  if (!key) return;
+  const attachments = readAttachments(player, key);
+  for (const slot of SLOTS) {
+    if (player.getProperty("krep:" + slot) !== attachments[slot]) player.setProperty("krep:" + slot, attachments[slot]);
   }
-}, 2);
+}
+
+onHeldChange(syncAttachments);

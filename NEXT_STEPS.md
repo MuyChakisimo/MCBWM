@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.5** (both manifests; worlds need `[1, 33, 5]` in `world_*_packs.json`).
+- Pack version **1.33.6** (both manifests; worlds need `[1, 33, 6]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -41,7 +41,8 @@ work.
 
 **START HERE: the order the user agreed (2026-10-04, end of session; packs at v1.33.5, all committed, not pushed):**
 
-1. **Optimize the always-running scripts** (no gameplay change). The profile `_02-40-42` (0.59 ms/tick total) shows
+1. **Optimize the always-running scripts** (no gameplay change). **Done in v1.33.6, waiting for the user's test and a
+   profile to compare** (see the v1.33.6 entry below). The profile `_02-40-42` (0.59 ms/tick total) shows
    three polling scripts are over half of it: `attachments/attachmentState.js` 0.12 (every 2 ticks),
    `items/storedAmmoDisplay.js` 0.10 (every tick), `items/itemLore.js` 0.09 (every second). Make them event-driven
    with the 2.10.0 events already used by `combat/aimZoom.js` (`playerHotbarSelectedSlotChange`,
@@ -62,6 +63,20 @@ How the user works: not a programmer, tests on an AYN Odin 2 (Android) against t
 2.10.0 stable); wants plain explanations, factual decisions (ask when it's their call), ready-to-paste commit
 titles / descriptions, and what to test in game. Test reports: `scriptevent tacz:debug start|stop` +
 `script profiler start|stop` in the server console; they put the `.cpuprofile` in `reference/`.
+
+**v1.33.6 (2026-10-05): no more polling scripts.** New `items/heldItem.js` (`onHeldChange`): hotbar slot switch,
+any change in the hotbar (not count changes; the event's slot number isn't used, Microsoft's docs don't define it per
+inventory type), spawn / join (again 20 ticks later: the LMG / M1014 BP setup controllers set the magazine score on
+load), players online at world load. `attachmentState.js` (was every 2 ticks), `storedAmmoDisplay.js` (every
+tick; now also called by firing.js / reload.js when rounds change) and `aimZoom.js` listen to it. `itemLore.js`
+(was a scan of every inventory every second): on `playerInventoryItemChange` for the 118 TACZ items with lore
+(ignoring count changes) and on join; items the scripts put in the hand (empty / reloaded gun) are made with lore
+(`loredItem`). The firing / reload loops return at once when nobody fires / reloads. Expected: about half the
+script time (the three were 0.31 of 0.59 ms/tick). **Test:** attachments still show (fit one at the workbench,
+switch guns back and forth), the M249 / Evolys / M1014 rounds on the model count down and refill, new guns from the
+gunsmith / creative and the empty / reloaded gun have their tooltip, zoom still works; then a profile.
+Found, not changed: ammo items never had a tooltip (lore.cjs only takes keys ending in `.lore`; ammo keys are
+`krep:ammo.lore.<key>`).
 
 **v1.33.5 (2026-10-04): creative inventory groups follow the gun classes.** User (v1.33.4 test): the muzzle
 light looks good in a dark room, the hit markers are a nice addition, no [UI] errors any more; zoom not tried yet.

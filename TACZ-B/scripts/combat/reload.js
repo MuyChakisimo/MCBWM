@@ -1,8 +1,10 @@
-import { system, world, EquipmentSlot, ItemStack, GameMode } from "@minecraft/server";
+import { system, world, EquipmentSlot, GameMode } from "@minecraft/server";
 import { getWeaponByItem } from "../config/weapons.js";
 import { heldTypeId, showAmmo, ammoNameKey, emptyListeners } from "./firing.js";
 import { debug, recordReload } from "./debug.js";
 import { zoomSoon } from "./aimZoom.js";
+import { loredItem } from "../items/itemLore.js";
+import { updateStoredAmmo } from "../items/storedAmmoDisplay.js";
 
 // Script-controlled reloading for guns with `scriptReload` in config/weapons.js (being rolled out; the other
 // guns still reload from their BP controller `controller.animation.<id>.reload`, the <id>quantity / <id>reload
@@ -120,7 +122,8 @@ function tickShells(r, now) {
   const give = Math.min(r.loadedAny ? sh.perCue ?? 1 : 1, cap - rounds, available); // the first shell goes in alone
   if (!unlimited && player.getGameMode() !== GameMode.Creative) removeItem(container, weapon.ammo, give);
   objective.setScore(player, rounds + give);
-  if (!r.loadedAny && kind === "empty") player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weapon.id}`, 1));
+  updateStoredAmmo(player);
+  if (!r.loadedAny && kind === "empty") player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, loredItem(`krep:${weapon.id}`));
   r.loadedAny = true;
   showAmmo(player, weapon, rounds + give);
   debug(() => `${player.name} ${weapon.id} shell +${give} -> ${rounds + give}`);
@@ -176,7 +179,7 @@ function load(r) {
   if (weapon.roundInItem) {
     if (countItem(container, weapon.ammo) < 1 && !unlimited) return void (r.loaded = true);
     if (takes) removeItem(container, weapon.ammo, 1);
-    player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weapon.id}`, 1));
+    player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, loredItem(`krep:${weapon.id}`));
     r.loaded = true;
     recordReload(player, weapon.id, kind, "load");
     return;
@@ -187,7 +190,8 @@ function load(r) {
   if (give > 0 && takes) removeItem(container, weapon.ammo, give);
   const rounds = current + Math.max(give, 0);
   objective.setScore(player, rounds);
-  if (kind === "empty" && rounds > 0) player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weapon.id}`, 1));
+  updateStoredAmmo(player);
+  if (kind === "empty" && rounds > 0) player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, loredItem(`krep:${weapon.id}`));
   if (weapon.capByMagazine) player.runCommand(`function ${weapon.id}`);
   else showAmmo(player, weapon, rounds);
   r.loaded = true;
@@ -235,6 +239,7 @@ system.afterEvents.scriptEventReceive.subscribe(({ id, sourceEntity: player }) =
 });
 
 system.runInterval(() => {
+  if (reloads.size === 0) return; // nobody reloading: nothing to do this tick
   const now = system.currentTick;
   for (const [pid, r] of reloads) {
     const { player } = r;

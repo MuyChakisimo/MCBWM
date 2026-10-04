@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.33.5`** for both packs. On a dedicated server set `"version": [1, 33, 5]` for both packs in the
+**Pack version is `1.33.6`** for both packs. On a dedicated server set `"version": [1, 33, 6]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -54,8 +54,9 @@ edit).
 | `attachments/attachmentMenu.js` | Attachment workbench menus built from `config/attachments.js` |
 | `attachments/attachmentState.js` | Per-player attachment storage; syncs the held gun's attachments to the model |
 | `items/ammoScoreboards.js` | Creates the scoreboard objectives (loaded rounds per gun, etc.) once on world load |
-| `items/itemLore.js` | Lore text on guns and ammo |
+| `items/itemLore.js` | Lore text on guns and ammo (event-driven; `loredItem()` for items the scripts make) |
 | `items/storedAmmoDisplay.js` | Loaded rounds on the Evolys / M249 / M1014 models (`storedAmmoDisplay`) |
+| `items/heldItem.js` | `onHeldChange()`: tells modules when what a player holds may have changed (no polling) |
 | `items/ammoBox308.js` | Storing .308 rounds in an ammo box |
 
 ## Pack layout (per weapon)
@@ -240,13 +241,20 @@ Animations that exist but no controller plays (`check.mjs --unused` lists them):
 
 ## Performance (what runs repeatedly)
 
-Everything that runs on a timer only reads unless something changed, so it doesn't send updates to clients:
+Since v1.33.6 nothing polls: everything runs on events, and only writes when something differs (every write is sent
+to clients). `items/heldItem.js` tells the others when what a player holds may have changed (hotbar slot switch,
+anything changed in the hotbar, spawn / join and again a second later):
 
-| What | How often | Writes only when |
+| What | Runs when | Writes only when |
 |---|---|---|
-| `items/itemLore.js` | every second, every player's inventory | an item has no lore yet |
-| `items/storedAmmoDisplay.js` | every tick, players holding an Evolys / M249 / M1014 | the loaded-round count changed |
-| `attachments/attachmentState.js` | every 2 ticks, players holding a gun with attachments | a fitted attachment changed |
+| `items/itemLore.js` | a TACZ item enters a player's inventory (not count changes), join; items the scripts make get lore at once (`loredItem`) | an item has no lore yet |
+| `items/storedAmmoDisplay.js` | held item changed; rounds fired or loaded (firing.js / reload.js) | the loaded-round count changed |
+| `attachments/attachmentState.js` | held item changed; attachments fitted | a fitted attachment changed |
+| `combat/aimZoom.js` | crouch, held item changed, reload / bolt | the zoom changed |
+| `combat/firing.js`, `combat/reload.js` | every tick, but only while someone fires / reloads | |
+
+Before v1.33.6 the first three polled (every second, every tick, every 2 ticks): about 0.31 of 0.59 ms of script time
+per tick (profile 2026-10-04).
 
 Nothing runs from `tick.json`, and nothing polls for menus: workbench menus open from the block-use event. Per shot: one `scriptevent` (recoil + hitscan); mob armor is looked up on hit and
 cached for 2 seconds. When adding timers, keep this rule: compare with the current value before calling

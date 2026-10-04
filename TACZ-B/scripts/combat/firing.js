@@ -1,10 +1,12 @@
-import { system, world, EquipmentSlot, ItemStack } from "@minecraft/server";
+import { system, world, EquipmentSlot } from "@minecraft/server";
 import { shoot } from "./hitscan.js";
 import { getWeaponByItem } from "../config/weapons.js";
 import { AMMO } from "../config/ammo.js";
 import { debug, recordShot } from "./debug.js";
 import { zoomSoon } from "./aimZoom.js";
 import { muzzleFlash } from "./muzzleLight.js";
+import { loredItem } from "../items/itemLore.js";
+import { updateStoredAmmo } from "../items/storedAmmoDisplay.js";
 
 // Script-controlled firing for guns with `scriptFiring: true` in config/weapons.js (being rolled out;
 // the other guns still fire from their BP controller, animation_controllers/gun_<id>.json).
@@ -63,6 +65,7 @@ function fireRound(player, trigger) {
     if (rounds < 1) return false;
     left = rounds - 1;
     objective.setScore(player, left);
+    updateStoredAmmo(player);
     if (weapon.capByMagazine) player.runCommand(`function ${weaponId}`);
     else showAmmo(player, weapon, left);
   }
@@ -83,7 +86,7 @@ function fireRound(player, trigger) {
   shoot(player, weaponId, weapon, aiming ? "ads" : "hip");
 
   if (left === 0) {
-    player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weaponId}_emp`, 1));
+    player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, loredItem(`krep:${weaponId}_emp`));
     for (const listener of emptyListeners) listener(player, weapon);
     return false;
   }
@@ -141,6 +144,7 @@ world.afterEvents.itemStopUse.subscribe(({ source: player }) => {
 });
 
 system.runInterval(() => {
+  if (triggers.size === 0) return; // nobody firing: nothing to do this tick
   const now = system.currentTick;
   for (const [id, trigger] of triggers) {
     const { player, weaponId, weapon } = trigger;

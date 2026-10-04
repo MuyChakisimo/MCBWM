@@ -1,13 +1,15 @@
 import { world, system, EasingType, EquipmentSlot } from "@minecraft/server";
 import { getWeaponByItem } from "../config/weapons.js";
 import { SIGHT_ZOOM, ZOOM_EASE } from "../config/attachments.js";
+import { onHeldChange } from "../items/heldItem.js";
 
 // Scope zoom: while a player aims (crouches) with a gun whose fitted sight magnifies (SIGHT_ZOOM in
 // config/attachments.js), the camera eases to that field of view; otherwise back to the player's own.
 // Not during a reload (q.mark_variant 1 / 2) or while a bolt is being worked (the gun's cycle value in
 // krep:ammoreload), as the BP scope controllers did. Replaces their Slowness effect (v1.33.1): aiming walks at
 // crouch speed instead of crawling.
-// Checked only when something changes (crouch, slot, held item, reload / bolt via zoomSoon), never per tick.
+// Checked only when something changes (crouch; held item via items/heldItem.js; reload / bolt via zoomSoon), never
+// per tick.
 
 /** Per player: the field of view we set (undefined = the player's own). */
 const applied = new Map();
@@ -54,14 +56,9 @@ world.afterEvents.entityStartSneaking.subscribe(({ entity }) => {
 world.afterEvents.entityStopSneaking.subscribe(({ entity }) => {
   if (entity.typeId === "minecraft:player") updateZoom(entity);
 });
-world.afterEvents.playerHotbarSelectedSlotChange.subscribe(({ player }) => updateZoom(player));
-world.afterEvents.playerInventoryItemChange.subscribe(({ player, slot }) => {
-  if (slot === player.selectedSlotIndex) updateZoom(player);
-});
+onHeldChange(updateZoom); // also on spawn: a respawned / rejoined player starts with their own field of view
 
 world.afterEvents.playerSpawn.subscribe(({ player }) => {
-  // A respawned / rejoined player starts with their own field of view.
-  if (applied.get(player.id) !== undefined) updateZoom(player);
   // Versions before 1.33.1 zoomed with an endless Slowness (amplifier 6 or 14); clear one left over.
   const slow = player.getEffect("minecraft:slowness");
   if (slow && (slow.amplifier === 6 || slow.amplifier === 14) && slow.duration > 1000000) player.removeEffect("minecraft:slowness");
