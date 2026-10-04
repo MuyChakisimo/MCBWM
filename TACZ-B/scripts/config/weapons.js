@@ -5,7 +5,8 @@
 //
 // Used live by the scripts (change here, reload the world):
 //   name          Label in the gunsmith menu.
-//   category      rifle | smg | pistol | sniper | shotgun | heavy (informational).
+//   category      ar | lmg | smg | pistol | sniper | shotgun | heavy: the "Group" line of the item lore
+//                 (CATEGORIES; tools/weapons/lore-sync.mjs writes it).
 //   damage        Damage per hit (per pellet for shotguns), at full range.
 //   penetration   0..1: how much armor it ignores. Armor reduces damage by
 //                 (armor points x (1 - penetration)) / 20, capped at 80%. 1 ignores armor.
@@ -52,6 +53,18 @@
 // Adding a gun: add an entry here (the id is the item id without "krep:"), then the pack
 // files it needs; see README "Adding a weapon". Removing: delete the entry and its files.
 // =====================================================================================
+
+// Weapon classes: the name and colour the item lore shows as "Group" (user, 2026-10-04: assault rifles are
+// "ARs", the RPK, M249 and Evolys "LMGs").
+export const CATEGORIES = Object.freeze({
+  ar: { name: "ARs", colour: "§c" },
+  lmg: { name: "LMGs", colour: "§4" },
+  smg: { name: "Submachine Guns", colour: "§6" },
+  pistol: { name: "Pistols", colour: "§5" },
+  sniper: { name: "Sniper Rifles", colour: "§4" },
+  shotgun: { name: "Shotguns", colour: "§2" },
+  heavy: { name: "Heavy Weapons", colour: "§4" },
+});
 
 // Order = order in the gunsmith menu.
 // (Loosely typed for editors and type checks: entries have different optional fields.)
@@ -146,7 +159,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   m16a1: {
     name: "M16A1",
-    category: "rifle",
+    category: "ar",
     damage: 6,
     penetration: 0.6,
     recoil: { hip: [0.022, 0.28], ads: [0.015, 0.27] },
@@ -167,7 +180,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   m16: {
     name: "M16A4",
-    category: "rifle",
+    category: "ar",
     damage: 6,
     penetration: 0.6,
     recoil: { hip: [0.022, 0.28], ads: [0.015, 0.27] },
@@ -190,7 +203,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   hk416: {
     name: "HK416",
-    category: "rifle",
+    category: "ar",
     damage: 5,
     penetration: 0.6,
     recoil: { hip: [0.045, 0.25], ads: [0.035, 0.23] },
@@ -211,7 +224,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   scarh: {
     name: "SCAR-H",
-    category: "rifle",
+    category: "ar",
     damage: 9,
     penetration: 0.7,
     recoil: { hip: [0.032, 0.3], ads: [0.032, 0.28] },
@@ -233,7 +246,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   g3: {
     name: "G3",
-    category: "rifle",
+    category: "ar",
     damage: 9,
     penetration: 0.7,
     recoil: { hip: [0.032, 0.3], ads: [0.032, 0.28] },
@@ -510,7 +523,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   akm: {
     name: "AKM",
-    category: "rifle",
+    category: "ar",
     damage: 9,
     penetration: 0.65,
     recoil: { hip: [0.042, 0.3], ads: [0.032, 0.28] },
@@ -531,7 +544,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   m4a1: {
     name: "M4A1",
-    category: "rifle",
+    category: "ar",
     damage: 8,
     penetration: 0.65,
     recoil: { hip: [0.035, 0.25], ads: [0.025, 0.23] },
@@ -552,7 +565,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   aug: {
     name: "AUG",
-    category: "rifle",
+    category: "ar",
     damage: 6.5,
     penetration: 0.65,
     recoil: { hip: [0.035, 0.25], ads: [0.025, 0.23] },
@@ -569,7 +582,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   spr15: {
     name: "SPR-15",
-    category: "rifle",
+    category: "ar",
     damage: 9.5,
     penetration: 0.7,
     recoil: { hip: [0.035, 0.25], ads: [0.025, 0.23] },
@@ -586,7 +599,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   scarl: {
     name: "SCAR-L",
-    category: "rifle",
+    category: "ar",
     damage: 7,
     penetration: 0.65,
     recoil: { hip: [0.027, 0.25], ads: [0.023, 0.2] },
@@ -607,7 +620,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   g36: {
     name: "G36K",
-    category: "rifle",
+    category: "ar",
     damage: 7,
     penetration: 0.65,
     recoil: { hip: [0.025, 0.28], ads: [0.02, 0.27] },
@@ -795,7 +808,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   fal: {
     name: "FAL",
-    category: "rifle",
+    category: "ar",
     damage: 9,
     penetration: 0.7,
     recoil: { hip: [0.042, 0.36], ads: [0.038, 0.32] },
@@ -815,7 +828,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   qbz95: {
     name: "QBZ-95",
-    category: "rifle",
+    category: "ar",
     damage: 7,
     penetration: 0.7,
     recoil: { hip: [0.022, 0.28], ads: [0.015, 0.27] },
@@ -924,7 +937,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   qbz191: {
     name: "QBZ-191",
-    category: "rifle",
+    category: "ar",
     damage: 7,
     penetration: 0.7,
     recoil: { hip: [0.022, 0.28], ads: [0.015, 0.27] },
@@ -945,7 +958,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   type81: {
     name: "Type-81",
-    category: "rifle",
+    category: "ar",
     damage: 9,
     penetration: 0.65,
     recoil: { hip: [0.06, 0.2], ads: [0.047, 0.17] },
@@ -964,7 +977,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   rpk: {
     name: "RPK",
-    category: "heavy",
+    category: "lmg",
     damage: 9.5,
     penetration: 0.7,
     recoil: { hip: [0.06, 0.2], ads: [0.047, 0.17] },
@@ -981,7 +994,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   evolys: {
     name: "Evolys",
-    category: "heavy",
+    category: "lmg",
     damage: 10,
     penetration: 0.6,
     recoil: { hip: [0.064, 0.2], ads: [0.047, 0.17] },
@@ -1004,7 +1017,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
   },
   m249: {
     name: "M249",
-    category: "heavy",
+    category: "lmg",
     damage: 7,
     penetration: 0.65,
     recoil: { hip: [0.06, 0.2], ads: [0.047, 0.17] },

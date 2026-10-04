@@ -118,6 +118,21 @@ for (const [id, gun] of Object.entries(ATTACHMENTS))
   const crlfToLf = (s) => (s ?? "").split("\r\n").join("\n");
   if (crlfToLf(read(LORE_FILE)) !== generateLore(read(LANG_FILE))) problems.push(`${LORE_FILE} is out of date with ${LANG_FILE}: run node tools/weapons/lore.cjs`);
 }
+// The lore's Group / Caliber / Damage follow the config (v1.32.0: ported guns showed their clone source's).
+{
+  const { loreFacts, loreFactsOf } = await import("./lore-sync.mjs");
+  const { CATEGORIES } = await cfg("weapons.js");
+  const en = read("TACZ-R/texts/en_US.lang");
+  for (const id of Object.keys(WEAPONS)) {
+    const text = lang.get(`krep:gun.${id}.lore`);
+    if (text === undefined) continue; // reported above
+    let want;
+    try { want = loreFacts(id, WEAPONS, CATEGORIES, AMMO, en); } catch (e) { bad(id, e.message, "config/weapons.js"); continue; }
+    const have = loreFactsOf(text);
+    for (const k of ["group", "caliber", "damage"])
+      if (have[k] !== want[k]) bad(id, `lore ${k} is "${have[k]}", the config says "${want[k]}": run node tools/weapons/lore-sync.mjs`, "TACZ-R/texts/en_US.lang");
+  }
+}
 
 // Pack-wide references (refs.cjs): everything referenced exists; unused things are listed.
 const pack = checkPack(root);

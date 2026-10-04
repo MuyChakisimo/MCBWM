@@ -26,7 +26,10 @@ const median = (xs) => {
   return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : NaN;
 };
 const round = (x, step = 0.05) => +(Math.round(x / step) * step).toFixed(2);
-const CATEGORY = { rifle: "rifle", smg: "smg", pistol: "pistol", sniper: "sniper", shotgun: "shotgun", mg: "rifle", rpg: "heavy" };
+// Java gun type -> our scaling group. Groups are as before the AR / LMG names (2026-10-04): our LMGs (M249, Evolys)
+// still count with the heavy weapons, so the proposals (and the ported guns' stats) stay the same.
+const CATEGORY = { rifle: "ar", smg: "smg", pistol: "pistol", sniper: "sniper", shotgun: "shotgun", mg: "ar", rpg: "heavy" };
+const GROUP = { lmg: "heavy" };
 
 function javaStats(jid) {
   const d = java.gunData(jid), b = d.bullet ?? {}, x = b.extra_damage ?? {};
@@ -59,7 +62,7 @@ for (const [jid, id] of Object.entries(JAVA_TO_OURS)) {
   shared.push({ id, category: w.category, ours: { damage: w.damage, pellets: w.pellets ?? 1, penetration: w.penetration, magazine: w.magazine }, java: j, ratio: w.damage / j.damagePerPellet });
 }
 const byCategory = {};
-for (const s of shared) (byCategory[s.category] ??= []).push(s);
+for (const s of shared) (byCategory[GROUP[s.category] ?? s.category] ??= []).push(s);
 const scale = {};
 for (const [c, list] of Object.entries(byCategory))
   scale[c] = { damage: median(list.map((s) => s.ratio)), penetration: median(list.map((s) => s.ours.penetration)), armorIgnore: median(list.map((s) => s.java.armorIgnore)) };
@@ -69,8 +72,8 @@ const ours = new Set(Object.values(JAVA_TO_OURS));
 const proposed = [];
 for (const jid of java.gunIds().filter((j) => !JAVA_TO_OURS[j])) {
   const j = javaStats(jid);
-  const category = CATEGORY[j.type] ?? "rifle";
-  const s = scale[category] ?? scale.rifle;
+  const category = CATEGORY[j.type] ?? "ar";
+  const s = scale[category] ?? scale.ar;
   proposed.push({
     javaId: jid,
     category,

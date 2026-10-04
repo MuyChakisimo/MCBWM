@@ -227,7 +227,9 @@ function checkPack(root) {
     for (const m of text.matchAll(/"([a-z0-9_]+:[a-z0-9_]+)"/g)) triggered.add(m[1]); // sight events in config
   }
   // Guns with scriptFiring: combat/firing.js plays `<id>.shoot` (and `<id>.suppress` with a silencer).
-  const weaponsSrc = fs.existsSync(path.join(root, "TACZ-B/scripts/config/weapons.js")) ? fs.readFileSync(path.join(root, "TACZ-B/scripts/config/weapons.js"), "utf8") : "";
+  // Only the WEAPONS table (CATEGORIES above it has one-line entries at the same indent).
+  const weaponsFile = fs.existsSync(path.join(root, "TACZ-B/scripts/config/weapons.js")) ? fs.readFileSync(path.join(root, "TACZ-B/scripts/config/weapons.js"), "utf8") : "";
+  const weaponsSrc = weaponsFile.slice(Math.max(0, weaponsFile.indexOf("export const WEAPONS")));
   for (const m of weaponsSrc.matchAll(/^ {2}([a-z0-9_]+): \{[\s\S]*?^ {2}\},?$/gm)) {
     if (!/^ {4}scriptFiring: true,/m.test(m[0])) continue;
     const prefix = /^ {4}shootSound: "([\w.]+)",/m.exec(m[0])?.[1] ?? m[1];

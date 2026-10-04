@@ -14,12 +14,12 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.32.0** (both manifests; worlds need `[1, 32, 0]` in `world_*_packs.json`).
+- Pack version **1.32.1** (both manifests; worlds need `[1, 32, 1]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
   definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `arm-layout.mjs` (first-person arms on their own hand bones), `reload-timing.mjs` (a ported gun's reload
-  timing from Java), `png.cjs` (texture atlas for built-in scopes), `test.mjs`
+  timing from Java), `lore-sync.mjs` (lore Group / Caliber / Damage from the config), `png.cjs` (texture atlas for built-in scopes), `test.mjs`
   (tests the tools on a scratch copy; run it after changing any tool).
 - `docs/HOW-IT-WORKS.md`: each system step by step and a troubleshooting table. `docs/NAMING.md`: Minecraft's
   naming/format rules and what every name means. `tools/weapons/validate.mjs`: checks scripts against Mojang's API
@@ -38,6 +38,15 @@ names. Symptom to remember: guns invisible and third-person arms not posed, but 
 work.
 
 ## Next, in order
+
+**v1.32.1 (2026-10-04): weapon classes renamed, lore facts from the config.** User: assault rifles are "ARs";
+the RPK, M249 and Evolys are "LMGs" (category ids `ar`, `lmg`; names and colours in `CATEGORIES`, weapons.js). The
+lore (the in-game tooltip) is where players see the class ("Group"). Found: every ported gun's lore was its clone
+source's (Springfield 1873 "RPG-7 Rocket, Damage 100", Raging Hunter ".45 ACP, Damage 10" for 40 / .500 S&W,
+M1911 9 for 11). New `lore-sync.mjs` writes Group / Caliber / Damage from the config (en_US + en_UK, then lore.js),
+ported guns get Java's full name and description; check.mjs refuses a mismatch; java-port runs it.
+java-stats keeps its scaling groups (LMGs count with heavy weapons), so ported stats are unchanged (proposals
+compared before / after: identical). Other languages' lore (ru, uk, pl) isn't shown in game (lore.js is English).
 
 **v1.32.0 (2026-10-04): the last Java guns, and reload timing from Java.** User test of v1.31.1 (ARs, report in
 chat): Phase 0 works in game (2.10.0 scripts loaded, fire rates and reloads right, silencer read); still to try:

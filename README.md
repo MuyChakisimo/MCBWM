@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.32.0`** for both packs. On a dedicated server set `"version": [1, 32, 0]` for both packs in the
+**Pack version is `1.32.1`** for both packs. On a dedicated server set `"version": [1, 32, 1]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -23,7 +23,7 @@ Everything the scripts know about a gun is in **`TACZ-B/scripts/config/`**:
 
 | File | What |
 |---|---|
-| `weapons.js` | Every gun: name, category, damage, penetration, headshot multiplier, damage falloff by distance, fire mode and rpm (from Java TACZ), recoil (hip/ADS camera shake), shotgun pellets/spread/tracers, RPG explosion, gunsmith recipe, and (for reference) magazine size and ammo. Order = gunsmith menu order. The header explains every field |
+| `weapons.js` | Every gun: name, category (`CATEGORIES`: ARs, LMGs, SMGs ... the lore's "Group"), damage, penetration, headshot multiplier, damage falloff by distance, fire mode and rpm (from Java TACZ), recoil (hip/ADS camera shake), shotgun pellets/spread/tracers, RPG explosion, gunsmith recipe, and (for reference) magazine size and ammo. Order = gunsmith menu order. The header explains every field |
 | `combat.js` | Rules for all guns: `damageMultiplier` / `recoilMultiplier` (rebalance everything at once), headshot multiplier and radius, armor cap and minimum damage, armor points per material, hitscan range, tracers and breakable blocks |
 | `recoil.js` | How much fitted grips, stocks and muzzles reduce recoil (MP5, AKM, FAL, M4A1, HK416, Vector) |
 | `ammo.js` | Every ammo item: ammo-workbench recipe, output count, lore text key |
@@ -96,7 +96,9 @@ its first-person arms model `taczuniversal<N>`), and adds the new gun everywhere
 files: `player.json`, `player.entity.json`, the shared draw/inspect/scope controllers, `shared_player.json`, sound
 definitions, lang files, the item catalog and item textures, and its entries in `config/weapons.js`,
 `attachments.js` and `recoil.js`. The new gun is an exact working copy (same stats, recipe, sounds and model). Then
-replace its model, textures, animations and sounds, and edit its stats and lore.
+replace its model, textures, animations and sounds, and edit its stats and lore. After changing a gun's category, ammo
+or damage run `"$NODE" tools/weapons/lore-sync.mjs`: it rewrites the lore's Group / Caliber / Damage from the config
+(`check.mjs` refuses lore that disagrees) and, for guns ported from Java, its name and description from Java.
 
 `"$NODE" tools/weapons/gun.mjs remove <id>` removes a gun the same way, and refuses if another gun still uses its
 files (for example an animation it borrows); `--force` removes it anyway.

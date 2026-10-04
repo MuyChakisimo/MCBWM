@@ -29,6 +29,7 @@ import { convertGun, armsModel, FIXED_FP } from "./java-convert.mjs";
 import { armLayout } from "./arm-layout.mjs";
 import { repairImport } from "./import-repair.mjs";
 import { reloadTiming } from "./reload-timing.mjs";
+import { syncLore } from "./lore-sync.mjs";
 const require = createRequire(import.meta.url);
 const { parse } = require("./lenient.cjs");
 const { format } = require("./format.cjs");
@@ -405,10 +406,10 @@ const soundNames = new Map(); // our cue name -> Java sound path
     set("headshot", x.head_shot_multiplier ?? 1);
     falloff ? set("falloff", `[${falloff.map(([d, v]) => `[${d}, ${v}]`).join(", ")}]`) : del("falloff");
     set("fireMode", JSON.stringify(fireMode)); set("rpm", javaData.rpm);
-    // Java's gun type (machine guns and launchers are our "heavy"); launcher-only settings go unless it is one
+    // Java's gun type (rifle = our "ar", machine guns "lmg", launchers "heavy"); launcher-only settings go unless it is one
     // (a single-shot rifle ported from the M320 must not explode).
     const type = java.gunIndex(javaId).type;
-    set("category", JSON.stringify({ mg: "heavy", rpg: "heavy" }[type] ?? type));
+    set("category", JSON.stringify({ rifle: "ar", mg: "lmg", rpg: "heavy" }[type] ?? type));
     if (type !== "rpg") { del("explosion"); del("aimToFire"); del("tracerParticles"); }
     fireMode === "burst" && bd ? set("burst", `{ count: ${bd.count ?? 3}, rpm: ${bd.bpm ?? javaData.rpm}, delay: ${bd.min_interval ?? 0.3} }`) : del("burst");
     if ((b.bullet_amount ?? 1) > 1) set("pellets", b.bullet_amount); else { del("pellets"); del("spread"); del("tracers"); }
@@ -455,6 +456,8 @@ const soundNames = new Map(); // our cue name -> Java sound path
   }
 }
 repairImport(root, javaId, id, log);
+// Item lore: Java's name and description, and Group / Caliber / Damage from the new stats (lore-sync.mjs).
+await syncLore(root, log);
 log(`\nDone. Run tools/weapons/check.mjs, then test ${id} in game (aim, reloads, sounds).`);
 
 // ---------------------------------------------------------------- helpers
