@@ -30,67 +30,6 @@
           "on_entry": ["/replaceitem entity @s[scores={awp=0}] slot.weapon.mainhand 1 krep:awp_emp 1 0"]
         }
       }
-    },
-    "controller.animation.awp.scope": {
-      "initial_state": "setup",
-      "states": {
-        "setup": {
-          "on_entry": ["@s krep:normal"],
-          "transitions": [
-            {
-              "scope.elcan": "(query.get_equipped_item_name=='awp' || query.get_equipped_item_name=='awp_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:awpscope')=='elcan' && q.property('krep:ammoreload')!=1"
-            },
-            {
-              "scope.acog": "(query.get_equipped_item_name=='awp' || query.get_equipped_item_name=='awp_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:awpscope')=='acog' && q.property('krep:ammoreload')!=1"
-            },
-            {
-              "scope.standard_8": "(query.get_equipped_item_name=='awp' || query.get_equipped_item_name=='awp_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:awpscope')=='standard_8' && q.property('krep:ammoreload')!=1"
-            }
-          ]
-        },
-        "scope.elcan": {
-          "on_entry": ["@s krep:scope4x"],
-          "transitions": [
-            {
-              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='awp' && query.get_equipped_item_name!='awp_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || q.property('krep:awpscope')=='coyote' || q.property('krep:awpscope')=='nothing'"
-            },
-            {
-              "scope.acog": "(query.get_equipped_item_name=='awp' || query.get_equipped_item_name=='awp_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:awpscope')=='acog'"
-            },
-            {
-              "scope.standard_8": "(query.get_equipped_item_name=='awp' || query.get_equipped_item_name=='awp_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:awpscope')=='standard_8'"
-            }
-          ]
-        },
-        "scope.acog": {
-          "on_entry": ["@s krep:scope4x"],
-          "transitions": [
-            {
-              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='awp' && query.get_equipped_item_name!='awp_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || q.property('krep:awpscope')=='coyote' || q.property('krep:awpscope')=='nothing'"
-            },
-            {
-              "scope.elcan": "(query.get_equipped_item_name=='awp' || query.get_equipped_item_name=='awp_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:awpscope')=='elcan'"
-            },
-            {
-              "scope.standard_8": "(query.get_equipped_item_name=='awp' || query.get_equipped_item_name=='awp_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:awpscope')=='standard_8'"
-            }
-          ]
-        },
-        "scope.standard_8": {
-          "on_entry": ["@s krep:scope8x"],
-          "transitions": [
-            {
-              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='awp' && query.get_equipped_item_name!='awp_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || q.property('krep:awpscope')=='coyote' || q.property('krep:awpscope')=='nothing'"
-            },
-            {
-              "scope.acog": "(query.get_equipped_item_name=='awp' || query.get_equipped_item_name=='awp_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:awpscope')=='acog'"
-            },
-            {
-              "scope.elcan": "(query.get_equipped_item_name=='awp' || query.get_equipped_item_name=='awp_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:awpscope')=='elcan'"
-            }
-          ]
-        }
-      }
     }
   }
 }

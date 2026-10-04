@@ -2,6 +2,7 @@ import { system, world, EquipmentSlot, ItemStack, GameMode } from "@minecraft/se
 import { getWeaponByItem } from "../config/weapons.js";
 import { heldTypeId, showAmmo, ammoNameKey, emptyListeners } from "./firing.js";
 import { debug, recordReload } from "./debug.js";
+import { zoomSoon } from "./aimZoom.js";
 
 // Script-controlled reloading for guns with `scriptReload` in config/weapons.js (being rolled out; the other
 // guns still reload from their BP controller `controller.animation.<id>.reload`, the <id>quantity / <id>reload
@@ -84,6 +85,7 @@ function startShells(player, weapon, kind, auto) {
   }
   player.setProperty("krep:ammoreload", sh.loading);
   player.triggerEvent(MARK[kind]);
+  zoomSoon(player); // no scope zoom while reloading
   recordReload(player, id, kind, "start", auto);
   const now = system.currentTick;
   reloads.set(player.id, { player, weapon, kind, cap, unlimited, shell: true, times: sh[kind].map((t) => now + ticks(t)), loadedAny: false, ending: false, endTick: 0, interrupt: false, cues: [] });
@@ -156,6 +158,7 @@ function startReload(player, weapon, kind, auto = false) {
   const property = kind === "empty" ? sr.emptyProperty?.[Math.min(toLoad, sr.emptyProperty.length) - 1] : undefined;
   if (property !== undefined) player.setProperty("krep:ammoreload", property);
   player.triggerEvent(MARK[kind]);
+  zoomSoon(player); // no scope zoom while reloading
   recordReload(player, id, kind, "start", auto);
   debug(() => `${player.name} ${id} ${kind} reload start: ${current} in gun, ${unlimited ? "unlimited" : available} ammo, loads ${toLoad} at ${loadAt} s, ends ${endAt} s`);
   const now = system.currentTick;
@@ -196,6 +199,7 @@ function load(r) {
 function finish(r) {
   const { player, weapon, property } = r;
   player.triggerEvent("krep:noreload");
+  zoomSoon(player);
   const sh = weapon.scriptReload.shells;
   if (sh && [sh.loading, sh.ending].includes(player.getProperty("krep:ammoreload"))) player.setProperty("krep:ammoreload", 0);
   if (weapon.scriptReload.reset) player.triggerEvent(weapon.scriptReload.reset);

@@ -12,6 +12,13 @@
 // sightsOnly: the gun's menu is just a sight list (no hold check).
 // =====================================================================================
 
+// Aiming (crouching) with a magnifying sight zooms the camera to this field of view (degrees; the game allows
+// 30-110, so 30 is the strongest zoom). User, 2026-10-04: the sniper scope zooms most, ACOG / ELCAN a little;
+// red dots and iron sights don't zoom. combat/aimZoom.js.
+export const SIGHT_ZOOM = Object.freeze({ standard_8: 30, acog: 50, elcan: 50 });
+// Seconds to ease into / out of the zoom.
+export const ZOOM_EASE = Object.freeze({ in: 0.2, out: 0.15 });
+
 // (Loosely typed for editors and type checks: entries have different optional fields.)
 export const ATTACHMENTS = /** @type {Record<string, any>} */ (Object.freeze({
   mp5: {

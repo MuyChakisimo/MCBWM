@@ -3,6 +3,7 @@ import { shoot } from "./hitscan.js";
 import { getWeaponByItem } from "../config/weapons.js";
 import { AMMO } from "../config/ammo.js";
 import { debug, recordShot } from "./debug.js";
+import { zoomSoon } from "./aimZoom.js";
 
 // Script-controlled firing for guns with `scriptFiring: true` in config/weapons.js (being rolled out;
 // the other guns still fire from their BP controller, animation_controllers/gun_<id>.json).
@@ -94,11 +95,15 @@ const cycleTicks = (cycle) => ticks(cycle.after + cycle.seconds + cycle.delay);
 /** Bolt / pump: the property the RP bolt animation and the reload controllers watch, as the BP states set it. */
 function startCycle(player, weaponId, cycle) {
   system.runTimeout(() => {
-    if (player.isValid && heldTypeId(player) === `krep:${weaponId}`) player.triggerEvent(`${weaponId}:bolt`);
+    if (!player.isValid || heldTypeId(player) !== `krep:${weaponId}`) return;
+    player.triggerEvent(`${weaponId}:bolt`);
+    zoomSoon(player); // scope out while the bolt is worked
   }, ticks(cycle.after));
   system.runTimeout(() => {
     // Only undo our own value (a reload started meanwhile sets krep:ammoreload to something else).
-    if (player.isValid && player.getProperty("krep:ammoreload") === cycle.value) player.triggerEvent(`${weaponId}:normal`);
+    if (!player.isValid || player.getProperty("krep:ammoreload") !== cycle.value) return;
+    player.triggerEvent(`${weaponId}:normal`);
+    zoomSoon(player);
   }, ticks(cycle.after + cycle.seconds));
 }
 

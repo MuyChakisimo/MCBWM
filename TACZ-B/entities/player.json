@@ -197,10 +197,6 @@
             "springfield1873": "query.get_equipped_item_name=='springfield1873' || query.get_equipped_item_name=='springfield1873_emp'"
           },
           "minigun",
-          "awpscope",
-          "hk416scope",
-          "akmscope",
-          "m4a1scope",
           "universalscope",
           "reload_input"
         ]
@@ -279,7 +275,6 @@
         "m1014": "controller.animation.m1014",
         "m1014shoot": "animation.m1014.shoot",
         "hk416": "controller.animation.hk416",
-        "hk416scope": "controller.animation.hk416.scope",
         "hk416shoot": "animation.hk416.shoot",
         "g3": "controller.animation.g3",
         "g3shoot": "animation.g3.shoot",
@@ -302,7 +297,6 @@
         "scarl": "controller.animation.scarl",
         "scarlshoot": "animation.scarl.shoot",
         "akm": "controller.animation.akm",
-        "akmscope": "controller.animation.akm.scope",
         "akminspect": "controller.animation.akm.inspect",
         "akmshoot": "animation.akm.shoot",
         "type81": "controller.animation.type81",
@@ -310,7 +304,6 @@
         "m4a1": "controller.animation.m4a1",
         "aug": "controller.animation.aug",
         "spr15": "controller.animation.spr15",
-        "m4a1scope": "controller.animation.m4a1.scope",
         "m4a1shoot": "animation.m4a1.shoot",
         "augshoot": "animation.aug.shoot",
         "spr15shoot": "animation.spr15.shoot",
@@ -318,7 +311,6 @@
         "minigundelay": "animation.minigun.delay",
         "minigunoverheat": "animation.minigun.overheat",
         "minigunloop": "animation.minigun.loop",
-        "awpscope": "controller.animation.awp.scope",
         "universalscope": "controller.animation.universalscope",
         "inspectdelay": "animation.inspectdelay",
         "reload_input": "controller.animation.reload_input"
@@ -332,13 +324,6 @@
       "krep:inspect": {"minecraft:skin_id": {"value": 1}},
       "krep:noinspect": {"minecraft:skin_id": {"value": 0}},
       "krep:attachmentmode": {"minecraft:skin_id": {"value": 2}},
-      "krep:scope4x": {
-        "minecraft:spell_effects": {"add_effects": [{"effect": "slowness", "amplifier": 6, "duration": 9999999, "visible": false}]}
-      },
-      "krep:scope8x": {
-        "minecraft:spell_effects": {"add_effects": [{"effect": "slowness", "amplifier": 14, "duration": 9999999, "visible": false}]}
-      },
-      "krep:normal": {"minecraft:spell_effects": {"remove_effects": "slowness"}},
       "minecraft:add_raid_omen": {
         "minecraft:spell_effects": {
           "add_effects": [{"effect": "raid_omen", "duration": 30, "display_on_screen_animation": true}],
@@ -453,9 +438,6 @@
           }
         ]
       },
-      "krep:scope4x": {"add": {"component_groups": ["krep:scope4x"]}, "remove": {"component_groups": ["krep:scope8x"]}},
-      "krep:scope8x": {"add": {"component_groups": ["krep:scope8x"]}, "remove": {"component_groups": ["krep:scope4x"]}},
-      "krep:normal": {"add": {"component_groups": ["krep:normal"]}},
       "minecraft:gain_bad_omen": {"add": {"component_groups": ["minecraft:add_bad_omen"]}},
       "minecraft:clear_add_bad_omen": {
         "remove": {"component_groups": []},

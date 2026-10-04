@@ -144,6 +144,11 @@ once when the world loads.
 - Fitted attachments are stored per player and gun (dynamic property `krep_<id>`) and copied to the `krep:stock` ...
   properties while the gun is held (`attachments/attachmentState.js`); the RP render controllers show the parts.
 - Sights are entity events (`<id>:acog` ...) that set `krep:<id>scope`.
+- Scope zoom (`combat/aimZoom.js`, since v1.33.1): crouching with a magnifying sight eases the camera to
+  `SIGHT_ZOOM` in `config/attachments.js` (sniper scope 30, ACOG / ELCAN 50; the game allows 30-110) with
+  `camera.setFov`, and back with `camera @s fov_clear`. Not while reloading or working a bolt. It reacts to crouch,
+  hotbar and held-item events and to reload / bolt changes (`zoomSoon`), not every tick. Before v1.33.1 zoom was
+  an endless Slowness effect from per-gun BP `.scope` controllers (aiming nearly stopped walking).
 
 ## Something's wrong: where to look
 

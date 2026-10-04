@@ -1,44 +1,6 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.m4a1.scope": {
-      "initial_state": "setup",
-      "states": {
-        "setup": {
-          "on_entry": ["@s krep:normal"],
-          "transitions": [
-            {
-              "scope.elcan": "(query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:m4a1scope')=='elcan' && q.property('krep:ammoreload')!=1"
-            },
-            {
-              "scope.acog": "(query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:m4a1scope')=='acog' && q.property('krep:ammoreload')!=1"
-            }
-          ]
-        },
-        "scope.elcan": {
-          "on_entry": ["@s krep:scope4x"],
-          "transitions": [
-            {
-              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='m4a1' && query.get_equipped_item_name!='m4a1_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || (q.property('krep:m4a1scope')!='acog' && q.property('krep:m4a1scope')!='elcan')"
-            },
-            {
-              "scope.acog": "(query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:m4a1scope')=='acog'"
-            }
-          ]
-        },
-        "scope.acog": {
-          "on_entry": ["@s krep:scope4x"],
-          "transitions": [
-            {
-              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='m4a1' && query.get_equipped_item_name!='m4a1_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || (q.property('krep:m4a1scope')!='acog' && q.property('krep:m4a1scope')!='elcan')"
-            },
-            {
-              "scope.elcan": "(query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:m4a1scope')=='elcan'"
-            }
-          ]
-        }
-      }
-    },
     "controller.animation.m4a1": {
       "initial_state": "setup1",
       "states": {

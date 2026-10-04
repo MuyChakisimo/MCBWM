@@ -1,44 +1,6 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.akm.scope": {
-      "initial_state": "setup",
-      "states": {
-        "setup": {
-          "on_entry": ["@s krep:normal"],
-          "transitions": [
-            {
-              "scope.elcan": "(query.get_equipped_item_name=='akm' || query.get_equipped_item_name=='akm_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:akmscope')=='elcan' && q.property('krep:ammoreload')!=1"
-            },
-            {
-              "scope.acog": "(query.get_equipped_item_name=='akm' || query.get_equipped_item_name=='akm_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:akmscope')=='acog' && q.property('krep:ammoreload')!=1"
-            }
-          ]
-        },
-        "scope.elcan": {
-          "on_entry": ["@s krep:scope4x"],
-          "transitions": [
-            {
-              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='akm' && query.get_equipped_item_name!='akm_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || (q.property('krep:akmscope')!='acog' && q.property('krep:akmscope')!='elcan')"
-            },
-            {
-              "scope.acog": "(query.get_equipped_item_name=='akm' || query.get_equipped_item_name=='akm_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:akmscope')=='acog'"
-            }
-          ]
-        },
-        "scope.acog": {
-          "on_entry": ["@s krep:scope4x"],
-          "transitions": [
-            {
-              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='akm' && query.get_equipped_item_name!='akm_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || (q.property('krep:akmscope')!='acog' && q.property('krep:akmscope')!='elcan')"
-            },
-            {
-              "scope.elcan": "(query.get_equipped_item_name=='akm' || query.get_equipped_item_name=='akm_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:akmscope')=='elcan'"
-            }
-          ]
-        }
-      }
-    },
     "controller.animation.akm": {
       "initial_state": "setup1",
       "states": {

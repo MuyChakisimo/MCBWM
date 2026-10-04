@@ -29,44 +29,6 @@
           "on_entry": ["/replaceitem entity @s[scores={hk416=0}] slot.weapon.mainhand 1 krep:hk416_emp 1 0"]
         }
       }
-    },
-    "controller.animation.hk416.scope": {
-      "initial_state": "setup",
-      "states": {
-        "setup": {
-          "on_entry": ["@s krep:normal"],
-          "transitions": [
-            {
-              "scope.elcan": "(query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:hk416scope')=='elcan' && q.property('krep:ammoreload')!=1"
-            },
-            {
-              "scope.acog": "(query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:hk416scope')=='acog' && q.property('krep:ammoreload')!=1"
-            }
-          ]
-        },
-        "scope.elcan": {
-          "on_entry": ["@s krep:scope4x"],
-          "transitions": [
-            {
-              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='hk416' && query.get_equipped_item_name!='hk416_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || (q.property('krep:hk416scope')!='acog' && q.property('krep:hk416scope')!='elcan')"
-            },
-            {
-              "scope.acog": "(query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:hk416scope')=='acog'"
-            }
-          ]
-        },
-        "scope.acog": {
-          "on_entry": ["@s krep:scope4x"],
-          "transitions": [
-            {
-              "setup": "!query.is_sneaking || (query.get_equipped_item_name!='hk416' && query.get_equipped_item_name!='hk416_emp') || q.mark_variant == 2 || q.mark_variant == 1 || q.property('krep:ammoreload')==1 || (q.property('krep:hk416scope')!='acog' && q.property('krep:hk416scope')!='elcan')"
-            },
-            {
-              "scope.elcan": "(query.get_equipped_item_name=='hk416' || query.get_equipped_item_name=='hk416_emp') && query.is_sneaking && q.mark_variant != 2 && q.mark_variant != 1 && q.property('krep:hk416scope')=='elcan'"
-            }
-          ]
-        }
-      }
     }
   }
 }
