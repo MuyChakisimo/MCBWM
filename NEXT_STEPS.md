@@ -39,6 +39,30 @@ work.
 
 ## Next, in order
 
+**START HERE: the order the user agreed (2026-10-04, end of session; packs at v1.33.5, all committed, not pushed):**
+
+1. **Optimize the always-running scripts** (no gameplay change). The profile `_02-40-42` (0.59 ms/tick total) shows
+   three polling scripts are over half of it: `attachments/attachmentState.js` 0.12 (every 2 ticks),
+   `items/storedAmmoDisplay.js` 0.10 (every tick), `items/itemLore.js` 0.09 (every second). Make them event-driven
+   with the 2.10.0 events already used by `combat/aimZoom.js` (`playerHotbarSelectedSlotChange`,
+   `playerInventoryItemChange`) plus calls from firing.js / reload.js where rounds change. Then a profile to compare.
+2. **Phase 2: accuracy** (docs/GUNPLAY.md): GTA IV-style spread that grows while the trigger is held (hip and
+   ADS; tapping stays accurate), hip cone per class, moving / jumping penalties, ADS time, sprint-to-fire delay.
+3. **Minigun conversion:** the last gun fired and reloaded by its BP controllers -> script firing / reloading
+   (it also gets the muzzle light then). With it: `playerSwingStart` in place of the shared `reload_input`
+   controller (docs/GUNPLAY.md phase 6).
+
+Still waiting for the user's in-game test: scope zoom (ACOG / ELCAN mild, AWP Standard 8 strong; walking at
+crouch speed while aiming), the new creative groups (LMGs, Springfield with snipers, Lone Trail with pistols), the
+AUG with its rail (no scope), reload hands of the Java guns now that their reloads play to the end, crafting and
+the attachment menu. Confirmed working: fire-rate fix, Java reload timings, the 3 new guns, muzzle light, hit
+markers, no [UI] errors.
+
+How the user works: not a programmer, tests on an AYN Odin 2 (Android) against their own BDS 1.26.51 (Script API
+2.10.0 stable); wants plain explanations, factual decisions (ask when it's their call), ready-to-paste commit
+titles / descriptions, and what to test in game. Test reports: `scriptevent tacz:debug start|stop` +
+`script profiler start|stop` in the server console; they put the `.cpuprofile` in `reference/`.
+
 **v1.33.5 (2026-10-04): creative inventory groups follow the gun classes.** User (v1.33.4 test): the muzzle
 light looks good in a dark room, the hit markers are a nice addition, no [UI] errors any more; zoom not tried yet.
 They wanted the classes to organise the creative menu: the RPK, M249 and Evolys in their own LMGs group, the
