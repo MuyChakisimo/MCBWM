@@ -38,6 +38,10 @@ work.
 
 ## Next, in order
 
+**Gunplay plan (2026-10-04): docs/GUNPLAY.md** (CoD-style feel; Bedrock APIs by version; phases 0-6, starting
+with moving the scripts to @minecraft/server 2.10.0). User test of v1.30.4 (ARs): fire rates right; far-shot errors
+came from reading `hit.block.typeId` past the ticking area (fixed v1.30.5); the action bar UI warning fixed v1.30.5.
+
 1. **Ammo counter in the hitscan script (script firing).** **v1.24.0 (2026-10-02): 41 more guns converted with the
    new `tools/weapons/script-firing.mjs`** (removes the BP firing states, sets `scriptFiring`, and `shootSound` /
    `shootAnimation` / `suppressedFrom` when a gun differs from the defaults; refuses guns whose shot does more).
