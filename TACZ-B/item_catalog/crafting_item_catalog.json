@@ -10,6 +10,7 @@
             "items": [
               "krep:akm",
               "krep:m4a1",
+              "krep:aug",
               "krep:spr15",
               "krep:hk416",
               "krep:qbz95",
@@ -55,7 +56,15 @@
           },
           {
             "group_identifier": {"icon": "krep:minigun", "name": "krep:itemGroup.name.misc"},
-            "items": ["krep:minigun", "krep:evolys", "krep:m249", "krep:rpg", "krep:m320"]
+            "items": [
+              "krep:minigun",
+              "krep:evolys",
+              "krep:m249",
+              "krep:rpg",
+              "krep:m320",
+              "krep:lonetrail",
+              "krep:springfield1873"
+            ]
           },
           {
             "group_identifier": {"icon": "krep:m870", "name": "krep:itemGroup.name.sg"},
@@ -74,6 +83,7 @@
             "items": [
               "krep:akm_emp",
               "krep:m4a1_emp",
+              "krep:aug_emp",
               "krep:spr15_emp",
               "krep:hk416_emp",
               "krep:qbz95_emp",
@@ -120,6 +130,8 @@
               "krep:evolys_emp",
               "krep:rpg_emp",
               "krep:m320_emp",
+              "krep:lonetrail_emp",
+              "krep:springfield1873_emp",
               "krep:m870_emp",
               "krep:spas12_emp",
               "krep:saiga12_emp",

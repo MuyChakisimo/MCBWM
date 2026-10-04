@@ -1,0 +1,116 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.aug.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.aug && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.aug"}, {"walk_delay_2": "v.aug"}],
+          "transitions": [
+            {"delay": "v.aug && q.is_sprinting"},
+            {"delay": "v.aug && q.is_sneaking"},
+            {"delay": "v.aug && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.aug"}],
+          "transitions": [{"setup": "v.aug && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.aug.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"aug_tp_hold": "v.aug"}],
+          "transitions": [
+            {"sprint": "v.aug && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.aug && q.is_sneaking"},
+            {"hold": "v.aug && q.is_using_item"}
+          ]
+        },
+        "sprint": {
+          "animations": [{"aug_tp_sprint": "v.aug"}],
+          "transitions": [
+            {"hold": "v.aug && !q.is_sprinting"},
+            {"hold": "v.aug && q.is_using_item"},
+            {"sight": "v.aug && q.is_sneaking"}
+          ]
+        },
+        "sight": {"animations": [{"aug_tp_sight": "v.aug"}], "transitions": [{"hold": "v.aug && !q.is_sneaking"}]}
+      }
+    },
+    "controller.animation.aug.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"aug_fp_hold": "v.aug"}],
+          "transitions": [
+            {"reload": "v.augemp && q.mark_variant == 1"},
+            {"view": "v.augb && q.skin_id == 2 && !q.is_sneaking"},
+            {"inspect": "v.aug && q.skin_id == 1 && !q.is_sneaking"},
+            {"reloadtac": "v.aug && q.mark_variant == 2"},
+            {"sprint": "v.aug && q.is_sprinting && !q.is_using_item"},
+            {"sight": "v.aug && q.is_sneaking"},
+            {"hold": "v.aug && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"aug_fp_inspect": "v.augb"}, {"aug_fp_inspect_emp": "v.augemp"}],
+          "transitions": [
+            {
+              "hold": "(v.aug && q.all_animations_finished) || (v.aug && q.is_using_item) || (v.aug && q.is_sneaking)"
+            }
+          ]
+        },
+        "view": {
+          "animations": [{"aug_fp_view": "v.aug"}],
+          "transitions": [{"hold": "(v.aug && q.skin_id != 2)"}]
+        },
+        "sprint": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"aug_fp_sprint": "v.aug"}],
+          "transitions": [
+            {"hold": "v.aug && !q.is_sprinting"},
+            {"view": "v.augb && q.skin_id == 2 && !q.is_sneaking"},
+            {"hold": "v.aug && q.is_using_item"},
+            {"reload": "v.augemp && q.mark_variant == 1"},
+            {"reloadtac": "v.aug && q.mark_variant == 2"},
+            {"sight": "v.aug && q.is_sneaking"}
+          ]
+        },
+        "reload": {
+          "animations": [{"aug_fp_reload": "v.aug"}],
+          "transitions": [{"hold": "v.aug && (q.all_animations_finished || q.mark_variant != 1)"}]
+        },
+        "reloadtac": {
+          "animations": [{"aug_fp_reload_tac": "v.aug"}],
+          "transitions": [{"hold": "v.aug && q.all_animations_finished"}, {"hold": "v.augb && q.mark_variant != 2"}]
+        },
+        "sight": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"aug_fp_sight": "v.aug"}],
+          "transitions": [
+            {"hold": "v.aug && !q.is_sneaking"},
+            {"view": "v.augb && q.skin_id == 2 && !q.is_sneaking"},
+            {"reloadtac": "v.aug && q.mark_variant == 2"},
+            {"reload": "v.augemp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

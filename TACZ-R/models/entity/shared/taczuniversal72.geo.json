@@ -1,0 +1,129 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {"texture_width": 64, "texture_height": 64, "identifier": "geometry.taczuniversal72"},
+      "bones": [
+        {"name": "root", "pivot": [0, 0, 0]},
+        {"name": "waist", "parent": "root", "pivot": [0, 12, 0]},
+        {
+          "name": "body",
+          "parent": "waist",
+          "pivot": [0, 24, 0],
+          "cubes": [{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [16, 16]}]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "pivot": [0, 24, 0],
+          "cubes": [{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [0, 0]}]
+        },
+        {
+          "name": "hat",
+          "parent": "head",
+          "pivot": [0, 24, 0],
+          "cubes": [{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [32, 0], "inflate": 0.5}]
+        },
+        {"name": "cape", "parent": "body", "pivot": [0, 24, 3]},
+        {"name": "joints", "parent": "body", "pivot": [0, 0, 0]},
+        {"name": "rot", "pivot": [-0.1164, 4.2914, 4.1272], "parent": "joints"},
+        {"name": "lh_and_gun", "parent": "rot", "pivot": [-0.1164, 5.9914, -1.3728]},
+        {"name": "gun", "parent": "lh_and_gun", "pivot": [-0.1164, 3.9914, 3.8272]},
+        {"name": "breach2", "parent": "gun", "pivot": [0, 7.625, 9]},
+        {"name": "breach", "parent": "breach2", "pivot": [-0.1164, 6.1164, 9.6272]},
+        {"name": "base", "parent": "gun", "pivot": [0, 0, 0]},
+        {"name": "lower", "parent": "base", "pivot": [0, 5.93401, 3.06394]},
+        {"name": "bone6", "parent": "lower", "pivot": [-0.67992, 8.01517, -4.48396]},
+        {"name": "lines_illuminated", "parent": "lower", "pivot": [0, 7.56212, 4.56846]},
+        {"name": "chamber", "parent": "base", "pivot": [0, 7.625, 6.749]},
+        {"name": "barrel", "parent": "base", "pivot": [0, 8.125, 0]},
+        {"name": "trigger", "parent": "base", "pivot": [0, 6.3775, 1.99038]},
+        {"name": "muzzle_default", "parent": "base", "pivot": [0, 8.125, -16]},
+        {"name": "handguard_tactical", "parent": "base", "pivot": [0, 5.5, -8.0625]},
+        {
+          "name": "laser_pos",
+          "parent": "handguard_tactical",
+          "pivot": [0, 6.375, -5.0625],
+          "rotation": [0, 0, -180]
+        },
+        {"name": "sight", "parent": "base", "pivot": [0, 8.90625, -7.75]},
+        {"name": "sight_illuminated", "parent": "sight", "pivot": [0, 8.99493, -7.57573]},
+        {"name": "scope_pos", "parent": "gun", "pivot": [0, 9.1258, 3.97724]},
+        {"name": "muzzle_flash", "parent": "gun", "pivot": [0.00863, 8.11642, -12.24776]},
+        {"name": "muzzle_pos", "parent": "gun", "pivot": [0.00863, 8.11642, -12.24776]},
+        {"name": "constraint", "parent": "gun", "pivot": [0, 11.125, 7]},
+        {"name": "lefthand", "parent": "lh_and_gun", "pivot": [-6, 21, 0]},
+        {"name": "lefthand_pos", "parent": "lefthand", "pivot": [0, 10, 0]},
+        {"name": "rh_and_bullet_inspect", "parent": "rot", "pivot": [-2, 4.7063, 10.7851]},
+        {"name": "rh_and_bullet", "parent": "rh_and_bullet_inspect", "pivot": [-5.875, 5.53128, 13.84758]},
+        {
+          "name": "bullet_in_barrel",
+          "parent": "rh_and_bullet",
+          "pivot": [0.00863, 8.1477, 6.37481],
+          "rotation": [90, 0, 0]
+        },
+        {"name": "round_shell", "parent": "bullet_in_barrel", "pivot": [0, -1.875, 8]},
+        {"name": "head_gun", "parent": "bullet_in_barrel", "pivot": [0.00395, 1.99982, 7.87101]},
+        {"name": "righthand", "parent": "rh_and_bullet", "pivot": [6, 21, 0]},
+        {"name": "righthand_pos", "parent": "righthand", "pivot": [0, 10, 0]},
+        {"name": "refit", "pivot": [0, 0, 0]},
+        {
+          "name": "rightArm",
+          "parent": "righthand_pos",
+          "pivot": [-5, 22, 0],
+          "cubes": [{"origin": [-8, 12, -2], "size": [4, 12, 4], "uv": [40, 16]}]
+        },
+        {
+          "name": "rightSleeve",
+          "parent": "rightArm",
+          "pivot": [-5, 22, 0],
+          "cubes": [{"origin": [-8, 12, -2], "size": [4, 12, 4], "uv": [40, 32], "inflate": 0.25}]
+        },
+        {"name": "rightItem", "parent": "rightArm", "pivot": [-6, 15, 1]},
+        {
+          "name": "leftArm",
+          "parent": "lefthand_pos",
+          "pivot": [5, 22, 0],
+          "cubes": [{"origin": [4, 12, -2], "size": [4, 12, 4], "uv": [32, 48]}]
+        },
+        {
+          "name": "leftSleeve",
+          "parent": "leftArm",
+          "pivot": [5, 22, 0],
+          "cubes": [{"origin": [4, 12, -2], "size": [4, 12, 4], "uv": [48, 48], "inflate": 0.25}]
+        },
+        {"name": "leftItem", "parent": "leftArm", "pivot": [6, 15, 1]},
+        {
+          "name": "jacket",
+          "parent": "body",
+          "pivot": [0, 24, 0],
+          "cubes": [{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [16, 32], "inflate": 0.25}]
+        },
+        {
+          "name": "leftLeg",
+          "parent": "root",
+          "pivot": [1.9, 12, 0],
+          "cubes": [{"origin": [-0.1, 0, -2], "size": [4, 12, 4], "uv": [16, 48]}]
+        },
+        {
+          "name": "leftPants",
+          "parent": "leftLeg",
+          "pivot": [1.9, 12, 0],
+          "cubes": [{"origin": [-0.1, 0, -2], "size": [4, 12, 4], "uv": [0, 48], "inflate": 0.25}]
+        },
+        {
+          "name": "rightLeg",
+          "parent": "root",
+          "pivot": [-1.9, 12, 0],
+          "cubes": [{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "uv": [0, 16]}]
+        },
+        {
+          "name": "rightPants",
+          "parent": "rightLeg",
+          "pivot": [-1.9, 12, 0],
+          "cubes": [{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "uv": [0, 32], "inflate": 0.25}]
+        }
+      ]
+    }
+  ]
+}

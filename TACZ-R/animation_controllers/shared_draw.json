@@ -37,6 +37,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -56,6 +57,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -64,7 +67,7 @@
           "animations": [{"m1014_draw": "v.m1014"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
@@ -97,6 +100,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -116,6 +120,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -124,7 +130,7 @@
           "animations": [{"vector_draw": "v.vector"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.p320": "v.p320"},
             {"draw.taurus943": "v.taurus943"},
@@ -157,6 +163,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -176,6 +183,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -184,7 +193,7 @@
           "animations": [{"p320_fp_draw": "v.p320"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.mk14": "v.mk14"},
@@ -211,6 +220,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -230,6 +240,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.m9a4": "v.m9a4"},
@@ -244,7 +256,7 @@
           "animations": [{"taurus943_fp_draw": "v.taurus943"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.mk14": "v.mk14"},
@@ -271,6 +283,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -290,6 +303,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.m9a4": "v.m9a4"},
@@ -304,7 +319,7 @@
           "animations": [{"taurus500_fp_draw": "v.taurus500"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.mk14": "v.mk14"},
@@ -331,6 +346,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -350,6 +366,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.m9a4": "v.m9a4"},
@@ -364,7 +382,7 @@
           "animations": [{"rhino357_fp_draw": "v.rhino357"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.mk14": "v.mk14"},
@@ -391,6 +409,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -410,6 +429,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.m9a4": "v.m9a4"},
@@ -424,7 +445,7 @@
           "animations": [{"mk23_fp_draw": "v.mk23"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.mk14": "v.mk14"},
@@ -451,6 +472,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -470,6 +492,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.m9a4": "v.m9a4"},
@@ -484,7 +508,7 @@
           "animations": [{"cz75_fp_draw": "v.cz75"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.mk14": "v.mk14"},
@@ -511,6 +535,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -530,6 +555,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.m9a4": "v.m9a4"},
@@ -544,7 +571,7 @@
           "animations": [{"m9a4_fp_draw": "v.m9a4"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.mk14": "v.mk14"},
@@ -571,6 +598,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -590,6 +618,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.p320": "v.p320"},
@@ -604,7 +634,7 @@
           "animations": [{"mk14_fp_draw": "v.mk14"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
@@ -637,6 +667,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -656,6 +687,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -664,7 +697,7 @@
           "animations": [{"type81_fp_draw": "v.type81"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
@@ -696,6 +729,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -715,6 +749,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.rpk": "v.rpk"}
@@ -724,7 +760,7 @@
           "animations": [{"rpk_fp_draw": "v.rpk"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.vector": "v.vector"},
             {"draw.p320": "v.p320"},
@@ -756,6 +792,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -775,6 +812,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.type81": "v.type81"}
@@ -784,7 +823,7 @@
           "animations": [{"m249_fp_draw": "v.m249"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -817,6 +856,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -836,6 +876,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -844,7 +886,7 @@
           "animations": [{"t50_fp_draw": "v.t50"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16a1": "v.m16a1"},
@@ -877,6 +919,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -896,6 +939,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -904,7 +949,7 @@
           "animations": [{"cp_fp_draw": "v.cp"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.qbz191": "v.qbz191"},
@@ -937,6 +982,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -956,6 +1002,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -964,7 +1012,7 @@
           "animations": [{"qbz191_fp_draw": "v.qbz191"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.evolys": "v.evolys"},
@@ -997,6 +1045,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -1016,6 +1065,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1024,7 +1075,7 @@
           "animations": [{"evolys_fp_draw": "v.evolys"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.qbz191": "v.qbz191"},
@@ -1057,6 +1108,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -1076,6 +1128,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1084,7 +1138,7 @@
           "animations": [{"m16a1_draw": "v.m16a1"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.t50": "v.t50"},
@@ -1117,6 +1171,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -1136,6 +1191,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1144,7 +1201,7 @@
           "animations": [{"g3_fp_draw": "v.g3"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -1177,6 +1234,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -1196,6 +1254,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1204,7 +1264,7 @@
           "animations": [{"minigun_fp_draw": "v.minigun"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -1237,6 +1297,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -1256,6 +1317,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1264,7 +1327,7 @@
           "animations": [{"hk416_draw": "v.hk416"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -1298,6 +1361,7 @@
             {"draw.minigun": "v.minigun"},
             {"draw.p90": "v.p90"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.akm": "v.akm"},
             {"draw.ump": "v.ump"},
@@ -1316,6 +1380,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1324,7 +1390,7 @@
           "animations": [{"g36_draw": "v.g36"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -1358,6 +1424,7 @@
             {"draw.minigun": "v.minigun"},
             {"draw.p90": "v.p90"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.akm": "v.akm"},
             {"draw.ump": "v.ump"},
@@ -1376,6 +1443,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1384,7 +1453,7 @@
           "animations": [{"uzi_draw": "v.uzi"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -1418,6 +1487,7 @@
             {"draw.minigun": "v.minigun"},
             {"draw.p90": "v.p90"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.akm": "v.akm"},
             {"draw.ump": "v.ump"},
@@ -1436,6 +1506,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1444,7 +1516,7 @@
           "animations": [{"db_draw": "v.db"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -1477,6 +1549,7 @@
             {"draw.minigun": "v.minigun"},
             {"draw.p90": "v.p90"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.akm": "v.akm"},
             {"draw.ump": "v.ump"},
@@ -1495,6 +1568,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.dblong": "v.dblong"}
@@ -1504,7 +1579,7 @@
           "animations": [{"dblong_draw": "v.dblong"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -1537,6 +1612,7 @@
             {"draw.minigun": "v.minigun"},
             {"draw.p90": "v.p90"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.akm": "v.akm"},
             {"draw.ump": "v.ump"},
@@ -1555,6 +1631,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.db": "v.db"}
@@ -1564,7 +1642,7 @@
           "animations": [{"m4a1_draw": "v.m4a1"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -1615,16 +1693,82 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
-            {"draw.spr15": "v.spr15"}
+            {"draw.spr15": "v.spr15"},
+            {"draw.aug": "v.aug"}
+          ]
+        },
+        "draw.aug": {
+          "animations": [{"aug_draw": "v.aug"}],
+          "transitions": [
+            {
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+            },
+            {"draw.aa12": "v.aa12"},
+            {"draw.m16": "v.m16"},
+            {"draw.mp5": "v.mp5"},
+            {"draw.mp7": "v.mp7"},
+            {"draw.m870": "v.m870"},
+            {"draw.spas12": "v.spas12"},
+            {"draw.vector": "v.vector"},
+            {"draw.p320": "v.p320"},
+            {"draw.taurus943": "v.taurus943"},
+            {"draw.taurus500": "v.taurus500"},
+            {"draw.rhino357": "v.rhino357"},
+            {"draw.mk23": "v.mk23"},
+            {"draw.cz75": "v.cz75"},
+            {"draw.m9a4": "v.m9a4"},
+            {"draw.mk14": "v.mk14"},
+            {"draw.m1014": "v.m1014"},
+            {"draw.type81": "v.type81"},
+            {"draw.rpk": "v.rpk"},
+            {"draw.m249": "v.m249"},
+            {"draw.m16a1": "v.m16a1"},
+            {"draw.t50": "v.t50"},
+            {"draw.cp": "v.cp"},
+            {"draw.qbz191": "v.qbz191"},
+            {"draw.evolys": "v.evolys"},
+            {"draw.g3": "v.g3"},
+            {"draw.minigun": "v.minigun"},
+            {"draw.p90": "v.p90"},
+            {"draw.hk416": "v.hk416"},
+            {"draw.g36": "v.g36"},
+            {"draw.uzi": "v.uzi"},
+            {"draw.db": "v.db"},
+            {"draw.dblong": "v.dblong"},
+            {"draw.akm": "v.akm"},
+            {"draw.ump": "v.ump"},
+            {"draw.qbz95": "v.qbz95"},
+            {"draw.fal": "v.fal"},
+            {"draw.sks": "v.sks"},
+            {"draw.b93": "v.b93"},
+            {"draw.saiga12": "v.saiga12"},
+            {"draw.awp": "v.awp"},
+            {"draw.m700": "v.m700"},
+            {"draw.kar98": "v.kar98"},
+            {"draw.g17": "v.g17"},
+            {"draw.g18": "v.g18"},
+            {"draw.scarl": "v.scarl"},
+            {"draw.scarh": "v.scarh"},
+            {"draw.m1911": "v.m1911"},
+            {"draw.rpg": "v.rpg"},
+            {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
+            {"draw.deagle": "v.deagle"},
+            {"draw.deagleg": "v.deagleg"},
+            {"draw.spr15": "v.spr15"},
+            {"draw.m4a1": "v.m4a1"}
           ]
         },
         "draw.spr15": {
           "animations": [{"spr15_draw": "v.spr15"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -1675,16 +1819,19 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
-            {"draw.m4a1": "v.m4a1"}
+            {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"}
           ]
         },
         "draw.p90": {
           "animations": [{"p90_draw": "v.p90"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -1731,11 +1878,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1744,7 +1894,7 @@
           "animations": [{"akm_draw": "v.akm"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.qbz95": "v.qbz95"},
             {"draw.fal": "v.fal"},
@@ -1791,11 +1941,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1804,7 +1957,7 @@
           "animations": [{"ump_draw": "v.ump"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.qbz95": "v.qbz95"},
             {"draw.fal": "v.fal"},
@@ -1851,11 +2004,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1864,7 +2020,7 @@
           "animations": [{"qbz95_draw": "v.qbz95"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.fal": "v.fal"},
             {"draw.akm": "v.akm"},
@@ -1911,11 +2067,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1924,7 +2083,7 @@
           "animations": [{"g3_fp_draw": "v.fal"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.qbz95": "v.qbz95"},
             {"draw.akm": "v.akm"},
@@ -1971,11 +2130,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -1984,7 +2146,7 @@
           "animations": [{"sks_draw": "v.sks"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.akm": "v.akm"},
             {"draw.b93": "v.b93"},
@@ -2031,11 +2193,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -2044,7 +2209,7 @@
           "animations": [{"b93_draw": "v.b93"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.akm": "v.akm"},
             {"draw.sks": "v.sks"},
@@ -2091,11 +2256,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -2104,7 +2272,7 @@
           "animations": [{"saiga12_draw": "v.saiga12"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2151,11 +2319,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -2164,7 +2335,7 @@
           "animations": [{"awp_draw": "v.awp"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2206,6 +2377,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.g17": "v.g17"},
             {"draw.g18": "v.g18"},
@@ -2214,6 +2386,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.kar98": "v.kar98"},
@@ -2224,7 +2398,7 @@
           "animations": [{"m700_draw": "v.m700"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2266,6 +2440,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.g17": "v.g17"},
             {"draw.g18": "v.g18"},
@@ -2274,6 +2449,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.kar98": "v.kar98"},
@@ -2284,7 +2461,7 @@
           "animations": [{"kar98_draw": "v.kar98"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2326,6 +2503,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.g17": "v.g17"},
             {"draw.g18": "v.g18"},
@@ -2334,6 +2512,8 @@
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
             {"draw.awp": "v.awp"},
@@ -2344,7 +2524,7 @@
           "animations": [{"scarl_draw": "v.scarl"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2391,11 +2571,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -2404,7 +2587,7 @@
           "animations": [{"g17_draw": "v.g17"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2450,12 +2633,15 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.g18": "v.g18"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -2464,7 +2650,7 @@
           "animations": [{"g17_draw": "v.g18"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2511,11 +2697,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"}
           ]
@@ -2524,7 +2713,7 @@
           "animations": [{"scarh_draw": "v.scarh"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -2555,12 +2744,15 @@
             {"draw.minigun": "v.minigun"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.hk416": "v.hk416"},
             {"draw.g36": "v.g36"},
             {"draw.uzi": "v.uzi"},
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -2584,7 +2776,7 @@
           "animations": [{"m1911_draw": "v.m1911"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -2615,12 +2807,15 @@
             {"draw.minigun": "v.minigun"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.hk416": "v.hk416"},
             {"draw.g36": "v.g36"},
             {"draw.uzi": "v.uzi"},
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -2644,7 +2839,7 @@
           "animations": [{"rpg_draw": "v.rpg"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -2678,6 +2873,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -2697,14 +2893,16 @@
             {"draw.m1911": "v.m1911"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
-            {"draw.m320": "v.m320"}
+            {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"}
           ]
         },
         "draw.m320": {
           "animations": [{"m320_draw": "v.m320"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.m16": "v.m16"},
@@ -2738,6 +2936,7 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.p90": "v.p90"},
             {"draw.akm": "v.akm"},
@@ -2757,14 +2956,142 @@
             {"draw.m1911": "v.m1911"},
             {"draw.deagle": "v.deagle"},
             {"draw.deagleg": "v.deagleg"},
-            {"draw.rpg": "v.rpg"}
+            {"draw.rpg": "v.rpg"},
+            {"draw.springfield1873": "v.springfield1873"},
+            {"draw.lonetrail": "v.lonetrail"}
+          ]
+        },
+        "draw.lonetrail": {
+          "animations": [{"lonetrail_draw": "v.lonetrail"}],
+          "transitions": [
+            {
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+            },
+            {"draw.aa12": "v.aa12"},
+            {"draw.m16": "v.m16"},
+            {"draw.mp5": "v.mp5"},
+            {"draw.mp7": "v.mp7"},
+            {"draw.m870": "v.m870"},
+            {"draw.spas12": "v.spas12"},
+            {"draw.vector": "v.vector"},
+            {"draw.p320": "v.p320"},
+            {"draw.taurus943": "v.taurus943"},
+            {"draw.taurus500": "v.taurus500"},
+            {"draw.rhino357": "v.rhino357"},
+            {"draw.mk23": "v.mk23"},
+            {"draw.cz75": "v.cz75"},
+            {"draw.m9a4": "v.m9a4"},
+            {"draw.mk14": "v.mk14"},
+            {"draw.m1014": "v.m1014"},
+            {"draw.type81": "v.type81"},
+            {"draw.rpk": "v.rpk"},
+            {"draw.m249": "v.m249"},
+            {"draw.m16a1": "v.m16a1"},
+            {"draw.t50": "v.t50"},
+            {"draw.cp": "v.cp"},
+            {"draw.qbz191": "v.qbz191"},
+            {"draw.evolys": "v.evolys"},
+            {"draw.g3": "v.g3"},
+            {"draw.minigun": "v.minigun"},
+            {"draw.hk416": "v.hk416"},
+            {"draw.g36": "v.g36"},
+            {"draw.uzi": "v.uzi"},
+            {"draw.db": "v.db"},
+            {"draw.dblong": "v.dblong"},
+            {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
+            {"draw.spr15": "v.spr15"},
+            {"draw.p90": "v.p90"},
+            {"draw.akm": "v.akm"},
+            {"draw.ump": "v.ump"},
+            {"draw.qbz95": "v.qbz95"},
+            {"draw.fal": "v.fal"},
+            {"draw.sks": "v.sks"},
+            {"draw.b93": "v.b93"},
+            {"draw.saiga12": "v.saiga12"},
+            {"draw.awp": "v.awp"},
+            {"draw.m700": "v.m700"},
+            {"draw.kar98": "v.kar98"},
+            {"draw.g17": "v.g17"},
+            {"draw.g18": "v.g18"},
+            {"draw.scarl": "v.scarl"},
+            {"draw.scarh": "v.scarh"},
+            {"draw.m1911": "v.m1911"},
+            {"draw.deagle": "v.deagle"},
+            {"draw.deagleg": "v.deagleg"},
+            {"draw.rpg": "v.rpg"},
+            {"draw.springfield1873": "v.springfield1873"},
+            {"draw.m320": "v.m320"}
+          ]
+        },
+        "draw.springfield1873": {
+          "animations": [{"springfield1873_draw": "v.springfield1873"}],
+          "transitions": [
+            {
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+            },
+            {"draw.aa12": "v.aa12"},
+            {"draw.m16": "v.m16"},
+            {"draw.mp5": "v.mp5"},
+            {"draw.mp7": "v.mp7"},
+            {"draw.m870": "v.m870"},
+            {"draw.spas12": "v.spas12"},
+            {"draw.vector": "v.vector"},
+            {"draw.p320": "v.p320"},
+            {"draw.taurus943": "v.taurus943"},
+            {"draw.taurus500": "v.taurus500"},
+            {"draw.rhino357": "v.rhino357"},
+            {"draw.mk23": "v.mk23"},
+            {"draw.cz75": "v.cz75"},
+            {"draw.m9a4": "v.m9a4"},
+            {"draw.mk14": "v.mk14"},
+            {"draw.m1014": "v.m1014"},
+            {"draw.type81": "v.type81"},
+            {"draw.rpk": "v.rpk"},
+            {"draw.m249": "v.m249"},
+            {"draw.m16a1": "v.m16a1"},
+            {"draw.t50": "v.t50"},
+            {"draw.cp": "v.cp"},
+            {"draw.qbz191": "v.qbz191"},
+            {"draw.evolys": "v.evolys"},
+            {"draw.g3": "v.g3"},
+            {"draw.minigun": "v.minigun"},
+            {"draw.hk416": "v.hk416"},
+            {"draw.g36": "v.g36"},
+            {"draw.uzi": "v.uzi"},
+            {"draw.db": "v.db"},
+            {"draw.dblong": "v.dblong"},
+            {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
+            {"draw.spr15": "v.spr15"},
+            {"draw.p90": "v.p90"},
+            {"draw.akm": "v.akm"},
+            {"draw.ump": "v.ump"},
+            {"draw.qbz95": "v.qbz95"},
+            {"draw.fal": "v.fal"},
+            {"draw.sks": "v.sks"},
+            {"draw.b93": "v.b93"},
+            {"draw.saiga12": "v.saiga12"},
+            {"draw.awp": "v.awp"},
+            {"draw.m700": "v.m700"},
+            {"draw.kar98": "v.kar98"},
+            {"draw.g17": "v.g17"},
+            {"draw.g18": "v.g18"},
+            {"draw.scarl": "v.scarl"},
+            {"draw.scarh": "v.scarh"},
+            {"draw.m1911": "v.m1911"},
+            {"draw.deagle": "v.deagle"},
+            {"draw.deagleg": "v.deagleg"},
+            {"draw.rpg": "v.rpg"},
+            {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"}
           ]
         },
         "draw.deagle": {
           "animations": [{"deagle_draw": "v.deagle"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2805,11 +3132,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.p90": "v.p90"}
           ]
         },
@@ -2817,7 +3147,7 @@
           "animations": [{"deagle_draw": "v.deagleg"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2858,11 +3188,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.p90": "v.p90"}
           ]
         },
@@ -2870,7 +3203,7 @@
           "animations": [{"m16a1_draw": "v.m16"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2911,11 +3244,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.p90": "v.p90"}
           ]
         },
@@ -2923,7 +3259,7 @@
           "animations": [{"mp5_draw": "v.mp5"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -2963,12 +3299,15 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.mp7": "v.mp7"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.p90": "v.p90"}
           ]
         },
@@ -2976,7 +3315,7 @@
           "animations": [{"mp7_draw": "v.mp7"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -3017,11 +3356,14 @@
             {"draw.dblong": "v.dblong"},
             {"draw.mp5": "v.mp5"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.p90": "v.p90"}
           ]
         },
@@ -3029,7 +3371,7 @@
           "animations": [{"m870_draw": "v.m870"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -3069,11 +3411,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.p90": "v.p90"},
             {"draw.spas12": "v.spas12"}
           ]
@@ -3082,7 +3427,7 @@
           "animations": [{"spas12_draw": "v.spas12"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.aa12": "v.aa12"},
             {"draw.vector": "v.vector"},
@@ -3122,11 +3467,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.p90": "v.p90"},
             {"draw.m870": "v.m870"}
           ]
@@ -3135,7 +3483,7 @@
           "animations": [{"aa12_draw": "v.aa12"}],
           "transitions": [
             {
-              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
+              "setup": "!v.m16a1 && !v.qbz191 && !v.p320 && !v.taurus943 && !v.taurus500 && !v.rhino357 && !v.mk23 && !v.cz75 && !v.m9a4 && !v.mk14 && !v.m249 && !v.m1014 && !v.type81 && !v.rpk && !v.evolys && !v.t50 && !v.cp && !v.g3 && !v.hk416 && !v.p90 && !v.vector && !v.deagle && !v.scarh && !v.m16 && !v.mp5 && !v.aa12 && !v.rpg && !v.m320 && !v.lonetrail && !v.springfield1873 && !v.awp && !v.m700 && !v.kar98 && !v.g17 && !v.scarl && !v.m870 && !v.spas12 && !v.akm && !v.m4a1 && !v.aug && !v.spr15 && !v.m1911 && !v.minigun && !v.g36 && !v.mp7 && !v.uzi && !v.g18 && !v.db && !v.dblong && !v.deagleg && !v.saiga12 && !v.qbz95 && !v.fal && !v.b93 && !v.ump && !v.sks && !v.fal"
             },
             {"draw.mp5": "v.mp5"},
             {"draw.mp7": "v.mp7"},
@@ -3176,11 +3524,14 @@
             {"draw.db": "v.db"},
             {"draw.dblong": "v.dblong"},
             {"draw.m4a1": "v.m4a1"},
+            {"draw.aug": "v.aug"},
             {"draw.spr15": "v.spr15"},
             {"draw.scarh": "v.scarh"},
             {"draw.m1911": "v.m1911"},
             {"draw.rpg": "v.rpg"},
             {"draw.m320": "v.m320"},
+            {"draw.lonetrail": "v.lonetrail"},
+            {"draw.springfield1873": "v.springfield1873"},
             {"draw.p90": "v.p90"}
           ]
         }

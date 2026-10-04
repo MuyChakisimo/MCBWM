@@ -14,6 +14,12 @@
               "trigger.inspect": "(query.get_equipped_item_name=='m4a1' && variable.attack_time > 0.0f && query.scoreboard('m4a1') >= 30 && q.mark_variant != 2)"
             },
             {
+              "trigger.inspect": "(query.get_equipped_item_name=='aug' && variable.attack_time > 0.0f && query.scoreboard('aug') >= 30 && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='aug_emp' && variable.attack_time > 0.0f && query.scoreboard('aug') == 0 && q.mark_variant != 1)"
+            },
+            {
               "trigger.inspect": "(query.get_equipped_item_name=='spr15' && variable.attack_time > 0.0f && query.scoreboard('spr15') >= 15 && q.mark_variant != 2)"
             },
             {
@@ -284,7 +290,19 @@
               "trigger.inspect": "(query.get_equipped_item_name=='m320' && variable.attack_time > 0.0f && q.mark_variant != 2)"
             },
             {
+              "trigger.inspect": "(query.get_equipped_item_name=='lonetrail' && variable.attack_time > 0.0f && q.mark_variant != 2)"
+            },
+            {
+              "trigger.inspect": "(query.get_equipped_item_name=='springfield1873' && variable.attack_time > 0.0f && q.mark_variant != 2)"
+            },
+            {
               "trigger.inspect.emp": "(query.get_equipped_item_name=='m320_emp' && variable.attack_time > 0.0f && query.scoreboard('m320') == 0 && q.mark_variant != 1)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='lonetrail_emp' && variable.attack_time > 0.0f && query.scoreboard('lonetrail') == 0 && q.mark_variant != 1)"
+            },
+            {
+              "trigger.inspect.emp": "(query.get_equipped_item_name=='springfield1873_emp' && variable.attack_time > 0.0f && query.scoreboard('springfield1873') == 0 && q.mark_variant != 1)"
             },
             {
               "trigger.inspect": "(query.get_equipped_item_name=='scarh' && variable.attack_time > 0.0f && query.scoreboard('scarh') >= 20 && q.mark_variant != 2)"

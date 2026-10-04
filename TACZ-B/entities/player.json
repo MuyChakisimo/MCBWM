@@ -169,6 +169,7 @@
           {
             "m4a1": "query.get_equipped_item_name=='m4a1' || query.get_equipped_item_name=='m4a1_emp'"
           },
+          {"aug": "query.get_equipped_item_name=='aug' || query.get_equipped_item_name=='aug_emp'"},
           {
             "spr15": "query.get_equipped_item_name=='spr15' || query.get_equipped_item_name=='spr15_emp'"
           },
@@ -188,6 +189,12 @@
           {"rpg": "query.get_equipped_item_name=='rpg' || query.get_equipped_item_name=='rpg_emp'"},
           {
             "m320": "query.get_equipped_item_name=='m320' || query.get_equipped_item_name=='m320_emp'"
+          },
+          {
+            "lonetrail": "query.get_equipped_item_name=='lonetrail' || query.get_equipped_item_name=='lonetrail_emp'"
+          },
+          {
+            "springfield1873": "query.get_equipped_item_name=='springfield1873' || query.get_equipped_item_name=='springfield1873_emp'"
           },
           "minigun",
           "awpscope",
@@ -239,8 +246,12 @@
         "g36shoot": "animation.m4a1.shoot",
         "rpg": "controller.animation.rpg",
         "m320": "controller.animation.m320",
+        "lonetrail": "controller.animation.lonetrail",
+        "springfield1873": "controller.animation.springfield1873",
         "rpgshoot": "animation.rpg.shoot",
         "m320shoot": "animation.m320.shoot",
+        "lonetrailshoot": "animation.lonetrail.shoot",
+        "springfield1873shoot": "animation.springfield1873.shoot",
         "deagle": "controller.animation.deagle",
         "deagleshoot": "animation.deagle.shoot",
         "m107": "controller.animation.m107",
@@ -297,9 +308,11 @@
         "type81": "controller.animation.type81",
         "rpk": "controller.animation.rpk",
         "m4a1": "controller.animation.m4a1",
+        "aug": "controller.animation.aug",
         "spr15": "controller.animation.spr15",
         "m4a1scope": "controller.animation.m4a1.scope",
         "m4a1shoot": "animation.m4a1.shoot",
+        "augshoot": "animation.aug.shoot",
         "spr15shoot": "animation.spr15.shoot",
         "minigun": "controller.animation.minigun",
         "minigundelay": "animation.minigun.delay",

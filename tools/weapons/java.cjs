@@ -55,4 +55,11 @@ const JAVA_TO_OURS = {
   sks_tactical: "sks", timeless50: "t50", type_81: "type81", ump45: "ump", uzi: "uzi", vector45: "vector", db_short: "db",
 };
 
-module.exports = { openJava, JAVA_TO_OURS };
+// Java gun id -> our id, for the guns ported from Java (java-port.mjs); add each new port here.
+const PORTED = {
+  cz75: "cz75", db_long: "dblong", hk_mk23: "mk23", kar98: "kar98", m320: "m320", m700: "m700", m95: "m95b", m9a4: "m9a4",
+  rhino357: "rhino357", rpk: "rpk", spas_12: "spas12", spr15hb: "spr15", taurus500: "taurus500", taurus943: "taurus943",
+  aug: "aug", lonetrail: "lonetrail", springfield1873: "springfield1873",
+};
+
+module.exports = { openJava, JAVA_TO_OURS, PORTED };

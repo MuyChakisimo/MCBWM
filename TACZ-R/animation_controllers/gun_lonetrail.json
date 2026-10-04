@@ -1,0 +1,85 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.lonetrail.walk": {
+      "initial_state": "setup",
+      "states": {
+        "setup": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "transitions": [{"walk": "v.lonetrail && q.is_moving && !q.is_sprinting && !q.is_sneaking"}]
+        },
+        "walk": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"universal_walk": "v.lonetrail"}, {"walk_delay_2": "v.lonetrail"}],
+          "transitions": [
+            {"delay": "v.lonetrail && q.is_sprinting"},
+            {"delay": "v.lonetrail && q.is_sneaking"},
+            {"delay": "v.lonetrail && !q.is_moving && !q.is_sprinting && q.any_animation_finished"}
+          ]
+        },
+        "delay": {
+          "blend_transition": 0.6,
+          "blend_via_shortest_path": true,
+          "animations": [{"walk_delay": "v.lonetrail"}],
+          "transitions": [{"setup": "v.lonetrail && q.any_animation_finished"}]
+        }
+      }
+    },
+    "controller.animation.lonetrail.tp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "animations": [{"lonetrail_tp_hold": "v.lonetrail"}],
+          "transitions": [{"sight": "v.lonetrail && q.is_sneaking"}, {"hold": "v.lonetrail && q.is_using_item"}]
+        },
+        "sight": {
+          "animations": [{"lonetrail_tp_sight": "v.lonetrail"}],
+          "transitions": [{"hold": "v.lonetrail && !q.is_sneaking"}]
+        }
+      }
+    },
+    "controller.animation.lonetrail.fp": {
+      "initial_state": "hold",
+      "states": {
+        "hold": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"lonetrail_fp_hold": "v.lonetrail"}],
+          "transitions": [
+            {"reload": "v.lonetrailemp && q.mark_variant == 1"},
+            {"inspect": "v.lonetrail && q.skin_id == 1 && !q.is_sneaking"},
+            {"sight": "v.lonetrail && q.is_sneaking"},
+            {"hold": "v.lonetrail && q.is_using_item"}
+          ]
+        },
+        "inspect": {
+          "animations": [{"lonetrail_fp_inspect": "v.lonetrailb"}, {"lonetrail_fp_inspect_emp": "v.lonetrailemp"}],
+          "transitions": [
+            {
+              "hold": "(v.lonetrail && q.any_animation_finished) || (v.lonetrail && q.is_using_item) || (v.lonetrail && q.is_sneaking)"
+            }
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
+        },
+        "reload": {
+          "animations": [{"lonetrail_fp_reload": "v.lonetrail"}],
+          "transitions": [{"hold": "v.lonetrail && (q.any_animation_finished || q.mark_variant != 1)"}],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.1
+        },
+        "sight": {
+          "blend_transition": 0.13,
+          "blend_via_shortest_path": true,
+          "animations": [{"lonetrail_fp_sight": "v.lonetrail"}],
+          "transitions": [
+            {"hold": "v.lonetrail && !q.is_sneaking"},
+            {"reload": "v.lonetrailemp && q.mark_variant == 1"}
+          ]
+        }
+      }
+    }
+  }
+}

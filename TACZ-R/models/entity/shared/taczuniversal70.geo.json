@@ -1,0 +1,152 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {"texture_width": 64, "texture_height": 64, "identifier": "geometry.taczuniversal70"},
+      "bones": [
+        {"name": "root", "pivot": [0, 0, 0]},
+        {"name": "waist", "parent": "root", "pivot": [0, 12, 0]},
+        {
+          "name": "body",
+          "parent": "waist",
+          "pivot": [0, 24, 0],
+          "cubes": [{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [16, 16]}]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "pivot": [0, 24, 0],
+          "cubes": [{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [0, 0]}]
+        },
+        {
+          "name": "hat",
+          "parent": "head",
+          "pivot": [0, 24, 0],
+          "cubes": [{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [32, 0], "inflate": 0.5}]
+        },
+        {"name": "cape", "parent": "body", "pivot": [0, 24, 3]},
+        {"name": "joints", "parent": "body", "pivot": [0, 0, 0]},
+        {"name": "rot", "pivot": [0, 7.9, 5.8], "parent": "joints"},
+        {"name": "mag_and_lefthand", "parent": "rot", "pivot": [0, 1.8, 9]},
+        {"name": "lefthand", "parent": "mag_and_lefthand", "pivot": [-6, 19, 8]},
+        {"name": "lefthand_pos", "parent": "lefthand", "pivot": [0, 8, 8]},
+        {"name": "magazine", "parent": "mag_and_lefthand", "pivot": [0, 4, 10]},
+        {"name": "mag_standard", "parent": "magazine", "pivot": [3, 31.5, 8.375]},
+        {"name": "bone2", "parent": "mag_standard", "pivot": [-0.06274, 7.01023, 6.12738]},
+        {"name": "bone6", "parent": "bone2", "pivot": [0.30492, 6.625, 11.12814]},
+        {"name": "bone7", "parent": "bone2", "pivot": [-0.30492, 6.625, 11.12814]},
+        {"name": "bone10", "parent": "mag_standard", "pivot": [-0.12524, 7.01023, 6.12738]},
+        {"name": "bullet_in_mag", "parent": "magazine", "pivot": [8, 1.125, -7.875]},
+        {"name": "bullet", "parent": "magazine", "pivot": [8, 1.125, -7.875]},
+        {"name": "gun_and_righthand", "parent": "rot", "pivot": [0, 0, 0]},
+        {"name": "righthand", "parent": "gun_and_righthand", "pivot": [6, 19, 8]},
+        {"name": "righthand_pos", "parent": "righthand", "pivot": [0, 8, 8]},
+        {"name": "gun", "parent": "gun_and_righthand", "pivot": [0, 0, 0]},
+        {"name": "aug_default", "parent": "gun", "pivot": [0, 8, 0]},
+        {"name": "deco", "parent": "aug_default", "pivot": [-0.34375, 5.36239, -0.44021]},
+        {"name": "group6", "parent": "deco", "pivot": [0.5625, 5.36239, 5.24729]},
+        {"name": "safety", "parent": "deco", "pivot": [0.52344, 5.36239, 0.93479]},
+        {"name": "safety_illuminated", "parent": "safety", "pivot": [0.9375, 7.39364, 2.95042]},
+        {"name": "trigger", "parent": "deco", "pivot": [-0.34375, 5.36239, -0.19021]},
+        {"name": "octagon2", "parent": "deco", "pivot": [0.637, 8, 0]},
+        {"name": "boltcover", "parent": "deco", "pivot": [-2.09339, 6.612, 7.3125]},
+        {"name": "mag_release", "parent": "deco", "pivot": [0.4375, 4.9133, 9.50336]},
+        {"name": "stock", "parent": "aug_default", "pivot": [0, 0, 0]},
+        {"name": "bone8", "parent": "stock", "pivot": [0.54687, 9.08179, 5.3125]},
+        {"name": "bone4", "parent": "bone8", "pivot": [-0.76517, 6.39099, 8.87944]},
+        {"name": "bone5", "parent": "bone8", "pivot": [-0.9375, 7.92938, 7.5625]},
+        {"name": "group11", "parent": "stock", "pivot": [-0.1875, 3.99723, 0.88626]},
+        {"name": "receiver", "parent": "aug_default", "pivot": [0, 8, 0]},
+        {"name": "group8", "parent": "receiver", "pivot": [-0.8125, 8.375, 3.3464]},
+        {"name": "octagon", "parent": "receiver", "pivot": [0, 8.875, -11.8125]},
+        {"name": "gastube", "parent": "receiver", "pivot": [0, 8, 0]},
+        {"name": "group3", "parent": "gastube", "pivot": [-0.75, 8.375, -9.78985]},
+        {"name": "cover2", "parent": "gastube", "pivot": [0, 8, 0]},
+        {"name": "cover", "parent": "cover2", "pivot": [0, 8, 0]},
+        {"name": "group2", "parent": "receiver", "pivot": [0, 8.875, -2.37625]},
+        {"name": "foregrip", "parent": "aug_default", "pivot": [0.08681, 7.37991, -4.22234]},
+        {"name": "grip", "parent": "foregrip", "pivot": [0, 8, 0]},
+        {"name": "pins", "parent": "aug_default", "pivot": [0.012, 8, 0]},
+        {"name": "muzzle_default", "parent": "aug_default", "pivot": [0, 8, 0]},
+        {"name": "group17", "parent": "muzzle_default", "pivot": [0, 8.875, -16.8836]},
+        {"name": "aug_charge", "parent": "gun", "pivot": [0.66386, 8.28742, -3.75]},
+        {"name": "aug_bolt", "parent": "gun", "pivot": [2.09339, 6.112, 7.5625]},
+        {"name": "group15", "parent": "aug_bolt", "pivot": [-0.03503, 16.27602, 3.95135]},
+        {"name": "bullet_in_barrel", "parent": "aug_bolt", "pivot": [0, 8.5625, 8]},
+        {"name": "bullet2", "parent": "bullet_in_barrel", "pivot": [0, 8.85353, 6.408]},
+        {"name": "positioning2", "parent": "gun", "pivot": [0, 0, 0]},
+        {
+          "name": "laser_pos",
+          "parent": "positioning2",
+          "pivot": [-1.1197, 8.9192, -1.4],
+          "rotation": [0, 0, -45]
+        },
+        {"name": "muzzle_pos", "parent": "positioning2", "pivot": [0, 8.875, -14.0625]},
+        {"name": "muzzle_flash", "parent": "positioning2", "pivot": [0, 8.875, -17]},
+        {"name": "scope_pos", "parent": "positioning2", "pivot": [0, 10.625, 3.5]},
+        {"name": "scope_body", "pivot": [0, 20.66671, 1.73325], "parent": "scope_pos"},
+        {"name": "scope_lens_illuminated", "parent": "scope_body", "pivot": [0, 22.5625, 1.0625]},
+        {"name": "scope_ocular_ring", "pivot": [-0.50243, 23.13347, 9.375], "parent": "scope_pos"},
+        {"name": "scope_ocular", "pivot": [0, 12.0625, 7.25], "parent": "scope_pos"},
+        {"name": "shell", "parent": "positioning2", "pivot": [-0.15, 9.0125, 10.25]},
+        {"name": "constraint", "parent": "gun", "pivot": [0, 11.025, -17]},
+        {
+          "name": "rightArm",
+          "parent": "righthand_pos",
+          "pivot": [-5, 22, 0],
+          "cubes": [{"origin": [-8, 12, -2], "size": [4, 12, 4], "uv": [40, 16]}]
+        },
+        {
+          "name": "rightSleeve",
+          "parent": "rightArm",
+          "pivot": [-5, 22, 0],
+          "cubes": [{"origin": [-8, 12, -2], "size": [4, 12, 4], "uv": [40, 32], "inflate": 0.25}]
+        },
+        {"name": "rightItem", "parent": "rightArm", "pivot": [-6, 15, 1]},
+        {
+          "name": "leftArm",
+          "parent": "lefthand_pos",
+          "pivot": [5, 22, 0],
+          "cubes": [{"origin": [4, 12, -2], "size": [4, 12, 4], "uv": [32, 48]}]
+        },
+        {
+          "name": "leftSleeve",
+          "parent": "leftArm",
+          "pivot": [5, 22, 0],
+          "cubes": [{"origin": [4, 12, -2], "size": [4, 12, 4], "uv": [48, 48], "inflate": 0.25}]
+        },
+        {"name": "leftItem", "parent": "leftArm", "pivot": [6, 15, 1]},
+        {
+          "name": "jacket",
+          "parent": "body",
+          "pivot": [0, 24, 0],
+          "cubes": [{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [16, 32], "inflate": 0.25}]
+        },
+        {
+          "name": "leftLeg",
+          "parent": "root",
+          "pivot": [1.9, 12, 0],
+          "cubes": [{"origin": [-0.1, 0, -2], "size": [4, 12, 4], "uv": [16, 48]}]
+        },
+        {
+          "name": "leftPants",
+          "parent": "leftLeg",
+          "pivot": [1.9, 12, 0],
+          "cubes": [{"origin": [-0.1, 0, -2], "size": [4, 12, 4], "uv": [0, 48], "inflate": 0.25}]
+        },
+        {
+          "name": "rightLeg",
+          "parent": "root",
+          "pivot": [-1.9, 12, 0],
+          "cubes": [{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "uv": [0, 16]}]
+        },
+        {
+          "name": "rightPants",
+          "parent": "rightLeg",
+          "pivot": [-1.9, 12, 0],
+          "cubes": [{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "uv": [0, 32], "inflate": 0.25}]
+        }
+      ]
+    }
+  ]
+}

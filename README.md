@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.31.1`** for both packs. On a dedicated server set `"version": [1, 31, 1]` for both packs in the
+**Pack version is `1.32.0`** for both packs. On a dedicated server set `"version": [1, 32, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -151,8 +151,11 @@ shown), then replaces:
 
 `tools/weapons/test.mjs` ports the CZ75 (from the P320), SPR-15 (M4A1), RPK (Type 81), Kar98k (AWM), SPAS-12 (M870) and
 long Double Barrel into a scratch copy: `check.mjs` passes for each, and `gun.mjs remove` restores the packs byte for
-byte. Not handled yet: built-in scopes (the AUG's scope is a separate Java attachment model) and attachments for
-ported guns (they start with none). Each ported gun still needs an in-game check: aim, reloads, sounds.
+byte; it also ports the AUG (built-in scope: the Java attachment model joins the gun model at its `scope_pos` bone
+and its texture goes under the gun's, `png.cjs`) and the Springfield 1873 (a one-round gun from the M320). Not
+handled yet: attachments for ported guns (they start with none). Reload timing of a ported gun comes from Java
+(`reload-timing.mjs <ourId> <javaId>`: rounds in at Java's `reload.feed`, end when our reload animation ends).
+Each ported gun still needs an in-game check: aim, reloads, sounds.
 
 ## Hitscan, tracers and hit flash
 

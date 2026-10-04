@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.lonetrail": {
+      "initial_state": "setup1",
+      "states": {
+        "setup1": {
+          "transitions": [
+            {
+              "setup": "(query.get_equipped_item_name=='lonetrail' && q.is_using_item) || query.get_equipped_item_name=='lonetrail_emp'"
+            }
+          ],
+          "on_entry": [
+            "/event entity @s[hasitem={item=krep:lonetrail, location=slot.weapon.mainhand}] krep:noreload"
+          ]
+        },
+        "setup": {"transitions": [], "on_entry": []},
+        "lonetrail.31": {
+          "animations": ["lonetrailshoot"],
+          "transitions": [{"setup": "query.all_animations_finished"}],
+          "on_entry": ["/replaceitem entity @s slot.weapon.mainhand 1 krep:lonetrail_emp 1 0"]
+        }
+      }
+    }
+  }
+}

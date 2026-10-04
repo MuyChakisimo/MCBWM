@@ -14,11 +14,12 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.31.1** (both manifests; worlds need `[1, 31, 1]` in `world_*_packs.json`).
-- 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
+- Pack version **1.32.0** (both manifests; worlds need `[1, 32, 0]` in `world_*_packs.json`).
+- 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
-  definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `arm-layout.mjs` (first-person arms on their own hand bones), `test.mjs`
+  definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `arm-layout.mjs` (first-person arms on their own hand bones), `reload-timing.mjs` (a ported gun's reload
+  timing from Java), `png.cjs` (texture atlas for built-in scopes), `test.mjs`
   (tests the tools on a scratch copy; run it after changing any tool).
 - `docs/HOW-IT-WORKS.md`: each system step by step and a troubleshooting table. `docs/NAMING.md`: Minecraft's
   naming/format rules and what every name means. `tools/weapons/validate.mjs`: checks scripts against Mojang's API
@@ -37,6 +38,28 @@ names. Symptom to remember: guns invisible and third-person arms not posed, but 
 work.
 
 ## Next, in order
+
+**v1.32.0 (2026-10-04): the last Java guns, and reload timing from Java.** User test of v1.31.1 (ARs, report in
+chat): Phase 0 works in game (2.10.0 scripts loaded, fire rates and reloads right, silencer read); still to try:
+attachment menu, crafting, and the fire-rate fix on MK23 / revolvers / CP / M1014 / M95 / DB-4. The user asked to
+import the Java guns before Phase 1, and decided **only sniper scopes zoom for now** (rest during visual testing).
+- **Reload timing of ported guns was wrong**: script-reload.mjs took it from the BP reload animations, which ported
+  guns inherited from their clone source (Rhino ended at 2.5 s, its animation is 4.23 s; Raging Hunter, RPK, M95,
+  M9A4 ... too). New `reload-timing.mjs`: rounds in at Java's `reload.feed`, end = our first-person reload
+  animation's length. Applied to all 13 ported guns (SPAS-12's shell reload left alone); java-port runs it. May
+  explain some of the reported reload-hand problems (Raging Hunter, Rhino): **re-check them in game**.
+- java-port: category from Java's type (RPK is Java "mg": now "heavy" like the M249); launcher-only settings
+  (explosion, aimToFire, tracerParticles) dropped unless a launcher; `suppressedFrom` dropped (no muzzle
+  attachments; the SPR-15 bug); a source gun that was itself ported counts for third-person placement (PORTED in
+  java.cjs).
+- **Springfield 1873** (sniper, .45-70, 1 round, 35 damage) and **Lone Trail** (pistol, .30-06, 1 round, 21.5) from
+  the M320 (round in the item: no magazine resize). **AUG** (rifle, 5.56, 30, auto 710 rpm) from the M4A1 with its
+  **built-in 4.25x scope**: the Java attachment model's parts join the gun model at `scope_pos` (reticle planes
+  `division*` and camera markers left out; Java hides the rail mount), its texture is stacked under the gun's
+  (`png.cjs`). The scope's view line is at the iron sight's height (12.06), so the computed aim pose fits it.
+- **Test in game:** the three new guns (craft them; aim, fire, reload, inspect, sounds, third person); the AUG's
+  scope on top of the gun and aiming through it; reloads of the Java-ported guns now play to the end (Rhino,
+  Raging Hunter, RPK, M95, M320 especially).
 
 **v1.31.1 (2026-10-04): fire-rate fix.** The user's all-guns report (reference/Console Report.txt, profile
 _00-58-54) ran on the OLD pack (log: `version: 1.30.5`, profile: runCommandAsync in recoil.js), so Phase 0 is still
@@ -282,13 +305,11 @@ came from reading `hit.block.typeId` past the ticking area (fixed v1.30.5); the 
    CZ75/MK23 reloads and SPR-15, were seen in first person. MK23 wording clarification remains pending.
    Other guns still need confirmation of first person hold/aim/draw, reloads, inspect, sounds,
    crafting, ammo. Recipes are Java's (the M95 is 300 iron, 60 gold, 15 diamonds, 3 netherite, 5 blaze rods).
-   **Still to port:**
-   - springfield1873, lonetrail (1-round guns): `resizeMagazine` refuses magazines under 3 (its number matching
-     would hit the 0/1 empty and has-ammo checks). Port from db (2 rounds) and hand-edit to 1, or teach the resizer.
-   - aug: **built-in scope** (Java `scope_aug_default` attachment model) not handled yet.
+   **All Java guns ported (v1.32.0):** springfield1873 and lonetrail from the M320 (one round in the item, no resize
+   needed), aug from the M4A1 with its built-in scope merged in.
 
-   Ported guns start with no attachments (`java-port.mjs` strips what the clone inherited). Still to build: merging a
-   built-in scope model (AUG), and Java attachments for ported guns (Java has 100+ attachment models). Each port adds
+   Ported guns start with no attachments (`java-port.mjs` strips what the clone inherited). Still to build: Java
+   attachments for ported guns (Java has 100+ attachment models). Each port adds
    an always-running `<id>reloading` controller (step 4).
 3b. **Reloading in the script.** **v1.27.0 (2026-10-02): M4A1 converted as the test gun.** New `combat/reload.js`
    (empty reload = use with `krep:<id>_emp`; tactical = swing with at least 2 rounds missing, from the shared BP

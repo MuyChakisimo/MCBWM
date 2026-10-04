@@ -1,0 +1,19 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.aug": {
+      "geometry": "geometry.aug",
+      "materials": [
+        {"*": "material.guns"},
+        {"laserbeam_1": "material.glow"},
+        {"t2_reticle": "material.glow"},
+        {"coyote_reticle": "material.glow"},
+        {"552_reticle": "material.glow"}
+      ],
+      "part_visibility": [{"*": true}],
+      "textures": ["texture.aug"],
+      "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
+      "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
+    }
+  }
+}

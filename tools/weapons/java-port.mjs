@@ -7,13 +7,16 @@
 // Steps (each prints what it did):
 //   1. tools/weapons/gun.mjs clone <ourGun> <newId>       controllers, items, functions, sounds ...
 //   2. model + first-person arms model (java-convert.mjs); optional parts removed (extended mags,
-//      alternative stocks, scope mount/rails unless the gun has a built-in scope)
-//   3. textures: Java gun texture and inventory icon
+//      alternative stocks, scope mount/rails unless the gun's built-in scope shows its mount); a built-in
+//      scope's model (AUG) joins the gun model at scope_pos
+//   3. textures: Java gun texture (a built-in scope's texture added under it) and inventory icon
 //   4. animations: draw, shoot, reloads, inspects replaced with Java's; hold/sprint/walk/aim moved to
 //      the pose computed from the Java model; an empty inspect is added and wired if the clone lacks one
 //   5. sounds: every sound the new animations and the shot use, from TACZ-JAVA
 //   6. stats (config/weapons.js) from java-stats.mjs; ammo item; magazine size (HUD, reload
-//      functions, reload events and thresholds are regenerated for the new size)
+//      functions, reload events and thresholds are regenerated for the new size); category from Java's gun
+//      type; reload timing from Java (reload-timing.mjs); launcher-only settings dropped unless a launcher
+// Add the new gun to PORTED in java.cjs.
 // The source gun must have its own first-person arms model (most do; M16/M16A1, Deagle/Golden Deagle,
 // G17/G18, AKM/Saiga-12 and MP7/FAL share one).
 import fs from "node:fs";
@@ -25,10 +28,12 @@ import { pathToFileURL } from "node:url";
 import { convertGun, armsModel, FIXED_FP } from "./java-convert.mjs";
 import { armLayout } from "./arm-layout.mjs";
 import { repairImport } from "./import-repair.mjs";
+import { reloadTiming } from "./reload-timing.mjs";
 const require = createRequire(import.meta.url);
 const { parse } = require("./lenient.cjs");
 const { format } = require("./format.cjs");
-const { openJava, JAVA_TO_OURS } = require("./java.cjs");
+const { openJava, JAVA_TO_OURS, PORTED } = require("./java.cjs");
+const png = require("./png.cjs");
 const geometryOfJava = (j) => (j["minecraft:geometry"] ?? [])[0];
 
 const root = process.cwd();
@@ -95,17 +100,48 @@ stripAttachments(id);
 // ---------------------------------------------------------------- 2. model and arms model
 const converted = convertGun(java, javaId, id);
 const builtinScope = !!javaData.builtin_attachments?.scope;
-if (builtinScope)
-  log(`   note: ${javaId} has a built-in scope (${javaData.builtin_attachments.scope}); its model is a separate Java attachment and is not added yet, so the gun has no scope and aims with its iron-sight position`);
+// A built-in scope (AUG) is a separate Java attachment model: its parts join the gun model at the gun's
+// scope_pos bone, its texture goes under the gun's (one texture per model). Left out: the reticle
+// (division*: a big flat plane Java only shows through the lens) and camera markers (scope_view, views).
+const scope = builtinScope ? builtinScopeParts(javaData.builtin_attachments.scope) : null;
 {
   const g = converted.model["minecraft:geometry"][0];
+  if (scope) {
+    const names = new Set(g.bones.map((b) => b.name));
+    const at = g.bones.findIndex((b) => b.name === "scope_pos");
+    if (at < 0) throw new Error(`${javaId}: no scope_pos bone for its built-in scope`);
+    const offset = g.bones[at].pivot;
+    // Image pixels per UV unit must match (AUG: 256 px for 128 units, scope 128 px for 64).
+    const gunPixels = java.read(`assets/tacz/textures/${javaDisplay.texture.replace(/^tacz:/, "")}.png`).readUInt32BE(16);
+    const scale = (gunPixels / g.description.texture_width) / (scope.png.width / scope.texture.width);
+    const vShift = g.description.texture_height;
+    const bones = scope.bones.map((b) => {
+      const bone = structuredClone(b);
+      bone.name = b.name.startsWith("scope_") ? b.name : `scope_${b.name}`;
+      bone.parent = b.parent ? (b.parent.startsWith("scope_") ? b.parent : `scope_${b.parent}`) : "scope_pos";
+      if (names.has(bone.name)) throw new Error(`${javaId}: scope bone ${bone.name} clashes with a gun bone`);
+      const move = (v) => v.map((x, i) => +(x + offset[i]).toFixed(5));
+      if (bone.pivot) bone.pivot = move(bone.pivot);
+      for (const c of bone.cubes ?? []) {
+        c.origin = move(c.origin);
+        if (c.pivot) c.pivot = move(c.pivot);
+        if (Array.isArray(c.uv)) c.uv = [c.uv[0], c.uv[1] + vShift];
+        else for (const face of Object.values(c.uv ?? {})) face.uv = [face.uv[0], face.uv[1] + vShift];
+      }
+      return bone;
+    });
+    if (scale !== 1) throw new Error(`${javaId}: gun and scope textures differ in pixels per unit (${scale}); not handled`);
+    g.bones.splice(at + 1, 0, ...bones);
+    g.description.texture_height += scope.texture.height;
+    log(`   built-in scope ${scope.id}: ${bones.length} parts at scope_pos ${JSON.stringify(offset)}${scope.showMount ? "" : " (gun's mount hidden, as Java)"}`);
+  }
   const drop = new Set();
   // Stocks: Java's standard stock is oem_stock_tactical (light/heavy/AR adapter are attachments);
   // a gun without one keeps its first oem_stock_*.
   const stocks = g.bones.filter((b) => /^oem_stock_/.test(b.name));
   const keepStock = stocks.find((b) => b.name === "oem_stock_tactical") ?? stocks[0];
   for (const b of g.bones) {
-    const optional = OPTIONAL_PARTS.test(b.name) && !(builtinScope && /^(mount|rail\d*)$/.test(b.name));
+    const optional = OPTIONAL_PARTS.test(b.name) && !(scope?.showMount && /^(mount|rail\d*)$/.test(b.name));
     if (optional || (/^oem_stock_/.test(b.name) && b !== keepStock) || b.name === "ar_stock_adapter") drop.add(b.name);
   }
   for (let grew = true; grew; ) { grew = false; for (const b of g.bones) if (!drop.has(b.name) && drop.has(b.parent)) { drop.add(b.name); grew = true; } }
@@ -121,7 +157,9 @@ if (builtinScope)
 {
   const tex = (javaDisplay.texture ?? "").replace(/^tacz:/, "");
   const slot = (javaDisplay.slot ?? "").replace(/^tacz:/, "");
-  fs.writeFileSync(abs(`TACZ-R/textures/gun/${id}.png`), java.read(`assets/tacz/textures/${tex}.png`));
+  const gunPng = java.read(`assets/tacz/textures/${tex}.png`);
+  fs.writeFileSync(abs(`TACZ-R/textures/gun/${id}.png`), scope ? png.encode(png.stack(png.decode(gunPng), scope.png)) : gunPng);
+  if (scope) log(`   ${scope.id} texture added under the gun's`);
   if (slot && java.has(`assets/tacz/textures/${slot}.png`)) fs.writeFileSync(abs(`TACZ-R/textures/items/${id}.png`), java.read(`assets/tacz/textures/${slot}.png`));
   log(`3. textures: gun ${tex}, icon ${slot}`);
 }
@@ -257,7 +295,8 @@ const soundNames = new Map(); // our cue name -> Java sound path
   // their joints so the new model's thirdperson_hand lands there instead (scaled like joints). Needs the
   // source gun's Java model (not the Type 81 or Colt Python). Tested: CZ75 3.25 lower than the P320 looked
   // too low, M320 4.4 higher than the RPG too high.
-  const fromJava = Object.entries(JAVA_TO_OURS).find(([, ours]) => ours === from)?.[0];
+  // A gun ported earlier counts too: its tp animations were placed for its own Java model (M320 -> Springfield 1873).
+  const fromJava = Object.entries({ ...JAVA_TO_OURS, ...PORTED }).find(([, ours]) => ours === from)?.[0];
   const tpHand = (jid) => {
     const d = java.json(`assets/tacz/display/guns/${java.gunIndex(jid).display.split(":")[1]}.json`);
     return geometryOfJava(java.json(d.model.replace("tacz:", "assets/tacz/geo_models/") + ".json"))?.bones.find((b) => b.name === "thirdperson_hand")?.pivot;
@@ -366,6 +405,11 @@ const soundNames = new Map(); // our cue name -> Java sound path
     set("headshot", x.head_shot_multiplier ?? 1);
     falloff ? set("falloff", `[${falloff.map(([d, v]) => `[${d}, ${v}]`).join(", ")}]`) : del("falloff");
     set("fireMode", JSON.stringify(fireMode)); set("rpm", javaData.rpm);
+    // Java's gun type (machine guns and launchers are our "heavy"); launcher-only settings go unless it is one
+    // (a single-shot rifle ported from the M320 must not explode).
+    const type = java.gunIndex(javaId).type;
+    set("category", JSON.stringify({ mg: "heavy", rpg: "heavy" }[type] ?? type));
+    if (type !== "rpg") { del("explosion"); del("aimToFire"); del("tracerParticles"); }
     fireMode === "burst" && bd ? set("burst", `{ count: ${bd.count ?? 3}, rpm: ${bd.bpm ?? javaData.rpm}, delay: ${bd.min_interval ?? 0.3} }`) : del("burst");
     if ((b.bullet_amount ?? 1) > 1) set("pellets", b.bullet_amount); else { del("pellets"); del("spread"); del("tracers"); }
     set("magazine", newMag); set("ammo", JSON.stringify(`krep:${newAmmo}`));
@@ -393,6 +437,7 @@ const soundNames = new Map(); // our cue name -> Java sound path
   log(recipe ? `   recipe from Java: ${recipe.map(([i, n]) => `${n} ${i}`).join(", ")}` : `   no Java recipe: kept ${from}'s`);
   if (newAmmo !== oldAmmo) { swapAmmo(id, oldAmmo, newAmmo); log(`   ammo: krep:${oldAmmo} -> krep:${newAmmo}`); }
   if (newMag !== oldMag) { resizeMagazine(id, oldMag, newMag); log(`   magazine: ${oldMag} -> ${newMag}`); }
+  if (WEAPONS[id].scriptReload) reloadTiming(root, id, javaId, log);
 }
 // ---------------------------------------------------------------- 7. arm layout
 // The converted model mirrors the arms (right arm on lefthand_pos), which holds rifles fine but hides the
@@ -494,6 +539,23 @@ function resizeMagazine(id, M, N) {
   });
 }
 
+/** A built-in scope ("tacz:scope_aug_default"): its model's visible parts, texture, and whether Java still shows the gun's mount. */
+function builtinScopeParts(attachment) {
+  const name = attachment.replace(/^tacz:/, "");
+  const display = java.json(`assets/tacz/display/attachments/${name}_display.json`);
+  const geo = geometryOfJava(java.json(`assets/tacz/${display.model.replace(/^tacz:/, "geo_models/")}.json`));
+  const LEFT_OUT = /^(division.*|scope_view|views)$/;
+  const out = new Set(geo.bones.filter((b) => LEFT_OUT.test(b.name)).map((b) => b.name));
+  for (let grew = true; grew; ) { grew = false; for (const b of geo.bones) if (!out.has(b.name) && out.has(b.parent)) { out.add(b.name); grew = true; } }
+  return {
+    id: name,
+    bones: geo.bones.filter((b) => !out.has(b.name)),
+    texture: { width: geo.description.texture_width, height: geo.description.texture_height },
+    png: png.decode(java.read(`assets/tacz/textures/${display.texture.replace(/^tacz:/, "")}.png`)),
+    showMount: display.show_mount !== false,
+  };
+}
+
 function stripAttachments(id) {
   const removed = [];
   // Config: menu entries and attachment recoil.
@@ -504,6 +566,14 @@ function stripAttachments(id) {
       removed.push(path.basename(f));
       return t.slice(0, m.index + 1) + t.slice(m.index + m[0].length);
     });
+  // No muzzle attachments, so never silenced (krep:muzzle is shared: another gun's silencer would silence it,
+  // as the SPR-15 was).
+  edit("TACZ-B/scripts/config/weapons.js", (t) => {
+    const m = new RegExp(`(\\n  ${id}: \\{\\r?\\n[\\s\\S]*?)\\n    suppressedFrom: [^\\n]*(?=\\n)`).exec(t);
+    if (!m || t.slice(m.index).indexOf("\n  },") < m[0].length) return undefined;
+    removed.push("suppressedFrom");
+    return t.slice(0, m.index) + m[1] + t.slice(m.index + m[0].length);
+  });
   const scopeProp = `krep:${id}scope`;
   // BP: scope property, sight events, scope controller.
   editJson("TACZ-B/entities/player.json", (j) => {

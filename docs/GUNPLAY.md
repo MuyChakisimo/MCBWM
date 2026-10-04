@@ -72,7 +72,10 @@ in `system.run`); `itemUseOn` events removed; `getComponent` throws on invalid e
 - **Muzzle flash light** lights up dark areas on every shot, except with a silencer; big muzzle flashes, cool
   tracers and "thump" in the sounds (GTA IV is the user's favourite gun feel). Damage tuning by gun class; sounds
   by area (indoor / outdoor, distant).
-- Keep files small (cleanup), and import the last Java guns (Springfield 1873, Lone Trail, AUG).
+- Keep files small (cleanup), and import the last Java guns (Springfield 1873, Lone Trail, AUG): **done in
+  v1.32.0, before Phase 1** (user: so every phase covers all guns).
+- **Zoom (2026-10-04): only sniper scopes zoom for now**; other sights (red dots, ACOG, the AUG's 4.25x
+  built-in scope) decided during the visual testing.
 - Make factual decisions (measure / check the APIs, ask), not guesses.
 
 ## 4. Gap list
@@ -111,7 +114,7 @@ Each phase is its own version(s), tested in game with `scriptevent tacz:debug` a
 6. **Performance leftovers.** Event-driven attachment / stored-ammo / lore (2.1.0 events), `playerSwingStart`
    replaces the shared `reload_input` controller, `isChunkLoaded` before far rays, minigun to script, final
    cleanup of per-gun leftovers.
-7. **Last Java guns** (Springfield 1873, Lone Trail, AUG) and third-person camera polish.
+7. Third-person camera polish. (The last Java guns came first: v1.32.0.)
 
 Not planned: native aim assist (third person only), hip-fire bloom (dropped by MW4 as unfair randomness).
 
