@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.30.0** (both manifests; worlds need `[1, 30, 0]` in `world_*_packs.json`).
+- Pack version **1.30.1** (both manifests; worlds need `[1, 30, 1]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -364,7 +364,8 @@ work.
 - **User test of v1.25.1 (2026-10-02): content log empty at world load.** Mostly looks great; some guns fixed;
   open: some guns' shot sounds are late (which ones not said yet), arms and animations sometimes off.
 - **Test report** (v1.29.2, combat/debug.js): in the server console `scriptevent tacz:debug start`, play, then
-  `scriptevent tacz:debug stop` prints a report per gun (shots, time between held-trigger shots vs its rpm,
+  `scriptevent tacz:debug stop` prints a report per gun to chat and the server console (console only with
+  content-log-console-output-enabled=true; shots, time between held-trigger shots vs its rpm,
   sounds, reload counts and load / end times, cancels, no-ammo, auto reloads). `on` / `off`: a live line per shot
   and reload step. Ask the user for that log
   when timing or sound problems are reported (e.g. 2026-10-03: MP7 sound late or quiet the first time, fine

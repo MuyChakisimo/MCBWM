@@ -1,9 +1,9 @@
-import { system, Player } from "@minecraft/server";
+import { system, world } from "@minecraft/server";
 import { WEAPONS } from "../config/weapons.js";
 
 // Test tools, typed in the server console (or by an operator in chat):
 //   scriptevent tacz:debug start   record every shot and reload, from all players, quietly
-//   scriptevent tacz:debug stop    print a report per gun (server console / content log) and stop recording
+//   scriptevent tacz:debug stop    print a report per gun (chat, and the server console / content log) and stop
 //   scriptevent tacz:debug on|off  log one line per shot and reload step as it happens
 // The report shows, per gun: shots and the time between shots while the trigger is held (flagged when slower
 // than the gun's rpm), the sounds played, and per reload kind: count, time to load and to end, cancels,
@@ -13,6 +13,12 @@ let live = false;
 let session = null; // { startTick, guns: Map<id, stats> }
 
 const out = (text) => console.warn(`[TACZ debug] ${text}`);
+// The report also goes to chat: the server console shows script output only with
+// content-log-console-output-enabled=true in server.properties.
+const say = (text) => {
+  out(text);
+  world.sendMessage(`§7[TACZ] ${text}`);
+};
 
 /** Live log line (built only when the live log is on). */
 export function debug(make) {
@@ -59,17 +65,17 @@ const range = (a) => (a.length ? `${avg(a)} (${Math.min(...a)}-${Math.max(...a)}
 
 function report() {
   const ticks = system.currentTick - session.startTick;
-  out(`report: ${(ticks / 20).toFixed(0)} s recorded, ${session.guns.size} gun(s); times in ticks (20 per second)`);
+  say(`report: ${(ticks / 20).toFixed(0)} s recorded, ${session.guns.size} gun(s); times in ticks (20 per second)`);
   for (const [id, s] of [...session.guns].sort()) {
     const w = WEAPONS[id];
     const expected = w?.rpm ? 1200 / (w.fireMode === "burst" ? w.burst?.rpm ?? w.rpm : w.rpm) : undefined;
     const mean = s.gaps.reduce((x, y) => x + y, 0) / (s.gaps.length || 1);
     const slow = expected && s.gaps.length >= 3 && mean > Math.max(expected * 1.5, expected + 1);
-    out(`${id}: ${s.shots} shot(s); held-trigger gap ${range(s.gaps)}${expected ? `, rpm ${w.rpm} = ${expected.toFixed(1)}` : ""}${slow ? "  << SLOWER THAN ITS RPM" : ""}; sound ${[...s.sounds].join(", ") || "-"}`);
+    say(`${id}: ${s.shots} shot(s); held-trigger gap ${range(s.gaps)}${expected ? `, rpm ${w.rpm} = ${expected.toFixed(1)}` : ""}${slow ? "  << SLOWER THAN ITS RPM" : ""}; sound ${[...s.sounds].join(", ") || "-"}`);
     for (const [kind, r] of Object.entries(s.reloads))
-      out(`   ${kind} reload: ${r.count}x (${r.auto} auto), load at ${range(r.load)}, end at ${range(r.end)}${r.cancel ? `, ${r.cancel} cancelled` : ""}${r.noammo ? `, ${r.noammo}x no ammo` : ""}`);
+      say(`   ${kind} reload: ${r.count}x (${r.auto} auto), load at ${range(r.load)}, end at ${range(r.end)}${r.cancel ? `, ${r.cancel} cancelled` : ""}${r.noammo ? `, ${r.noammo}x no ammo` : ""}`);
   }
-  if (!session.guns.size) out("nothing was fired or reloaded");
+  if (!session.guns.size) say("nothing was fired or reloaded");
 }
 
 system.afterEvents.scriptEventReceive.subscribe(({ id, message, sourceEntity }) => {
@@ -81,12 +87,11 @@ system.afterEvents.scriptEventReceive.subscribe(({ id, message, sourceEntity }) 
     reply = "recording shots and reloads; 'scriptevent tacz:debug stop' prints the report";
   } else if (cmd === "stop") {
     if (session) report();
-    reply = session ? "report printed to the server console / content log" : "nothing was being recorded";
+    reply = session ? "report printed above (chat and server log)" : "nothing was being recorded";
     session = null;
   } else {
     live = cmd !== "off";
     reply = `live log ${live ? "on" : "off"}`;
   }
-  out(reply);
-  if (sourceEntity instanceof Player) sourceEntity.sendMessage(`TACZ debug: ${reply}`);
+  say(reply);
 });
