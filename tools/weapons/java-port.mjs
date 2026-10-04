@@ -415,7 +415,7 @@ log(`\nDone. Run tools/weapons/check.mjs, then test ${id} in game (aim, reloads,
 // ---------------------------------------------------------------- helpers
 function ownBpFiles(id) {
   const fn = fs.readdirSync(abs("TACZ-B/functions")).filter((f) => new RegExp(`^${id}((quantity|reload)\\d*)?\\.mcfunction$`).test(f)).map((f) => `TACZ-B/functions/${f}`);
-  return [...fn, `TACZ-B/animation_controllers/gun_${id}.json`, `TACZ-B/animations/guns/${id}.json`];
+  return [...fn, `TACZ-B/animation_controllers/gun_${id}.json`, `TACZ-B/animations/guns/${id}.json`].filter(exists);
 }
 
 function swapAmmo(id, oldAmmo, newAmmo) {
@@ -446,7 +446,7 @@ function resizeMagazine(id, M, N) {
     .replace(new RegExp(`(scoreboard\\('${id}'\\) *[<>=]+ *)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n))
     .replace(new RegExp(`(@s(?:\\[[^\\]]*\\])? ${id} )(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n));
   edit(`TACZ-B/functions/${id}.mcfunction`, (t) => t.replace(/"\/(\d+)(?=[ \\])/g, (m, n) => `"/${shiftNum(+n)}`).replace(new RegExp(`(${id}=1\\.\\.)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
-  for (const f of [`TACZ-B/animation_controllers/gun_${id}.json`, `TACZ-B/animations/guns/${id}.json`]) edit(f, shiftText);
+  for (const f of [`TACZ-B/animation_controllers/gun_${id}.json`, `TACZ-B/animations/guns/${id}.json`].filter(exists)) edit(f, shiftText);
   edit("TACZ-B/animation_controllers/shared_inspect.json", (t) => t.replace(new RegExp(`(scoreboard\\('${id}'\\) *[<>=]+ *)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
   // A script-reloaded gun (combat/reload.js) has no quantity / reload functions or reload events: its capacity is
   // config/weapons.js magazine, already set.

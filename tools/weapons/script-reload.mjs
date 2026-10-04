@@ -51,7 +51,7 @@ for (const id of ids) {
 
   // Timing from the BP reload animations (one per magazine attachment on the Vector / Golden Deagle).
   const bpFile = `TACZ-B/animations/guns/${id}.json`;
-  const bp = parse(read(bpFile));
+  const bp = fs.existsSync(abs(bpFile)) ? parse(read(bpFile)) : { animations: {} };
   const ammo = /^ {4}ammo: "([\w:]+)",/m.exec(entry[1])?.[1];
   const ALLOWED = [
     new RegExp(`^/function ${id}reload\\d*$`), `/event entity @s krep:${id}_reload`, `/replaceitem entity @s slot.weapon.mainhand 1 krep:${id} 1 0`, `/function ${id}`,
@@ -153,7 +153,9 @@ for (const id of ids) {
     delete desc.animations[short];
     delete bp.animations[animId];
   }
-  write(bpFile, format(bp));
+  // Minecraft rejects an animation file with no animations: delete it when the reload was all it had.
+  if (Object.keys(bp.animations).length) write(bpFile, format(bp));
+  else fs.rmSync(abs(bpFile));
   const ctrlShort = Object.keys(desc.animations).find((k) => desc.animations[k] === ctrlId);
   if (ctrlShort) delete desc.animations[ctrlShort];
   desc.scripts.animate = desc.scripts.animate.filter((x) => (typeof x === "string" ? x : Object.keys(x)[0]) !== ctrlShort);

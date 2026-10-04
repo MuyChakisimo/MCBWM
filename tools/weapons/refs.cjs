@@ -51,6 +51,12 @@ function checkPack(root) {
   for (const [f, j] of under("TACZ-R/animations")) for (const [id, a] of Object.entries(j.animations ?? {})) rpAnims.set(id, { file: f, anim: a });
   // Bone names: a space (Java's "release button") makes the game reject the whole animation file.
   const BONE = /^[A-Za-z0-9_.\-]+$/;
+  // Minecraft rejects an animation / animation controller file with nothing in it ("Required child ... not found";
+  // v1.30: 11 BP animation files left empty when reloading moved to the script).
+  for (const pack of ["TACZ-B", "TACZ-R"]) {
+    for (const [f, j] of under(`${pack}/animations`)) if (!Object.keys(j.animations ?? {}).length) err(f, "has no animations (delete the file)");
+    for (const [f, j] of under(`${pack}/animation_controllers`)) if (!Object.keys(j.animation_controllers ?? {}).length) err(f, "has no animation controllers (delete the file)");
+  }
   for (const [f, j] of under("TACZ-R/animations")) for (const [id, a] of Object.entries(j.animations ?? {})) for (const b of Object.keys(a.bones ?? {})) if (!BONE.test(b)) err(f, `${id}: bone "${b}" may only use letters, digits, _ . -`);
   for (const [f, j] of under("TACZ-R/models")) for (const g of [...(j["minecraft:geometry"] ?? []), ...Object.entries(j).filter(([k]) => k.startsWith("geometry.")).map(([, v]) => v)]) for (const b of g.bones ?? []) if (!BONE.test(b.name)) err(f, `bone "${b.name}" may only use letters, digits, _ . -`);
   const rpControllers = new Map();

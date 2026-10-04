@@ -64,7 +64,8 @@ export function repairImport(root, javaId, id, log = console.log) {
   const desc = entity["minecraft:client_entity"].description;
   const controllerFile = `TACZ-R/animation_controllers/gun_${id}.json`;
   const controllers = parse(read(controllerFile)), fp = controllers.animation_controllers[`controller.animation.${id}.fp`];
-  const bpFile = `TACZ-B/animations/guns/${id}.json`, bp = parse(read(bpFile));
+  // A script-fired / script-reloaded gun may have no BP animation file left (Minecraft rejects an empty one).
+  const bpFile = `TACZ-B/animations/guns/${id}.json`, hasBp = fs.existsSync(path.join(root, bpFile)), bp = hasBp ? parse(read(bpFile)) : { animations: {} };
   const javaAnims = java.json(`assets/tacz/animations/${javaId}.animation.json`).animations;
 
   if (javaId === "spas_12") {
@@ -191,7 +192,7 @@ export function repairImport(root, javaId, id, log = console.log) {
     });
     if (cues.length) a.sound_effects[t] = Array.isArray(fx) ? cues : cues[0]; else delete a.sound_effects[t];
   }
-  write(animFile, file); write(bpFile, bp); write(controllerFile, controllers); write(entityFile, entity);
+  write(animFile, file); if (hasBp && Object.keys(bp.animations).length) write(bpFile, bp); else if (hasBp) fs.rmSync(path.join(root, bpFile)); write(controllerFile, controllers); write(entityFile, entity);
   // sound_definitions uses ordinary JSON formatting, not compact animation formatting.
   const oldDefs = read(defsFile), text = JSON.stringify(defs, null, 2) + "\n";
   fs.writeFileSync(path.join(root, defsFile), oldDefs.includes("\r\n") ? text.replace(/\n/g, "\r\n") : text);

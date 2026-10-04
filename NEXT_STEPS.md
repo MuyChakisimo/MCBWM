@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.30.1** (both manifests; worlds need `[1, 30, 1]` in `world_*_packs.json`).
+- Pack version **1.30.2** (both manifests; worlds need `[1, 30, 2]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -370,6 +370,10 @@ work.
   and reload step. Ask the user for that log
   when timing or sound problems are reported (e.g. 2026-10-03: MP7 sound late or quiet the first time, fine
   the second; maybe the first play of a sound loading from disk).
+- **The test server's console** (content-log-console-output-enabled=true) found, 2026-10-03: 11 BP animation files
+  left with `"animations": {}` after reloading moved to the script (cz75 g36 m9a4 mk14 mk23 p320 rhino357 rpk
+  taurus500 taurus943 type81): Minecraft rejects an empty animation file. Deleted in v1.30.2; the tools delete such a
+  file instead of emptying it, and check.mjs refuses empty animation / controller files.
 - **Turn on the in-game content log** (Settings > Creator > Content Log GUI): it names errors our checks missed.
   First run (user, 2026-10-02, v1.25.0) found, fixed in v1.25.1: Taurus 943 animation bone "release button" (a space:
   the game rejected its whole animation file, why it was invisible in first person / between the legs in third;
