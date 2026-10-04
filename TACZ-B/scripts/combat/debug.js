@@ -68,10 +68,18 @@ function report() {
   say(`report: ${(ticks / 20).toFixed(0)} s recorded, ${session.guns.size} gun(s); times in ticks (20 per second)`);
   for (const [id, s] of [...session.guns].sort()) {
     const w = WEAPONS[id];
-    const expected = w?.rpm ? 1200 / (w.fireMode === "burst" ? w.burst?.rpm ?? w.rpm : w.rpm) : undefined;
-    const mean = s.gaps.reduce((x, y) => x + y, 0) / (s.gaps.length || 1);
-    const slow = expected && s.gaps.length >= 3 && mean > Math.max(expected * 1.5, expected + 1);
-    say(`${id}: ${s.shots} shot(s); held-trigger gap ${range(s.gaps)}${expected ? `, rpm ${w.rpm} = ${expected.toFixed(1)}` : ""}${slow ? "  << SLOWER THAN ITS RPM" : ""}; sound ${[...s.sounds].join(", ") || "-"}`);
+    const burst = w?.fireMode === "burst" ? w.burst : undefined;
+    const expected = w?.rpm ? 1200 / (burst?.rpm ?? w.rpm) : undefined;
+    let timing;
+    if (w?.fireMode === "semi" || w?.cycle) timing = `time between clicks ${range(s.gaps)} (fastest allowed ${expected?.toFixed(1)})`; // the player's pace
+    else {
+      // Auto: every gap; burst: only gaps inside a burst (the pause between bursts is burst.delay).
+      const gaps = burst ? s.gaps.filter((g) => g < burst.delay * 20 * 0.8) : s.gaps;
+      const mean = gaps.reduce((x, y) => x + y, 0) / (gaps.length || 1);
+      const slow = expected && gaps.length >= 3 && mean > Math.max(expected * 1.5, expected + 1);
+      timing = `${burst ? "within-burst" : "held-trigger"} gap ${range(gaps)}, rpm ${burst?.rpm ?? w?.rpm} = ${expected?.toFixed(1)}${slow ? "  << SLOWER THAN ITS RPM" : ""}`;
+    }
+    say(`${id}: ${s.shots} shot(s); ${timing}; sound ${[...s.sounds].join(", ") || "-"}`);
     for (const [kind, r] of Object.entries(s.reloads))
       say(`   ${kind} reload: ${r.count}x (${r.auto} auto), load at ${range(r.load)}, end at ${range(r.end)}${r.cancel ? `, ${r.cancel} cancelled` : ""}${r.noammo ? `, ${r.noammo}x no ammo` : ""}`);
   }

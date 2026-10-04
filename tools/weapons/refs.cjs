@@ -232,7 +232,7 @@ function checkPack(root) {
     if (!/^ {4}scriptFiring: true,/m.test(m[0])) continue;
     const prefix = /^ {4}shootSound: "([\w.]+)",/m.exec(m[0])?.[1] ?? m[1];
     useSound(`${prefix}.shoot`, "TACZ-B/scripts/combat/firing.js", "playSound");
-    if (soundDefs[`${prefix}.suppress`]) usedSounds.add(`${prefix}.suppress`);
+    if (/^ {4}suppressedFrom: /m.test(m[0])) useSound(`${prefix}.suppress`, "TACZ-B/scripts/combat/firing.js", "playSound");
     // Without shootAnimation, firing.js plays animation.<id>.shoot.sight / .nsight.
     if (!/^ {4}shootAnimation: /m.test(m[0])) for (const a of [`animation.${m[1]}.shoot.sight`, `animation.${m[1]}.shoot.nsight`]) {
       if (!rpAnims.has(a)) err("TACZ-B/scripts/config/weapons.js", `${m[1]}: firing.js plays ${a}, which doesn't exist`);

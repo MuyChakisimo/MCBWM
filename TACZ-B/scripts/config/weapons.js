@@ -23,7 +23,9 @@
 //                 gun's BP fire controller (tools/weapons/script-firing.mjs converts a gun).
 //   shootSound    Sound name prefix if not the gun's id: plays "<shootSound>.shoot" / ".suppress".
 //   shootAnimation { ads, hip }: shoot animations if not animation.<id>.shoot.sight / .nsight.
-//   suppressedFrom krep:muzzle value from which the muzzle is a silencer. Default 4.
+//   suppressedFrom krep:muzzle value from which the muzzle is a silencer ("<shootSound>.suppress"). Only guns
+//                 with it can be silenced: krep:muzzle is one property for all guns, so another gun's silencer
+//                 must not silence this one (the SPR-15 did in v1.30).
 //   chamber       false: no chambered round (revolvers, AA-12): never more than magazine rounds.
 //   scriptReload  { empty: [load, end], tac: [load, end] } seconds: reloading runs in combat/reload.js
 //                 (tools/weapons/script-reload.mjs converts a gun).
@@ -87,6 +89,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "auto",
     rpm: 820,
     scriptFiring: true,
+    suppressedFrom: 4, // muzzle attachments 4+ are silencers
     scriptReload: { empty: [3, 3.3], tac: [2.1, 2.28] },
     magazine: 30,
     ammo: "krep:mm9",
@@ -106,6 +109,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "auto",
     rpm: 1200,
     scriptFiring: true,
+    suppressedFrom: 4, // muzzle attachments 4+ are silencers
     scriptReload: { byMagazine: [{ empty: [2.6, 2.7], caps: [20, 21], tac: [2.4, 2.5] }, { empty: [2.6, 2.7], caps: [30, 31], tac: [2.4, 2.5] }, { empty: [2.6, 2.7], caps: [40, 41], tac: [2.4, 2.5] }, { empty: [2.6, 2.7], caps: [50, 51], tac: [2.4, 2.5] }] },
     shootAnimation: { ads: "animation.vector.shoot", hip: "animation.vector.shoot" },
     capByMagazine: [21, 31, 41, 51],
@@ -195,6 +199,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "auto",
     rpm: 943,
     scriptFiring: true,
+    suppressedFrom: 4, // muzzle attachments 4+ are silencers
     scriptReload: { empty: [2.4, 2.6], tac: [2.1, 2.3] },
     magazine: 30,
     ammo: "krep:m885",
@@ -476,6 +481,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "auto",
     rpm: 600,
     scriptFiring: true,
+    suppressedFrom: 4, // muzzle attachments 4+ are silencers
     scriptReload: { empty: [2.8, 3], tac: [2.1, 2.3] },
     magazine: 30,
     ammo: "krep:m43",
@@ -496,6 +502,7 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     fireMode: "auto",
     rpm: 810,
     scriptFiring: true,
+    suppressedFrom: 4, // muzzle attachments 4+ are silencers
     scriptReload: { empty: [2.3, 2.5], tac: [2, 2.2] },
     magazine: 30,
     ammo: "krep:m885",

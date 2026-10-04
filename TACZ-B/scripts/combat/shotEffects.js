@@ -53,6 +53,8 @@ export function spawnSmokeTracer({ shooter, endLocation, mode, particleCount = 5
     try {
       shooter.dimension.spawnParticle("minecraft:basic_smoke_particle", location);
     } catch (error) {
+      // Past the server's ticking area (small tick-distance): the rest of the line is out there too.
+      if (/LocationInUnloadedChunk|not in a chunk currently loaded/.test(`${error?.name ?? ""} ${error}`)) break;
       console.error("[TACZ Effects] Smoke tracer particle failed:", error);
     }
   }
@@ -63,6 +65,7 @@ export function spawnImpactEffect({ dimension, location, particleId = "minecraft
   try {
     dimension.spawnParticle(particleId, location);
   } catch (error) {
+    if (/LocationInUnloadedChunk|not in a chunk currently loaded/.test(`${error?.name ?? ""} ${error}`)) return;
     console.error("[TACZ Effects] Impact particle failed:", error);
   }
 }

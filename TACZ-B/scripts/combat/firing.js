@@ -25,7 +25,6 @@ import { debug, recordShot } from "./debug.js";
 
 const TICKS_PER_MINUTE = 1200;
 const RELOADING = [1, 2]; // q.mark_variant during an empty (1) or tactical (2) reload: no shots (a press stops a shell reload)
-const SUPPRESSED_MUZZLE = 4; // krep:muzzle values from this up are silencers (`<id>.suppress` sound)
 
 /** Called with (player, weapon) when a shot empties the gun (combat/reload.js starts the empty reload). */
 export const emptyListeners = [];
@@ -67,7 +66,8 @@ function fireRound(player, trigger) {
   }
 
   const aiming = player.isSneaking;
-  const suppressed = (player.getProperty("krep:muzzle") ?? 0) >= (weapon.suppressedFrom ?? SUPPRESSED_MUZZLE);
+  // Only guns with a silencer (suppressedFrom): krep:muzzle is shared by all guns.
+  const suppressed = weapon.suppressedFrom !== undefined && (player.getProperty("krep:muzzle") ?? 0) >= weapon.suppressedFrom;
   // The same command the BP controllers ran (plays at each nearby player, full volume). v1.24.0 used
   // dimension.playSound (a sound placed at the shooter) and some guns were silent.
   const sound = `${weapon.shootSound ?? weaponId}.${suppressed ? "suppress" : "shoot"}`;

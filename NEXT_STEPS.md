@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.30.2** (both manifests; worlds need `[1, 30, 2]` in `world_*_packs.json`).
+- Pack version **1.30.3** (both manifests; worlds need `[1, 30, 3]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -374,6 +374,15 @@ work.
   left with `"animations": {}` after reloading moved to the script (cz75 g36 m9a4 mk14 mk23 p320 rhino357 rpk
   taurus500 taurus943 type81): Minecraft rejects an empty animation file. Deleted in v1.30.2; the tools delete such a
   file instead of emptying it, and check.mjs refuses empty animation / controller files.
+- **First test report** (user, 2026-10-03, v1.30.1, 15 min, 54 guns): auto fire rates match rpm (AKM 1.9 ticks
+  vs 2.0, M4A1 1.5 vs 1.5, Vector 1.0 vs 1.0 ...); every gun played its shot sound (MP7 too); every reload kind
+  timed as configured (auto reloads seen). Found and fixed in v1.30.3: (1) LocationInUnloadedChunkError from
+  getBlockFromRay when a ray reached chunks the server doesn't tick (tick-distance=4) cancelled the whole shot,
+  damage included (SCAR-L/H, M16, QBZ-191, RPK, M870, Saiga, AA-12); hitscan.js now shortens the ray, tracers and
+  impact puffs stop silently there. (2) The SPR-15 played its silenced sound because another gun's silencer set the
+  shared krep:muzzle property; only guns with `suppressedFrom` (MP5, Vector, HK416, G17, AKM, M4A1, Golden Deagle,
+  SKS) are silenced now. (3) The report flagged semi guns as slow (that's click pace); it now judges only auto and
+  within-burst gaps. Watchdog spike 163 ms at "stop" = printing the report (fine).
 - **Turn on the in-game content log** (Settings > Creator > Content Log GUI): it names errors our checks missed.
   First run (user, 2026-10-02, v1.25.0) found, fixed in v1.25.1: Taurus 943 animation bone "release button" (a space:
   the game rejected its whole animation file, why it was invisible in first person / between the legs in third;

@@ -40,11 +40,28 @@ function scatter(direction, degrees) {
 
 const breakablePatterns = (ids) => ids.map((id) => new RegExp("^" + id.replace(/[.]/g, "\\.").replace(/\*/g, ".*") + "$"));
 
+/** True for the error a block lookup throws outside the server's ticking area (tick-distance). */
+const isUnloaded = (error) => /LocationInUnloadedChunk|not in a chunk currently loaded/.test(`${error?.name ?? ""} ${error}`);
+
+// getBlockFromRay throws when the ray reaches chunks the server isn't ticking (a small tick-distance: 4 on the
+// test server = about 64 blocks), and that used to cancel the whole shot, damage included. Shorten the ray
+// until it stays in the ticking area: nothing out there can be hit anyway.
+function blockRay(dimension, origin, direction, options) {
+  for (let maxDistance = options.maxDistance; maxDistance >= 1; maxDistance /= 2) {
+    try {
+      return dimension.getBlockFromRay(origin, direction, { ...options, maxDistance });
+    } catch (error) {
+      if (!isUnloaded(error)) throw error;
+    }
+  }
+  return undefined;
+}
+
 // The first block the ray stops at, breaking breakable ones on the way (at most HITSCAN.maxBlocksBroken
 // per ray, and only in front of `limit`, the nearest entity). Returns { location, distance } or undefined.
 function traceBlocks(dimension, origin, direction, range, limit, breakable) {
   for (let broken = 0; ; broken++) {
-    const hit = dimension.getBlockFromRay(origin, direction, {
+    const hit = blockRay(dimension, origin, direction, {
       maxDistance: range,
       includeLiquidBlocks: false,
       includePassableBlocks: false,
@@ -61,7 +78,7 @@ function traceBlocks(dimension, origin, direction, range, limit, breakable) {
 
 // Passable breakable blocks (wheat) are not seen by the block ray above; break the first one in reach.
 function breakPassable(dimension, origin, direction, reach, breakable) {
-  const hit = dimension.getBlockFromRay(origin, direction, {
+  const hit = blockRay(dimension, origin, direction, {
     maxDistance: reach,
     includeLiquidBlocks: false,
     includePassableBlocks: true,

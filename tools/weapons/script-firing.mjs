@@ -130,7 +130,9 @@ for (const id of ids) {
   const lines = [`    scriptFiring: true,`];
   if (shootSound !== id) lines.push(`    shootSound: "${shootSound}",`);
   if (!defaultAnim) lines.push(`    shootAnimation: { ads: "${anim.ads}", hip: "${anim.hip}" },`);
-  if (anyMuzzle) lines.push(`    suppressedFrom: 1,`);
+  // A gun whose shot had a silenced sound can be silenced (firing.js silences only guns with suppressedFrom).
+  const silenced = fire.flatMap((s) => states[s].on_entry).some((c) => /playsound [\w.]+\.suppress /.test(c));
+  if (silenced) lines.push(`    suppressedFrom: ${anyMuzzle ? 1 : 4},`);
   if (cycle) lines.push(`    cycle: { after: ${cycle.after}, seconds: ${cycle.seconds}, delay: ${cycle.delay}, value: ${cycle.value} },`);
   if (roundInItem) lines.push(`    roundInItem: true,`);
   if (aimToFire) lines.push(`    aimToFire: true,`);
