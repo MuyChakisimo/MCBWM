@@ -1,12 +1,13 @@
 ========ITEM GROUPS========
-krep:itemGroup.name.ar=§cAssault Rifles & Automatics
-krep:itemGroup.name.sm=§6Submachine Guns (SMGs)
+krep:itemGroup.name.ar=§cARs
+krep:itemGroup.name.sm=§6Submachine Guns
 krep:itemGroup.name.p=§5Pistols
 krep:itemGroup.name.sr=§4Sniper Rifles
 krep:itemGroup.name.misc=§4Heavy Weapons
 krep:itemGroup.name.sg=§2Shotguns
 krep:itemGroup.name.ammo=§4Ammo & Rockets
 krep:itemGroup.name.empty=§7Empty Guns
+krep:itemGroup.name.lmg=§4LMGs
 
 ========GUNS========
 krep:gun.m249.name=M249

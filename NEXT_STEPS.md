@@ -14,12 +14,12 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.4** (both manifests; worlds need `[1, 33, 4]` in `world_*_packs.json`).
+- Pack version **1.33.5** (both manifests; worlds need `[1, 33, 5]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
   definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `arm-layout.mjs` (first-person arms on their own hand bones), `reload-timing.mjs` (a ported gun's reload
-  timing from Java), `lore-sync.mjs` (lore Group / Caliber / Damage from the config), `png.cjs` (texture atlas for built-in scopes), `test.mjs`
+  timing from Java), `config-sync.mjs` (lore Group / Caliber / Damage and creative groups from the config), `png.cjs` (texture atlas for built-in scopes), `test.mjs`
   (tests the tools on a scratch copy; run it after changing any tool).
 - `docs/HOW-IT-WORKS.md`: each system step by step and a troubleshooting table. `docs/NAMING.md`: Minecraft's
   naming/format rules and what every name means. `tools/weapons/validate.mjs`: checks scripts against Mojang's API
@@ -38,6 +38,15 @@ names. Symptom to remember: guns invisible and third-person arms not posed, but 
 work.
 
 ## Next, in order
+
+**v1.33.5 (2026-10-04): creative inventory groups follow the gun classes.** User (v1.33.4 test): the muzzle
+light looks good in a dark room, the hit markers are a nice addition, no [UI] errors any more; zoom not tried yet.
+They wanted the classes to organise the creative menu: the RPK, M249 and Evolys in their own LMGs group, the
+Springfield 1873 with the snipers, the Lone Trail with the pistols (clones had stayed in their source's group:
+the M320's Heavy Weapons). `lore-sync.mjs` is now `config-sync.mjs`: it also puts each gun in its class's creative
+group (`CATEGORIES[...].group`; LMGs added after ARs, its name in every lang file: pl / ru / uk translated by
+hand); check.mjs refuses a gun outside its group; java-port runs it. English group names follow CATEGORIES ("ARs";
+"Submachine Guns (SMGs)" became "Submachine Guns"). gun.mjs remove re-points a group icon that was the removed gun.
 
 **v1.33.4 (2026-10-04): AUG without its built-in scope; Phase 1 profile.** User test of v1.33.3 (report in chat,
 profile `_02-40-42`): the fire-rate fix works (MK23 never under its 24 ticks; Raging Hunter 10.0 / 10, Taurus 943

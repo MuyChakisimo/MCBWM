@@ -120,7 +120,7 @@ for (const [id, gun] of Object.entries(ATTACHMENTS))
 }
 // The lore's Group / Caliber / Damage follow the config (v1.32.0: ported guns showed their clone source's).
 {
-  const { loreFacts, loreFactsOf } = await import("./lore-sync.mjs");
+  const { loreFacts, loreFactsOf, catalogGroups } = await import("./config-sync.mjs");
   const { CATEGORIES } = await cfg("weapons.js");
   const en = read("TACZ-R/texts/en_US.lang");
   for (const id of Object.keys(WEAPONS)) {
@@ -130,7 +130,13 @@ for (const [id, gun] of Object.entries(ATTACHMENTS))
     try { want = loreFacts(id, WEAPONS, CATEGORIES, AMMO, en); } catch (e) { bad(id, e.message, "config/weapons.js"); continue; }
     const have = loreFactsOf(text);
     for (const k of ["group", "caliber", "damage"])
-      if (have[k] !== want[k]) bad(id, `lore ${k} is "${have[k]}", the config says "${want[k]}": run node tools/weapons/lore-sync.mjs`, "TACZ-R/texts/en_US.lang");
+      if (have[k] !== want[k]) bad(id, `lore ${k} is "${have[k]}", the config says "${want[k]}": run node tools/weapons/config-sync.mjs`, "TACZ-R/texts/en_US.lang");
+  }
+  // Creative inventory: each gun in its class's group (v1.33.5: clones stayed in their source's group).
+  const groups = catalogGroups(parse(read("TACZ-B/item_catalog/crafting_item_catalog.json")));
+  for (const [id, w] of Object.entries(WEAPONS)) {
+    const want = CATEGORIES[w.category]?.group;
+    if (want && !groups[want]?.includes(`krep:${id}`)) bad(id, `not in its creative group ${want}: run node tools/weapons/config-sync.mjs`, "item_catalog/crafting_item_catalog.json");
   }
 }
 

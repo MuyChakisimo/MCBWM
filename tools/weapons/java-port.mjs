@@ -31,7 +31,7 @@ import { convertGun, armsModel, FIXED_FP } from "./java-convert.mjs";
 import { armLayout } from "./arm-layout.mjs";
 import { repairImport } from "./import-repair.mjs";
 import { reloadTiming } from "./reload-timing.mjs";
-import { syncLore } from "./lore-sync.mjs";
+import { syncLore, syncCatalog } from "./config-sync.mjs";
 const require = createRequire(import.meta.url);
 const { parse } = require("./lenient.cjs");
 const { format } = require("./format.cjs");
@@ -462,8 +462,10 @@ const soundNames = new Map(); // our cue name -> Java sound path
   }
 }
 repairImport(root, javaId, id, log);
-// Item lore: Java's name and description, and Group / Caliber / Damage from the new stats (lore-sync.mjs).
+// Item lore (Java's name and description, Group / Caliber / Damage from the new stats) and the creative group of
+// its class (config-sync.mjs).
 await syncLore(root, log);
+await syncCatalog(root, log);
 log(`\nDone. Run tools/weapons/check.mjs, then test ${id} in game (aim, reloads, sounds).`);
 
 // ---------------------------------------------------------------- helpers

@@ -7,6 +7,7 @@ krep:itemGroup.name.misc=§4Тяжелое Оружие
 krep:itemGroup.name.sg=§2Дробовики
 krep:itemGroup.name.ammo=§4Патроны И Ракеты
 krep:itemGroup.name.empty=§7Оружие Без Патронов
+krep:itemGroup.name.lmg=§4Ручные Пулеметы
 
 ========ПУШКИ========
 krep:gun.m249.name=М249

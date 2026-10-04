@@ -6,7 +6,7 @@
 // Used live by the scripts (change here, reload the world):
 //   name          Label in the gunsmith menu.
 //   category      ar | lmg | smg | pistol | sniper | shotgun | heavy: the "Group" line of the item lore
-//                 (CATEGORIES; tools/weapons/lore-sync.mjs writes it).
+//                 and its creative inventory group (CATEGORIES; tools/weapons/config-sync.mjs writes both).
 //   damage        Damage per hit (per pellet for shotguns), at full range.
 //   penetration   0..1: how much armor it ignores. Armor reduces damage by
 //                 (armor points x (1 - penetration)) / 20, capped at 80%. 1 ignores armor.
@@ -54,16 +54,17 @@
 // files it needs; see README "Adding a weapon". Removing: delete the entry and its files.
 // =====================================================================================
 
-// Weapon classes: the name and colour the item lore shows as "Group" (user, 2026-10-04: assault rifles are
-// "ARs", the RPK, M249 and Evolys "LMGs").
+// Weapon classes: the name and colour the item lore shows as "Group", and the creative inventory group the gun
+// is listed in (item_catalog; its name is the lang key). User, 2026-10-04: assault rifles are "ARs"; the RPK,
+// M249 and Evolys "LMGs", with their own creative group. tools/weapons/config-sync.mjs writes both.
 export const CATEGORIES = Object.freeze({
-  ar: { name: "ARs", colour: "§c" },
-  lmg: { name: "LMGs", colour: "§4" },
-  smg: { name: "Submachine Guns", colour: "§6" },
-  pistol: { name: "Pistols", colour: "§5" },
-  sniper: { name: "Sniper Rifles", colour: "§4" },
-  shotgun: { name: "Shotguns", colour: "§2" },
-  heavy: { name: "Heavy Weapons", colour: "§4" },
+  ar: { name: "ARs", colour: "§c", group: "krep:itemGroup.name.ar" },
+  lmg: { name: "LMGs", colour: "§4", group: "krep:itemGroup.name.lmg" },
+  smg: { name: "Submachine Guns", colour: "§6", group: "krep:itemGroup.name.sm" },
+  pistol: { name: "Pistols", colour: "§5", group: "krep:itemGroup.name.p" },
+  sniper: { name: "Sniper Rifles", colour: "§4", group: "krep:itemGroup.name.sr" },
+  shotgun: { name: "Shotguns", colour: "§2", group: "krep:itemGroup.name.sg" },
+  heavy: { name: "Heavy Weapons", colour: "§4", group: "krep:itemGroup.name.misc" },
 });
 
 // Order = order in the gunsmith menu.

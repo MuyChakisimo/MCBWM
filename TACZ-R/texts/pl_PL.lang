@@ -7,6 +7,7 @@ krep:itemGroup.name.misc=§4Broń Ciężka
 krep:itemGroup.name.sg=§2Strzelby
 krep:itemGroup.name.ammo=§4Amunicja i Rakiety
 krep:itemGroup.name.empty=§7Broń Bez Amunicji
+krep:itemGroup.name.lmg=§4Lekkie Karabiny Maszynowe
 
 ========BROŃ========
 krep:gun.m249.name=M249

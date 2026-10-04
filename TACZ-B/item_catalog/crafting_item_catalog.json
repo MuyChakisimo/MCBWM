@@ -22,9 +22,12 @@
               "krep:m16a1",
               "krep:g3",
               "krep:qbz191",
-              "krep:type81",
-              "krep:rpk"
+              "krep:type81"
             ]
+          },
+          {
+            "group_identifier": {"icon": "krep:rpk", "name": "krep:itemGroup.name.lmg"},
+            "items": ["krep:rpk", "krep:evolys", "krep:m249"]
           },
           {
             "group_identifier": {"icon": "krep:m1911", "name": "krep:itemGroup.name.p"},
@@ -43,7 +46,8 @@
               "krep:rhino357",
               "krep:mk23",
               "krep:cz75",
-              "krep:m9a4"
+              "krep:m9a4",
+              "krep:lonetrail"
             ]
           },
           {
@@ -52,19 +56,20 @@
           },
           {
             "group_identifier": {"icon": "krep:awp", "name": "krep:itemGroup.name.sr"},
-            "items": ["krep:awp", "krep:m700", "krep:kar98", "krep:m107", "krep:m95b", "krep:sks", "krep:mk14"]
+            "items": [
+              "krep:awp",
+              "krep:m700",
+              "krep:kar98",
+              "krep:m107",
+              "krep:m95b",
+              "krep:sks",
+              "krep:mk14",
+              "krep:springfield1873"
+            ]
           },
           {
             "group_identifier": {"icon": "krep:minigun", "name": "krep:itemGroup.name.misc"},
-            "items": [
-              "krep:minigun",
-              "krep:evolys",
-              "krep:m249",
-              "krep:rpg",
-              "krep:m320",
-              "krep:lonetrail",
-              "krep:springfield1873"
-            ]
+            "items": ["krep:minigun", "krep:rpg", "krep:m320"]
           },
           {
             "group_identifier": {"icon": "krep:m870", "name": "krep:itemGroup.name.sg"},

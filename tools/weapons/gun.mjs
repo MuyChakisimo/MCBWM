@@ -529,6 +529,15 @@ async function remove(id, force) {
     const before = parse(text);
     writeJson(tree, f, before, removeGun(before, id, words, f));
   }
+  // A creative group whose icon is the removed gun (the LMGs group's RPK) shows its first remaining item instead.
+  const catalogFile = "TACZ-B/item_catalog/crafting_item_catalog.json";
+  if (tree.list().includes(catalogFile)) {
+    const before = parse(tree.read(catalogFile)), after = structuredClone(before);
+    for (const cat of after["minecraft:crafting_items_catalog"].categories)
+      for (const g of cat.groups ?? [])
+        if ([`krep:${id}`, `krep:${id}_emp`].includes(g.group_identifier?.icon) && typeof g.items[0] === "string") g.group_identifier.icon = g.items[0];
+    writeJson(tree, catalogFile, before, after);
+  }
   for (const f of shared.filter((f) => f.endsWith(".lang")))
     editLang(tree, f, (line) => (only(words.gunsIn(line.split("=")[0]), id) ? [] : [line]));
   for (const f of CONFIG_FILES) {
