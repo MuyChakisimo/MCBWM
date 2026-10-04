@@ -144,6 +144,11 @@ once when the world loads.
 - Fitted attachments are stored per player and gun (dynamic property `krep_<id>`) and copied to the `krep:stock` ...
   properties while the gun is held (`attachments/attachmentState.js`); the RP render controllers show the parts.
 - Sights are entity events (`<id>:acog` ...) that set `krep:<id>scope`.
+- Muzzle flash light (`combat/muzzleLight.js`, since v1.33.2): each shot without a silencer puts a
+  `minecraft:light_block_15` in the air at the shooter's head for 2 ticks (`MUZZLE_LIGHT` in `config/combat.js`);
+  automatic fire extends it instead of placing a new block each shot. Only air is replaced, only its own light
+  removed. A server stopped in those 2 ticks leaves an invisible light block (break it with a light item, or
+  `/fill ... air replace light_block_15`). The minigun (still fired by its BP controller) has no light yet.
 - Scope zoom (`combat/aimZoom.js`, since v1.33.1): crouching with a magnifying sight eases the camera to
   `SIGHT_ZOOM` in `config/attachments.js` (sniper scope 30, ACOG / ELCAN 50; the game allows 30-110) with
   `camera.setFov`, and back with `camera @s fov_clear`. Not while reloading or working a bolt. It reacts to crouch,

@@ -4,6 +4,7 @@ import { getWeaponByItem } from "../config/weapons.js";
 import { AMMO } from "../config/ammo.js";
 import { debug, recordShot } from "./debug.js";
 import { zoomSoon } from "./aimZoom.js";
+import { muzzleFlash } from "./muzzleLight.js";
 
 // Script-controlled firing for guns with `scriptFiring: true` in config/weapons.js (being rolled out;
 // the other guns still fire from their BP controller, animation_controllers/gun_<id>.json).
@@ -11,8 +12,8 @@ import { zoomSoon } from "./aimZoom.js";
 // Holding the use button on `krep:<id>` fires at the gun's `rpm` in its `fireMode`:
 //   "auto"  while the button is held;  "semi"  one shot per press;
 //   "burst" `burst.count` shots per press at `burst.rpm`, then `burst.delay` seconds before the next.
-// Each shot: removes one round from the scoreboard `<id>`, updates the ammo HUD, plays the shot sound
-// and the shoot animation, and runs the hitscan shot (combat/hitscan.js). The last round swaps the
+// Each shot: removes one round from the scoreboard `<id>`, updates the ammo HUD, plays the shot sound,
+// lights the muzzle flash (combat/muzzleLight.js; not with a silencer) and the shoot animation, and runs the hitscan shot (combat/hitscan.js). The last round swaps the
 // item to `krep:<id>_emp` (which starts an empty reload) and shows "No Ammunition".
 // No shots during a reload (mark variant 1 or 2; reloading is combat/reload.js).
 // Per-gun extras (config/weapons.js):
@@ -73,6 +74,7 @@ function fireRound(player, trigger) {
   // dimension.playSound (a sound placed at the shooter) and some guns were silent.
   const sound = `${weapon.shootSound ?? weaponId}.${suppressed ? "suppress" : "shoot"}`;
   player.runCommand(`playsound ${sound} @a[r=30]`);
+  if (!suppressed) muzzleFlash(player); // lights up dark places (config/combat.js MUZZLE_LIGHT)
   recordShot(player, weaponId, sound);
   debug(() => `${player.name} ${weaponId} shot, ${weapon.roundInItem ? "round in item" : `${left} left`}, ${aiming ? "aiming" : "hip"}, sound ${sound}`);
   // The firing kick (and muzzle flash) every client plays: same as the fire event's playanimation.

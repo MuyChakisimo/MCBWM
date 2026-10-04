@@ -19,6 +19,11 @@ export const COMBAT = Object.freeze({
   minDamage: 1,
 });
 
+// Muzzle flash light (combat/muzzleLight.js): every shot without a silencer lights the air at the shooter's head
+// for `ticks` ticks (20 = 1 s) with a light block of `level` (0-15), so caves light up (user, 2026-10-04).
+// enabled: false turns it off.
+export const MUZZLE_LIGHT = Object.freeze({ enabled: true, level: 15, ticks: 2 });
+
 // Armor points per piece (vanilla values), used for players and mobs.
 export const ARMOR = Object.freeze({
   leather: { helmet: 1, chestplate: 3, leggings: 2, boots: 1 },
