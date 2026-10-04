@@ -344,6 +344,9 @@ came from reading `hit.block.typeId` past the ticking area (fixed v1.30.5); the 
   and fewer item queries) -> visual and sound fixes by category -> then Batch 2 script firing / reloading in script.
 - Platform (user, 2026-10-02): plays on an AYN Odin 2 (Android handheld, built-in controller): the mod must run
   well on mobile; prefer controller-friendly behaviour (e.g. auto reload when the magazine runs dry).
+- Gunplay (user, 2026-10-04): see docs/GUNPLAY.md "Decisions" (no aim assist; optional hit marker with server
+  default + per-player toggle; GTA IV-style spread growth while holding the trigger, hip and ADS; recoil = shake
+  only; muzzle flash light except silenced; crouch-to-aim stays).
 - Pistols (user, 2026-10-01): semi-auto, one shot per click, except the B93R (burst) and G18 (auto). Already so in
   `weapons.js`; takes effect with script firing. The user tested that the M1911 now fires while held and is OK
   with it becoming one shot per click.

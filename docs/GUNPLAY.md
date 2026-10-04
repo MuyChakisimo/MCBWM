@@ -60,20 +60,36 @@ capitalised; `runCommandAsync` removed (recoil.js uses it); `worldInitialize` ->
 in `system.run`); `itemUseOn` events removed; `getComponent` throws on invalid entities; effect ids get the
 `minecraft:` prefix; `applyKnockback` signature. validate.mjs can check against 2.10.0's types.
 
+## Decisions (user, 2026-10-04)
+
+- **First person first.** No aim assist and no bullet magnetism. Third-person camera polish: near the end.
+- **Hit marker: optional.** Server default + each player can override it; the red hurt flash stays for everyone.
+- **Aiming stays "crouch to aim"**, walking slower (as now). Scopes get real eased zoom (`setFov`).
+- **Accuracy, GTA IV style:** holding the trigger makes shots spread more, both hip-fire and aiming (aiming
+  starts tighter and grows less); tapping stays accurate. (Not CoD MW4's no-bloom.)
+- **Recoil: shake only.** Bullets go where the crosshair is; recoil is camera shake + the gun animation, with a
+  per-gun profile. (No view kick with setRotation.)
+- **Muzzle flash light** lights up dark areas on every shot, except with a silencer; big muzzle flashes, cool
+  tracers and "thump" in the sounds (GTA IV is the user's favourite gun feel). Damage tuning by gun class; sounds
+  by area (indoor / outdoor, distant).
+- Keep files small (cleanup), and import the last Java guns (Springfield 1873, Lone Trail, AUG).
+- Make factual decisions (measure / check the APIs, ask), not guesses.
+
 ## 4. Gap list
 
 | Mechanic | CoD | Ours | Plan |
 |---|---|---|---|
 | ADS zoom | eased FOV per optic | Slowness effect | `setFov` eased over the gun's ADS time; zoom per optic |
 | ADS movement | 50-60 % speed | Slowness amp 6 / 14 (crawl) | movement modifier ~0.6 |
-| Hip-fire | cone per class + movement | perfect aim | cone per class, x1.5-2 moving / airborne, near 0 ADS |
-| Recoil | pattern + kick + recovery | random shake | per-gun pattern table; small `setRotation` kick + `addShake` |
-| Hit marker | X image + sounds | sounds only | JSON UI hit marker (white / red kill / headshot) |
+| Hip-fire | cone per class + movement | perfect aim | cone per class, x1.5-2 moving / airborne; spread grows while the trigger is held (hip and ADS, GTA IV) |
+| Recoil | pattern + kick + recovery | random shake | shake only (user): per-gun `addShake` profile + gun animation kick |
+| Hit marker | X image + sounds | sounds only | optional JSON UI hit marker (server default + per-player toggle) |
 | Sprint-to-fire | 100-450 ms | none | block shots for N ticks after sprinting stops |
 | ADS time | 150-650 ms | instant (animation only) | no ADS accuracy until the ease ends |
 | Flinch | view kick when hit | none | small rotation kick on players hit by guns |
 | Distant shots | far sound with delay | one sound to 30 blocks | `<id>.far` to players 30-128 blocks, delayed distance / 343 s |
-| Bullet magnetism | controller assist | none | if a ray just misses (1.5-2.5 deg), hit the nearest target; controller / touch only |
+| Muzzle flash light | flash per shot | none | light block at the shooter for 1-2 ticks (not with a silencer) |
+| Bullet magnetism | controller assist | none | not wanted (user: no aim assist) |
 | Penetration | thin materials | glass / wheat only | wood / leaves etc. with damage x0.5-0.75 per block (*guess*) |
 
 ## 5. Plan, in order
@@ -82,17 +98,20 @@ Each phase is its own version(s), tested in game with `scriptevent tacz:debug` a
 
 0. **Script API 2.10.0** (foundation). Migrate the code (list in section 3), update validate.mjs. Nothing
    should change in game: a full regression test.
-1. **Feel, quick wins.** Hit marker UI. Recoil via `addShake` (drops the command per shot). Real ADS zoom with
-   `setFov` replacing the Slowness hack (scopes keep their zoom levels; walking no longer crawls).
-2. **Accuracy.** Hip cone per class, movement / jump penalties, ADS time and sprint-to-fire delays (config per
-   class with per-gun overrides).
-3. **Recoil patterns.** Per-gun (up, side) per shot index + jitter; test `setRotation` smoothness on the Odin at
-   small values first; attachments scale it (config/recoil.js already has the reductions).
-4. **Damage tuning + controller assist.** TTK targets per class, bullet magnetism for controller / touch.
-5. **Sound.** Distant versions with delay, indoor / outdoor tails (needs audio assets), check reload cue sync.
+1. **Feel, quick wins.** Optional hit marker UI. Recoil via `addShake` (drops the command per shot). Real ADS zoom
+   with `setFov` replacing the Slowness hack (scopes keep their zoom levels; walking slower, not crawling).
+   Muzzle flash light.
+2. **Accuracy.** Hip cone per class, movement / jump penalties, spread growth while the trigger is held (hip and
+   ADS), ADS time and sprint-to-fire delays (config per class with per-gun overrides).
+3. **Recoil feel.** Per-gun shake profile (strength, length, growth over a burst); attachments scale it
+   (config/recoil.js already has the reductions).
+4. **Damage tuning.** Time-to-kill targets per class.
+5. **Sound + flash.** Distant versions with delay, indoor / outdoor tails (needs audio assets), more "thump";
+   bigger muzzle flashes and tracers; check reload cue sync.
 6. **Performance leftovers.** Event-driven attachment / stored-ammo / lore (2.1.0 events), `playerSwingStart`
    replaces the shared `reload_input` controller, `isChunkLoaded` before far rays, minigun to script, final
    cleanup of per-gun leftovers.
+7. **Last Java guns** (Springfield 1873, Lone Trail, AUG) and third-person camera polish.
 
 Not planned: native aim assist (third person only), hip-fire bloom (dropped by MW4 as unfair randomness).
 
