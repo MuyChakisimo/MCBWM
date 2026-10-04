@@ -27,7 +27,10 @@ out or is reloaded.
 |---|---|---|
 | hold use (right click) | fire | empty reload |
 | attack / swing (left click) | tactical reload if the magazine isn't full; inspect if it is | empty inspect |
-| sneak | aim down sights (ADS) | |
+| sneak | aim down sights (ADS); a magnifying sight zooms (`combat/aimZoom.js`) | |
+
+Chat commands (no cheats needed): `/tacz:hitmarker on|off` (this player; no value = server default) and, for
+operators or the server console, `/tacz:hitmarkerdefault on|off` (`combat/hitMarker.js`).
 
 ## Firing a shot
 

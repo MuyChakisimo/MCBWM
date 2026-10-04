@@ -1,8 +1,9 @@
 import { Player, GameMode, EntityDamageCause } from "@minecraft/server";
 import { getArmor } from "./armor.js";
 import { COMBAT } from "../config/combat.js";
+import { showHitMarker } from "./hitMarker.js";
 
-// Gun damage: headshot check, armor reduction, damage, hit/kill sounds. Used by hitscan.js.
+// Gun damage: headshot check, armor reduction, damage, hit/kill sounds and the hit marker. Used by hitscan.js.
 // damage / penetration come from the gun's entry in config/weapons.js, the rules from
 // COMBAT (config/combat.js).
 
@@ -46,13 +47,18 @@ export function applyGunHits(source, weapon, hits) {
     target.headshot ||= headshot;
   }
 
+  let kill = false;
   for (const { entity, health, damage, headshot } of targets.values()) {
     source.playSound(headshot ? "headshot_sound" : "hitmark");
     const healthBefore = health.currentValue;
     if (healthBefore - damage > 0) showHurtEffect(entity);
     health.setCurrentValue(Math.max(0, healthBefore - damage));
-    if (health.currentValue <= 0) source.playSound("kill");
+    if (health.currentValue <= 0) {
+      source.playSound("kill");
+      kill = true;
+    }
   }
+  if (targets.size) showHitMarker(source, kill);
 }
 
 // Setting health directly does not play the red hurt flash (only real damage does), so hits

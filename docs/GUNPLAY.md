@@ -101,7 +101,7 @@ Each phase is its own version(s), tested in game with `scriptevent tacz:debug` a
 
 0. **Script API 2.10.0** (foundation). Migrate the code (list in section 3), update validate.mjs. Nothing
    should change in game: a full regression test.
-1. **Feel, quick wins.** Optional hit marker UI. Recoil via `addShake` (drops the command per shot). Real ADS zoom
+1. **Feel, quick wins** (done v1.33.0-1.33.3, waiting for the in-game test). Optional hit marker UI. Recoil via `addShake` (drops the command per shot). Real ADS zoom
    with `setFov` replacing the Slowness hack (scopes keep their zoom levels; walking slower, not crawling).
    Muzzle flash light.
 2. **Accuracy.** Hip cone per class, movement / jump penalties, spread growth while the trigger is held (hip and

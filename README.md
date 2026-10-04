@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.33.2`** for both packs. On a dedicated server set `"version": [1, 33, 2]` for both packs in the
+**Pack version is `1.33.3`** for both packs. On a dedicated server set `"version": [1, 33, 3]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -41,10 +41,13 @@ edit).
 |---|---|
 | `main.js` | Imports every module below |
 | `combat/hitscan.js` | Every gun: the fire event runs `scriptevent tacz:weapon_hitscan <gun> ads\|hip`; applies recoil, then rays from the eyes (one per pellet) find the target, break glass, and explode for the RPG |
-| `combat/damage.js` | `applyGunHits()`: headshot, armor reduction, damage summed per target, red hurt flash, hit/kill sounds (`config/combat.js`) |
+| `combat/damage.js` | `applyGunHits()`: headshot, armor reduction, damage summed per target, red hurt flash, hit/kill sounds (`config/combat.js`), hit marker |
+| `combat/hitMarker.js` | Hit marker (white X, red on a kill): a `tacz:hit` / `tacz:kill` title that `TACZ-R/ui/hud_screen.json` shows as an image; `/tacz:hitmarker on|off` per player, `/tacz:hitmarkerdefault on|off` (operators) |
+| `combat/aimZoom.js` | Scope zoom while aiming: `camera.setFov` to `SIGHT_ZOOM` (`config/attachments.js`); event-driven |
+| `combat/muzzleLight.js` | Muzzle flash light: a light block at the shooter's head for 2 ticks (`MUZZLE_LIGHT` in `config/combat.js`) |
 | `combat/shotEffects.js` | Hitscan smoke tracer and impact puff |
 | `combat/armor.js` | `getArmor()`: armor a hit target wears (equipment, or `hasitem` tests on mobs, cached 2 s) |
-| `combat/recoil.js` | `applyRecoil()`: the gun's camera shake, reduced by fitted attachments (`config/recoil.js`) |
+| `combat/recoil.js` | `applyRecoil()`: the gun's camera shake (`camera.addShake`), reduced by fitted attachments (`config/recoil.js`) |
 | `crafting/gunsmith.js`, `crafting/ammoWorkbench.js` | Crafting menus built from `config/weapons.js` / `config/ammo.js` |
 | `crafting/craftingHelpers.js` | Takes ingredients (only if all are present) and gives the result; `log` accepts any wood |
 | `crafting/workbenchBlocks.js` | Using a workbench block opens its menu at once, like a chest (sneak to place blocks against it) |

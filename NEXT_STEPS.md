@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.2** (both manifests; worlds need `[1, 33, 2]` in `world_*_packs.json`).
+- Pack version **1.33.3** (both manifests; worlds need `[1, 33, 3]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -38,6 +38,28 @@ names. Symptom to remember: guns invisible and third-person arms not posed, but 
 work.
 
 ## Next, in order
+
+**Phase 1 done, v1.33.0-1.33.3 (2026-10-04): untested in game.** User decisions: sniper scope zooms most, ACOG /
+ELCAN a little ("mild"); hit marker on by default.
+- v1.33.0 recoil: `camera.addShake` instead of a `camerashake` command per shot (same values).
+- v1.33.1 zoom: `combat/aimZoom.js`, `SIGHT_ZOOM` (`config/attachments.js`: standard_8 30, acog / elcan 50; the
+  game allows FOV 30-110, so a true 8x isn't possible: 30 is about 2.6x at FOV 70, 5.4x at the user's 110).
+  Event-driven (entityStart/StopSneaking, hotbar, held item, reload / bolt via zoomSoon). Back with
+  `camera @s fov_clear` (no script call for that). Removed the Slowness zoom (krep:scope4x/8x/normal groups and
+  events, the AKM / AWP / HK416 / M4A1 BP `.scope` controllers); leftover endless Slowness 6 / 14 cleared on spawn.
+  The M107 has scope parts and sight events but no workbench entry (README "M107": `/event entity @s m107:standard_8`).
+- v1.33.2 muzzle light: `combat/muzzleLight.js`, `minecraft:light_block_15` (id since 1.21.40, checked at first
+  use) at the head for 2 ticks, air only; auto fire extends it. Minigun (BP-fired) has none yet.
+- v1.33.3 hit marker: `combat/hitMarker.js` + `TACZ-R/ui/hud_screen.json`. A `tacz:hit` / `tacz:kill` title (0 / 3 /
+  4 ticks) shown as `textures/ui/tacz_hit_marker` / `tacz_kill_marker` at the screen centre; Mojang's title is
+  copied into `tacz_vanilla_title` (from bedrock-samples, 2026-09-16) and hidden for those two strings. Custom
+  commands (2.x `customCommandRegistry`): `/tacz:hitmarker [on|off]` (any player, no cheats; dynamic property
+  `tacz:hitmarker`), `/tacz:hitmarkerdefault on|off` (GameDirectors = operators; world property).
+- **Test in game:** recoil feels as before; aiming with ACOG / ELCAN (AKM, M4A1, HK416, AWP) zooms a little and
+  the AWP's Standard 8 a lot, smoothly in and out, not during reloads or the AWP bolt; aiming now walks at crouch
+  speed; firing in a dark cave lights it briefly (not with a silencer); hitting a mob shows the white X, a kill the
+  red X; `/tacz:hitmarker off` hides it for you, `/tacz:hitmarker` returns to the default; vanilla `/title` text
+  still shows normally; **the content log has no new [UI] errors**.
 
 **v1.32.1 (2026-10-04): weapon classes renamed, lore facts from the config.** User: assault rifles are "ARs";
 the RPK, M249 and Evolys are "LMGs" (category ids `ar`, `lmg`; names and colours in `CATEGORIES`, weapons.js). The

@@ -196,5 +196,247 @@
     ],
     "type": "image",
     "texture": "textures/nothing"
+  },
+  "hud_title_text": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "layer": 1,
+    "alpha": "@hud.anim_title_text_alpha_in",
+    "propagate_alpha": true,
+    "controls": [
+      {
+        "tacz_title_layer": {
+          "type": "panel",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "controls": [
+            {
+              "vanilla_title@hud.tacz_vanilla_title": {}
+            },
+            {
+              "hit_marker@hud.tacz_hit_marker": {}
+            },
+            {
+              "kill_marker@hud.tacz_kill_marker": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "tacz_vanilla_title": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "offset": [
+      0,
+      -19
+    ],
+    "layer": 1,
+    "controls": [
+      {
+        "title_frame": {
+          "type": "panel",
+          "size": [
+            "100%",
+            "100%cm"
+          ],
+          "controls": [
+            {
+              "title_background": {
+                "type": "image",
+                "size": [
+                  "100%sm + 30px",
+                  "100%sm + 6px"
+                ],
+                "texture": "textures/ui/hud_tip_text_background",
+                "alpha": "@hud.anim_title_background_alpha_in"
+              }
+            },
+            {
+              "title": {
+                "type": "label",
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "color": "$title_command_text_color",
+                "enable_profanity_filter": true,
+                "text": "#text",
+                "layer": 31,
+                "localize": false,
+                "font_size": "extra_large",
+                "variables": [
+                  {
+                    "requires": "(not $title_shadow)",
+                    "$show_shadow": false
+                  },
+                  {
+                    "requires": "$title_shadow",
+                    "$show_shadow": true
+                  }
+                ],
+                "shadow": "$show_shadow",
+                "text_alignment": "center",
+                "offset": [
+                  0,
+                  6
+                ],
+                "bindings": [
+                  {
+                    "binding_name": "#hud_title_text_string",
+                    "binding_name_override": "#text",
+                    "binding_type": "global"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "subtitle_frame": {
+          "type": "panel",
+          "size": [
+            "100%",
+            "100%cm"
+          ],
+          "controls": [
+            {
+              "subtitle_background": {
+                "type": "image",
+                "size": [
+                  "100%sm + 20px",
+                  "100%sm + 5px"
+                ],
+                "offset": [
+                  0,
+                  16
+                ],
+                "texture": "textures/ui/hud_tip_text_background",
+                "variables": [
+                  {
+                    "requires": "$subtitle_initially_visible",
+                    "$subtitle_bg": "@hud.anim_title_background_alpha_in"
+                  },
+                  {
+                    "requires": "(not $subtitle_initially_visible)",
+                    "$subtitle_bg": "@hud.anim_subtitle_background_alpha_in"
+                  }
+                ],
+                "alpha": "$subtitle_bg"
+              }
+            },
+            {
+              "subtitle": {
+                "type": "label",
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "color": "$title_command_text_color",
+                "enable_profanity_filter": true,
+                "text": "#text",
+                "layer": 31,
+                "localize": false,
+                "font_size": "large",
+                "variables": [
+                  {
+                    "requires": "$subtitle_initially_visible",
+                    "$anim_type": 1
+                  },
+                  {
+                    "requires": "(not $subtitle_initially_visible)",
+                    "$anim_type": "@hud.anim_subtitle_text_alpha_in"
+                  },
+                  {
+                    "requires": "(not $title_shadow)",
+                    "$show_shadow": false
+                  },
+                  {
+                    "requires": "$title_shadow",
+                    "$show_shadow": true
+                  }
+                ],
+                "shadow": "$show_shadow",
+                "alpha": "$anim_type",
+                "text_alignment": "center",
+                "offset": [
+                  1,
+                  19
+                ],
+                "bindings": [
+                  {
+                    "binding_name": "#hud_subtitle_text_string",
+                    "binding_name_override": "#text",
+                    "binding_type": "global"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#hud_title_text_string = 'tacz:hit') or (#hud_title_text_string = 'tacz:kill')))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "tacz_hit_marker": {
+    "type": "image",
+    "texture": "textures/ui/tacz_hit_marker",
+    "size": [
+      11,
+      11
+    ],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 40,
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_title_text_string = 'tacz:hit')",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "tacz_kill_marker": {
+    "type": "image",
+    "texture": "textures/ui/tacz_kill_marker",
+    "size": [
+      11,
+      11
+    ],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 40,
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_title_text_string = 'tacz:kill')",
+        "target_property_name": "#visible"
+      }
+    ]
   }
 }
