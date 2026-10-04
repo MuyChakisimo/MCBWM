@@ -116,7 +116,7 @@ function tickShells(r, now) {
   if (now < r.times[0]) return;
   r.times.shift();
   const give = Math.min(r.loadedAny ? sh.perCue ?? 1 : 1, cap - rounds, available); // the first shell goes in alone
-  if (!unlimited && player.getGameMode() !== GameMode.creative) removeItem(container, weapon.ammo, give);
+  if (!unlimited && player.getGameMode() !== GameMode.Creative) removeItem(container, weapon.ammo, give);
   objective.setScore(player, rounds + give);
   if (!r.loadedAny && kind === "empty") player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, new ItemStack(`krep:${weapon.id}`, 1));
   r.loadedAny = true;
@@ -169,7 +169,7 @@ function startReload(player, weapon, kind, auto = false) {
 function load(r) {
   const { player, weapon, kind, cap, unlimited } = r;
   const container = inventory(player);
-  const takes = !unlimited && player.getGameMode() !== GameMode.creative;
+  const takes = !unlimited && player.getGameMode() !== GameMode.Creative;
   if (weapon.roundInItem) {
     if (countItem(container, weapon.ammo) < 1 && !unlimited) return void (r.loaded = true);
     if (takes) removeItem(container, weapon.ammo, 1);
@@ -211,7 +211,7 @@ const AUTO_RELOAD_DELAY = 0.25;
 emptyListeners.push((player, weapon) => {
   if (!weapon.scriptReload) return;
   system.runTimeout(() => {
-    if (player.isValid() && heldTypeId(player) === `krep:${weapon.id}_emp`) startReload(player, weapon, "empty", true);
+    if (player.isValid && heldTypeId(player) === `krep:${weapon.id}_emp`) startReload(player, weapon, "empty", true);
   }, ticks(AUTO_RELOAD_DELAY));
 });
 
@@ -234,7 +234,7 @@ system.runInterval(() => {
   const now = system.currentTick;
   for (const [pid, r] of reloads) {
     const { player } = r;
-    if (!player.isValid()) {
+    if (!player.isValid) {
       reloads.delete(pid);
       continue;
     }

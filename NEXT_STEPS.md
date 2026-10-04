@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.30.5** (both manifests; worlds need `[1, 30, 5]` in `world_*_packs.json`).
+- Pack version **1.31.0** (both manifests; worlds need `[1, 31, 0]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -38,6 +38,12 @@ work.
 
 ## Next, in order
 
+**Phase 0 done in v1.31.0 (2026-10-04): scripts on @minecraft/server 2.10.0, server-ui 2.2.0** (the 1.26.51 test
+server's newest stable). Changes: runCommandAsync -> runCommand (attachment menu, crafting, recoil camerashake),
+isValid() -> isValid, GameMode.Creative, startup world access waits for world.afterEvents.worldLoad (ammo
+scoreboards, stale attachment preview). validate.mjs now also refuses those removed / renamed APIs by name (calls on
+untyped parameters escape the type check). Nothing should change in game: **waiting for the user's regression test**
+(fire, reload, attachments menu, gunsmith / ammo crafting, first world load creates the ammo scoreboards).
 **Gunplay plan (2026-10-04): docs/GUNPLAY.md** (CoD-style feel; Bedrock APIs by version; phases 0-6, starting
 with moving the scripts to @minecraft/server 2.10.0). User test of v1.30.4 (ARs): fire rates right; far-shot errors
 came from reading `hit.block.typeId` past the ticking area (fixed v1.30.5); the action bar UI warning fixed v1.30.5.

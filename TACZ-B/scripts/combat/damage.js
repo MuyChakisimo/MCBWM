@@ -31,7 +31,7 @@ export function applyGunHits(source, weapon, hits) {
   for (const { entity, location } of hits) {
     let target = targets.get(entity.id);
     if (!target) {
-      if (entity.matches({ gameMode: GameMode.creative }) || entity.hasTag("immune")) continue;
+      if (entity.matches({ gameMode: GameMode.Creative }) || entity.hasTag("immune")) continue;
       const health = entity.getComponent("minecraft:health");
       if (!health || health.currentValue <= 0) continue;
       target = { entity, health, armor: getArmor(entity), damage: 0, headshot: false };

@@ -25,5 +25,9 @@ export function applyRecoil(player, weaponId, weapon, mode) {
   const power = basePower * (1 - reduction.power) * COMBAT.recoilMultiplier;
   const duration = baseDuration * (1 - reduction.duration);
   if (power <= 0 || duration <= 0) return;
-  player.runCommandAsync(`camerashake add @s ${power.toFixed(3)} ${duration.toFixed(2)} rotational`).catch(() => {});
+  try {
+    player.runCommand(`camerashake add @s ${power.toFixed(3)} ${duration.toFixed(2)} rotational`);
+  } catch {
+    // a failed shake must never stop the shot
+  }
 }

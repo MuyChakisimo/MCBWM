@@ -65,6 +65,21 @@ function checkScripts() {
   const tsc = path.join(cache, "node_modules", "typescript", "bin", "tsc");
   const r = spawnSync(process.execPath, [tsc, "-p", tsconfig], { encoding: "utf8" });
   const errors = (r.stdout + r.stderr).split("\n").filter((l) => /error TS\d+/.test(l)).map((l) => l.replace(/^.*?TACZ-B\//, "TACZ-B/"));
+  // Calls on untyped values (function parameters) escape the type check: refuse what 2.x removed or renamed by name.
+  if (+String(modules["@minecraft/server"]).split(".")[0] >= 2) {
+    const REMOVED = [
+      [/\.runCommandAsync\(/, "runCommandAsync was removed in 2.0.0: use runCommand"],
+      [/\.isValid\(\)/, "isValid is a property since 2.0.0, not a function"],
+      [/\bGameMode\.(survival|creative|adventure|spectator)\b/, "GameMode values are capitalised since 2.0.0 (GameMode.Creative)"],
+      [/\bworldInitialize\b/, "worldInitialize was replaced by system.beforeEvents.startup / world.afterEvents.worldLoad"],
+      [/\bitemUseOn\b/, "itemUseOn events were removed in 2.0.0"],
+    ];
+    const walkJs = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walkJs(path.join(d, e.name)) : e.name.endsWith(".js") ? [path.join(d, e.name)] : []));
+    for (const f of walkJs(path.join(repo, "TACZ-B/scripts")))
+      fs.readFileSync(f, "utf8").split(/\r?\n/).forEach((line, i) => {
+        for (const [re, why] of REMOVED) if (re.test(line)) errors.push(`${path.relative(repo, f).split(path.sep).join("/")}(${i + 1}): ${why}`);
+      });
+  }
   console.log(`\n1. Scripts vs @minecraft/server ${modules["@minecraft/server"]}, server-ui ${modules["@minecraft/server-ui"]}: ${errors.length ? errors.length + " problem(s)" : "OK"}`);
   for (const e of errors) console.log("   " + e);
   return errors.length;

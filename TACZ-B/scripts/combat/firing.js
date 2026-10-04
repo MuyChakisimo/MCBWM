@@ -94,11 +94,11 @@ const cycleTicks = (cycle) => ticks(cycle.after + cycle.seconds + cycle.delay);
 /** Bolt / pump: the property the RP bolt animation and the reload controllers watch, as the BP states set it. */
 function startCycle(player, weaponId, cycle) {
   system.runTimeout(() => {
-    if (player.isValid() && heldTypeId(player) === `krep:${weaponId}`) player.triggerEvent(`${weaponId}:bolt`);
+    if (player.isValid && heldTypeId(player) === `krep:${weaponId}`) player.triggerEvent(`${weaponId}:bolt`);
   }, ticks(cycle.after));
   system.runTimeout(() => {
     // Only undo our own value (a reload started meanwhile sets krep:ammoreload to something else).
-    if (player.isValid() && player.getProperty("krep:ammoreload") === cycle.value) player.triggerEvent(`${weaponId}:normal`);
+    if (player.isValid && player.getProperty("krep:ammoreload") === cycle.value) player.triggerEvent(`${weaponId}:normal`);
   }, ticks(cycle.after + cycle.seconds));
 }
 
@@ -143,7 +143,7 @@ system.runInterval(() => {
       if (now >= trigger.readyAt) triggers.delete(id);
       continue;
     }
-    if (!player.isValid() || heldTypeId(player) !== `krep:${weaponId}`) {
+    if (!player.isValid || heldTypeId(player) !== `krep:${weaponId}`) {
       triggers.delete(id);
       continue;
     }

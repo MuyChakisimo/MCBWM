@@ -52,11 +52,11 @@ function removeItem(container, item, count) {
 export function craftWithIngredients(player, ingredients, result) {
   const container = inventory(player);
   if (ingredients.some(([item, count]) => countItem(container, item) < count)) {
-    player.runCommandAsync("title @s actionbar §cNot enough materials");
+    player.runCommand("title @s actionbar §cNot enough materials");
     return;
   }
   for (const [item, count] of ingredients) removeItem(container, item, count);
-  player.runCommandAsync(`give @s ${result}`);
+  player.runCommand(`give @s ${result}`);
 }
 
 /** Confirm dialog listing the ingredients; Cancel returns to the previous menu via `back`. */

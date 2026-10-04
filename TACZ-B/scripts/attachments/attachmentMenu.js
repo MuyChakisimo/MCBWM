@@ -87,7 +87,7 @@ function openSights(player, gunId, { title, body = "", sights }, returnToGunMenu
   form.show(player).then((response) => {
     if (response.canceled) return;
     const sight = sights[response.selection];
-    if (sight) player.runCommandAsync(`event entity @s ${sight[2]}`);
+    if (sight) player.runCommand(`event entity @s ${sight[2]}`);
     if (returnToGunMenu) openGunMenu(player, gunId);
   });
 }
@@ -96,7 +96,7 @@ function openSights(player, gunId, { title, body = "", sights }, returnToGunMenu
 function openPreview(player, gunId) {
   if (!requireHolding(player, gunId)) return;
   player.addTag(PREVIEW_TAG);
-  player.runCommandAsync("event entity @s krep:view");
+  player.runCommand("event entity @s krep:view");
   playersInPreview.add(player.id);
   const form = new ActionFormData()
     .title(PREVIEW_FORM_TITLE)
@@ -106,7 +106,7 @@ function openPreview(player, gunId) {
   form.show(player).then((response) => {
     player.removeTag(PREVIEW_TAG);
     playersInPreview.delete(player.id);
-    player.runCommandAsync("event entity @s krep:noview");
+    player.runCommand("event entity @s krep:noview");
     if (response.canceled) return;
     if (response.selection === 0) openGunMenu(player, gunId);
   });
@@ -117,9 +117,9 @@ function openPreview(player, gunId) {
 function endStalePreview(player) {
   if (!player.hasTag(PREVIEW_TAG) || playersInPreview.has(player.id)) return;
   player.removeTag(PREVIEW_TAG);
-  player.runCommandAsync("event entity @s krep:noview");
+  player.runCommand("event entity @s krep:noview");
 }
 world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
   if (initialSpawn) endStalePreview(player);
 });
-system.run(() => world.getPlayers().forEach(endStalePreview));
+world.afterEvents.worldLoad.subscribe(() => world.getPlayers().forEach(endStalePreview)); // 2.x: world access waits for worldLoad

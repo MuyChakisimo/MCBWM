@@ -18,7 +18,7 @@ file fail, so every gun was invisible). `<id>` is a gun's id (`m4a1`).
 | JSON keys | no duplicates (the game silently keeps one) | `check.mjs` |
 | Molang conditions | balanced `( )` and `' '` | `check.mjs` |
 | Event `queue_command` commands | no leading `/` | `validate.mjs` |
-| Scripts | only what the API version in `TACZ-B/manifest.json` has (`@minecraft/server` 1.18.0): e.g. `ItemStack.setLore` takes plain text only, at most 20 lines of 50 characters | `validate.mjs` |
+| Scripts | only what the API version in `TACZ-B/manifest.json` has (`@minecraft/server` 2.10.0 since v1.31.0): e.g. `ItemStack.setLore`: 1.18.0 took plain text only (2.x also takes translated RawMessage), at most 20 lines of 50 characters | `validate.mjs` |
 | JSON comments | the game tolerates some, but we don't use any (notes live in `docs/` and scripts) | |
 
 `check.mjs` runs offline in seconds; `validate.mjs` needs internet once (downloads Mojang's script API definitions and
