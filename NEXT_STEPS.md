@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.29.0** (both manifests; worlds need `[1, 29, 0]` in `world_*_packs.json`).
+- Pack version **1.29.1** (both manifests; worlds need `[1, 29, 1]` in `world_*_packs.json`).
 - 55 guns (41 original + 14 Java ports), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -356,6 +356,10 @@ work.
 
 - **User test of v1.25.1 (2026-10-02): content log empty at world load.** Mostly looks great; some guns fixed;
   open: some guns' shot sounds are late (which ones not said yet), arms and animations sometimes off.
+- **Debug log** (v1.29.1): `/scriptevent tacz:debug on` makes firing.js / reload.js write a line per shot and
+  reload step (tick, gun, rounds, sound, timings) to the content log; `off` stops it. Ask the user for that log
+  when timing or sound problems are reported (e.g. 2026-10-03: MP7 sound late or quiet the first time, fine
+  the second; maybe the first play of a sound loading from disk).
 - **Turn on the in-game content log** (Settings > Creator > Content Log GUI): it names errors our checks missed.
   First run (user, 2026-10-02, v1.25.0) found, fixed in v1.25.1: Taurus 943 animation bone "release button" (a space:
   the game rejected its whole animation file, why it was invisible in first person / between the legs in third;

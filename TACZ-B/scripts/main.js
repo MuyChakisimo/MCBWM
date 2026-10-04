@@ -5,6 +5,7 @@
 import "./combat/hitscan";
 import "./combat/firing";
 import "./combat/reload";
+import "./combat/debug";
 
 // Crafting and attachment workbenches
 import "./crafting/workbenchBlocks";

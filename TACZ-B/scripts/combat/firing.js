@@ -2,6 +2,7 @@ import { system, world, EquipmentSlot, ItemStack } from "@minecraft/server";
 import { shoot } from "./hitscan.js";
 import { getWeaponByItem } from "../config/weapons.js";
 import { AMMO } from "../config/ammo.js";
+import { debug } from "./debug.js";
 
 // Script-controlled firing for guns with `scriptFiring: true` in config/weapons.js (being rolled out;
 // the other guns still fire from their BP controller, animation_controllers/gun_<id>.json).
@@ -69,7 +70,9 @@ function fireRound(player, trigger) {
   const suppressed = (player.getProperty("krep:muzzle") ?? 0) >= (weapon.suppressedFrom ?? SUPPRESSED_MUZZLE);
   // The same command the BP controllers ran (plays at each nearby player, full volume). v1.24.0 used
   // dimension.playSound (a sound placed at the shooter) and some guns were silent.
-  player.runCommand(`playsound ${weapon.shootSound ?? weaponId}.${suppressed ? "suppress" : "shoot"} @a[r=30]`);
+  const sound = `${weapon.shootSound ?? weaponId}.${suppressed ? "suppress" : "shoot"}`;
+  player.runCommand(`playsound ${sound} @a[r=30]`);
+  debug(() => `${player.name} ${weaponId} shot, ${weapon.roundInItem ? "round in item" : `${left} left`}, ${aiming ? "aiming" : "hip"}, sound ${sound}`);
   // The firing kick (and muzzle flash) every client plays: same as the fire event's playanimation.
   const animation = weapon.shootAnimation?.[aiming ? "ads" : "hip"] ?? `animation.${weaponId}.shoot.${aiming ? "sight" : "nsight"}`;
   player.playAnimation(animation, { nextState: "shoot" });

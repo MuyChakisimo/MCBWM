@@ -1,6 +1,7 @@
 import { system, world, EquipmentSlot, ItemStack, GameMode } from "@minecraft/server";
 import { getWeaponByItem } from "../config/weapons.js";
 import { heldTypeId, showAmmo, ammoNameKey, emptyListeners } from "./firing.js";
+import { debug } from "./debug.js";
 
 // Script-controlled reloading for guns with `scriptReload` in config/weapons.js (being rolled out; the other
 // guns still reload from their BP controller `controller.animation.<id>.reload`, the <id>quantity / <id>reload
@@ -88,6 +89,7 @@ function startReload(player, weapon, kind) {
   const property = kind === "empty" ? sr.emptyProperty?.[Math.min(toLoad, sr.emptyProperty.length) - 1] : undefined;
   if (property !== undefined) player.setProperty("krep:ammoreload", property);
   player.triggerEvent(MARK[kind]);
+  debug(() => `${player.name} ${id} ${kind} reload start: ${current} in gun, ${unlimited ? "unlimited" : available} ammo, loads ${toLoad} at ${loadAt} s, ends ${endAt} s`);
   const now = system.currentTick;
   reloads.set(player.id, {
     player, weapon, kind, cap, unlimited, property,
@@ -117,6 +119,7 @@ function load(r) {
   if (weapon.capByMagazine) player.runCommand(`function ${weapon.id}`);
   else showAmmo(player, weapon, rounds);
   r.loaded = true;
+  debug(() => `${player.name} ${weapon.id} ${kind} reload loaded ${give} -> ${rounds} rounds`);
 }
 
 /** End (or cancel) a reload: the mark variant, and whatever else the gun's old reload reset. */
@@ -126,6 +129,7 @@ function finish(r) {
   if (weapon.scriptReload.reset) player.triggerEvent(weapon.scriptReload.reset);
   if (property !== undefined && player.getProperty("krep:ammoreload") === property) player.setProperty("krep:ammoreload", 0);
   reloads.delete(player.id);
+  debug(() => `${player.name} ${weapon.id} ${r.kind} reload ${r.loaded ? "end" : "cancelled (gun switched)"}`);
 }
 
 // Auto reload: when the last round is fired, the empty reload starts by itself shortly after (the controllers
