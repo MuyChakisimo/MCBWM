@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.9** (both manifests; worlds need `[1, 33, 9]` in `world_*_packs.json`).
+- Pack version **1.33.10** (both manifests; worlds need `[1, 33, 10]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -50,12 +50,33 @@ work.
 
 ## Next, in order
 
-**START HERE (updated 2026-10-05, packs at v1.33.9, pushed; tagged `stable-v1.33.9`).** Order agreed with the user:
-audit (done) -> user test (passed) -> stable tag (done) -> **script review fixes (below) -> minigun conversion ->
-Phase 2 accuracy.** Items 1-3 below are the earlier plan (1 done); the minigun moved before accuracy because the
-spread code will live in firing.js.
+**START HERE (updated 2026-10-05, packs at v1.33.10, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
+audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10, below) -> **minigun
+conversion** -> visual pass gun by gun, with **Phase 2 accuracy** tuned per gun during it. User's focus (2026-10-05):
+stability, especially with several players; everything on the script build; then visual bugs, each gun passing
+every test.
 
-**Script review of v1.33.9 (2026-10-05), not fixed yet.** Found by reading the code; none seen in game yet:
+**v1.33.10 (2026-10-05): the script review's findings fixed; needs the user's test.** User decision for #3: a press
+during a reload is ignored (a gun never fires by itself). Fixes, in the order of the list below:
+1. firing.js drops a player's trigger on death and on leave; reload.js cancels a reload on death.
+2. The wait after a shot only counts for the same gun (the done entry keeps its weaponId).
+3. itemStartUse ignores a press while reloading; a semi / burst trigger still waiting when a reload starts is
+   dropped. A held auto trigger still resumes after the reload (the button is still down).
+4. startCycle skips `<id>:bolt` if a reload has started by then.
+5. Per-player try/catch in both loops (`[TACZ firing]` / `[TACZ reload]` warnings in the content log).
+6. muzzleLight.js remembers every light it places in the world property `tacz:muzzle_lights` (saved at most
+   every 10 ticks) and removes left-over ones once their chunk is loaded (every 100 ticks).
+7. A reload follows the hotbar slot it started in; aimZoom: no zoom on an `_emp` gun, `fov_clear` on joining.
+**Test in game (ideally with 2 players):** with `/gamerule keepinventory true`, hold fire on an auto gun and die
+(`/kill`): it stops, and doesn't fire after respawning; die mid-reload: no reload after respawning, the gun reloads
+normally afterwards. Fire the AWP and switch straight to a pistol: the pistol fires at once on a press, never by
+itself. Press fire during a tactical reload (semi gun): no shot when the reload ends. M870 / SPAS-12 shell reload,
+press fire: the reload stops after the current shell and no shot follows; press again to shoot. Fire a bolt gun
+and reload at once: reload animation plays cleanly. Two of the same gun in the hotbar: start an empty reload on
+one, switch to the other: the reload is cancelled. Aiming with a scope when the last round goes and no ammo left:
+the zoom goes back. Everything else as in v1.33.9 (firing, reloads, bolts, muzzle light still goes out).
+
+**Script review of v1.33.9 (2026-10-05)** (fixed in v1.33.10, above). Found by reading the code; none seen in game:
 1. firing.js: a held trigger isn't dropped on death. With keepInventory, an auto gun may keep firing through the
    death screen if `itemStopUse` doesn't arrive (unverified).
 2. firing.js `startTrigger`: the wait after a shot (`readyAt`) carries over to a *different* gun. Fire the AWP,

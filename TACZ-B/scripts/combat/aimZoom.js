@@ -18,7 +18,7 @@ function wantedFov(player) {
   if (!player.isSneaking) return undefined;
   const typeId = player.getComponent("minecraft:equippable")?.getEquipment(EquipmentSlot.Mainhand)?.typeId;
   const weapon = getWeaponByItem(typeId);
-  if (!weapon) return undefined;
+  if (!weapon || typeId === `krep:${weapon.id}_emp`) return undefined; // empty gun: no zoom
   const reload = player.getComponent("minecraft:mark_variant")?.value;
   if (reload === 1 || reload === 2) return undefined;
   if (weapon.cycle && player.getProperty("krep:ammoreload") === weapon.cycle.value) return undefined;
@@ -58,7 +58,15 @@ world.afterEvents.entityStopSneaking.subscribe(({ entity }) => {
 });
 onHeldChange(updateZoom); // also on spawn: a respawned / rejoined player starts with their own field of view
 
-world.afterEvents.playerSpawn.subscribe(({ player }) => {
+world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
+  // Joining: start from the player's own field of view (in case they left while zoomed; applied was cleared).
+  if (initialSpawn) {
+    try {
+      player.runCommand(`camera @s fov_clear ${ZOOM_EASE.out} out_quad`);
+    } catch {
+      // never block joining
+    }
+  }
   // Versions before 1.33.1 zoomed with an endless Slowness (amplifier 6 or 14); clear one left over.
   const slow = player.getEffect("minecraft:slowness");
   if (slow && (slow.amplifier === 6 || slow.amplifier === 14) && slow.duration > 1000000) player.removeEffect("minecraft:slowness");

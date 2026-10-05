@@ -33,6 +33,7 @@ import { onHeldChange } from "../items/heldItem.js";
 
 const TICKS_PER_MINUTE = 1200;
 const RELOADING = [1, 2]; // q.mark_variant during an empty (1) or tactical (2) reload: no shots (a press stops a shell reload)
+const isReloading = (player) => RELOADING.includes(player.getComponent("minecraft:mark_variant")?.value);
 
 /** Called with (player, weapon) when a shot empties the gun (combat/reload.js starts the empty reload). */
 export const emptyListeners = [];
@@ -74,6 +75,7 @@ function showHeldAmmo(player, weapon, rounds) {
 /** The last round is gone, or fire was pressed with none: the empty item, which starts the empty reload. */
 function toEmpty(player, weapon) {
   player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, loredItem(`krep:${weapon.id}_emp`));
+  zoomSoon(player); // no scope zoom on an empty gun
   for (const listener of emptyListeners) listener(player, weapon);
 }
 
@@ -128,6 +130,8 @@ const cycleTicks = (cycle) => ticks(cycle.after + cycle.seconds + cycle.delay);
 function startCycle(player, weaponId, cycle) {
   system.runTimeout(() => {
     if (!player.isValid || heldTypeId(player) !== `krep:${weaponId}`) return;
+    // A reload started right after the shot: no bolt (it would overwrite the reload's krep:ammoreload).
+    if (isReloading(player)) return;
     player.triggerEvent(`${weaponId}:bolt`);
     zoomSoon(player); // scope out while the bolt is worked
   }, ticks(cycle.after));
@@ -143,7 +147,8 @@ function startTrigger(player, weaponId, weapon) {
   const burst = weapon.fireMode === "burst" ? weapon.burst : undefined;
   // A press while the last one still waits keeps its wait (v1.31.0: a second click skipped it, MK23 fired
   // every 8-14 ticks instead of 24).
-  const previous = triggers.get(player.id);
+  // Only the same gun's wait counts (v1.33.9: the AWP's bolt delayed a pistol switched to right after).
+  const previous = triggers.get(player.id)?.weaponId === weaponId ? triggers.get(player.id) : undefined;
   triggers.set(player.id, {
     player,
     weaponId,
@@ -160,8 +165,12 @@ world.afterEvents.itemStartUse.subscribe(({ source: player, itemStack }) => {
   const weapon = getWeaponByItem(itemStack?.typeId);
   if (!weapon?.scriptFiring || itemStack.typeId !== `krep:${weapon.id}`) return;
   if (weapon.aimToFire && !player.isSneaking) return;
+  // A press during a reload is ignored, not saved for later (v1.33.9 fired it when the reload ended; the press
+  // that stops a shell reload is handled by reload.js).
+  if (isReloading(player)) return;
   // A bolt / pump still cycling: the press is ignored (the controllers didn't queue it either).
-  if (weapon.cycle && system.currentTick < (triggers.get(player.id)?.readyAt ?? 0)) return;
+  const previous = triggers.get(player.id);
+  if (weapon.cycle && previous?.weaponId === weapon.id && system.currentTick < (previous.readyAt ?? 0)) return;
   startTrigger(player, weapon.id, weapon);
 });
 
@@ -169,6 +178,10 @@ world.afterEvents.itemStopUse.subscribe(({ source: player }) => {
   const trigger = triggers.get(player.id);
   if (trigger) trigger.held = false;
 });
+
+// Dying drops the trigger (with keepInventory the gun stays in hand, and the release may never arrive).
+world.afterEvents.entityDie.subscribe(({ deadEntity }) => triggers.delete(deadEntity.id), { entityTypes: ["minecraft:player"] });
+world.afterEvents.playerLeave.subscribe(({ playerId }) => triggers.delete(playerId));
 
 system.runInterval(() => {
   if (triggers.size === 0) return; // nobody firing: nothing to do this tick
@@ -178,32 +191,42 @@ system.runInterval(() => {
     const done = () => {
       // Remember when the gun may fire again so a quick re-press can't beat the fire rate.
       const burst = weapon.fireMode === "burst" ? weapon.burst : undefined;
-      triggers.set(id, { readyAt: Math.max(trigger.nextShot, burst ? now + burst.delay * 20 : trigger.nextShot), done: true });
+      triggers.set(id, { weaponId, readyAt: Math.max(trigger.nextShot, burst ? now + burst.delay * 20 : trigger.nextShot), done: true });
     };
     if (trigger.done) {
       if (now >= trigger.readyAt) triggers.delete(id);
       continue;
     }
-    if (!player.isValid || heldTypeId(player) !== `krep:${weaponId}`) {
+    // One player's error must not stop everyone else's firing (and must not repeat every tick).
+    try {
+      if (!player.isValid || heldTypeId(player) !== `krep:${weaponId}`) {
+        triggers.delete(id);
+        continue;
+      }
+      // Auto stops when the button is released; semi and burst finish their shots.
+      if (trigger.shotsLeft === Infinity && !trigger.held) {
+        done();
+        continue;
+      }
+      if (isReloading(player)) {
+        // A held auto trigger fires again after the reload; semi / burst shots left are dropped (no shot by itself).
+        if (trigger.shotsLeft !== Infinity) done();
+        continue;
+      }
+      if (now < trigger.nextShot) continue;
+      const fired = fireRound(player, trigger);
+      trigger.shotsLeft--;
+      // Keep the rhythm (810 rpm = a shot every 1.48 ticks) but never bank shots while waiting: a shot a tick
+      // or more late (the first one, or one held back by a reload) counts from now (DB-4 fired its 2nd barrel
+      // 1 tick after the 1st instead of 2).
+      const from = now - trigger.nextShot >= 1 ? now : trigger.nextShot;
+      trigger.nextShot = Math.max(from + trigger.interval, now + 1);
+      if (weapon.cycle) trigger.nextShot = Math.max(trigger.nextShot, now + cycleTicks(weapon.cycle));
+      if (!fired || trigger.shotsLeft <= 0) done();
+    } catch (error) {
       triggers.delete(id);
-      continue;
+      console.warn(`[TACZ firing] ${weaponId}: ${error}`);
     }
-    // Auto stops when the button is released; semi and burst finish their shots.
-    if (trigger.shotsLeft === Infinity && !trigger.held) {
-      done();
-      continue;
-    }
-    if (RELOADING.includes(player.getComponent("minecraft:mark_variant")?.value) ) continue;
-    if (now < trigger.nextShot) continue;
-    const fired = fireRound(player, trigger);
-    trigger.shotsLeft--;
-    // Keep the rhythm (810 rpm = a shot every 1.48 ticks) but never bank shots while waiting: a shot a tick
-    // or more late (the first one, or one held back by a reload) counts from now (DB-4 fired its 2nd barrel
-    // 1 tick after the 1st instead of 2).
-    const from = now - trigger.nextShot >= 1 ? now : trigger.nextShot;
-    trigger.nextShot = Math.max(from + trigger.interval, now + 1);
-    if (weapon.cycle) trigger.nextShot = Math.max(trigger.nextShot, now + cycleTicks(weapon.cycle));
-    if (!fired || trigger.shotsLeft <= 0) done();
   }
 }, 1);
 

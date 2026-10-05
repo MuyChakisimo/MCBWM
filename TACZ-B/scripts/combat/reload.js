@@ -90,7 +90,7 @@ function startShells(player, weapon, kind, auto) {
   zoomSoon(player); // no scope zoom while reloading
   recordReload(player, id, kind, "start", auto);
   const now = system.currentTick;
-  reloads.set(player.id, { player, weapon, kind, cap, unlimited, shell: true, times: sh[kind].map((t) => now + ticks(t)), loadedAny: false, ending: false, endTick: 0, interrupt: false, cues: [] });
+  reloads.set(player.id, { player, weapon, kind, cap, unlimited, slot: player.selectedSlotIndex, shell: true, times: sh[kind].map((t) => now + ticks(t)), loadedAny: false, ending: false, endTick: 0, interrupt: false, cues: [] });
   debug(() => `${player.name} ${id} ${kind} shell reload start: ${current} in gun, up to ${cap}`);
 }
 
@@ -166,7 +166,7 @@ function startReload(player, weapon, kind, auto = false) {
   debug(() => `${player.name} ${id} ${kind} reload start: ${current} in gun, ${unlimited ? "unlimited" : available} ammo, loads ${toLoad} at ${loadAt} s, ends ${endAt} s`);
   const now = system.currentTick;
   reloads.set(player.id, {
-    player, weapon, kind, cap, unlimited, property,
+    player, weapon, kind, cap, unlimited, property, slot: player.selectedSlotIndex,
     cues: kind === "tac" ? (sr.tacEvents ?? []).map(([t, event]) => ({ tick: now + ticks(t), event })) : [],
     loadTick: now + ticks(loadAt), endTick: now + ticks(endAt), loaded: false,
   });
@@ -247,24 +247,47 @@ system.runInterval(() => {
       reloads.delete(pid);
       continue;
     }
-    const held = heldTypeId(player);
-    const stillHolding = held === `krep:${r.weapon.id}` || held === `krep:${r.weapon.id}_emp`;
-    if (r.shell) {
-      // Shells already in stay in; switching away just ends the reload.
-      if (!stillHolding) finish(r);
-      else tickShells(r, now);
-      continue;
+    // One player's error must not stop everyone else's reloads (and must not repeat every tick).
+    try {
+      const held = heldTypeId(player);
+      // The same slot too: another copy of the same gun shares its scoreboard (v1.33.9 loaded into the copy
+      // switched to and replaced it).
+      const stillHolding = player.selectedSlotIndex === r.slot && (held === `krep:${r.weapon.id}` || held === `krep:${r.weapon.id}_emp`);
+      if (r.shell) {
+        // Shells already in stay in; switching away just ends the reload.
+        if (!stillHolding) finish(r);
+        else tickShells(r, now);
+        continue;
+      }
+      if (!r.loaded && !stillHolding) {
+        // Switched away before the rounds went in: nothing loaded, nothing taken.
+        finish(r);
+        continue;
+      }
+      while (r.cues.length && now >= r.cues[0].tick) player.triggerEvent(r.cues.shift().event);
+      if (!r.loaded && now >= r.loadTick) load(r);
+      if (r.loaded && (now >= r.endTick || !stillHolding)) finish(r);
+    } catch (error) {
+      reloads.delete(pid);
+      console.warn(`[TACZ reload] ${r.weapon.id}: ${error}`);
     }
-    if (!r.loaded && !stillHolding) {
-      // Switched away before the rounds went in: nothing loaded, nothing taken.
-      finish(r);
-      continue;
-    }
-    while (r.cues.length && now >= r.cues[0].tick) player.triggerEvent(r.cues.shift().event);
-    if (!r.loaded && now >= r.loadTick) load(r);
-    if (r.loaded && (now >= r.endTick || !stillHolding)) finish(r);
   }
 }, 1);
+
+// Dying cancels the reload (with keepInventory it would otherwise load while dead); the spawn handler below
+// clears the reload view.
+world.afterEvents.entityDie.subscribe(
+  ({ deadEntity }) => {
+    const r = reloads.get(deadEntity.id);
+    if (!r) return;
+    try {
+      finish(r);
+    } catch {
+      reloads.delete(deadEntity.id);
+    }
+  },
+  { entityTypes: ["minecraft:player"] }
+);
 
 // A player who left or died mid-reload (or mid-bolt) comes back with no reload running: clear the reload view and
 // the bolt / shell state (each gun's BP controller did this when the gun was first held, until v1.33.9).
