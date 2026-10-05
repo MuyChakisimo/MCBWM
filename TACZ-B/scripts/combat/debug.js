@@ -63,9 +63,11 @@ export function recordReload(player, id, kind, phase, auto = false) {
 const avg = (a) => (a.length ? (a.reduce((x, y) => x + y, 0) / a.length).toFixed(1) : "-");
 const range = (a) => (a.length ? `${avg(a)} (${Math.min(...a)}-${Math.max(...a)})` : "-");
 
+/** The report's lines (printed a few per tick by sayAll). */
 function report() {
+  const lines = [];
   const ticks = system.currentTick - session.startTick;
-  say(`report: ${(ticks / 20).toFixed(0)} s recorded, ${session.guns.size} gun(s); times in ticks (20 per second)`);
+  lines.push(`report: ${(ticks / 20).toFixed(0)} s recorded, ${session.guns.size} gun(s); times in ticks (20 per second)`);
   for (const [id, s] of [...session.guns].sort()) {
     const w = WEAPONS[id];
     const burst = w?.fireMode === "burst" ? w.burst : undefined;
@@ -79,27 +81,42 @@ function report() {
       const slow = expected && gaps.length >= 3 && mean > Math.max(expected * 1.5, expected + 1);
       timing = `${burst ? "within-burst" : "held-trigger"} gap ${range(gaps)}, rpm ${burst?.rpm ?? w?.rpm} = ${expected?.toFixed(1)}${slow ? "  << SLOWER THAN ITS RPM" : ""}`;
     }
-    say(`${id}: ${s.shots} shot(s); ${timing}; sound ${[...s.sounds].join(", ") || "-"}`);
+    lines.push(`${id}: ${s.shots} shot(s); ${timing}; sound ${[...s.sounds].join(", ") || "-"}`);
     for (const [kind, r] of Object.entries(s.reloads))
-      say(`   ${kind} reload: ${r.count}x (${r.auto} auto), load at ${range(r.load)}, end at ${range(r.end)}${r.cancel ? `, ${r.cancel} cancelled` : ""}${r.noammo ? `, ${r.noammo}x no ammo` : ""}`);
+      lines.push(`   ${kind} reload: ${r.count}x (${r.auto} auto), load at ${range(r.load)}, end at ${range(r.end)}${r.cancel ? `, ${r.cancel} cancelled` : ""}${r.noammo ? `, ${r.noammo}x no ammo` : ""}`);
   }
-  if (!session.guns.size) say("nothing was fired or reloaded");
+  if (!session.guns.size) lines.push("nothing was fired or reloaded");
+  return lines;
+}
+
+// Printing ~170 lines in one tick tripped the script watchdog (v1.33.6 report: a 207 ms spike, then "slowdown"
+// warnings); system.runJob spreads them over the next ticks.
+function sayAll(lines) {
+  system.runJob(
+    (function* () {
+      for (const line of lines) {
+        say(line);
+        yield;
+      }
+    })(),
+  );
 }
 
 system.afterEvents.scriptEventReceive.subscribe(({ id, message, sourceEntity }) => {
   if (id !== "tacz:debug") return;
   const cmd = message.trim() || "on";
   let reply;
+  let lines = [];
   if (cmd === "start") {
     session = { startTick: system.currentTick, guns: new Map() };
     reply = "recording shots and reloads; 'scriptevent tacz:debug stop' prints the report";
   } else if (cmd === "stop") {
-    if (session) report();
+    if (session) lines = report();
     reply = session ? "report printed above (chat and server log)" : "nothing was being recorded";
     session = null;
   } else {
     live = cmd !== "off";
     reply = `live log ${live ? "on" : "off"}`;
   }
-  say(reply);
+  sayAll([...lines, reply]);
 });

@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.6** (both manifests; worlds need `[1, 33, 6]` in `world_*_packs.json`).
+- Pack version **1.33.7** (both manifests; worlds need `[1, 33, 7]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -41,8 +41,8 @@ work.
 
 **START HERE: the order the user agreed (2026-10-04, end of session; packs at v1.33.5, all committed, not pushed):**
 
-1. **Optimize the always-running scripts** (no gameplay change). **Done in v1.33.6, waiting for the user's test and a
-   profile to compare** (see the v1.33.6 entry below). The profile `_02-40-42` (0.59 ms/tick total) shows
+1. **Optimize the always-running scripts** (no gameplay change). **Done in v1.33.6; profile confirmed (v1.33.7 entry);
+   still to hear: attachments / rounds on the model / tooltips / zoom look right in game.** The profile `_02-40-42` (0.59 ms/tick total) shows
    three polling scripts are over half of it: `attachments/attachmentState.js` 0.12 (every 2 ticks),
    `items/storedAmmoDisplay.js` 0.10 (every tick), `items/itemLore.js` 0.09 (every second). Make them event-driven
    with the 2.10.0 events already used by `combat/aimZoom.js` (`playerHotbarSelectedSlotChange`,
@@ -63,6 +63,15 @@ How the user works: not a programmer, tests on an AYN Odin 2 (Android) against t
 2.10.0 stable); wants plain explanations, factual decisions (ask when it's their call), ready-to-paste commit
 titles / descriptions, and what to test in game. Test reports: `scriptevent tacz:debug start|stop` +
 `script profiler start|stop` in the server console; they put the `.cpuprofile` in `reference/`.
+
+**v1.33.7 (2026-10-05): v1.33.6 profile, attachment menu UI warning, quieter report.** User test (all 56 guns,
+1024 s, profile `_18-28-54`): every gun at or under its fire rate, every reload on time. Script time **0.42 ms/tick**
+(was 0.59) with much more shooting; the three ex-polling scripts went from 0.31 to 0.033 (attachmentState 0.004,
+storedAmmoDisplay 0.018, itemLore 0.011). The rest is per shot (firing 0.15, hitscan 0.07, reload 0.04). Fixed:
+`TACZ-R/ui/server_form.json` gave the form buttons (`common_buttons.light_text_button`) `"color": "$button_color"`,
+a property buttons don't have and a variable defined nowhere ("Unknown property [color]" in the content log when the
+attachment menu opens): removed (4x), nothing visible changes. The debug report printed ~170 lines in one tick
+(Watchdog: 207 ms spike, then "Slowdown 5ms average" lines): `system.runJob` now spreads them over the next ticks.
 
 **v1.33.6 (2026-10-05): no more polling scripts.** New `items/heldItem.js` (`onHeldChange`): hotbar slot switch,
 any change in the hotbar (not count changes; the event's slot number isn't used, Microsoft's docs don't define it per
