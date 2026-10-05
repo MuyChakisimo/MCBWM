@@ -30,14 +30,10 @@ the Bedrock JSON schemas) and is worth running after big changes.
 |---|---|---|
 | `krep:<id>`, `krep:<id>_emp` | items | the gun loaded / with an empty magazine (commands swap them) |
 | scoreboard `<id>` | BP | rounds in the magazine (created by `scripts/items/ammoScoreboards.js`) |
-| `krep:minigun_fire` | `player.json` event | a minigun shot: shoot animation + `scriptevent tacz:weapon_hitscan minigun ads\|hip` (other guns fire from `combat/firing.js`) |
-| `minigunreload0` .. | `player.json` events | the minigun's reload (other guns reload from `combat/reload.js`) |
-| `krep:<id>_reload` | `player.json` event | adds the rounds to the scoreboard, from `krep:ammoreload` |
+| scoreboards `win308`, `minigunoverheat` | BP | the ammo box's rounds (the minigun fires from it), the minigun's heat in % (`combat/heat.js`) |
 | `<id>:acog`, `<id>:elcan` ... | `player.json` events | sight choices: set `krep:<id>scope` |
 | `<id>:bolt`, `<id>:normal`, `<id>:end` | `player.json` events | bolt/pump action states (AWM, M870 ...) |
 | `krep:<id>scope` | player property | fitted sight (`'acog'`, `'nothing'` ...) |
-| `controller.animation.minigun` | BP `animation_controllers/gun_minigun.json` | the minigun's firing state machine (other guns: scripts since v1.33.9) |
-| `controller.animation.<id>.reload` | same | reload state machine |
 | `functions/<id>.mcfunction` | BP | ammo HUD of guns with `capByMagazine` (Golden Deagle, Vector) and the minigun |
 | `v.<id>`, `v.<id>b`, `v.<id>emp` | RP Molang variables (`player.entity.json` `pre_animation`) | holding the gun: any / loaded item / empty item |
 | `controller.animation.<id>.fp`, `.tp`, `.walk` | RP `animation_controllers/gun_<id>.json` | first-person, third-person, walk animation state machines |

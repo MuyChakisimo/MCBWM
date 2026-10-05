@@ -34,7 +34,7 @@ operators or the server console, `/tacz:hitmarkerdefault on|off` (`combat/hitMar
 
 ## Firing a shot
 
-`combat/firing.js` (every gun with `scriptFiring: true` in `config/weapons.js`: all but the minigun) starts on the use
+`combat/firing.js` (every gun has `scriptFiring: true` in `config/weapons.js`) starts on the use
 button (`itemStartUse` on `krep:<id>`) and fires at the gun's `rpm` in its `fireMode` (auto while held, semi one per
 press, burst `burst.count` per press) until the button is released, the gun is switched, or the magazine is empty.
 Per-gun extras (`cycle`, `roundInItem`, `aimToFire`, `capByMagazine`) are described at the top of firing.js. Each shot:
@@ -59,15 +59,19 @@ Per-gun extras (`cycle`, `roundInItem`, `aimToFire`, `capByMagazine`) are descri
 The last round, or pressing fire with none left, swaps to `krep:<id>_emp` ("No Ammunition") and starts the empty
 reload. No shots during a reload (`mark_variant` 1 or 2).
 
-**The minigun** is the only gun still fired by its BP controller (`animation_controllers/gun_minigun.json`: the
-shoot states run `krep:minigun_fire`, whose `player.json` event sends `scriptevent tacz:weapon_hitscan minigun ads|hip`
-to `combat/hitscan.js`). Until v1.33.9 every gun had such a BP controller (`setup1` refilled the magazine the first
-time the gun was held after each join, `setup` ran the HUD function, `<id>.31` swapped a 0-round gun to `_emp`);
-firing.js and reload.js do those now.
+**The minigun** (script-fired since v1.33.11; options `boxAmmo`, `spinUp`, `heat` in weapons.js): a press needs an
+ammo box (`krep:ammobox`; `krep:ammoboxc` or creative mode = unlimited), plays `minigun.windup` and fires 0.3 s
+later, 20 shots a second, each taking one round from the scoreboard `win308` (the box's rounds, filled by using
+.308 rounds: `items/ammoBox308.js`). `combat/heat.js`: each shot adds 1 to `minigunoverheat` (%); held and not
+firing it cools 1 every 2 ticks; at 100 the item becomes `krep:minigun_emp` and the overheat animation plays
+(`krep:reload`, mark variant 1) for 2.5 s; at 2.4 s it is `krep:minigun` again at 75. HUD: `functions/minigun`
+(rounds - heat%). Until v1.33.9 every gun had a BP controller (`setup1` refilled the magazine the first time the gun
+was held after each join, `setup` ran the HUD function, `<id>.31` swapped a 0-round gun to `_emp`); the minigun's
+(`animation_controllers/gun_minigun.json`) went in v1.33.11. firing.js, reload.js and heat.js do those now.
 
 ## Reloading
 
-`combat/reload.js` (guns with `scriptReload`: all but the minigun; per-gun options are described in reload.js).
+`combat/reload.js` (guns with `scriptReload`: all but the minigun, which overheats instead; per-gun options are described in reload.js).
 Empty reload: starts by itself 0.25 s after the last round, or use with `krep:<id>_emp`. Tactical: a swing (the
 shared BP controller `controller.animation.reload_input` sends `/scriptevent tacz:reload`) with at least 2 rounds
 missing. It sets the mark variant the RP reload animations watch, takes the ammo item from the inventory at
@@ -131,8 +135,8 @@ reload step and when a gun is taken in hand (`items/heldItem.js`). Guns whose ca
 - Muzzle flash light (`combat/muzzleLight.js`, since v1.33.2): each shot without a silencer puts a
   `minecraft:light_block_15` in the air at the shooter's head for 2 ticks (`MUZZLE_LIGHT` in `config/combat.js`);
   automatic fire extends it instead of placing a new block each shot. Only air is replaced, only its own light
-  removed. A server stopped in those 2 ticks leaves an invisible light block (break it with a light item, or
-  `/fill ... air replace light_block_15`). The minigun (still fired by its BP controller) has no light yet.
+  removed. Lights whose chunk unloaded first (leave, dimension change, server stop) are kept in the world property
+  `tacz:muzzle_lights` and removed once their chunk is loaded (v1.33.10).
 - Scope zoom (`combat/aimZoom.js`, since v1.33.1): crouching with a magnifying sight eases the camera to
   `SIGHT_ZOOM` in `config/attachments.js` (sniper scope 30, ACOG / ELCAN 50; the game allows 30-110) with
   `camera.setFov`, and back with `camera @s fov_clear`. Not while reloading or working a bolt. It reacts to crouch,
@@ -147,7 +151,7 @@ magazine sizes.
 | Symptom | Look at |
 |---|---|
 | Gun doesn't fire | `config/weapons.js` `scriptFiring`, `fireMode`, `rpm`; `/scoreboard players list @s` (rounds); `scriptevent tacz:debug on` logs each shot |
-| Fires but no damage | script-fired: content log `[TACZ Hitscan]`, `config/weapons.js` entry; minigun: `player.json` `krep:minigun_fire` has `scriptevent tacz:weapon_hitscan <id>`; `config/weapons.js` entry; content log for `[TACZ Hitscan]` errors |
+| Fires but no damage | script-fired: content log `[TACZ Hitscan]`, `config/weapons.js` entry; content log for `[TACZ firing]` errors |
 | Gun fires twice / too fast | `config/weapons.js` `fireMode`/`rpm`/`burst`; `scriptevent tacz:debug start` then `stop` reports the gaps; content log for `combat/firing.js` errors |
 | Damage feels off | `weapons.js` `damage`, `falloff`, `headshot`, `penetration`; `combat.js` multipliers |
 | Wrong ammo count / reload loads wrong amount | `config/weapons.js` `magazine`, `chamber`, `scriptReload` (`byMagazine` caps); `scriptevent tacz:debug on` logs each reload step |

@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.33.10`** for both packs. On a dedicated server set `"version": [1, 33, 10]` for both packs in the
+**Pack version is `1.33.11`** for both packs. On a dedicated server set `"version": [1, 33, 11]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -66,8 +66,8 @@ Every gun `<id>` (the item id without `krep:`) has its own files:
 | Pack file | What |
 |---|---|
 | `TACZ-B/items/guns/<id>/<id>.json`, `<id>_emp.json` | The gun item and its empty-magazine variant |
-| (BP) nothing per gun but its items | Since v1.33.9 firing, reloading and the HUD are scripts (`combat/firing.js`, `combat/reload.js`); only the minigun still has `animation_controllers/gun_minigun.json` and its BP animations / functions; Golden Deagle and Vector keep `functions/<id>.mcfunction` (HUD per magazine) |
-| `TACZ-B/entities/player.json` | Shared player entity: reload / scope events (and the minigun's `krep:minigun_fire`) |
+| (BP) nothing per gun but its items | Since v1.33.9 firing, reloading and the HUD are scripts (`combat/firing.js`, `combat/reload.js`; the minigun's heat `combat/heat.js` since v1.33.11); the minigun keeps its HUD function; Golden Deagle and Vector keep `functions/<id>.mcfunction` (HUD per magazine) |
+| `TACZ-B/entities/player.json` | Shared player entity: reload / scope / bolt events |
 | `TACZ-R/models/entity/guns/<id>.geo.json` | Gun model |
 | `TACZ-R/render_controllers/gun_<id>.json` | Which gun parts/attachments are visible |
 | `TACZ-R/animation_controllers/gun_<id>.json` | First-/third-person animation state machines |

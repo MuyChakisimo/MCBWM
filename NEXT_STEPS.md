@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.10** (both manifests; worlds need `[1, 33, 10]` in `world_*_packs.json`).
+- Pack version **1.33.11** (both manifests; worlds need `[1, 33, 11]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -50,11 +50,31 @@ work.
 
 ## Next, in order
 
-**START HERE (updated 2026-10-05, packs at v1.33.10, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
-audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10, below) -> **minigun
-conversion** -> visual pass gun by gun, with **Phase 2 accuracy** tuned per gun during it. User's focus (2026-10-05):
+**START HERE (updated 2026-10-05, packs at v1.33.11, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
+audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10) -> minigun (v1.33.11) -> **user tests both**
+-> visual pass gun by gun, with **Phase 2 accuracy** tuned per gun during it. User's focus (2026-10-05):
 stability, especially with several players; everything on the script build; then visual bugs, each gun passing
 every test.
+
+**v1.33.11 (2026-10-05): the minigun is script-fired; every gun now is. Needs the user's test.** Same behaviour as its
+BP controller, now in `combat/firing.js` (`boxAmmo`, `spinUp`) and the new `combat/heat.js` (`heat` in weapons.js):
+a press needs an ammo box, plays the wind-up and fires 0.3 s later, 20 shots/s from the box's `win308` rounds;
++1% heat per shot, cools 1% every 2 ticks while held and not firing (not in another slot, as before); at 100% the
+item becomes `minigun_emp` and the overheat animation plays (2.5 s), back at 2.4 s with 75%. Changes on purpose:
+the creative ammo box or creative mode fire with an empty box (before: needed at least 1 round in it); the no-box
+message is "No .308 Winchester Ammo Box" (translated item name); it gets the muzzle light now. Removed: the BP
+controller `gun_minigun.json`, `animations/guns/minigun.json`, the `minigun` animate entry (player.json now runs 3
+BP animate entries per player per tick: akminspect, universalscope, reload_input), `krep:minigun_fire`,
+`minigunreload0/1`. script-reload.mjs refuses heat guns cleanly; test.mjs updated. Simulated outside the game
+(scratch harness: fake @minecraft/server running the real firing / reload / heat scripts tick by tick): wind-up 6
+ticks, 1 shot per tick, overheat at 100 shots, refill at +48 ticks to 75, end at +50, cooling, no box / empty box /
+30 rounds / creative box, death stops firing, two players at once; plus v1.33.10 fixes: AWP -> pistol switch, a
+press during a tactical reload doesn't fire afterwards. Still unused: `animation.minigun.spin` (barrel spin) and
+`controller.animation.minigun.tp`: visual pass.
+**Test in game:** minigun with an ammo box holding .308: hold fire (wind-up sound, then fast fire, HUD "rounds -
+heat%"), keep firing to 100%: overheat animation, comes back at 75% after 2.5 s; release: heat drops; without a box:
+the message, no shots; empty box: "No Ammunition"; creative ammo box: unlimited; third person: still posed and
+firing animation plays for other players; inspect (swing) still works.
 
 **v1.33.10 (2026-10-05): the script review's findings fixed; needs the user's test.** User decision for #3: a press
 during a reload is ignored (a gun never fires by itself). Fixes, in the order of the list below:
@@ -632,6 +652,10 @@ came from reading `hit.block.typeId` past the ticking area (fixed v1.30.5); the 
 - Animation sound effects play only if the name is in `player.entity.json`'s `sound_effects` table (and in
   `sound_definitions.json`); `check.mjs` checks both.
 - Functions in `tick.json` run without `@s`, so per-player commands there do nothing.
+- **Hand edits to `player.json` (and other tool-written JSON) must keep the tools' format** (`format.cjs`: anything
+  that fits in 100 characters on one line). Otherwise test.mjs's clone / port round trips fail with "left behind:
+  M TACZ-B/entities/player.json" (v1.33.11: the animate list fit on one line after removing the minigun). Fix: parse
+  and re-`format` the file once (lenient.cjs + format.cjs), keeping its line endings.
 - Git Bash mangles `/paths` inside `node -e '...'` and backslashes in heredocs: put scripts in a file instead.
 - Stopping a background shell task can leave its child processes running; check for leftovers before rerunning.
 - Some pack files use Windows line endings; the tools keep each file's endings. Compare with

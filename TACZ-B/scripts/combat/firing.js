@@ -1,4 +1,4 @@
-import { system, world, EquipmentSlot } from "@minecraft/server";
+import { system, world, EquipmentSlot, GameMode } from "@minecraft/server";
 import { shoot } from "./hitscan.js";
 import { getWeaponByItem } from "../config/weapons.js";
 import { AMMO } from "../config/ammo.js";
@@ -8,9 +8,10 @@ import { muzzleFlash } from "./muzzleLight.js";
 import { loredItem } from "../items/itemLore.js";
 import { updateStoredAmmo } from "../items/storedAmmoDisplay.js";
 import { onHeldChange } from "../items/heldItem.js";
+import { addHeat, showHeat } from "./heat.js";
 
-// Script-controlled firing for guns with `scriptFiring: true` in config/weapons.js (every gun but the minigun,
-// which still fires from its BP controller, animation_controllers/gun_minigun.json).
+// Script-controlled firing for guns with `scriptFiring: true` in config/weapons.js (every gun since v1.33.11, when
+// the minigun left its BP controller).
 //
 // Holding the use button on `krep:<id>` fires at the gun's `rpm` in its `fireMode`:
 //   "auto"  while the button is held;  "semi"  one shot per press;
@@ -30,6 +31,11 @@ import { onHeldChange } from "../items/heldItem.js";
 //   aimToFire     fires only while aiming (sneaking).
 //   capByMagazine rounds allowed per krep:magazine value (extended magazines); the HUD is the gun's
 //                 function (it shows "/20+10" ...).
+//   boxAmmo       no magazine (minigun): rounds come from the scoreboard `score` (an ammo box's rounds,
+//                 items/ammoBox308.js); a press needs a `box` or `creativeBox` (unlimited) in the inventory.
+//                 Running out shows "No Ammunition" (no empty item: that is the overheated gun).
+//   spinUp        { seconds, sound }: the first shot of a press comes `seconds` later (wind-up sound).
+//   heat          overheating (combat/heat.js); the HUD is the gun's function (rounds and heat).
 
 const TICKS_PER_MINUTE = 1200;
 const RELOADING = [1, 2]; // q.mark_variant during an empty (1) or tactical (2) reload: no shots (a press stops a shell reload)
@@ -84,7 +90,18 @@ function fireRound(player, trigger) {
   const { weaponId, weapon } = trigger;
   let left = 0;
   if (weapon.roundInItem) player.onScreenDisplay.setActionBar("No Ammunition");
-  else {
+  else if (weapon.boxAmmo) {
+    const objective = world.scoreboard.getObjective(weapon.boxAmmo.score);
+    const stored = objective?.getScore(player) ?? 0;
+    if (!trigger.unlimited) {
+      if (!objective || stored < 1) {
+        player.onScreenDisplay.setActionBar("No Ammunition");
+        return false;
+      }
+      objective.setScore(player, stored - 1);
+    }
+    left = Infinity; // never swaps to the empty item (see boxAmmo above)
+  } else {
     const stored = roundsOf(player, weapon);
     if (stored === undefined) return false;
     // Never more than a full magazine plus one chambered round (as the BP controllers did).
@@ -115,6 +132,11 @@ function fireRound(player, trigger) {
   player.playAnimation(animation, { nextState: "shoot" });
   shoot(player, weaponId, weapon, aiming ? "ads" : "hip");
 
+  if (weapon.heat) {
+    const overheated = addHeat(player, weapon);
+    showHeat(player, weapon);
+    if (overheated) return false;
+  }
   if (left === 0) {
     toEmpty(player, weapon);
     return false;
@@ -143,21 +165,50 @@ function startCycle(player, weaponId, cycle) {
   }, ticks(cycle.after + cycle.seconds));
 }
 
+/** boxAmmo: which box the player carries (undefined: none), as the minigun's BP controller checked on a press. */
+function carriedBox(player, box) {
+  const container = player.getComponent("minecraft:inventory")?.container;
+  let found;
+  for (let i = 0; container && i < container.size; i++) {
+    const typeId = container.getItem(i)?.typeId;
+    if (typeId === box.creativeBox) return "creative";
+    if (typeId === box.box) found = "box";
+  }
+  return found;
+}
+
 function startTrigger(player, weaponId, weapon) {
   const burst = weapon.fireMode === "burst" ? weapon.burst : undefined;
+  let unlimited = false;
+  if (weapon.boxAmmo) {
+    const box = carriedBox(player, weapon.boxAmmo);
+    if (!box) {
+      player.onScreenDisplay.setActionBar({ rawtext: [{ text: "No " }, { translate: `krep:box.${weapon.boxAmmo.box.replace(/^krep:/, "")}.name` }] });
+      return;
+    }
+    // A creative ammo box or creative mode: no rounds needed or taken.
+    unlimited = box === "creative" || player.getGameMode() === GameMode.Creative;
+  }
   // A press while the last one still waits keeps its wait (v1.31.0: a second click skipped it, MK23 fired
   // every 8-14 ticks instead of 24).
   // Only the same gun's wait counts (v1.33.9: the AWP's bolt delayed a pistol switched to right after).
   const previous = triggers.get(player.id)?.weaponId === weaponId ? triggers.get(player.id) : undefined;
+  let nextShot = Math.max(system.currentTick, previous?.readyAt ?? (previous?.weaponId === weaponId ? previous.nextShot : 0));
+  if (weapon.spinUp) {
+    // Wind-up: every press, as the BP controller's "start" state did.
+    player.runCommand(`playsound ${weapon.spinUp.sound} @a[r=15]`);
+    nextShot = Math.max(nextShot, system.currentTick + ticks(weapon.spinUp.seconds));
+  }
   triggers.set(player.id, {
     player,
     weaponId,
     weapon,
     held: true,
+    unlimited,
     // semi: one shot; burst: count shots; auto: until released.
     shotsLeft: weapon.fireMode === "semi" ? 1 : burst ? burst.count : Infinity,
     interval: TICKS_PER_MINUTE / (burst?.rpm ?? weapon.rpm),
-    nextShot: Math.max(system.currentTick, previous?.readyAt ?? (previous?.weaponId === weaponId ? previous.nextShot : 0)),
+    nextShot,
   });
 }
 
@@ -234,7 +285,7 @@ system.runInterval(() => {
 onHeldChange((player) => {
   const typeId = heldTypeId(player);
   const weapon = getWeaponByItem(typeId);
-  if (!weapon?.scriptFiring || weapon.roundInItem) return;
+  if (!weapon?.scriptFiring || weapon.roundInItem || weapon.boxAmmo) return; // boxAmmo: heat.js shows its HUD
   const rounds = typeId === `krep:${weapon.id}_emp` ? 0 : roundsOf(player, weapon);
   if (rounds === undefined) return;
   updateStoredAmmo(player);

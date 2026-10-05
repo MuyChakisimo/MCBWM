@@ -27,6 +27,7 @@
 //   suppressedFrom krep:muzzle value from which the muzzle is a silencer ("<shootSound>.suppress"). Only guns
 //                 with it can be silenced: krep:muzzle is one property for all guns, so another gun's silencer
 //                 must not silence this one (the SPR-15 did in v1.30).
+//   boxAmmo, spinUp, heat   Minigun: rounds from an ammo box, wind-up, overheating (combat/firing.js, heat.js).
 //   chamber       false: no chambered round (revolvers, AA-12): never more than magazine rounds.
 //   scriptReload  { empty: [load, end], tac: [load, end] } seconds: reloading runs in combat/reload.js
 //                 (tools/weapons/script-reload.mjs converts a gun).
@@ -48,7 +49,6 @@
 //   magazine      Rounds per magazine (functions/<id>*.mcfunction, animation controllers).
 //   ammo          Item consumed on reload.
 //   reload        "single": loads one round per reload (tube-fed shotguns).
-//   overheat      Minigun: shots before it must cool down (no magazine).
 //
 // Adding a gun: add an entry here (the id is the item id without "krep:"), then the pack
 // files it needs; see README "Adding a weapon". Removing: delete the entry and its files.
@@ -672,7 +672,13 @@ export const WEAPONS = /** @type {Record<string, any>} */ (Object.freeze({
     rpm: 1200,
     magazine: null,
     ammo: "krep:ammobox",
-    overheat: 100,
+    scriptFiring: true,
+    shootAnimation: { ads: "animation.minigun.shoot", hip: "animation.minigun.shoot" },
+    boxAmmo: { score: "win308", box: "krep:ammobox", creativeBox: "krep:ammoboxc" },
+    spinUp: { seconds: 0.3, sound: "minigun.windup" },
+    // Heat in %: max, per shot, cools 1 every coolEvery ticks in hand; overheated: locked `lock` s, back at
+    // `refill` s with `after` heat.
+    heat: { score: "minigunoverheat", max: 100, perShot: 1, coolEvery: 2, lock: 2.5, refill: 2.4, after: 75 },
     recipe: [
       ["iron_ingot", 320],
       ["blaze_rod", 10],

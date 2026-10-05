@@ -65,19 +65,10 @@
         "krep:ammoreload": {"range": [0, 9999], "default": 30, "type": "int", "client_sync": true}
       },
       "scripts": {
-        "animate": [
-          {"akminspect": "q.skin_id <= 1 && q.mark_variant != 2"},
-          "minigun",
-          "universalscope",
-          "reload_input"
-        ]
+        "animate": [{"akminspect": "q.skin_id <= 1 && q.mark_variant != 2"}, "universalscope", "reload_input"]
       },
       "animations": {
         "akminspect": "controller.animation.akm.inspect",
-        "minigun": "controller.animation.minigun",
-        "minigundelay": "animation.minigun.delay",
-        "minigunoverheat": "animation.minigun.overheat",
-        "minigunloop": "animation.minigun.loop",
         "universalscope": "controller.animation.universalscope",
         "inspectdelay": "animation.inspectdelay",
         "instant": "animation.instant",
@@ -184,28 +175,6 @@
       "krep:noreload": {"add": {"component_groups": ["krep:noreload"]}},
       "krep:glreload": {"add": {"component_groups": ["krep:glreload"]}},
       "krep:reloadtac": {"add": {"component_groups": ["krep:reloadtac"]}},
-      "krep:minigun_fire": {
-        "sequence": [
-          {
-            "filters": {"test": "is_sneaking", "value": true, "subject": "self"},
-            "queue_command": {
-              "command": [
-                "playanimation @s[r=0.5] animation.minigun.shoot shoot",
-                "scriptevent tacz:weapon_hitscan minigun ads"
-              ]
-            }
-          },
-          {
-            "filters": {"test": "is_sneaking", "value": false, "subject": "self"},
-            "queue_command": {
-              "command": [
-                "playanimation @s[r=0.5] animation.minigun.shoot shoot",
-                "scriptevent tacz:weapon_hitscan minigun hip"
-              ]
-            }
-          }
-        ]
-      },
       "minecraft:gain_bad_omen": {"add": {"component_groups": ["minecraft:add_bad_omen"]}},
       "minecraft:clear_add_bad_omen": {
         "remove": {"component_groups": []},
@@ -256,11 +225,6 @@
       "m870:bolt": {"set_property": {"krep:ammoreload": 3}},
       "spas12:bolt": {"set_property": {"krep:ammoreload": 3}},
       "m1014:normal": {"set_property": {"krep:ammoreload": 0}},
-      "minigunreload0": {
-        "set_property": {"krep:ammoreload": 0},
-        "queue_command": {"command": ["title @s actionbar No :\nAmmo Box or .308"]}
-      },
-      "minigunreload1": {"set_property": {"krep:ammoreload": 1}},
       "hk416:ironsight": {"set_property": {"krep:hk416scope": "'nothing'"}},
       "hk416:elcan": {"set_property": {"krep:hk416scope": "'elcan'"}},
       "hk416:coyote": {"set_property": {"krep:hk416scope": "'coyote'"}},

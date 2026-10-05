@@ -98,19 +98,19 @@ for (const g of guns) {
   restore();
 }
 
-// script-firing.mjs refuses a gun whose shot does more than the standard (minigun: heat, wind-up) and changes nothing.
+// script-firing.mjs leaves an already script-fired gun alone (every gun since v1.33.11, the minigun last).
 {
   const r = run("tools/weapons/script-firing.mjs", "minigun");
   const left = diff();
-  report("script-firing minigun (refused: heat, wind-up)", !r.ok && /firing\.js doesn't do that yet/.test(r.out) && left.length === 0, left.length ? "      left behind: " + left.slice(0, 5).join(", ") : r.ok ? "      it converted the minigun" : "");
+  report("script-firing minigun (already script-fired)", r.ok && /already script-fired/.test(r.out) && left.length === 0, left.length ? "      left behind: " + left.slice(0, 5).join(", ") : !r.ok ? lastLines(r.out) : "");
   restore();
 }
 
-// script-reload.mjs refuses the minigun (still fired by its controller; ammo box reload) and changes nothing.
+// script-reload.mjs refuses the minigun (no reload: it overheats) and changes nothing.
 {
   const r = run("tools/weapons/script-reload.mjs", "minigun");
   const left = diff();
-  report("script-reload minigun (refused: still controller-fired)", !r.ok && /convert its firing first|reload\.js doesn't do that yet/.test(r.out) && left.length === 0, left.length ? "      left behind: " + left.slice(0, 5).join(", ") : r.ok ? "      it converted the minigun" : "");
+  report("script-reload minigun (refused: overheats instead)", !r.ok && /no reload to convert/.test(r.out) && left.length === 0, left.length ? "      left behind: " + left.slice(0, 5).join(", ") : r.ok ? "      it converted the minigun" : "");
   restore();
 }
 

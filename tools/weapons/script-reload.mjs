@@ -10,7 +10,7 @@
 //     BP reload animations, the <id>reloadN / krep:<id>_reload events, functions <id>quantity and <id>reload;
 //   - wires the shared swing detector (animation_controllers/shared_reload.json) the first time.
 // Also handled (see reload.js): per-magazine reloads (byMagazine), one-round reloads (emptyOne), reload
-// events (tacEvents, reset), a round loaded into the item (RPG). Refuses shell by shell and the minigun.
+// events (tacEvents, reset), a round loaded into the item (RPG). Refuses shell by shell and the minigun (heat).
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
@@ -36,6 +36,8 @@ for (const id of ids) {
   if (!entry) throw new Error(`${id}: not in config/weapons.js`);
   if (/^ {4}scriptReload: /m.test(entry[1])) { console.log(`${id}: already script-reloaded`); continue; }
   if (!/^ {4}scriptFiring: true,/m.test(entry[1])) throw new Error(`${id}: convert its firing first (script-firing.mjs)`);
+  // The minigun has no reload: it overheats (combat/heat.js) and fires from the ammo box.
+  if (/^ {4}heat: /m.test(entry[1])) throw new Error(`${id}: no reload to convert (it overheats instead: combat/heat.js)`);
 
   const pj = parse(read(P));
   const desc = pj["minecraft:entity"].description;
