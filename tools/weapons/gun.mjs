@@ -28,6 +28,7 @@ const require = createRequire(import.meta.url);
 const { parse } = require("./lenient.cjs");
 const { format } = require("./format.cjs");
 const { generateLore, LORE_FILE, LANG_FILE } = require("./lore.cjs");
+const { generateHeld, rewriteEntity, HELD_FILE, WEAPONS_FILE, ENTITY_FILE } = require("./held.cjs");
 
 const ROOT = process.cwd();
 const PACKS = ["TACZ-B", "TACZ-R"];
@@ -491,6 +492,9 @@ async function clone(from, to, name) {
   // Item lore (generated from the English lang file).
   tree.read(LORE_FILE); // (keeps its line endings)
   tree.write(LORE_FILE, generateLore(tree.read(LANG_FILE)));
+  // The held-gun numbers (config/held.js) and the RP lines that compare them (held.cjs).
+  tree.write(HELD_FILE, generateHeld(tree.read(WEAPONS_FILE), tree.exists(HELD_FILE) ? tree.read(HELD_FILE) : null));
+  tree.write(ENTITY_FILE, rewriteEntity(tree.read(ENTITY_FILE), tree.read(HELD_FILE)));
 
   // 5. Files that new names point at (sounds, textures outside the gun's folders).
   for (const f of tree.writes.keys()) {
@@ -548,6 +552,9 @@ async function remove(id, force) {
 
   tree.read(LORE_FILE); // (keeps its line endings)
   tree.write(LORE_FILE, generateLore(tree.read(LANG_FILE)));
+  // The held-gun numbers (config/held.js) and the RP lines that compare them (held.cjs).
+  tree.write(HELD_FILE, generateHeld(tree.read(WEAPONS_FILE), tree.exists(HELD_FILE) ? tree.read(HELD_FILE) : null));
+  tree.write(ENTITY_FILE, rewriteEntity(tree.read(ENTITY_FILE), tree.read(HELD_FILE)));
 
   // Assets only the removed parts used.
   const remaining = tree.list().filter((f) => TEXT.test(f)).map((f) => tree.read(f)).join("\n");

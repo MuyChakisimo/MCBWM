@@ -19,4 +19,5 @@ import "./attachments/attachmentMenu";
 import "./items/ammoScoreboards";
 import "./items/itemLore";
 import "./items/storedAmmoDisplay";
+import "./items/heldGun";
 import "./items/ammoBox308";

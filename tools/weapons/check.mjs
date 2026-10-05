@@ -99,6 +99,24 @@ for (const [id, gun] of Object.entries(ATTACHMENTS))
   const crlfToLf = (s) => (s ?? "").split("\r\n").join("\n");
   if (crlfToLf(read(LORE_FILE)) !== generateLore(read(LANG_FILE))) problems.push(`${LORE_FILE} is out of date with ${LANG_FILE}: run node tools/weapons/lore.cjs`);
 }
+// The held-gun numbers (config/held.js) cover every gun, and the RP compares them, not item names (v1.33.14).
+{
+  const { generateHeld, rewriteEntity, HELD_FILE, WEAPONS_FILE, ENTITY_FILE } = require("./held.cjs");
+  const lf = (s) => (s ?? "").split("\r\n").join("\n");
+  const held = lf(read(HELD_FILE));
+  if (held !== generateHeld(read(WEAPONS_FILE), held)) problems.push(`${HELD_FILE} is out of date with ${WEAPONS_FILE}: run node tools/weapons/held.cjs`);
+  else {
+    let entity = lf(read(ENTITY_FILE)), rewritten;
+    try {
+      rewritten = rewriteEntity(entity, held);
+    } catch (error) {
+      problems.push(String(error.message));
+    }
+    if (rewritten !== undefined && rewritten !== entity) problems.push(`${ENTITY_FILE}: held-gun lines don't match ${HELD_FILE}: run node tools/weapons/held.cjs`);
+    for (const id of Object.keys(WEAPONS))
+      if (new RegExp(`"variable\\.${id}(b|emp) = (?!q\\.property\\('krep:held'\\))`).test(entity)) problems.push(`${ENTITY_FILE}: variable.${id}b / emp must compare krep:held (run node tools/weapons/held.cjs)`);
+  }
+}
 // The lore's Group / Caliber / Damage follow the config (v1.32.0: ported guns showed their clone source's).
 {
   const { loreFacts, loreFactsOf, catalogGroups } = await import("./config-sync.mjs");

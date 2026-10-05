@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.33.13`** for both packs. On a dedicated server set `"version": [1, 33, 13]` for both packs in the
+**Pack version is `1.33.14`** for both packs. On a dedicated server set `"version": [1, 33, 14]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -58,6 +58,7 @@ edit).
 | `items/ammoScoreboards.js` | Creates the scoreboard objectives (loaded rounds per gun, etc.) once on world load |
 | `items/itemLore.js` | Lore text on guns and ammo (event-driven; `loredItem()` for items the scripts make) |
 | `items/storedAmmoDisplay.js` | Loaded rounds on the Evolys / M249 / M1014 models (`storedAmmoDisplay`) |
+| `items/heldGun.js` | The held gun as a number (`krep:held`, from the generated `config/held.js`) for the resource pack |
 | `items/heldItem.js` | `onHeldChange()`: tells modules when what a player holds may have changed (no polling) |
 | `items/ammoBox308.js` | Storing .308 rounds in an ammo box |
 
@@ -104,7 +105,8 @@ replace its model, textures, animations and sounds, and edit its stats and lore.
 or damage run `"$NODE" tools/weapons/config-sync.mjs`: it rewrites the lore's Group / Caliber / Damage from the config
 (and, for guns ported from Java, their name and description from Java) and puts the gun in its class's creative
 inventory group (`CATEGORIES[...].group`; a new group gets a lang key in every lang file). `check.mjs` refuses lore or
-groups that disagree.
+groups that disagree. `gun.mjs` also regenerates the held-gun numbers (`tools/weapons/held.cjs`: `config/held.js` and
+the `variable.<id>b / emp` lines of `player.entity.json`); run it by hand after adding a gun some other way.
 
 `"$NODE" tools/weapons/gun.mjs remove <id>` removes a gun the same way, and refuses if another gun still uses its
 files (for example an animation it borrows); `--force` removes it anyway.
@@ -253,6 +255,7 @@ anything changed in the hotbar, spawn / join and again a second later):
 | `combat/aimZoom.js` | crouch, held item changed, reload / bolt | the zoom or crosshair changed |
 | `combat/inspect.js`, tactical reload in `combat/reload.js` | a left click (`playerSwingStart`) with a gun | |
 | `combat/firing.js`, `combat/reload.js`, `combat/heat.js` | every tick, but only while someone fires / reloads / has a warm minigun | |
+| `items/heldGun.js` | held item changed | the held gun changed (`krep:held`: the RP compares this number instead of 116 item names per player per frame, since v1.33.14) |
 | BP animation controllers | none since v1.33.12 (inspect, crosshair and the reload swing were per-player, per-tick controllers) | |
 
 Before v1.33.6 the first three polled (every second, every tick, every 2 ticks): about 0.31 of 0.59 ms of script time

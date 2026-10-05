@@ -16,7 +16,7 @@ The two packs talk through a few values on the player:
 | property `krep:ammoreload` | `combat/reload.js`, `combat/firing.js` (bolt / pump events) | RP gun controllers | reload / bolt / shell state the RP animations follow (0 = none) |
 | properties `krep:stock/grip/laser/muzzle/magazine` | `attachments/attachmentState.js` | RP render controllers | fitted attachments, shown on the model |
 | property `krep:bulletcache` | `items/storedAmmoDisplay.js` | RP (Evolys, M249, M1014) | rounds shown on the gun model |
-| RP variables `v.<id>`, `v.<id>b`, `v.<id>emp` | `player.entity.json` `pre_animation` | RP controllers, render controllers | holding the gun (any / loaded / empty item) |
+| RP variables `v.<id>`, `v.<id>b`, `v.<id>emp` | `player.entity.json` `pre_animation`, from the player property `krep:held` (`items/heldGun.js`, numbers in `config/held.js`) | RP controllers, render controllers | holding the gun (any / loaded / empty item) |
 
 The gun is two items: `krep:<id>` (loaded) and `krep:<id>_emp` (empty). The scripts swap them when the magazine
 runs out or is reloaded.
