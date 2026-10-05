@@ -3,7 +3,7 @@ import { getWeaponByItem } from "../config/weapons.js";
 import { SIGHT_ZOOM, ZOOM_EASE } from "../config/attachments.js";
 import { onHeldChange } from "../items/heldItem.js";
 
-// Scope zoom: while a player aims (crouches) with a gun whose fitted sight magnifies (SIGHT_ZOOM in
+// Scope zoom and crosshair (below). Zoom: while a player aims (crouches) with a gun whose fitted sight magnifies (SIGHT_ZOOM in
 // config/attachments.js), the camera eases to that field of view; otherwise back to the player's own.
 // Not during a reload (q.mark_variant 1 / 2) or while a bolt is being worked (the gun's cycle value in
 // krep:ammoreload), as the BP scope controllers did. Replaces their Slowness effect (v1.33.1): aiming walks at
@@ -31,8 +31,34 @@ function wantedFov(player) {
   return SIGHT_ZOOM[sight];
 }
 
+// Crosshair: hidden while aiming (crouching) with a gun, not during a reload; kept for guns with keepCrosshair
+// (minigun, M107, M95). Until v1.33.12 a BP controller (controller.animation.universalscope) checked ~110 item
+// names for every player every tick.
+/** Per player: true while we have the crosshair hidden. */
+const hidden = new Map();
+
+function wantsHidden(player) {
+  if (!player.isSneaking) return false;
+  const weapon = getWeaponByItem(player.getComponent("minecraft:equippable")?.getEquipment(EquipmentSlot.Mainhand)?.typeId);
+  if (!weapon || weapon.keepCrosshair) return false;
+  const reload = player.getComponent("minecraft:mark_variant")?.value;
+  return reload !== 1 && reload !== 2;
+}
+
+function updateCrosshair(player) {
+  const hide = wantsHidden(player);
+  if (hide === (hidden.get(player.id) ?? false)) return;
+  try {
+    player.runCommand(`hud @s ${hide ? "hide" : "reset"} crosshair`);
+    hidden.set(player.id, hide);
+  } catch {
+    // never break aiming
+  }
+}
+
 export function updateZoom(player) {
   if (!player?.isValid) return;
+  updateCrosshair(player);
   const fov = wantedFov(player);
   if (fov === applied.get(player.id)) return;
   try {
@@ -63,6 +89,7 @@ world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
   if (initialSpawn) {
     try {
       player.runCommand(`camera @s fov_clear ${ZOOM_EASE.out} out_quad`);
+      player.runCommand("hud @s reset crosshair"); // the BP controller did this on load too
     } catch {
       // never block joining
     }
@@ -71,4 +98,7 @@ world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
   const slow = player.getEffect("minecraft:slowness");
   if (slow && (slow.amplifier === 6 || slow.amplifier === 14) && slow.duration > 1000000) player.removeEffect("minecraft:slowness");
 });
-world.afterEvents.playerLeave.subscribe(({ playerId }) => applied.delete(playerId));
+world.afterEvents.playerLeave.subscribe(({ playerId }) => {
+  applied.delete(playerId);
+  hidden.delete(playerId);
+});

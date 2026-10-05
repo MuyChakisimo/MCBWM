@@ -4,8 +4,9 @@ import { system, world, PlayerInventoryType } from "@minecraft/server";
 // scope zoom) when what a player holds may have changed, instead of each checking every tick (v1.33.6):
 //   - the selected hotbar slot changed;
 //   - anything in the hotbar changed (the held gun swapped to its empty item, an item moved into the slot);
-//   - the player spawned or joined (again a second later: the guns' BP setup controllers set the magazine
-//     scoreboard when the player loads in), and the players online when the scripts start.
+//   - the player spawned or joined (again a second later, in case the inventory or properties weren't ready at
+//     spawn; it was for the old BP setup controllers, gone since v1.33.12, and costs nothing), and the players
+//     online when the scripts start.
 // Listeners must be cheap and only write when something differs. The event's slot number isn't used (Microsoft's
 // docs don't say how it counts for each inventory type): listeners read what the player holds.
 

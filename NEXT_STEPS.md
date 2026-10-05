@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.11** (both manifests; worlds need `[1, 33, 11]` in `world_*_packs.json`).
+- Pack version **1.33.12** (both manifests; worlds need `[1, 33, 12]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -50,11 +50,40 @@ work.
 
 ## Next, in order
 
-**START HERE (updated 2026-10-05, packs at v1.33.11, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
-audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10) -> minigun (v1.33.11) -> **user tests both**
+**START HERE (updated 2026-10-05, packs at v1.33.12, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
+audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10) -> minigun (v1.33.11) -> last BP controllers (v1.33.12) -> **user tests all three**
 -> visual pass gun by gun, with **Phase 2 accuracy** tuned per gun during it. User's focus (2026-10-05):
 stability, especially with several players; everything on the script build; then visual bugs, each gun passing
 every test.
+
+**v1.33.12 (2026-10-05): no BP animation controllers left; old-system leftovers removed. Needs the user's test.**
+User: "anything that improves performance & not need to make a lot of unnecessary calls is better", then review that
+nothing of the old system is left. The last three per-player, per-tick BP controllers are scripts now, so the
+player runs **no** BP animations at all (4 this morning):
+- Tactical reload: `playerSwingStart` in reload.js (was `reload_input`: watched every player's arm swing, sent
+  `/scriptevent tacz:reload`). **Only attack / mine swings** (and `None`): opening a chest / workbench, placing,
+  dropping or throwing with a gun in hand no longer reload (the controller reacted to any swing). The debug log
+  (`tacz:debug on`) prints each swing's source: if left click ever stops reloading, check which source it reports.
+- Inspect: new `combat/inspect.js` on the same event (was `controller.animation.akm.inspect`: ~110 Molang
+  conditions per player per tick). Same rules: full magazine (Vector / Golden Deagle per fitted magazine), any
+  swing for the RPG / M320 / Springfield / Lone Trail / minigun, the empty item for the 40 guns the controller listed
+  (`emptyInspect: true` in weapons.js; 16 of them have no empty-inspect animation: hk416 g3 cp aa12 m16 m16a1 m249
+  type81 b93 vector awp m700 kar98 deagle mp5 scarh, visual pass). `krep:inspect`, then `krep:noinspect` 2 ticks later.
+- Crosshair: in aimZoom.js (was `controller.animation.universalscope`: ~110 item names per player per tick):
+  hidden while aiming with a gun, not while reloading; `keepCrosshair: true` for the minigun, M107, M95.
+- Leftovers removed: hitscan.js's `scriptevent tacz:weapon_hitscan` listener (nothing sent it), `player.json`
+  `krep:deagleg_range` / `krep:vector_range` / `m1014:normal` / `krep:glreload` (+ group, mark variant 3) and the 5
+  attachment-tag removals in `krep:noinspect`; `tools/weapons/script-firing.mjs` (nothing left to convert);
+  java-port's edits of the deleted inspect controller (an empty inspect now sets `emptyInspect`); outdated comments
+  and docs. check.mjs now requires `scriptFiring` (and `scriptReload` unless `heat`) on every gun and refuses the
+  old per-gun BP files coming back. Kept on purpose: the HUD functions of the Vector, Golden Deagle and minigun
+  (`capByMagazine` / heat HUD), the `<id>:bolt`/`:normal` events (firing.js cycle), sight events, `script-reload.mjs`
+  (its timing code is used by the port tools), the one-time pack tools reorganize / packmap / verify-pack.
+- Simulated (scratch harness): swing reload (attack, mine; not interact / use / drop), inspect (full, 1 missing,
+  Vector magazine 1, empty P320 yes, empty AKM no), crosshair (hide, show, M107 keeps it, during / after a reload).
+**Test in game:** tactical reload with left click (in the air and on a block); opening a workbench / chest with a
+gun in hand doesn't reload; inspect with a full magazine and with an empty P320; aiming hides the crosshair (not with
+the minigun / M107 / M95) and it comes back while reloading; everything else unchanged.
 
 **v1.33.11 (2026-10-05): the minigun is script-fired; every gun now is. Needs the user's test.** Same behaviour as its
 BP controller, now in `combat/firing.js` (`boxAmmo`, `spinUp`) and the new `combat/heat.js` (`heat` in weapons.js):

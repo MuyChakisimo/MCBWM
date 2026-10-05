@@ -504,7 +504,6 @@ function resizeMagazine(id, M, N) {
   // The HUD function only exists for guns whose capacity depends on the magazine (since v1.33.9 firing.js shows the rest).
   if (exists(`TACZ-B/functions/${id}.mcfunction`)) edit(`TACZ-B/functions/${id}.mcfunction`, (t) => t.replace(/"\/(\d+)(?=[ \\])/g, (m, n) => `"/${shiftNum(+n)}`).replace(new RegExp(`(${id}=1\\.\\.)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
   for (const f of [`TACZ-B/animation_controllers/gun_${id}.json`, `TACZ-B/animations/guns/${id}.json`].filter(exists)) edit(f, shiftText);
-  edit("TACZ-B/animation_controllers/shared_inspect.json", (t) => t.replace(new RegExp(`(scoreboard\\('${id}'\\) *[<>=]+ *)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
   // A script-reloaded gun (combat/reload.js) has no quantity / reload functions or reload events: its capacity is
   // config/weapons.js magazine, already set.
   if (!exists(`TACZ-B/functions/${id}quantity.mcfunction`)) return;
@@ -593,7 +592,7 @@ function stripAttachments(id) {
     if (d.properties[scopeProp]) { delete d.properties[scopeProp]; removed.push(scopeProp); }
     // Sight events set the scope property (other <id>:... events, e.g. bolt/pump actions, stay).
     for (const [k, v] of Object.entries(e.events)) if (JSON.stringify(v).includes(`"${scopeProp}"`)) { delete e.events[k]; removed.push(`event ${k}`); }
-    if (d.animations[`${id}scope`]) {
+    if (d.animations?.[`${id}scope`]) { // (no BP animations at all since v1.33.12)
       delete d.animations[`${id}scope`];
       d.scripts.animate = d.scripts.animate.filter((a) => a !== `${id}scope`);
       removed.push(`${id}scope controller`);
@@ -648,10 +647,14 @@ function wireEmptyInspect(id) {
     for (const [k, v] of Object.entries(a)) { out[k] = v; if (k === `${id}_fp_inspect`) out[`${id}_fp_inspect_emp`] = `animation.${id}.fp.inspect_empty`; }
     j["minecraft:client_entity"].description.animations = out;
   });
-  editJson("TACZ-B/animation_controllers/shared_inspect.json", (j) => {
-    const st = Object.values(j.animation_controllers)[0].states.setup;
-    if (st.transitions.some((t) => (t["trigger.inspect.emp"] ?? "").includes(`=='${id}_emp'`))) return;
-    const i = st.transitions.findLastIndex((t) => (t["trigger.inspect"] ?? "").startsWith(`(query.get_equipped_item_name=='${id}' &&`));
-    st.transitions.splice(i + 1, 0, { "trigger.inspect.emp": `(query.get_equipped_item_name=='${id}_emp' && variable.attack_time > 0.0f && query.scoreboard('${id}') == 0 && q.mark_variant != 1)` });
+  // combat/inspect.js plays it on a swing with the empty item for guns with emptyInspect (until v1.33.12 a
+  // trigger.inspect.emp line in the BP inspect controller).
+  edit("TACZ-B/scripts/config/weapons.js", (t) => {
+    const start = t.indexOf(`\n  ${id}: {\n`);
+    const end = t.indexOf("\n  },", start);
+    const body = t.slice(start, end);
+    if (start < 0 || !body.includes("\n    scriptFiring: true,")) throw new Error(`${id}: no scriptFiring line in config/weapons.js`);
+    if (body.includes("\n    emptyInspect: true,")) return undefined;
+    return t.slice(0, start) + body.replace("\n    scriptFiring: true,", "\n    scriptFiring: true,\n    emptyInspect: true,") + t.slice(end);
   });
 }

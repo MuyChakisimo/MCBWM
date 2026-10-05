@@ -9,11 +9,11 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `docs/HOW-IT-WORKS.md` | What happens when you fire, reload, inspect, aim; which file does each step; where to look when something breaks |
 | `docs/NAMING.md` | Minecraft's naming/format rules (and which tool checks each) and what every name in the packs means |
 | `NEXT_STEPS.md` | Current state, what's untested, planned work |
-| `tools/weapons/` | `gun.mjs` (clone / remove a gun), `check.mjs` (config vs pack consistency), `verify-pack.cjs` (proves two pack trees are equivalent), `script-firing.mjs` (moves a gun's firing from its BP controller to `combat/firing.js`) |
+| `tools/weapons/` | `gun.mjs` (clone / remove a gun), `check.mjs` (config vs pack consistency), `verify-pack.cjs` (proves two pack trees are equivalent) |
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.33.11`** for both packs. On a dedicated server set `"version": [1, 33, 11]` for both packs in the
+**Pack version is `1.33.12`** for both packs. On a dedicated server set `"version": [1, 33, 12]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -40,10 +40,12 @@ edit).
 | File | What it does |
 |---|---|
 | `main.js` | Imports every module below |
-| `combat/hitscan.js` | Every gun: the fire event runs `scriptevent tacz:weapon_hitscan <gun> ads\|hip`; applies recoil, then rays from the eyes (one per pellet) find the target, break glass, and explode for the RPG |
+| `combat/hitscan.js` | Every gun: `combat/firing.js` calls `shoot()` per shot; applies recoil, then rays from the eyes (one per pellet) find the target, break glass, and explode for the RPG |
 | `combat/damage.js` | `applyGunHits()`: headshot, armor reduction, damage summed per target, red hurt flash, hit/kill sounds (`config/combat.js`), hit marker |
 | `combat/hitMarker.js` | Hit marker (white X, red on a kill): a `tacz:hit` / `tacz:kill` title that `TACZ-R/ui/hud_screen.json` shows as an image; `/tacz:hitmarker on|off` per player, `/tacz:hitmarkerdefault on|off` (operators) |
-| `combat/aimZoom.js` | Scope zoom while aiming: `camera.setFov` to `SIGHT_ZOOM` (`config/attachments.js`); event-driven |
+| `combat/aimZoom.js` | Scope zoom while aiming: `camera.setFov` to `SIGHT_ZOOM` (`config/attachments.js`); hides the crosshair while aiming (not for `keepCrosshair` guns); event-driven |
+| `combat/inspect.js` | Inspect on a left click with a full magazine (or the empty item, `emptyInspect` guns): `krep:inspect` / `krep:noinspect` |
+| `combat/heat.js` | Minigun heat: per shot, cooling while held, overheat (`heat` in `config/weapons.js`) |
 | `combat/muzzleLight.js` | Muzzle flash light: a light block at the shooter's head for 2 ticks (`MUZZLE_LIGHT` in `config/combat.js`) |
 | `combat/shotEffects.js` | Hitscan smoke tracer and impact puff |
 | `combat/armor.js` | `getArmor()`: armor a hit target wears (equipment, or `hasitem` tests on mobs, cached 2 s) |
@@ -166,8 +168,8 @@ Each ported gun still needs an in-game check: aim, reloads, sounds.
 
 ## Hitscan, tracers and hit flash
 
-Every gun hits instantly; there are no bullet entities. Each gun's fire event in `entities/player.json` runs
-`scriptevent tacz:weapon_hitscan <id> ads|hip`, and `combat/hitscan.js` resolves the shot (settings: `HITSCAN` and
+Every gun hits instantly; there are no bullet entities. `combat/firing.js` calls `shoot()` for each shot,
+and `combat/hitscan.js` resolves it (settings: `HITSCAN` and
 the gun's entry in `config/weapons.js`):
 
 - One ray from the eyes, or `pellets` rays for shotguns (12), each scattered by `spread` (degrees, hip or ADS).
@@ -248,13 +250,15 @@ anything changed in the hotbar, spawn / join and again a second later):
 | `items/itemLore.js` | a TACZ item enters a player's inventory (not count changes), join; items the scripts make get lore at once (`loredItem`) | an item has no lore yet |
 | `items/storedAmmoDisplay.js` | held item changed; rounds fired or loaded (firing.js / reload.js) | the loaded-round count changed |
 | `attachments/attachmentState.js` | held item changed; attachments fitted | a fitted attachment changed |
-| `combat/aimZoom.js` | crouch, held item changed, reload / bolt | the zoom changed |
-| `combat/firing.js`, `combat/reload.js` | every tick, but only while someone fires / reloads | |
+| `combat/aimZoom.js` | crouch, held item changed, reload / bolt | the zoom or crosshair changed |
+| `combat/inspect.js`, tactical reload in `combat/reload.js` | a left click (`playerSwingStart`) with a gun | |
+| `combat/firing.js`, `combat/reload.js`, `combat/heat.js` | every tick, but only while someone fires / reloads / has a warm minigun | |
+| BP animation controllers | none since v1.33.12 (inspect, crosshair and the reload swing were per-player, per-tick controllers) | |
 
 Before v1.33.6 the first three polled (every second, every tick, every 2 ticks): about 0.31 of 0.59 ms of script time
 per tick (profile 2026-10-04).
 
-Nothing runs from `tick.json`, and nothing polls for menus: workbench menus open from the block-use event. Per shot: one `scriptevent` (recoil + hitscan); mob armor is looked up on hit and
+Nothing runs from `tick.json`, and nothing polls for menus: workbench menus open from the block-use event. Per shot: recoil + hitscan called directly by firing.js; mob armor is looked up on hit and
 cached for 2 seconds. When adding timers, keep this rule: compare with the current value before calling
 `setProperty` / `setItem` / `setDynamicProperty`.
 

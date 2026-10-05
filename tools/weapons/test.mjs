@@ -98,14 +98,6 @@ for (const g of guns) {
   restore();
 }
 
-// script-firing.mjs leaves an already script-fired gun alone (every gun since v1.33.11, the minigun last).
-{
-  const r = run("tools/weapons/script-firing.mjs", "minigun");
-  const left = diff();
-  report("script-firing minigun (already script-fired)", r.ok && /already script-fired/.test(r.out) && left.length === 0, left.length ? "      left behind: " + left.slice(0, 5).join(", ") : !r.ok ? lastLines(r.out) : "");
-  restore();
-}
-
 // script-reload.mjs refuses the minigun (no reload: it overheats) and changes nothing.
 {
   const r = run("tools/weapons/script-reload.mjs", "minigun");

@@ -1,20 +1,17 @@
-import { system, Player, EntityDamageCause } from "@minecraft/server";
+import { EntityDamageCause } from "@minecraft/server";
 import { applyGunHits } from "./damage.js";
 import { applyRecoil } from "./recoil.js";
 import { HITSCAN } from "../config/combat.js";
-import { getWeapon } from "../config/weapons.js";
 import { spawnSmokeTracer, spawnImpactEffect } from "./shotEffects.js";
 
-// Every gun fires by hitscan. Each gun's fire event in entities/player.json runs
-//   scriptevent tacz:weapon_hitscan <weaponId> ads|hip
-// and the shot is resolved instantly with rays from the player's eyes: one ray, or one per
+// Every gun fires by hitscan. combat/firing.js calls shoot() for each shot (until v1.33.12 the guns' BP fire
+// events could also send `scriptevent tacz:weapon_hitscan <id> ads|hip`), and the shot is resolved instantly
+// with rays from the player's eyes: one ray, or one per
 // pellet for shotguns (`pellets`, scattered by `spread`). Rays break glass on the way
 // (HITSCAN.breakableBlocks), stop at the first other block and hit the nearest living entity
 // before it. Guns with `explosion` (RPG) explode where the shot lands. Each shot also applies the
 // gun's recoil (recoil.js).
 // Range, tracers and breakable blocks: HITSCAN defaults (config/combat.js), or the gun's own values.
-
-const HITSCAN_EVENT = "tacz:weapon_hitscan";
 
 const add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y, z: a.z + b.z });
 const scale = (v, s) => ({ x: v.x * s, y: v.y * s, z: v.z * s });
@@ -171,19 +168,7 @@ function explode(shooter, location, { power, breaksBlocks, splashDamage, splashR
   }
 }
 
-system.afterEvents.scriptEventReceive.subscribe((event) => {
-  if (event.id !== HITSCAN_EVENT) return;
-
-  const [weaponId, requestedMode] = (event.message ?? "").trim().toLowerCase().split(/\s+/);
-  const weapon = getWeapon(weaponId);
-  if (!weapon) return;
-  const shooter = event.sourceEntity;
-  if (!(shooter instanceof Player)) return;
-
-  shoot(shooter, weaponId, weapon, requestedMode === "ads" ? "ads" : "hip");
-});
-
-/** One shot: recoil, then the hitscan rays. Used by the scriptevent above and by combat/firing.js. */
+/** One shot: recoil, then the hitscan rays. Called by combat/firing.js. */
 export function shoot(shooter, weaponId, weapon, mode) {
   try {
     applyRecoil(shooter, weaponId, weapon, mode);

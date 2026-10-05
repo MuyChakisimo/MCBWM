@@ -52,11 +52,10 @@ the Bedrock JSON schemas) and is worth running after big changes.
 
 | Value | Values |
 |---|---|
-| `q.mark_variant` | 0 not reloading, 1 empty reload, 2 tactical reload, 3 grenade launcher (unused) |
-| `q.skin_id` | 0 normal, 1 inspecting, 2 attachment preview |
-| `krep:ammoreload` | per gun base number + rounds this reload loads (each gun has its own base, e.g. M4A1 460) |
+| `q.mark_variant` | 0 not reloading, 1 empty reload (or the minigun overheating), 2 tactical reload |
+| `q.skin_id` | 0 normal, 1 inspect starting (`combat/inspect.js`, for 2 ticks), 2 attachment preview |
+| `krep:ammoreload` | what the RP bolt / shell / double-barrel animations watch: a bolt or pump cycle (`cycle.value`, set by `<id>:bolt`), a shell reload loading / closing (`shells.loading` / `.ending`, e.g. 411 / 412), a Double Barrel reload of one or two shells (`emptyProperty`, 641 / 642); 0 otherwise. (Before the scripts: a per-gun base + rounds loaded.) |
 | `krep:stock`, `krep:grip`, `krep:laser`, `krep:muzzle`, `krep:magazine` | fitted attachment numbers of the held gun (0 = none) |
-| scriptevent `tacz:weapon_hitscan <id> ads\|hip` | fire event -> `scripts/combat/hitscan.js` |
 
 ## Ammo
 

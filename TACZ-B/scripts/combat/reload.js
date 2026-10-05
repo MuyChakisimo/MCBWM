@@ -1,4 +1,4 @@
-import { system, world, EquipmentSlot, GameMode } from "@minecraft/server";
+import { system, world, EquipmentSlot, GameMode, EntitySwingSource, HeldItemOption } from "@minecraft/server";
 import { getWeaponByItem } from "../config/weapons.js";
 import { heldTypeId, showAmmo, ammoNameKey, emptyListeners, roundsOf } from "./firing.js";
 import { debug, recordReload } from "./debug.js";
@@ -6,14 +6,15 @@ import { zoomSoon } from "./aimZoom.js";
 import { loredItem } from "../items/itemLore.js";
 import { updateStoredAmmo } from "../items/storedAmmoDisplay.js";
 
-// Script-controlled reloading for guns with `scriptReload` in config/weapons.js (being rolled out; the other
-// guns still reload from their BP controller `controller.animation.<id>.reload`, the <id>quantity / <id>reload
-// functions and the <id>reloadN events). tools/weapons/script-reload.mjs converts a gun.
+// Script-controlled reloading for guns with `scriptReload` in config/weapons.js: every gun but the minigun
+// (it overheats instead: heat.js). Until v1.30.0 the guns reloaded from BP controllers;
+// tools/weapons/script-reload.mjs converted them, and the port tools use its timing code.
 //
 //   Empty reload     starts by itself when the last round is fired (if there is ammo), or use (right click)
 //                    with krep:<id>_emp in hand.
-//   Tactical reload  swing (left click) with krep:<id> in hand and at least 2 rounds missing. The swing comes
-//                    from the shared BP controller controller.animation.reload_input (/scriptevent tacz:reload).
+//   Tactical reload  swing (left click: attack or mine) with krep:<id> in hand and at least 2 rounds missing.
+//                    The swing is the playerSwingStart event (until v1.33.12 a BP controller watched every
+//                    player's arm swing every tick and sent /scriptevent tacz:reload).
 // The reload plays the gun's first-person reload animation (the RP controller watches q.mark_variant: 1 empty,
 // 2 tactical, set by the krep:reload / krep:reloadtac events). At `scriptReload.<kind>[0]` seconds the rounds
 // are taken from the inventory (none in creative mode; a creative ammo box krep:ammoboxc means unlimited)
@@ -231,12 +232,18 @@ world.afterEvents.itemStartUse.subscribe(({ source: player, itemStack }) => {
   if (r?.shell && itemStack?.typeId === `krep:${r.weapon.id}`) r.interrupt = true;
 });
 
-system.afterEvents.scriptEventReceive.subscribe(({ id, sourceEntity: player }) => {
-  if (id !== "tacz:reload" || player?.typeId !== "minecraft:player") return;
-  const held = heldTypeId(player);
-  const weapon = getWeaponByItem(held);
-  if (weapon?.scriptReload && held === `krep:${weapon.id}`) startReload(player, weapon, "tac");
-});
+// Left click with a gun: a tactical reload. Only attack / mine swings: opening a chest or workbench, placing,
+// dropping or throwing no longer reload (the old controller reacted to any swing).
+const RELOAD_SWINGS = new Set([EntitySwingSource.Attack, EntitySwingSource.Mine, EntitySwingSource.None]);
+world.afterEvents.playerSwingStart.subscribe(
+  ({ player, heldItemStack, swingSource }) => {
+    const weapon = getWeaponByItem(heldItemStack?.typeId);
+    if (!weapon?.scriptReload || heldItemStack.typeId !== `krep:${weapon.id}`) return;
+    debug(() => `${player.name} swing (${swingSource}) with ${weapon.id}`);
+    if (RELOAD_SWINGS.has(swingSource)) startReload(player, weapon, "tac");
+  },
+  { heldItemOption: HeldItemOption.AnyItem }
+);
 
 system.runInterval(() => {
   if (reloads.size === 0) return; // nobody reloading: nothing to do this tick

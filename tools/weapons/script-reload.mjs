@@ -8,7 +8,7 @@
 //   - config/weapons.js: scriptReload: { empty: [load, end], tac: [load, end] } (seconds);
 //   - removes what the script replaces: controller.animation.<id>.reload and its player.json entries, the two
 //     BP reload animations, the <id>reloadN / krep:<id>_reload events, functions <id>quantity and <id>reload;
-//   - wires the shared swing detector (animation_controllers/shared_reload.json) the first time.
+// (Tactical reloads come from the playerSwingStart event in reload.js; nothing to wire per gun.)
 // Also handled (see reload.js): per-magazine reloads (byMagazine), one-round reloads (emptyOne), reload
 // events (tacEvents, reset), a round loaded into the item (RPG). Refuses shell by shell and the minigun (heat).
 import fs from "node:fs";
@@ -35,7 +35,7 @@ for (const id of ids) {
   const entry = new RegExp(`\\n  ${id}: \\{\\n([\\s\\S]*?)\\n  \\},\\n`).exec(weapons);
   if (!entry) throw new Error(`${id}: not in config/weapons.js`);
   if (/^ {4}scriptReload: /m.test(entry[1])) { console.log(`${id}: already script-reloaded`); continue; }
-  if (!/^ {4}scriptFiring: true,/m.test(entry[1])) throw new Error(`${id}: convert its firing first (script-firing.mjs)`);
+  if (!/^ {4}scriptFiring: true,/m.test(entry[1])) throw new Error(`${id}: not script-fired (every gun must have scriptFiring: true)`);
   // The minigun has no reload: it overheats (combat/heat.js) and fires from the ammo box.
   if (/^ {4}heat: /m.test(entry[1])) throw new Error(`${id}: no reload to convert (it overheats instead: combat/heat.js)`);
 
@@ -165,12 +165,6 @@ for (const id of ids) {
   // (krep:<id>_rangeemp only capped the old empty reload; krep:<id>_range stays: nothing else used it, but it's
   // harmless and the caps above were read from it.)
   for (const k of Object.keys(events)) if (new RegExp(`^${id}reload\\d+$`).test(k) || k === `krep:${id}_reload` || k === `krep:${id}_rangeemp` || (shellMode && k === `${id}:end`)) { delete events[k]; evs++; }
-
-  // The shared swing detector for tactical reloads.
-  if (!desc.animations.reload_input) {
-    desc.animations.reload_input = "controller.animation.reload_input";
-    desc.scripts.animate.push("reload_input");
-  }
   write(P, format(pj));
   // Its quantity / reload functions (Vector, Golden Deagle: one per magazine, vectorquantity1 ...).
   const fns = fs.readdirSync(abs("TACZ-B/functions")).filter((f) => new RegExp(`^${id}(quantity|reload)\\d*\\.mcfunction$`).test(f));

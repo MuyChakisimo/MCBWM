@@ -5,6 +5,7 @@
 import "./combat/hitscan";
 import "./combat/firing";
 import "./combat/reload";
+import "./combat/inspect";
 import "./combat/debug";
 import "./combat/aimZoom";
 import "./combat/hitMarker";

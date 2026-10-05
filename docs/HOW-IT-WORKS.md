@@ -10,7 +10,7 @@ The two packs talk through a few values on the player:
 
 | Value | Set by (BP) | Read by | Meaning |
 |---|---|---|---|
-| scoreboard `<id>` | `combat/firing.js`, `combat/reload.js` | scripts, HUD, `shared_inspect.json` (full magazine = inspect) | rounds in the magazine |
+| scoreboard `<id>` | `combat/firing.js`, `combat/reload.js` | scripts, HUD, `combat/inspect.js` (full magazine = inspect) | rounds in the magazine |
 | `q.mark_variant` | events `krep:reload` (1), `krep:reloadtac` (2), `krep:noreload` (0) | RP gun controller | reloading: 1 empty reload, 2 tactical |
 | `q.skin_id` | `krep:inspect` (1), `krep:noinspect` (0), `krep:view` (2) | RP gun controller | 1 inspecting, 2 attachment preview |
 | property `krep:ammoreload` | `combat/reload.js`, `combat/firing.js` (bolt / pump events) | RP gun controllers | reload / bolt / shell state the RP animations follow (0 = none) |
@@ -72,9 +72,9 @@ was held after each join, `setup` ran the HUD function, `<id>.31` swapped a 0-ro
 ## Reloading
 
 `combat/reload.js` (guns with `scriptReload`: all but the minigun, which overheats instead; per-gun options are described in reload.js).
-Empty reload: starts by itself 0.25 s after the last round, or use with `krep:<id>_emp`. Tactical: a swing (the
-shared BP controller `controller.animation.reload_input` sends `/scriptevent tacz:reload`) with at least 2 rounds
-missing. It sets the mark variant the RP reload animations watch, takes the ammo item from the inventory at
+Empty reload: starts by itself 0.25 s after the last round, or use with `krep:<id>_emp`. Tactical: a left click (the
+`playerSwingStart` event, attack or mine swings only; until v1.33.12 a BP controller watched the arm swing) with at
+least 2 rounds missing. It sets the mark variant the RP reload animations watch, takes the ammo item from the inventory at
 `scriptReload.<kind>[0]` seconds (an ammo box: unlimited; creative: free), fills the scoreboard (magazine; tactical
 + 1 chambered), swaps the empty gun back, and ends at `[1]` seconds. Switching guns before the rounds go in cancels
 it. Shell-by-shell reloads (`shells`) load one round per cue. Per-magazine reloads (Golden Deagle, Vector) use
@@ -89,9 +89,11 @@ reload step and when a gun is taken in hand (`items/heldItem.js`). Guns whose ca
 
 ## Inspect
 
-1. **BP** `animation_controllers/shared_inspect.json`: swinging with a full magazine (`trigger.inspect`) or with the
-   empty item (`trigger.inspect.emp`) sends `krep:inspect` (skin_id 1); `animations/shared/inspectdelay.json`
-   sends `krep:noinspect` afterwards.
+1. **Script** `combat/inspect.js` (`playerSwingStart`, left click: attack / mine): with a full magazine (per fitted
+   magazine for the Vector / Golden Deagle; any swing for the RPG-type guns and the minigun), or with the empty
+   item on guns with `emptyInspect`, not while reloading or in the attachment preview: `krep:inspect` (skin_id 1),
+   `krep:noinspect` 2 ticks later. (Until v1.33.12: the BP controller `controller.animation.akm.inspect`, checked
+   every tick.)
 2. **RP** `animation_controllers/gun_<id>.json`, controller `controller.animation.<id>.fp`, state `inspect`: plays
    `<id>_fp_inspect` (loaded) or `<id>_fp_inspect_emp` (empty; not every gun has one yet, see `NEXT_STEPS.md`).
 

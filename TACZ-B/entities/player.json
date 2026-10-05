@@ -63,21 +63,10 @@
           "client_sync": true
         },
         "krep:ammoreload": {"range": [0, 9999], "default": 30, "type": "int", "client_sync": true}
-      },
-      "scripts": {
-        "animate": [{"akminspect": "q.skin_id <= 1 && q.mark_variant != 2"}, "universalscope", "reload_input"]
-      },
-      "animations": {
-        "akminspect": "controller.animation.akm.inspect",
-        "universalscope": "controller.animation.universalscope",
-        "inspectdelay": "animation.inspectdelay",
-        "instant": "animation.instant",
-        "reload_input": "controller.animation.reload_input"
       }
     },
     "component_groups": {
       "krep:reload": {"minecraft:mark_variant": {"value": 1}},
-      "krep:glreload": {"minecraft:mark_variant": {"value": 3}},
       "krep:noreload": {"minecraft:mark_variant": {"value": 0}},
       "krep:reloadtac": {"minecraft:mark_variant": {"value": 2}},
       "krep:inspect": {"minecraft:skin_id": {"value": 1}},
@@ -173,58 +162,16 @@
     "events": {
       "krep:reload": {"add": {"component_groups": ["krep:reload"]}},
       "krep:noreload": {"add": {"component_groups": ["krep:noreload"]}},
-      "krep:glreload": {"add": {"component_groups": ["krep:glreload"]}},
       "krep:reloadtac": {"add": {"component_groups": ["krep:reloadtac"]}},
       "minecraft:gain_bad_omen": {"add": {"component_groups": ["minecraft:add_bad_omen"]}},
       "minecraft:clear_add_bad_omen": {
         "remove": {"component_groups": []},
         "add": {"component_groups": ["minecraft:clear_bad_omen_spell_effect"]}
       },
-      "krep:deagleg_range": {
-        "sequence": [
-          {
-            "filters": {"test": "int_property", "domain": "krep:magazine", "value": 0, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players set @s[scores={deagleg=11..}] deagleg 10"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:magazine", "value": 1, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players set @s[scores={deagleg=14..}] deagleg 12"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:magazine", "value": 2, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players set @s[scores={deagleg=17..}] deagleg 16"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:magazine", "value": 3, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players set @s[scores={deagleg=19..}] deagleg 18"]}
-          }
-        ]
-      },
-      "krep:vector_range": {
-        "sequence": [
-          {
-            "filters": {"test": "int_property", "domain": "krep:magazine", "value": 0, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players set @s[scores={vector=22..}] vector 21"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:magazine", "value": 1, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players set @s[scores={vector=32..}] vector 31"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:magazine", "value": 2, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players set @s[scores={vector=42..}] vector 41"]}
-          },
-          {
-            "filters": {"test": "int_property", "domain": "krep:magazine", "value": 3, "subject": "self"},
-            "queue_command": {"command": ["scoreboard players set @s[scores={vector=52..}] vector 51"]}
-          }
-        ]
-      },
       "m870:normal": {"set_property": {"krep:ammoreload": 0}},
       "spas12:normal": {"set_property": {"krep:ammoreload": 0}},
       "m870:bolt": {"set_property": {"krep:ammoreload": 3}},
       "spas12:bolt": {"set_property": {"krep:ammoreload": 3}},
-      "m1014:normal": {"set_property": {"krep:ammoreload": 0}},
       "hk416:ironsight": {"set_property": {"krep:hk416scope": "'nothing'"}},
       "hk416:elcan": {"set_property": {"krep:hk416scope": "'elcan'"}},
       "hk416:coyote": {"set_property": {"krep:hk416scope": "'coyote'"}},
@@ -288,18 +235,7 @@
       },
       "krep:inspect": {"add": {"component_groups": ["krep:inspect"]}},
       "krep:view": {"add": {"component_groups": ["krep:attachmentmode"]}},
-      "krep:noinspect": {
-        "add": {"component_groups": ["krep:noinspect"]},
-        "queue_command": {
-          "command": [
-            "tag @s remove stockmode",
-            "tag @s remove scopemode",
-            "tag @s remove miscmode",
-            "tag @s remove gripmode",
-            "tag @s remove attachmentmode"
-          ]
-        }
-      },
+      "krep:noinspect": {"add": {"component_groups": ["krep:noinspect"]}},
       "krep:noview": {
         "sequence": [
           {

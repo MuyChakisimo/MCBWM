@@ -1,9 +1,9 @@
 // Checks that TACZ-B/scripts/config/*.js and the pack files agree, for every gun and ammo type.
 // Run from the repo root (see README "Tools"). Exit code 1 if anything is wrong.
 //
-// For each gun it checks: BP items krep:<id> / krep:<id>_emp, RP attachables, icon, name and
-// lore text, magazine size and ammo item (functions/<id>*.mcfunction), and that the fire event
-// in entities/player.json runs the hitscan scriptevent (and spawns nothing).
+// For each gun it checks: BP items krep:<id> / krep:<id>_emp, RP attachables, icon, name and lore
+// text, the ammo item, that it fires and reloads from the scripts (no per-gun BP controller files),
+// and the stats the scripts read.
 //
 // Then, for the whole pack (refs.cjs): every animation, controller, model, texture, particle,
 // sound, function and event something refers to exists (errors), and what is never used
@@ -56,34 +56,15 @@ for (const [id, w] of Object.entries(WEAPONS)) {
     if (key && !lang.has(key)) bad(id, `no text for ${key}`, "TACZ-R/texts/*.lang");
   if (typeof w.damage !== "number" || typeof w.penetration !== "number") bad(id, "damage/penetration missing", "config/weapons.js");
 
-  // Magazine and ammo, from the HUD and reload functions.
-  const hud = read(`TACZ-B/functions/${id}.mcfunction`) ?? "";
-  const quantity = read(`TACZ-B/functions/${id}quantity.mcfunction`) ?? "";
-  if (w.heat) {
-    // Minigun: no magazine; reloads from an ammo box.
-  } else if (w.magazine != null && quantity) {
-    // (Guns without a <id>quantity function, like the RPG, load one round from the animation.)
-    const hudSize = +(/"\/(\d+)/.exec(hud)?.[1] ?? NaN);
-    if (hudSize !== w.magazine) bad(id, `magazine ${w.magazine} but HUD shows /${hudSize}`, `TACZ-B/functions/${id}.mcfunction`);
-    const fill = +(/quantity=(\d+)\.\.\},\{item=krep:ammoboxc/.exec(quantity)?.[1] ?? NaN);
-    // A reload may load one extra round (magazine + one chambered, capped by the reload animation).
-    const expected = w.reload === "single" ? 1 : w.magazine;
-    if (fill !== expected && fill !== expected + 1) bad(id, `reload loads ${fill} rounds, expected ${expected}`, `TACZ-B/functions/${id}quantity.mcfunction`);
-    const ammo = /item=(krep:[a-z0-9_]+),quantity=\d+\}?,\{item=krep:ammoboxc/.exec(quantity)?.[1];
-    if (ammo !== w.ammo) bad(id, `ammo ${w.ammo} but reload uses ${ammo}`, `TACZ-B/functions/${id}quantity.mcfunction`);
-  }
+  // Every gun fires and reloads from the scripts (combat/firing.js, reload.js; the minigun overheats: heat.js).
+  // The per-gun BP files of the old controller system must not come back (a gun cloned the old way).
+  if (!w.scriptFiring) bad(id, "scriptFiring: true missing (every gun fires from combat/firing.js)", "config/weapons.js");
+  if (!w.scriptReload && !w.heat) bad(id, "scriptReload missing (only a heat gun has none)", "config/weapons.js");
+  if (player.events[`krep:${id}_fire`]) bad(id, `old fire event krep:${id}_fire (nothing triggers it)`, "TACZ-B/entities/player.json");
+  for (const f of [`TACZ-B/animation_controllers/gun_${id}.json`, `TACZ-B/animations/guns/${id}.json`, `TACZ-B/functions/${id}quantity.mcfunction`, `TACZ-B/functions/${id}reload.mcfunction`])
+    if (read(f) !== null) bad(id, "old controller-system file (the scripts do its job)", f);
   if (!bpItems.has(w.ammo)) bad(id, `ammo item ${w.ammo} does not exist`, "config/weapons.js ammo");
 
-  // Fire event runs the hitscan scriptevent (controller-fired guns; script-fired ones call shoot() directly).
-  const fire = player.events[`krep:${id}_fire`];
-  if (w.scriptFiring) { if (fire) bad(id, `script-fired but still has krep:${id}_fire (nothing triggers it)`, "TACZ-B/entities/player.json"); }
-  else if (!fire) bad(id, "no fire event krep:" + id + "_fire", "TACZ-B/entities/player.json");
-  else {
-    const steps = fire.sequence ?? [fire];
-    const hitscan = steps.every((s) => (s.queue_command?.command ?? []).some((c) => c.startsWith(`scriptevent tacz:weapon_hitscan ${id} `)));
-    const spawns = steps.some((s) => s.add?.component_groups?.length);
-    if (!hitscan || spawns) bad(id, "fire event lacks the hitscan scriptevent or still adds a component group", "TACZ-B/entities/player.json");
-  }
   // Stats the scripts read.
   const num = (v) => typeof v === "number" && Number.isFinite(v);
   if (!num(w.damage) || w.damage <= 0) bad(id, "damage missing or not a positive number", "config/weapons.js");
