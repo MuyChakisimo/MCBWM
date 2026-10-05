@@ -25,7 +25,18 @@ at the end of each session. How the code works is in `README.md`.
   naming/format rules and what every name means. `tools/weapons/validate.mjs`: checks scripts against Mojang's API
   definitions and pack files against the Bedrock JSON schemas.
 
-## Known-good state: v1.16.0 (tag `stable-v1.16.0`)
+## Known-good states (tags)
+
+- **v1.33.9, tag `stable-v1.33.9`** (commit 7c2260a): the user tested it in game on 2026-10-05, "everything seems to
+  work just fine". 58 guns, all script-fired and script-reloaded except the minigun. Return with
+  `git checkout stable-v1.33.9`. Checks at tagging: check.mjs, validate.mjs (API 2.10.0, 605 files) and test.mjs
+  (38/38) all pass.
+- **v1.16.0, tag `stable-v1.16.0`** (commit f381f30; the tag was only created on 2026-10-05, earlier notes said it
+  existed): before the Java ports.
+
+Tags are pushed separately: `git push origin --tags`.
+
+### v1.16.0
 
 Tested in game by the user on 2026-10-01: guns visible in first and third person, damage, animations and sounds all
 work. Everything listed as untested in earlier handoffs (v1.10.0 to v1.14.0: instant workbench menus, sounds that
@@ -39,10 +50,26 @@ work.
 
 ## Next, in order
 
-**START HERE (updated 2026-10-05, packs at v1.33.9, all committed, not pushed).** Order agreed with the user:
-**audit (done, v1.33.8-1.33.9) -> the user tests v1.33.9 -> tag it stable (`git tag stable-v1.33.9`, like
-stable-v1.16.0) -> minigun conversion -> Phase 2 accuracy.** Items 1-3 below are the earlier plan (1 done); the minigun
-moved before accuracy because the spread code will live in firing.js.
+**START HERE (updated 2026-10-05, packs at v1.33.9, pushed; tagged `stable-v1.33.9`).** Order agreed with the user:
+audit (done) -> user test (passed) -> stable tag (done) -> **script review fixes (below) -> minigun conversion ->
+Phase 2 accuracy.** Items 1-3 below are the earlier plan (1 done); the minigun moved before accuracy because the
+spread code will live in firing.js.
+
+**Script review of v1.33.9 (2026-10-05), not fixed yet.** Found by reading the code; none seen in game yet:
+1. firing.js: a held trigger isn't dropped on death. With keepInventory, an auto gun may keep firing through the
+   death screen if `itemStopUse` doesn't arrive (unverified).
+2. firing.js `startTrigger`: the wait after a shot (`readyAt`) carries over to a *different* gun. Fire the AWP,
+   switch to a pistol and press: the pistol waits out the bolt (~1.5 s), then fires by itself.
+3. firing.js: a press during a reload waits and fires when the reload ends. Includes the press that stops a shell
+   reload (M870 / SPAS-12 / M1014): one shot after the closing animation. **User's call: intended or not.**
+4. firing.js `startCycle`: the `<id>:bolt` timer (2-5 ticks after a shot) isn't cancelled by a reload started in
+   that window; it overwrites `krep:ammoreload` mid-reload (animation glitch on bolt / pump guns).
+5. firing.js / reload.js loops have no per-player try/catch: one player's error stops that tick for everyone after
+   them and repeats every tick.
+6. muzzleLight.js: a light block stays forever if the player leaves, changes dimension or the server stops in the
+   2 ticks it is lit (putOut fails on an unloaded chunk).
+7. Minor: two copies of the same gun share one scoreboard (switching mid-reload between them); zoom stays on while
+   aiming after the gun swaps to `_emp` with no ammo for the auto reload.
 
 
 1. **Optimize the always-running scripts** (no gameplay change). **Done in v1.33.6; profile confirmed (v1.33.7 entry);
