@@ -1,6 +1,7 @@
 import { world, system, EasingType, EquipmentSlot } from "@minecraft/server";
 import { getWeaponByItem } from "../config/weapons.js";
-import { SIGHT_ZOOM, ZOOM_EASE } from "../config/attachments.js";
+import { SIGHT_ZOOM, ZOOM_EASE, javaScopeFov } from "../config/attachments.js";
+import { javaZoom } from "../attachments/javaAttachments.js";
 import { onHeldChange } from "../items/heldItem.js";
 
 // Scope zoom and crosshair (below). Zoom: while a player aims (crouches) with a gun whose fitted sight magnifies (SIGHT_ZOOM in
@@ -22,6 +23,8 @@ function wantedFov(player) {
   const reload = player.getComponent("minecraft:mark_variant")?.value;
   if (reload === 1 || reload === 2) return undefined;
   if (weapon.cycle && player.getProperty("krep:ammoreload") === weapon.cycle.value) return undefined;
+  const zoom = javaZoom(player, weapon.id); // a Java magnified scope
+  if (zoom) return javaScopeFov(zoom);
   let sight;
   try {
     sight = player.getProperty(`krep:${weapon.id}scope`); // only guns with sight choices have it

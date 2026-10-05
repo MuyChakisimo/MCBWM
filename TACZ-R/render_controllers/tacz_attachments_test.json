@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.tacz_att_test": {
+      "geometry": "Geometry.tacz_test_acog_bound",
+      "materials": [
+        {"*": "Material.guns"},
+        {"a_red_illuminated": "Material.glow"},
+        {"a_division": "Material.glow"},
+        {"a_division_illuminated": "Material.glow"}
+      ],
+      "textures": ["Texture.tacz_test_acog"],
+      "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
+      "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
+    }
+  }
+}

@@ -18,6 +18,9 @@
 export const SIGHT_ZOOM = Object.freeze({ standard_8: 30, acog: 50, elcan: 50 });
 // Seconds to ease into / out of the zoom.
 export const ZOOM_EASE = Object.freeze({ in: 0.2, out: 0.15 });
+// Java magnified scopes (javaAttachments.js): field of view for Java's zoom value, kept mild like the ACOG / ELCAN
+// above: 2.5x ACOG 55, 3x 50, 4.25x ELCAN 38, 8x 30 (the game's minimum).
+export const javaScopeFov = (zoom) => Math.max(30, Math.round(70 - 10 * (zoom - 1)));
 
 // (Loosely typed for editors and type checks: entries have different optional fields.)
 export const ATTACHMENTS = /** @type {Record<string, any>} */ (Object.freeze({
@@ -259,83 +262,6 @@ export const ATTACHMENTS = /** @type {Record<string, any>} */ (Object.freeze({
           ["OKP-7", "textures/ui/okp7", "akm:okp7"],
           ["Acog", "textures/ui/acog", "akm:acog"],
           ["Elcan", "textures/ui/elcan", "akm:elcan"],
-        ],
-      },
-      { label: "Preview", icon: "textures/ui/blank", preview: true },
-    ],
-  },
-  m4a1: {
-    menuLabel: "M4A1",
-    menuIcon: "textures/items/m4a1",
-    slots: [
-      {
-        label: "Grip",
-        icon: "textures/ui/new/grip1",
-        property: "grip",
-        options: [
-          ["No Grip", "textures/ui/zero/zero_grip"],
-          ["Grip 1", "textures/ui/new/grip1"],
-          ["Grip 2", "textures/ui/new/grip2"],
-          ["Grip 3", "textures/ui/new/grip3"],
-          ["Grip 4", "textures/ui/new/grip4"],
-          ["Grip 5", "textures/ui/new/grip5"],
-          ["Grip 6", "textures/ui/new/grip6"],
-          ["Grip 7", "textures/ui/new/grip7"],
-          ["Grip 8", "textures/ui/new/grip8"],
-          ["Grip 9", "textures/ui/new/grip9"],
-          ["Grip 10", "textures/ui/new/grip10"],
-          ["Grip 11", "textures/ui/new/grip11"],
-        ],
-      },
-      {
-        label: "Stock",
-        icon: "textures/ui/new/stock8",
-        property: "stock",
-        options: [
-          ["No Stock", "textures/ui/zero/zero_stock"],
-          ["Stock 1", "textures/ui/new/m4a1/stock1"],
-          ["Stock 2", "textures/ui/new/m4a1/stock2"],
-          ["Stock 3", "textures/ui/new/m4a1/stock3"],
-          ["Stock 4", "textures/ui/new/m4a1/stock4"],
-          ["Stock 5", "textures/ui/new/m4a1/stock5"],
-          ["Stock 6", "textures/ui/new/m4a1/stock6"],
-          ["Stock 7", "textures/ui/new/m4a1/stock7"],
-          ["Stock 8", "textures/ui/new/m4a1/stock8"],
-        ],
-      },
-      {
-        label: "Laser",
-        icon: "textures/ui/new/laser1",
-        property: "laser",
-        options: [
-          ["No Laser", "textures/ui/zero/zero_laser"],
-          ["Laser 1", "textures/ui/new/laser1"],
-        ],
-      },
-      {
-        label: "Muzzle",
-        icon: "textures/ui/new/muzzle1",
-        property: "muzzle",
-        options: [
-          ["No Muzzle", "textures/ui/zero/zero_muzzle"],
-          ["Muzzle 1", "textures/ui/new/muzzle1"],
-          ["Muzzle 2", "textures/ui/new/muzzle2"],
-          ["Muzzle 3", "textures/ui/new/muzzle3"],
-          ["Muzzle 4", "textures/ui/new/muzzle4"],
-          ["Muzzle 5", "textures/ui/new/muzzle5"],
-          ["Muzzle 6", "textures/ui/new/muzzle6"],
-        ],
-      },
-      {
-        label: "Sight",
-        icon: "textures/ui/coyote",
-        sights: [
-          ["Iron Sight", "textures/ui/nothing", "m4a1:ironsight"],
-          ["Coyote", "textures/ui/coyote", "m4a1:coyote"],
-          ["Holo 552", "textures/ui/holo", "m4a1:holo"],
-          ["T2", "textures/ui/t2", "m4a1:t2"],
-          ["Acog", "textures/ui/acog", "m4a1:acog"],
-          ["Elcan", "textures/ui/elcan", "m4a1:elcan"],
         ],
       },
       { label: "Preview", icon: "textures/ui/blank", preview: true },

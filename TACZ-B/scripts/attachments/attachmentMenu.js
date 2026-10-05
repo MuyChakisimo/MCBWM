@@ -2,6 +2,9 @@ import { system, world, EquipmentSlot } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
 import { ATTACHMENTS } from "../config/attachments.js";
 import { getAttachments, setAttachments, syncAttachments } from "./attachmentState.js";
+import { WEAPONS } from "../config/weapons.js";
+import { GUN_ATTACHMENTS } from "../config/javaAttachments.js";
+import { SLOT_LABEL, slotsOf, optionsOf, infoOf, fittedJava, fitJava } from "./javaAttachments.js";
 
 // Attachment workbench (krep:attachmentblock). Menus are built from config/attachments.js:
 // pick a gun -> pick a slot -> pick an attachment (or a sight, or Preview).
@@ -30,29 +33,36 @@ function findGun(player, gunId) {
   return -1;
 }
 
+/** The gun's name in the menus (Java-attachment guns use their weapons.js name). */
+const label = (gunId) => ATTACHMENTS[gunId]?.menuLabel ?? WEAPONS[gunId]?.name ?? gunId;
+
 function requireOwned(player, gunId) {
   if (findGun(player, gunId) >= 0) return true;
-  player.sendMessage(`You need the ${ATTACHMENTS[gunId].menuLabel} in your inventory to fit attachments.`);
+  player.sendMessage(`You need the ${label(gunId)} in your inventory to fit attachments.`);
   return false;
 }
 
 export function openAttachmentWorkbench(player) {
-  const guns = Object.entries(ATTACHMENTS).filter(([gunId]) => findGun(player, gunId) >= 0);
+  // Guns with Java attachments (GUN_ATTACHMENTS) and guns still on the original pack's parts (ATTACHMENTS).
+  const all = [...Object.keys(GUN_ATTACHMENTS), ...Object.keys(ATTACHMENTS).filter((g) => !GUN_ATTACHMENTS[g])];
+  const guns = all.filter((gunId) => findGun(player, gunId) >= 0);
   if (!guns.length) {
     new ActionFormData()
       .title("Attachments")
-      .body(`None of your guns take attachments yet. These do: ${Object.values(ATTACHMENTS).map((g) => g.menuLabel).join(", ")}.`)
+      .body(`None of your guns take attachments yet. These do: ${all.map(label).join(", ")}.`)
       .button("Close")
       .show(player);
     return;
   }
   const form = new ActionFormData().title("Attachments").body("Select one of your guns:");
-  for (const [, gun] of guns) form.button(gun.menuLabel, gun.menuIcon);
+  for (const gunId of guns) form.button(label(gunId), ATTACHMENTS[gunId]?.menuIcon ?? `textures/items/${gunId}`);
   form.show(player).then((response) => {
     if (response.canceled) return;
-    const [gunId, gun] = guns[response.selection] ?? [];
-    if (!gun) return;
-    if (gun.sightsOnly) openSights(player, gunId, { title: gun.title, body: gun.body, sights: gun.sights }, false);
+    const gunId = guns[response.selection];
+    if (!gunId) return;
+    const gun = ATTACHMENTS[gunId];
+    if (GUN_ATTACHMENTS[gunId]) openJavaGunMenu(player, gunId);
+    else if (gun.sightsOnly) openSights(player, gunId, { title: gun.title, body: gun.body, sights: gun.sights }, false);
     else openGunMenu(player, gunId);
   });
 }
@@ -109,6 +119,41 @@ function openSights(player, gunId, { title, body = "", sights }, returnToGunMenu
   });
 }
 
+// ---- Java attachments (javaAttachments.js): a slot list showing what is fitted, then that slot's options.
+const NONE_ICON = { scope: "textures/ui/nothing", muzzle: "textures/ui/zero/zero_muzzle", grip: "textures/ui/zero/zero_grip", stock: "textures/ui/zero/zero_stock", laser: "textures/ui/zero/zero_laser" };
+
+function openJavaGunMenu(player, gunId) {
+  if (!requireOwned(player, gunId)) return;
+  const slots = slotsOf(gunId);
+  const fitted = fittedJava(player, gunId);
+  const form = new ActionFormData().title(`${label(gunId)} Attachments`).body("Choose a slot to change.");
+  for (const s of slots) {
+    const info = infoOf(fitted[s]);
+    form.button(`${SLOT_LABEL[s]}: ${info ? info.name : "None"}`, info?.icon ?? NONE_ICON[s]);
+  }
+  form.button("Preview", "textures/ui/blank");
+  form.button("Done", "textures/ui/blank");
+  form.show(player).then((response) => {
+    if (response.canceled) return;
+    if (response.selection < slots.length) openJavaSlot(player, gunId, slots[response.selection]);
+    else if (response.selection === slots.length) openPreview(player, gunId);
+  });
+}
+
+function openJavaSlot(player, gunId, slot) {
+  if (!requireOwned(player, gunId)) return;
+  const options = optionsOf(gunId, slot);
+  const current = fittedJava(player, gunId)[slot];
+  const form = new ActionFormData().title(`${label(gunId)} ${SLOT_LABEL[slot]}`).body(`Select a ${SLOT_LABEL[slot].toLowerCase()} for your ${label(gunId)}.`);
+  form.button(`None${current ? "" : " (Fitted)"}`, NONE_ICON[slot]);
+  for (const id of options) form.button(infoOf(id).name + (current === id ? " (Fitted)" : ""), infoOf(id).icon);
+  form.show(player).then((response) => {
+    if (response.canceled) return openJavaGunMenu(player, gunId);
+    fitJava(player, gunId, slot, response.selection === 0 ? null : options[response.selection - 1]);
+    openJavaGunMenu(player, gunId);
+  });
+}
+
 // Shows the gun with its attachments (krep:view) until Back or Finish.
 function openPreview(player, gunId) {
   if (!requireOwned(player, gunId)) return;
@@ -116,8 +161,8 @@ function openPreview(player, gunId) {
   if (!isGun(heldItemId(player), gunId)) {
     const slot = findGun(player, gunId);
     if (slot >= HOTBAR_SIZE) {
-      player.sendMessage(`Move the ${ATTACHMENTS[gunId].menuLabel} to your hotbar to preview it.`);
-      openGunMenu(player, gunId);
+      player.sendMessage(`Move the ${label(gunId)} to your hotbar to preview it.`);
+      (GUN_ATTACHMENTS[gunId] ? openJavaGunMenu : openGunMenu)(player, gunId);
       return;
     }
     player.selectedSlotIndex = slot;
@@ -136,7 +181,7 @@ function openPreview(player, gunId) {
     playersInPreview.delete(player.id);
     player.runCommand("event entity @s krep:noview");
     if (response.canceled) return;
-    if (response.selection === 0) openGunMenu(player, gunId);
+    if (response.selection === 0) (GUN_ATTACHMENTS[gunId] ? openJavaGunMenu : openGunMenu)(player, gunId);
   });
 }
 

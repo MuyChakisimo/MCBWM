@@ -1,0 +1,206 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.tacz_att_scope": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.att_m4a1_sight_srs_02",
+            "Geometry.att_m4a1_scope_hamr",
+            "Geometry.att_m4a1_sight_552",
+            "Geometry.att_m4a1_sight_acro_rifle",
+            "Geometry.att_m4a1_sight_coyote",
+            "Geometry.att_m4a1_sight_deltapoint_rifle",
+            "Geometry.att_m4a1_sight_exp3",
+            "Geometry.att_m4a1_sight_fastfire_rifle",
+            "Geometry.att_m4a1_sight_okp7",
+            "Geometry.att_m4a1_sight_pk06_rifle",
+            "Geometry.att_m4a1_sight_t2",
+            "Geometry.att_m4a1_sight_uh1",
+            "Geometry.att_m4a1_scope_acog_ta31",
+            "Geometry.att_m4a1_scope_elcan_4x",
+            "Geometry.att_m4a1_scope_qmk152"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.att_sight_srs_02",
+            "Texture.att_scope_hamr",
+            "Texture.att_sight_552",
+            "Texture.att_sight_acro_rifle",
+            "Texture.att_sight_coyote",
+            "Texture.att_sight_deltapoint_rifle",
+            "Texture.att_sight_exp3",
+            "Texture.att_sight_fastfire_rifle",
+            "Texture.att_sight_okp7",
+            "Texture.att_sight_pk06_rifle",
+            "Texture.att_sight_t2",
+            "Texture.att_sight_uh1",
+            "Texture.att_scope_acog_ta31",
+            "Texture.att_scope_elcan_4x",
+            "Texture.att_scope_qmk152"
+          ]
+        }
+      },
+      "geometry": "Array.geo[q.property('krep:att_scope') - 1]",
+      "materials": [
+        {"*": "Material.guns"},
+        {"a_crosshair_illuminated": "Material.glow"},
+        {"a_division": "Material.glow"},
+        {"a_division_2": "Material.glow"},
+        {"a_division_bg": "Material.glow"},
+        {"a_division_illuminated": "Material.glow"},
+        {"a_divisions": "Material.glow"},
+        {"a_le_illuminated": "Material.glow"},
+        {"a_lens_illuminated": "Material.glow"},
+        {"a_red_illuminated": "Material.glow"},
+        {"a_scope_division_illuminated": "Material.glow"},
+        {"a_sight_division_illuminated": "Material.glow"}
+      ],
+      "textures": ["Array.tex[q.property('krep:att_scope') - 1]"],
+      "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
+      "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
+    },
+    "controller.render.tacz_att_muzzle": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.att_m4a1_bayonet_m9",
+            "Geometry.att_m4a1_muzzle_brake_cthulhu",
+            "Geometry.att_m4a1_muzzle_brake_cyclone_d2",
+            "Geometry.att_m4a1_muzzle_brake_pioneer",
+            "Geometry.att_m4a1_muzzle_brake_trex",
+            "Geometry.att_m4a1_muzzle_compensator_trident",
+            "Geometry.att_m4a1_muzzle_silencer_knight_qd",
+            "Geometry.att_m4a1_muzzle_silencer_phantom_s1",
+            "Geometry.att_m4a1_muzzle_silencer_ursus"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.att_bayonet_m9",
+            "Texture.att_muzzle_brake_cthulhu",
+            "Texture.att_muzzle_brake_cyclone_d2",
+            "Texture.att_muzzle_brake_pioneer",
+            "Texture.att_muzzle_brake_trex",
+            "Texture.att_muzzle_compensator_trident",
+            "Texture.att_muzzle_silencer_knight_qd",
+            "Texture.att_muzzle_silencer_phantom_s1",
+            "Texture.att_muzzle_silencer_ursus"
+          ]
+        }
+      },
+      "geometry": "Array.geo[q.property('krep:att_muzzle') - 1]",
+      "materials": [{"*": "Material.guns"}],
+      "textures": ["Array.tex[q.property('krep:att_muzzle') - 1]"],
+      "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
+      "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
+    },
+    "controller.render.tacz_att_grip": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.att_m4a1_grip_cqr",
+            "Geometry.att_m4a1_grip_cobra",
+            "Geometry.att_m4a1_grip_magpul_afg_2",
+            "Geometry.att_m4a1_grip_rk6",
+            "Geometry.att_m4a1_grip_osovets_black",
+            "Geometry.att_m4a1_grip_rk0",
+            "Geometry.att_m4a1_grip_rk1_b25u",
+            "Geometry.att_m4a1_grip_se_5",
+            "Geometry.att_m4a1_grip_td",
+            "Geometry.att_m4a1_grip_vertical_military",
+            "Geometry.att_m4a1_grip_vertical_ranger",
+            "Geometry.att_m4a1_grip_vertical_talon"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.att_grip_cqr",
+            "Texture.att_grip_cobra",
+            "Texture.att_grip_magpul_afg_2",
+            "Texture.att_grip_rk6",
+            "Texture.att_grip_osovets_black",
+            "Texture.att_grip_rk0",
+            "Texture.att_grip_rk1_b25u",
+            "Texture.att_grip_se_5",
+            "Texture.att_grip_td",
+            "Texture.att_grip_vertical_military",
+            "Texture.att_grip_vertical_ranger",
+            "Texture.att_grip_vertical_talon"
+          ]
+        }
+      },
+      "geometry": "Array.geo[q.property('krep:att_grip') - 1]",
+      "materials": [{"*": "Material.guns"}, {"a_bone9_illuminated": "Material.glow"}],
+      "textures": ["Array.tex[q.property('krep:att_grip') - 1]"],
+      "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
+      "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
+    },
+    "controller.render.tacz_att_stock": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.att_m4a1_stock_ak12",
+            "Geometry.att_m4a1_stock_carbon_bone_c5",
+            "Geometry.att_m4a1_stock_hk_slim_line",
+            "Geometry.att_m4a1_stock_m4ss",
+            "Geometry.att_m4a1_stock_militech_b5",
+            "Geometry.att_m4a1_stock_moe",
+            "Geometry.att_m4a1_stock_ripstock",
+            "Geometry.att_m4a1_stock_sba3",
+            "Geometry.att_m4a1_stock_tactical_ar"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.att_stock_ak12",
+            "Texture.att_stock_carbon_bone_c5",
+            "Texture.att_stock_hk_slim_line",
+            "Texture.att_stock_m4ss",
+            "Texture.att_stock_militech_b5",
+            "Texture.att_stock_moe",
+            "Texture.att_stock_ripstock",
+            "Texture.att_stock_sba3",
+            "Texture.att_stock_tactical_ar"
+          ]
+        }
+      },
+      "geometry": "Array.geo[q.property('krep:att_stock') - 1]",
+      "materials": [{"*": "Material.guns"}],
+      "textures": ["Array.tex[q.property('krep:att_stock') - 1]"],
+      "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
+      "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
+    },
+    "controller.render.tacz_att_laser": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.att_m4a1_laser_compact",
+            "Geometry.att_m4a1_laser_lopro",
+            "Geometry.att_m4a1_laser_nightstick",
+            "Geometry.att_m4a1_laser_peq15"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.att_laser_compact",
+            "Texture.att_laser_lopro",
+            "Texture.att_laser_nightstick",
+            "Texture.att_laser_peq15"
+          ]
+        }
+      },
+      "geometry": "Array.geo[q.property('krep:att_laser') - 1]",
+      "materials": [
+        {"*": "Material.guns"},
+        {"a_flashlight_illuminated": "Material.glow"},
+        {"a_laser_illuminated": "Material.glow"},
+        {"a_light_illuminated": "Material.glow"}
+      ],
+      "textures": ["Array.tex[q.property('krep:att_laser') - 1]"],
+      "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
+      "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
+    }
+  }
+}

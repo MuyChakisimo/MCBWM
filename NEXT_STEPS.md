@@ -14,11 +14,11 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.14** (both manifests; worlds need `[1, 33, 14]` in `world_*_packs.json`).
+- Pack version **1.34.0** (both manifests; worlds need `[1, 34, 0]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
-  definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `arm-layout.mjs` (first-person arms on their own hand bones), `reload-timing.mjs` (a ported gun's reload
+  definitions), `gun.mjs` (clone/remove a gun), `java-stats.mjs`, `java-convert.mjs`, `java-port.mjs`, `java-attach.mjs` (Java attachments onto a gun), `held.cjs` (held-gun numbers), `arm-layout.mjs` (first-person arms on their own hand bones), `reload-timing.mjs` (a ported gun's reload
   timing from Java), `config-sync.mjs` (lore Group / Caliber / Damage and creative groups from the config), `png.cjs` (texture atlas for built-in scopes), `test.mjs`
   (tests the tools on a scratch copy; run it after changing any tool).
 - `docs/HOW-IT-WORKS.md`: each system step by step and a troubleshooting table. `docs/NAMING.md`: Minecraft's
@@ -50,11 +50,38 @@ work.
 
 ## Next, in order
 
-**START HERE (updated 2026-10-05, packs at v1.33.14, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
-audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10) -> minigun (v1.33.11) -> last BP controllers (v1.33.12) -> attachment bench (v1.33.13) -> held-gun number (v1.33.14) -> **user tests all five** -> Java attachments (planning)
+**START HERE (updated 2026-10-05, packs at v1.34.0, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
+audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10) -> minigun (v1.33.11) -> last BP controllers (v1.33.12) -> attachment bench (v1.33.13) -> held-gun number (v1.33.14) -> Java attachments pilot (v1.34.0) -> **user tests all six** -> attachment rollout (size decision from the binding test)
 -> visual pass gun by gun, with **Phase 2 accuracy** tuned per gun during it. User's focus (2026-10-05):
 stability, especially with several players; everything on the script build; then visual bugs, each gun passing
 every test.
+
+**v1.34.0 (2026-10-05): Java attachments, pilot on the M4A1. Needs the user's test.** User decisions: attachments
+are **free at the bench**; Java's **replace** the original pack's numbered parts gun by gun; magnified scopes: **scope
+overlay** while aiming (not built yet: first see whether Java's own scope models, which keep their reticle planes and
+lenses like the original pack's built-in ACOG / ELCAN that the user liked on the AKM, already look right; the AUG
+looked solid because its port left the reticle out). How it works: docs/HOW-IT-WORKS.md "Crafting and attachments".
+The M4A1 now has 49 Java attachments (15 sights / scopes, 9 muzzles incl. the M9 bayonet as a muzzle, 12 grips, 9
+stocks, 4 lasers); its old menu and parts are off (config/attachments.js and recoil.js entries removed, render
+controller: old parts false, iron sight / muzzle / handguard follow the Java slots). Placement checked offline:
+Java's sights + the mount pivot land where the original pack's built-in ones are (Coyote, T2 within 0.1 px).
+Simulated: fitting, model numbers, switch guns (0), ACOG FOV 55, Ursus silencer sound, recoil product, red dot no
+zoom, removing, a stored attachment that doesn't fit ignored. Also: attachmentState.js sets krep:stock ... to 0 when
+the held gun has no numbered parts (before: the previous gun's values stayed, e.g. the SKS could play its silenced
+sound after holding a silenced gun). Tools: gun.mjs leaves the Java attachment files alone (a clone starts without
+them; removing a gun with them is refused: `java-attach.mjs --remove <gun>` first); check.mjs refuses a stale list.
+**Size decision pending:** per gun copies are ~40 KB per model (2 MB for the M4A1); all 1,662 Java pairs ~68 MB (the
+gun models are 22 MB) — too much for phones. Test for the alternative: `/scriptevent tacz:atttest on`, hold the AKM:
+a shared ACOG (raw Java coordinates, root bone bound to `'scope_pos'` with Bedrock's bone `binding`) is drawn. If it
+sits on the AKM's rail and follows reloads / inspects, every attachment becomes one shared model (~4 MB for 99);
+if it floats elsewhere or doesn't show, per-gun copies with fewer attachments per gun, or another approach.
+**Test in game:** attachment bench with the M4A1: every slot lists Java's attachments with icons; fit one of each:
+it shows on the gun in first and third person, in the right place, and moves with the gun (hold, aim, reload,
+inspect, sprint); sights: is the reticle visible through red dots / holo sights and the ACOG / ELCAN / HAMR /
+QMK-152 (if a scope looks solid when aiming, that's where the overlay comes in); the ACOG zooms a little, red dots
+don't; a silencer quiets the shot and no muzzle flash light; recoil feels lighter with grips / stocks / brakes;
+iron sight / default muzzle / handguard hide when replaced; another gun (AKM) still has its old menu and parts. Then
+the binding test above. Report anything floating or misplaced (which attachment, which view).
 
 **v1.33.14 (2026-10-05): the held gun as a number for the resource pack. Needs the user's test.** User agreed to
 the remaining performance idea (mobile hosting / playing). New `items/heldGun.js` writes the player property

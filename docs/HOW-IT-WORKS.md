@@ -131,9 +131,32 @@ reload step and when a gun is taken in hand (`items/heldItem.js`). Guns whose ca
 - Using a workbench block (`crafting/workbenchBlocks.js`) opens its menu at once: gunsmith (`crafting/gunsmith.js`,
   recipes in `config/weapons.js`), ammo workbench (`crafting/ammoWorkbench.js`, `config/ammo.js`), attachment
   workbench (`attachments/attachmentMenu.js`, `config/attachments.js`). Sneak to place blocks against them.
-- Fitted attachments are stored per player and gun (dynamic property `krep_<id>`) and copied to the `krep:stock` ...
-  properties while the gun is held (`attachments/attachmentState.js`); the RP render controllers show the parts.
-- Sights are entity events (`<id>:acog` ...) that set `krep:<id>scope`.
+- Original pack's attachments (guns in `config/attachments.js`): numbered parts inside the gun model. Stored per
+  player and gun (dynamic property `krep_<id>`), copied to the `krep:stock` ... properties while the gun is held
+  (`attachments/attachmentState.js`; 0 for other guns); the gun's render controller shows the parts. Sights are
+  entity events (`<id>:acog` ...) that set `krep:<id>scope`.
+- **Java attachments** (since v1.34.0; pilot: M4A1), free at the bench (user's choice), replacing the numbered parts
+  gun by gun:
+  1. `tools/weapons/java-attach.mjs <gun>` converts what Java allows on the gun (scope / sight, muzzle, grip, stock,
+     laser) into `TACZ-R/models/entity/attachments/<gun>/<att>.geo.json`: the gun's bone chain from the root to the
+     mount bone (`scope_pos`, `muzzle_pos`, `grip_pos`, `stock_pos`, `laser_pos`: names and pivots only) with the
+     attachment's bones (`a_*`) under the mount, moved by its pivot. The chain makes the gun's animations move it
+     (Bedrock animates bones by name in every model the player draws). Textures `textures/attachment/<att>.png` and
+     menu icons `textures/attachment/slot/<att>.png` are shared. It regenerates `config/javaAttachments.js`
+     (ATTACHMENT_INFO, GUN_ATTACHMENTS, MODEL_INDEX), `render_controllers/tacz_attachments.json`, the `att_*`
+     names in `player.entity.json` and the `krep:att_<slot>` properties. `check.mjs` refuses a mismatch.
+  2. `attachments/javaAttachments.js`: fitted per player and gun in the dynamic property `tacz_att_<gun>` (JSON);
+     while the gun is held, each slot's model number (MODEL_INDEX) goes to `krep:att_<slot>` (0 = none).
+  3. RP: one render controller per slot (`controller.render.tacz_att_<slot>`) draws `Array.geo[krep:att_<slot> - 1]`
+     with its texture; reticles (`a_*division*`, illuminated dots) use the glow material. The gun's own render
+     controller hides its default parts when a slot is filled (M4A1: iron sight, muzzle, handguard).
+  4. Effects: magnified scopes zoom (`javaZoom` -> `javaScopeFov` in `config/attachments.js`, aimZoom.js); silencers
+     play `<id>.suppress` and skip the muzzle light (guns with `suppressedFrom`); recoil x the average of Java's
+     pitch / yaw multipliers per attachment (recoil.js). ADS time and accuracy multipliers: Phase 2.
+  Not yet: extended mags (in Java they are parts of the gun's own model), ammo mods, bayonet melee, laser beams.
+  Size: one model per gun and attachment (~40 KB each; 2 MB for the M4A1's 49). All 1,662 Java pairs would be about
+  68 MB, so before the rollout the shared-model test (`/scriptevent tacz:atttest on`, AKM) decides between that
+  and one shared model per attachment (~4 MB for 99).
 - Muzzle flash light (`combat/muzzleLight.js`, since v1.33.2): each shot without a silencer puts a
   `minecraft:light_block_15` in the air at the shooter's head for 2 ticks (`MUZZLE_LIGHT` in `config/combat.js`);
   automatic fire extends it instead of placing a new block each shot. Only air is replaced, only its own light

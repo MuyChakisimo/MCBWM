@@ -46,7 +46,9 @@ const walk = (dir) =>
       })
     : [];
 const abs = (f) => path.join(ROOT, f);
-const allFiles = () => PACKS.flatMap((p) => walk(`${ROOT}/${p}`.replace(/\\/g, "/"))).map((f) => path.relative(ROOT, f).split(path.sep).join("/"));
+// Java attachments are tools/weapons/java-attach.mjs's files (generated per gun); this tool leaves them alone.
+const JAVA_ATTACHMENT_FILES = /^(TACZ-R\/models\/entity\/attachments(_test)?\/|TACZ-R\/textures\/attachment\/|TACZ-R\/render_controllers\/tacz_attachments(_test)?\.json$|TACZ-B\/scripts\/config\/javaAttachments\.js$)/;
+const allFiles = () => PACKS.flatMap((p) => walk(`${ROOT}/${p}`.replace(/\\/g, "/"))).map((f) => path.relative(ROOT, f).split(path.sep).join("/")).filter((f) => !JAVA_ATTACHMENT_FILES.test(f));
 
 class Tree {
   // In-memory view of the packs; changes are written only at the end.
@@ -467,6 +469,17 @@ async function clone(from, to, name) {
     writeJson(tree, f, before, addGun(before, from, to, words, aliasMap, f));
   }
 
+  // Java attachment models (att_<gun>_<attachment>) aren't copied: the new gun starts without Java attachments
+  // (add them with tools/weapons/java-attach.mjs <newId>).
+  {
+    const f = "TACZ-R/entity/player.entity.json";
+    const before = parse(tree.read(f));
+    const after = structuredClone(before);
+    const geo = after["minecraft:client_entity"].description.geometry;
+    for (const k of Object.keys(geo)) if (k.startsWith(`att_${to}_`)) delete geo[k];
+    writeJson(tree, f, before, after);
+  }
+
   // 3. Lang: copy the gun's lines; the name lines get the new name.
   for (const f of shared.filter((f) => f.endsWith(".lang"))) {
     const lines = tree.read(f).split("\n");
@@ -518,6 +531,8 @@ async function clone(from, to, name) {
 async function remove(id, force) {
   const { tree, ids, arms, words } = await setup();
   if (!ids.includes(id)) throw new Error(`no gun "${id}" in config/weapons.js`);
+  if (fs.existsSync(abs(`TACZ-R/models/entity/attachments/${id}`)))
+    throw new Error(`${id} has Java attachments: remove them first (node tools/weapons/java-attach.mjs --remove ${id})`);
   const pats = ownFilePatterns(id, arms[id]);
   const refsBefore = new Set();
 

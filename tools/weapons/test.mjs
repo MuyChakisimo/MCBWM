@@ -92,9 +92,10 @@ for (const g of guns) {
 
 for (const g of guns) {
   const r = run("tools/weapons/gun.mjs", "remove", g);
-  const refused = !r.ok && /other files still use/.test(r.out);
+  // (Refusals by design: other files use it, or it has Java attachments to remove first.)
+  const refused = !r.ok && /other files still use|has Java attachments/.test(r.out);
   const c = r.ok ? check() : { ok: true };
-  report(`remove ${g}${refused ? " (refused: other files use it)" : ""}`, refused || (r.ok && c.ok), r.ok && !c.ok ? lastLines(c.out, 8) : !r.ok && !refused ? lastLines(r.out) : "");
+  report(`remove ${g}${refused ? ` (refused: ${/Java attachments/.test(r.out) ? "has Java attachments" : "other files use it"})` : ""}`, refused || (r.ok && c.ok), r.ok && !c.ok ? lastLines(c.out, 8) : !r.ok && !refused ? lastLines(r.out) : "");
   restore();
 }
 
@@ -103,6 +104,17 @@ for (const g of guns) {
   const r = run("tools/weapons/script-reload.mjs", "minigun");
   const left = diff();
   report("script-reload minigun (refused: overheats instead)", !r.ok && /no reload to convert/.test(r.out) && left.length === 0, left.length ? "      left behind: " + left.slice(0, 5).join(", ") : r.ok ? "      it converted the minigun" : "");
+  restore();
+}
+
+// java-attach.mjs: removing a gun's Java attachments and adding them back gives the same packs, byte for byte.
+if (fs.existsSync(path.join(work, "reference", "TACZ-JAVA.zip"))) {
+  const gun = "m4a1";
+  const a = run("tools/weapons/java-attach.mjs", "--remove", gun);
+  const c = a.ok ? check() : { ok: false, out: a.out };
+  const b = run("tools/weapons/java-attach.mjs", gun);
+  const left = diff();
+  report(`java-attach ${gun}: remove (check passes) and add back (identical)`, a.ok && c.ok && b.ok && left.length === 0, !c.ok ? lastLines(c.out, 8) : !b.ok ? lastLines(b.out) : left.length ? "      left behind: " + left.slice(0, 5).join(", ") : "");
   restore();
 }
 

@@ -9,6 +9,7 @@ import { loredItem } from "../items/itemLore.js";
 import { updateStoredAmmo } from "../items/storedAmmoDisplay.js";
 import { onHeldChange } from "../items/heldItem.js";
 import { addHeat, showHeat } from "./heat.js";
+import { javaSilenced } from "../attachments/javaAttachments.js";
 
 // Script-controlled firing for guns with `scriptFiring: true` in config/weapons.js (every gun since v1.33.11, when
 // the minigun left its BP controller).
@@ -119,7 +120,8 @@ function fireRound(player, trigger) {
 
   const aiming = player.isSneaking;
   // Only guns with a silencer (suppressedFrom): krep:muzzle is shared by all guns.
-  const suppressed = weapon.suppressedFrom !== undefined && (player.getProperty("krep:muzzle") ?? 0) >= weapon.suppressedFrom;
+  // (Java silencers too, javaAttachments.js; a gun needs its "<id>.suppress" sound: suppressedFrom says it has one.)
+  const suppressed = weapon.suppressedFrom !== undefined && ((player.getProperty("krep:muzzle") ?? 0) >= weapon.suppressedFrom || javaSilenced(player, weaponId));
   // The same command the BP controllers ran (plays at each nearby player, full volume). v1.24.0 used
   // dimension.playSound (a sound placed at the shooter) and some guns were silent.
   const sound = `${weapon.shootSound ?? weaponId}.${suppressed ? "suppress" : "shoot"}`;

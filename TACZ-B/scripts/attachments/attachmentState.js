@@ -52,8 +52,9 @@ export function setAttachments(player, typeId, changes = {}) {
 export function syncAttachments(player) {
   const typeId = player.getComponent("minecraft:equippable")?.getEquipment(EquipmentSlot.Mainhand)?.typeId;
   const key = typeId && getAttachmentKey(typeId);
-  if (!key) return;
-  const attachments = readAttachments(player, key);
+  // A gun without numbered parts (or with Java attachments, javaAttachments.js) shows none: the previous gun's
+  // values must not stay (v1.33.15).
+  const attachments = key ? readAttachments(player, key) : { stock: 0, grip: 0, laser: 0, muzzle: 0, magazine: 0 };
   for (const slot of SLOTS) {
     if (player.getProperty("krep:" + slot) !== attachments[slot]) player.setProperty("krep:" + slot, attachments[slot]);
   }

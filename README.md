@@ -9,11 +9,11 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `docs/HOW-IT-WORKS.md` | What happens when you fire, reload, inspect, aim; which file does each step; where to look when something breaks |
 | `docs/NAMING.md` | Minecraft's naming/format rules (and which tool checks each) and what every name in the packs means |
 | `NEXT_STEPS.md` | Current state, what's untested, planned work |
-| `tools/weapons/` | `gun.mjs` (clone / remove a gun), `check.mjs` (config vs pack consistency), `verify-pack.cjs` (proves two pack trees are equivalent) |
+| `tools/weapons/` | `gun.mjs` (clone / remove a gun), `check.mjs` (config vs pack consistency), `java-attach.mjs` (Java attachments onto a gun; see docs/HOW-IT-WORKS.md), `verify-pack.cjs` (proves two pack trees are equivalent) |
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.33.14`** for both packs. On a dedicated server set `"version": [1, 33, 14]` for both packs in the
+**Pack version is `1.34.0`** for both packs. On a dedicated server set `"version": [1, 34, 0]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -54,6 +54,7 @@ edit).
 | `crafting/craftingHelpers.js` | Takes ingredients (only if all are present) and gives the result; `log` accepts any wood |
 | `crafting/workbenchBlocks.js` | Using a workbench block opens its menu at once, like a chest (sneak to place blocks against it) |
 | `attachments/attachmentMenu.js` | Attachment workbench menus built from `config/attachments.js`: lists the guns the player carries (hotbar or inventory; no need to hold it); Preview takes the gun from the hotbar |
+| `attachments/javaAttachments.js` | Java attachments: fitted per player and gun, model numbers to `krep:att_<slot>`, zoom / silencer / recoil (from the generated `config/javaAttachments.js`) |
 | `attachments/attachmentState.js` | Per-player attachment storage; syncs the held gun's attachments to the model |
 | `items/ammoScoreboards.js` | Creates the scoreboard objectives (loaded rounds per gun, etc.) once on world load |
 | `items/itemLore.js` | Lore text on guns and ammo (event-driven; `loredItem()` for items the scripts make) |
