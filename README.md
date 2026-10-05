@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.33.12`** for both packs. On a dedicated server set `"version": [1, 33, 12]` for both packs in the
+**Pack version is `1.33.13`** for both packs. On a dedicated server set `"version": [1, 33, 13]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -53,7 +53,7 @@ edit).
 | `crafting/gunsmith.js`, `crafting/ammoWorkbench.js` | Crafting menus built from `config/weapons.js` / `config/ammo.js` |
 | `crafting/craftingHelpers.js` | Takes ingredients (only if all are present) and gives the result; `log` accepts any wood |
 | `crafting/workbenchBlocks.js` | Using a workbench block opens its menu at once, like a chest (sneak to place blocks against it) |
-| `attachments/attachmentMenu.js` | Attachment workbench menus built from `config/attachments.js` |
+| `attachments/attachmentMenu.js` | Attachment workbench menus built from `config/attachments.js`: lists the guns the player carries (hotbar or inventory; no need to hold it); Preview takes the gun from the hotbar |
 | `attachments/attachmentState.js` | Per-player attachment storage; syncs the held gun's attachments to the model |
 | `items/ammoScoreboards.js` | Creates the scoreboard objectives (loaded rounds per gun, etc.) once on world load |
 | `items/itemLore.js` | Lore text on guns and ammo (event-driven; `loredItem()` for items the scripts make) |

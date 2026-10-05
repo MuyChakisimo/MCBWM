@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.12** (both manifests; worlds need `[1, 33, 12]` in `world_*_packs.json`).
+- Pack version **1.33.13** (both manifests; worlds need `[1, 33, 13]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -50,11 +50,39 @@ work.
 
 ## Next, in order
 
-**START HERE (updated 2026-10-05, packs at v1.33.12, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
-audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10) -> minigun (v1.33.11) -> last BP controllers (v1.33.12) -> **user tests all three**
+**START HERE (updated 2026-10-05, packs at v1.33.13, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
+audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10) -> minigun (v1.33.11) -> last BP controllers (v1.33.12) -> attachment bench (v1.33.13) -> **user tests all four**
 -> visual pass gun by gun, with **Phase 2 accuracy** tuned per gun during it. User's focus (2026-10-05):
 stability, especially with several players; everything on the script build; then visual bugs, each gun passing
 every test.
+
+**v1.33.13 (2026-10-05): attachment bench without holding the gun. Needs the user's test.** User: "we have to be
+holding the item ... but that makes our counter go down"; wanted to use the bench with any (or no) item and apply
+attachments only if the gun is in the hotbar or inventory. attachmentMenu.js lists only the guns the player carries
+(loaded or empty, anywhere in the 36 slots; a message lists which guns take attachments if none); every step checks
+the gun is still carried (was: held). Attachments were always stored per player and gun type, so nothing else
+changes. Preview needs the gun in hand: it switches to the gun's hotbar slot; a gun only in the inventory gets "move
+it to your hotbar". The click that opens any workbench no longer fires the held gun: workbenchBlocks.js calls
+`holdFire` (firing.js ignores presses for 5 ticks and stops a shot in progress). Simulated (bench click: no shot,
+rounds kept; a press afterwards fires).
+**Test in game:** use the attachment bench with an empty hand, with a sword, with a gun: the menu lists only the
+guns you carry; fit a grip on a gun that is in the inventory (not hotbar), then take it out: the grip shows; Preview
+with the gun in the hotbar switches to it; with it only in the inventory, the message; using any bench with a loaded
+gun in hand doesn't take a round.
+
+**Performance comparison with the original v1.0.2 (2026-10-05, scratch script on the reference zip):** server side
+per player per tick: original 88 BP animate entries (93 controllers, 1350 item-name queries), 39 tick.json
+functions, 40 bullet entity types, 1186 player.json events; ours 0, 0, 0, 0, 68 (scripts run on events and only
+while someone fires / reloads). Client side per player per frame (every viewer, for every player it sees): original
+245 `query.get_equipped_item_name` in pre_animation, 123 animate entries, 80 render controllers; ours 118, 177, 116
+(more guns: 58). **Remaining idea (not done, user's call):** a script-set int property `krep:held` (on held change)
+and `v.<id>b = q.property('krep:held') == N;` in pre_animation instead of 116 item-name string queries per frame;
+cost: the client sees a gun change a tick later (draw animation starts one tick later). The 29 item-name queries in
+`shared_player.json` are vanilla (crossbow, map, shield).
+**Java attachments (question 2026-10-05): not ported.** Ours are the original Bedrock pack's: parts built into 12
+guns' models (mp5 vector g17 akm m4a1 hk416 awp deagleg db fal mk14 qbz191), picked by number at the bench. Java has
+99 attachment items (19 sights, 16 muzzles, 13 scopes, 12 grips, 11 stocks, 5 lasers, extended mags ...) as
+separate models mounted on each gun. Ported Java guns have none (java-port strips the clone's).
 
 **v1.33.12 (2026-10-05): no BP animation controllers left; old-system leftovers removed. Needs the user's test.**
 User: "anything that improves performance & not need to make a lot of unnecessary calls is better", then review that

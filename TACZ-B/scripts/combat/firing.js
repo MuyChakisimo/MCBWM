@@ -212,9 +212,19 @@ function startTrigger(player, weaponId, weapon) {
   });
 }
 
+/** Per player: presses are ignored until this tick (a workbench was just used: its click mustn't fire the gun). */
+const holdUntil = new Map();
+
+/** Ignore fire presses for a few ticks and stop any shot in progress (crafting/workbenchBlocks.js). */
+export function holdFire(player, ticks = 5) {
+  holdUntil.set(player.id, system.currentTick + ticks);
+  triggers.delete(player.id);
+}
+
 world.afterEvents.itemStartUse.subscribe(({ source: player, itemStack }) => {
   const weapon = getWeaponByItem(itemStack?.typeId);
   if (!weapon?.scriptFiring || itemStack.typeId !== `krep:${weapon.id}`) return;
+  if (system.currentTick < (holdUntil.get(player.id) ?? 0)) return; // that click opened a workbench
   if (weapon.aimToFire && !player.isSneaking) return;
   // A press during a reload is ignored, not saved for later (v1.33.9 fired it when the reload ended; the press
   // that stops a shell reload is handled by reload.js).
@@ -232,7 +242,10 @@ world.afterEvents.itemStopUse.subscribe(({ source: player }) => {
 
 // Dying drops the trigger (with keepInventory the gun stays in hand, and the release may never arrive).
 world.afterEvents.entityDie.subscribe(({ deadEntity }) => triggers.delete(deadEntity.id), { entityTypes: ["minecraft:player"] });
-world.afterEvents.playerLeave.subscribe(({ playerId }) => triggers.delete(playerId));
+world.afterEvents.playerLeave.subscribe(({ playerId }) => {
+  triggers.delete(playerId);
+  holdUntil.delete(playerId);
+});
 
 system.runInterval(() => {
   if (triggers.size === 0) return; // nobody firing: nothing to do this tick

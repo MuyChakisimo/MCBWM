@@ -1,35 +1,52 @@
 import { system, world, EquipmentSlot } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
 import { ATTACHMENTS } from "../config/attachments.js";
-import { getAttachments, setAttachments } from "./attachmentState.js";
+import { getAttachments, setAttachments, syncAttachments } from "./attachmentState.js";
 
 // Attachment workbench (krep:attachmentblock). Menus are built from config/attachments.js:
 // pick a gun -> pick a slot -> pick an attachment (or a sight, or Preview).
+// Since v1.33.13 the gun doesn't have to be in hand: the menu lists the guns the player carries (hotbar or
+// inventory, loaded or empty), and attachments are saved per player and gun type anyway (attachmentState.js).
+// Only Preview needs the gun in hand: it switches to the gun's hotbar slot (a gun only in the inventory must be
+// moved to the hotbar first). Using the bench with a gun in hand no longer fires it (holdFire in firing.js).
 
 // The resource pack's UI (TACZ-R/ui/server_form.json) styles forms by their exact title;
 // the preview form must keep this title.
 const PREVIEW_FORM_TITLE = "Custom dial";
 const PREVIEW_TAG = "preview_active";
+const HOTBAR_SIZE = 9;
 const playersInPreview = new Set();
 
 function heldItemId(player) {
   return player.getComponent("minecraft:equippable").getEquipment(EquipmentSlot.Mainhand)?.typeId;
 }
 
-function isHolding(player, gunId) {
-  const typeId = heldItemId(player);
-  return typeId === `krep:${gunId}` || typeId === `krep:${gunId}_emp`;
+const isGun = (typeId, gunId) => typeId === `krep:${gunId}` || typeId === `krep:${gunId}_emp`;
+
+/** Inventory slot of the player's krep:<gun> (or its empty item): 0-8 hotbar, 9-35 inventory; -1 if none. */
+function findGun(player, gunId) {
+  const container = player.getComponent("minecraft:inventory")?.container;
+  for (let i = 0; container && i < container.size; i++) if (isGun(container.getItem(i)?.typeId, gunId)) return i;
+  return -1;
 }
 
-function requireHolding(player, gunId) {
-  if (isHolding(player, gunId)) return true;
-  player.sendMessage(`You must be holding the ${ATTACHMENTS[gunId].menuLabel} to use this form!`);
+function requireOwned(player, gunId) {
+  if (findGun(player, gunId) >= 0) return true;
+  player.sendMessage(`You need the ${ATTACHMENTS[gunId].menuLabel} in your inventory to fit attachments.`);
   return false;
 }
 
 export function openAttachmentWorkbench(player) {
-  const guns = Object.entries(ATTACHMENTS);
-  const form = new ActionFormData().title("Attachments").body("Select the gun you are holding:");
+  const guns = Object.entries(ATTACHMENTS).filter(([gunId]) => findGun(player, gunId) >= 0);
+  if (!guns.length) {
+    new ActionFormData()
+      .title("Attachments")
+      .body(`None of your guns take attachments yet. These do: ${Object.values(ATTACHMENTS).map((g) => g.menuLabel).join(", ")}.`)
+      .button("Close")
+      .show(player);
+    return;
+  }
+  const form = new ActionFormData().title("Attachments").body("Select one of your guns:");
   for (const [, gun] of guns) form.button(gun.menuLabel, gun.menuIcon);
   form.show(player).then((response) => {
     if (response.canceled) return;
@@ -41,7 +58,7 @@ export function openAttachmentWorkbench(player) {
 }
 
 function openGunMenu(player, gunId) {
-  if (!requireHolding(player, gunId)) return;
+  if (!requireOwned(player, gunId)) return;
   const gun = ATTACHMENTS[gunId];
   const form = new ActionFormData()
     .title(`${gun.menuLabel} Attachments`)
@@ -59,9 +76,9 @@ function openGunMenu(player, gunId) {
 
 // Numbered attachments (stock, grip, laser, muzzle, magazine).
 function openSlot(player, gunId, slot) {
-  if (!requireHolding(player, gunId)) return;
+  if (!requireOwned(player, gunId)) return;
   const gun = ATTACHMENTS[gunId];
-  const typeId = heldItemId(player);
+  const typeId = `krep:${gunId}`; // attachments are per gun type: the item itself doesn't matter
   const current = getAttachments(player, typeId)[slot.property];
   const form = new ActionFormData()
     .title(`${gun.menuLabel} ${slot.label}`)
@@ -94,7 +111,18 @@ function openSights(player, gunId, { title, body = "", sights }, returnToGunMenu
 
 // Shows the gun with its attachments (krep:view) until Back or Finish.
 function openPreview(player, gunId) {
-  if (!requireHolding(player, gunId)) return;
+  if (!requireOwned(player, gunId)) return;
+  // The preview shows the held gun: take it in hand from the hotbar.
+  if (!isGun(heldItemId(player), gunId)) {
+    const slot = findGun(player, gunId);
+    if (slot >= HOTBAR_SIZE) {
+      player.sendMessage(`Move the ${ATTACHMENTS[gunId].menuLabel} to your hotbar to preview it.`);
+      openGunMenu(player, gunId);
+      return;
+    }
+    player.selectedSlotIndex = slot;
+    syncAttachments(player); // show its parts now (the slot-change event comes a tick later)
+  }
   player.addTag(PREVIEW_TAG);
   player.runCommand("event entity @s krep:view");
   playersInPreview.add(player.id);
