@@ -3596,18 +3596,6 @@
       "sounds/m4a1/suppressor"
     ]
   },
-  "aug.suppress": {
-    "category": "ui",
-    "sounds": [
-      "sounds/aug/aug_silence"
-    ]
-  },
-  "spr15.suppress": {
-    "category": "ui",
-    "sounds": [
-      "sounds/spr15/spr15hb_silence"
-    ]
-  },
   "m4a1.bolt": {
     "category": "hostile",
     "sounds": [

@@ -1944,16 +1944,6 @@
           }
         }
       }
-    },
-    "animation.m16a1.fp.walk.delay": {
-      "loop": "hold_on_last_frame",
-      "animation_length": 0.1667,
-      "bones": {
-        "rot": {
-          "rotation": {"0.0": [0, -0.87641, 3.08984], "0.1667": [0, 0, 0]},
-          "position": {"0.0": [0.13, -0.51, 0.63], "0.1667": [0, 0, 0]}
-        }
-      }
     }
   }
 }
