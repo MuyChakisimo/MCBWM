@@ -501,7 +501,8 @@ function resizeMagazine(id, M, N) {
     .replace(new RegExp(`(${id}=)(\\d+)(\\.\\.)(\\d*)`, "g"), (m, a, lo, dots, hi) => a + shiftNum(+lo) + dots + (hi === "" ? "" : shiftNum(+hi)))
     .replace(new RegExp(`(scoreboard\\('${id}'\\) *[<>=]+ *)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n))
     .replace(new RegExp(`(@s(?:\\[[^\\]]*\\])? ${id} )(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n));
-  edit(`TACZ-B/functions/${id}.mcfunction`, (t) => t.replace(/"\/(\d+)(?=[ \\])/g, (m, n) => `"/${shiftNum(+n)}`).replace(new RegExp(`(${id}=1\\.\\.)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
+  // The HUD function only exists for guns whose capacity depends on the magazine (since v1.33.9 firing.js shows the rest).
+  if (exists(`TACZ-B/functions/${id}.mcfunction`)) edit(`TACZ-B/functions/${id}.mcfunction`, (t) => t.replace(/"\/(\d+)(?=[ \\])/g, (m, n) => `"/${shiftNum(+n)}`).replace(new RegExp(`(${id}=1\\.\\.)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
   for (const f of [`TACZ-B/animation_controllers/gun_${id}.json`, `TACZ-B/animations/guns/${id}.json`].filter(exists)) edit(f, shiftText);
   edit("TACZ-B/animation_controllers/shared_inspect.json", (t) => t.replace(new RegExp(`(scoreboard\\('${id}'\\) *[<>=]+ *)(\\d+)`, "g"), (m, a, n) => a + shiftNum(+n)));
   // A script-reloaded gun (combat/reload.js) has no quantity / reload functions or reload events: its capacity is
@@ -598,7 +599,8 @@ function stripAttachments(id) {
       removed.push(`${id}scope controller`);
     }
   });
-  editJson(`TACZ-B/animation_controllers/gun_${id}.json`, (j) => { delete j.animation_controllers[`controller.animation.${id}.scope`]; });
+  // (Since v1.33.9 guns have no BP controller; scope zoom is combat/aimZoom.js.)
+  if (exists(`TACZ-B/animation_controllers/gun_${id}.json`)) editJson(`TACZ-B/animation_controllers/gun_${id}.json`, (j) => { delete j.animation_controllers[`controller.animation.${id}.scope`]; });
   // RP: aim state keeps only the plain sight; the gun's parts are all shown.
   const dropAnims = new Set();
   editJson(`TACZ-R/animation_controllers/gun_${id}.json`, (j) => {

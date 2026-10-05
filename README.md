@@ -13,7 +13,7 @@ Minecraft Bedrock weapon add-on (port of TACZ by Akang Krep, v1.0.2 Translated E
 | `tools/trace/` | Behavior trace: proves two versions of the scripts make the same Minecraft API calls |
 | `reference/` | Not in git (see `.gitignore`): `TACZ-JAVA.zip` (Java TACZ, source for porting guns) and the original Bedrock release. Keep a local copy |
 
-**Pack version is `1.33.8`** for both packs. On a dedicated server set `"version": [1, 33, 8]` for both packs in the
+**Pack version is `1.33.9`** for both packs. On a dedicated server set `"version": [1, 33, 9]` for both packs in the
 world's `world_behavior_packs.json` / `world_resource_packs.json`. Bump the version whenever you change a pack, or
 players and worlds keep using their cached copy.
 
@@ -66,9 +66,7 @@ Every gun `<id>` (the item id without `krep:`) has its own files:
 | Pack file | What |
 |---|---|
 | `TACZ-B/items/guns/<id>/<id>.json`, `<id>_emp.json` | The gun item and its empty-magazine variant |
-| `TACZ-B/animation_controllers/gun_<id>.json` | Firing (ammo count, fire event, sound) and reload state machines |
-| `TACZ-B/animations/guns/<id>.json` | Shoot / reload timelines (reload functions, ammo scoreboard) |
-| `TACZ-B/functions/<id>.mcfunction`, `<id>quantity`, `<id>reload` | Ammo HUD, reload ammo check, ammo removal |
+| (BP) nothing per gun but its items | Since v1.33.9 firing, reloading and the HUD are scripts (`combat/firing.js`, `combat/reload.js`); only the minigun still has `animation_controllers/gun_minigun.json` and its BP animations / functions; Golden Deagle and Vector keep `functions/<id>.mcfunction` (HUD per magazine) |
 | `TACZ-B/entities/player.json` | Shared player entity: reload / scope events (and the minigun's `krep:minigun_fire`) |
 | `TACZ-R/models/entity/guns/<id>.geo.json` | Gun model |
 | `TACZ-R/render_controllers/gun_<id>.json` | Which gun parts/attachments are visible |
@@ -81,7 +79,7 @@ Every gun `<id>` (the item id without `krep:`) has its own files:
 Shared files are named `shared_*` / `shared/` (player arms `taczuniversal*`, scopes, walk cycles). Ammo is under
 `items/ammo/` and `attachables/ammo_*`.
 
-The ammo HUD (`functions/<id>.mcfunction`) is drawn by each gun's animation controller, which runs it as the player.
+The ammo HUD is `showAmmo()` in `combat/firing.js` (Golden Deagle / Vector: `functions/<id>.mcfunction`).
 There is no `tick.json`: functions run from it have no `@s`, so they did nothing.
 
 ### Adding a weapon

@@ -1,6 +1,6 @@
 import { system, world, EquipmentSlot, GameMode } from "@minecraft/server";
 import { getWeaponByItem } from "../config/weapons.js";
-import { heldTypeId, showAmmo, ammoNameKey, emptyListeners } from "./firing.js";
+import { heldTypeId, showAmmo, ammoNameKey, emptyListeners, roundsOf } from "./firing.js";
 import { debug, recordReload } from "./debug.js";
 import { zoomSoon } from "./aimZoom.js";
 import { loredItem } from "../items/itemLore.js";
@@ -73,7 +73,7 @@ function startShells(player, weapon, kind, auto) {
   if (!sh[kind]) return;
   const objective = world.scoreboard.getObjective(id);
   if (!objective) return;
-  const current = kind === "empty" ? 0 : objective.getScore(player) ?? 0;
+  const current = kind === "empty" ? 0 : roundsOf(player, weapon) ?? 0;
   if (weapon.cycle && player.getProperty("krep:ammoreload") === weapon.cycle.value) return;
   const cap = weapon.magazine + (kind === "tac" && weapon.chamber !== false ? 1 : 0);
   if (kind === "tac" && current > weapon.magazine - 1) return; // the controllers needed one missing
@@ -138,7 +138,7 @@ function startReload(player, weapon, kind, auto = false) {
   if (!spec[kind]) return;
   const objective = weapon.roundInItem ? null : world.scoreboard.getObjective(id);
   if (!weapon.roundInItem && !objective) return;
-  const current = kind === "empty" || weapon.roundInItem ? 0 : objective.getScore(player) ?? 0;
+  const current = kind === "empty" || weapon.roundInItem ? 0 : roundsOf(player, weapon) ?? 0;
   // Not while the bolt / pump is cycling (the controllers checked krep:ammoreload too).
   if (weapon.cycle && player.getProperty("krep:ammoreload") === weapon.cycle.value) return;
   const chambered = kind === "tac" && weapon.chamber !== false ? 1 : 0;
@@ -185,7 +185,7 @@ function load(r) {
     return;
   }
   const objective = world.scoreboard.getObjective(weapon.id);
-  const current = kind === "empty" ? 0 : objective.getScore(player) ?? 0; // shots can't happen meanwhile, but be exact
+  const current = kind === "empty" ? 0 : roundsOf(player, weapon) ?? 0; // shots can't happen meanwhile, but be exact
   const give = Math.min(cap - current, unlimited ? Infinity : countItem(container, weapon.ammo));
   if (give > 0 && takes) removeItem(container, weapon.ammo, give);
   const rounds = current + Math.max(give, 0);
@@ -265,3 +265,12 @@ system.runInterval(() => {
     if (r.loaded && (now >= r.endTick || !stillHolding)) finish(r);
   }
 }, 1);
+
+// A player who left or died mid-reload (or mid-bolt) comes back with no reload running: clear the reload view and
+// the bolt / shell state (each gun's BP controller did this when the gun was first held, until v1.33.9).
+world.afterEvents.playerSpawn.subscribe(({ player }) => {
+  if (reloads.has(player.id)) return;
+  const mark = player.getComponent("minecraft:mark_variant")?.value;
+  if (mark === 1 || mark === 2) player.triggerEvent("krep:noreload");
+  if ((player.getProperty("krep:ammoreload") ?? 0) !== 0) player.setProperty("krep:ammoreload", 0);
+});

@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.33.8** (both manifests; worlds need `[1, 33, 8]` in `world_*_packs.json`).
+- Pack version **1.33.9** (both manifests; worlds need `[1, 33, 9]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -39,7 +39,11 @@ work.
 
 ## Next, in order
 
-**START HERE: the order the user agreed (2026-10-04, end of session; packs at v1.33.5, all committed, not pushed):**
+**START HERE (updated 2026-10-05, packs at v1.33.9, all committed, not pushed).** Order agreed with the user:
+**audit (done, v1.33.8-1.33.9) -> the user tests v1.33.9 -> tag it stable (`git tag stable-v1.33.9`, like
+stable-v1.16.0) -> minigun conversion -> Phase 2 accuracy.** Items 1-3 below are the earlier plan (1 done); the minigun
+moved before accuracy because the spread code will live in firing.js.
+
 
 1. **Optimize the always-running scripts** (no gameplay change). **Done in v1.33.6; profile confirmed (v1.33.7 entry);
    still to hear: attachments / rounds on the model / tooltips / zoom look right in game.** The profile `_02-40-42` (0.59 ms/tick total) shows
@@ -63,6 +67,25 @@ How the user works: not a programmer, tests on an AYN Odin 2 (Android) against t
 2.10.0 stable); wants plain explanations, factual decisions (ask when it's their call), ready-to-paste commit
 titles / descriptions, and what to test in game. Test reports: `scriptevent tacz:debug start|stop` +
 `script profiler start|stop` in the server console; they put the `.cpuprofile` in `reference/`.
+
+**v1.33.8-1.33.9 (2026-10-05): audit for the next stable tag.** User: ACOG on the AKM, the zoom looks great.
+Agreed order now: **audit -> user test -> stable tag -> minigun conversion -> Phase 2 accuracy** (accuracy will live in
+firing.js, so the minigun should be script-fired first). Audit: a file-level scan (textures, sounds, models,
+functions, particles, entities, items, lang keys, script exports) found nothing unreferenced (two `.nomedia` files
+kept: they stop Android galleries indexing the pack). v1.33.8 removed the check.mjs --unused leftovers (m16 / m16a1
+walk anims, m870 / spas12 fp.reload11, aug / spr15 `.suppress` sounds + 320 KB of files); kept for the minigun
+step: `animation.minigun.spin`, its unused tp controller, the "No Rocket" / "Need Ammo Box" HUD texts.
+**v1.33.9: the 57 per-gun BP controllers are gone** (all guns but the minigun), with 46 BP animation files, 51 HUD
+functions and 104 `player.json` entries (61 -> 4 `animate` entries evaluated per player per tick). What they still
+did moved to the scripts: a gun's first use ever starts with a full magazine (`roundsOf` in firing.js; **user
+decision: no more refill the first time each gun is held after every join**), fire on a 0-round loaded gun swaps
+to `_emp` (before: nothing happened), taking a gun in hand shows its ammo HUD (before: only the first time),
+reload / bolt state is cleared on spawn (reload.js). `shared_inspect.json` borrowed `animation.akm.shoot` as a
+zero-length timer: now `animation.instant` (`animations/shared/instant.json`). Golden Deagle and Vector keep their
+HUD functions (`capByMagazine`). Tools: java-port / import-repair test tolerate guns without BP files.
+**Test before tagging stable:** every gun fires, reloads (empty + tactical), inspects (swing with a full magazine);
+the HUD shows when switching guns; a brand-new gun (gunsmith / creative) starts full; after rejoining, the magazine
+is what you left (not refilled); bolt guns (AWP, Kar98k, M700) and pump shotguns cycle; the minigun works as before.
 
 **v1.33.7 (2026-10-05): v1.33.6 profile, attachment menu UI warning, quieter report.** User test (all 56 guns,
 1024 s, profile `_18-28-54`): every gun at or under its fire rate, every reload on time. Script time **0.42 ms/tick**

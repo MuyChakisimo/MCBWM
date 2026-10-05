@@ -10,16 +10,16 @@ The two packs talk through a few values on the player:
 
 | Value | Set by (BP) | Read by | Meaning |
 |---|---|---|---|
-| scoreboard `<id>` | fire / reload commands | BP controllers (`query.scoreboard('<id>')`), HUD | rounds in the magazine |
+| scoreboard `<id>` | `combat/firing.js`, `combat/reload.js` | scripts, HUD, `shared_inspect.json` (full magazine = inspect) | rounds in the magazine |
 | `q.mark_variant` | events `krep:reload` (1), `krep:reloadtac` (2), `krep:noreload` (0) | RP gun controller | reloading: 1 empty reload, 2 tactical |
 | `q.skin_id` | `krep:inspect` (1), `krep:noinspect` (0), `krep:view` (2) | RP gun controller | 1 inspecting, 2 attachment preview |
-| property `krep:ammoreload` | events `<id>reload0..N` | BP reload controller | how many rounds this reload loads (base + N) |
+| property `krep:ammoreload` | `combat/reload.js`, `combat/firing.js` (bolt / pump events) | RP gun controllers | reload / bolt / shell state the RP animations follow (0 = none) |
 | properties `krep:stock/grip/laser/muzzle/magazine` | `attachments/attachmentState.js` | RP render controllers | fitted attachments, shown on the model |
 | property `krep:bulletcache` | `items/storedAmmoDisplay.js` | RP (Evolys, M249, M1014) | rounds shown on the gun model |
 | RP variables `v.<id>`, `v.<id>b`, `v.<id>emp` | `player.entity.json` `pre_animation` | RP controllers, render controllers | holding the gun (any / loaded / empty item) |
 
-The gun is two items: `krep:<id>` (loaded) and `krep:<id>_emp` (empty). Commands swap them when the magazine runs
-out or is reloaded.
+The gun is two items: `krep:<id>` (loaded) and `krep:<id>_emp` (empty). The scripts swap them when the magazine
+runs out or is reloaded.
 
 ## Controls
 
@@ -34,73 +34,54 @@ operators or the server console, `/tacz:hitmarkerdefault on|off` (`combat/hitMar
 
 ## Firing a shot
 
-**Guns with `scriptFiring: true`** (`config/weapons.js`; since v1.26.0 all but the minigun; `tools/weapons/script-firing.mjs` converts a gun;
-per-gun extras `cycle`, `roundInItem`, `aimToFire`, `capByMagazine` are described in firing.js) fire from the script instead of steps
-1 and 2 below: `combat/firing.js` starts on the use button (`itemStartUse` on `krep:<id>`) and fires at the gun's
-`rpm` in its `fireMode` (auto while held, semi one per press, burst `burst.count` per press) until the button is
-released (`itemStopUse`), the gun is switched, or the magazine is empty. Each shot: scoreboard `<id>` minus one
-(capped at magazine + 1 first), ammo HUD (`setActionBar`), `<shootSound or id>.shoot` (or `.suppress` with `krep:muzzle` >=
-`suppressedFrom`, default 4), the shoot animation (`shootAnimation.ads` / `.hip`, default
-`animation.<id>.shoot.sight` when sneaking, else `.nsight`), then `shoot()` in
-`combat/hitscan.js` (recoil + rays, step 3). The last round swaps to `krep:<id>_emp` and shows "No Ammunition". No
-shots during a tactical reload (`mark_variant` 2). The gun's BP controller keeps only `setup1` (initial ammo),
-`setup` (HUD) and `<id>.31` (using it at 0 rounds swaps to `_emp`); reloading is unchanged.
+`combat/firing.js` (every gun with `scriptFiring: true` in `config/weapons.js`: all but the minigun) starts on the use
+button (`itemStartUse` on `krep:<id>`) and fires at the gun's `rpm` in its `fireMode` (auto while held, semi one per
+press, burst `burst.count` per press) until the button is released, the gun is switched, or the magazine is empty.
+Per-gun extras (`cycle`, `roundInItem`, `aimToFire`, `capByMagazine`) are described at the top of firing.js. Each shot:
 
-**Reloading, guns with `scriptReload`** (config/weapons.js; since v1.30.0 all but the minigun;
-`tools/weapons/script-reload.mjs` converts a gun; per-gun options are described in reload.js): `combat/reload.js`. Empty reload: starts by itself 0.25 s after the last round, or use with
-`krep:<id>_emp`. Tactical: a swing
-(the shared BP controller `controller.animation.reload_input` sends `/scriptevent tacz:reload`) with at least 2
-rounds missing. It sets the mark variant the RP reload animations watch, takes the ammo item from the inventory at
-`scriptReload.<kind>[0]` seconds, fills the scoreboard (magazine; tactical + 1 chambered), swaps the empty gun
-back, and ends at `[1]` seconds. The other guns reload from their BP reload controller (below).
-
-**The minigun** (the only gun still fired by its controller; script-fired guns have no `krep:<id>_fire` event since
-v1.26.1):
-
-1. **BP** `animation_controllers/gun_<id>.json`, controller `controller.animation.<id>`: while the gun is held, the
-   use button is down and the scoreboard `<id>` is at least 1, it enters a shoot state (`<id>.30`, `delay.30` ...).
-   On entry: event `@s krep:<id>_fire`, `/function <id>` (HUD), `playsound <id>.shoot`, remove one round,
-   `replaceitem ... krep:<id>_emp` and "No Ammunition" when it hits 0. The time until the next shot is the shoot
-   state's animation length (this is the fire rate today; `rpm` in `weapons.js` is not applied yet).
-2. **BP** `entities/player.json`, event `krep:<id>_fire`: `playanimation ... animation.<id>.shoot...` (the kick
-   animation on each client) and `scriptevent tacz:weapon_hitscan <id> ads|hip` (ads = sneaking).
-3. **Script** `combat/hitscan.js` receives the scriptevent:
-   - `combat/recoil.js` `applyRecoil()`: camera shake from the gun's `recoil`, reduced by fitted attachments
+1. Scoreboard `<id>` minus one (capped at magazine + 1 chambered; a gun's first use ever starts full: `roundsOf`),
+   the ammo HUD, the rounds on the model (`items/storedAmmoDisplay.js`).
+2. `playsound <shootSound or id>.shoot` (`.suppress` with `krep:muzzle` >= `suppressedFrom`), the muzzle flash light
+   (`combat/muzzleLight.js`, not when silenced), the shoot animation (`shootAnimation.ads` / `.hip`, default
+   `animation.<id>.shoot.sight` when sneaking, else `.nsight`).
+3. `shoot()` in `combat/hitscan.js`:
+   - `combat/recoil.js` `applyRecoil()`: `camera.addShake` from the gun's `recoil`, reduced by fitted attachments
      (`config/recoil.js`), scaled by `COMBAT.recoilMultiplier`.
    - One ray per pellet (`pellets`, scattered by `spread`): breaks glass/panes/wheat on the way
      (`HITSCAN.breakableBlocks`), stops at the first other block, hits the nearest living entity before it
      (`HITSCAN.range`).
    - `combat/damage.js` `applyGunHits()`: per pellet, `damage` x `falloff` at that distance x `headshot` (within
      `COMBAT.headshotRadius` of the head) x armor reduction (`combat/armor.js`, `penetration`); a target takes the
-     sum at once, with one hurt flash and one hit/kill sound.
-   - Guns with `explosion` (RPG): an explosion and splash damage where the shot lands.
+     sum at once, with one hurt flash, one hit/kill sound and the hit marker (`combat/hitMarker.js`).
+   - Guns with `explosion` (RPG, M320): an explosion and splash damage where the shot lands.
    - `combat/shotEffects.js`: smoke tracer and impact puff.
+
+The last round, or pressing fire with none left, swaps to `krep:<id>_emp` ("No Ammunition") and starts the empty
+reload. No shots during a reload (`mark_variant` 1 or 2).
+
+**The minigun** is the only gun still fired by its BP controller (`animation_controllers/gun_minigun.json`: the
+shoot states run `krep:minigun_fire`, whose `player.json` event sends `scriptevent tacz:weapon_hitscan minigun ads|hip`
+to `combat/hitscan.js`). Until v1.33.9 every gun had such a BP controller (`setup1` refilled the magazine the first
+time the gun was held after each join, `setup` ran the HUD function, `<id>.31` swapped a 0-round gun to `_emp`);
+firing.js and reload.js do those now.
 
 ## Reloading
 
-1. **BP** `animation_controllers/gun_<id>.json`, controller `controller.animation.<id>.reload`, state `setup`:
-   - `trigger.reload`: holding `<id>_emp` and using it (empty reload);
-   - `trigger.tac`: holding `<id>` and swinging with the magazine below full (tactical reload).
-2. On entry: `/function <id>quantity` (`functions/<id>quantity.mcfunction`) counts the ammo item in the inventory
-   (`hasitem` checks) and runs event `<id>reload<N>` (`player.json`), which sets `krep:ammoreload` to base + N
-   (base alone = no ammo: the controller goes back to `setup` and the HUD says "No ...").
-3. States `reload` / `reload.tac` play the BP animation `animations/guns/<id>.json` (`animation.<id>.reload`,
-   `.reload.tac`) and send `@s krep:reload` / `krep:reloadtac`, so the RP plays the reload animation. Its
-   timeline, near the end:
-   - `/function <id>reload` (`functions/<id>reload.mcfunction`): `clear` the right number of rounds from the
-     inventory (skipped with an ammo box);
-   - event `krep:<id>_reload` (`player.json`): adds N to the scoreboard;
-   - `replaceitem ... krep:<id>` (back to the loaded item) and `/function <id>` (HUD).
-4. `reloadfinish` -> `krep:noreload`.
-
-Per-magazine reloads (Golden Deagle, Vector) have one reload animation per magazine size, chosen by
-`q.property('krep:magazine')`. Tube-fed shotguns (`reload: "single"`) load one shell per cycle.
+`combat/reload.js` (guns with `scriptReload`: all but the minigun; per-gun options are described in reload.js).
+Empty reload: starts by itself 0.25 s after the last round, or use with `krep:<id>_emp`. Tactical: a swing (the
+shared BP controller `controller.animation.reload_input` sends `/scriptevent tacz:reload`) with at least 2 rounds
+missing. It sets the mark variant the RP reload animations watch, takes the ammo item from the inventory at
+`scriptReload.<kind>[0]` seconds (an ammo box: unlimited; creative: free), fills the scoreboard (magazine; tactical
++ 1 chambered), swaps the empty gun back, and ends at `[1]` seconds. Switching guns before the rounds go in cancels
+it. Shell-by-shell reloads (`shells`) load one round per cue. Per-magazine reloads (Golden Deagle, Vector) use
+`byMagazine`, chosen by `krep:magazine`. A player who left mid-reload comes back with the reload state cleared.
 
 ## Ammo HUD
 
-`functions/<id>.mcfunction`: `titleraw` actionbar "rounds/magazine + ammo name", or "No Ammunition". Run by the
-fire and reload controllers (not every tick). `scripts/items/ammoScoreboards.js` creates the scoreboard objectives
-once when the world loads.
+`showAmmo()` in firing.js: actionbar "rounds/magazine + ammo name", or "No Ammunition"; shown on each shot and
+reload step and when a gun is taken in hand (`items/heldItem.js`). Guns whose capacity depends on the magazine
+(`capByMagazine`: Golden Deagle, Vector) use their `functions/<id>.mcfunction` ("/20+10" ...).
+`scripts/items/ammoScoreboards.js` creates the scoreboard objectives once when the world loads.
 
 ## Inspect
 
@@ -165,13 +146,13 @@ magazine sizes.
 
 | Symptom | Look at |
 |---|---|
-| Gun doesn't fire | BP `gun_<id>.json` shoot transitions (scoreboard `<id>` >= 1?); `/scoreboard players list @s` |
+| Gun doesn't fire | `config/weapons.js` `scriptFiring`, `fireMode`, `rpm`; `/scoreboard players list @s` (rounds); `scriptevent tacz:debug on` logs each shot |
 | Fires but no damage | script-fired: content log `[TACZ Hitscan]`, `config/weapons.js` entry; minigun: `player.json` `krep:minigun_fire` has `scriptevent tacz:weapon_hitscan <id>`; `config/weapons.js` entry; content log for `[TACZ Hitscan]` errors |
-| Gun with `scriptFiring` doesn't fire, or fires twice | `config/weapons.js` `scriptFiring` and `fireMode`/`rpm`; its BP controller must have no shoot states left (only `setup1`, `setup`, `<id>.31`); content log for `combat/firing.js` errors |
+| Gun fires twice / too fast | `config/weapons.js` `fireMode`/`rpm`/`burst`; `scriptevent tacz:debug start` then `stop` reports the gaps; content log for `combat/firing.js` errors |
 | Damage feels off | `weapons.js` `damage`, `falloff`, `headshot`, `penetration`; `combat.js` multipliers |
-| Wrong ammo count / reload loads wrong amount | `functions/<id>quantity.mcfunction`, `<id>reload.mcfunction`, `player.json` `<id>reload<N>` and `krep:<id>_reload`; `check.mjs` compares them to `magazine` |
-| Reload takes no ammo | `<id>reload.mcfunction` covers every score (per-magazine guns: the right reload animation plays for the fitted magazine) |
-| HUD shows wrong numbers | `functions/<id>.mcfunction` |
+| Wrong ammo count / reload loads wrong amount | `config/weapons.js` `magazine`, `chamber`, `scriptReload` (`byMagazine` caps); `scriptevent tacz:debug on` logs each reload step |
+| Reload takes no ammo | creative mode and the creative ammo box (`krep:ammoboxc`) take none, by design; otherwise `combat/reload.js` `removeItem` |
+| HUD shows wrong numbers | `showAmmo()` in `combat/firing.js` (`magazine`); Golden Deagle / Vector: `functions/<id>.mcfunction` |
 | A sound doesn't play | `check.mjs`; then the effect name in `player.entity.json` `sound_effects` and `sound_definitions.json` |
 | All guns invisible, third-person arms stiff | `TACZ-R/entity/player.entity.json` was rejected: content log; names in its tables must use only letters, digits, `_`, `.` (`check.mjs` checks) |
 | Gun invisible / arms missing in first person | model files parse (`check.mjs`); `player.entity.json` render controllers for `<id>` and `universal<N>` |

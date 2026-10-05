@@ -1,2 +1,0 @@
-titleraw @s[scores={mp7=1..41}] actionbar {"rawtext":[{"score":{"name":"@s","objective":"mp7"}},{"text":"/40 \n"},{"translate":"krep:ammo.name.4630mm"}]}
-titleraw @s[scores={mp7=0}] actionbar {"rawtext":[{"translate":"krep:hud.no_ammunition.name"},{"text":"\n"},{"translate":"krep:ammo.name.4630mm"}]}

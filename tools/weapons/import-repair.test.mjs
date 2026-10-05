@@ -21,7 +21,9 @@ assert.ok(joined.sound_effects["1.3"], "second-stage cues must retain their offs
 
 for (const id of ["kar98", "m700", "spas12"]) {
   const rp = read(`TACZ-R/animations/guns/${id}.json`).animations;
-  const bp = read(`TACZ-B/animations/guns/${id}.json`).animations;
+  // Since v1.33.9 converted guns have no BP animation file (firing / reloading are scripts).
+  const bpFile = `TACZ-B/animations/guns/${id}.json`;
+  const bp = fs.existsSync(path.join(root, bpFile)) ? read(bpFile).animations : {};
   const role = id === "spas12" ? "pump" : "bolt";
   const action = rp[`animation.${id}.fp.${role}`];
   assert.equal(action.loop, "hold_on_last_frame", `${id}: must keep rendering during delayed server cleanup`);

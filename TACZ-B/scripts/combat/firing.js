@@ -7,16 +7,20 @@ import { zoomSoon } from "./aimZoom.js";
 import { muzzleFlash } from "./muzzleLight.js";
 import { loredItem } from "../items/itemLore.js";
 import { updateStoredAmmo } from "../items/storedAmmoDisplay.js";
+import { onHeldChange } from "../items/heldItem.js";
 
-// Script-controlled firing for guns with `scriptFiring: true` in config/weapons.js (being rolled out;
-// the other guns still fire from their BP controller, animation_controllers/gun_<id>.json).
+// Script-controlled firing for guns with `scriptFiring: true` in config/weapons.js (every gun but the minigun,
+// which still fires from its BP controller, animation_controllers/gun_minigun.json).
 //
 // Holding the use button on `krep:<id>` fires at the gun's `rpm` in its `fireMode`:
 //   "auto"  while the button is held;  "semi"  one shot per press;
 //   "burst" `burst.count` shots per press at `burst.rpm`, then `burst.delay` seconds before the next.
 // Each shot: removes one round from the scoreboard `<id>`, updates the ammo HUD, plays the shot sound,
 // lights the muzzle flash (combat/muzzleLight.js; not with a silencer) and the shoot animation, and runs the hitscan shot (combat/hitscan.js). The last round swaps the
-// item to `krep:<id>_emp` (which starts an empty reload) and shows "No Ammunition".
+// item to `krep:<id>_emp` (which starts an empty reload) and shows "No Ammunition"; so does pressing fire on a
+// loaded item with no rounds. A gun's first use ever starts with a full magazine (roundsOf); switching to a gun
+// shows its ammo. (Until v1.33.9 each gun's BP controller did these, and refilled the magazine the first time
+// the gun was held after every join.)
 // No shots during a reload (mark variant 1 or 2; reloading is combat/reload.js).
 // Per-gun extras (config/weapons.js):
 //   cycle         bolt / pump after each shot: `<id>:bolt` `after` s after the shot (sets krep:ammoreload to
@@ -51,23 +55,47 @@ export function showAmmo(player, weapon, rounds) {
   else player.onScreenDisplay.setActionBar("No Ammunition");
 }
 
+/** Rounds in the gun's magazine; the first time ever, a full magazine. Undefined if there is no scoreboard. */
+export function roundsOf(player, weapon) {
+  const objective = world.scoreboard.getObjective(weapon.id);
+  if (!objective) return undefined;
+  const rounds = objective.getScore(player);
+  if (rounds !== undefined) return rounds;
+  objective.setScore(player, weapon.magazine);
+  return weapon.magazine;
+}
+
+/** The HUD for the gun's rounds (the gun's function for guns whose capacity depends on the magazine). */
+function showHeldAmmo(player, weapon, rounds) {
+  if (weapon.capByMagazine) player.runCommand(`function ${weapon.id}`);
+  else showAmmo(player, weapon, rounds);
+}
+
+/** The last round is gone, or fire was pressed with none: the empty item, which starts the empty reload. */
+function toEmpty(player, weapon) {
+  player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, loredItem(`krep:${weapon.id}_emp`));
+  for (const listener of emptyListeners) listener(player, weapon);
+}
+
 /** Fires one round if there is one. Returns false when the gun can't fire (empty). */
 function fireRound(player, trigger) {
   const { weaponId, weapon } = trigger;
   let left = 0;
   if (weapon.roundInItem) player.onScreenDisplay.setActionBar("No Ammunition");
   else {
-    const objective = world.scoreboard.getObjective(weaponId);
-    if (!objective) return false;
+    const stored = roundsOf(player, weapon);
+    if (stored === undefined) return false;
     // Never more than a full magazine plus one chambered round (as the BP controllers did).
     const cap = weapon.capByMagazine?.[player.getProperty("krep:magazine") ?? 0] ?? weapon.magazine + (weapon.chamber === false ? 0 : 1);
-    const rounds = Math.min(objective.getScore(player) ?? 0, cap);
-    if (rounds < 1) return false;
+    const rounds = Math.min(stored, cap);
+    if (rounds < 1) {
+      toEmpty(player, weapon);
+      return false;
+    }
     left = rounds - 1;
-    objective.setScore(player, left);
+    world.scoreboard.getObjective(weaponId).setScore(player, left);
     updateStoredAmmo(player);
-    if (weapon.capByMagazine) player.runCommand(`function ${weaponId}`);
-    else showAmmo(player, weapon, left);
+    showHeldAmmo(player, weapon, left);
   }
 
   const aiming = player.isSneaking;
@@ -86,8 +114,7 @@ function fireRound(player, trigger) {
   shoot(player, weaponId, weapon, aiming ? "ads" : "hip");
 
   if (left === 0) {
-    player.getComponent("minecraft:equippable").setEquipment(EquipmentSlot.Mainhand, loredItem(`krep:${weaponId}_emp`));
-    for (const listener of emptyListeners) listener(player, weapon);
+    toEmpty(player, weapon);
     return false;
   }
   if (weapon.cycle) startCycle(player, weaponId, weapon.cycle);
@@ -179,3 +206,14 @@ system.runInterval(() => {
     if (!fired || trigger.shotsLeft <= 0) done();
   }
 }, 1);
+
+// Taking a gun in hand shows its ammo (loaded: rounds; empty item: "No Ammunition").
+onHeldChange((player) => {
+  const typeId = heldTypeId(player);
+  const weapon = getWeaponByItem(typeId);
+  if (!weapon?.scriptFiring || weapon.roundInItem) return;
+  const rounds = typeId === `krep:${weapon.id}_emp` ? 0 : roundsOf(player, weapon);
+  if (rounds === undefined) return;
+  updateStoredAmmo(player);
+  showHeldAmmo(player, weapon, rounds);
+});

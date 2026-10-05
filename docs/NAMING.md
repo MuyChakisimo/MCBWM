@@ -30,18 +30,15 @@ the Bedrock JSON schemas) and is worth running after big changes.
 |---|---|---|
 | `krep:<id>`, `krep:<id>_emp` | items | the gun loaded / with an empty magazine (commands swap them) |
 | scoreboard `<id>` | BP | rounds in the magazine (created by `scripts/items/ammoScoreboards.js`) |
-| `krep:<id>_fire` | `player.json` event | one shot: shoot animation + `scriptevent tacz:weapon_hitscan <id> ads\|hip` |
-| `<id>reload0` .. `<id>reload<N>` | `player.json` events | "this reload can load N rounds": sets `krep:ammoreload` = base + N (0 = no ammo) |
+| `krep:minigun_fire` | `player.json` event | a minigun shot: shoot animation + `scriptevent tacz:weapon_hitscan minigun ads\|hip` (other guns fire from `combat/firing.js`) |
+| `minigunreload0` .. | `player.json` events | the minigun's reload (other guns reload from `combat/reload.js`) |
 | `krep:<id>_reload` | `player.json` event | adds the rounds to the scoreboard, from `krep:ammoreload` |
 | `<id>:acog`, `<id>:elcan` ... | `player.json` events | sight choices: set `krep:<id>scope` |
 | `<id>:bolt`, `<id>:normal`, `<id>:end` | `player.json` events | bolt/pump action states (AWM, M870 ...) |
 | `krep:<id>scope` | player property | fitted sight (`'acog'`, `'nothing'` ...) |
-| `controller.animation.<id>` | BP `animation_controllers/gun_<id>.json` | firing state machine |
+| `controller.animation.minigun` | BP `animation_controllers/gun_minigun.json` | the minigun's firing state machine (other guns: scripts since v1.33.9) |
 | `controller.animation.<id>.reload` | same | reload state machine |
-| `animation.<id>.reload`, `.reload.tac` | BP `animations/guns/<id>.json` | reload timelines (remove ammo, add rounds, swap item) |
-| `functions/<id>.mcfunction` | BP | ammo HUD |
-| `functions/<id>quantity.mcfunction` | BP | counts inventory ammo, runs `<id>reload<N>` |
-| `functions/<id>reload.mcfunction` | BP | removes the loaded rounds from the inventory |
+| `functions/<id>.mcfunction` | BP | ammo HUD of guns with `capByMagazine` (Golden Deagle, Vector) and the minigun |
 | `v.<id>`, `v.<id>b`, `v.<id>emp` | RP Molang variables (`player.entity.json` `pre_animation`) | holding the gun: any / loaded item / empty item |
 | `controller.animation.<id>.fp`, `.tp`, `.walk` | RP `animation_controllers/gun_<id>.json` | first-person, third-person, walk animation state machines |
 | `animation.<id>.fp.hold`, `.fp.sprint`, `.fp.sight`, `.fp.tac`, `.fp.reload`, `.fp.inspect`, `.fp.inspect_empty`, `.fp.view` | RP `animations/guns/<id>.json` | first person: idle, sprint, aim (ADS), tactical reload, empty reload, inspect, empty inspect, attachment preview |
