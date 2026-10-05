@@ -37,6 +37,19 @@ function scatter(direction, degrees) {
 
 const breakablePatterns = (ids) => ids.map((id) => new RegExp("^" + id.replace(/[.]/g, "\\.").replace(/\*/g, ".*") + "$"));
 
+// How far a shot can go inside chunks the server has loaded (v1.34.1): checked along the aim every CHUNK_STEP
+// blocks before any ray is cast, and the rays are cut there (one chunk check per 8 blocks; nothing past it could
+// be hit anyway). Before this the rays reached unloaded chunks, threw and retried shorter; blockRay / entityRay
+// below still do that as a safety net (e.g. a shotgun pellet that drifts sideways into an unloaded chunk).
+const CHUNK_STEP = 8;
+function loadedRange(dimension, origin, direction, range) {
+  for (let d = CHUNK_STEP; ; d += CHUNK_STEP) {
+    const at = Math.min(d, range);
+    if (!dimension.isChunkLoaded(add(origin, scale(direction, at)))) return Math.max(1, at - CHUNK_STEP);
+    if (at >= range) return range;
+  }
+}
+
 /** True for the error a block lookup throws outside the server's ticking area (tick-distance). */
 const isUnloaded = (error) => /LocationInUnloadedChunk|not in a chunk currently loaded/.test(`${error?.name ?? ""} ${error}`);
 
@@ -134,11 +147,12 @@ function fire(shooter, weaponId, weapon, mode) {
   const breakable = breakablePatterns(weapon.breakableBlocks ?? HITSCAN.breakableBlocks);
   const origin = shooter.getHeadLocation();
   const aim = normalize(shooter.getViewDirection());
+  const reach = loadedRange(shooter.dimension, origin, aim, range); // stop at the edge of the loaded chunks
 
   const hits = [];
   const impacts = [];
   for (let i = 0; i < pellets; i++) {
-    const ray = traceRay(shooter, origin, spread ? scatter(aim, spread) : aim, range, breakable);
+    const ray = traceRay(shooter, origin, spread ? scatter(aim, spread) : aim, reach, breakable);
     if (ray.entity) hits.push(ray);
     if (ray.entity || ray.landed) impacts.push(ray.location);
     if (i < tracers) spawnSmokeTracer({ shooter, endLocation: ray.location, mode, particleCount });

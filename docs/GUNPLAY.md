@@ -111,8 +111,8 @@ Each phase is its own version(s), tested in game with `scriptevent tacz:debug` a
 4. **Damage tuning.** Time-to-kill targets per class.
 5. **Sound + flash.** Distant versions with delay, indoor / outdoor tails (needs audio assets), more "thump";
    bigger muzzle flashes and tracers; check reload cue sync.
-6. **Performance leftovers.** Event-driven attachment / stored-ammo / lore (done v1.33.6), `playerSwingStart`
-   replaces the shared `reload_input` controller, `isChunkLoaded` before far rays, minigun to script, final
+6. **Performance leftovers.** Event-driven attachment / stored-ammo / lore (done v1.33.6), `playerSwingStart` (done v1.33.12)
+   replaces the shared `reload_input` controller, `isChunkLoaded` before far rays (done v1.34.1), minigun to script (done v1.33.11), final
    cleanup of per-gun leftovers.
 7. Third-person camera polish. (The last Java guns came first: v1.32.0.)
 

@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.34.0** (both manifests; worlds need `[1, 34, 0]` in `world_*_packs.json`).
+- Pack version **1.34.1** (both manifests; worlds need `[1, 34, 1]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -50,11 +50,18 @@ work.
 
 ## Next, in order
 
-**START HERE (updated 2026-10-05, packs at v1.34.0, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
+**START HERE (updated 2026-10-05, packs at v1.34.1, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
 audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10) -> minigun (v1.33.11) -> last BP controllers (v1.33.12) -> attachment bench (v1.33.13) -> held-gun number (v1.33.14) -> Java attachments pilot (v1.34.0) -> **user tests all six** -> attachment rollout (size decision from the binding test)
 -> visual pass gun by gun, with **Phase 2 accuracy** tuned per gun during it. User's focus (2026-10-05):
 stability, especially with several players; everything on the script build; then visual bugs, each gun passing
 every test.
+
+**v1.34.1 (2026-10-05): far shots check the loaded chunks first.** User: "we definitely want the system to be
+cleaner". hitscan.js `loadedRange`: before casting, `dimension.isChunkLoaded` every 8 blocks along the aim; all the
+shot's rays (and its tracers) stop at the last loaded point. The old throw-and-retry in blockRay / entityRay stays as
+a safety net (a pellet drifting sideways into an unloaded chunk). Tested offline with a fake world loaded up to
+5 / 64 / 70 / 150 / 1000 blocks: the rays always stay inside. **Test in game:** shots at long range on a server with
+a small tick-distance still hit what's within reach; no `[TACZ Hitscan]` errors in the console.
 
 **v1.34.0 (2026-10-05): Java attachments, pilot on the M4A1. Needs the user's test.** User decisions: attachments
 are **free at the bench**; Java's **replace** the original pack's numbered parts gun by gun; magnified scopes: **scope
