@@ -26,11 +26,23 @@ function heldItemId(player) {
 
 const isGun = (typeId, gunId) => typeId === `krep:${gunId}` || typeId === `krep:${gunId}_emp`;
 
-/** Inventory slot of the player's krep:<gun> (or its empty item): 0-8 hotbar, 9-35 inventory; -1 if none. */
-function findGun(player, gunId) {
+/** The player's items by type: typeId -> first inventory slot (0-8 hotbar, 9-35 inventory). One pass over the
+ * inventory (v1.34.3: opening the bench read the 36 slots once per gun, ~17 ms in the profile). */
+function inventorySlots(player) {
   const container = player.getComponent("minecraft:inventory")?.container;
-  for (let i = 0; container && i < container.size; i++) if (isGun(container.getItem(i)?.typeId, gunId)) return i;
-  return -1;
+  const slots = new Map();
+  const size = container?.size ?? 0;
+  for (let i = 0; i < size; i++) {
+    const typeId = container.getItem(i)?.typeId;
+    if (typeId && !slots.has(typeId)) slots.set(typeId, i);
+  }
+  return slots;
+}
+
+/** Inventory slot of the player's krep:<gun> (or its empty item); -1 if none. */
+function findGun(player, gunId, slots = inventorySlots(player)) {
+  const found = [slots.get(`krep:${gunId}`), slots.get(`krep:${gunId}_emp`)].filter((i) => i !== undefined);
+  return found.length ? Math.min(...found) : -1; // the first slot holding it, loaded or empty (as before)
 }
 
 /** The gun's name in the menus (Java-attachment guns use their weapons.js name). */
@@ -45,7 +57,8 @@ function requireOwned(player, gunId) {
 export function openAttachmentWorkbench(player) {
   // Guns with Java attachments (GUN_ATTACHMENTS) and guns still on the original pack's parts (ATTACHMENTS).
   const all = [...Object.keys(GUN_ATTACHMENTS), ...Object.keys(ATTACHMENTS).filter((g) => !GUN_ATTACHMENTS[g])];
-  const guns = all.filter((gunId) => findGun(player, gunId) >= 0);
+  const slots = inventorySlots(player);
+  const guns = all.filter((gunId) => findGun(player, gunId, slots) >= 0);
   if (!guns.length) {
     new ActionFormData()
       .title("Attachments")

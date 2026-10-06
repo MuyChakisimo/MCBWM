@@ -39,7 +39,20 @@ function fromEquipment(entity) {
   }
 }
 
+// One command: true when the mob wears none of the armor pieces (hasitem=[...] needs every entry; quantity=0 means
+// "has none"). Most mobs wear none, so this replaces 24 testfor commands (v1.34.3 profile: ~5 ms on a first hit).
+const NO_ARMOR = `testfor @s[hasitem=[${SLOTS.flatMap(([, piece, location]) => MATERIALS.map((m) => `{item=${m}_${piece},location=${location},quantity=0}`)).join(",")}]]`;
+
+function wearsNoArmor(entity) {
+  try {
+    return entity.runCommand(NO_ARMOR).successCount > 0;
+  } catch {
+    return false; // unsure: check each piece
+  }
+}
+
 function fromHasItem(entity) {
+  if (wearsNoArmor(entity)) return { total: 0, helmet: 0 };
   return sumArmor((slot, piece, location) =>
     MATERIALS.find((m) => {
       try {

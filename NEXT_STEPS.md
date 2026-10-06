@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.34.2** (both manifests; worlds need `[1, 34, 2]` in `world_*_packs.json`).
+- Pack version **1.34.3** (both manifests; worlds need `[1, 34, 3]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -66,6 +66,17 @@ OEM stocks have no model, they show the gun's own adapter bone) and `show_mount`
 minigun, RPG; others miss some slots) handled separately (the original pack's models share Java's coordinates:
 checked for the M4A1's sights). 82 different attachments over 1,404 gun / attachment pairs (Java allow lists; the
 tool's count counts only slots whose mount bone the gun has).
+
+**v1.34.3 (2026-10-05): two slow moments from the v1.34.2 profile.** User's full run (469 s, 15 guns, profile
+`_22-24-50`, profiler started before joining): every gun at its rate, reloads on time, **no Watchdog warning at all**
+(the 112 ms spike when joining v1.34.1 did not come back: a one-off), script time **0.32 ms/tick** (0.59 -> 0.42 ->
+0.32) with 230 Vector / 151 M4A1 shots. Busiest 50 ms moments: opening the attachment bench (~17 ms:
+attachmentMenu.js read the 36 inventory slots once per attachment gun, re-reading container.size each step) -> one
+pass (`inventorySlots`); a first hit on a mob (~5 ms: armor.js ran 24 `testfor ... hasitem` commands, 4 slots x 6
+materials) -> one combined command first (`hasitem=[...]` with `quantity=0` for all 24: true when the mob wears
+none), the per-piece checks only for armored mobs. M4A1 shared attachments: not reported on yet.
+**Test in game:** the bench lists the guns you carry as before (Preview still switches to the gun); damage to an
+unarmored mob unchanged; an armored mob still takes less (e.g. `/replaceitem entity @e[type=zombie,c=1] slot.armor.chest 0 iron_chestplate`).
 
 **v1.34.2 (2026-10-05): one shared model per attachment.** `java-attach.mjs` rewritten: each attachment is
 `TACZ-R/models/entity/attachments/<att>.geo.json` (`geometry.tacz_att.<att>`), Java's bones in Java's coordinates
