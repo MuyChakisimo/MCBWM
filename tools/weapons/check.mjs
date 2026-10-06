@@ -99,10 +99,10 @@ for (const [id, gun] of Object.entries(ATTACHMENTS))
   const crlfToLf = (s) => (s ?? "").split("\r\n").join("\n");
   if (crlfToLf(read(LORE_FILE)) !== generateLore(read(LANG_FILE))) problems.push(`${LORE_FILE} is out of date with ${LANG_FILE}: run node tools/weapons/lore.cjs`);
 }
-// Java attachments (java-attach.mjs): the generated list matches the model files, every gun in it exists.
+// Java attachments (java-attach.mjs): the generated list matches the shared model files, every gun in it exists.
 {
   const dir = path.join(root, "TACZ-R/models/entity/attachments");
-  const onDisk = fs.existsSync(dir) ? fs.readdirSync(dir).flatMap((g) => fs.readdirSync(path.join(dir, g)).filter((f) => f.endsWith(".geo.json")).map((f) => `${g}:${f.replace(".geo.json", "")}`)).sort() : [];
+  const onDisk = fs.existsSync(dir) ? fs.readdirSync(dir, { withFileTypes: true }).map((e) => (e.isDirectory() ? `${e.name}/ (a per-gun folder from before v1.34.2)` : e.name.replace(".geo.json", ""))).sort() : [];
   const { MODEL_INDEX = {}, GUN_ATTACHMENTS = {} } = fs.existsSync(path.join(root, "TACZ-B/scripts/config/javaAttachments.js")) ? await cfg("javaAttachments.js") : {};
   const listed = Object.values(MODEL_INDEX).flatMap((m) => Object.keys(m)).sort();
   if (onDisk.join() !== listed.join()) problems.push(`Java attachments: config/javaAttachments.js doesn't match ${path.relative(root, dir)}: run node tools/weapons/java-attach.mjs --sync`);

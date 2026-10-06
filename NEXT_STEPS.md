@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.34.1** (both manifests; worlds need `[1, 34, 1]` in `world_*_packs.json`).
+- Pack version **1.34.2** (both manifests; worlds need `[1, 34, 2]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -50,11 +50,35 @@ work.
 
 ## Next, in order
 
-**START HERE (updated 2026-10-05, packs at v1.34.1, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
-audit (done) -> user test (passed) -> stable tag (done) -> script review fixes (v1.33.10) -> minigun (v1.33.11) -> last BP controllers (v1.33.12) -> attachment bench (v1.33.13) -> held-gun number (v1.33.14) -> Java attachments pilot (v1.34.0) -> **user tests all six** -> attachment rollout (size decision from the binding test)
+**START HERE (updated 2026-10-05, packs at v1.34.2, not pushed; last stable tag `stable-v1.33.9`).** Order agreed with the user:
+audit -> stable tag -> script review fixes -> minigun -> last BP controllers -> attachment bench -> held-gun number -> Java attachments pilot (all tested by the user: "works great") -> **attachment rollout (now: shared models done in v1.34.2, then Java's part rules, then gun by gun; plan below)**
 -> visual pass gun by gun, with **Phase 2 accuracy** tuned per gun during it. User's focus (2026-10-05):
 stability, especially with several players; everything on the script build; then visual bugs, each gun passing
 every test.
+
+**Attachment rollout, plan (2026-10-05, user: "let's start"):** the user tested v1.34.1 on the Odin ("works great")
+and the binding test passed (the shared ACOG sat correctly on the AKM). So **one shared model per attachment**.
+Steps: **1. shared models (v1.34.2, done: the M4A1's 49)** -> 2. the gun's own parts by Java's rules, generated
+instead of hand-written (Java TACZ's code builds `<type>_pos` / `<type>_default` from the slot type and names
+`sight_folded`, `handguard_default` / `handguard_tactical`, `attachment_adapter`; attachments' `adapter` (13: the
+OEM stocks have no model, they show the gun's own adapter bone) and `show_mount` / `show_muzzle` say the rest) ->
+3. roll out gun by gun, by class; guns missing a mount bone (FAL, G18, MP7, CP, DB, DB-4, Taurus 943, M320,
+minigun, RPG; others miss some slots) handled separately (the original pack's models share Java's coordinates:
+checked for the M4A1's sights). 82 different attachments over 1,404 gun / attachment pairs (Java allow lists; the
+tool's count counts only slots whose mount bone the gun has).
+
+**v1.34.2 (2026-10-05): one shared model per attachment.** `java-attach.mjs` rewritten: each attachment is
+`TACZ-R/models/entity/attachments/<att>.geo.json` (`geometry.tacz_att.<att>`), Java's bones in Java's coordinates
+under `tacz_att_root` bound to the mount bone (`"binding": "'scope_pos'"` ...); for the ACOG it is bone for bone the
+model the user tested on the AKM. The guns with attachments are GUN_ATTACHMENTS' keys; every run rebuilds all files
+from that list (`--sync`, `<gun>` adds, `--remove <gun>`). MODEL_INDEX is per slot and attachment (was per gun and
+attachment); javaAttachments.js reads it so. Removed: the M4A1's 49 per-gun copies, the binding test (model, render
+controller, `krep:att_test`, `/scriptevent tacz:atttest`). check.mjs compares the flat model list (refuses a leftover
+per-gun folder); gun.mjs refuses to remove a gun listed in GUN_ATTACHMENTS. Size stays ~40 KB per attachment
+whatever the number of guns (82 attachments: ~3 MB; per-gun copies would have been ~68 MB).
+**Test in game (M4A1, should look exactly as in v1.34.0):** fit one attachment of each kind at the bench: it shows in
+the right place in first and third person and follows the gun (aim, reload, inspect, sprint); reticles glow; the
+ACOG zooms a little; a silencer quiets the shot; another player sees them; other guns show nothing extra.
 
 **v1.34.1 (2026-10-05): far shots check the loaded chunks first.** User: "we definitely want the system to be
 cleaner". hitscan.js `loadedRange`: before casting, `dimension.isChunkLoaded` every 8 blocks along the aim; all the

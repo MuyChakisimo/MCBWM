@@ -46,8 +46,8 @@ const walk = (dir) =>
       })
     : [];
 const abs = (f) => path.join(ROOT, f);
-// Java attachments are tools/weapons/java-attach.mjs's files (generated per gun); this tool leaves them alone.
-const JAVA_ATTACHMENT_FILES = /^(TACZ-R\/models\/entity\/attachments(_test)?\/|TACZ-R\/textures\/attachment\/|TACZ-R\/render_controllers\/tacz_attachments(_test)?\.json$|TACZ-B\/scripts\/config\/javaAttachments\.js$)/;
+// Java attachments are tools/weapons/java-attach.mjs's files (shared models); this tool leaves them alone.
+const JAVA_ATTACHMENT_FILES = /^(TACZ-R\/models\/entity\/attachments\/|TACZ-R\/textures\/attachment\/|TACZ-R\/render_controllers\/tacz_attachments\.json$|TACZ-B\/scripts\/config\/javaAttachments\.js$)/;
 const allFiles = () => PACKS.flatMap((p) => walk(`${ROOT}/${p}`.replace(/\\/g, "/"))).map((f) => path.relative(ROOT, f).split(path.sep).join("/")).filter((f) => !JAVA_ATTACHMENT_FILES.test(f));
 
 class Tree {
@@ -531,7 +531,10 @@ async function clone(from, to, name) {
 async function remove(id, force) {
   const { tree, ids, arms, words } = await setup();
   if (!ids.includes(id)) throw new Error(`no gun "${id}" in config/weapons.js`);
-  if (fs.existsSync(abs(`TACZ-R/models/entity/attachments/${id}`)))
+  // Listed in config/javaAttachments.js GUN_ATTACHMENTS (the shared models stay: other guns use them).
+  const attachmentConfig = abs("TACZ-B/scripts/config/javaAttachments.js");
+  const attachmentGuns = fs.existsSync(attachmentConfig) ? fs.readFileSync(attachmentConfig, "utf8").split("GUN_ATTACHMENTS")[1]?.split("MODEL_INDEX")[0] ?? "" : "";
+  if (new RegExp(`^ {2}${id}: \\{`, "m").test(attachmentGuns))
     throw new Error(`${id} has Java attachments: remove them first (node tools/weapons/java-attach.mjs --remove ${id})`);
   const pats = ownFilePatterns(id, arms[id]);
   const refsBefore = new Set();

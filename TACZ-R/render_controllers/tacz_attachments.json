@@ -5,27 +5,29 @@
       "arrays": {
         "geometries": {
           "Array.geo": [
-            "Geometry.att_m4a1_sight_srs_02",
-            "Geometry.att_m4a1_scope_hamr",
-            "Geometry.att_m4a1_sight_552",
-            "Geometry.att_m4a1_sight_acro_rifle",
-            "Geometry.att_m4a1_sight_coyote",
-            "Geometry.att_m4a1_sight_deltapoint_rifle",
-            "Geometry.att_m4a1_sight_exp3",
-            "Geometry.att_m4a1_sight_fastfire_rifle",
-            "Geometry.att_m4a1_sight_okp7",
-            "Geometry.att_m4a1_sight_pk06_rifle",
-            "Geometry.att_m4a1_sight_t2",
-            "Geometry.att_m4a1_sight_uh1",
-            "Geometry.att_m4a1_scope_acog_ta31",
-            "Geometry.att_m4a1_scope_elcan_4x",
-            "Geometry.att_m4a1_scope_qmk152"
+            "Geometry.att_scope_acog_ta31",
+            "Geometry.att_scope_elcan_4x",
+            "Geometry.att_scope_hamr",
+            "Geometry.att_scope_qmk152",
+            "Geometry.att_sight_552",
+            "Geometry.att_sight_acro_rifle",
+            "Geometry.att_sight_coyote",
+            "Geometry.att_sight_deltapoint_rifle",
+            "Geometry.att_sight_exp3",
+            "Geometry.att_sight_fastfire_rifle",
+            "Geometry.att_sight_okp7",
+            "Geometry.att_sight_pk06_rifle",
+            "Geometry.att_sight_srs_02",
+            "Geometry.att_sight_t2",
+            "Geometry.att_sight_uh1"
           ]
         },
         "textures": {
           "Array.tex": [
-            "Texture.att_sight_srs_02",
+            "Texture.att_scope_acog_ta31",
+            "Texture.att_scope_elcan_4x",
             "Texture.att_scope_hamr",
+            "Texture.att_scope_qmk152",
             "Texture.att_sight_552",
             "Texture.att_sight_acro_rifle",
             "Texture.att_sight_coyote",
@@ -34,11 +36,9 @@
             "Texture.att_sight_fastfire_rifle",
             "Texture.att_sight_okp7",
             "Texture.att_sight_pk06_rifle",
+            "Texture.att_sight_srs_02",
             "Texture.att_sight_t2",
-            "Texture.att_sight_uh1",
-            "Texture.att_scope_acog_ta31",
-            "Texture.att_scope_elcan_4x",
-            "Texture.att_scope_qmk152"
+            "Texture.att_sight_uh1"
           ]
         }
       },
@@ -65,15 +65,15 @@
       "arrays": {
         "geometries": {
           "Array.geo": [
-            "Geometry.att_m4a1_bayonet_m9",
-            "Geometry.att_m4a1_muzzle_brake_cthulhu",
-            "Geometry.att_m4a1_muzzle_brake_cyclone_d2",
-            "Geometry.att_m4a1_muzzle_brake_pioneer",
-            "Geometry.att_m4a1_muzzle_brake_trex",
-            "Geometry.att_m4a1_muzzle_compensator_trident",
-            "Geometry.att_m4a1_muzzle_silencer_knight_qd",
-            "Geometry.att_m4a1_muzzle_silencer_phantom_s1",
-            "Geometry.att_m4a1_muzzle_silencer_ursus"
+            "Geometry.att_bayonet_m9",
+            "Geometry.att_muzzle_brake_cthulhu",
+            "Geometry.att_muzzle_brake_cyclone_d2",
+            "Geometry.att_muzzle_brake_pioneer",
+            "Geometry.att_muzzle_brake_trex",
+            "Geometry.att_muzzle_compensator_trident",
+            "Geometry.att_muzzle_silencer_knight_qd",
+            "Geometry.att_muzzle_silencer_phantom_s1",
+            "Geometry.att_muzzle_silencer_ursus"
           ]
         },
         "textures": {
@@ -100,29 +100,29 @@
       "arrays": {
         "geometries": {
           "Array.geo": [
-            "Geometry.att_m4a1_grip_cqr",
-            "Geometry.att_m4a1_grip_cobra",
-            "Geometry.att_m4a1_grip_magpul_afg_2",
-            "Geometry.att_m4a1_grip_rk6",
-            "Geometry.att_m4a1_grip_osovets_black",
-            "Geometry.att_m4a1_grip_rk0",
-            "Geometry.att_m4a1_grip_rk1_b25u",
-            "Geometry.att_m4a1_grip_se_5",
-            "Geometry.att_m4a1_grip_td",
-            "Geometry.att_m4a1_grip_vertical_military",
-            "Geometry.att_m4a1_grip_vertical_ranger",
-            "Geometry.att_m4a1_grip_vertical_talon"
+            "Geometry.att_grip_cobra",
+            "Geometry.att_grip_cqr",
+            "Geometry.att_grip_magpul_afg_2",
+            "Geometry.att_grip_osovets_black",
+            "Geometry.att_grip_rk0",
+            "Geometry.att_grip_rk1_b25u",
+            "Geometry.att_grip_rk6",
+            "Geometry.att_grip_se_5",
+            "Geometry.att_grip_td",
+            "Geometry.att_grip_vertical_military",
+            "Geometry.att_grip_vertical_ranger",
+            "Geometry.att_grip_vertical_talon"
           ]
         },
         "textures": {
           "Array.tex": [
-            "Texture.att_grip_cqr",
             "Texture.att_grip_cobra",
+            "Texture.att_grip_cqr",
             "Texture.att_grip_magpul_afg_2",
-            "Texture.att_grip_rk6",
             "Texture.att_grip_osovets_black",
             "Texture.att_grip_rk0",
             "Texture.att_grip_rk1_b25u",
+            "Texture.att_grip_rk6",
             "Texture.att_grip_se_5",
             "Texture.att_grip_td",
             "Texture.att_grip_vertical_military",
@@ -141,15 +141,15 @@
       "arrays": {
         "geometries": {
           "Array.geo": [
-            "Geometry.att_m4a1_stock_ak12",
-            "Geometry.att_m4a1_stock_carbon_bone_c5",
-            "Geometry.att_m4a1_stock_hk_slim_line",
-            "Geometry.att_m4a1_stock_m4ss",
-            "Geometry.att_m4a1_stock_militech_b5",
-            "Geometry.att_m4a1_stock_moe",
-            "Geometry.att_m4a1_stock_ripstock",
-            "Geometry.att_m4a1_stock_sba3",
-            "Geometry.att_m4a1_stock_tactical_ar"
+            "Geometry.att_stock_ak12",
+            "Geometry.att_stock_carbon_bone_c5",
+            "Geometry.att_stock_hk_slim_line",
+            "Geometry.att_stock_m4ss",
+            "Geometry.att_stock_militech_b5",
+            "Geometry.att_stock_moe",
+            "Geometry.att_stock_ripstock",
+            "Geometry.att_stock_sba3",
+            "Geometry.att_stock_tactical_ar"
           ]
         },
         "textures": {
@@ -176,10 +176,10 @@
       "arrays": {
         "geometries": {
           "Array.geo": [
-            "Geometry.att_m4a1_laser_compact",
-            "Geometry.att_m4a1_laser_lopro",
-            "Geometry.att_m4a1_laser_nightstick",
-            "Geometry.att_m4a1_laser_peq15"
+            "Geometry.att_laser_compact",
+            "Geometry.att_laser_lopro",
+            "Geometry.att_laser_nightstick",
+            "Geometry.att_laser_peq15"
           ]
         },
         "textures": {

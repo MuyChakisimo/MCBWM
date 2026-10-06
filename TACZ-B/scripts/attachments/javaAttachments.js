@@ -1,4 +1,4 @@
-import { system, EquipmentSlot, Player } from "@minecraft/server";
+import { EquipmentSlot } from "@minecraft/server";
 import { getWeaponByItem } from "../config/weapons.js";
 import { SLOTS, ATTACHMENT_INFO, GUN_ATTACHMENTS, MODEL_INDEX } from "../config/javaAttachments.js";
 import { onHeldChange } from "../items/heldItem.js";
@@ -47,7 +47,7 @@ export function syncJavaAttachments(player) {
   const gunId = weapon && hasJavaAttachments(weapon.id) ? weapon.id : null;
   const fitted = gunId ? fittedJava(player, gunId) : {};
   for (const s of SLOTS) {
-    const value = (fitted[s] && MODEL_INDEX[s][`${gunId}:${fitted[s]}`]) || 0;
+    const value = (fitted[s] && MODEL_INDEX[s][fitted[s]]) || 0; // one shared model per attachment (v1.34.2)
     if (player.getProperty(`krep:att_${s}`) !== value) player.setProperty(`krep:att_${s}`, value);
   }
   // The original pack's sight (krep:<gun>scope) is replaced on these guns: an old choice mustn't stay visible.
@@ -80,14 +80,3 @@ export function javaRecoilFactor(player, gunId) {
   }
   return factor;
 }
-
-// Experiment (v1.34.0, remove once decided): one shared ACOG model whose root bone is bound to the held gun's
-// 'scope_pos' by name (TACZ-R/models/entity/attachments_test/acog_bound.geo.json), drawn on the AKM.
-// "/scriptevent tacz:atttest on" shows it, "off" hides it. If it sits on the AKM's rail and moves with the gun,
-// every attachment can be one shared model (about 4 MB for all 99) instead of a copy per gun (about 68 MB).
-system.afterEvents.scriptEventReceive.subscribe(({ id, message, sourceEntity: player }) => {
-  if (id !== "tacz:atttest" || !(player instanceof Player)) return;
-  const on = message.trim() !== "off";
-  player.setProperty("krep:att_test", on ? 1 : 0);
-  player.sendMessage(on ? "Attachment test on: hold the AKM (shared ACOG bound to scope_pos)." : "Attachment test off.");
-});

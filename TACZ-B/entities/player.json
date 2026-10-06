@@ -68,8 +68,7 @@
         "krep:att_muzzle": {"range": [0, 2047], "default": 0, "type": "int", "client_sync": true},
         "krep:att_grip": {"range": [0, 2047], "default": 0, "type": "int", "client_sync": true},
         "krep:att_stock": {"range": [0, 2047], "default": 0, "type": "int", "client_sync": true},
-        "krep:att_laser": {"range": [0, 2047], "default": 0, "type": "int", "client_sync": true},
-        "krep:att_test": {"range": [0, 1], "default": 0, "type": "int", "client_sync": true}
+        "krep:att_laser": {"range": [0, 2047], "default": 0, "type": "int", "client_sync": true}
       }
     },
     "component_groups": {
