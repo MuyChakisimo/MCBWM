@@ -110,7 +110,7 @@ for (const [id, gun] of Object.entries(ATTACHMENTS))
 }
 // The held-gun numbers (config/held.js) cover every gun, and the RP compares them, not item names (v1.33.14).
 {
-  const { generateHeld, rewriteEntity, HELD_FILE, WEAPONS_FILE, ENTITY_FILE } = require("./held.cjs");
+  const { generateHeld, rewriteEntity, HELD_FILE, WEAPONS_FILE, ENTITY_FILE, HELD_LINE } = require("./held.cjs");
   const lf = (s) => (s ?? "").split("\r\n").join("\n");
   const held = lf(read(HELD_FILE));
   if (held !== generateHeld(read(WEAPONS_FILE), held)) problems.push(`${HELD_FILE} is out of date with ${WEAPONS_FILE}: run node tools/weapons/held.cjs`);
@@ -123,7 +123,9 @@ for (const [id, gun] of Object.entries(ATTACHMENTS))
     }
     if (rewritten !== undefined && rewritten !== entity) problems.push(`${ENTITY_FILE}: held-gun lines don't match ${HELD_FILE}: run node tools/weapons/held.cjs`);
     for (const id of Object.keys(WEAPONS))
-      if (new RegExp(`"variable\\.${id}(b|emp) = (?!q\\.property\\('krep:held'\\))`).test(entity)) problems.push(`${ENTITY_FILE}: variable.${id}b / emp must compare krep:held (run node tools/weapons/held.cjs)`);
+      if (new RegExp(`"variable\\.${id}(b|emp) = (?!variable\\.held == )`).test(entity)) problems.push(`${ENTITY_FILE}: variable.${id}b / emp must compare variable.held (run node tools/weapons/held.cjs)`);
+    // krep:held is read once, guarded: the character preview in menus has no actor (v1.34.4).
+    if (!entity.includes(`"${HELD_LINE}"`)) problems.push(`${ENTITY_FILE}: no "${HELD_LINE}" line (run node tools/weapons/held.cjs)`);
   }
 }
 // The lore's Group / Caliber / Damage follow the config (v1.32.0: ported guns showed their clone source's).

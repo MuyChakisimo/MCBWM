@@ -44,6 +44,7 @@ const MOUNT = { scope: "scope_pos", muzzle: "muzzle_pos", grip: "grip_pos", stoc
 const LEFT_OUT = /^(scope_view|views)$/;
 const ROOT_BONE = "tacz_att_root"; // bound to the gun's mount bone
 const GLOW = /division|illuminated|reticle/;
+const RETICLE = /division/; // the reticle planes (Java shows them only through the lens)
 const MODELS_DIR = "TACZ-R/models/entity/attachments";
 const CONFIG_FILE = "TACZ-B/scripts/config/javaAttachments.js";
 const RC_FILE = "TACZ-R/render_controllers/tacz_attachments.json";
@@ -184,14 +185,17 @@ function build(guns) {
 
   // Per slot: the render controller arrays and the number of each attachment (1-based, 0 = none).
   const modelIndex = Object.fromEntries(SLOTS.map((s) => [s, {}]));
-  const arrays = Object.fromEntries(SLOTS.map((s) => [s, { geometries: [], textures: [], glow: new Set() }]));
+  const arrays = Object.fromEntries(SLOTS.map((s) => [s, { geometries: [], textures: [], glow: new Set(), reticle: new Set() }]));
   for (const att of atts) {
     const s = att.index.type, a = arrays[s];
     a.geometries.push(`Geometry.att_${att.id}`);
     a.textures.push(`Texture.att_${att.id}`);
     modelIndex[s][att.id] = a.geometries.length;
     // Reticles and illuminated dots glow (explicit part names: no wildcard patterns needed).
-    for (const b of geometryOf(parse(readText(`${MODELS_DIR}/${att.id}.geo.json`))).bones) if (b.name.startsWith("a_") && GLOW.test(b.name)) a.glow.add(b.name);
+    for (const b of geometryOf(parse(readText(`${MODELS_DIR}/${att.id}.geo.json`))).bones) {
+      if (b.name.startsWith("a_") && GLOW.test(b.name)) a.glow.add(b.name);
+      if (b.name.startsWith("a_") && RETICLE.test(b.name)) a.reticle.add(b.name);
+    }
   }
   for (const s of SLOTS) if (arrays[s].geometries.length > MAX_INDEX) throw new Error(`${s}: more than ${MAX_INDEX} models`);
 
@@ -218,6 +222,9 @@ function build(guns) {
       arrays: { geometries: { "Array.geo": arrays[s].geometries }, textures: { "Array.tex": arrays[s].textures } },
       geometry: `Array.geo[${i}]`,
       materials: [{ "*": "Material.guns" }, ...[...arrays[s].glow].sort().map((b) => ({ [b]: "Material.glow" }))],
+      // Java draws the reticle planes only through the lens; here they show only while aiming in first person: the
+      // scope view (v1.34.4: in third person the ACOG's showed as a big black ring).
+      ...(arrays[s].reticle.size ? { part_visibility: [{ "*": true }, ...[...arrays[s].reticle].sort().map((b) => ({ [b]: "variable.is_first_person && query.is_sneaking" }))] } : {}),
       textures: [`Array.tex[${i}]`],
       is_hurt_color: { r: 0, g: 0, b: 0, a: 0 },
       on_fire_color: { r: 0, g: 0, b: 0, a: 0 },
@@ -237,7 +244,8 @@ function build(guns) {
     }
     const ours = new Set(SLOTS.map((s) => `controller.render.tacz_att_${s}`)); // (only these: others may be listed too)
     d.render_controllers = d.render_controllers.filter((r) => !ours.has(Object.keys(typeof r === "string" ? { [r]: 1 } : r)[0]));
-    for (const s of SLOTS) if (arrays[s].geometries.length) d.render_controllers.push({ [`controller.render.tacz_att_${s}`]: `q.property('krep:att_${s}') > 0` });
+    // Not in menus: the character preview has no actor to read the property from (v1.34.4).
+    for (const s of SLOTS) if (arrays[s].geometries.length) d.render_controllers.push({ [`controller.render.tacz_att_${s}`]: `query.is_in_ui ? 0 : q.property('krep:att_${s}') > 0` });
     writeText(ENTITY_FILE, format(j));
   }
   // Player properties.

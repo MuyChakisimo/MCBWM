@@ -4,9 +4,10 @@
 //
 // TACZ-B/scripts/config/held.js (generated): a number per gun item, HELD["krep:akm"] = 2, HELD["krep:akm_emp"] = 3
 // (0 = no gun). items/heldGun.js writes it to the player property krep:held when what the player holds changes.
-// TACZ-R/entity/player.entity.json pre_animation: `variable.akmb = q.property('krep:held') == 2;` and
-// `variable.akmemp = q.property('krep:held') == 3;` (until v1.33.14: `query.get_equipped_item_name=='akm'`, a
-// text lookup, 118 per player per frame).
+// TACZ-R/entity/player.entity.json pre_animation: `variable.held = query.is_in_ui ? 0 : q.property('krep:held');`
+// once, then `variable.akmb = variable.held == 2;` and `variable.akmemp = variable.held == 3;` (until v1.33.14:
+// `query.get_equipped_item_name=='akm'`, a text lookup, 118 per player per frame; v1.33.14-1.34.3 read the property
+// in every line, which the character preview in menus can't: "query.property does not have an actor").
 // Numbers are stable: a gun keeps its number (2n loaded, 2n+1 empty), a new gun gets the next free one, a removed
 // gun's number is freed. The property's range in TACZ-B/entities/player.json (0..255) allows 126 guns.
 const fs = require("fs");
@@ -17,6 +18,8 @@ const WEAPONS_FILE = "TACZ-B/scripts/config/weapons.js";
 const ENTITY_FILE = "TACZ-R/entity/player.entity.json";
 const PROPERTY = "krep:held";
 const MAX = 255;
+// Read once per frame; 0 (no gun) when the player is drawn in a menu, where there is no actor to read it from.
+const HELD_LINE = "variable.held = query.is_in_ui ? 0 : q.property('krep:held');";
 
 /** Gun ids in config/weapons.js, in order (the keys of the WEAPONS object). */
 function weaponIds(weaponsText) {
@@ -69,16 +72,18 @@ function generateHeld(weaponsText, heldText) {
 function rewriteEntity(entityText, heldText) {
   const n = currentNumbers(heldText);
   const missing = new Set(Object.keys(n));
-  const out = entityText.replace(/"variable\.([a-z0-9]+?)(b|emp) = (?:query\.get_equipped_item_name==\s*'[a-z0-9_]+'|q\.property\('krep:held'\) == \d+);"/g, (line, id, kind) => {
+  let out = entityText.replace(/"variable\.([a-z0-9]+?)(b|emp) = (?:query\.get_equipped_item_name==\s*'[a-z0-9_]+'|q\.property\('krep:held'\) == \d+|variable\.held == \d+);"/g, (line, id, kind) => {
     if (n[id] === undefined) return line;
     if (kind === "b") missing.delete(id);
-    return `"variable.${id}${kind} = q.property('${PROPERTY}') == ${2 * n[id] + (kind === "emp" ? 1 : 0)};"`;
+    return `"variable.${id}${kind} = variable.held == ${2 * n[id] + (kind === "emp" ? 1 : 0)};"`;
   });
   if (missing.size) throw new Error(`${ENTITY_FILE}: no "variable.<id>b = ..." line for ${[...missing].join(", ")}`);
+  // The property read once, just before the first gun line.
+  if (!out.includes(`"${HELD_LINE}"`)) out = out.replace(/^(\s*)("variable\.[a-z0-9]+?(?:b|emp) = variable\.held == \d+;")/m, (m, indent, line) => `${indent}"${HELD_LINE}",\n${indent}${line}`);
   return out;
 }
 
-module.exports = { generateHeld, rewriteEntity, weaponIds, HELD_FILE, WEAPONS_FILE, ENTITY_FILE, PROPERTY };
+module.exports = { generateHeld, rewriteEntity, weaponIds, HELD_FILE, WEAPONS_FILE, ENTITY_FILE, PROPERTY, HELD_LINE };
 
 if (require.main === module) {
   const root = process.cwd();

@@ -14,7 +14,7 @@ at the end of each session. How the code works is in `README.md`.
 
 ## Current state
 
-- Pack version **1.34.3** (both manifests; worlds need `[1, 34, 3]` in `world_*_packs.json`).
+- Pack version **1.34.4** (both manifests; worlds need `[1, 34, 4]` in `world_*_packs.json`).
 - 58 guns (41 original + 17 Java ports: every Java gun), 21 ammo types. Every gun fires by hitscan (no bullet entities).
 - Stats live in `TACZ-B/scripts/config/` (`weapons.js`, `combat.js`, `recoil.js`, `ammo.js`, `attachments.js`).
 - Tools in `tools/weapons/`: `check.mjs` (config vs pack and every pack reference; `--unused` lists unused
@@ -66,6 +66,18 @@ OEM stocks have no model, they show the gun's own adapter bone) and `show_mount`
 minigun, RPG; others miss some slots) handled separately (the original pack's models share Java's coordinates:
 checked for the M4A1's sights). 82 different attachments over 1,404 gun / attachment pairs (Java allow lists; the
 tool's count counts only slots whose mount bone the gun has).
+
+**v1.34.4 (2026-10-05): menu Molang error; ACOG reticle ring.** User (v1.34.3): the ACOG on the M4A1 doesn't show in
+first person; in third person "a black hole with a hole in the middle"; content log `[Molang][error] minecraft:player.0.
+<uuid>.Berserker | query.property does not have an actor` (the character drawn in a menu: no actor, so `q.property`
+fails; `query.is_in_ui` is documented). Fixed: the RP reads krep:held **once**, `variable.held = query.is_in_ui ? 0 :
+q.property('krep:held');`, and the 116 gun lines compare `variable.held` (held.cjs generates it; check.mjs requires
+it; also 116 -> 1 property reads per frame); the attachment layers' conditions are guarded the same way
+(java-attach.mjs). The black ring is the ACOG's reticle plane (`division*`: Java draws it only through the lens with
+a stencil); the scope render controller now shows the reticle planes only while aiming in first person (the scope
+view the user wanted as an overlay). **Open: the ACOG not drawn in first person on the M4A1.** The binding test drew
+it on the AKM; the M4A1's `scope_pos` chain is identical in its gun and arms models, as the AKM's. Asked the user:
+first / third person in the AKM test? the ACOG body visible in third person? muzzle / grip in first person?
 
 **v1.34.3 (2026-10-05): two slow moments from the v1.34.2 profile.** User's full run (469 s, 15 guns, profile
 `_22-24-50`, profiler started before joining): every gun at its rate, reloads on time, **no Watchdog warning at all**

@@ -57,6 +57,16 @@
         {"a_scope_division_illuminated": "Material.glow"},
         {"a_sight_division_illuminated": "Material.glow"}
       ],
+      "part_visibility": [
+        {"*": true},
+        {"a_division": "variable.is_first_person && query.is_sneaking"},
+        {"a_division_2": "variable.is_first_person && query.is_sneaking"},
+        {"a_division_bg": "variable.is_first_person && query.is_sneaking"},
+        {"a_division_illuminated": "variable.is_first_person && query.is_sneaking"},
+        {"a_divisions": "variable.is_first_person && query.is_sneaking"},
+        {"a_scope_division_illuminated": "variable.is_first_person && query.is_sneaking"},
+        {"a_sight_division_illuminated": "variable.is_first_person && query.is_sneaking"}
+      ],
       "textures": ["Array.tex[q.property('krep:att_scope') - 1]"],
       "is_hurt_color": {"r": 0, "g": 0, "b": 0, "a": 0},
       "on_fire_color": {"r": 0, "g": 0, "b": 0, "a": 0}
