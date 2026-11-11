@@ -17,3 +17,9 @@ Textures/
 stop.request
 __pycache__/
 desktop.ini
+command.request
+
+# WaterdogPE proxy (host PC): program + generated files. config.yml holds the PRIVATE playit tunnel token.
+proxy/*
+!proxy/start-proxy.bat
+!proxy/README.md

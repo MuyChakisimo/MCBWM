@@ -228,3 +228,15 @@ User direction: keep all 58 guns, free-for-all (no teams), focus on gunplay feel
 - Everything is STAGED (old TACZ-B/TACZ-R detected as moves into addons/). The commit + push were blocked by the agent permission check; the user runs/approves them.
 - `update-server.ps1` (host PC): stop server -> git pull --ff-only -> deploy -> start; first run connects a folder unzipped from MinecraftServer_for_PC.zip (no .git) via fetch + `git reset origin/main`. NOT yet tested end-to-end (needs the push first).
 - MinecraftServer_for_PC.zip predates update-server.ps1/.gitignore; copy update-server.ps1 next to it on the PC (or it arrives with the first pull).
+
+## 2026-11-11 (Claude) — PC world copy was corrupt; clean world zip made
+- First PC start logged `LevelDB ... Corruption: 1 missing files (342123.ldb). Trying repair.` Cause: the PC world mixed files from the 9:15 transfer zip (MANIFEST-342116) with files from the laptop's LIVE world (342123.ldb, written 9:33 while running). Never copy a world from a running server or merge two copies.
+- Laptop server stopped (left stopped: the PC is the host now). Fresh clean copy: `C:\Users\ChakaProjects\IslandSurvivor_world.zip` (115 files, MANIFEST-342120). User replaces the PC's whole worlds\IslandSurvivor folder with it (delete first, no merge). Success check: no "Corruption"/"repair" line in the PC log.
+
+## 2026-11-11 (Claude) — playit via WaterdogPE: friends-only script + proxy folder (v1.37.2)
+- PC server works on LAN; playit join gives "Terracotta". playit's official guide: BDS can't use the playit tunnel directly on NetherNet; use WaterdogPE proxy (Java 17), tunnel type "Minecraft Bedrock (NetherNet)", BDS server-port=19142, online-mode=false, allow-list=false (it errors behind the proxy). Port forwarding impossible (Cox app, no login).
+- New `scripts/server/access.js` + `config/access.js`: kicks any gamertag not on the friends list on first spawn (keep in sync with allowlist.json). VERIFIED on the laptop BDS (test world): script `runCommand('kick "..."')` runs without throwing (successCount=0 for an absent name). Not yet tested with a real outsider joining.
+- `proxy/` (start-proxy.bat, README.md); everything else in proxy/ is git-ignored because Waterdog's config.yml holds the playit token.
+- start-server.ps1: new `command.request` file -> lines sent to the console (agents can run commands). A half-applied edit crashed the wrapper once; fixed. The orphaned laptop BDS (test world "Bedrock level") needed a force stop.
+- PENDING: user creates the NetherNet tunnel and pastes the server.properties lines from playit's Configuration help (WaterdogPE tab); only then change server.properties (19142 / online-mode=false / allow-list=false). Op status behind the proxy unverified (permissions.json is by XUID): if lost, `op MuyChakisimo` via the console.
+- Manifests bumped to 1.37.2 (behavior + resource).

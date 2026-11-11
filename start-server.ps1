@@ -6,6 +6,8 @@ $ErrorActionPreference = 'Stop'
 $serverDir = (Get-ChildItem -Path $PSScriptRoot -Directory -Filter 'bedrock-server-*' | Sort-Object Name | Select-Object -Last 1).FullName
 $flag = Join-Path $PSScriptRoot 'stop.request'
 Remove-Item $flag -ErrorAction SilentlyContinue
+$cmdFile = Join-Path $PSScriptRoot 'command.request'
+Remove-Item $cmdFile -ErrorAction SilentlyContinue
 
 if (Get-Process bedrock_server -ErrorAction SilentlyContinue) { Write-Host 'Server is already running.'; exit 1 }
 
@@ -19,6 +21,12 @@ $Host.UI.RawUI.WindowTitle = 'Bedrock Server (type commands here)'
 
 $line = ''
 while (-not $server.HasExited) {
+  # command.request: each line is sent to the server console, then the file is deleted (lets agents run e.g. "op <name>").
+  if (Test-Path $cmdFile) {
+    $cmds = Get-Content $cmdFile -ErrorAction SilentlyContinue
+    Remove-Item $cmdFile -ErrorAction SilentlyContinue
+    foreach ($c in $cmds) { if ($c.Trim()) { Write-Host "[start-server] > $c"; $server.StandardInput.WriteLine($c) } }
+  }
   if (Test-Path $flag) {
     Remove-Item $flag -ErrorAction SilentlyContinue
     Write-Host '[start-server] stop requested, saving and stopping...'

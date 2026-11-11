@@ -1,6 +1,9 @@
 // Entry point (manifest "entry"). Each module registers its own events/intervals on import.
 // Weapon stats live in config/ (weapons.js, combat.js, recoil.js, ammo.js, attachments.js).
 
+// Server: friends-only access (needed behind the playit/WaterdogPE proxy)
+import "./server/access";
+
 // Combat
 import "./combat/hitscan";
 import "./combat/firing";
