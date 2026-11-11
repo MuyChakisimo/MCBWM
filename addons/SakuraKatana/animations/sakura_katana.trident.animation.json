@@ -1,0 +1,86 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.trident.wield_first_person": {
+			"loop": true,
+			"bones": {
+				"pole": {
+					"rotation": [155, -15, 15],
+					"position": [-4, -10, -2]
+				},
+				"Aura": {
+					"scale": [1, 1, 0]
+				}
+			}
+		},
+		"animation.trident.wield_first_person_raise": {
+			"loop": true,
+			"bones": {
+				"pole": {
+					"rotation": [40, -12, -60],
+					"position": ["math.lerp(4.0, -7.0, variable.charge_amount)", 0, "math.lerp(-2.0, -6.0, variable.charge_amount)"]
+				},
+				"Aura": {
+					"scale": [0, 1, 0]
+				}
+			}
+		},
+		"animation.trident.wield_first_person_riptide": {
+			"loop": true,
+			"override_previous_animation": true,
+			"bones": {
+				"pole": {
+					"rotation": [180, 60, -36],
+					"position": [-2, -7, -10]
+				},
+				"Aura": {
+					"scale": [0, 1, 0]
+				}
+			}
+		},
+		"animation.trident.wield_third_person_raise": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"pole": {
+					"rotation": [0, 180, 0],
+					"position": [0, 0, 23]
+				},
+				"Aura": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 90, 0],
+						"1.0": [0, 180, 0],
+						"1.5": [0, 270, 0],
+						"2.0": [0, 360, 0]
+					},
+					"scale": [125, 1, 125]
+				},
+				"Aura2": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": {
+						"0.0": [0, 0, 0.01],
+						"0.5": [0, -90, 0],
+						"1.0": [0, -180, 0],
+						"1.5": [0, -270, 0],
+						"2.0": [0, -360, 0]
+					}
+				}
+			}
+		},
+		"animation.trident.wield_third_person": {
+			"loop": true,
+			"bones": {
+				"pole": {
+					"rotation": [90, 0, 0],
+					"position": [0, 0, -12]
+				},
+				"Aura": {
+					"scale": [0.01, 1, 0.01]
+				}
+			}
+		}
+	}
+}

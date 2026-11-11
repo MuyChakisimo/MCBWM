@@ -1,18 +1,3 @@
-# TACZ Bedrock
+@AGENTS.md
 
-Minecraft Bedrock gun add-on (behavior pack `TACZ-B/`, resource pack `TACZ-R/`), ported from TACZ.
-
-- **Read `NEXT_STEPS.md` first**: current state, what's untested, the planned work, decisions already made.
-- `README.md` explains the code, config files and tools; `docs/HOW-IT-WORKS.md` traces each system (firing,
-  reloading, HUD, inspect, rendering, sounds) file by file, with a troubleshooting table.
-- `reference/` (Java TACZ zip, original release) is not in git; copy it by hand on a new computer.
-
-Working rules:
-
-- Run `node tools/weapons/check.mjs` before committing; it must print `Everything matches.` After big changes also
-  run `node tools/weapons/validate.mjs` (Minecraft's script API types and JSON schemas). Names must follow
-  `docs/NAMING.md`.
-- Bump the pack version in both manifests and the README whenever the packs change.
-- One commit per step; end commit messages with the attribution line.
-- After changing a tool, run `node tools/weapons/test.mjs` (scratch copy; never add test guns to the packs).
-- Say plainly what needs testing in game. Update `NEXT_STEPS.md` at the end of a session.
+Claude-specific: also read `HANDOFF.md` at the start of a session; Codex may have worked since your last session.

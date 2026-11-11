@@ -1,0 +1,1118 @@
+{
+ "format_version": "1.8.0",
+ "render_controllers": {
+  "controller.render.tacz_flash_aa12": {
+   "geometry": "Geometry.tacz_flash_aa12",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_akm": {
+   "geometry": "Geometry.tacz_flash_akm",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_aug": {
+   "geometry": "Geometry.tacz_flash_aug",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_awp": {
+   "geometry": "Geometry.tacz_flash_awp",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_b93": {
+   "geometry": "Geometry.tacz_flash_b93",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_cz75": {
+   "geometry": "Geometry.tacz_flash_cz75",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_db": {
+   "geometry": "Geometry.tacz_flash_db",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_dblong": {
+   "geometry": "Geometry.tacz_flash_dblong",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_deagle": {
+   "geometry": "Geometry.tacz_flash_deagle",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_deagleg": {
+   "geometry": "Geometry.tacz_flash_deagleg",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_evolys": {
+   "geometry": "Geometry.tacz_flash_evolys",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_g17": {
+   "geometry": "Geometry.tacz_flash_g17",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_g3": {
+   "geometry": "Geometry.tacz_flash_g3",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_g36": {
+   "geometry": "Geometry.tacz_flash_g36",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_hk416": {
+   "geometry": "Geometry.tacz_flash_hk416",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_kar98": {
+   "geometry": "Geometry.tacz_flash_kar98",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_lonetrail": {
+   "geometry": "Geometry.tacz_flash_lonetrail",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m1014": {
+   "geometry": "Geometry.tacz_flash_m1014",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m107": {
+   "geometry": "Geometry.tacz_flash_m107",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m16": {
+   "geometry": "Geometry.tacz_flash_m16",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m16a1": {
+   "geometry": "Geometry.tacz_flash_m16a1",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m1911": {
+   "geometry": "Geometry.tacz_flash_m1911",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m249": {
+   "geometry": "Geometry.tacz_flash_m249",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m4a1": {
+   "geometry": "Geometry.tacz_flash_m4a1",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m700": {
+   "geometry": "Geometry.tacz_flash_m700",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m870": {
+   "geometry": "Geometry.tacz_flash_m870",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m95b": {
+   "geometry": "Geometry.tacz_flash_m95b",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_m9a4": {
+   "geometry": "Geometry.tacz_flash_m9a4",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_minigun": {
+   "geometry": "Geometry.tacz_flash_minigun",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_mk14": {
+   "geometry": "Geometry.tacz_flash_mk14",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_mk23": {
+   "geometry": "Geometry.tacz_flash_mk23",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_mp5": {
+   "geometry": "Geometry.tacz_flash_mp5",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_p320": {
+   "geometry": "Geometry.tacz_flash_p320",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_p90": {
+   "geometry": "Geometry.tacz_flash_p90",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_qbz191": {
+   "geometry": "Geometry.tacz_flash_qbz191",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_qbz95": {
+   "geometry": "Geometry.tacz_flash_qbz95",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_railgun": {
+   "geometry": "Geometry.tacz_flash_railgun",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_rhino357": {
+   "geometry": "Geometry.tacz_flash_rhino357",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_rpk": {
+   "geometry": "Geometry.tacz_flash_rpk",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_saiga12": {
+   "geometry": "Geometry.tacz_flash_saiga12",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_scarh": {
+   "geometry": "Geometry.tacz_flash_scarh",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_scarl": {
+   "geometry": "Geometry.tacz_flash_scarl",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_sks": {
+   "geometry": "Geometry.tacz_flash_sks",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_spas12": {
+   "geometry": "Geometry.tacz_flash_spas12",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_spr15": {
+   "geometry": "Geometry.tacz_flash_spr15",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_springfield1873": {
+   "geometry": "Geometry.tacz_flash_springfield1873",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_t50": {
+   "geometry": "Geometry.tacz_flash_t50",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_taurus500": {
+   "geometry": "Geometry.tacz_flash_taurus500",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_taurus943": {
+   "geometry": "Geometry.tacz_flash_taurus943",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_type81": {
+   "geometry": "Geometry.tacz_flash_type81",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_ump": {
+   "geometry": "Geometry.tacz_flash_ump",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_uzi": {
+   "geometry": "Geometry.tacz_flash_uzi",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "controller.render.tacz_flash_vector": {
+   "geometry": "Geometry.tacz_flash_vector",
+   "materials": [
+    {
+     "*": "Material.semi"
+    }
+   ],
+   "textures": [
+    "Texture.tacz_flash"
+   ],
+   "uv_anim": {
+    "offset": [
+     0.0,
+     "math.floor(v.tacz_flash_frame) / 8"
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ]
+   }
+  }
+ }
+}

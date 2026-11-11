@@ -1,0 +1,11922 @@
+{
+ "format_version": "1.12.0",
+ "minecraft:geometry": [
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_aa12",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7,
+      4
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "bone",
+     "pivot": [
+      0,
+      7,
+      4
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "bone5",
+     "pivot": [
+      0,
+      7,
+      4
+     ],
+     "parent": "bone"
+    },
+    {
+     "name": "AA12_all",
+     "pivot": [
+      0,
+      0,
+      -4
+     ],
+     "parent": "bone5"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      10.775,
+      -1.2
+     ],
+     "parent": "AA12_all"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      10.775,
+      -25.2
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.775,
+      -25.2
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        0.7750000000000004,
+        -25.2
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        2.7750000000000004,
+        -51.2
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.775,
+      -25.2
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        2.7750000000000004,
+        -51.2
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_akm",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8.2,
+      6.5
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "bone2",
+     "pivot": [
+      0,
+      8,
+      2
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "AKM",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "bone2"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "AKM"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      8.55,
+      -21.325
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.55,
+      -21.325
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -1.4499999999999993,
+        -21.325
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        0.5500000000000007,
+        -47.325
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.55,
+      -21.325
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        0.5500000000000007,
+        -47.325
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_aug",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7.9,
+      5.8
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gun"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      8.875,
+      -17
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.875,
+      -17
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -1.125,
+        -17
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        0.875,
+        -43
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.875,
+      -17
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        0.875,
+        -43
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_awp",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      4,
+      9
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "AWP",
+     "pivot": [
+      0,
+      4,
+      9
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      5,
+      8
+     ],
+     "parent": "AWP"
+    },
+    {
+     "name": "AWP_body",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "gun_pos",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "AWP_body"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      7.75,
+      -33.225
+     ],
+     "parent": "gun_pos"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      7.75,
+      -33.225
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -2.25,
+        -33.225
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -0.25,
+        -59.225
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      7.75,
+      -33.225
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -0.25,
+        -59.225
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_b93",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8,
+      3.25
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      4,
+      3.75
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      6.9375,
+      7.575
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.65625,
+      -6.125
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.65625,
+      -6.125
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.34375,
+        -6.125
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.65625,
+        -32.125
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.65625,
+      -6.125
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.65625,
+        -32.125
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_cz75",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0.00625,
+      3.875,
+      1.275
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "main",
+     "pivot": [
+      0.125,
+      4,
+      1
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "CZ75",
+     "pivot": [
+      0.125,
+      4,
+      1
+     ],
+     "parent": "main"
+    },
+    {
+     "name": "default_gun",
+     "pivot": [
+      0.125,
+      8,
+      -4
+     ],
+     "parent": "CZ75"
+    },
+    {
+     "name": "barrel",
+     "pivot": [
+      0.125,
+      8,
+      -4
+     ],
+     "parent": "default_gun"
+    },
+    {
+     "name": "group2",
+     "pivot": [
+      0.00404,
+      6.21448,
+      -4.003
+     ],
+     "parent": "barrel"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      6.2,
+      -7.35
+     ],
+     "parent": "group2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      6.2,
+      -7.35
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -3.8,
+        -7.35
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -1.7999999999999998,
+        -33.35
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      6.2,
+      -7.35
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -1.7999999999999998,
+        -33.35
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_db",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7,
+      6.225
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "Db",
+     "pivot": [
+      0,
+      7,
+      6.625
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      7,
+      6.625
+     ],
+     "parent": "Db"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.125,
+      -15
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.125,
+      -15
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.875,
+        -15
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.125,
+        -41
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.125,
+      -15
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.125,
+        -41
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_dblong",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7,
+      6.5
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "Db",
+     "pivot": [
+      0,
+      7,
+      6.625
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      7,
+      6.625
+     ],
+     "parent": "Db"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.125,
+      -15
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.125,
+      -15
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.875,
+        -15
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.125,
+        -41
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.125,
+      -15
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.125,
+        -41
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_deagle",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      3.5,
+      5.5
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      3.5,
+      5.5
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "Deagle",
+     "pivot": [
+      0,
+      3.5,
+      5.5
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      5.875,
+      -3.2
+     ],
+     "parent": "Deagle"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      5.875,
+      -3.2
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -4.125,
+        -3.2
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -2.125,
+        -29.2
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      5.875,
+      -3.2
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -2.125,
+        -29.2
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_deagleg",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      3.5,
+      5.5
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      3.5,
+      5.5
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "Deagle",
+     "pivot": [
+      0,
+      3.5,
+      5.5
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      5.875,
+      -3.2
+     ],
+     "parent": "Deagle"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      5.875,
+      -3.2
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -4.125,
+        -3.2
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -2.125,
+        -29.2
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      5.875,
+      -3.2
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -2.125,
+        -29.2
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_evolys",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      9.95,
+      2.125
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "default_gun",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gun"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "default_gun"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      10.375,
+      -23
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.375,
+      -23
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        0.375,
+        -23
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        2.375,
+        -49
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.375,
+      -23
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        2.375,
+        -49
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_g17",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      -0.01875,
+      4,
+      2
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "g17",
+     "pivot": [
+      -0.01875,
+      4,
+      2
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "g17_default_gun",
+     "pivot": [
+      -0.01875,
+      8,
+      0
+     ],
+     "parent": "g17"
+    },
+    {
+     "name": "lower",
+     "pivot": [
+      -0.01875,
+      8,
+      0
+     ],
+     "parent": "g17_default_gun"
+    },
+    {
+     "name": "barrel",
+     "pivot": [
+      -0.01875,
+      8,
+      0
+     ],
+     "parent": "lower"
+    },
+    {
+     "name": "barrel2",
+     "pivot": [
+      0.00704,
+      5.34364,
+      -3.417
+     ],
+     "parent": "barrel"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0.00625,
+      5.35,
+      -7.05
+     ],
+     "parent": "barrel2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0.00625,
+      5.35,
+      -7.05
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -9.99375,
+        -4.65,
+        -7.05
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0.00625,
+        -2.6500000000000004,
+        -33.05
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0.00625,
+      5.35,
+      -7.05
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0.00625,
+        -2.6500000000000004,
+        -33.05
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_g3",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7.5,
+      15
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "bone",
+     "pivot": [
+      0,
+      8,
+      8
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "G3_default_body",
+     "pivot": [
+      0,
+      8,
+      13.86
+     ],
+     "parent": "bone"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      7,
+      6.575
+     ],
+     "parent": "G3_default_body"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.875,
+      -15.925
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.875,
+      -15.925
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.125,
+        -15.925
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.875,
+        -41.925
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.875,
+      -15.925
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.875,
+        -41.925
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_g36",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      6.2,
+      3
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      -16.625,
+      0
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      6.9375,
+      7.575
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      8.1875,
+      -20.5
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.1875,
+      -20.5
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -1.8125,
+        -20.5
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        0.1875,
+        -46.5
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.1875,
+      -20.5
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        0.1875,
+        -46.5
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_hk416",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7.1,
+      6.85
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_hand",
+     "pivot": [
+      0,
+      7.1,
+      6.85
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "416d",
+     "pivot": [
+      0,
+      7.1,
+      6.85
+     ],
+     "parent": "gun_and_hand"
+    },
+    {
+     "name": "positioning_attachment",
+     "pivot": [
+      0,
+      7,
+      6.575
+     ],
+     "parent": "416d"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.6,
+      -14.375
+     ],
+     "parent": "positioning_attachment"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.6,
+      -14.375
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.40000000000000036,
+        -14.375
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.5999999999999996,
+        -40.375
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.6,
+      -14.375
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.5999999999999996,
+        -40.375
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_kar98",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      5.6875,
+      9.9
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_LEFTthand",
+     "pivot": [
+      0,
+      5.6875,
+      9.9
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "GUN",
+     "pivot": [
+      0.00012,
+      7.99713,
+      -23.9257
+     ],
+     "parent": "gun_and_LEFTthand"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0.00012,
+      7.55963,
+      -26.5507
+     ],
+     "parent": "GUN"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0.00012,
+      7.55963,
+      -26.5507
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -9.99988,
+        -2.4403699999999997,
+        -26.5507
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0.00012,
+        -0.4403699999999997,
+        -52.5507
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0.00012,
+      7.55963,
+      -26.5507
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0.00012,
+        -0.4403699999999997,
+        -52.5507
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_lonetrail",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      -0.1164,
+      4.2914,
+      4.1272
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "lh_and_gun",
+     "pivot": [
+      -0.1164,
+      5.9914,
+      -1.3728
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun",
+     "pivot": [
+      -0.1164,
+      3.9914,
+      3.8272
+     ],
+     "parent": "lh_and_gun"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0.00863,
+      8.11642,
+      -12.24776
+     ],
+     "parent": "gun"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0.00863,
+      8.11642,
+      -12.24776
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -9.99137,
+        -1.8835800000000003,
+        -12.24776
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0.00863,
+        0.11641999999999975,
+        -38.24776
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0.00863,
+      8.11642,
+      -12.24776
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0.00863,
+        0.11641999999999975,
+        -38.24776
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m1014",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8.5,
+      -2
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      8.75,
+      0
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "m1014",
+     "pivot": [
+      0,
+      8,
+      0
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      7,
+      13
+     ],
+     "parent": "m1014"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.44063,
+      -24.2625
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.44063,
+      -24.2625
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.5593699999999995,
+        -24.2625
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.4406300000000005,
+        -50.2625
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.44063,
+      -24.2625
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.4406300000000005,
+        -50.2625
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m107",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      5,
+      16
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      5,
+      16
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun",
+     "pivot": [
+      0,
+      8,
+      8
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "gun_barrel",
+     "pivot": [
+      0,
+      8,
+      8
+     ],
+     "parent": "gun"
+    },
+    {
+     "name": "positioning3",
+     "pivot": [
+      0,
+      8,
+      8
+     ],
+     "parent": "gun_barrel"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      10.18125,
+      -29.35
+     ],
+     "parent": "positioning3"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.18125,
+      -29.35
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        0.18125000000000036,
+        -29.35
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        2.1812500000000004,
+        -55.35
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.18125,
+      -29.35
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        2.1812500000000004,
+        -55.35
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m16",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8.3,
+      5
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      8.3,
+      5
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "m16a4",
+     "pivot": [
+      0,
+      8.5,
+      5
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "m16a4"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.5625,
+      -24
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.5625,
+      -24
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.4375,
+        -24
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.5625,
+        -50
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.5625,
+      -24
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.5625,
+        -50
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m16a1",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8.3,
+      5
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      8.3,
+      5
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "m16a1",
+     "pivot": [
+      0,
+      8.3,
+      5
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "m16a1"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.60625,
+      -24
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.60625,
+      -24
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.3937500000000007,
+        -24
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.6062499999999993,
+        -50
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.60625,
+      -24
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.6062499999999993,
+        -50
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m1911",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      3.9,
+      0
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      3.9,
+      0
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "m1911",
+     "pivot": [
+      0,
+      3.9,
+      0
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      5.475,
+      -7.875
+     ],
+     "parent": "m1911"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      5.475,
+      -7.875
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -4.525,
+        -7.875
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -2.5250000000000004,
+        -33.875
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      5.475,
+      -7.875
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -2.5250000000000004,
+        -33.875
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m249",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      5.7,
+      7
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_rh",
+     "pivot": [
+      6,
+      19,
+      8
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "m249",
+     "pivot": [
+      0,
+      5.7,
+      7
+     ],
+     "parent": "gun_rh"
+    },
+    {
+     "name": "m249_default",
+     "pivot": [
+      0,
+      8,
+      0
+     ],
+     "parent": "m249"
+    },
+    {
+     "name": "attachment_positioning",
+     "pivot": [
+      0,
+      10.6875,
+      4
+     ],
+     "parent": "m249_default"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      8.43125,
+      -23.0062
+     ],
+     "parent": "attachment_positioning"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.43125,
+      -23.0062
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -1.5687499999999996,
+        -23.0062
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        0.43125000000000036,
+        -49.0062
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.43125,
+      -23.0062
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        0.43125000000000036,
+        -49.0062
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m4a1",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7,
+      -1.425
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      7,
+      -1.425
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "m4a1",
+     "pivot": [
+      0,
+      7,
+      -1.425
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      7,
+      -1.425
+     ],
+     "parent": "m4a1"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.55,
+      -26.25
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.55,
+      -26.25
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.4499999999999993,
+        -26.25
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.5500000000000007,
+        -52.25
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.55,
+      -26.25
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.5500000000000007,
+        -52.25
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m700",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      6,
+      7
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "defualt_gun",
+     "pivot": [
+      0,
+      8,
+      0
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "defualt_gun"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      7.25,
+      -25
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      7.25,
+      -25
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -2.75,
+        -25
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -0.75,
+        -51
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      7.25,
+      -25
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -0.75,
+        -51
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m870",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8,
+      3
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      7,
+      8
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0.0125,
+      9.125,
+      -23.5
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0.0125,
+      9.125,
+      -23.5
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -9.9875,
+        -0.875,
+        -23.5
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0.0125,
+        1.125,
+        -49.5
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0.0125,
+      9.125,
+      -23.5
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0.0125,
+        1.125,
+        -49.5
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m95b",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      9,
+      1
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      9,
+      1
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "m95",
+     "pivot": [
+      0,
+      9,
+      1
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      10,
+      -39.1
+     ],
+     "parent": "m95"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      10,
+      -39.1
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10,
+      -39.1
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        0.0,
+        -39.1
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        2.0,
+        -65.1
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10,
+      -39.1
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        2.0,
+        -65.1
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_m9a4",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8,
+      3.25
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      6,
+      3
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gun"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.5625,
+      -4.95312
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.5625,
+      -4.95312
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.4375,
+        -4.95312
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.5625,
+        -30.95312
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.5625,
+      -4.95312
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.5625,
+        -30.95312
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_minigun",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      3.575,
+      9.575
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gunandR",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gunandR"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gun"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      2.5,
+      -24
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      2.5,
+      -24
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -7.5,
+        -24
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -5.5,
+        -50
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      2.5,
+      -24
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -5.5,
+        -50
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_mk14",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      6,
+      7
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      3,
+      12
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "mk14",
+     "pivot": [
+      0,
+      3,
+      12
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      7.30625,
+      -22.35
+     ],
+     "parent": "mk14"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      7.30625,
+      -22.35
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      7.30625,
+      -22.35
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -2.6937499999999996,
+        -22.35
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -0.6937499999999996,
+        -48.35
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      7.30625,
+      -22.35
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -0.6937499999999996,
+        -48.35
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_mk23",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      5.0625,
+      7
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      5.0625,
+      7
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "mk23",
+     "pivot": [
+      0,
+      5.0625,
+      7
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      5.0625,
+      7
+     ],
+     "parent": "mk23"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      6.9375,
+      -2.35937
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      6.9375,
+      -2.35937
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -3.0625,
+        -2.35937
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -1.0625,
+        -28.35937
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      6.9375,
+      -2.35937
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -1.0625,
+        -28.35937
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_mp5",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7.9,
+      5.8
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "Mp5",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      7,
+      6.575
+     ],
+     "parent": "Mp5"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      10.875,
+      -12.975
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.875,
+      -12.975
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        0.875,
+        -12.975
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        2.875,
+        -38.975
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.875,
+      -12.975
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        2.875,
+        -38.975
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_p320",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      6.975,
+      2.5
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      2.375,
+      0
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun",
+     "pivot": [
+      0,
+      2.375,
+      0
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      2.375,
+      0
+     ],
+     "parent": "gun"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.5,
+      -4.4375
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.5,
+      -4.4375
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.5,
+        -4.4375
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.5,
+        -30.4375
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.5,
+      -4.4375
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.5,
+        -30.4375
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_p90",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      6,
+      4
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      6,
+      4
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "fn_p90",
+     "pivot": [
+      0,
+      6,
+      4
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "fn_p90"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      8,
+      -5.75
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8,
+      -5.75
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -2.0,
+        -5.75
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        0.0,
+        -31.75
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8,
+      -5.75
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        0.0,
+        -31.75
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_qbz191",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8.375,
+      5.8125
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      -2.4375,
+      -9.125
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "qbz191",
+     "pivot": [
+      0,
+      -2.4375,
+      -9.125
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      6.9375,
+      7.575
+     ],
+     "parent": "qbz191"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      8.95313,
+      -18.42187
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.95313,
+      -18.42187
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -1.0468700000000002,
+        -18.42187
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        0.9531299999999998,
+        -44.42187
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.95313,
+      -18.42187
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        0.9531299999999998,
+        -44.42187
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_qbz95",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8,
+      2.4
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_hand",
+     "pivot": [
+      0,
+      8,
+      2.4
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "qbz_95",
+     "pivot": [
+      0,
+      8,
+      2.4
+     ],
+     "parent": "gun_and_hand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      7,
+      -1.425
+     ],
+     "parent": "qbz_95"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.6125,
+      -17.1875
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.6125,
+      -17.1875
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.3874999999999993,
+        -17.1875
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.6125000000000007,
+        -43.1875
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.6125,
+      -17.1875
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.6125000000000007,
+        -43.1875
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_railgun",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7.1,
+      6.85
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_hand",
+     "pivot": [
+      0,
+      7.1,
+      6.85
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "416d",
+     "pivot": [
+      0,
+      7.1,
+      6.85
+     ],
+     "parent": "gun_and_hand"
+    },
+    {
+     "name": "positioning_attachment",
+     "pivot": [
+      0,
+      7,
+      6.575
+     ],
+     "parent": "416d"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.65,
+      -28.9
+     ],
+     "parent": "positioning_attachment"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.65,
+      -28.9
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.34999999999999964,
+        -28.9
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.6500000000000004,
+        -54.9
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.65,
+      -28.9
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.6500000000000004,
+        -54.9
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_rhino357",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7.8125,
+      2.6875
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "righthand_and_gun",
+     "pivot": [
+      0,
+      7.8125,
+      2.6875
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "CR",
+     "pivot": [
+      0,
+      7.625,
+      2
+     ],
+     "parent": "righthand_and_gun"
+    },
+    {
+     "name": "base_gun",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "CR"
+    },
+    {
+     "name": "gun_body",
+     "pivot": [
+      0.09283,
+      8.83839,
+      -4.0625
+     ],
+     "parent": "base_gun"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.02589,
+      -5.5625
+     ],
+     "parent": "gun_body"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.02589,
+      -5.5625
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.9741099999999996,
+        -5.5625
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.0258900000000004,
+        -31.5625
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.02589,
+      -5.5625
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.0258900000000004,
+        -31.5625
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_rpk",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8,
+      5
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "righthand_and_gun",
+     "pivot": [
+      0,
+      8,
+      5
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "RPK",
+     "pivot": [
+      0,
+      8,
+      5
+     ],
+     "parent": "righthand_and_gun"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "RPK"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      8.55625,
+      -29.7
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.55625,
+      -29.7
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -1.4437499999999996,
+        -29.7
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        0.5562500000000004,
+        -55.7
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.55625,
+      -29.7
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        0.5562500000000004,
+        -55.7
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_saiga12",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8.2,
+      6.5
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "bone2",
+     "pivot": [
+      0,
+      8,
+      2
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "AKM",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "bone2"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "AKM"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      8.55,
+      -21.325
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.55,
+      -21.325
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -1.4499999999999993,
+        -21.325
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        0.5500000000000007,
+        -47.325
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.55,
+      -21.325
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        0.5500000000000007,
+        -47.325
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_scarh",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8,
+      5
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_rh",
+     "pivot": [
+      0,
+      8,
+      5
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "scar_h",
+     "pivot": [
+      0,
+      8,
+      5
+     ],
+     "parent": "gun_and_rh"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "scar_h"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.35625,
+      -16.375
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.35625,
+      -16.375
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.6437500000000007,
+        -16.375
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.3562499999999993,
+        -42.375
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.35625,
+      -16.375
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.3562499999999993,
+        -42.375
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_scarl",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8,
+      5
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_rh",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "scar_h",
+     "pivot": [
+      0,
+      8,
+      0
+     ],
+     "parent": "gun_and_rh"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "scar_h"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.35625,
+      -16.375
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.35625,
+      -16.375
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.6437500000000007,
+        -16.375
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.3562499999999993,
+        -42.375
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.35625,
+      -16.375
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.3562499999999993,
+        -42.375
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_sks",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      4.2,
+      5.425
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      5.475,
+      4.675
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "sks_tac",
+     "pivot": [
+      0,
+      4.375,
+      9.375
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "sks_tac"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      6.5,
+      -25.625
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      6.5,
+      -25.625
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -3.5,
+        -25.625
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -1.5,
+        -51.625
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      6.5,
+      -25.625
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -1.5,
+        -51.625
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_spas12",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8,
+      10
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "left_and_gun",
+     "pivot": [
+      0,
+      7,
+      10
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "spas12",
+     "pivot": [
+      0,
+      7,
+      13
+     ],
+     "parent": "left_and_gun"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      7,
+      13
+     ],
+     "parent": "spas12"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.72188,
+      -21.325
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.72188,
+      -21.325
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.2781199999999995,
+        -21.325
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.7218800000000005,
+        -47.325
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.72188,
+      -21.325
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.7218800000000005,
+        -47.325
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_spr15",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7,
+      1.875
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      7,
+      7.575
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "spr15",
+     "pivot": [
+      0,
+      6.9375,
+      7.575
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      6.9375,
+      7.575
+     ],
+     "parent": "spr15"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.4875,
+      -27
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.4875,
+      -27
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.5124999999999993,
+        -27
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.4875000000000007,
+        -53
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.4875,
+      -27
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.4875000000000007,
+        -53
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_springfield1873",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      8,
+      5
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "mag_and_lh",
+     "pivot": [
+      0,
+      5,
+      3
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "mag_and_lh"
+    },
+    {
+     "name": "gun_default",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gun"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "gun_default"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      10,
+      -39.25
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10,
+      -39.25
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        0.0,
+        -39.25
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        2.0,
+        -65.25
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10,
+      -39.25
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        2.0,
+        -65.25
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_t50",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      7.375,
+      2.5
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      7.375,
+      2.5
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "timeless_50",
+     "pivot": [
+      0,
+      7.25,
+      0.975
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      2.375,
+      0
+     ],
+     "parent": "timeless_50"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      9.25,
+      -5.6875
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.25,
+      -5.6875
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -0.75,
+        -5.6875
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        1.25,
+        -31.6875
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      9.25,
+      -5.6875
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        1.25,
+        -31.6875
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_taurus500",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      9,
+      4
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "rh_and_gun",
+     "pivot": [
+      0,
+      9,
+      4
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun",
+     "pivot": [
+      0,
+      7.5,
+      4
+     ],
+     "parent": "rh_and_gun"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      7.5,
+      4
+     ],
+     "parent": "gun"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      10.75,
+      -9.53125
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.75,
+      -9.53125
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        0.75,
+        -9.53125
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        2.75,
+        -35.53125
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.75,
+      -9.53125
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        2.75,
+        -35.53125
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_taurus943",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      3.5625,
+      1.875
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "rh_and_gun",
+     "pivot": [
+      0,
+      4.25,
+      1.25
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "gun",
+     "pivot": [
+      0,
+      3.55,
+      0
+     ],
+     "parent": "rh_and_gun"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      5.9875,
+      -5.3125
+     ],
+     "parent": "gun"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      5.9875,
+      -5.3125
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -4.0125,
+        -5.3125
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        -2.0125,
+        -31.3125
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      5.9875,
+      -5.3125
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        -2.0125,
+        -31.3125
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_type81",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      -4,
+      -5,
+      -12
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "tag_weapon",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "rot",
+     "rotation": [
+      0,
+      90,
+      0
+     ]
+    },
+    {
+     "name": "group",
+     "pivot": [
+      3.6,
+      2.6,
+      0
+     ],
+     "parent": "tag_weapon"
+    },
+    {
+     "name": "type81",
+     "pivot": [
+      6,
+      0,
+      0
+     ],
+     "parent": "group",
+     "rotation": [
+      0,
+      -90,
+      0
+     ]
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      8
+     ],
+     "parent": "type81"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      8.875,
+      -15.8125
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.875,
+      -15.8125
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -1.125,
+        -15.8125
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        0.875,
+        -41.8125
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.875,
+      -15.8125
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        0.875,
+        -41.8125
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_ump",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      9,
+      5
+     ],
+     "parent": "joints"
+    },
+    {
+     "name": "ump45",
+     "pivot": [
+      0,
+      9,
+      5
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "ump45"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      10.5,
+      -11.0625
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.5,
+      -11.0625
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        0.5,
+        -11.0625
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        2.5,
+        -37.0625
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      10.5,
+      -11.0625
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        2.5,
+        -37.0625
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_uzi",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      6,
+      3
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      6,
+      3
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "uzi",
+     "pivot": [
+      0,
+      6,
+      3
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      8.375,
+      -10.25
+     ],
+     "parent": "uzi"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      8.375,
+      -12.25
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.375,
+      -12.25
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        -1.625,
+        -12.25
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        0.375,
+        -38.25
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      8.375,
+      -12.25
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        0.375,
+        -38.25
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "description": {
+    "identifier": "geometry.tacz_flash_vector",
+    "texture_width": 128,
+    "texture_height": 1024,
+    "visible_bounds_width": 6,
+    "visible_bounds_height": 4,
+    "visible_bounds_offset": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "waist",
+     "pivot": [
+      0,
+      12,
+      0
+     ],
+     "parent": "root"
+    },
+    {
+     "name": "body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "parent": "waist"
+    },
+    {
+     "name": "Joints",
+     "pivot": [
+      0,
+      0,
+      0
+     ],
+     "parent": "body"
+    },
+    {
+     "name": "rot",
+     "pivot": [
+      0,
+      10,
+      3
+     ],
+     "parent": "Joints"
+    },
+    {
+     "name": "gun_and_righthand",
+     "pivot": [
+      0,
+      10,
+      3
+     ],
+     "parent": "rot"
+    },
+    {
+     "name": "Victor45",
+     "pivot": [
+      0,
+      10,
+      3
+     ],
+     "parent": "gun_and_righthand"
+    },
+    {
+     "name": "positioning2",
+     "pivot": [
+      0,
+      11.25,
+      -13.525
+     ],
+     "parent": "Victor45"
+    },
+    {
+     "name": "muzzle_flash",
+     "pivot": [
+      0,
+      11.25,
+      -11.775
+     ],
+     "parent": "positioning2"
+    },
+    {
+     "name": "tacz_flash",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      11.25,
+      -11.775
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -10.0,
+        1.25,
+        -11.775
+       ],
+       "size": [
+        20,
+        20,
+        0
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "south": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        0,
+        3.25,
+        -37.775
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "tacz_flash_h",
+     "parent": "muzzle_flash",
+     "pivot": [
+      0,
+      11.25,
+      -11.775
+     ],
+     "rotation": [
+      0,
+      0,
+      90
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0,
+        3.25,
+        -37.775
+       ],
+       "size": [
+        0,
+        16,
+        26
+       ],
+       "uv": {
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        },
+        "west": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          128,
+          128
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

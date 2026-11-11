@@ -1,0 +1,282 @@
+{
+ "format_version": "1.10.0",
+ "animation_controllers": {
+  "controller.animation.railgun.walk": {
+   "initial_state": "setup",
+   "states": {
+    "setup": {
+     "blend_transition": 0.6,
+     "blend_via_shortest_path": true,
+     "transitions": [
+      {
+       "walk": "v.railgun && q.is_moving && !q.is_sprinting && !q.is_sneaking"
+      }
+     ]
+    },
+    "walk": {
+     "blend_transition": 0.6,
+     "blend_via_shortest_path": true,
+     "animations": [
+      {
+       "universal_walk": "v.railgun"
+      },
+      {
+       "walk_delay_2": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "delay": "v.railgun && q.is_sprinting"
+      },
+      {
+       "delay": "v.railgun && q.is_sneaking"
+      },
+      {
+       "delay": "v.railgun && !q.is_moving && !q.is_sprinting && q.any_animation_finished"
+      }
+     ]
+    },
+    "delay": {
+     "blend_transition": 0.6,
+     "blend_via_shortest_path": true,
+     "animations": [
+      {
+       "walk_delay": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "setup": "v.railgun && q.any_animation_finished"
+      }
+     ]
+    }
+   }
+  },
+  "controller.animation.railgun.tp": {
+   "initial_state": "hold",
+   "states": {
+    "hold": {
+     "animations": [
+      {
+       "railgun_tp_hold": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "sprint": "v.railgun && q.is_sprinting && !q.is_using_item"
+      },
+      {
+       "sight": "v.railgun && q.is_sneaking"
+      },
+      {
+       "hold": "v.railgun && q.is_using_item"
+      }
+     ]
+    },
+    "sprint": {
+     "animations": [
+      {
+       "railgun_tp_sprint": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "hold": "v.railgun && !q.is_sprinting"
+      },
+      {
+       "hold": "v.railgun && q.is_using_item"
+      },
+      {
+       "sight": "v.railgun && q.is_sneaking"
+      }
+     ]
+    },
+    "sight": {
+     "animations": [
+      {
+       "railgun_tp_sight": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "hold": "v.railgun && !q.is_sneaking"
+      }
+     ]
+    }
+   }
+  },
+  "controller.animation.railgun.fp": {
+   "initial_state": "hold",
+   "states": {
+    "hold": {
+     "blend_transition": 0.13,
+     "blend_via_shortest_path": true,
+     "animations": [
+      {
+       "railgun_fp_hold": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "reload": "v.railgunemp && q.mark_variant == 1"
+      },
+      {
+       "inspect": "v.railgun && q.skin_id == 1 && !q.is_sneaking"
+      },
+      {
+       "view": "v.railgunb && q.skin_id == 2 && !q.is_sneaking"
+      },
+      {
+       "reloadtac": "v.railgun && q.mark_variant == 2"
+      },
+      {
+       "sprint": "v.railgun && q.is_sprinting && !q.is_using_item"
+      },
+      {
+       "view": "v.railgunb && q.skin_id == 2 && !q.is_sneaking"
+      },
+      {
+       "sight": "v.railgun && q.is_sneaking"
+      },
+      {
+       "hold": "v.railgun && q.is_using_item"
+      }
+     ]
+    },
+    "inspect": {
+     "animations": [
+      {
+       "railgun_fp_inspect": "v.railgunb"
+      },
+      {
+       "railgun_fp_inspect_emp": "v.railgunemp"
+      }
+     ],
+     "transitions": [
+      {
+       "hold": "(v.railgun && q.all_animations_finished) || (v.railgun && q.is_using_item) || (v.railgun && q.is_sneaking)"
+      }
+     ]
+    },
+    "sprint": {
+     "blend_transition": 0.13,
+     "blend_via_shortest_path": true,
+     "animations": [
+      {
+       "railgun_fp_sprint": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "hold": "v.railgun && !q.is_sprinting"
+      },
+      {
+       "hold": "v.railgun && q.is_using_item"
+      },
+      {
+       "view": "v.railgunb && q.skin_id == 2 && !q.is_sneaking"
+      },
+      {
+       "reload": "v.railgunemp && q.mark_variant == 1"
+      },
+      {
+       "reloadtac": "v.railgun && q.mark_variant == 2"
+      },
+      {
+       "sight": "v.railgun && q.is_sneaking"
+      }
+     ]
+    },
+    "view": {
+     "animations": [
+      {
+       "railgun_fp_view": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "hold": "(v.railgun && q.skin_id != 2)"
+      }
+     ]
+    },
+    "reload": {
+     "animations": [
+      {
+       "railgun_fp_reload": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "hold": "v.railgun && (q.all_animations_finished || q.mark_variant != 1)"
+      }
+     ]
+    },
+    "reloadtac": {
+     "animations": [
+      {
+       "railgun_fp_reload_tac": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "hold": "v.railgun && q.all_animations_finished"
+      },
+      {
+       "hold": "v.railgunb && q.mark_variant != 2"
+      }
+     ]
+    },
+    "attachmentmode": {
+     "animations": [
+      {
+       "railgun_fp_attachment": "v.railgun"
+      }
+     ],
+     "transitions": [
+      {
+       "hold": "v.railgun && q.skin_id != 2"
+      }
+     ]
+    },
+    "sight": {
+     "blend_transition": 0.13,
+     "blend_via_shortest_path": true,
+     "animations": [
+      {
+       "railgun_fp_sight": "v.railgun && q.property('krep:scope') == 'nothing'"
+      },
+      {
+       "railgun_fp_sight_coyote": "v.railgun && q.property('krep:scope') == 'coyote'"
+      },
+      {
+       "railgun_fp_sight_holo": "v.railgun && q.property('krep:scope') == 'holo'"
+      },
+      {
+       "railgun_fp_sight_t2": "v.railgun && q.property('krep:scope') == 't2'"
+      },
+      {
+       "railgun_fp_sight_acog": "v.railgun && q.property('krep:scope') == 'acog'"
+      },
+      {
+       "railgun_fp_sight_elcan": "v.railgun && q.property('krep:scope') == 'elcan'"
+      }
+     ],
+     "transitions": [
+      {
+       "hold": "v.railgun && !q.is_sneaking"
+      },
+      {
+       "view": "v.railgunb && q.skin_id == 2 && !q.is_sneaking"
+      },
+      {
+       "reloadtac": "v.railgun && q.mark_variant == 2"
+      },
+      {
+       "reload": "v.railgunemp && q.mark_variant == 1"
+      }
+     ]
+    }
+   }
+  }
+ }
+}

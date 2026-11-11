@@ -1,2 +1,19 @@
-# Reference downloads (original Bedrock release, Java TACZ). Kept locally, not in git.
-reference/
+# --- Server program + live data: lives on each machine, NOT in git ---
+# (BDS install comes from MinecraftServer_for_PC.zip / Mojang download; the world lives only on the host PC)
+bedrock-server-*/*
+# ...except the settings we want identical everywhere:
+!bedrock-server-*/server.properties
+!bedrock-server-*/allowlist.json
+!bedrock-server-*/permissions.json
+
+# Big reference/source archives (laptop only)
+Mods/
+Textures/
+*.zip
+
+# Machine-specific / generated
+.mcp.json
+.claude/settings.local.json
+stop.request
+__pycache__/
+desktop.ini

@@ -1,0 +1,66 @@
+{
+ "format_version": "1.8.0",
+ "animations": {
+  "animation.tacz.ragdoll": {
+   "loop": "hold_on_last_frame",
+   "animation_length": 30,
+   "override_previous_animation": true,
+   "bones": {
+    "root": {
+     "rotation": [
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return 1 * t.th * math.cos(t.r);",
+      0,
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return -1 * t.th * math.sin(t.r);"
+     ],
+     "position": [
+      0,
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return 2 * t.f * t.mx / 90;",
+      0
+     ]
+    },
+    "body": {
+     "rotation": [
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return 8 * t.lag;",
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return ((math.mod(t.sd * 2 + 7, 17) / 17) - 0.5) * 24 * t.f;",
+      0
+     ]
+    },
+    "head": {
+     "rotation": [
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return (t.hs > 0) ? (-55 * math.sin(math.clamp(t.t / 0.3, 0, 1) * 180) + 15 * t.f) : (20 * t.f + 10 * t.fl);",
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return ((math.mod(t.sd * 1 + 4, 17) / 17) - 0.5) * 70 * t.f;",
+      0
+     ]
+    },
+    "rightArm": {
+     "rotation": [
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return -(60 + 50 * (math.mod(t.sd * 3 + 10, 17) / 17)) * t.lag * t.amp - 15 * t.f + 22 * t.fl;",
+      0,
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return 1 * (15 + 55 * (math.mod(t.sd * 4 + 13, 17) / 17)) * t.f;"
+     ]
+    },
+    "leftArm": {
+     "rotation": [
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return -(60 + 50 * (math.mod(t.sd * 5 + 16, 17) / 17)) * t.lag * t.amp - 15 * t.f - 22 * t.fl;",
+      0,
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return -1 * (15 + 55 * (math.mod(t.sd * 6 + 19, 17) / 17)) * t.f;"
+     ]
+    },
+    "rightLeg": {
+     "rotation": [
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return (20 + 25 * (math.mod(t.sd * 7 + 22, 17) / 17)) * t.lag * t.amp - 12 * t.fl - 8 * t.f;",
+      0,
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return 1 * (4 + 14 * (math.mod(t.sd * 8 + 25, 17) / 17)) * t.f;"
+     ]
+    },
+    "leftLeg": {
+     "rotation": [
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return -(10 + 25 * (math.mod(t.sd * 9 + 28, 17) / 17)) * t.lag * t.amp + 12 * t.fl + 6 * t.f;",
+      0,
+      "t.v = q.property('krep:rd_var'); t.hs = math.mod(t.v, 2); t.st = math.mod(math.floor(t.v / 2), 8); t.sd = math.mod(math.floor(t.v / 16), 32); t.mx = (math.floor(t.v / 512) + 1) * 11.25; t.T = 0.6 - t.st * 0.04; t.t = q.anim_time; t.f = math.clamp(t.t / t.T, 0, 1); t.d = math.max(0, t.t - t.T); t.land = (t.t > t.T) ? 1 : 0; t.th = t.mx * t.f * t.f - t.land * 6 * math.exp(-7 * t.d) * math.sin(t.d * 1100); t.lag = math.sin(t.f * 180); t.fl = t.land * math.exp(-5 * t.d) * math.cos(t.d * 800); t.amp = 0.7 + t.st * 0.08; t.r = q.property('krep:rd_dir') - 1; return -1 * (4 + 14 * (math.mod(t.sd * 10 + 31, 17) / 17)) * t.f;"
+     ]
+    }
+   }
+  }
+ }
+}

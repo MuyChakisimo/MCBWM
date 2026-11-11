@@ -1,0 +1,19 @@
+{
+ "format_version": "1.8.0",
+ "render_controllers": {
+  "controller.render.railgun": {
+   "geometry": "Geometry.railgun",
+   "textures": [
+    "Texture.railgun"
+   ],
+   "materials": [
+    {
+     "*": "Material.guns"
+    },
+    {
+     "railgun_glow": "Material.glow"
+    }
+   ]
+  }
+ }
+}
